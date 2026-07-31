@@ -1,0 +1,3257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrassa Riaz ul Quran wal Sunnah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
+
+        :root {
+            --header-bg: #025F55;
+            --primary-gradient: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%);
+            --text-color: #ffffff;
+        }
+
+        html[dir="rtl"], html[lang="ur"], .rtl, [dir="rtl"] {
+            --primary-gradient: linear-gradient(225deg, #025F55 0%, #004D44 60%, #013832 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            line-height: 1.6;
+            background-color: #ffffff !important;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+
+
+        /* Modern English Typography */
+        h1, h2, h3, h4, h5, h6, .brand-title, .nav-link, button {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-title-text-ur {
+            display: none;
+            color: #ffffff;
+            margin: 0;
+            white-space: nowrap;
+            flex-shrink: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .brand-title-text-ur {
+                font-size: 20px !important;
+                white-space: normal;
+            }
+        }
+
+        p, span, li, .subtext {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        html[dir="rtl"] *, html[lang="ur"] * {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+            letter-spacing: normal !important;
+            line-height: 1.8 !important;
+        }
+
+        [dir="rtl"] .brand-title, 
+        [dir="rtl"] .brand-title-text,
+        .rtl .brand-title,
+        .rtl .brand-title-text {
+            display: none !important;
+        }
+
+        .urdu-title-png {
+            display: none !important;
+            mix-blend-mode: screen !important;
+            background: transparent !important;
+            border: none !important;
+        }
+
+        html[dir="rtl"] header .urdu-title-png,
+        html[lang="ur"] header .urdu-title-png,
+        .rtl header .urdu-title-png,
+        [dir="rtl"] header .brand-title-img,
+        .rtl header .brand-title-img,
+        header .urdu-title-svg,
+        header img.brand-title-img {
+            width: 230px !important;
+            max-width: 250px !important;
+            height: auto !important;
+            transform: none !important;
+            margin-right: 12px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        html[dir="rtl"] footer .urdu-title-png,
+        html[lang="ur"] footer .urdu-title-png,
+        .rtl footer .urdu-title-png,
+        [dir="rtl"] footer .footer-brand-title img,
+        .rtl footer .footer-brand-title img {
+            height: 80px !important;
+            max-height: 110px !important;
+            width: auto !important;
+            transform: scale(1.5) !important;
+            transform-origin: center !important;
+            margin: -18px auto 15px auto !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        header,
+        header .navbar,
+        header .brand-title-container,
+        header .brand-container,
+        header .logo-wrapper,
+        header .navbar-brand {
+            overflow: visible !important;
+            display: flex !important;
+            align-items: center !important;
+            height: auto !important;
+            padding-top: 4px !important;
+            padding-bottom: 4px !important;
+        }
+
+        footer .footer-brand,
+        footer .footer-brand-title,
+        footer .footer-logo-wrapper {
+            overflow: visible !important;
+        }
+
+        html[dir="rtl"] .brand-title-img-en, html[lang="ur"] .brand-title-img-en {
+            display: none !important;
+        }
+
+        /* Strict Hide Rule for Urdu Calligraphy in English Mode */
+        html[lang="en"] .urdu-title-png,
+        html[lang="en"] .brand-title-ur,
+        html[lang="en"] .mobile-title-ur,
+        body:not(.rtl) .urdu-title-png,
+        body:not(.rtl) .brand-title-ur {
+            display: none !important;
+        }
+
+        /* FORCE CENTER ALIGNMENT FOR RTL HEADER CONTAINERS */
+        body.rtl header,
+        body.rtl .header-container,
+        body.rtl .brand-title-block,
+        body.rtl .logo-wrapper,
+        html[lang="ur"] header,
+        html[lang="ur"] .header-container,
+        html[lang="ur"] .brand-title-block {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            float: none !important;
+        }
+
+        /* OVERRIDE URDU TITLE IMAGE POSITIONING */
+        body.rtl header img.brand-title-ur,
+        body.rtl header img.urdu-title-png,
+        html[lang="ur"] header img.brand-title-ur,
+        html[lang="ur"] header img.urdu-title-png,
+        [dir="rtl"] header img {
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            float: none !important;
+            position: relative !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 180px !important;
+            max-width: 80% !important;
+            height: auto !important;
+            transform: none !important;
+        }
+
+        header {
+            background: var(--primary-gradient);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-title-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 115px;
+            object-fit: contain;
+        }
+
+        .mobile-logo-container {
+            display: none;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .mobile-menu-btn {
+            display: none; /* hidden globally */
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #FFFFFF;
+            font-size: 24px;
+            z-index: 999;
+            padding: 5px;
+        }
+
+        .floating-nav-container {
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            padding: 15px 20px;
+            width: 100%;
+        }
+
+        .floating-nav {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 9999px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 8px 10px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (hover: hover) {
+            .floating-nav:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            z-index: 2;
+            padding: 8px 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            color: #333333;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .nav-link.active {
+            background-color: transparent !important;
+            color: #025F55 !important;
+            border-bottom: 2px solid #025F55 !important;
+            border-radius: 0 !important;
+            padding-bottom: 4px !important;
+            font-weight: 800 !important;
+        }
+
+        .nav-accent {
+            color: #e65100;
+        }
+        
+        .nav-accent.active {
+            color: #ffffff;
+        }
+
+        @media (hover: hover) {
+            .nav-link:hover {
+                background-color: var(--header-bg) !important;
+                color: #ffffff !important;
+                border-bottom: none !important;
+                border-radius: 50px !important;
+                padding-bottom: 8px !important; /* Restore normal padding */
+            }
+
+            .nav-accent:hover {
+                background-color: #e65100 !important;
+                color: #ffffff !important;
+            }
+        }
+
+        .lang-toggle-btn {
+            position: relative;
+            z-index: 2;
+            margin-inline-start: 15px;
+            padding: 8px 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            background-color: #eef2f2;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--header-bg);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        html[dir="rtl"] .nav-link, html[lang="ur"] .nav-link {
+            font-size: 18px !important;
+            font-weight: normal !important;
+            padding: 2px 18px !important;
+        }
+
+        html[dir="rtl"] .nav-link.active, html[lang="ur"] .nav-link.active {
+            padding: 2px 18px !important;
+        }
+
+        html[dir="rtl"] .lang-toggle-btn, html[lang="ur"] .lang-toggle-btn {
+            font-size: 16px !important;
+            font-weight: normal !important;
+            padding: 2px 18px !important;
+        }
+        @media (hover: hover) {
+            .lang-toggle-btn:hover {
+                background-color: #dadddd;
+                color: var(--header-bg);
+            }
+        }
+
+        /* Shine Effect */
+        .nav-link, .lang-toggle-btn {
+            overflow: hidden;
+        }
+
+        .nav-link::before, .lang-toggle-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            z-index: -1;
+            opacity: 0;
+            transition: none;
+            pointer-events: none;
+        }
+
+        /* LTR Shine */
+        html:not([dir="rtl"]) .nav-link::before,
+        html:not([dir="rtl"]) .lang-toggle-btn::before {
+            left: -100%;
+        }
+
+        html:not([dir="rtl"]) .nav-link:hover::before,
+        html:not([dir="rtl"]) .nav-link:active::before,
+        html:not([dir="rtl"]) .lang-toggle-btn:hover::before,
+        html:not([dir="rtl"]) .lang-toggle-btn:active::before {
+            opacity: 1;
+            animation: shine-ltr 0.6s ease-out forwards;
+        }
+
+        @keyframes shine-ltr {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        /* RTL Shine */
+        html[dir="rtl"] .nav-link::before,
+        html[dir="rtl"] .lang-toggle-btn::before {
+            right: -100%;
+            background: linear-gradient(to left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+        }
+
+        html[dir="rtl"] .nav-link:hover::before,
+        html[dir="rtl"] .nav-link:active::before,
+        html[dir="rtl"] .lang-toggle-btn:hover::before,
+        html[dir="rtl"] .lang-toggle-btn:active::before {
+            opacity: 1;
+            animation: shine-rtl 0.6s ease-out forwards;
+        }
+
+        @keyframes shine-rtl {
+            0% { right: -100%; }
+            100% { right: 200%; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-logo-container {
+                display: none !important;
+            }
+            .desktop-logo {
+                display: flex !important;
+                order: -1;
+            }
+            .header-logo img,
+            html[dir="rtl"] header .header-logo img,
+            html[lang="ur"] header .header-logo img,
+            [dir="rtl"] header .header-logo img {
+                height: 65px !important;
+                max-height: 65px !important;
+                width: auto !important;
+                max-width: none !important;
+                min-width: 65px !important;
+                margin: 0 !important;
+                object-fit: contain !important;
+                flex-shrink: 0 !important;
+            }
+            .sticky-header {
+                position: sticky;
+                top: 0;
+            }
+            header, 
+            body.rtl header, 
+            html[lang="ur"] header, 
+            html[dir="rtl"] header {
+                padding: 10px 15px !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 12px !important;
+                width: 100% !important;
+                height: 80px !important;
+                max-height: 80px !important;
+                overflow: hidden !important;
+                box-shadow: none;
+            }
+            .brand-title-container {
+                flex-direction: row !important;
+                text-align: center;
+                width: auto !important;
+            }
+            .brand-title-img-en {
+                margin: 0 !important;
+                max-height: 48px !important;
+                width: auto !important;
+            }
+            html[dir="rtl"] header .urdu-title-png, 
+            html[lang="ur"] header .urdu-title-png, 
+            .rtl header .urdu-title-png,
+            html[dir="rtl"] .header-urdu-logo, 
+            html[lang="ur"] .header-urdu-logo, 
+            .urdu-title-png {
+                margin: 0 !important;
+                max-height: 48px !important;
+                width: auto !important;
+                display: block !important;
+            }
+            .mobile-menu-btn {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                order: -1; /* Puts it on the left in LTR, right in RTL natively */
+            }
+            .header-logo {
+                order: 1; /* Puts it on the right in LTR, left in RTL natively */
+            }
+            .brand-title-container {
+                order: 0;
+            }
+            .floating-nav-container {
+                display: none; /* Hidden by default on mobile */
+                position: absolute;
+                top: 80px; /* Under the header */
+                left: 0;
+                right: auto;
+                width: 250px;
+                max-width: 70vw;
+                flex-direction: column;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                border-radius: 0 0 8px 0;
+                padding: 10px 0;
+                z-index: 999;
+                justify-content: flex-start;
+            }
+            html[dir="rtl"] .floating-nav-container,
+            html[lang="ur"] .floating-nav-container,
+            body.rtl .floating-nav-container {
+                left: auto;
+                right: 0;
+                border-radius: 0 0 0 8px;
+            }
+            .floating-nav-container.active {
+                display: flex;
+            }
+            .floating-nav {
+                flex-direction: column;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+                align-items: stretch;
+            }
+            .floating-nav .nav-link, .floating-nav .lang-toggle-btn {
+                padding: 15px 20px;
+                text-align: center;
+                border-radius: 0;
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+            }
+        }
+        /* Footer Styling */
+        .site-footer {
+            background: var(--primary-gradient) !important;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            padding: 70px 40px 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 5px solid #158467;
+            text-align: left;
+        }
+
+        html[dir="rtl"] .site-footer {
+            text-align: right;
+        }
+
+
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: left !important;
+        }
+
+        html[dir="rtl"] .footer-content, html[lang="ur"] .footer-content {
+            text-align: right !important;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .footer-section p, .footer-section li {
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
+            color: #E0E0E0;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-brand {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 0 !important;
+        }
+
+        footer .footer-logo,
+        footer .footer-brand img:first-child,
+        footer .brand-logo img {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+        }
+
+        footer .footer-brand-title,
+        footer .footer-brand-title img,
+        footer .footer-title-img-en,
+        footer .footer-title {
+            margin-top: -10px !important;
+            padding-top: 0 !important;
+        }
+
+        footer .urdu-title-png,
+        [dir="rtl"] footer .footer-brand-title img,
+        .rtl footer .footer-brand-title img {
+            margin-top: -18px !important;
+            padding-top: 0 !important;
+        }
+
+        .footer-social-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .social-btn:hover {
+            background-color: rgba(255, 255, 255, 0.28);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        html[dir="rtl"] .footer-social-links, .rtl .footer-social-links, [dir="rtl"] .footer-social-links {
+            justify-content: center;
+        }
+
+        .footer-logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        html[dir="rtl"] .footer-logo-wrapper, .rtl .footer-logo-wrapper, [dir="rtl"] .footer-logo-wrapper {
+            align-items: center;
+        }
+
+        .footer-logo {
+            max-width: 160px;
+            height: auto;
+            display: block;
+        }
+
+        .footer-title-img-en {
+            display: block;
+            margin-top: 4px;
+        }
+
+
+        html[dir="rtl"] .footer-title-img-en, html[lang="ur"] .footer-title-img-en, [dir="rtl"] .footer-title-img-en, .rtl .footer-title-img-en {
+            display: none !important;
+        }
+
+        .hero-unified-bg {
+            background-image: linear-gradient(to bottom, transparent 85%, #ffffff 100%), linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), url('assets/hero-image.jpeg') !important;
+            background-size: cover;
+            background-position: center top;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            overflow: visible !important;
+            padding: 60px 8%;
+            background: transparent !important;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 620px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-bottom: 40px;
+        }
+
+        .welcome-badge {
+            position: absolute !important;
+            top: 40px;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            padding: 8px 20px !important;
+            background-color: rgba(2, 95, 85, 0.08) !important;
+            border: 1px solid rgba(2, 95, 85, 0.2) !important;
+            border-radius: 30px !important;
+            margin-bottom: 20px !important;
+            max-width: 95vw !important;
+            box-sizing: border-box !important;
+            cursor: default !important;
+            box-shadow: 0 2px 8px rgba(2, 95, 85, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 5;
+        }
+
+        .welcome-badge:hover,
+        .welcome-badge:active {
+            transform: translate(-50%, -2px) !important;
+            background-color: rgba(2, 95, 85, 0.14) !important;
+            border-color: #025F55 !important;
+            box-shadow: 0 6px 20px rgba(2, 95, 85, 0.2);
+        }
+
+        .welcome-badge:hover .badge-dot,
+        .welcome-badge:active .badge-dot {
+            transform: scale(1.3);
+            background-color: #025F55 !important;
+        }
+
+        /* Strict Language Visibility Rules for Welcome Pill */
+        html[lang="ur"] .hero-badge .en-text,
+        html[lang="ur"] .hero-badge .en-badge,
+        body.rtl .hero-badge .en-text,
+        body.rtl .hero-badge .en-badge,
+        html[lang="ur"] .welcome-pill .en-text,
+        html[lang="ur"] .welcome-pill .en-badge,
+        html[lang="ur"] .welcome-badge .en-text,
+        html[lang="ur"] .welcome-badge .en-badge,
+        body.rtl .welcome-pill .en-text,
+        body.rtl .welcome-pill .en-badge,
+        body.rtl .welcome-badge .en-text,
+        body.rtl .welcome-badge .en-badge {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        html[lang="en"] .hero-badge .ur-text,
+        html[lang="en"] .hero-badge .ur-badge,
+        body:not(.rtl) .hero-badge .ur-text,
+        body:not(.rtl) .hero-badge .ur-badge,
+        html[lang="en"] .welcome-pill .ur-text,
+        html[lang="en"] .welcome-pill .ur-badge,
+        html[lang="en"] .welcome-badge .ur-text,
+        html[lang="en"] .welcome-badge .ur-badge,
+        body:not(.rtl) .welcome-pill .ur-text,
+        body:not(.rtl) .welcome-pill .ur-badge,
+        body:not(.rtl) .welcome-badge .ur-text,
+        body:not(.rtl) .welcome-badge .ur-badge {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Base Pill Layout */
+        .hero-badge, .welcome-pill, .welcome-badge {
+            position: absolute !important; /* Preserving original centering */
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            padding: 6px 18px !important;
+            background-color: rgba(2, 95, 85, 0.08) !important;
+            border: 1px solid rgba(2, 95, 85, 0.2) !important;
+            border-radius: 50px !important;
+            white-space: nowrap !important;
+            width: auto !important;
+        }
+
+        /* English Mode Display */
+        html[lang="en"] .pill-text-ur,
+        body:not(.rtl) .pill-text-ur {
+            display: none !important;
+        }
+
+        html[lang="en"] .pill-text-en,
+        body:not(.rtl) .pill-text-en {
+            display: inline !important;
+            font-family: inherit;
+            font-size: 0.85rem;
+            color: #025F55;
+        }
+
+        /* Urdu Mode Display (Force Nastaleeq) */
+        html[lang="ur"] .pill-text-en,
+        body.rtl .pill-text-en {
+            display: none !important;
+        }
+
+        html[lang="ur"] .pill-text-ur,
+        body.rtl .pill-text-ur {
+            display: inline !important;
+            font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+            font-size: 1.1rem !important;
+            color: #025F55 !important;
+            line-height: normal !important;
+        }
+
+        html[lang="ur"] .hero-badge .dot,
+        body.rtl .welcome-pill .badge-dot,
+        html[lang="ur"] .welcome-badge .badge-dot,
+        body.rtl .welcome-badge .badge-dot,
+        [dir="rtl"] .welcome-badge .badge-dot {
+            margin-left: 6px !important;
+            margin-right: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+            html[lang="ur"] body .hero-badge,
+            html[lang="ur"] body .hero-badge *,
+            html[lang="ur"] body .welcome-pill,
+            html[lang="ur"] body .welcome-pill *,
+            html[lang="ur"] body .welcome-badge,
+            html[lang="ur"] body .welcome-badge *,
+            html[lang="ur"] body [class*="badge"],
+            html[lang="ur"] body [class*="badge"] *,
+            body.rtl .welcome-badge {
+                font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+                font-size: 1.05rem !important;
+            }
+        }
+
+        .badge-dot {
+            width: 8px !important;
+            height: 8px !important;
+            background-color: #025F55 !important;
+            border-radius: 50% !important;
+            flex-shrink: 0 !important;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .badge-text-group {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+        }
+
+        .badge-line {
+            white-space: nowrap !important;
+            display: block !important;
+            color: #025F55 !important;
+            font-weight: 700 !important;
+        }
+
+        .ur-badge { display: none !important; }
+        .en-badge { display: flex !important; font-family: inherit; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        html[dir="rtl"] .en-badge, html[lang="ur"] .en-badge, [dir="rtl"] .en-badge, .rtl .en-badge { 
+            display: none !important; 
+        }
+
+        html[dir="rtl"] .ur-badge, html[lang="ur"] .ur-badge, [dir="rtl"] .ur-badge, .rtl .ur-badge {
+            display: flex !important;
+            font-family: 'Jameel Noori Nastaleeq', 'Almarai', sans-serif !important;
+            line-height: 1.5 !important;
+            font-size: 0.95rem;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        html[dir="rtl"] .hero-bg-wrapper, html[lang="ur"] .hero-bg-wrapper, [dir="rtl"] .hero-bg-wrapper, .rtl .hero-bg-wrapper {
+            transform: scaleX(-1);
+        }
+
+        html[dir="rtl"] .hero-content, html[lang="ur"] .hero-content, [dir="rtl"] .hero-content, .rtl .hero-content {
+            margin-right: 0;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('assets/pattern.png') !important;
+            background-size: 40px auto !important;
+            background-repeat: repeat !important;
+            opacity: 0.05;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.25;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1F2937;
+        }
+        
+        .signature-font {
+            font-family: 'Caveat', cursive, sans-serif;
+            color: #025F55;
+            font-size: 1.2em;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 4px;
+        }
+        
+        html[dir="rtl"] .hero-title, html[lang="ur"] .hero-title {
+            font-family: 'Almarai', sans-serif !important;
+            font-weight: normal !important;
+            font-size: 2.5rem;
+            line-height: 1.8;
+            color: #1F2937;
+        }
+        
+        html[lang="ur"] body .urdu-hero-title .urdu-title-rest,
+        body.rtl .urdu-hero-title .urdu-title-rest,
+        .urdu-hero-title span.urdu-title-rest {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            color: #1F2937 !important;
+            font-size: 1.1em !important;
+            line-height: 1.6 !important;
+        }
+
+        html[lang="ur"] body .urdu-hero-title .quran-accent-word,
+        body.rtl .urdu-hero-title .quran-accent-word,
+        .urdu-hero-title span.quran-accent-word {
+            font-family: 'Aref Ruqaa', 'Amiri', serif !important;
+            color: #025F55 !important;
+            font-size: 1.3em !important;
+            font-weight: 700 !important;
+            display: inline-block !important;
+            margin: 0 6px !important;
+        }
+
+        .hero-subtitle {
+            color: #374151;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        html[dir="rtl"] .hero-subtitle, html[lang="ur"] .hero-subtitle {
+            font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+            font-weight: normal !important;
+            font-size: 1.6rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 28px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        html[dir="rtl"] .hero-buttons, html[lang="ur"] .hero-buttons {
+            justify-content: flex-start;
+        }
+
+        /* Base sleek pill style */
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px 8px 24px;
+            border-radius: 50px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            gap: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* --- Hero CTA Buttons Base Styles --- */
+        .btn-primary-pill, 
+        .hero-buttons a:first-child,
+        .hero-buttons button:first-child {
+            background: var(--primary-gradient) !important;
+            color: #ffffff !important;
+            border: 2px solid transparent !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .btn-primary-pill .btn-arrow-circle,
+        .hero-buttons a:first-child .btn-arrow-circle {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .btn-secondary-pill,
+        .hero-buttons a:nth-child(2),
+        .hero-buttons button:nth-child(2) {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border: 2px solid #025F55 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        .btn-secondary-pill .btn-arrow-circle,
+        .hero-buttons a:nth-child(2) .btn-arrow-circle {
+            background-color: transparent !important;
+            color: #025F55 !important;
+            border: 1px solid #025F55 !important;
+            transition: all 0.3s ease !important;
+        }
+
+        /* --- Circle Badge Container --- */
+        .btn-arrow-circle {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        /* --- Hover Animations & Color Inversions --- */
+        /* Primary (Green) Button Hover */
+        .hero-buttons a:first-child:hover,
+        .btn-primary-pill:hover,
+        .btn-primary-pill:active {
+            background: #ffffff !important;
+            color: #025F55 !important;
+            border-color: #025F55 !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 6px 18px rgba(2, 95, 85, 0.2) !important;
+        }
+
+        .hero-buttons a:first-child:hover .btn-arrow-circle,
+        .btn-primary-pill:hover .btn-arrow-circle {
+            background: var(--primary-gradient) !important;
+            color: #ffffff !important;
+        }
+
+        /* Secondary (White) Button Hover */
+        .hero-buttons a:nth-child(2):hover,
+        .btn-secondary-pill:hover,
+        .btn-secondary-pill:active {
+            background: var(--primary-gradient) !important;
+            color: #ffffff !important;
+            border-color: transparent !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 6px 18px rgba(2, 95, 85, 0.25) !important;
+        }
+
+        .hero-buttons a:nth-child(2):hover .btn-arrow-circle,
+        .btn-secondary-pill:hover .btn-arrow-circle {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border-color: #ffffff !important;
+        }
+
+        /* Shared Arrow Rotation */
+        .btn-hero:hover .btn-arrow-circle svg,
+        .hero-buttons a:hover .btn-arrow-circle svg {
+            transform: rotate(45deg) !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        /* RTL Arrow Rotation (Maintain Left-facing Flip) */
+        html[dir="rtl"] .btn-hero:hover .btn-arrow-circle svg, 
+        html[lang="ur"] .btn-hero:hover .btn-arrow-circle svg, 
+        [dir="rtl"] .btn-hero:hover .btn-arrow-circle svg,
+        .rtl .btn-hero:hover .btn-arrow-circle svg,
+        html[dir="rtl"] .hero-buttons a:hover .btn-arrow-circle svg,
+        html[lang="ur"] .hero-buttons a:hover .btn-arrow-circle svg {
+            transform: scaleX(-1) rotate(45deg) !important;
+        }
+        /* Special Intro Button */
+        .btn-intro-special {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 10px 8px 24px;
+            border-radius: 50px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #025F55;
+            border: 1px solid #ffffff;
+            margin: 0 auto;
+        }
+
+        .btn-intro-special .btn-text {
+            color: #ffffff;
+        }
+
+        .btn-intro-special .btn-arrow-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            color: #025F55;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-intro-special .arrow-icon {
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+        }
+
+        .btn-intro-special:hover {
+            background-color: #ffffff;
+            border-color: #025F55;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(2, 95, 85, 0.2);
+        }
+
+        .btn-intro-special:hover .btn-text {
+            color: #025F55;
+        }
+
+        .btn-intro-special:hover .btn-arrow-circle {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            box-shadow: none;
+        }
+
+        .btn-intro-special:hover .arrow-icon {
+            transform: rotate(45deg);
+        }
+
+        html[dir="rtl"] .btn-intro-special {
+            padding: 8px 24px 8px 10px;
+        }
+
+        html[dir="rtl"] .btn-intro-special .arrow-icon {
+            transform: rotate(-90deg);
+        }
+
+        html[dir="rtl"] .btn-intro-special:hover .arrow-icon {
+            transform: rotate(-135deg);
+        }
+
+        /* 1. ENABLE INSTANT TOUCH RESPONSE ON MOBILE */
+        .hero-buttons a,
+        .btn-primary-pill,
+        .btn-secondary-pill {
+            -webkit-tap-highlight-color: transparent !important;
+            touch-action: manipulation !important;
+        }
+
+        /* 2. MOBILE TAP / TOUCH STATES */
+        @media (max-width: 768px) {
+            /* Primary Touch State */
+            .hero-buttons a:first-child:active,
+            .hero-buttons a:first-child:focus,
+            .btn-primary-pill:active,
+            .btn-primary-pill:focus {
+                background-color: #ffffff !important;
+                color: #025F55 !important;
+                border: 2px solid #025F55 !important;
+                transform: scale(0.96) !important;
+                transition: all 0.15s ease !important;
+            }
+
+            .hero-buttons a:first-child:active .btn-arrow-circle,
+            .hero-buttons a:first-child:focus .btn-arrow-circle,
+            .btn-primary-pill:active .btn-arrow-circle,
+            .btn-primary-pill:focus .btn-arrow-circle {
+                background-color: #025F55 !important;
+                color: #ffffff !important;
+            }
+
+            /* Secondary Touch State */
+            .hero-buttons a:nth-child(2):active,
+            .hero-buttons a:nth-child(2):focus,
+            .btn-secondary-pill:active,
+            .btn-secondary-pill:focus {
+                background-color: #025F55 !important;
+                color: #ffffff !important;
+                border: 2px solid #025F55 !important;
+                transform: scale(0.96) !important;
+                transition: all 0.15s ease !important;
+            }
+
+            .hero-buttons a:nth-child(2):active .btn-arrow-circle,
+            .hero-buttons a:nth-child(2):focus .btn-arrow-circle,
+            .btn-secondary-pill:active .btn-arrow-circle,
+            .btn-secondary-pill:focus .btn-arrow-circle {
+                background-color: #ffffff !important;
+                color: #025F55 !important;
+                border-color: #ffffff !important;
+            }
+            
+            /* Shared Arrow Rotation for Touch */
+            .hero-buttons a:active .btn-arrow-circle svg,
+            .hero-buttons a:focus .btn-arrow-circle svg,
+            .btn-primary-pill:active .btn-arrow-circle svg,
+            .btn-secondary-pill:active .btn-arrow-circle svg {
+                transform: rotate(45deg) !important;
+                transition: transform 0.15s ease !important;
+            }
+            
+            /* Arrow Rotation for Touch in RTL */
+            html[dir="rtl"] .hero-buttons a:active .btn-arrow-circle svg,
+            html[lang="ur"] .hero-buttons a:active .btn-arrow-circle svg,
+            html[dir="rtl"] .hero-buttons a:focus .btn-arrow-circle svg,
+            html[lang="ur"] .hero-buttons a:focus .btn-arrow-circle svg {
+                transform: scaleX(-1) rotate(45deg) !important;
+            }
+        }
+        /* RTL mode adjustments for pill */
+        html[dir="rtl"] .btn-hero, html[lang="ur"] .btn-hero, [dir="rtl"] .btn-hero, .rtl .btn-hero {
+            padding: 8px 24px 8px 10px;
+            font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+            font-weight: normal !important;
+            font-size: 1.3rem;
+        }
+        
+        html[dir="rtl"] .btn-arrow-circle svg, html[lang="ur"] .btn-arrow-circle svg, [dir="rtl"] .btn-arrow-circle svg, .rtl .btn-arrow-circle svg {
+            transform: scaleX(-1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html[dir="rtl"] .btn, html[lang="ur"] .btn {
+            font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+            font-weight: normal !important;
+            font-size: 1.3rem;
+        }
+
+        /* --- Primary Button Hover/Active --- */
+        .btn-primary {
+            background-color: #025F55 !important;
+            color: #ffffff !important;
+            border: 2px solid #025F55 !important;
+            border-radius: 50px !important;
+            padding: 10px 20px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            text-decoration: none !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+        }
+
+        .btn-primary .arrow-icon,
+        .btn-primary .icon-circle {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border-radius: 50% !important;
+            width: 30px !important;
+            height: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        /* Primary Hover & Click Inversion */
+        .btn-primary:hover, .btn-primary:active {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border-color: #025F55 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-primary:hover .arrow-icon, .btn-primary:active .arrow-icon,
+        .btn-primary:hover .icon-circle, .btn-primary:active .icon-circle {
+            background-color: #025F55 !important;
+            color: #ffffff !important;
+            transform: rotate(45deg) !important;
+        }
+
+        /* --- Secondary Button Hover/Active --- */
+        .btn-secondary {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border: 2px solid #025F55 !important;
+            border-radius: 50px !important;
+            padding: 10px 20px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            text-decoration: none !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer !important;
+        }
+
+        .btn-secondary .arrow-icon,
+        .btn-secondary .icon-circle {
+            background-color: transparent !important;
+            color: #025F55 !important;
+            border: 1px solid #025F55 !important;
+            border-radius: 50% !important;
+            width: 30px !important;
+            height: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+        /* Secondary Hover & Click Inversion */
+        .btn-secondary:hover, .btn-secondary:active {
+            background-color: #025F55 !important;
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-secondary:hover .arrow-icon, .btn-secondary:active .arrow-icon,
+        .btn-secondary:hover .icon-circle, .btn-secondary:active .icon-circle {
+            background-color: #ffffff !important;
+            color: #025F55 !important;
+            border-color: #ffffff !important;
+            transform: rotate(45deg) !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            html[dir="rtl"] .hero-content, html[lang="ur"] .hero-content {
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            html[dir="rtl"] .hero-buttons, html[lang="ur"] .hero-buttons {
+                justify-content: center;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            html[dir="rtl"] .hero-title, html[lang="ur"] .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 50px 20px 20px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center !important;
+            }
+            html[dir="rtl"] .site-footer {
+                text-align: center;
+            }
+            .footer-crest-logo {
+                margin: 0 auto;
+            }
+            
+            /* Center align Brand section (Logo, Title, Social Icons) */
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .footer-logo-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .footer-social-links {
+                justify-content: center !important;
+                width: 100%;
+            }
+
+            /* Center align Quick Links and Contact Info sections */
+            .footer-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .footer-section ul {
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center !important;
+            }
+
+            /* Fix alignment for both LTR and RTL/Urdu modes on mobile */
+            html[dir="rtl"] .footer-brand,
+            html[dir="rtl"] .footer-logo-wrapper,
+            html[dir="rtl"] .footer-social-links,
+            html[dir="rtl"] .footer-section,
+            .rtl .footer-brand,
+            .rtl .footer-logo-wrapper,
+            .rtl .footer-social-links,
+            .rtl .footer-section {
+                align-items: center !important;
+                text-align: center !important;
+                justify-content: center !important;
+            }
+
+            .welcome-badge {
+                padding: 8px 14px !important;
+                max-width: 90% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .badge-line {
+                font-size: 0.65rem !important;
+                line-height: 1.3 !important;
+                letter-spacing: 0.2px !important;
+            }
+
+            .badge-dot {
+                width: 7px !important;
+                height: 7px !important;
+                background-color: #025F55 !important;
+                border-radius: 50% !important;
+                flex-shrink: 0 !important;
+                margin-right: 8px !important;
+            }
+
+            [dir="rtl"] .badge-line,
+            .rtl .badge-line {
+                font-family: 'Almarai', 'Jameel Noori Nastaleeq', sans-serif !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Desktop View Line Break Hide */
+        @media (min-width: 769px) {
+            .welcome-badge {
+                white-space: nowrap !important;
+            }
+            .badge-text-group {
+                flex-direction: row !important;
+                gap: 5px;
+            }
+        }
+
+        /* Small Mobile Enforcements */
+        @media (max-width: 480px) {
+            .welcome-badge {
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 6px !important;
+                padding: 6px 12px !important;
+                max-width: 96% !important;
+                margin: 0 auto 16px auto !important;
+                box-sizing: border-box !important;
+            }
+
+            .welcome-badge .badge-line {
+                font-size: 0.65rem !important;
+                line-height: 1.25 !important;
+                letter-spacing: 0.2px !important;
+                text-align: center !important;
+                word-break: keep-all !important;
+            }
+
+            .badge-dot {
+                width: 6px !important;
+                height: 6px !important;
+                flex-shrink: 0 !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .pill-text-en {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                line-height: 1.3 !important;
+            }
+
+            .pill-line-1,
+            .pill-line-2 {
+                display: block !important;
+                white-space: nowrap !important;
+            }
+
+            .pill-line-1 {
+                font-size: 0.75rem !important;
+                font-weight: 600 !important;
+            }
+
+            .pill-line-2 {
+                font-size: 0.8rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.5px !important;
+            }
+
+            html[lang="en"] .hero-badge,
+            html[lang="en"] .welcome-pill,
+            body:not(.rtl) .hero-badge,
+            body:not(.rtl) .welcome-pill {
+                height: auto !important;
+                padding: 8px 18px !important;
+                border-radius: 20px !important;
+                max-width: 90% !important;
+            }
+            /* 1. Reduce Container Padding & Allow Overflow */
+            header, 
+            .site-header, 
+            .header-container, 
+            .mobile-header-row,
+            .brand-title-block {
+                overflow: visible !important;
+                padding-top: 12px !important;
+                padding-bottom: 12px !important;
+                min-height: auto !important;
+                height: auto !important;
+            }
+
+            /* 2. Targeted Resizing & Alignment for Urdu Title Image */
+            html[lang="ur"] header img.brand-title-ur,
+            html[lang="ur"] header img.urdu-title-png,
+            body.rtl header img.brand-title-ur,
+            body.rtl header img.urdu-title-png,
+            header .urdu-title-png,
+            header .brand-title-ur {
+                width: 380px !important;              /* Matched to footer dimensions */
+                max-width: 95% !important;
+                height: auto !important;
+                max-height: 110px !important;         /* Generous height to avoid clipping */
+                object-fit: contain !important;
+                margin: 0 auto !important;
+                display: block !important;
+            }
+
+            html[lang="ur"] .brand-title-block,
+            body.rtl .brand-title-block {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+
+            /* 3. Compact Sizing for English Title */
+            html[lang="en"] .brand-title-en,
+            body:not(.rtl) .brand-title-en,
+            .brand-title-en {
+                font-size: 0.95rem !important;
+                line-height: 1.15 !important;
+                margin-top: 4px !important;
+                margin-bottom: 4px !important;
+            }
+        }
+
+        /* CSS OVERRIDE FOR PC URDU MODE */
+        @media (min-width: 769px) {
+            /* 1. REMOVE HEIGHT & OVERFLOW LIMITS FROM ALL HEADER PARENTS */
+            header,
+            .site-header,
+            .header-container,
+            .brand-logo-wrapper,
+            .brand-title-block,
+            html[lang="ur"] header,
+            body.rtl header {
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+            }
+
+            /* Enforce RTL Header Row Container */
+            html[lang="ur"] header,
+            html[lang="ur"] .site-header,
+            body.rtl header,
+            body.rtl .site-header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                direction: ltr !important; /* Lock container orientation */
+            }
+
+            /* 2. FORCE LOGO TO THE LEFT (ORDER: 1) AND MATCH LARGE ENGLISH LOGO (110px) */
+            html[lang="ur"] header .brand-logo-wrapper,
+            html[lang="ur"] header .header-logo,
+            html[lang="ur"] header .site-logo,
+            html[lang="ur"] header a:has(.site-logo),
+            body.rtl header .brand-logo-wrapper,
+            body.rtl header .header-logo,
+            body.rtl header .site-logo {
+                order: 1 !important;
+                margin-right: auto !important;
+                margin-left: 0 !important;
+                height: 110px !important;
+                min-height: 110px !important;
+                width: auto !important;
+                max-height: none !important;
+                max-width: none !important;
+                display: block !important;
+            }
+            
+            /* Apply height to logo image itself */
+            html[lang="ur"] header .header-logo img,
+            body.rtl header .header-logo img {
+                height: 110px !important;
+                min-height: 110px !important;
+                width: auto !important;
+                max-height: none !important;
+                max-width: none !important;
+            }
+
+            /* 3. FORCE URDU CALLIGRAPHY NAME TO BE LARGE & PROMINENT (110px) */
+            html[lang="ur"] header .brand-title-block,
+            html[lang="ur"] header .brand-title-container,
+            html[lang="ur"] header img.brand-title-ur,
+            html[lang="ur"] header img.urdu-title-png,
+            body.rtl header .brand-title-block,
+            body.rtl header .brand-title-container,
+            body.rtl header img.brand-title-ur,
+            body.rtl header img.urdu-title-png {
+                order: 2 !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
+                height: 110px !important;
+                min-height: 110px !important;
+                width: auto !important;
+                max-width: 650px !important;
+                object-fit: contain !important;
+                display: block !important;
+            }
+        }
+        .hero-section {
+            padding-top: 20px !important; /* Reduces upper gap from navbar */
+            margin-bottom: 0 !important;
+            border-bottom: none !important;
+        }
+
+        .welcome-badge, 
+        .hero-badge,
+        .badge-container {
+            display: table !important;
+            margin: 5px auto 12px auto !important;
+            text-align: center !important;
+        }
+
+        .hero-hadith-img {
+            display: block !important;
+            margin: 15px auto 30px auto !important;
+            max-height: 80px !important;
+            width: auto !important;
+            clear: both !important;
+            object-fit: contain !important;
+            filter: hue-rotate(150deg) saturate(120%) brightness(85%);
+            -webkit-filter: hue-rotate(150deg) saturate(120%) brightness(85%);
+        }
+
+        .hero-section h1, 
+        .hero-title {
+            margin-top: 25px !important;
+            clear: both;
+        }
+
+        .custom-loop-divider {
+            position: absolute !important;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            top: -30px; /* Positioned right on the boundary between Hero and Intro */
+            z-index: 25;
+            pointer-events: none;
+            background: transparent !important;
+            overflow: visible !important;
+        }
+
+        .custom-loop-divider svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible !important;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html[dir="rtl"] .custom-loop-divider svg {
+            transform: scaleX(-1);
+        }
+        
+        /* Combined Hero Extension Section */
+        .hero-extension-section {
+            margin-top: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            position: relative;
+            overflow: visible !important;
+            background: transparent !important;
+            z-index: 1;
+        }
+
+        .hero-extension-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(to bottom, #ffffff 0%, transparent 10%), linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), url('assets/hero-image.jpeg');
+            background-size: cover;
+            background-position: center top;
+            transform: scaleX(-1);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Short Introduction Section */
+        .intro-section {
+            padding: 60px 20px 60px 20px !important;
+            text-align: center;
+            margin-top: 0 !important;
+            position: relative;
+            overflow: visible !important;
+        }
+
+        .intro-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .intro-title {
+            color: #1F2937; /* Dark text to let highlight pop */
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .highlight-font {
+            font-family: 'Caveat', cursive, sans-serif;
+            color: #025F55;
+            font-size: 1.2em;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        .intro-subtitle {
+            color: #0d9488;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Urdu Overrides for Intro Section */
+        html[dir="rtl"] .intro-title, html[lang="ur"] .intro-title,
+        html[dir="rtl"] .intro-subtitle, html[lang="ur"] .intro-subtitle,
+        html[dir="rtl"] .intro-text, html[lang="ur"] .intro-text {
+            font-family: 'Jameel Noori Nastaleeq', 'Jameel Noori Nastaleeq Regular', serif !important;
+            font-weight: normal;
+        }
+
+        html[dir="rtl"] .intro-title, html[lang="ur"] .intro-title {
+            font-size: 2.8rem;
+        }
+        
+        html[dir="rtl"] .intro-subtitle, html[lang="ur"] .intro-subtitle {
+            font-size: 1.8rem;
+        }
+
+        html[dir="rtl"] .intro-text, html[lang="ur"] .intro-text {
+            font-size: 1.5rem;
+            line-height: 2.2;
+        }
+
+        html[dir="rtl"] .highlight-font, html[lang="ur"] .highlight-font {
+            font-family: 'Aref Ruqaa', 'Amiri', serif !important;
+            font-size: 1.3em !important;
+            margin: 0 6px !important;
+        }
+        /* Leadership Preview Section */
+        .leadership-preview-section {
+            padding: 20px 5% 80px 5%;
+        }
+
+        .leadership-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .leadership-title {
+            color: #1F2937;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .leadership-subtitle {
+            color: #025F55;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .editorial-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .editorial-row {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 50px;
+            transition: transform 0.4s ease;
+        }
+
+        .editorial-row:hover {
+            transform: translateY(-8px);
+        }
+
+        .editorial-row:hover .editorial-card-wrapper {
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+        }
+
+        .editorial-row:hover .editorial-img-placeholder {
+            box-shadow: -20px 20px 0px rgba(2, 95, 85, 0.2);
+            transform: scale(1.02);
+        }
+
+        .editorial-row.reverse:hover .editorial-img-placeholder {
+            box-shadow: 20px 20px 0px rgba(2, 95, 85, 0.2);
+            transform: scale(1.02);
+        }
+
+        .editorial-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .editorial-card-wrapper {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+            display: flex;
+            align-self: stretch;
+            /* wrapper handles the drop shadow because mask-image on content cuts its shadow */
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.03));
+            transition: filter 0.4s ease;
+        }
+
+        /* Animated Curved Corner Accent Lines */
+        @keyframes cornerGrowShrink {
+            0%, 100% {
+                transform: scale(0.7);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .editorial-card-wrapper::before,
+        .editorial-card-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-color: #ffffff;
+            border-style: solid;
+            pointer-events: none;
+            z-index: 10;
+            animation: cornerGrowShrink 2.5s ease-in-out infinite;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* LTR Mode Positions (English) */
+        .editorial-card-wrapper::before {
+            top: 12px;
+            right: 12px;
+            border-width: 3.5px 3.5px 0 0; /* Top-Right Curve */
+            border-top-right-radius: 16px;
+            transform-origin: top right;
+        }
+        
+        .editorial-card-wrapper::after {
+            bottom: 12px;
+            left: 12px;
+            border-width: 0 0 3.5px 3.5px; /* Bottom-Left Curve */
+            border-bottom-left-radius: 16px;
+            transform-origin: bottom left;
+        }
+
+        /* RTL Mode Positions (Urdu) */
+        html[dir="rtl"] .editorial-card-wrapper::before,
+        html[lang="ur"] .editorial-card-wrapper::before {
+            right: auto;
+            left: 12px;
+            border-width: 3.5px 0 0 3.5px; /* Top-Left Curve */
+            border-top-right-radius: 0;
+            border-top-left-radius: 16px;
+            transform-origin: top left;
+        }
+
+        html[dir="rtl"] .editorial-card-wrapper::after,
+        html[lang="ur"] .editorial-card-wrapper::after {
+            left: auto;
+            right: 12px;
+            border-width: 0 3.5px 3.5px 0; /* Bottom-Right Curve */
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 16px;
+            transform-origin: bottom right;
+        }
+
+        .editorial-content {
+            flex: 1;
+            padding: 18px 32px 30px 32px;
+            background: var(--primary-gradient);
+            border-radius: 18px;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        html[dir="rtl"] .editorial-content {
+            border: none;
+        }
+
+        .decorative-doodle {
+            width: 40px;
+            height: 40px;
+            opacity: 0.15;
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+
+        .editorial-image-wrapper {
+            flex: 0 0 28%;
+            max-width: 250px;
+            position: relative;
+        }
+
+        .editorial-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #e2e8f0;
+            background-image: radial-gradient(#cbd5e1 10%, transparent 11%), radial-gradient(#cbd5e1 10%, transparent 11%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            border-radius: 16px;
+            box-shadow: -15px 15px 0px rgba(2, 95, 85, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid #cbd5e1;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .editorial-row.reverse .editorial-img-placeholder {
+            box-shadow: 15px 15px 0px rgba(2, 95, 85, 0.1);
+        }
+
+        .editorial-card-action-btn {
+            align-self: flex-end;
+            margin-top: auto;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+        }
+
+        .editorial-card-action-btn .btn-arrow-circle svg {
+            transform: rotate(-45deg) !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .editorial-card-action-btn:hover .btn-arrow-circle svg {
+            transform: rotate(0deg) !important;
+        }
+
+        html[dir="rtl"] .editorial-card-action-btn .btn-arrow-circle svg,
+        .rtl .editorial-card-action-btn .btn-arrow-circle svg {
+            transform: scaleX(-1) rotate(45deg) !important;
+        }
+
+        html[dir="rtl"] .editorial-card-action-btn:hover .btn-arrow-circle svg,
+        .rtl .editorial-card-action-btn:hover .btn-arrow-circle svg {
+            transform: scaleX(-1) rotate(0deg) !important;
+        }
+
+        .editorial-title {
+            color: #FFFFFF;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .editorial-title-prefix {
+            display: block;
+            font-size: 0.65em;
+            font-weight: 500;
+            color: #E0E0E0;
+            margin-bottom: 2px;
+        }
+
+        .editorial-title-suffix {
+            display: inline-block !important;
+            white-space: nowrap !important;
+            font-size: 0.55em !important;
+            vertical-align: middle !important;
+            margin-left: 4px !important;
+            margin-right: 4px !important;
+            font-weight: 400;
+            color: #E0E0E0;
+            font-family: 'Jameel Noori Nastaleeq', sans-serif !important;
+        }
+
+        html[dir="rtl"] .editorial-title-suffix {
+            /* Inherits universally applied left/right margins */
+        }
+
+        .editorial-title-highlight {
+            color: #FFFFFF;
+        }
+
+        .editorial-role {
+            color: #E0E0E0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .principal-action-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: flex-end;
+            margin-top: 0;
+        }
+
+        .principal-signature-img {
+            height: 150px;
+            max-height: 160px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin: -90px 0 10px 0;
+            position: relative;
+            top: -20px;
+            mix-blend-mode: screen;
+        }
+
+        .principal-action-col .editorial-card-action-btn {
+            margin-top: 0 !important;
+            align-self: center;
+        }
+
+        .editorial-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #F0F0F0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            quotes: "“" "”"; /* Standard English semantic quotes */
+        }
+
+        /* Stylized Decorative Quotation Marks */
+        .editorial-quote::before,
+        .editorial-quote::after {
+            font-size: 1.6em;
+            color: rgba(255, 255, 255, 0.95); /* Updated to White */
+            font-family: Georgia, serif;
+            line-height: 0;
+            vertical-align: -0.15em;
+            opacity: 0.85;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .editorial-quote::before {
+            content: open-quote;
+            margin-right: 5px;
+        }
+
+        .editorial-quote::after {
+            content: close-quote;
+            margin-left: 5px;
+        }
+
+        .editorial-desc {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* Specific RTL Font Overrides */
+        html[dir="rtl"] .editorial-title, html[lang="ur"] .editorial-title {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-size: 2.8rem;
+            font-weight: normal;
+        }
+        html[dir="rtl"] .editorial-role, html[lang="ur"] .editorial-role {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-size: 1.6rem;
+        }
+        html[dir="rtl"] .editorial-desc, html[lang="ur"] .editorial-desc {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-size: 1.4rem;
+            line-height: 2;
+        }
+        
+        html[dir="rtl"] .editorial-quote, html[lang="ur"] .editorial-quote {
+            quotes: "”" "“"; /* Ensures correct visual curvature for RTL flow */
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            direction: rtl;
+            text-align: right;
+        }
+        
+        /* Adjust spacing for RTL quotes */
+        html[dir="rtl"] .editorial-quote::before {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+
+        html[dir="rtl"] .editorial-quote::after {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .editorial-row, .editorial-row.reverse {
+                flex-direction: column-reverse;
+                gap: 40px;
+            }
+            .editorial-image-wrapper {
+                flex: none;
+                width: 100%;
+                max-width: 100%;
+            }
+            .editorial-img-placeholder {
+                height: 300px;
+                box-shadow: 0px 15px 0px rgba(2, 95, 85, 0.1);
+            }
+            .editorial-row.reverse .editorial-img-placeholder {
+                box-shadow: 0px 15px 0px rgba(2, 95, 85, 0.1);
+            }
+        }
+
+        /* Donut Arc Infographic Section */
+        .donut-infographic-section {
+            padding: 20px 0;
+            background: #ffffff;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .donut-infographic-container {
+            max-width: 800px; /* Boosted desktop container width */
+            width: 95%; /* Clean mobile 95% width */
+            overflow-x: hidden;
+            margin: 0 auto;
+        }
+
+        /* TRUE RTL MIRROR FOR STATS SECTION */
+        html[dir="rtl"] .donut-infographic-section svg {
+            transform: scaleX(-1);
+        }
+
+        /* Un-flip the inner HTML elements and numbers so they remain readable */
+        html[dir="rtl"] .center-heading,
+        html[dir="rtl"] .svg-text-block {
+            transform: scaleX(-1);
+        }
+
+        html[dir="rtl"] .arc-text {
+            transform: scaleX(-1);
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        /* Desktop SVG View */
+        .desktop-svg-wrapper {
+            display: block;
+            width: 100%;
+        }
+
+        .svg-text-block {
+            padding-left: 10px;
+        }
+
+        .svg-text-block h4 {
+            font-size: 15px; /* Keep font size as is */
+            font-weight: 700;
+            color: #025F55;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .svg-text-block p {
+            font-size: 12px; /* Smaller description size on desktop */
+            color: #64748b;
+            margin: 0;
+            line-height: 1.2; /* Tighter line height prevents overlap */
+        }
+        
+        /* Specific Enlargement for Urdu Fonts (compensates for small Nastaleeq rendering) */
+        html[dir="rtl"] .svg-text-block h4 {
+            font-size: 18px !important; 
+        }
+        html[dir="rtl"] .svg-text-block p {
+            font-size: 14px !important;
+            line-height: 1.2 !important;
+        }
+        
+        .arc-text {
+            font-size: 18px; /* Yields ~12px visually on desktop */
+            font-weight: 700;
+            fill: white;
+            dominant-baseline: central;
+        }
+
+        html[dir="rtl"] .svg-text-block {
+            padding-left: 0;
+            padding-right: 10px;
+            text-align: right !important; /* Text cleanly aligns against pointer lines on the visual right */
+            direction: rtl; /* Maintains correct right-to-left sequencing for the Urdu text itself */
+        }
+
+        html[dir="rtl"] .center-heading {
+            direction: rtl; /* Maintains correct Urdu reading order in flexbox */
+            justify-content: flex-end !important; /* Forces title to correctly adhere to the visual left edge of its mirrored bounding box */
+        }
+
+        .title-part-1 {
+            font-weight: 700;
+            color: #111827;
+            font-size: 26px; /* Desktop: yields ~30px visually */
+        }
+        .title-part-2 {
+            font-family: 'Caveat', 'Dancing Script', cursive;
+            color: #025F55;
+            font-size: 30px; /* Desktop: yields ~34px visually */
+            font-weight: 600;
+            transform: translateY(2px); /* Slight manual vertical alignment for cursive font */
+            display: inline-block;
+        }
+        
+        html[dir="rtl"] .title-part-1 {
+            font-size: 36px !important; /* Urdu specific enlargement */
+        }
+        
+        html[dir="rtl"] .title-part-2 {
+            font-family: 'Aref Ruqaa', 'Amiri', serif !important;
+            font-size: 38px !important; /* Urdu specific enlargement */
+        }
+
+        /* Interactive Stats Animations */
+        .stat-slice {
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            transform-origin: 150px 250px; /* Expands outwards from donut center */
+        }
+        .stat-slice:hover, .stat-slice:active {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 10px rgba(2, 95, 85, 0.4));
+        }
+        
+        .svg-text-block {
+            transition: transform 0.3s ease;
+        }
+        .svg-text-block.highlight-text h4 {
+            color: #038C7F !important;
+        }
+        .svg-text-block.highlight-text {
+            transform: translateX(5px);
+        }
+        html[dir="rtl"] .svg-text-block.highlight-text {
+            transform: scaleX(-1) translateX(5px) !important; /* Applies hover push in the mirrored axis */
+        }
+
+        /* Safe Mobile Scaling */
+        @media (max-width: 768px) {
+            .donut-infographic-container {
+                width: 95%; /* Clean responsive width */
+            }
+            .title-part-1 { font-size: 40px; } /* Yields ~22px visually on mobile */
+            .title-part-2 { font-size: 46px; } /* Yields ~26px visually on mobile */
+            .svg-text-block h4 { font-size: 26px; } /* Yields ~15px visually on mobile */
+            .svg-text-block p { font-size: 20px; line-height: 1.2; } /* Yields ~11px visually on mobile */
+            .arc-text { font-size: 28px; } /* Automatically scales with .stat-slice below */
+            
+            /* Boost Graphic Size ONLY (text sizes remain fixed) */
+            .stat-slice {
+                transform: scale(1.22);
+            }
+            .stat-slice:hover, .stat-slice:active {
+                transform: scale(1.27);
+            }
+            
+            /* Massive font-boost for Urdu Nastaleeq readability on mobile */
+            html[dir="rtl"] .title-part-1 { font-size: 54px !important; }
+            html[dir="rtl"] .title-part-2 { font-size: 60px !important; }
+            html[dir="rtl"] .svg-text-block h4 { font-size: 32px !important; } /* Scaled but safe */
+            html[dir="rtl"] .svg-text-block p { font-size: 24px !important; line-height: 1.2 !important; } /* Scaled but safe */
+        }
+
+        @media (max-width: 768px) {
+            .editorial-title {
+                font-size: 1.4rem !important; /* Slightly reduce heading size on mobile to effortlessly fit honorific */
+            }
+            .editorial-title-suffix {
+                font-size: 14px !important; /* Force smaller size on mobile for the suffix */
+            }
+            /* Mobile Alignment Fix for Signature and Button */
+            .principal-action-col {
+                margin-top: 10px !important;
+                align-self: center !important;
+            }
+            .principal-signature-img {
+                margin-top: 0 !important;
+                top: 0 !important;
+                position: relative !important;
+                height: 110px !important;
+                max-height: 110px !important;
+                width: auto !important;
+                object-fit: contain !important;
+                margin: 12px auto !important;
+            }
+            
+            /* Center alignment for all card action buttons on mobile */
+            .editorial-card-action-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-top: 15px !important;
+                width: fit-content !important;
+                align-self: center !important;
+            }
+            
+            /* Mobile Alignment Fix for Hero and Hadith Section */
+            .hero-content {
+                text-align: center !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .hero-text-wrapper {
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .hero-hadith-img {
+                width: 100% !important;
+                max-width: 90% !important;
+                margin: 0 auto 20px auto !important;
+            }
+            .hero-badge.welcome-badge {
+                margin: 0 auto 15px auto !important;
+            }
+        }
+        /* Courses Section */
+        .courses-section {
+            padding: 80px 20px;
+            background: #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+        .courses-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        .courses-header h2 {
+            font-size: 2.5rem;
+            color: #1F2937;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        .courses-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .courses-grid-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px 0;
+            position: relative;
+            min-height: 650px;
+        }
+        
+        /* Dashed Path SVG (Vertical/Zig-Zag) */
+        .courses-path-svg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+        html[dir="rtl"] .courses-path-svg {
+            transform: translateX(-50%) scaleX(-1);
+        }
+        
+        /* Block Container for Staggered Cards */
+        .courses-grid {
+            display: block;
+            position: relative;
+            z-index: 1;
+            height: 650px;
+            background: repeating-linear-gradient(transparent, transparent 49px, rgba(0,0,0,0.03) 49px, rgba(0,0,0,0.03) 50px);
+            border-radius: 20px;
+        }
+        
+        /* Note Cards Wrapper */
+        .note-card {
+            width: 190px;
+            height: auto;
+            min-height: 220px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+            padding: 24px 12px 12px 12px;
+            position: absolute;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            z-index: 2;
+        }
+        
+        .note-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 3;
+        }
+        
+        /* Staggered Vertical Offsets (Desktop) */
+        .note-card:nth-child(1) { top: 0px; left: 5%; transform: rotate(-4deg); margin: 0; }
+        .note-card:nth-child(2) { top: 60px; right: 5%; left: auto; transform: rotate(3deg); margin: 0; }
+        .note-card:nth-child(3) { top: 260px; left: 12%; transform: rotate(-2deg); margin: 0; }
+        .note-card:nth-child(4) { top: 340px; right: 10%; left: auto; transform: rotate(4deg); margin: 0; }
+        
+        /* RTL Staggered Vertical Offsets */
+        html[dir="rtl"] .note-card:nth-child(1) { right: 5%; left: auto; transform: rotate(4deg); }
+        html[dir="rtl"] .note-card:nth-child(2) { left: 5%; right: auto; transform: rotate(-3deg); }
+        html[dir="rtl"] .note-card:nth-child(3) { right: 12%; left: auto; transform: rotate(2deg); }
+        html[dir="rtl"] .note-card:nth-child(4) { left: 10%; right: auto; transform: rotate(-4deg); }
+        
+        /* Inner Pastel Box */
+        .note-card-inner {
+            width: 100%;
+            border-radius: 16px;
+            padding: 14px 12px;
+            position: relative;
+            margin-bottom: 0;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-sizing: border-box;
+        }
+        .card-peach { background: #FFF0E6; }
+        .card-blue { background: #EEF2FE; }
+        .card-purple { background: #F4E8FF; }
+        .card-orange { background: #FFF2E5; }
+        
+        .card-peach .note-number { color: #f77f00; }
+        .card-blue .note-number { color: #4361ee; }
+        .card-purple .note-number { color: #7209b7; }
+        .card-orange .note-number { color: #f77f00; }
+        
+        /* Glass Pin */
+        .push-pin {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            z-index: 10;
+        }
+        
+        /* Cursive / Stylized Number */
+        .note-number {
+            font-size: 26px;
+            font-weight: 700;
+            opacity: 0.9;
+            margin-bottom: 2px;
+            line-height: 1;
+            font-family: 'Caveat', 'Brush Script MT', cursive, sans-serif;
+            pointer-events: none;
+            position: relative;
+            align-self: flex-start;
+        }
+        
+        .note-title {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .note-desc {
+            font-size: 12px;
+            color: #666666;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RTL Typography Boosts */
+        html[dir="rtl"] .courses-header h2 { font-size: 3.2rem !important; font-family: 'Aref Ruqaa', 'Amiri', serif !important; }
+        html[dir="rtl"] .courses-header p { font-size: 1.3rem !important; }
+        html[dir="rtl"] .note-title { font-size: 1.8rem !important; font-family: 'Aref Ruqaa', 'Amiri', serif !important; }
+        html[dir="rtl"] .note-desc { font-size: 1.15rem !important; line-height: 1.5 !important; }
+        
+        /* Mobile Breakpoint */
+        @media (max-width: 768px) {
+            .courses-grid {
+                display: flex;
+                height: auto;
+                align-items: center;
+                padding-bottom: 40px;
+                gap: 40px;
+            }
+            .note-card {
+                position: relative;
+                width: 220px;
+            }
+            .note-card:nth-child(n) {
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                margin: 0 auto !important;
+                transform: rotate(-2deg);
+            }
+            .note-card:nth-child(even) {
+                transform: rotate(2deg);
+            }
+            
+            html[dir="rtl"] .note-card:nth-child(n) {
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Straight vertical dashed line for mobile */
+            .courses-path-svg {
+                width: 4px;
+                background-image: linear-gradient(#025F55 50%, rgba(255,255,255,0) 0%);
+                background-position: right;
+                background-size: 4px 16px;
+                background-repeat: repeat-y;
+                opacity: 0.3;
+            }
+            .courses-path-svg path {
+                display: none;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="mobile-logo-container">
+    <img src="assets/logo.png" alt="Madrassa Logo">
+</div>
+
+<div class="sticky-header">
+    <header>
+        <div class="brand-title-container">
+            <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
+            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+        </div>
+        <div class="header-logo desktop-logo">
+            <img src="assets/logo.png" alt="Madrassa Logo">
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav" id="mainNav">
+            <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
+            <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
+            <a href="#" class="nav-link" data-en="COURSES" data-ur="کورسز">COURSES</a>
+            <a href="#" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
+            <a href="#" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
+            <a href="#" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
+            <a href="#" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
+            <button class="lang-toggle-btn" id="langSwitch">URDU</button>
+        </nav>
+    </div>
+</div> <!-- End sticky-header -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const langSwitchBtn = document.getElementById('langSwitch');
+        let currentLang = 'en';
+
+        langSwitchBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ur' : 'en';
+            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
+            
+            navLinks.forEach(item => {
+                item.textContent = item.getAttribute(`data-${currentLang}`);
+            });
+            
+            const brandTitle = document.querySelector('.brand-title');
+            if (brandTitle) {
+                brandTitle.textContent = brandTitle.getAttribute(`data-${currentLang}`);
+            }
+            
+            // Also translate footer and any other dynamic text elements
+            document.querySelectorAll('[data-en]').forEach(item => {
+                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                    item.innerHTML = item.getAttribute(`data-${currentLang}`);
+                }
+            });
+        });
+
+        // --- Mobile Menu Toggle Logic ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const floatingNavContainer = document.querySelector('.floating-nav-container');
+
+        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent document click from immediately closing it
+            floatingNavContainer.classList.toggle('active');
+            
+            if (floatingNavContainer.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = closeSVG;
+            } else {
+                mobileMenuBtn.innerHTML = hamburgerSVG;
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (floatingNavContainer.classList.contains('active') && !floatingNavContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                floatingNavContainer.classList.remove('active');
+                mobileMenuBtn.innerHTML = hamburgerSVG;
+            }
+        });
+
+        // Close menu when a navigation link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (floatingNavContainer.classList.contains('active')) {
+                    floatingNavContainer.classList.remove('active');
+                    mobileMenuBtn.innerHTML = hamburgerSVG;
+                }
+            });
+        });
+    });
+</script>
+
+<main>
+    <div class="hero-unified-bg">
+        <section class="hero-section">
+
+        <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
+            <div class="hero-badge welcome-pill welcome-badge" style="position: static !important; transform: none !important; left: auto !important;">
+                <span class="badge-dot"></span>
+                <span class="pill-text-en">
+                    <span class="pill-line-1">WELCOME TO MADRASSA</span>
+                    <span class="pill-line-2">RIAZ UL QURAN WAL SUNNAH</span>
+                </span>
+                <span class="pill-text-ur">مدرسہ ریاض القرآن والسنہ میں خوش آمدید</span>
+            </div>
+            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
+            
+            <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
+            <h1 class="hero-title urdu-hero-title" data-en="Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
+                Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>
+            </h1>
+            <p class="hero-subtitle" data-en="Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment." data-ur="صحیح تجوید، حفظِ قرآن اور اسلامی تربیت کے ساتھ بچوں کے روشن مستقبل کی تعمیر۔">
+                Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment.
+            </p>
+            <div class="hero-buttons">
+                <a href="#donation" class="btn-hero btn-primary-pill" data-en="<span>Support Our Mission</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>ہمارے مشن کو سپورٹ کریں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
+                    <span>Support Our Mission</span>
+                    <span class="btn-arrow-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </a>
+
+                <a href="#about" class="btn-hero btn-secondary-pill" data-en="<span>Learn More</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>مزید جانئے</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
+                    <span>Learn More</span>
+                    <span class="btn-arrow-circle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- Combined Hero Extension Section -->
+    <section class="hero-extension-section">
+        <div class="custom-loop-divider">
+            <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Deeper wavy path before and after the loop -->
+                <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
+                      stroke="#025F55" 
+                      stroke-width="3.5" 
+                      fill="none" 
+                      stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <!-- Short Introduction Section -->
+        <div class="intro-section" id="about">
+        <div class="intro-container">
+            <h2 class="intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
+                Introduction to <span class="highlight-font">Madrassa</span>
+            </h2>
+            <h3 class="intro-subtitle" data-en="Building knowledge, practice, and character in the light of Quran &amp; Sunnah" data-ur="قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر">
+                Building knowledge, practice, and character in the light of Quran &amp; Sunnah
+            </h3>
+            <p class="intro-text" data-en="Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing." data-ur="مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔">
+                Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing.
+            </p>
+            <a href="about.html" class="btn-intro-special" data-en="<span class='btn-text'>Read Full Introduction</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>تفصیلی تعارف پڑھیں</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
+                <span class="btn-text">Read Full Introduction</span>
+                <span class="btn-arrow-circle">
+                    <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        </div>
+
+        <!-- Leadership Preview Section -->
+        <div class="leadership-preview-section" id="leadership">
+        <div class="leadership-header">
+            <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>">
+                Leadership &amp; <span class="highlight-font">Founders</span>
+            </h2>
+            <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات">
+                Key figures dedicated to the service of Quran and Sunnah
+            </p>
+        </div>
+
+        <div class="editorial-layout">
+            <!-- Top Section: Founder -->
+            <div class="editorial-row">
+                <div class="editorial-image-wrapper">
+                    <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
+                </div>
+                <div class="editorial-card-wrapper">
+                    <div class="editorial-content">
+                        <h3 class="editorial-title" data-en="<span class='editorial-title-prefix'>Hazrat Maulana Mufti</span> <span class='editorial-title-highlight'>Riaz Mahmood</span> <span class='editorial-title-suffix'>(رحمہ اللہ)</span>" data-ur="<span class='editorial-title-prefix'>حضرت مولانا مفتی</span> <span class='editorial-title-highlight'>ریاض محمود</span> <span class='editorial-title-suffix'>(رحمہ اللہ)</span>">
+                            <span class="editorial-title-prefix">Hazrat Maulana Mufti</span> <span class="editorial-title-highlight">Riaz Mahmood</span> <span class="editorial-title-suffix">(رحمہ اللہ)</span>
+                        </h3>
+                        <div class="editorial-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</div>
+                        
+                        <div class="editorial-quote" data-en="Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter." data-ur="قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔">
+                            Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.
+                        </div>
+
+                        <div style="color: #E0E0E0; font-size: 14px; font-weight: 600; margin-bottom: 30px;" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
+                            Motto of the Founder
+                        </div>
+                        
+                        <a href="about.html#founder" class="btn-hero btn-primary-pill editorial-card-action-btn" data-en="Read Full Introduction" data-ur="مکمل تعارف پڑھیے">
+                            Read Full Introduction
+                            <span class="btn-arrow-circle">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Principal -->
+            <div class="editorial-row reverse">
+                <div class="editorial-image-wrapper">
+                    <div class="editorial-img-placeholder">
+                        [Principal Image Placeholder]
+                    </div>
+                </div>
+                <div class="editorial-card-wrapper">
+                    <div class="editorial-content">
+                        <h3 class="editorial-title" data-en="<span class='editorial-title-prefix'>Mufti</span> <span class='editorial-title-highlight'>Aamir Mahmood</span>" data-ur="<span class='editorial-title-prefix'>مفتی</span> <span class='editorial-title-highlight'>عامر محمود</span>">
+                            <span class="editorial-title-prefix">Mufti</span> <span class="editorial-title-highlight">Aamir Mahmood</span>
+                        </h3>
+                        <div class="editorial-role" style="font-size: 14px;" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
+                            Principal of the Institution
+                        </div>
+                        
+                        <div class="editorial-quote" data-en="Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character." data-ur="ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔">
+                            Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.
+                        </div>
+
+                        <div class="editorial-role" style="margin-bottom: 20px; font-size: 1rem; flex-shrink: 1;" data-en="Message from the desk of Principal" data-ur="مہتمم کے ڈیسک سے پیغام">Message from the desk of Principal</div>
+                        
+                        <div class="principal-action-col">
+                            <img src="assets/principal-sign.jpeg" class="principal-signature-img" alt="Principal Signature">
+                            <a href="about.html#principal" class="btn-hero btn-primary-pill editorial-card-action-btn" data-en="Read Full Introduction" data-ur="مکمل تعارف پڑھیے">
+                                Read Full Introduction
+                                <span class="btn-arrow-circle">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Arc Stats Section -->
+    <section class="donut-infographic-section">
+        <div class="donut-infographic-container">
+            
+            <!-- Desktop SVG View -->
+            <div class="desktop-svg-wrapper">
+                <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
+                <svg viewBox="-160 -20 800 340" width="100%" preserveAspectRatio="xMidYMid meet">
+                    <!-- Scaled Geometry Group (60% reduction) -->
+                    <g transform="scale(0.6)">
+                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
+                        <!-- Top pointer -->
+                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="110" r="5" fill="#025F55" />
+
+                        <!-- Mid pointer -->
+                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
+
+                        <!-- Bot pointer -->
+                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="440" r="5" fill="#01423B" />
+
+                        <!-- Segmented Arcs grouped for interactivity -->
+                        <!-- Segment 1: Top Arc -->
+                        <g class="stat-slice" data-index="0">
+                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
+                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
+                            <text x="264.8" y="161.5" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="550">0</tspan>+</text>
+                        </g>
+                        
+                        <!-- Segment 2: Middle Arc -->
+                        <g class="stat-slice" data-index="1">
+                            <path d="M 328.5 227.1 A 180 180 0 0 1 293.2 359.1 L 239.8 313.5 A 110 110 0 0 0 259.5 239.9 Z" 
+                                  fill="#038C7F" stroke="#038C7F" stroke-width="16" stroke-linejoin="round" />
+                            <text x="289.9" y="287.4" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="60">0</tspan>+</text>
+                        </g>
+                        
+                        <!-- Segment 3: Bottom Arc -->
+                        <g class="stat-slice" data-index="2">
+                            <path d="M 280.2 374.3 A 180 180 0 0 1 145.3 429.9 L 147.1 359.9 A 110 110 0 0 0 226.8 328.7 Z" 
+                                  fill="#01423B" stroke="#01423B" stroke-width="16" stroke-linejoin="round" />
+                            <text x="205.2" y="383.9" class="arc-text" text-anchor="middle"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
+                        </g>
+                    </g>
+
+                    <!-- Unscaled Elements -->
+                    <!-- Center Heading (Our Impact) -->
+                    <foreignObject x="-150" y="90" width="230" height="120">
+                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
+                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2'>Impact</span>" 
+                             data-ur="<span class='title-part-1'>ہمارا</span><span class='title-part-2'>اثر</span>">
+                            <span class="title-part-1">Our</span>
+                            <span class="title-part-2">Impact</span>
+                        </div>
+                    </foreignObject>
+
+                    <!-- Right Side Text Blocks (Y coordinates re-aligned for scale 0.6, extended width/height to prevent text wrap clipping) -->
+                    <!-- Top Text (Scaled dot Y = 66) -->
+                    <foreignObject x="250" y="26" width="400" height="160">
+                        <div class="svg-text-block">
+                            <h4 data-en="Alumni" data-ur="فارغ التحصیل علماء / طالبات">Alumni</h4>
+                            <p data-en="Graduates serving worldwide" data-ur="دنیا بھر میں خدمات انجام دینے والے فضلاء">Graduates serving worldwide</p>
+                        </div>
+                    </foreignObject>
+
+                    <!-- Mid Text (Scaled dot Y = 178) -->
+                    <foreignObject x="250" y="138" width="400" height="160">
+                        <div class="svg-text-block">
+                            <h4 data-en="Current Students" data-ur="زیرِ تعلیم طلباء">Current Students</h4>
+                            <p data-en="Currently enrolled in various courses" data-ur="مختلف کورسز میں زیرِ تعلیم طلباء">Currently enrolled in various courses</p>
+                        </div>
+                    </foreignObject>
+
+                    <!-- Bot Text (Scaled dot Y = 264) -->
+                    <foreignObject x="250" y="224" width="400" height="160">
+                        <div class="svg-text-block">
+                            <h4 data-en="Years of Service" data-ur="سالہ خدمات">Years of Service</h4>
+                            <p data-en="Continuous religious & educational excellence since 1993" data-ur="1993 سے مسلسل دینی و تعلیمی خدمات">Continuous religious & educational excellence since 1993</p>
+                        </div>
+                    </foreignObject>
+                </svg>
+            </div>
+
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const startYear = 1993;
+            const currentYear = new Date().getFullYear();
+            const yearsValue = currentYear - startYear;
+            
+            const yearsCountElement = document.getElementById('years-count');
+            
+            if(yearsCountElement) {
+                yearsCountElement.setAttribute('data-target', yearsValue);
+            }
+
+            const statSection = document.querySelector('.donut-infographic-section');
+            let initialAnimated = false;
+
+            const runCounterAnimation = (counter) => {
+                if (counter.dataset.animating === "true") return; // Prevent overlapping animations
+                counter.dataset.animating = "true";
+                
+                const target = +counter.getAttribute('data-target');
+                const duration = 1000; // 1 second
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const animate = () => {
+                    current += increment;
+                    if(current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(animate);
+                    } else {
+                        counter.textContent = target;
+                        counter.dataset.animating = "false";
+                    }
+                };
+                animate();
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting && !initialAnimated) {
+                    initialAnimated = true;
+                    document.querySelectorAll('.count-up').forEach(runCounterAnimation);
+                }
+            }, { threshold: 0.5 });
+
+            if(statSection) {
+                observer.observe(statSection);
+            }
+
+            // Interactive Hover & Click re-trigger logic (Desktop)
+            const slices = document.querySelectorAll('.stat-slice');
+            const textBlocks = document.querySelectorAll('.desktop-svg-wrapper .svg-text-block');
+            
+            slices.forEach(slice => {
+                const index = slice.getAttribute('data-index');
+                const triggerInteraction = () => {
+                    if (textBlocks[index]) textBlocks[index].classList.add('highlight-text');
+                    const counter = slice.querySelector('.count-up');
+                    if (counter) runCounterAnimation(counter);
+                };
+                
+                slice.addEventListener('mouseenter', triggerInteraction);
+                slice.addEventListener('touchstart', triggerInteraction, {passive: true});
+                slice.addEventListener('mouseleave', () => {
+                    if (textBlocks[index]) textBlocks[index].classList.remove('highlight-text');
+                });
+            });
+
+
+        });
+    </script>
+    </div>
+
+<!-- Courses Section -->
+<section id="courses" class="courses-section">
+    <div class="courses-header">
+        <h2 class="courses-title" data-en="Our Educational <span class='highlight-font'>Services</span>" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our Educational <span class="highlight-font">Services</span></h2>
+        <p data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
+            Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
+        </p>
+    </div>
+
+    <div class="courses-grid-wrapper">
+        <!-- Vertical Zig-Zag Background Path -->
+        <svg class="courses-path-svg" viewBox="0 0 650 650" preserveAspectRatio="none">
+            <path d="M 127 80 C 300 20, 400 20, 523 120 C 450 250, 250 250, 173 340 C 250 450, 350 450, 490 420" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 5" />
+        </svg>
+
+        <div class="courses-grid">
+            <!-- Card 01 -->
+            <div class="note-card">
+                <!-- SVG Push Pin (Orange) -->
+                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="10" fill="url(#grad-orange)" filter="drop-shadow(0px 8px 6px rgba(247,127,0,0.4))"/>
+                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
+                    <defs>
+                        <radialGradient id="grad-orange" cx="0.3" cy="0.3" r="0.7">
+                            <stop offset="0%" stop-color="#ffb067"/>
+                            <stop offset="100%" stop-color="#e85d04"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="note-card-inner card-peach">
+                    <div class="note-number">01</div>
+                    <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
+                    <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
+                        Complete memorization of the Holy Quran with proper Tajweed and guidance.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 02 -->
+            <div class="note-card">
+                <!-- SVG Push Pin (Blue) -->
+                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="10" fill="url(#grad-blue)" filter="drop-shadow(0px 8px 6px rgba(67,97,238,0.4))"/>
+                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
+                    <defs>
+                        <radialGradient id="grad-blue" cx="0.3" cy="0.3" r="0.7">
+                            <stop offset="0%" stop-color="#8c9eff"/>
+                            <stop offset="100%" stop-color="#2a3eb1"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="note-card-inner card-blue">
+                    <div class="note-number">02</div>
+                    <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
+                    <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
+                        Fluent Quran recitation with precise pronunciation and Tajweed rules.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="note-card">
+                <!-- SVG Push Pin (Purple) -->
+                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="10" fill="url(#grad-purple)" filter="drop-shadow(0px 8px 6px rgba(114,9,183,0.4))"/>
+                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
+                    <defs>
+                        <radialGradient id="grad-purple" cx="0.3" cy="0.3" r="0.7">
+                            <stop offset="0%" stop-color="#b388ff"/>
+                            <stop offset="100%" stop-color="#510582"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="note-card-inner card-purple">
+                    <div class="note-number">03</div>
+                    <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
+                    <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
+                        Holistic moral character building rooted in Islamic teachings and Sunnah.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 04 -->
+            <div class="note-card">
+                <!-- SVG Push Pin (Orange) -->
+                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="10" fill="url(#grad-orange2)" filter="drop-shadow(0px 8px 6px rgba(247,127,0,0.4))"/>
+                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
+                    <defs>
+                        <radialGradient id="grad-orange2" cx="0.3" cy="0.3" r="0.7">
+                            <stop offset="0%" stop-color="#ffb067"/>
+                            <stop offset="100%" stop-color="#e85d04"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+                <div class="note-card-inner card-orange">
+                    <div class="note-number">04</div>
+                    <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
+                    <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
+                        Flexible learning options available for both local and international students.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <!-- Section 1: Logo & About -->
+        <div class="footer-section footer-brand">
+            <div class="footer-logo-wrapper">
+                <img src="assets/logo.png" alt="Madrassa Logo" class="footer-logo">
+                <img src="assets/title-logo.png" alt="Madrassa Title" class="footer-title-img-en" style="max-height: 45px; width: auto; display: block;">
+                <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+            </div>
+            
+            <!-- Social Media Buttons -->
+            <div class="footer-social-links">
+                <a href="#" class="social-btn" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                </a>
+                <a href="#" class="social-btn" aria-label="YouTube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="#" class="social-btn" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" class="social-btn" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.592 9 4.415V8z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Section 2: Quick Links -->
+        <div class="footer-section">
+            <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
+            <ul>
+                <li><a href="#" data-en="Home" data-ur="ہوم">Home</a></li>
+                <li><a href="#" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
+                <li><a href="#" data-en="Courses" data-ur="کورسز">Courses</a></li>
+                <li><a href="#" data-en="Admissions" data-ur="داخلہ">Admissions</a></li>
+                <li><a href="#" data-en="Updates" data-ur="اپڈیٹس">Updates</a></li>
+                <li><a href="#" data-en="Contact Us" data-ur="رابطہ">Contact Us</a></li>
+                <li><a href="#" data-en="Donate Now" data-ur="عطیات">Donate Now</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 3: Contact Info -->
+        <div class="footer-section">
+            <h3 data-en="Contact Info" data-ur="رابطہ">Contact Info</h3>
+            <ul>
+                <li data-en="Email: info@madrassa.edu" data-ur="ای میل: info@madrassa.edu">Email: info@madrassa.edu</li>
+                <li data-en="Phone: +92 300 1234567" data-ur="فون: +92 300 1234567">Phone: +92 300 1234567</li>
+                <li data-en="Address: 123 Islamic Center Road, City" data-ur="پتہ: 123 اسلامک سینٹر روڈ، شہر">Address: 123 Islamic Center Road, City</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p data-en="&copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved." data-ur="&copy; 2026 مدرسہ ریاض القرآن والسنہ۔ جملہ حقوق محفوظ ہیں۔">
+            &copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
