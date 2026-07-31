@@ -2440,6 +2440,66 @@
             .hero-badge.welcome-badge {
                 margin: 0 auto 15px auto !important;
             }
+            
+            /* Mobile Layout for Courses (Services) */
+            .courses-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 30px !important;
+                padding: 20px 10px !important;
+                height: auto !important;
+                background-size: cover !important;
+            }
+            .courses-grid-wrapper {
+                min-height: auto !important;
+            }
+            .note-card {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 85% !important;
+                max-width: 320px !important;
+                margin: 0 auto !important;
+                transform: none !important;
+            }
+            .note-card:nth-child(odd) {
+                align-self: flex-start !important;
+                margin-left: 5% !important;
+            }
+            .note-card:nth-child(even) {
+                align-self: flex-end !important;
+                margin-right: 5% !important;
+            }
+            html[dir="rtl"] .note-card:nth-child(odd) {
+                align-self: flex-start !important;
+                margin-right: 5% !important;
+                margin-left: auto !important;
+            }
+            html[dir="rtl"] .note-card:nth-child(even) {
+                align-self: flex-end !important;
+                margin-left: 5% !important;
+                margin-right: auto !important;
+            }
+            
+            /* Hide the complex desktop SVG path on mobile */
+            .courses-path-svg {
+                display: none !important;
+            }
+            
+            /* Center dashed line for mobile */
+            .courses-grid::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+                border-left: 2px dashed #CBD5E1;
+                z-index: 0;
+            }
         }
         /* Courses Section */
         .courses-section {
