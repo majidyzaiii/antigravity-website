@@ -2531,8 +2531,8 @@
         /* Note Cards Wrapper */
         .note-card {
             width: 190px;
-            height: auto;
-            min-height: 220px;
+            height: 290px; /* Fixed equal height for all cards */
+            min-height: 290px;
             background: #ffffff;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.07);
@@ -2573,15 +2573,16 @@
             justify-content: flex-start;
             box-sizing: border-box;
         }
-        .card-peach { background: #FFF0E6; }
-        .card-blue { background: #EEF2FE; }
-        .card-purple { background: #F4E8FF; }
-        .card-orange { background: #FFF2E5; }
+        /* Green Gradient Theme (Deep dark colors) */
+        .card-peach { background: #013A34; color: #FFFFFF; } /* Deepest Dark Green */
+        .card-blue { background: #025F55; color: #FFFFFF; } /* Brand Primary Dark Green */
+        .card-purple { background: #087569; color: #FFFFFF; } /* Medium Dark Green */
+        .card-orange { background: #128C7E; color: #FFFFFF; } /* Rich Teal Green */
         
-        .card-peach .note-number { color: #f77f00; }
-        .card-blue .note-number { color: #4361ee; }
-        .card-purple .note-number { color: #7209b7; }
-        .card-orange .note-number { color: #f77f00; }
+        .card-peach .note-number, .card-peach .note-title, .card-peach .note-desc { color: #FFFFFF; }
+        .card-blue .note-number, .card-blue .note-title, .card-blue .note-desc { color: #FFFFFF; }
+        .card-purple .note-number, .card-purple .note-title, .card-purple .note-desc { color: #FFFFFF; }
+        .card-orange .note-number, .card-orange .note-title, .card-orange .note-desc { color: #FFFFFF; }
         
         /* Glass Pin */
         .push-pin {
@@ -2627,9 +2628,11 @@
         }
 
         /* RTL Typography Boosts */
-        html[dir="rtl"] .courses-header h2 { font-size: 3.2rem !important; font-family: 'Aref Ruqaa', 'Amiri', serif !important; }
+        html[dir="rtl"] .courses-section { font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaliq', serif !important; }
+        html[dir="rtl"] .courses-header h2 { font-size: 3.2rem !important; }
         html[dir="rtl"] .courses-header p { font-size: 1.3rem !important; }
-        html[dir="rtl"] .note-title { font-size: 1.8rem !important; font-family: 'Aref Ruqaa', 'Amiri', serif !important; }
+        html[dir="rtl"] .note-title { font-size: 1.8rem !important; }
+        html[dir="rtl"] .note-card:nth-child(4) .note-title { font-size: 1.45rem !important; } /* Make Card 04 heading slightly smaller to prevent text overflow */
         html[dir="rtl"] .note-desc { font-size: 1.15rem !important; line-height: 1.5 !important; }
         
         /* Mobile Breakpoint */
@@ -3197,14 +3200,14 @@
 
             <!-- Card 04 -->
             <div class="note-card">
-                <!-- SVG Push Pin (Orange) -->
+                <!-- SVG Push Pin (Red/Gold) -->
                 <svg class="push-pin" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="10" fill="url(#grad-orange2)" filter="drop-shadow(0px 8px 6px rgba(247,127,0,0.4))"/>
+                    <circle cx="16" cy="16" r="10" fill="url(#grad-redgold)" filter="drop-shadow(0px 8px 6px rgba(220,38,38,0.4))"/>
                     <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
                     <defs>
-                        <radialGradient id="grad-orange2" cx="0.3" cy="0.3" r="0.7">
-                            <stop offset="0%" stop-color="#ffb067"/>
-                            <stop offset="100%" stop-color="#e85d04"/>
+                        <radialGradient id="grad-redgold" cx="0.3" cy="0.3" r="0.7">
+                            <stop offset="0%" stop-color="#FFDF73"/>
+                            <stop offset="100%" stop-color="#DC2626"/>
                         </radialGradient>
                     </defs>
                 </svg>
