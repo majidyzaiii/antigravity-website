@@ -2444,249 +2444,212 @@
                 margin: 0 auto 15px auto !important;
             }
             
-            /* Mobile Layout Scaling Hack for Courses (Preserves Desktop Layout) */
-            .courses-section,
-            .courses-grid-wrapper {
-                display: block !important;
-                position: relative !important;
-                transform: scale(0.72) !important;
-                transform-origin: top center !important;
-                width: 140% !important;
-                max-width: none !important;
-                margin-left: -20% !important;
-                overflow: visible !important;
-            }
-            html[dir="rtl"] .courses-section,
-            html[dir="rtl"] .courses-grid-wrapper {
-                margin-left: auto !important;
-                margin-right: -20% !important;
-            }
-            
-            /* Hide lines on mobile */
-            .courses-path-svg {
-                display: none !important;
-            }
-            
             body, html {
                 overflow-x: hidden !important;
             }
         }
-        /* Courses Section */
-        .courses-section {
-            padding: 80px 20px;
-            background: #f8fafc;
-            position: relative;
-            overflow: hidden;
-        }
-        .courses-header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 2;
-        }
-        .courses-header h2 {
-            font-size: 2.5rem;
-            color: #000000;
-            font-family: 'Montserrat', 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-        .courses-header p {
-            font-size: 1.1rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .courses-grid-wrapper {
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 20px 0;
-            position: relative;
-            min-height: 820px;
-        }
-        
-        /* Dashed Path SVG (Vertical/Zig-Zag) */
-        .courses-path-svg {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            transform: translateX(-50%);
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.85;
-        }
-        html[dir="rtl"] .courses-path-svg {
-            transform: translateX(-50%) scaleX(-1);
-        }
-        
-        /* Block Container for Staggered Cards */
-        .courses-grid {
-            display: block;
-            position: relative;
-            z-index: 1;
-            height: 820px;
-            background: repeating-linear-gradient(transparent, transparent 49px, rgba(0,0,0,0.03) 49px, rgba(0,0,0,0.03) 50px);
-            border-radius: 20px;
-        }
-        
-        /* Note Cards Wrapper */
-        .note-card {
-            width: 210px !important;
-            max-width: 210px !important;
-            height: auto;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            padding: 28px 12px 12px 12px !important;
-            position: absolute;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-            z-index: 2;
-            box-sizing: border-box;
-        }
-        
-        .note-card:hover {
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            transform: scale(1.05) rotate(0deg) !important;
-            z-index: 3;
-        }
-        
-        /* Staggered Vertical Offsets (Desktop) - Adjusted for ZERO overlapping */
-        .note-card:nth-child(1) { top: 0px; left: 5%; transform: rotate(-4deg); margin: 0; }
-        .note-card:nth-child(2) { top: 160px; right: 5%; left: auto; transform: rotate(3deg); margin: 0; }
-        .note-card:nth-child(3) { top: 320px; left: 12%; transform: rotate(-2deg); margin: 0; }
-        .note-card:nth-child(4) { top: 480px; right: 10%; left: auto; transform: rotate(4deg); margin: 0; }
-        
-        /* RTL Staggered Vertical Offsets */
-        html[dir="rtl"] .note-card:nth-child(1) { right: 5%; left: auto; transform: rotate(4deg); }
-        html[dir="rtl"] .note-card:nth-child(2) { left: 5%; right: auto; transform: rotate(-3deg); }
-        html[dir="rtl"] .note-card:nth-child(3) { right: 12%; left: auto; transform: rotate(2deg); }
-        html[dir="rtl"] .note-card:nth-child(4) { left: 10%; right: auto; transform: rotate(-4deg); }
-        
-        /* Inner Pastel Box */
-        .note-card-inner {
-            width: 100% !important;
-            height: auto !important;
-            border-radius: 14px;
-            padding: 18px 14px 18px 14px !important;
-            position: relative;
-            margin-bottom: 0;
-            margin-top: 0;
-            box-shadow: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            box-sizing: border-box;
-        }
-        /* Green Gradient Theme (Deep dark colors with soft depth) */
-        .card-peach { background: linear-gradient(180deg, #013A34 0%, #025F55 100%); color: #FFFFFF; } /* Deepest Dark Green */
-        .card-blue { background: linear-gradient(180deg, #025F55 0%, #0B7A6E 100%); color: #FFFFFF; } /* Brand Primary Dark Green */
-        .card-purple { background: linear-gradient(180deg, #087569 0%, #1B9587 100%); color: #FFFFFF; } /* Medium Dark Green */
-        .card-orange { background: linear-gradient(180deg, #128C7E 0%, #17A293 100%); color: #FFFFFF; } /* Rich Teal Green */
-        
-        .card-peach .note-number, .card-peach .note-title, .card-peach .note-desc { color: #FFFFFF; }
-        .card-blue .note-number, .card-blue .note-title, .card-blue .note-desc { color: #FFFFFF; }
-        .card-purple .note-number, .card-purple .note-title, .card-purple .note-desc { color: #FFFFFF; }
-        .card-orange .note-number, .card-orange .note-title, .card-orange .note-desc { color: #FFFFFF; }
-        
-        /* Glass Pin */
-        .push-pin {
-            position: absolute;
-            top: 8px !important;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            z-index: 10;
-        }
-        
-        /* Cursive / Stylized Number */
-        .note-number {
-            font-size: 14px;
-            font-weight: 700;
-            opacity: 0.9;
-            margin-bottom: 2px;
-            line-height: 1;
-            font-family: 'Caveat', 'Brush Script MT', cursive, sans-serif;
-            pointer-events: none;
-            position: relative;
-            align-self: flex-start;
-        }
-        
-        .note-title {
-            font-size: 17px;
-            color: #1a1a1a;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 8px;
-            margin-top: 0;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .note-desc {
-            font-size: 12px;
-            color: #666666;
-            line-height: 1.4;
-            position: relative;
-            z-index: 1;
-        }
+
+  /* Section Layout */
+  .services-section {
+    padding: 60px 20px;
+    background-color: #F8F9FA;
+    text-align: center;
+  }
+
+  .services-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 8px;
+  }
+
+  .services-header h2 span {
+    font-family: 'Caveat', cursive, sans-serif;
+    color: #158467;
+  }
+
+  .services-sub {
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 40px;
+  }
+
+  /* Single Straight Horizontal Line */
+  .services-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  /* Default Flat Paper Shape (No curl initially) */
+  .sticky-note {
+    position: relative;
+    flex: 1;
+    min-width: 190px;
+    max-width: 230px;
+    min-height: 250px;
+    padding: 38px 20px 24px 20px;
+    border-radius: 2px;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    
+    /* Default Flat Soft Shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  /* Light Pastel Themes & Subtle Angles */
+  .note-1 { background-color: #EBFBEE; transform: rotate(-1deg); }
+  .note-2 { background-color: #E6F7F5; transform: rotate(1deg); }
+  .note-3 { background-color: #F3EAFD; transform: rotate(-1deg); }
+  .note-4 { background-color: #FFF9E6; transform: rotate(1deg); }
+
+  .note-1 .note-number { color: #16A34A; }
+  .note-2 .note-number { color: #0D9488; }
+  .note-3 .note-number { color: #7C3AED; }
+  .note-4 .note-number { color: #CA8A04; }
+
+  /* Pin Position Top Center */
+  .svg-pushpin {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-8deg);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Typography */
+  .note-number {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .note-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .note-desc {
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* HOVER / TAP ONLY: Corner Curl Effect Trigger */
+  .sticky-note:hover,
+  .sticky-note:focus,
+  .sticky-note.active-tap {
+    transform: translateY(-6px) rotate(0deg);
+    /* Curves bottom right corner when hovered/tapped */
+    border-bottom-right-radius: 42px 20px;
+    box-shadow: 
+      -2px 6px 12px rgba(0, 0, 0, 0.05),
+      10px 16px 22px -4px rgba(0, 0, 0, 0.2);
+  }
 
         /* RTL Typography Boosts */
-        html[dir="rtl"] .courses-section { font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaliq', serif !important; }
-        html[dir="rtl"] .courses-header h2 { font-size: 3.2rem !important; }
-        html[dir="rtl"] .courses-header p { font-size: 1.3rem !important; }
-        html[dir="rtl"] .note-title { font-size: 1.8rem !important; }
-        html[dir="rtl"] .note-card:nth-child(4) .note-title { font-size: 1.45rem !important; } /* Make Card 04 heading slightly smaller to prevent text overflow */
+        html[dir="rtl"] .services-section { font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaliq', serif !important; }
+        html[dir="rtl"] .services-header h2 { font-size: 3.2rem !important; }
+        html[dir="rtl"] .services-header p { font-size: 1.3rem !important; }
+        html[dir="rtl"] .note-title { font-size: 1.6rem !important; }
         html[dir="rtl"] .note-desc { font-size: 1.15rem !important; line-height: 1.5 !important; }
-        
-        /* Mobile Breakpoint */
-        @media (max-width: 768px) {
-            .courses-grid {
-                display: flex;
-                height: auto;
-                align-items: center;
-                padding-bottom: 40px;
-                gap: 40px;
-            }
-            .note-card {
-                position: relative;
-                width: 220px;
-            }
-            .note-card:nth-child(n) {
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                margin: 0 auto !important;
-                transform: rotate(-2deg);
-            }
-            .note-card:nth-child(even) {
-                transform: rotate(2deg);
-            }
-            
-            html[dir="rtl"] .note-card:nth-child(n) {
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                margin: 0 auto !important;
-            }
-            
-            /* Straight vertical dashed line for mobile */
-            .courses-path-svg {
-                width: 4px;
-                background-image: linear-gradient(#025F55 50%, rgba(255,255,255,0) 0%);
-                background-position: right;
-                background-size: 4px 16px;
-                background-repeat: repeat-y;
-                opacity: 0.3;
-            }
-            .courses-path-svg path {
-                display: none;
-            }
+
+
+        /* Real Root Fix: Targets every container & image in Leadership section */
+        .leadership-section div,
+        .leadership-section img,
+        .leadership-image-card,
+        .leadership-content-card,
+        .leader-card,
+        .leader-img {
+          border-radius: 28px !important;
+          overflow: hidden !important;
         }
 
+        /* Specific Backdrop Shadow Box Behind Image Fix */
+        [class*="shadow"],
+        [class*="backdrop"],
+        [class*="wrapper"] {
+          border-radius: 28px !important;
+        }
+
+        /* Inner Bracket Corners */
+        .top-bracket {
+          border-top-right-radius: 16px !important;
+        }
+
+        .bottom-bracket {
+          border-bottom-left-radius: 16px !important;
+        }
+
+        /* English Mode Alignment: Right Side */
+        .btn-action-wrapper {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          margin-top: 12px;
+        }
+
+        /* Urdu Mode (RTL) Alignment: Left Side */
+        [dir="rtl"] .btn-action-wrapper,
+        .urdu-lang .btn-action-wrapper {
+          justify-content: flex-start !important;
+        }
+
+        /* Original Teal Pill Button Look */
+        .orig-read-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background-color: rgba(21, 132, 103, 0.5); /* Original matching light teal tint */
+          color: #FFFFFF !important;
+          padding: 8px 10px 8px 20px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Round Circle for Arrow Icon */
+        .orig-read-btn .arrow-circle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          background-color: #FFFFFF;
+          color: #006754;
+          border-radius: 50%;
+          font-size: 0.95rem;
+          font-weight: bold;
+          transition: transform 0.3s ease;
+        }
+
+        /* Smooth Interactive Hover State */
+        .orig-read-btn:hover {
+          background-color: rgba(21, 132, 103, 0.85);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .orig-read-btn:hover .arrow-circle {
+          transform: rotate(45deg);
+        }
 
     </style>
 </head>
@@ -2896,30 +2859,35 @@
                 <div class="editorial-image-wrapper">
                     <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
                 </div>
-                <div class="editorial-card-wrapper">
-                    <div class="editorial-content">
-                        <h3 class="editorial-title" data-en="<span class='editorial-title-prefix'>Hazrat Maulana Mufti</span> <span class='editorial-title-highlight'>Riaz Mahmood</span> <span class='editorial-title-suffix'>(رحمہ اللہ)</span>" data-ur="<span class='editorial-title-prefix'>حضرت مولانا مفتی</span> <span class='editorial-title-highlight'>ریاض محمود</span> <span class='editorial-title-suffix'>(رحمہ اللہ)</span>">
-                            <span class="editorial-title-prefix">Hazrat Maulana Mufti</span> <span class="editorial-title-highlight">Riaz Mahmood</span> <span class="editorial-title-suffix">(رحمہ اللہ)</span>
-                        </h3>
-                        <div class="editorial-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</div>
-                        
-                        <div class="editorial-quote" data-en="Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter." data-ur="قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔">
-                            Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.
-                        </div>
+                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background-color: #006754 !important; padding: 32px 28px; position: relative;">
+                  <div class="card-inner" style="position: relative; z-index: 2;">
+                    <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
+                    <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;">
+                      <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" style="font-size: 1.1rem; font-weight: 400; color: rgba(255, 255, 255, 0.85);" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
+                    </h3>
+                    <p class="leader-role" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-weight: 500;" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">
+                      Founder of the Institution
+                    </p>
 
-                        <div style="color: #E0E0E0; font-size: 14px; font-weight: 600; margin-bottom: 30px;" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
-                            Motto of the Founder
-                        </div>
-                        
-                        <a href="about.html#founder" class="btn-hero btn-primary-pill editorial-card-action-btn" data-en="Read Full Introduction" data-ur="مکمل تعارف پڑھیے">
-                            Read Full Introduction
-                            <span class="btn-arrow-circle">
-                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                    <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                        </a>
+                    <blockquote class="leader-quote" style="font-size: 1rem; line-height: 1.6; color: #FFFFFF; font-style: italic; margin: 0 0 16px 0; opacity: 0.95;" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
+                      “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
+                    </blockquote>
+
+                    <p class="quote-label" style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
+                      Motto of the Founder
+                    </p>
+
+                    <!-- Original Button Alignment Wrapper -->
+                    <div class="btn-action-wrapper">
+                      <a href="about.html#founder" class="orig-read-btn" data-en="Read Full Introduction ↗" data-ur="مکمل تعارف پڑھیے ↗">
+                        <span>Read Full Introduction</span>
+                        <span class="arrow-circle">↗</span>
+                      </a>
                     </div>
+                  </div>
+
+                  <div class="top-bracket" style="position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-top: 2px solid rgba(255, 255, 255, 0.6); border-right: 2px solid rgba(255, 255, 255, 0.6); border-top-right-radius: 20px;"></div>
+                  <div class="bottom-bracket" style="position: absolute; bottom: 16px; left: 16px; width: 30px; height: 30px; border-bottom: 2px solid rgba(255, 255, 255, 0.6); border-left: 2px solid rgba(255, 255, 255, 0.6); border-bottom-left-radius: 20px;"></div>
                 </div>
             </div>
 
@@ -2930,33 +2898,35 @@
                         [Principal Image Placeholder]
                     </div>
                 </div>
-                <div class="editorial-card-wrapper">
-                    <div class="editorial-content">
-                        <h3 class="editorial-title" data-en="<span class='editorial-title-prefix'>Mufti</span> <span class='editorial-title-highlight'>Aamir Mahmood</span>" data-ur="<span class='editorial-title-prefix'>مفتی</span> <span class='editorial-title-highlight'>عامر محمود</span>">
-                            <span class="editorial-title-prefix">Mufti</span> <span class="editorial-title-highlight">Aamir Mahmood</span>
-                        </h3>
-                        <div class="editorial-role" style="font-size: 14px;" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
-                            Principal of the Institution
-                        </div>
-                        
-                        <div class="editorial-quote" data-en="Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character." data-ur="ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔">
-                            Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.
-                        </div>
+                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background-color: #006754 !important; padding: 32px 28px; position: relative; margin-top: 24px;">
+                  <div class="card-inner" style="position: relative; z-index: 2;">
+                    <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Mufti" data-ur="مفتی">Mufti</span>
+                    <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;" data-en="Aamir Mahmood" data-ur="عامر محمود">
+                      Aamir Mahmood
+                    </h3>
+                    <p class="leader-role" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-weight: 500;" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
+                      Principal of the Institution
+                    </p>
 
-                        <div class="editorial-role" style="margin-bottom: 20px; font-size: 1rem; flex-shrink: 1;" data-en="Message from the desk of Principal" data-ur="مہتمم کے ڈیسک سے پیغام">Message from the desk of Principal</div>
-                        
-                        <div class="principal-action-col">
-                            <img src="assets/principal-sign.jpeg" class="principal-signature-img" alt="Principal Signature">
-                            <a href="about.html#principal" class="btn-hero btn-primary-pill editorial-card-action-btn" data-en="Read Full Introduction" data-ur="مکمل تعارف پڑھیے">
-                                Read Full Introduction
-                                <span class="btn-arrow-circle">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                        <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
+                    <blockquote class="leader-quote" style="font-size: 1rem; line-height: 1.6; color: #FFFFFF; font-style: italic; margin: 0 0 16px 0; opacity: 0.95;" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
+                      “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
+                    </blockquote>
+
+                    <p class="quote-label" style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;" data-en="Message from the desk of Principal" data-ur="مہتمم کے ڈیسک سے پیغام">
+                      Message from the desk of Principal
+                    </p>
+
+                    <!-- Original Button Alignment Wrapper -->
+                    <div class="btn-action-wrapper">
+                      <a href="about.html#principal" class="orig-read-btn" data-en="Read Full Introduction ↗" data-ur="مکمل تعارف پڑھیے ↗">
+                        <span>Read Full Introduction</span>
+                        <span class="arrow-circle">↗</span>
+                      </a>
                     </div>
+                  </div>
+
+                  <div class="top-bracket" style="position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-top: 2px solid rgba(255, 255, 255, 0.6); border-right: 2px solid rgba(255, 255, 255, 0.6); border-top-right-radius: 20px;"></div>
+                  <div class="bottom-bracket" style="position: absolute; bottom: 16px; left: 16px; width: 30px; height: 30px; border-bottom: 2px solid rgba(255, 255, 255, 0.6); border-left: 2px solid rgba(255, 255, 255, 0.6); border-bottom-left-radius: 20px;"></div>
                 </div>
             </div>
 
@@ -3123,112 +3093,117 @@
     </script>
     </div>
 
-<!-- Courses Section -->
-<section id="courses" class="courses-section">
-    <div class="courses-header">
-        <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
-        <p data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
-            Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
-        </p>
-    </div>
+<!-- Courses Section (Services) -->
+<section id="courses" class="services-section">
+  <div class="services-header">
+    <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
+    <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
+      Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
+    </p>
+  </div>
 
-    <div class="courses-grid-wrapper">
-        <!-- Smooth S-Wave Background Path -->
-        <svg class="courses-path-svg" viewBox="0 0 650 820" preserveAspectRatio="none">
-            <path d="M 138 120 C 300 150, 350 250, 512 280 C 350 310, 300 410, 183 440 C 300 470, 350 570, 480 600" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6 6" />
+  <div class="services-container">
+    <!-- Card 01: Soft Green -->
+    <div class="sticky-note note-1" tabindex="0">
+      <div class="svg-pushpin">
+        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
+          <!-- Metal Needle -->
+          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+          <!-- Pin Body -->
+          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
+          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
+          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
+          <!-- Highlight Gloss -->
+          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
         </svg>
-
-        <div class="courses-grid">
-            <!-- Card 01 -->
-            <div class="note-card">
-                <!-- SVG Push Pin (Orange) -->
-                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="10" fill="url(#grad-orange)" filter="drop-shadow(0px 8px 6px rgba(247,127,0,0.4))"/>
-                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
-                    <defs>
-                        <radialGradient id="grad-orange" cx="0.3" cy="0.3" r="0.7">
-                            <stop offset="0%" stop-color="#ffb067"/>
-                            <stop offset="100%" stop-color="#e85d04"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
-                <div class="note-card-inner card-peach">
-                    <div class="note-number">01</div>
-                    <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
-                    <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
-                        Complete memorization of the Holy Quran with proper Tajweed and guidance.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 02 -->
-            <div class="note-card">
-                <!-- SVG Push Pin (Blue) -->
-                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="10" fill="url(#grad-blue)" filter="drop-shadow(0px 8px 6px rgba(67,97,238,0.4))"/>
-                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
-                    <defs>
-                        <radialGradient id="grad-blue" cx="0.3" cy="0.3" r="0.7">
-                            <stop offset="0%" stop-color="#8c9eff"/>
-                            <stop offset="100%" stop-color="#2a3eb1"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
-                <div class="note-card-inner card-blue">
-                    <div class="note-number">02</div>
-                    <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
-                    <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
-                        Fluent Quran recitation with precise pronunciation and Tajweed rules.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 03 -->
-            <div class="note-card">
-                <!-- SVG Push Pin (Purple) -->
-                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="10" fill="url(#grad-purple)" filter="drop-shadow(0px 8px 6px rgba(114,9,183,0.4))"/>
-                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
-                    <defs>
-                        <radialGradient id="grad-purple" cx="0.3" cy="0.3" r="0.7">
-                            <stop offset="0%" stop-color="#b388ff"/>
-                            <stop offset="100%" stop-color="#510582"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
-                <div class="note-card-inner card-purple">
-                    <div class="note-number">03</div>
-                    <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
-                    <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
-                        Holistic moral character building rooted in Islamic teachings and Sunnah.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 04 -->
-            <div class="note-card">
-                <!-- SVG Push Pin (Red/Gold) -->
-                <svg class="push-pin" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="10" fill="url(#grad-redgold)" filter="drop-shadow(0px 8px 6px rgba(220,38,38,0.4))"/>
-                    <circle cx="12" cy="12" r="4" fill="white" opacity="0.6"/>
-                    <defs>
-                        <radialGradient id="grad-redgold" cx="0.3" cy="0.3" r="0.7">
-                            <stop offset="0%" stop-color="#FFDF73"/>
-                            <stop offset="100%" stop-color="#DC2626"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
-                <div class="note-card-inner card-orange">
-                    <div class="note-number">04</div>
-                    <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
-                    <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
-                        Flexible learning options available for both local and international students.
-                    </p>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="note-number">01</div>
+      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
+      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
+        Complete memorization of the Holy Quran with proper Tajweed and guidance.
+      </p>
     </div>
+
+    <!-- Card 02: Soft Blue/Teal -->
+    <div class="sticky-note note-2" tabindex="0">
+      <div class="svg-pushpin">
+        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
+          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
+          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
+          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
+          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="note-number">02</div>
+      <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
+      <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
+        Fluent Quran recitation with precise pronunciation and Tajweed rules.
+      </p>
+    </div>
+
+    <!-- Card 03: Soft Lavender -->
+    <div class="sticky-note note-3" tabindex="0">
+      <div class="svg-pushpin">
+        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
+          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
+          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
+          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
+          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="note-number">03</div>
+      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
+      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
+        Holistic moral character building rooted in Islamic teachings and Sunnah.
+      </p>
+    </div>
+
+    <!-- Card 04: Soft Yellow/Cream -->
+    <div class="sticky-note note-4" tabindex="0">
+      <div class="svg-pushpin">
+        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
+          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
+          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
+          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
+          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="note-number">04</div>
+      <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
+      <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
+        Flexible learning options available for both local and international students.
+      </p>
+    </div>
+  </div>
 </section>
+
+<!-- Interactive Script for Mobile Tap -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stickyNotes = document.querySelectorAll('.sticky-note');
+
+    stickyNotes.forEach(note => {
+      note.addEventListener('touchstart', function() {
+        stickyNotes.forEach(n => n.classList.remove('active-tap'));
+        this.classList.add('active-tap');
+      }, { passive: true });
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.sticky-note')) {
+        stickyNotes.forEach(n => n.classList.remove('active-tap'));
+      }
+    }, { passive: true });
+  });
+</script>
 </main>
 
 <footer class="site-footer">
