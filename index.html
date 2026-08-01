@@ -2609,23 +2609,28 @@
           justify-content: flex-start !important;
         }
 
-        /* Original Teal Pill Button Look */
+        /* Base Pill Button Style */
         .orig-read-btn {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background-color: rgba(21, 132, 103, 0.5); /* Original matching light teal tint */
+          background-color: rgba(255, 255, 255, 0.08);
           color: #FFFFFF !important;
-          padding: 8px 10px 8px 20px;
+          padding: 6px 6px 6px 18px;
           border-radius: 50px;
           text-decoration: none;
-          font-size: 0.9rem;
-          font-weight: 600;
+          font-size: 0.88rem;
+          font-weight: 500;
           border: 1px solid rgba(255, 255, 255, 0.25);
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Round Circle for Arrow Icon */
+        .orig-read-btn .btn-text {
+          color: #FFFFFF;
+          transition: color 0.35s ease;
+        }
+
+        /* Default Arrow Circle (White Circle + Green Arrow) */
         .orig-read-btn .arrow-circle {
           display: flex;
           align-items: center;
@@ -2633,22 +2638,40 @@
           width: 28px;
           height: 28px;
           background-color: #FFFFFF;
-          color: #006754;
+          color: #004D40;
           border-radius: 50%;
           font-size: 0.95rem;
           font-weight: bold;
-          transition: transform 0.3s ease;
+          transition: all 0.35s ease;
         }
 
-        /* Smooth Interactive Hover State */
+        /* ---------------------------------------------------- */
+        /* EXACT COLOR INVERT ON HOVER / TAP                   */
+        /* Green -> White & White -> Green                      */
+        /* ---------------------------------------------------- */
         .orig-read-btn:hover {
-          background-color: rgba(21, 132, 103, 0.85);
+          background-color: #FFFFFF !important;
+          border-color: #FFFFFF !important;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
+        /* Text turns Green on hover */
+        .orig-read-btn:hover .btn-text {
+          color: #004D40 !important;
+        }
+
+        /* Circle turns Green & Arrow turns White on hover */
         .orig-read-btn:hover .arrow-circle {
+          background-color: #004D40 !important;
+          color: #FFFFFF !important;
           transform: rotate(45deg);
+        }
+
+        /* Force Nastaleeq font for Arabic/Urdu text snippets in English mode */
+        .arabic-txt {
+            font-family: 'Jameel Noori Nastaleeq', serif !important;
+            font-size: 1.3rem !important; /* Slightly larger to compensate for Nastaleeq's smaller baseline */
         }
 
     </style>
@@ -2859,7 +2882,7 @@
                 <div class="editorial-image-wrapper">
                     <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
                 </div>
-                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background-color: #006754 !important; padding: 32px 28px; position: relative;">
+                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important; padding: 32px 28px; position: relative;">
                   <div class="card-inner" style="position: relative; z-index: 2;">
                     <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
                     <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;">
@@ -2877,10 +2900,10 @@
                       Motto of the Founder
                     </p>
 
-                    <!-- Original Button Alignment Wrapper -->
+                    <!-- Button Alignment Wrapper -->
                     <div class="btn-action-wrapper">
-                      <a href="about.html#founder" class="orig-read-btn" data-en="Read Full Introduction ↗" data-ur="مکمل تعارف پڑھیے ↗">
-                        <span>Read Full Introduction</span>
+                      <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↗</span>">
+                        <span class="btn-text">Read Full Introduction</span>
                         <span class="arrow-circle">↗</span>
                       </a>
                     </div>
@@ -2898,7 +2921,7 @@
                         [Principal Image Placeholder]
                     </div>
                 </div>
-                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background-color: #006754 !important; padding: 32px 28px; position: relative; margin-top: 24px;">
+                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important; padding: 32px 28px; position: relative; margin-top: 24px;">
                   <div class="card-inner" style="position: relative; z-index: 2;">
                     <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Mufti" data-ur="مفتی">Mufti</span>
                     <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;" data-en="Aamir Mahmood" data-ur="عامر محمود">
@@ -2916,10 +2939,10 @@
                       Message from the desk of Principal
                     </p>
 
-                    <!-- Original Button Alignment Wrapper -->
+                    <!-- Button Alignment Wrapper -->
                     <div class="btn-action-wrapper">
-                      <a href="about.html#principal" class="orig-read-btn" data-en="Read Full Introduction ↗" data-ur="مکمل تعارف پڑھیے ↗">
-                        <span>Read Full Introduction</span>
+                      <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↗</span>">
+                        <span class="btn-text">Read Full Introduction</span>
                         <span class="arrow-circle">↗</span>
                       </a>
                     </div>
