@@ -2586,13 +2586,108 @@
           border-radius: 28px !important;
         }
 
-        /* Inner Bracket Corners */
+        /* Card Base */
+        .leadership-content-card {
+          border-radius: 40px !important;
+          overflow: hidden !important;
+          background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important;
+          padding: 32px 28px;
+          position: relative;
+        }
+
+        .card-inner {
+          position: relative;
+          z-index: 2;
+        }
+
+        /* Typography */
+        .leader-subtitle {
+          font-size: 0.95rem;
+          color: rgba(255, 255, 255, 0.85);
+          font-weight: 500;
+        }
+
+        .leader-title {
+          font-size: 1.6rem;
+          font-weight: 700;
+          color: #FFFFFF;
+          margin: 6px 0 12px 0;
+        }
+
+        .leader-role {
+          font-size: 0.95rem;
+          color: rgba(255, 255, 255, 0.85);
+          margin-bottom: 24px;
+          font-weight: 500;
+        }
+
+        .leader-quote {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: #FFFFFF;
+          font-style: italic;
+          margin: 0 0 16px 0;
+          opacity: 0.95;
+        }
+
+        .quote-label {
+          font-size: 0.82rem;
+          color: rgba(255, 255, 255, 0.7);
+          margin-bottom: 24px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ANIMATED CORNER BRACKETS                             */
+        /* ---------------------------------------------------- */
         .top-bracket {
-          border-top-right-radius: 16px !important;
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          width: 28px;
+          height: 28px;
+          border-top: 2px solid rgba(255, 255, 255, 0.75);
+          border-right: 2px solid rgba(255, 255, 255, 0.75);
+          border-top-right-radius: 18px;
+          animation: bracketPulse 2.5s infinite ease-in-out;
+          pointer-events: none;
+          z-index: 1;
         }
 
         .bottom-bracket {
-          border-bottom-left-radius: 16px !important;
+          position: absolute;
+          bottom: 16px;
+          left: 16px;
+          width: 28px;
+          height: 28px;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+          border-left: 2px solid rgba(255, 255, 255, 0.75);
+          border-bottom-left-radius: 18px;
+          animation: bracketPulse 2.5s infinite ease-in-out 0.4s;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        /* Hover effect: Expand brackets when card is hovered */
+        .leadership-content-card:hover .top-bracket,
+        .leadership-content-card:hover .bottom-bracket {
+          width: 36px;
+          height: 36px;
+          border-color: #FFFFFF;
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Continuous pulse keyframes for expanding/shrinking */
+        @keyframes bracketPulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.75;
+          }
+          50% {
+            transform: scale(1.18);
+            opacity: 1;
+          }
         }
 
         /* English Mode Alignment: Right Side */
@@ -2666,6 +2761,12 @@
           background-color: #004D40 !important;
           color: #FFFFFF !important;
           transform: rotate(45deg);
+        }
+
+        /* In RTL mode, rotate counter-clockwise so the Top-Left arrow (↖) points Left (←) */
+        [dir="rtl"] .orig-read-btn:hover .arrow-circle,
+        .urdu-lang .orig-read-btn:hover .arrow-circle {
+          transform: rotate(-45deg);
         }
 
         /* Force Nastaleeq font for Arabic/Urdu text snippets in English mode */
@@ -2882,35 +2983,36 @@
                 <div class="editorial-image-wrapper">
                     <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
                 </div>
-                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important; padding: 32px 28px; position: relative;">
-                  <div class="card-inner" style="position: relative; z-index: 2;">
-                    <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                    <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;">
-                      <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" style="font-size: 1.1rem; font-weight: 400; color: rgba(255, 255, 255, 0.85);" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
+                <div class="leadership-content-card">
+                  <div class="card-inner">
+                    <span class="leader-subtitle" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
+                    <h3 class="leader-title">
+                      <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
                     </h3>
-                    <p class="leader-role" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-weight: 500;" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">
+                    <p class="leader-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">
                       Founder of the Institution
                     </p>
 
-                    <blockquote class="leader-quote" style="font-size: 1rem; line-height: 1.6; color: #FFFFFF; font-style: italic; margin: 0 0 16px 0; opacity: 0.95;" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
+                    <blockquote class="leader-quote" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
                       “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
                     </blockquote>
 
-                    <p class="quote-label" style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
+                    <p class="quote-label" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
                       Motto of the Founder
                     </p>
 
                     <!-- Button Alignment Wrapper -->
                     <div class="btn-action-wrapper">
-                      <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↗</span>">
+                      <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
                         <span class="btn-text">Read Full Introduction</span>
                         <span class="arrow-circle">↗</span>
                       </a>
                     </div>
                   </div>
 
-                  <div class="top-bracket" style="position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-top: 2px solid rgba(255, 255, 255, 0.6); border-right: 2px solid rgba(255, 255, 255, 0.6); border-top-right-radius: 20px;"></div>
-                  <div class="bottom-bracket" style="position: absolute; bottom: 16px; left: 16px; width: 30px; height: 30px; border-bottom: 2px solid rgba(255, 255, 255, 0.6); border-left: 2px solid rgba(255, 255, 255, 0.6); border-bottom-left-radius: 20px;"></div>
+                  <!-- Animated Brackets -->
+                  <div class="top-bracket"></div>
+                  <div class="bottom-bracket"></div>
                 </div>
             </div>
 
@@ -2921,35 +3023,36 @@
                         [Principal Image Placeholder]
                     </div>
                 </div>
-                <div class="leadership-content-card" style="border-radius: 40px !important; overflow: hidden !important; background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important; padding: 32px 28px; position: relative; margin-top: 24px;">
-                  <div class="card-inner" style="position: relative; z-index: 2;">
-                    <span class="leader-subtitle" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); font-weight: 500;" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                    <h3 class="leader-title" style="font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin: 6px 0 12px 0;" data-en="Aamir Mahmood" data-ur="عامر محمود">
+                <div class="leadership-content-card" style="margin-top: 24px;">
+                  <div class="card-inner">
+                    <span class="leader-subtitle" data-en="Mufti" data-ur="مفتی">Mufti</span>
+                    <h3 class="leader-title" data-en="Aamir Mahmood" data-ur="عامر محمود">
                       Aamir Mahmood
                     </h3>
-                    <p class="leader-role" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; font-weight: 500;" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
+                    <p class="leader-role" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
                       Principal of the Institution
                     </p>
 
-                    <blockquote class="leader-quote" style="font-size: 1rem; line-height: 1.6; color: #FFFFFF; font-style: italic; margin: 0 0 16px 0; opacity: 0.95;" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
+                    <blockquote class="leader-quote" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
                       “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
                     </blockquote>
 
-                    <p class="quote-label" style="font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;" data-en="Message from the desk of Principal" data-ur="مہتمم کے ڈیسک سے پیغام">
+                    <p class="quote-label" data-en="Message from the desk of Principal" data-ur="مہتمم کے ڈیسک سے پیغام">
                       Message from the desk of Principal
                     </p>
 
                     <!-- Button Alignment Wrapper -->
                     <div class="btn-action-wrapper">
-                      <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↗</span>">
+                      <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
                         <span class="btn-text">Read Full Introduction</span>
                         <span class="arrow-circle">↗</span>
                       </a>
                     </div>
                   </div>
 
-                  <div class="top-bracket" style="position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; border-top: 2px solid rgba(255, 255, 255, 0.6); border-right: 2px solid rgba(255, 255, 255, 0.6); border-top-right-radius: 20px;"></div>
-                  <div class="bottom-bracket" style="position: absolute; bottom: 16px; left: 16px; width: 30px; height: 30px; border-bottom: 2px solid rgba(255, 255, 255, 0.6); border-left: 2px solid rgba(255, 255, 255, 0.6); border-bottom-left-radius: 20px;"></div>
+                  <!-- Animated Brackets -->
+                  <div class="top-bracket"></div>
+                  <div class="bottom-bracket"></div>
                 </div>
             </div>
 
