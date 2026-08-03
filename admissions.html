@@ -2775,6 +2775,219 @@
             font-size: 1.3rem !important; /* Slightly larger to compensate for Nastaleeq's smaller baseline */
         }
 
+        /* ========================================== */
+        /* ADMISSIONS OVERVIEW SECTION                */
+        /* ========================================== */
+        .admissions-overview-section {
+          padding: 80px 5%;
+          background-color: #EFEEF0;
+          position: relative;
+        }
+
+        .admissions-header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+
+        .admissions-pill {
+          display: inline-block;
+          background-color: #025F55;
+          color: #FFFFFF;
+          padding: 6px 16px;
+          border-radius: 50px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+          animation: pulseBadge 2s infinite;
+        }
+
+        @keyframes pulseBadge {
+          0% { box-shadow: 0 0 0 0 rgba(2, 95, 85, 0.4); }
+          70% { box-shadow: 0 0 0 10px rgba(2, 95, 85, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(2, 95, 85, 0); }
+        }
+
+        .admissions-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #004D40;
+          margin-bottom: 16px;
+        }
+
+        .admissions-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .admissions-step-card {
+          background: #FFFFFF;
+          padding: 12px;
+          border-radius: 32px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .admissions-step-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .admissions-step-inner {
+          background: #F8F9FA;
+          border-radius: 20px;
+          padding: 32px 24px;
+          height: 100%;
+          text-align: center;
+        }
+
+        .admissions-icon {
+          width: 64px;
+          height: 64px;
+          background: #E8F5E9;
+          color: #006754;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 20px auto;
+        }
+
+        .step-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #1E293B;
+          margin-bottom: 12px;
+        }
+
+        .step-desc {
+          font-size: 0.95rem;
+          color: #475569;
+          line-height: 1.6;
+        }
+
+        .admissions-important-dates {
+          max-width: 1200px;
+          margin: 40px auto;
+          background: linear-gradient(145deg, #004D40 0%, #002D24 100%);
+          border-radius: 32px;
+          padding: 12px;
+        }
+
+        .dates-inner {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 20px;
+          padding: 32px 40px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          align-items: center;
+          gap: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .date-badge {
+          text-align: center;
+        }
+
+        .date-label {
+          font-size: 0.85rem;
+          color: #A3E4D7;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+          display: block;
+        }
+
+        .date-value {
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #FFFFFF;
+        }
+
+        .admissions-cta {
+          text-align: center;
+          margin-top: 40px;
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .btn-primary-invert {
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          background-color: #006754;
+          color: #FFFFFF !important;
+          padding: 8px 8px 8px 24px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 600;
+          border: 1px solid #006754;
+          transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn-primary-invert .arrow-circle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          width: 36px;
+          height: 36px;
+          background-color: #FFFFFF;
+          color: #006754;
+          border-radius: 50%;
+          transition: all 0.35s ease;
+        }
+
+        .btn-primary-invert:hover {
+          background-color: #FFFFFF !important;
+          color: #006754 !important;
+        }
+
+        .btn-primary-invert:hover .arrow-circle {
+          background-color: #006754 !important;
+          color: #FFFFFF !important;
+          transform: rotate(45deg);
+        }
+        
+        [dir="rtl"] .btn-primary-invert:hover .arrow-circle,
+        .urdu-lang .btn-primary-invert:hover .arrow-circle {
+          transform: rotate(-45deg);
+        }
+
+        .btn-secondary-download {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background-color: transparent;
+          color: #004D40;
+          padding: 12px 24px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 600;
+          border: 2px solid #004D40;
+          transition: all 0.3s ease;
+        }
+
+        .btn-secondary-download:hover {
+          background-color: rgba(0, 77, 64, 0.05);
+          transform: translateY(-2px);
+        }
+        
+        /* RTL Overrides for Admissions */
+        [dir="rtl"] .admissions-title,
+        .urdu-lang .admissions-title {
+          font-size: 2.8rem;
+        }
     </style>
 </head>
 <body>
@@ -2883,474 +3096,240 @@
 </script>
 
 <main>
-    <div class="hero-unified-bg">
-        <section class="hero-section">
-
-        <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
-            <div class="hero-badge welcome-pill welcome-badge" style="position: static !important; transform: none !important; left: auto !important;">
-                <span class="badge-dot"></span>
-                <span class="pill-text-en">
-                    <span class="pill-line-1">WELCOME TO MADRASSA</span>
-                    <span class="pill-line-2">RIAZ UL QURAN WAL SUNNAH</span>
-                </span>
-                <span class="pill-text-ur">مدرسہ ریاض القرآن والسنہ میں خوش آمدید</span>
-            </div>
-            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
-            
-            <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
-            <h1 class="hero-title urdu-hero-title" data-en="Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
-                Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>
-            </h1>
-            <p class="hero-subtitle" data-en="Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment." data-ur="صحیح تجوید، حفظِ قرآن اور اسلامی تربیت کے ساتھ بچوں کے روشن مستقبل کی تعمیر۔">
-                Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment.
-            </p>
-            <div class="hero-buttons">
-                <a href="#donation" class="btn-hero btn-primary-pill" data-en="<span>Support Our Mission</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>ہمارے مشن کو سپورٹ کریں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Support Our Mission</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="#about" class="btn-hero btn-secondary-pill" data-en="<span>Learn More</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>مزید جانئے</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Learn More</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Admissions Hero Banner -->
+    <div class="admissions-hero" style="position: relative; background: linear-gradient(145deg, #004D40 0%, #002D24 100%); padding: 100px 5%; text-align: center; overflow: hidden;">
+        <div class="top-bracket" style="border-top-right-radius: 16px !important;"></div>
+        <div class="bottom-bracket" style="border-bottom-left-radius: 16px !important;"></div>
+        
+        <h1 style="color: #FFFFFF; font-size: 3rem; font-weight: 800; margin-bottom: 20px; position: relative; z-index: 2;" data-en="Admissions Center" data-ur="مرکزِ داخلہ">Admissions Center</h1>
+        <p style="color: #A3E4D7; font-size: 1.2rem; max-width: 600px; margin: 0 auto; position: relative; z-index: 2;" data-en="Join our institution and embark on a journey of profound learning and spiritual growth." data-ur="ہمارے ادارے میں شامل ہوں اور گہرے علم اور روحانی ترقی کے سفر کا آغاز کریں۔">Join our institution and embark on a journey of profound learning and spiritual growth.</p>
     </div>
 
-    <!-- Combined Hero Extension Section -->
-    <section class="hero-extension-section">
-        <div class="custom-loop-divider">
-            <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Deeper wavy path before and after the loop -->
-                <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-                      stroke="#025F55" 
-                      stroke-width="3.5" 
-                      fill="none" 
-                      stroke-linecap="round"/>
-            </svg>
-        </div>
-
-        <!-- Short Introduction Section -->
-        <div class="intro-section" id="about">
-        <div class="intro-container">
-            <h2 class="intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
-                Introduction to <span class="highlight-font">Madrassa</span>
-            </h2>
-            <h3 class="intro-subtitle" data-en="Building knowledge, practice, and character in the light of Quran &amp; Sunnah" data-ur="قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر">
-                Building knowledge, practice, and character in the light of Quran &amp; Sunnah
-            </h3>
-            <p class="intro-text" data-en="Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing." data-ur="مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔">
-                Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing.
-            </p>
-            <a href="about.html" class="btn-intro-special" data-en="<span class='btn-text'>Read Full Introduction</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>تفصیلی تعارف پڑھیں</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                <span class="btn-text">Read Full Introduction</span>
-                <span class="btn-arrow-circle">
-                    <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7"></line>
-                        <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                </span>
-            </a>
-        </div>
-        </div>
-
-        <!-- Leadership Preview Section -->
-        <div class="leadership-preview-section" id="leadership">
-        <div class="leadership-header">
-            <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>">
-                Leadership &amp; <span class="highlight-font">Founders</span>
-            </h2>
-            <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات">
-                Key figures dedicated to the service of Quran and Sunnah
-            </p>
-        </div>
-
-        <div class="editorial-layout">
-            <!-- Top Section: Founder -->
-            <div class="editorial-row">
-                <div class="editorial-image-wrapper">
-                    <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
+    <!-- Course Eligibility Grid -->
+    <div style="background-color: #EFEEF0; padding: 80px 5%;">
+        <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Course Eligibility Requirements" data-ur="کورس کی اہلیت کے تقاضے">Course Eligibility Requirements</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+            <!-- Nazra -->
+            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
+                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Nazra Quran" data-ur="ناظرہ قرآن">Nazra Quran</h3>
+                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Age: 5 to 10 years" data-ur="عمر: ۵ سے ۱۰ سال">Age: 5 to 10 years</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="No prior knowledge required" data-ur="سابقہ علم کی ضرورت نہیں">No prior knowledge required</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Required: B-Form / Birth Certificate" data-ur="ضروری دستاویز: ب فارم">Required: B-Form / Birth Certificate</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="leadership-content-card">
-                  <div class="card-inner">
-                    <span class="leader-subtitle" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                    <h3 class="leader-title">
-                      <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
-                    </h3>
-                    <p class="leader-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">
-                      Founder of the Institution
-                    </p>
-
-                    <blockquote class="leader-quote" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
-                      “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
-                    </blockquote>
-
-                    <p class="quote-label" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
-                      Motto of the Founder
-                    </p>
-
-                    <!-- Button Alignment Wrapper -->
-                    <div class="btn-action-wrapper">
-                      <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='17' y1='17' x2='7' y2='7'></line><polyline points='17 7 7 7 7 17'></polyline></svg></span>">
-                        <span class="btn-text">Read Full Introduction</span>
-                        <span class="arrow-circle">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- Animated Brackets -->
-                  <div class="top-bracket"></div>
-                  <div class="bottom-bracket"></div>
+            </div>
+            
+            <!-- Hifz -->
+            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
+                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن">Hifz-ul-Quran</h3>
+                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Age: 8 to 14 years" data-ur="عمر: ۸ سے ۱۴ سال">Age: 8 to 14 years</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Must read Nazra fluently" data-ur="ناظرہ روانی سے پڑھنا ضروری ہے">Must read Nazra fluently</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Required: B-Form & Father's CNIC" data-ur="ضروری دستاویزات: ب فارم اور والد کا شناختی کارڈ">Required: B-Form & Father's CNIC</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Bottom Section: Principal -->
-            <div class="editorial-row reverse">
-                <div class="editorial-image-wrapper">
-                    <div class="editorial-img-placeholder">
-                        [Principal Image Placeholder]
-                    </div>
-                </div>
-                <div class="leadership-content-card" style="margin-top: 24px;">
-                  <div class="card-inner">
-                    <span class="leader-subtitle" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                    <h3 class="leader-title" data-en="Aamir Mahmood" data-ur="عامر محمود">
-                      Aamir Mahmood
-                    </h3>
-                    <p class="leader-role" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
-                      Principal of the Institution
-                    </p>
-
-                    <blockquote class="leader-quote" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
-                      “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
-                    </blockquote>
-
-                    <p class="quote-label" data-en="Message of the Principal" data-ur="مہتمم کا پیغام">
-                      Message of the Principal
-                    </p>
-
-                    <!-- Button Alignment Wrapper -->
-                    <div class="btn-action-wrapper">
-                      <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='17' y1='17' x2='7' y2='7'></line><polyline points='17 7 7 7 7 17'></polyline></svg></span>">
-                        <span class="btn-text">Read Full Introduction</span>
-                        <span class="arrow-circle">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- Animated Brackets -->
-                  <div class="top-bracket"></div>
-                  <div class="bottom-bracket"></div>
+            <!-- Tajweed -->
+            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
+                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Tajweed Course" data-ur="تجوید کورس">Tajweed Course</h3>
+                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Age: 12+ years" data-ur="عمر: ۱۲ سال سے زائد">Age: 12+ years</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Basic Quranic recitation skills" data-ur="بنیادی تلاوت کی مہارت">Basic Quranic recitation skills</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Required: CNIC / B-Form" data-ur="ضروری دستاویز: شناختی کارڈ یا ب فارم">Required: CNIC / B-Form</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-        </div>
-    </section>
-
-    <!-- Arc Stats Section -->
-    <section class="donut-infographic-section">
-        <div class="donut-infographic-container">
             
-            <!-- Desktop SVG View -->
-            <div class="desktop-svg-wrapper">
-                <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
-                <svg viewBox="-160 -20 800 340" width="100%" preserveAspectRatio="xMidYMid meet">
-                    <!-- Scaled Geometry Group (60% reduction) -->
-                    <g transform="scale(0.6)">
-                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
-                        <!-- Top pointer -->
-                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="110" r="5" fill="#025F55" />
-
-                        <!-- Mid pointer -->
-                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
-
-                        <!-- Bot pointer -->
-                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="440" r="5" fill="#01423B" />
-
-                        <!-- Segmented Arcs grouped for interactivity -->
-                        <!-- Segment 1: Top Arc -->
-                        <g class="stat-slice" data-index="0">
-                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
-                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
-                            <text x="264.8" y="161.5" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="550">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 2: Middle Arc -->
-                        <g class="stat-slice" data-index="1">
-                            <path d="M 328.5 227.1 A 180 180 0 0 1 293.2 359.1 L 239.8 313.5 A 110 110 0 0 0 259.5 239.9 Z" 
-                                  fill="#038C7F" stroke="#038C7F" stroke-width="16" stroke-linejoin="round" />
-                            <text x="289.9" y="287.4" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="60">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 3: Bottom Arc -->
-                        <g class="stat-slice" data-index="2">
-                            <path d="M 280.2 374.3 A 180 180 0 0 1 145.3 429.9 L 147.1 359.9 A 110 110 0 0 0 226.8 328.7 Z" 
-                                  fill="#01423B" stroke="#01423B" stroke-width="16" stroke-linejoin="round" />
-                            <text x="205.2" y="383.9" class="arc-text" text-anchor="middle"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
-                        </g>
-                    </g>
-
-                    <!-- Unscaled Elements -->
-                    <!-- Center Heading (Our Impact) -->
-                    <foreignObject x="-150" y="90" width="230" height="120">
-                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
-                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2'>Impact</span>" 
-                             data-ur="<span class='title-part-1'>ہمارا</span><span class='title-part-2'>اثر</span>">
-                            <span class="title-part-1">Our</span>
-                            <span class="title-part-2">Impact</span>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Right Side Text Blocks (Y coordinates re-aligned for scale 0.6, extended width/height to prevent text wrap clipping) -->
-                    <!-- Top Text (Scaled dot Y = 66) -->
-                    <foreignObject x="250" y="26" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Alumni" data-ur="فارغ التحصیل علماء / طالبات">Alumni</h4>
-                            <p data-en="Graduates serving worldwide" data-ur="دنیا بھر میں خدمات انجام دینے والے فضلاء">Graduates serving worldwide</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Mid Text (Scaled dot Y = 178) -->
-                    <foreignObject x="250" y="138" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Current Students" data-ur="زیرِ تعلیم طلباء">Current Students</h4>
-                            <p data-en="Currently enrolled in various courses" data-ur="مختلف کورسز میں زیرِ تعلیم طلباء">Currently enrolled in various courses</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Bot Text (Scaled dot Y = 264) -->
-                    <foreignObject x="250" y="224" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Years of Service" data-ur="سالہ خدمات">Years of Service</h4>
-                            <p data-en="Continuous religious & educational excellence since 1993" data-ur="1993 سے مسلسل دینی و تعلیمی خدمات">Continuous religious & educational excellence since 1993</p>
-                        </div>
-                    </foreignObject>
-                </svg>
+            <!-- Islamic Studies -->
+            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
+                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Islamic Studies" data-ur="اسلامیات">Islamic Studies</h3>
+                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Age: 15+ years" data-ur="عمر: ۱۵ سال سے زائد">Age: 15+ years</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Matriculation or equivalent" data-ur="میٹرک یا مساوی تعلیم">Matriculation or equivalent</span>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <span style="color: #006754;">✔</span> <span data-en="Required: CNIC & Academic Docs" data-ur="ضروری دستاویزات: شناختی کارڈ اور تعلیمی اسناد">Required: CNIC & Academic Docs</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-
         </div>
-    </section>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const startYear = 1993;
-            const currentYear = new Date().getFullYear();
-            const yearsValue = currentYear - startYear;
-            
-            const yearsCountElement = document.getElementById('years-count');
-            
-            if(yearsCountElement) {
-                yearsCountElement.setAttribute('data-target', yearsValue);
-            }
+    <!-- Fee Structure -->
+    <div style="background-color: #FFFFFF; padding: 80px 5%;">
+        <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Fee Structure" data-ur="فیس کی تفصیلات">Fee Structure</h2>
+        <div style="max-width: 800px; margin: 0 auto; background: #F8F9FA; border-radius: 20px; padding: 32px; border: 1px solid #E2E8F0;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #006754;">
+                        <th style="padding: 16px; color: #004D40;" data-en="Program" data-ur="پروگرام">Program</th>
+                        <th style="padding: 16px; color: #004D40;" data-en="Admission Fee" data-ur="داخلہ فیس">Admission Fee</th>
+                        <th style="padding: 16px; color: #004D40;" data-en="Monthly Tuition" data-ur="ماہانہ فیس">Monthly Tuition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding: 16px;">Nazra Quran</td>
+                        <td style="padding: 16px;">PKR 2,000</td>
+                        <td style="padding: 16px;">PKR 1,500</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding: 16px;">Hifz-ul-Quran</td>
+                        <td style="padding: 16px;">PKR 3,000</td>
+                        <td style="padding: 16px;">PKR 2,500</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #E2E8F0;">
+                        <td style="padding: 16px;">Tajweed Course</td>
+                        <td style="padding: 16px;">PKR 2,500</td>
+                        <td style="padding: 16px;">PKR 2,000</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 16px;">Islamic Studies</td>
+                        <td style="padding: 16px;">PKR 5,000</td>
+                        <td style="padding: 16px;">PKR 3,500</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 24px; padding: 16px; background-color: #E8F5E9; border-left: 4px solid #006754; border-radius: 4px;">
+                <p style="color: #004D40; font-size: 0.95rem; margin: 0;" data-en="<strong>Financial Assistance:</strong> Deserving students can apply for Zakat/Scholarships to cover their educational and hostel expenses. No student is turned away due to financial constraints." data-ur="<strong>مالی معاونت:</strong> مستحق طلباء اپنے تعلیمی اور ہاسٹل کے اخراجات پورے کرنے کے لیے زکوٰۃ یا وظائف کے لیے درخواست دے سکتے ہیں۔ مالی مجبوریوں کی وجہ سے کسی طالب علم کو واپس نہیں کیا جاتا۔"><strong>Financial Assistance:</strong> Deserving students can apply for Zakat/Scholarships to cover their educational and hostel expenses. No student is turned away due to financial constraints.</p>
+            </div>
+        </div>
+    </div>
 
-            const statSection = document.querySelector('.donut-infographic-section');
-            let initialAnimated = false;
-
-            const runCounterAnimation = (counter) => {
-                if (counter.dataset.animating === "true") return; // Prevent overlapping animations
-                counter.dataset.animating = "true";
+    <!-- Application Form -->
+    <div style="background-color: #EFEEF0; padding: 80px 5%;">
+        <div style="max-width: 800px; margin: 0 auto; background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+            <div style="background: #F8F9FA; border-radius: 20px; padding: 40px;">
+                <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 30px;" data-en="Online Application Form" data-ur="آن لائن داخلہ فارم">Online Application Form</h2>
                 
-                const target = +counter.getAttribute('data-target');
-                const duration = 1000; // 1 second
-                const increment = target / (duration / 16);
-                let current = 0;
+                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Student Details -->
+                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Student Details" data-ur="طالب علم کی تفصیلات">Student Details</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Full Name *" data-ur="پورا نام *">Full Name *</label>
+                            <input type="text" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Date of Birth *" data-ur="تاریخ پیدائش *">Date of Birth *</label>
+                            <input type="date" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="B-Form / CNIC Number *" data-ur="ب فارم / شناختی کارڈ نمبر *">B-Form / CNIC Number *</label>
+                        <input type="text" required placeholder="XXXXX-XXXXXXX-X" style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
+                    </div>
 
-                const animate = () => {
-                    current += increment;
-                    if(current < target) {
-                        counter.textContent = Math.ceil(current);
-                        requestAnimationFrame(animate);
-                    } else {
-                        counter.textContent = target;
-                        counter.dataset.animating = "false";
-                    }
-                };
-                animate();
-            };
+                    <!-- Guardian Details -->
+                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; margin-top: 20px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Guardian Details" data-ur="سرپرست کی تفصیلات">Guardian Details</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Father/Guardian Name *" data-ur="والد/سرپرست کا نام *">Father/Guardian Name *</label>
+                            <input type="text" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Contact Number *" data-ur="رابطہ نمبر *">Contact Number *</label>
+                            <input type="tel" required placeholder="03XX-XXXXXXX" style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
+                        </div>
+                    </div>
 
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting && !initialAnimated) {
-                    initialAnimated = true;
-                    document.querySelectorAll('.count-up').forEach(runCounterAnimation);
-                }
-            }, { threshold: 0.5 });
+                    <!-- Course & Documents -->
+                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; margin-top: 20px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Course Selection & Documents" data-ur="کورس کا انتخاب اور دستاویزات">Course Selection & Documents</h4>
+                    
+                    <div>
+                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Select Course *" data-ur="کورس کا انتخاب کریں *">Select Course *</label>
+                        <select required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem; background-color: #FFFFFF;">
+                            <option value="">-- Select a Course --</option>
+                            <option value="nazra">Nazra Quran</option>
+                            <option value="hifz">Hifz-ul-Quran</option>
+                            <option value="tajweed">Tajweed Course</option>
+                            <option value="islamic">Islamic Studies</option>
+                        </select>
+                    </div>
 
-            if(statSection) {
-                observer.observe(statSection);
-            }
+                    <div>
+                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Upload B-Form / CNIC Photo" data-ur="ب فارم / شناختی کارڈ کی تصویر اپ لوڈ کریں">Upload B-Form / CNIC Photo</label>
+                        <input type="file" accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px dashed #006754; border-radius: 8px; background: rgba(0, 103, 84, 0.05); font-family: inherit;">
+                    </div>
 
-            // Interactive Hover & Click re-trigger logic (Desktop)
-            const slices = document.querySelectorAll('.stat-slice');
-            const textBlocks = document.querySelectorAll('.desktop-svg-wrapper .svg-text-block');
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button type="submit" class="btn-primary-invert" style="width: 100%; justify-content: center; cursor: pointer; padding: 12px; font-size: 1.1rem;">
+                            <span class="btn-text" data-en="Submit Application" data-ur="درخواست جمع کرائیں">Submit Application</span>
+                            <span class="arrow-circle">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div style="background-color: #FFFFFF; padding: 80px 5%;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Frequently Asked Questions" data-ur="اکثر پوچھے گئے سوالات">Frequently Asked Questions</h2>
             
-            slices.forEach(slice => {
-                const index = slice.getAttribute('data-index');
-                const triggerInteraction = () => {
-                    if (textBlocks[index]) textBlocks[index].classList.add('highlight-text');
-                    const counter = slice.querySelector('.count-up');
-                    if (counter) runCounterAnimation(counter);
-                };
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="Are hostel facilities available for out-of-city students?" data-ur="کیا شہر سے باہر کے طلباء کے لیے ہاسٹل کی سہولت موجود ہے؟">Are hostel facilities available for out-of-city students?</summary>
+                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="Yes, we provide comfortable hostel facilities with meals for out-of-city students at nominal charges." data-ur="جی ہاں، ہم شہر سے باہر کے طلباء کے لیے معمولی فیس پر کھانے کے ساتھ آرام دہ ہاسٹل کی سہولیات فراہم کرتے ہیں۔">Yes, we provide comfortable hostel facilities with meals for out-of-city students at nominal charges.</p>
+                </details>
                 
-                slice.addEventListener('mouseenter', triggerInteraction);
-                slice.addEventListener('touchstart', triggerInteraction, {passive: true});
-                slice.addEventListener('mouseleave', () => {
-                    if (textBlocks[index]) textBlocks[index].classList.remove('highlight-text');
-                });
-            });
-
-
-        });
-    </script>
+                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="Can I take classes online?" data-ur="کیا میں آن لائن کلاسز لے سکتا ہوں؟">Can I take classes online?</summary>
+                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="Absolutely. We offer dedicated online classes for Nazra, Hifz, and Tajweed for international and distant students." data-ur="بالکل۔ ہم بین الاقوامی اور دور دراز کے طلباء کے لیے ناظرہ، حفظ اور تجوید کی خصوصی آن لائن کلاسز پیش کرتے ہیں۔">Absolutely. We offer dedicated online classes for Nazra, Hifz, and Tajweed for international and distant students.</p>
+                </details>
+                
+                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
+                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="What is the syllabus for the admission test?" data-ur="داخلہ ٹیسٹ کا نصاب کیا ہے؟">What is the syllabus for the admission test?</summary>
+                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="The test varies by course. For Hifz, students are tested on their Nazra fluency. For Islamic Studies, a basic general knowledge and aptitude test is conducted." data-ur="ٹیسٹ کورس کے لحاظ سے مختلف ہوتا ہے۔ حفظ کے لیے ناظرہ کی روانی کا ٹیسٹ لیا جاتا ہے۔ اسلامیات کے لیے بنیادی عمومی معلومات اور رجحان کا ٹیسٹ ہوتا ہے۔">The test varies by course. For Hifz, students are tested on their Nazra fluency. For Islamic Studies, a basic general knowledge and aptitude test is conducted.</p>
+                </details>
+            </div>
+        </div>
     </div>
-
-<!-- Courses Section (Services) -->
-<section id="courses" class="services-section">
-  <div class="services-header">
-    <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
-    <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
-      Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
-    </p>
-  </div>
-
-  <div class="services-container">
-    <!-- Card 01: Soft Green -->
-    <div class="sticky-note note-1" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shadow -->
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <!-- Metal Needle -->
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <!-- Pin Body -->
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <!-- Highlight Gloss -->
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">01</div>
-      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
-      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
-        Complete memorization of the Holy Quran with proper Tajweed and guidance.
-      </p>
-    </div>
-
-    <!-- Card 02: Soft Blue/Teal -->
-    <div class="sticky-note note-2" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">02</div>
-      <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
-      <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
-        Fluent Quran recitation with precise pronunciation and Tajweed rules.
-      </p>
-    </div>
-
-    <!-- Card 03: Soft Lavender -->
-    <div class="sticky-note note-3" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">03</div>
-      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
-      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
-        Holistic moral character building rooted in Islamic teachings and Sunnah.
-      </p>
-    </div>
-
-    <!-- Card 04: Soft Yellow/Cream -->
-    <div class="sticky-note note-4" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">04</div>
-      <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
-      <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
-        Flexible learning options available for both local and international students.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Divider below Educational Services -->
-<div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 20px; margin-bottom: 40px;">
-    <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-              stroke="#025F55" 
-              stroke-width="3.5" 
-              fill="none" 
-              stroke-linecap="round"/>
-    </svg>
-</div>
-
-<!-- Interactive Script for Mobile Tap -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const stickyNotes = document.querySelectorAll('.sticky-note');
-
-    stickyNotes.forEach(note => {
-      note.addEventListener('touchstart', function() {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-        this.classList.add('active-tap');
-      }, { passive: true });
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.sticky-note')) {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-      }
-    }, { passive: true });
-  });
-</script>
+    
+    <!-- Helpdesk Widget -->
+    <a href="https://wa.me/923000000000" target="_blank" style="position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease;" class="helpdesk-widget">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+    <style>
+        .helpdesk-widget:hover {
+            transform: scale(1.1) !important;
+        }
+    </style>
 </main>
 
 <footer class="site-footer">
