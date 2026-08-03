@@ -2568,213 +2568,568 @@
         html[dir="rtl"] .note-desc { font-size: 1.15rem !important; line-height: 1.5 !important; }
 
 
-        /* Real Root Fix: Targets every container & image in Leadership section */
-        .leadership-section div,
-        .leadership-section img,
-        .leadership-image-card,
-        .leadership-content-card,
-        .leader-card,
-        .leader-img {
-          border-radius: 28px !important;
-          overflow: hidden !important;
+        /* ========================================== */
+        /* INTEGRATED CURVED CARD & CIRCLE PHOTO CSS  */
+        /* ========================================== */
+        /* ========================================== */
+        /* INTEGRATED CURVED CARD & CIRCLE PHOTO CSS  */
+        /* ========================================== */
+        .leadership-section {
+          background-color: #EFEEF0;
+          padding: 60px 8%;
         }
 
-        /* Specific Backdrop Shadow Box Behind Image Fix */
-        [class*="shadow"],
-        [class*="backdrop"],
-        [class*="wrapper"] {
-          border-radius: 28px !important;
+        .leadership-container {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 45px;
         }
 
-        /* Card Base */
-        .leadership-content-card {
-          border-radius: 40px !important;
-          overflow: hidden !important;
-          background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important;
-          padding: 32px 28px;
+        /* ---------------------------------------------------- */
+        /* MASK IMAGE APPROACH FOR PERFECT CONCAVE CUTOUTS      */
+        /* ---------------------------------------------------- */
+        
+        /* Base variables default to Principal Card style (Photo Right) */
+        .custom-integrated-card {
+          --card-margin-l: 0px;
+          --card-margin-r: 120px;
+          --mask-center-outline: 100%;
+          --mask-center-gap: calc(100% + 2px);
+          --mask-center-bg: calc(100% + 8px);
+          --photo-pos-l: auto;
+          --photo-pos-r: -120px;
+          --content-pad-l: 45px;
+          --content-pad-r: 140px;
+          --bracket-pos-l: 24px;
+          --bracket-pos-r: auto;
+          --btn-justify: flex-end;
+          
           position: relative;
+          display: flex;
+          align-items: stretch;
+          margin-bottom: 20px;
+          margin-left: var(--card-margin-l);
+          margin-right: var(--card-margin-r);
         }
 
-        .card-inner {
+        /* 1. FOUNDER CARD: Photo Left (English) */
+        .founder-card {
+          --card-margin-l: 120px;
+          --card-margin-r: 0px;
+          --mask-center-outline: 0%;
+          --mask-center-gap: -2px;
+          --mask-center-bg: -8px;
+          --photo-pos-l: -120px;
+          --photo-pos-r: auto;
+          --content-pad-l: 140px;
+          --content-pad-r: 45px;
+          --bracket-pos-l: auto;
+          --bracket-pos-r: 24px;
+          --btn-justify: flex-start;
+        }
+
+        /* 2. PRINCIPAL CARD: Photo Right (English) */
+        /* (Uses base defaults) */
+        .principal-card {}
+
+        /* ========================================== */
+        /* RTL (URDU) AUTO-MIRRORING                  */
+        /* ========================================== */
+        [dir="rtl"] .founder-card,
+        .urdu-lang .founder-card {
+          /* Swap Founder to Photo Right in Urdu */
+          --card-margin-l: 0px;
+          --card-margin-r: 120px;
+          --mask-center-outline: 100%;
+          --mask-center-gap: calc(100% + 2px);
+          --mask-center-bg: calc(100% + 8px);
+          --photo-pos-l: auto;
+          --photo-pos-r: -120px;
+          --content-pad-l: 45px;
+          --content-pad-r: 140px;
+          --bracket-pos-l: 24px;
+          --bracket-pos-r: auto;
+          --btn-justify: flex-end; /* physical left in RTL */
+        }
+
+        [dir="rtl"] .principal-card,
+        .urdu-lang .principal-card {
+          /* Swap Principal to Photo Left in Urdu */
+          --card-margin-l: 120px;
+          --card-margin-r: 0px;
+          --mask-center-outline: 0%;
+          --mask-center-gap: -2px;
+          --mask-center-bg: -8px;
+          --photo-pos-l: -120px;
+          --photo-pos-r: auto;
+          --content-pad-l: 140px;
+          --content-pad-r: 45px;
+          --bracket-pos-l: auto;
+          --bracket-pos-r: 24px;
+          --btn-justify: flex-start; /* physical right in RTL */
+        }
+
+        .card-layer {
+          position: absolute;
+          border-radius: 40px;
+          pointer-events: none;
+        }
+
+        /* 1. Outline (2px brown) */
+        .card-outline {
+          inset: 0;
+          background-color: #004D40;
+          -webkit-mask-image: radial-gradient(circle at var(--mask-center-outline) 50%, transparent 124px, black 124.5px);
+          mask-image: radial-gradient(circle at var(--mask-center-outline) 50%, transparent 124px, black 124.5px);
+        }
+
+        /* 2. Gap (6px white space inside the border) */
+        .card-gap {
+          inset: 2px;
+          background-color: #EFEEF0; /* Matches page background */
+          border-radius: 38px;
+          -webkit-mask-image: radial-gradient(circle at var(--mask-center-gap) 50%, transparent 126px, black 126.5px);
+          mask-image: radial-gradient(circle at var(--mask-center-gap) 50%, transparent 126px, black 126.5px);
+        }
+
+        /* 3. Main Background */
+        .card-bg {
+          inset: 8px;
+          background: linear-gradient(145deg, #004D40 0%, #002D24 100%);
+          border-radius: 32px;
+          -webkit-mask-image: radial-gradient(circle at var(--mask-center-bg) 50%, transparent 132px, black 132.5px);
+          mask-image: radial-gradient(circle at var(--mask-center-bg) 50%, transparent 132px, black 132.5px);
+        }
+
+        /* Content Area */
+        .card-content-side {
           position: relative;
           z-index: 2;
+          flex: 1;
+          padding: 40px var(--content-pad-r) 40px var(--content-pad-l);
+          color: #FFFFFF;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
-        /* Typography */
+        /* Photo Area */
+        .card-photo-side {
+          position: absolute;
+          left: var(--photo-pos-l);
+          right: var(--photo-pos-r);
+          top: 50%;
+          transform: translateY(-50%);
+          width: 240px;
+          height: 240px;
+          border-radius: 50%;
+          z-index: 3;
+          overflow: hidden;
+          background-color: #002D24;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .photo-circle-frame {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+
+        .photo-circle-frame img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        /* Text Typography */
         .leader-subtitle {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           color: rgba(255, 255, 255, 0.85);
-          font-weight: 500;
         }
 
         .leader-title {
           font-size: 1.6rem;
           font-weight: 700;
           color: #FFFFFF;
-          margin: 6px 0 12px 0;
+          margin: 4px 0 6px 0;
+        }
+
+        .arabic-txt {
+          font-family: 'Jameel Noori Nastaleeq', serif !important;
+          font-size: 1.3rem !important;
+          opacity: 0.85;
+          font-weight: normal;
         }
 
         .leader-role {
-          font-size: 0.95rem;
-          color: rgba(255, 255, 255, 0.85);
-          margin-bottom: 24px;
-          font-weight: 500;
+          font-size: 0.88rem;
+          color: rgba(255, 255, 255, 0.75);
+          margin-bottom: 16px;
         }
 
         .leader-quote {
-          font-size: 1rem;
-          line-height: 1.6;
+          font-size: 0.95rem;
+          line-height: 1.5;
           color: #FFFFFF;
           font-style: italic;
-          margin: 0 0 16px 0;
-          opacity: 0.95;
+          margin: 0 0 10px 0;
         }
 
         .quote-label {
-          font-size: 0.82rem;
-          color: rgba(255, 255, 255, 0.7);
-          margin-bottom: 24px;
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.6);
+          letter-spacing: 0.8px;
+          margin-bottom: 20px;
           text-transform: uppercase;
-          letter-spacing: 0.5px;
         }
 
-        /* ---------------------------------------------------- */
-        /* ANIMATED CORNER BRACKETS                             */
-        /* ---------------------------------------------------- */
-        .top-bracket {
-          position: absolute;
-          top: 16px;
-          right: 16px;
-          width: 28px;
-          height: 28px;
-          border-top: 2px solid rgba(255, 255, 255, 0.75);
-          border-right: 2px solid rgba(255, 255, 255, 0.75);
-          border-top-right-radius: 18px;
-          animation: bracketPulse 2.5s infinite ease-in-out;
-          pointer-events: none;
-          z-index: 1;
-        }
-
+        /* ========================================== */
+        /* 1. REMOVE CORNER BRACKETS                  */
+        /* ========================================== */
+        .top-bracket,
         .bottom-bracket {
-          position: absolute;
-          bottom: 16px;
-          left: 16px;
-          width: 28px;
-          height: 28px;
-          border-bottom: 2px solid rgba(255, 255, 255, 0.75);
-          border-left: 2px solid rgba(255, 255, 255, 0.75);
-          border-bottom-left-radius: 18px;
-          animation: bracketPulse 2.5s infinite ease-in-out 0.4s;
-          pointer-events: none;
-          z-index: 1;
+          display: none !important; /* Brackets fully removed */
         }
 
-        /* Hover effect: Expand brackets when card is hovered */
-        .leadership-content-card:hover .top-bracket,
-        .leadership-content-card:hover .bottom-bracket {
-          width: 36px;
-          height: 36px;
-          border-color: #FFFFFF;
-          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Continuous pulse keyframes for expanding/shrinking */
-        @keyframes bracketPulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.75;
-          }
-          50% {
-            transform: scale(1.18);
-            opacity: 1;
-          }
-        }
-
-        /* English Mode Alignment: Right Side */
-        .btn-action-wrapper {
-          display: flex;
-          justify-content: flex-end;
+        /* ========================================== */
+        /* 2. ALIGN BUTTON TO RIGHT ON BOTH CARDS     */
+        /* ========================================== */
+        .btn-action-wrapper,
+        .founder-card .btn-action-wrapper,
+        .principal-card .btn-action-wrapper {
+          display: flex !important;
+          justify-content: flex-end !important; /* Button shifted to Right side */
           width: 100%;
-          margin-top: 12px;
+          margin-top: 15px;
         }
 
-        /* Urdu Mode (RTL) Alignment: Left Side */
-        [dir="rtl"] .btn-action-wrapper,
-        .urdu-lang .btn-action-wrapper {
-          justify-content: flex-start !important;
-        }
-
-        /* Base Pill Button Style */
         .orig-read-btn {
           display: inline-flex;
           align-items: center;
-          justify-content: space-between;
           gap: 10px;
           background-color: rgba(255, 255, 255, 0.08);
           color: #FFFFFF !important;
-          padding: 6px 6px 6px 18px;
+          padding: 5px 5px 5px 16px;
           border-radius: 50px;
           text-decoration: none;
-          font-size: 0.88rem;
+          font-size: 0.85rem;
           font-weight: 500;
           border: 1px solid rgba(255, 255, 255, 0.25);
-          transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: all 0.35s ease;
         }
 
-        .orig-read-btn .btn-text {
-          color: #FFFFFF;
-          transition: color 0.35s ease;
-        }
-
-        /* Default Arrow Circle (White Circle + Green Arrow) */
         .orig-read-btn .arrow-circle {
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-shrink: 0;
-          width: 28px;
-          height: 28px;
+          width: 26px;
+          height: 26px;
           background-color: #FFFFFF;
           color: #004D40;
           border-radius: 50%;
+          font-size: 0.88rem;
+          font-weight: bold;
           transition: all 0.35s ease;
         }
 
-        /* ---------------------------------------------------- */
-        /* EXACT COLOR INVERT ON HOVER / TAP                   */
-        /* Green -> White & White -> Green                      */
-        /* ---------------------------------------------------- */
         .orig-read-btn:hover {
           background-color: #FFFFFF !important;
           border-color: #FFFFFF !important;
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
-        /* Text turns Green on hover */
         .orig-read-btn:hover .btn-text {
           color: #004D40 !important;
         }
 
-        /* Circle turns Green & Arrow turns White on hover */
         .orig-read-btn:hover .arrow-circle {
           background-color: #004D40 !important;
           color: #FFFFFF !important;
           transform: rotate(45deg);
         }
 
-        /* In RTL mode, rotate counter-clockwise so the Top-Left arrow (↖) points Left (←) */
         [dir="rtl"] .orig-read-btn:hover .arrow-circle,
         .urdu-lang .orig-read-btn:hover .arrow-circle {
           transform: rotate(-45deg);
         }
 
-        /* Force Nastaleeq font for Arabic/Urdu text snippets in English mode */
-        .arabic-txt {
-            font-family: 'Jameel Noori Nastaleeq', serif !important;
-            font-size: 1.3rem !important; /* Slightly larger to compensate for Nastaleeq's smaller baseline */
+        /* Responsive Adjustments */
+        @media (max-width: 820px) {
+          .custom-integrated-card {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+            margin-top: 80px; /* Space for stacked photo */
+            flex-direction: column;
+            align-items: center;
+          }
+          .card-layer {
+            /* Disable mask for mobile standard stacking */
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+          }
+          .card-content-side {
+            padding-right: 35px !important;
+            padding-left: 35px !important;
+            padding-top: 80px; /* Breathing room under the overlapping photo */
+            text-align: center;
+          }
+          .card-photo-side {
+            position: absolute;
+            right: auto !important;
+            left: auto !important;
+            top: -60px; /* Overlap the top edge */
+            transform: none;
+            width: 160px;
+            height: 160px;
+            /* add a border since mask outline is disabled */
+            border: 4px solid #EFEEF0; 
+          }
+          .btn-action-wrapper {
+            justify-content: center !important;
+          }
+          [dir="rtl"] .btn-action-wrapper,
+          .urdu-lang .btn-action-wrapper {
+            justify-content: center !important;
+          }
         }
 
+        /* ========================================== */
+        /* NEWS & UPDATES SECTION                     */
+        /* ========================================== */
+        .updates-section {
+          background-color: #EFEEF0;
+          padding: 80px 8%;
+          font-family: inherit;
+        }
+
+        .updates-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        /* Section Header Styling */
+        .updates-header {
+          text-align: center;
+          max-width: 750px;
+          margin: 0 auto 40px auto;
+        }
+
+        /* Main Heading Line */
+        .updates-title {
+          font-size: 2.5rem; /* Clean natural size matching 'Introduction to' */
+          line-height: 1.2;
+          margin-bottom: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        /* Style 1: Standard Bold Black ("News &" and "Updates") */
+        .updates-title .bold-text {
+          color: #111111;
+          font-family: inherit; /* Same font as 'Introduction to' */
+          font-weight: 700 !important; /* Reduced from 900 to standard 700 */
+          letter-spacing: -0.3px;
+        }
+
+        /* Style 2: Green Brush Font ("Recent") */
+        .updates-title .green-highlight {
+          color: #006754; /* Your Brand Green Code */
+          font-family: 'Caveat', cursive, sans-serif;
+          font-weight: 700;
+          font-size: 2.8rem; /* Balanced size matching 'Madrassa' */
+          display: inline-block;
+        }
+
+        .updates-subtitle {
+          font-size: 0.98rem;
+          color: #666666;
+          line-height: 1.6;
+        }
+
+        /* 3 Column Grid Layout */
+        .updates-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+        }
+
+        /* Single News Card Structure */
+        .news-card {
+          position: relative;
+          border-radius: 24px;
+          overflow: hidden;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .news-card:hover {
+          transform: translateY(-8px);
+        }
+
+        /* Image Container */
+        .news-img-wrapper {
+          width: 100%;
+          height: 240px;
+          border-radius: 24px 24px 0 0;
+          overflow: hidden;
+          background-color: #DDD;
+        }
+
+        .news-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-img-wrapper img {
+          transform: scale(1.06);
+        }
+
+        /* Overlapping Floating Content Box */
+        .news-card-content {
+          background-color: #FFFFFF;
+          margin: -40px 18px 10px 18px; /* Negative margin creates the overlap effect */
+          padding: 24px;
+          border-radius: 20px;
+          position: relative;
+          z-index: 2;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Meta Info: Date Badge & Author */
+        .news-meta {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 14px;
+          font-size: 0.8rem;
+        }
+
+        .news-date-badge {
+          background-color: #006754; /* Brand Dark Green */
+          color: #FFFFFF;
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-weight: 700;
+          font-size: 0.75rem;
+        }
+
+        .news-author {
+          color: #777777;
+          font-weight: 500;
+        }
+
+        /* Heading & Excerpt */
+        .news-heading {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #1A1A1A;
+          line-height: 1.4;
+          margin-bottom: 10px;
+        }
+
+        .news-excerpt {
+          font-size: 0.88rem;
+          color: #666666;
+          line-height: 1.5;
+          margin-bottom: 18px;
+        }
+
+        /* Read More Link */
+        .news-read-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #006754;
+          font-weight: 700;
+          font-size: 0.82rem;
+          text-decoration: none;
+          letter-spacing: 0.5px;
+          transition: color 0.3s ease;
+        }
+
+        .news-read-link span {
+          transition: transform 0.3s ease;
+        }
+
+        .news-read-link:hover {
+          color: #158467;
+        }
+
+        .news-read-link:hover span {
+          transform: translateX(4px);
+        }
+
+        /* Bottom Center CTA Button */
+        .updates-bottom-cta {
+          text-align: center;
+          margin-top: 50px;
+        }
+
+        .view-all-updates-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          background-color: #006754;
+          color: #FFFFFF;
+          padding: 12px 28px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.95rem;
+          box-shadow: 0 8px 20px rgba(0, 103, 84, 0.25);
+          transition: all 0.35s ease;
+        }
+
+        .cta-arrow {
+          background-color: #FFFFFF;
+          color: #006754;
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.85rem;
+          font-weight: bold;
+          transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+        }
+
+        .view-all-updates-btn:hover {
+          background-color: #158467;
+          transform: translateY(-3px);
+          box-shadow: 0 12px 25px rgba(0, 103, 84, 0.35);
+        }
+
+        .view-all-updates-btn:hover .cta-arrow {
+          transform: rotate(45deg);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+          .updates-section {
+            padding: 50px 20px;
+          }
+
+          .updates-title {
+            font-size: 2rem;
+            gap: 6px;
+          }
+          .updates-title .green-highlight {
+            font-size: 2.3rem;
+          }
+
+          .news-card-content {
+            margin: -30px 12px 10px 12px;
+            padding: 20px;
+          }
+        }
     </style>
 </head>
 <body>
@@ -2967,107 +3322,106 @@
         </div>
 
         <!-- Leadership Preview Section -->
-        <div class="leadership-preview-section" id="leadership">
-        <div class="leadership-header">
-            <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>">
-                Leadership &amp; <span class="highlight-font">Founders</span>
-            </h2>
-            <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات">
-                Key figures dedicated to the service of Quran and Sunnah
-            </p>
-        </div>
+        <!-- ========================================== -->
+        <!-- INTEGRATED CURVED CARD & CIRCLE PHOTO      -->
+        <!-- ========================================== -->
+        <section class="leadership-section" id="leadership">
+          <div class="leadership-header" style="text-align: center; margin-bottom: 40px;">
+              <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
+                  Leadership &amp; <span class="highlight-font">Founders</span>
+              </h2>
+              <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات" style="font-size: 1.1rem; color: #666666;">
+                  Key figures dedicated to the service of Quran and Sunnah
+              </p>
+          </div>
+          <div class="leadership-container">
 
-        <div class="editorial-layout">
-            <!-- Top Section: Founder -->
-            <div class="editorial-row">
-                <div class="editorial-image-wrapper">
-                    <img src="assets/founder.jpeg" alt="Founder" class="editorial-img-placeholder" style="padding: 0; border: none;">
+            <!-- 1. FOUNDER CARD -->
+            <div class="custom-integrated-card founder-card">
+              
+              <!-- Layers for shape masking -->
+              <div class="card-layer card-outline"></div>
+              <div class="card-layer card-gap"></div>
+              <div class="card-layer card-bg"></div>
+
+              <!-- Content Area -->
+              <div class="card-content-side">
+                <span class="leader-subtitle" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
+                <h3 class="leader-title">
+                  <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
+                </h3>
+                <p class="leader-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</p>
+
+                <blockquote class="leader-quote" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
+                  “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
+                </blockquote>
+
+                <p class="quote-label" data-en="MOTTO OF THE FOUNDER" data-ur="بانی کا نصب العین">MOTTO OF THE FOUNDER</p>
+
+                <div class="btn-action-wrapper">
+                  <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
+                    <span class="btn-text">Read Full Introduction</span>
+                    <span class="arrow-circle">↗</span>
+                  </a>
                 </div>
-                <div class="leadership-content-card">
-                  <div class="card-inner">
-                    <span class="leader-subtitle" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                    <h3 class="leader-title">
-                      <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
-                    </h3>
-                    <p class="leader-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">
-                      Founder of the Institution
-                    </p>
 
-                    <blockquote class="leader-quote" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
-                      “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
-                    </blockquote>
+                <!-- Animated Brackets -->
+                <div class="top-bracket"></div>
+                <div class="bottom-bracket"></div>
+              </div>
 
-                    <p class="quote-label" data-en="Motto of the Founder" data-ur="بانی کا نصب العین">
-                      Motto of the Founder
-                    </p>
-
-                    <!-- Button Alignment Wrapper -->
-                    <div class="btn-action-wrapper">
-                      <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='17' y1='17' x2='7' y2='7'></line><polyline points='17 7 7 7 7 17'></polyline></svg></span>">
-                        <span class="btn-text">Read Full Introduction</span>
-                        <span class="arrow-circle">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- Animated Brackets -->
-                  <div class="top-bracket"></div>
-                  <div class="bottom-bracket"></div>
+              <!-- Integrated Circular Photo Frame -->
+              <div class="card-photo-side">
+                <div class="photo-circle-frame">
+                  <img src="assets/founder.jpeg" alt="Hazrat Maulana Mufti Riaz Mahmood" />
                 </div>
+              </div>
+
             </div>
 
-            <!-- Bottom Section: Principal -->
-            <div class="editorial-row reverse">
-                <div class="editorial-image-wrapper">
-                    <div class="editorial-img-placeholder">
-                        [Principal Image Placeholder]
-                    </div>
+            <!-- 2. PRINCIPAL CARD -->
+            <div class="custom-integrated-card principal-card">
+              
+              <!-- Layers for shape masking -->
+              <div class="card-layer card-outline"></div>
+              <div class="card-layer card-gap"></div>
+              <div class="card-layer card-bg"></div>
+
+              <!-- Content Area -->
+              <div class="card-content-side">
+                <span class="leader-subtitle" data-en="Mufti" data-ur="مفتی">Mufti</span>
+                <h3 class="leader-title" data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</h3>
+                <p class="leader-role" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">Principal of the Institution</p>
+
+                <blockquote class="leader-quote" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
+                  “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
+                </blockquote>
+
+                <p class="quote-label" data-en="MESSAGE OF THE PRINCIPAL" data-ur="مہتمم کا پیغام">MESSAGE OF THE PRINCIPAL</p>
+
+                <div class="btn-action-wrapper">
+                  <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
+                    <span class="btn-text">Read Full Introduction</span>
+                    <span class="arrow-circle">↗</span>
+                  </a>
                 </div>
-                <div class="leadership-content-card" style="margin-top: 24px;">
-                  <div class="card-inner">
-                    <span class="leader-subtitle" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                    <h3 class="leader-title" data-en="Aamir Mahmood" data-ur="عامر محمود">
-                      Aamir Mahmood
-                    </h3>
-                    <p class="leader-role" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">
-                      Principal of the Institution
-                    </p>
 
-                    <blockquote class="leader-quote" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
-                      “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
-                    </blockquote>
+                <!-- Animated Brackets -->
+                <div class="top-bracket"></div>
+                <div class="bottom-bracket"></div>
+              </div>
 
-                    <p class="quote-label" data-en="Message of the Principal" data-ur="مہتمم کا پیغام">
-                      Message of the Principal
-                    </p>
-
-                    <!-- Button Alignment Wrapper -->
-                    <div class="btn-action-wrapper">
-                      <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='17' y1='17' x2='7' y2='7'></line><polyline points='17 7 7 7 7 17'></polyline></svg></span>">
-                        <span class="btn-text">Read Full Introduction</span>
-                        <span class="arrow-circle">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                          </svg>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!-- Animated Brackets -->
-                  <div class="top-bracket"></div>
-                  <div class="bottom-bracket"></div>
+              <!-- Integrated Circular Photo Frame -->
+              <div class="card-photo-side">
+                <div class="photo-circle-frame">
+                  <img src="assets/principal.jpeg" alt="Mufti Aamir Mahmood" />
                 </div>
+              </div>
+
             </div>
 
-        </div>
-    </section>
+          </div>
+        </section>
 
     <!-- Arc Stats Section -->
     <section class="donut-infographic-section">
@@ -3331,6 +3685,86 @@
               stroke-linecap="round"/>
     </svg>
 </div>
+
+<!-- ========================================== -->
+<!-- NEWS & UPDATES SECTION                     -->
+<!-- ========================================== -->
+<section class="updates-section">
+  <div class="updates-container">
+    
+    <!-- Section Header -->
+    <div class="updates-header">
+      <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='green-highlight'>Recent</span> <span class='bold-text'>Updates</span>" data-ur="<span class='bold-text'>خبریں اور</span> <span class='green-highlight'>حالیہ</span> <span class='bold-text'>اپڈیٹس</span>">
+        <span class="bold-text">News &amp;</span>
+        <span class="green-highlight">Recent</span>
+        <span class="bold-text">Updates</span>
+      </h2>
+      <p class="updates-subtitle" data-en="Stay informed with the latest announcements, events, and educational insights from our institute." data-ur="ہمارے ادارے کی تازہ ترین اعلانات، تقریبات، اور تعلیمی معلومات سے باخبر رہیں۔">Stay informed with the latest announcements, events, and educational insights from our institute.</p>
+    </div>
+
+    <!-- 3 News Cards Grid -->
+    <div class="updates-grid">
+      
+      <!-- Card 1 -->
+      <article class="news-card">
+        <div class="news-img-wrapper">
+          <img src="images/news-1.jpg" alt="Annual Prize Distribution" />
+        </div>
+        <div class="news-card-content">
+          <div class="news-meta">
+            <span class="news-date-badge">15 AUG, 2026</span>
+            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+          </div>
+          <h3 class="news-heading" data-en="Annual Prize Distribution Ceremony Announced" data-ur="سالانہ تقسیمِ انعامات کی تقریب کا اعلان">Annual Prize Distribution Ceremony Announced</h3>
+          <p class="news-excerpt" data-en="Join us as we honor our top-performing students in Hifz and Tajweed for this academic year." data-ur="اس تعلیمی سال حفظ اور تجوید میں بہترین کارکردگی دکھانے والے طلباء کی حوصلہ افزائی میں ہمارے ساتھ شامل ہوں۔">Join us as we honor our top-performing students in Hifz and Tajweed for this academic year.</p>
+          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="news-card">
+        <div class="news-img-wrapper">
+          <img src="images/news-2.jpg" alt="Admissions Open" />
+        </div>
+        <div class="news-card-content">
+          <div class="news-meta">
+            <span class="news-date-badge">10 AUG, 2026</span>
+            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+          </div>
+          <h3 class="news-heading" data-en="New Batch Admissions for Online Tajweed Course" data-ur="آن لائن تجوید کورس کے نئے بیچ کے لیے داخلے جاری ہیں">New Batch Admissions for Online Tajweed Course</h3>
+          <p class="news-excerpt" data-en="Applications are now live for our flexible evening Tajweed and Islamic studies program." data-ur="ہمارے شام کے لچکدار تجوید اور اسلامیات پروگرام کے لیے اب درخواستیں وصول کی جا رہی ہیں۔">Applications are now live for our flexible evening Tajweed and Islamic studies program.</p>
+          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="news-card">
+        <div class="news-img-wrapper">
+          <img src="images/news-3.jpg" alt="Teacher Workshop" />
+        </div>
+        <div class="news-card-content">
+          <div class="news-meta">
+            <span class="news-date-badge">01 AUG, 2026</span>
+            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+          </div>
+          <h3 class="news-heading" data-en="Special Workshop on Modern Pedagogical Quran Teaching" data-ur="جدید تعلیمی اصولوں کے تحت قرآن پڑھانے پر خصوصی ورکشاپ">Special Workshop on Modern Pedagogical Quran Teaching</h3>
+          <p class="news-excerpt" data-en="Our faculty attended a 3-day training session to implement interactive teaching methodologies." data-ur="ہمارے اساتذہ نے جدید اور موثر تدریسی طریقوں کو اپنانے کے لیے تین روزہ تربیتی سیشن میں شرکت کی۔">Our faculty attended a 3-day training session to implement interactive teaching methodologies.</p>
+          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom Center "View All Updates" Button -->
+    <div class="updates-bottom-cta">
+      <a href="updates.html" class="view-all-updates-btn" data-en="<span>View All News & Updates</span><span class='cta-arrow'>↗</span>" data-ur="<span>تمام خبریں اور اپڈیٹس دیکھیں</span><span class='cta-arrow'>↗</span>">
+        <span>View All News & Updates</span>
+        <span class="cta-arrow">↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
 
 <!-- Interactive Script for Mobile Tap -->
 <script>
