@@ -10,6 +10,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
         @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
 
         :root {
             --header-bg: #025F55;
@@ -2572,7 +2573,7 @@
         /* INTEGRATED CURVED CARD & CIRCLE PHOTO CSS  */
         /* ========================================== */
         /* ========================================== */
-        /* INTEGRATED CURVED CARD & CIRCLE PHOTO CSS  */
+        /* MINIMALIST FOUNDER QUOTE SECTION           */
         /* ========================================== */
         .leadership-section {
           background-color: #EFEEF0;
@@ -2580,319 +2581,220 @@
         }
 
         .leadership-container {
-          max-width: 1100px;
+          max-width: 1000px;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
           gap: 45px;
         }
 
-        /* ---------------------------------------------------- */
-        /* MASK IMAGE APPROACH FOR PERFECT CONCAVE CUTOUTS      */
-        /* ---------------------------------------------------- */
-        
-        /* Base variables default to Principal Card style (Photo Right) */
-        .custom-integrated-card {
-          --card-margin-l: 0px;
-          --card-margin-r: 120px;
-          --mask-center-outline: 100%;
-          --mask-center-gap: calc(100% + 2px);
-          --mask-center-bg: calc(100% + 8px);
-          --photo-pos-l: auto;
-          --photo-pos-r: -120px;
-          --content-pad-l: 45px;
-          --content-pad-r: 140px;
-          --bracket-pos-l: 24px;
-          --bracket-pos-r: auto;
-          --btn-justify: flex-end;
-          
+        /* SIDE-BY-SIDE + VERTICAL MID ALIGNMENT */
+        .founder-quote-layout {
+          display: flex;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: center;
+          gap: 35px;
+          width: 100%;
+        }
+
+        /* RTL (Urdu) Support */
+        [dir="rtl"] .founder-quote-layout,
+        .urdu-lang .founder-quote-layout {
+          flex-direction: row-reverse !important;
+        }
+
+        /* Image Column */
+        .quote-image-column {
+          flex: 0 0 250px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        /* Wrapper isolated for photo only */
+        .image-with-backdrop-wrapper {
           position: relative;
           display: flex;
-          align-items: stretch;
-          margin-bottom: 20px;
-          margin-left: var(--card-margin-l);
-          margin-right: var(--card-margin-r);
+          justify-content: center;
+          align-items: center;
+          width: 190px;
+          height: 220px;
+          margin-bottom: 12px;
         }
 
-        /* 1. FOUNDER CARD: Photo Left (English) */
-        .founder-card {
-          --card-margin-l: 120px;
-          --card-margin-r: 0px;
-          --mask-center-outline: 0%;
-          --mask-center-gap: -2px;
-          --mask-center-bg: -8px;
-          --photo-pos-l: -120px;
-          --photo-pos-r: auto;
-          --content-pad-l: 140px;
-          --content-pad-r: 45px;
-          --bracket-pos-l: auto;
-          --bracket-pos-r: 24px;
-          --btn-justify: flex-start;
-        }
-
-        /* 2. PRINCIPAL CARD: Photo Right (English) */
-        /* (Uses base defaults) */
-        .principal-card {}
-
-        /* ========================================== */
-        /* RTL (URDU) AUTO-MIRRORING                  */
-        /* ========================================== */
-        [dir="rtl"] .founder-card,
-        .urdu-lang .founder-card {
-          /* Swap Founder to Photo Right in Urdu */
-          --card-margin-l: 0px;
-          --card-margin-r: 120px;
-          --mask-center-outline: 100%;
-          --mask-center-gap: calc(100% + 2px);
-          --mask-center-bg: calc(100% + 8px);
-          --photo-pos-l: auto;
-          --photo-pos-r: -120px;
-          --content-pad-l: 45px;
-          --content-pad-r: 140px;
-          --bracket-pos-l: 24px;
-          --bracket-pos-r: auto;
-          --btn-justify: flex-end; /* physical left in RTL */
-        }
-
-        [dir="rtl"] .principal-card,
-        .urdu-lang .principal-card {
-          /* Swap Principal to Photo Left in Urdu */
-          --card-margin-l: 120px;
-          --card-margin-r: 0px;
-          --mask-center-outline: 0%;
-          --mask-center-gap: -2px;
-          --mask-center-bg: -8px;
-          --photo-pos-l: -120px;
-          --photo-pos-r: auto;
-          --content-pad-l: 140px;
-          --content-pad-r: 45px;
-          --bracket-pos-l: auto;
-          --bracket-pos-r: 24px;
-          --btn-justify: flex-start; /* physical right in RTL */
-        }
-
-        .card-layer {
+        .image-accent-backdrop {
           position: absolute;
-          border-radius: 40px;
-          pointer-events: none;
+          width: 170px;
+          height: 195px;
+          background: linear-gradient(135deg, rgba(0, 103, 84, 0.18) 0%, rgba(2, 95, 85, 0.28) 100%);
+          border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+          z-index: 1;
         }
 
-        /* 1. Outline (2px brown) */
-        .card-outline {
-          inset: 0;
-          background-color: #004D40;
-          -webkit-mask-image: radial-gradient(circle at var(--mask-center-outline) 50%, transparent 124px, black 124.5px);
-          mask-image: radial-gradient(circle at var(--mask-center-outline) 50%, transparent 124px, black 124.5px);
-        }
-
-        /* 2. Gap (6px white space inside the border) */
-        .card-gap {
-          inset: 2px;
-          background-color: #EFEEF0; /* Matches page background */
-          border-radius: 38px;
-          -webkit-mask-image: radial-gradient(circle at var(--mask-center-gap) 50%, transparent 126px, black 126.5px);
-          mask-image: radial-gradient(circle at var(--mask-center-gap) 50%, transparent 126px, black 126.5px);
-        }
-
-        /* 3. Main Background */
-        .card-bg {
-          inset: 8px;
-          background: linear-gradient(145deg, #004D40 0%, #002D24 100%);
-          border-radius: 32px;
-          -webkit-mask-image: radial-gradient(circle at var(--mask-center-bg) 50%, transparent 132px, black 132.5px);
-          mask-image: radial-gradient(circle at var(--mask-center-bg) 50%, transparent 132px, black 132.5px);
-        }
-
-        /* Content Area */
-        .card-content-side {
+        .cutout-portrait-img {
           position: relative;
           z-index: 2;
-          flex: 1;
-          padding: 40px var(--content-pad-r) 40px var(--content-pad-l);
-          color: #FFFFFF;
+          max-width: 180px;
+          height: auto;
+          max-height: 220px;
+          object-fit: contain;
+          border: none !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+        }
+
+        /* Text Meta Container Positioned Below Image */
+        .founder-author-meta {
+          position: relative;
+          z-index: 3;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .honorific-title {
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: #444444;
+          margin-bottom: 2px;
+        }
+
+        .author-name {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #006754;
+          margin: 0 0 3px 0;
+          line-height: 1.2;
+          white-space: nowrap;
+        }
+
+        .nastaliq-sub {
+          font-family: 'Noto Nastaliq Urdu', 'Almarai', serif;
+          font-size: 1rem;
+          font-weight: normal;
+          color: #555555;
+          margin-left: 2px;
+          display: inline-block;
+        }
+
+        .author-title {
+          font-size: 0.85rem;
+          color: #666666;
+          margin: 0;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        /* Quote Box Column - Controlled Max Width for 3 Lines */
+        .quote-text-column {
+          flex: 0 1 480px; /* Restricts width so text flows into 3 clean lines */
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
-        /* Photo Area */
-        .card-photo-side {
-          position: absolute;
-          left: var(--photo-pos-l);
-          right: var(--photo-pos-r);
-          top: 50%;
-          transform: translateY(-50%);
-          width: 240px;
-          height: 240px;
-          border-radius: 50%;
-          z-index: 3;
-          overflow: hidden;
-          background-color: #002D24;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .photo-circle-frame {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          overflow: hidden;
-        }
-
-        .photo-circle-frame img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        /* Text Typography */
-        .leader-subtitle {
-          font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.85);
-        }
-
-        .leader-title {
-          font-size: 1.6rem;
-          font-weight: 700;
-          color: #FFFFFF;
-          margin: 4px 0 6px 0;
-        }
-
-        .arabic-txt {
-          font-family: 'Jameel Noori Nastaleeq', serif !important;
-          font-size: 1.3rem !important;
-          opacity: 0.85;
-          font-weight: normal;
-        }
-
-        .leader-role {
-          font-size: 0.88rem;
-          color: rgba(255, 255, 255, 0.75);
-          margin-bottom: 16px;
-        }
-
-        .leader-quote {
-          font-size: 0.95rem;
-          line-height: 1.5;
-          color: #FFFFFF;
-          font-style: italic;
-          margin: 0 0 10px 0;
-        }
-
-        .quote-label {
-          font-size: 0.75rem;
-          color: rgba(255, 255, 255, 0.6);
-          letter-spacing: 0.8px;
-          margin-bottom: 20px;
-          text-transform: uppercase;
-        }
-
-        /* ========================================== */
-        /* 1. REMOVE CORNER BRACKETS                  */
-        /* ========================================== */
-        .top-bracket,
-        .bottom-bracket {
-          display: none !important; /* Brackets fully removed */
-        }
-
-        /* ========================================== */
-        /* 2. ALIGN BUTTON TO RIGHT ON BOTH CARDS     */
-        /* ========================================== */
-        .btn-action-wrapper,
-        .founder-card .btn-action-wrapper,
-        .principal-card .btn-action-wrapper {
-          display: flex !important;
-          justify-content: flex-end !important; /* Button shifted to Right side */
-          width: 100%;
-          margin-top: 15px;
-        }
-
-        .orig-read-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background-color: rgba(255, 255, 255, 0.08);
-          color: #FFFFFF !important;
-          padding: 5px 5px 5px 16px;
-          border-radius: 50px;
-          text-decoration: none;
-          font-size: 0.85rem;
-          font-weight: 500;
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          transition: all 0.35s ease;
-        }
-
-        .orig-read-btn .arrow-circle {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 26px;
-          height: 26px;
+        .quote-bordered-box {
+          position: relative;
+          border: 2px solid #006754;
+          border-radius: 20px;
+          padding: 24px 28px 20px 28px;
           background-color: #FFFFFF;
-          color: #004D40;
-          border-radius: 50%;
-          font-size: 0.88rem;
-          font-weight: bold;
-          transition: all 0.35s ease;
+          box-shadow: 0 8px 20px rgba(0, 103, 84, 0.05);
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
 
-        .orig-read-btn:hover {
-          background-color: #FFFFFF !important;
-          border-color: #FFFFFF !important;
-          transform: translateY(-2px);
+
+        .founder-motto-text {
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: #222222;
+          line-height: 1.6;
+          margin: 0 0 12px 0;
+          font-style: italic;
         }
 
-        .orig-read-btn:hover .btn-text {
-          color: #004D40 !important;
-        }
-
-        .orig-read-btn:hover .arrow-circle {
-          background-color: #004D40 !important;
-          color: #FFFFFF !important;
-          transform: rotate(45deg);
-        }
-
-        [dir="rtl"] .orig-read-btn:hover .arrow-circle,
-        .urdu-lang .orig-read-btn:hover .arrow-circle {
-          transform: rotate(-45deg);
+        /* MINI HEADER TAG - BOTTOM RIGHT CORNER */
+        .card-mini-tag.bottom-right-tag {
+          display: block;
+          text-align: right;
+          font-size: 0.72rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: #006754;
+          opacity: 0.9;
+          margin-top: auto;
         }
 
         /* Responsive Adjustments */
-        @media (max-width: 820px) {
-          .custom-integrated-card {
-            margin-right: 0 !important;
-            margin-left: 0 !important;
-            margin-top: 80px; /* Space for stacked photo */
-            flex-direction: column;
-            align-items: center;
+        @media (max-width: 768px) {
+          .leadership-section {
+            padding: 30px 3%;
           }
-          .card-layer {
-            /* Disable mask for mobile standard stacking */
-            -webkit-mask-image: none !important;
-            mask-image: none !important;
+
+          .founder-quote-layout,
+          .founder-quote-layout.principal-layout {
+            gap: 12px !important;
           }
-          .card-content-side {
-            padding-right: 35px !important;
-            padding-left: 35px !important;
-            padding-top: 80px; /* Breathing room under the overlapping photo */
-            text-align: center;
+
+          .quote-image-column {
+            flex: 0 0 135px !important;
           }
-          .card-photo-side {
-            position: absolute;
-            right: auto !important;
-            left: auto !important;
-            top: -60px; /* Overlap the top edge */
-            transform: none;
-            width: 160px;
-            height: 160px;
-            /* add a border since mask outline is disabled */
-            border: 4px solid #EFEEF0; 
+
+          .image-with-backdrop-wrapper {
+            width: 120px;
+            height: 150px;
+            margin-bottom: 8px;
           }
-          .btn-action-wrapper {
-            justify-content: center !important;
+
+          .quote-text-column {
+            flex: 1;
           }
-          [dir="rtl"] .btn-action-wrapper,
-          .urdu-lang .btn-action-wrapper {
-            justify-content: center !important;
+
+          .image-accent-backdrop {
+            width: 110px;
+            height: 130px;
+          }
+
+          .cutout-portrait-img {
+            max-width: 115px;
+            max-height: 145px;
+          }
+
+          .honorific-title { font-size: 0.68rem; }
+          .author-name { font-size: 0.9rem; }
+          .nastaliq-sub { font-size: 0.78rem; }
+          .author-title { font-size: 0.7rem; }
+
+          .quote-bordered-box {
+            padding: 16px 14px 14px 14px;
+            border-radius: 14px;
+            border-width: 1.5px;
+            margin-top: 0;
+            text-align: left;
+          }
+
+          /* RTL alignment inside quote box for mobile */
+          [dir="rtl"] .quote-bordered-box,
+          .urdu-lang .quote-bordered-box {
+            text-align: right;
+          }
+
+          .card-mini-tag.bottom-right-tag {
+            font-size: 0.6rem;
+          }
+
+          .founder-motto-text {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            margin-bottom: 8px;
           }
         }
 
@@ -3336,85 +3238,71 @@
           </div>
           <div class="leadership-container">
 
-            <!-- 1. FOUNDER CARD -->
-            <div class="custom-integrated-card founder-card">
+            <!-- 1. FOUNDER SECTION (IMAGE LEFT | TEXT RIGHT) -->
+            <div class="founder-quote-layout">
               
-              <!-- Layers for shape masking -->
-              <div class="card-layer card-outline"></div>
-              <div class="card-layer card-gap"></div>
-              <div class="card-layer card-bg"></div>
-
-              <!-- Content Area -->
-              <div class="card-content-side">
-                <span class="leader-subtitle" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                <h3 class="leader-title">
-                  <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="arabic-txt" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
-                </h3>
-                <p class="leader-role" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</p>
-
-                <blockquote class="leader-quote" data-en="“ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”" data-ur="“ قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔ ”">
-                  “ Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter. ”
-                </blockquote>
-
-                <p class="quote-label" data-en="MOTTO OF THE FOUNDER" data-ur="بانی کا نصب العین">MOTTO OF THE FOUNDER</p>
-
-                <div class="btn-action-wrapper">
-                  <a href="about.html#founder" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
-                    <span class="btn-text">Read Full Introduction</span>
-                    <span class="arrow-circle">↗</span>
-                  </a>
+              <!-- LEFT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
+              <div class="quote-image-column">
+                <div class="image-with-backdrop-wrapper">
+                  <div class="image-accent-backdrop"></div>
+                  <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="cutout-portrait-img" />
                 </div>
-
-                <!-- Animated Brackets -->
-                <div class="top-bracket"></div>
-                <div class="bottom-bracket"></div>
-              </div>
-
-              <!-- Integrated Circular Photo Frame -->
-              <div class="card-photo-side">
-                <div class="photo-circle-frame">
-                  <img src="assets/founder.jpeg" alt="Hazrat Maulana Mufti Riaz Mahmood" />
+                
+                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
+                <div class="founder-author-meta">
+                  <span class="honorific-title" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
+                  <h3 class="author-name">
+                    <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> 
+                    <span class="nastaliq-sub" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
+                  </h3>
+                  <p class="author-title" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</p>
                 </div>
               </div>
 
+              <!-- RIGHT COLUMN: QUOTE BOX ONLY -->
+              <div class="quote-text-column">
+                <!-- Outer Rounded Border Box with Quotation Marks -->
+                <div class="quote-bordered-box">
+                  <p class="founder-motto-text" data-en="“Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”" data-ur="“قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔”">
+                    “Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”
+                  </p>
+                  
+                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
+                  <span class="card-mini-tag bottom-right-tag" data-en="Motto of the Founder" data-ur="بانی کا پیغام">Motto of the Founder</span>
+                </div>
+              </div>
             </div>
 
-            <!-- 2. PRINCIPAL CARD -->
-            <div class="custom-integrated-card principal-card">
+            <!-- 2. PRINCIPAL SECTION (TEXT LEFT | IMAGE RIGHT) -->
+            <div class="founder-quote-layout principal-layout">
               
-              <!-- Layers for shape masking -->
-              <div class="card-layer card-outline"></div>
-              <div class="card-layer card-gap"></div>
-              <div class="card-layer card-bg"></div>
-
-              <!-- Content Area -->
-              <div class="card-content-side">
-                <span class="leader-subtitle" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                <h3 class="leader-title" data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</h3>
-                <p class="leader-role" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">Principal of the Institution</p>
-
-                <blockquote class="leader-quote" data-en="“ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”" data-ur="“ ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔ ”">
-                  “ Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character. ”
-                </blockquote>
-
-                <p class="quote-label" data-en="MESSAGE OF THE PRINCIPAL" data-ur="مہتمم کا پیغام">MESSAGE OF THE PRINCIPAL</p>
-
-                <div class="btn-action-wrapper">
-                  <a href="about.html#principal" class="orig-read-btn" data-en="<span class='btn-text'>Read Full Introduction</span> <span class='arrow-circle'>↗</span>" data-ur="<span class='btn-text'>مکمل تعارف پڑھیے</span> <span class='arrow-circle'>↖</span>">
-                    <span class="btn-text">Read Full Introduction</span>
-                    <span class="arrow-circle">↗</span>
-                  </a>
+              <!-- LEFT COLUMN: QUOTE BOX ONLY -->
+              <div class="quote-text-column">
+                <!-- Outer Rounded Border Box with Quotation Marks -->
+                <div class="quote-bordered-box">
+                  <p class="founder-motto-text" data-en="“Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”" data-ur="“ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔”">
+                    “Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”
+                  </p>
+                  
+                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
+                  <span class="card-mini-tag bottom-right-tag" data-en="Message from the Principal" data-ur="مہتمم کا پیغام">Message from the Principal</span>
                 </div>
-
-                <!-- Animated Brackets -->
-                <div class="top-bracket"></div>
-                <div class="bottom-bracket"></div>
               </div>
 
-              <!-- Integrated Circular Photo Frame -->
-              <div class="card-photo-side">
-                <div class="photo-circle-frame">
-                  <img src="assets/principal.jpeg" alt="Mufti Aamir Mahmood" />
+              <!-- RIGHT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
+              <div class="quote-image-column">
+                <div class="image-with-backdrop-wrapper">
+                  <div class="image-accent-backdrop"></div>
+                  <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="cutout-portrait-img" />
+                </div>
+
+                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
+                <div class="founder-author-meta">
+                  <span class="honorific-title" data-en="Mufti" data-ur="مفتی">Mufti</span>
+                  <h3 class="author-name">
+                    <span data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</span> 
+                  </h3>
+                  <p class="author-title" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">Principal of the Institution</p>
                 </div>
               </div>
 
