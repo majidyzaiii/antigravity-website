@@ -1855,7 +1855,9 @@
             line-height: 2.2;
         }
 
-        html[dir="rtl"] .highlight-font, html[lang="ur"] .highlight-font {
+        html[dir="rtl"] body span.highlight-font, html[lang="ur"] body span.highlight-font,
+        html[dir="rtl"] body span.title-part-2, html[lang="ur"] body span.title-part-2,
+        html[dir="rtl"] body span.green-highlight, html[lang="ur"] body span.green-highlight {
             font-family: 'Aref Ruqaa', 'Amiri', serif !important;
             font-size: 1.3em !important;
             margin: 0 6px !important;
@@ -3063,8 +3065,8 @@
         .mobile-drawer-menu {
           position: fixed;
           top: 0;
-          left: -320px;
-          width: 300px;
+          left: -220px;
+          width: 200px;
           height: 100vh;
           background-color: #FFFFFF;
           z-index: 9999;
@@ -3146,11 +3148,11 @@
         /* BOTTOM GREEN CARD */
         .drawer-bottom-card {
           background-color: #006754;
-          border-radius: 20px;
-          padding: 22px 16px 18px 16px;
+          border-radius: 16px;
+          padding: 12px 10px 12px 10px;
           color: #FFFFFF;
           box-shadow: 0 10px 20px rgba(0, 103, 84, 0.25);
-          margin-top: 10px;
+          margin-top: 6px;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -3165,29 +3167,29 @@
           justify-content: center;
           align-items: center;
           gap: 2px;
-          margin-bottom: 12px;
+          margin-bottom: 8px;
         }
 
         .main-drawer-logo {
-          width: 115px;
-          height: 115px;
+          width: 60px;
+          height: 60px;
           object-fit: contain;
           filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
 
         .brand-title-img {
-          max-width: 190px;
+          max-width: 130px;
           height: auto;
           object-fit: contain;
         }
 
         /* DESCRIPTION & BUTTON STYLING */
         .card-description {
-          font-size: 0.8rem;
-          line-height: 1.45;
+          font-size: 0.65rem;
+          line-height: 1.4;
           color: #FFFFFF;
           opacity: 0.95;
-          margin: 0 0 16px 0;
+          margin: 0 0 10px 0;
           font-weight: 500;
         }
 
@@ -3198,10 +3200,10 @@
           width: 100%;
           background-color: #FFFFFF;
           color: #006754;
-          padding: 12px 0;
-          border-radius: 14px;
+          padding: 8px 0;
+          border-radius: 10px;
           font-weight: 700;
-          font-size: 0.92rem;
+          font-size: 0.8rem;
           text-decoration: none;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           transition: transform 0.2s;
@@ -3214,8 +3216,18 @@
         .drawer-social-links {
           display: flex;
           justify-content: center;
-          gap: 12px;
-          margin-top: 16px;
+          gap: 6px;
+          margin-top: 10px;
+        }
+        
+        .drawer-social-links .social-btn {
+          width: 26px;
+          height: 26px;
+        }
+        
+        .drawer-social-links .social-btn svg {
+          width: 13px;
+          height: 13px;
         }
 
         /* LANGUAGE TOGGLING RULES */
@@ -3224,7 +3236,7 @@
 
         /* RTL / URDU MODE ENFORCEMENT */
         [dir="rtl"] .mobile-drawer-menu, body.rtl .mobile-drawer-menu {
-          left: auto; right: -320px;
+          left: auto; right: -220px;
           transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
           text-align: right;
         }
