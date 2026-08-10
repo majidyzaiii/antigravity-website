@@ -3315,130 +3315,62 @@
         }
         .donation-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 30px;
-          padding: 50px 20px 60px 20px;
-          background-color: #F2F3F5;
         }
-
-        @media (max-width: 1024px) {
-            .donation-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 600px) {
-            .donation-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .donation-info-card {
-          position: relative;
-          z-index: 1;
-          /* Center on mobile & add space for badge */
-          margin: 0 auto 40px auto;
-          /* Constrain width so it maintains tall aspect ratio on all screens */
-          max-width: 290px;
-          width: 100%;
-          text-decoration: none;
-          display: block;
-          transition: transform 0.3s ease;
-        }
-        
-        .donation-info-card:hover {
-          transform: translateY(-8px);
-        }
-
-        /* The Straight Background Rectangle */
-        .donation-info-card::before {
-          content: '';
-          position: absolute;
-          /* Placed to form the wedge at top-right and hide elsewhere */
-          top: 2px;
-          right: -10px;
-          bottom: 20px;
-          left: 20px;
-          background-color: var(--card-color);
+        .donation-card {
+          background-color: #fff;
           border-radius: 16px;
-          z-index: 0;
-        }
-
-        /* The Skewed White Card */
-        .donation-info-content {
-          position: relative;
-          z-index: 2;
-          background: #FFFFFF;
-          border-radius: 16px;
-          height: 100%;
-          /* Skew to create the slanted top/bottom edges & door-open illusion */
-          transform: skewY(3deg);
-          /* Directional drop shadow falling heavily to bottom-left */
-          box-shadow: -15px 15px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Unskew the text content */
-        .card-unskew {
-          transform: skewY(-3deg);
-          padding: 40px 20px 25px 20px;
+          padding: 40px 30px;
+          text-align: center;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 100%;
         }
-
-        /* Typography & Icons */
-        .info-card-icon {
-          color: #333333;
-          margin-bottom: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        .donation-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 35px rgba(0, 103, 84, 0.1);
         }
-
-        .info-card-title {
-          font-weight: 800;
-          font-size: 1rem;
-          color: #111111;
-          margin-bottom: 15px;
-          text-transform: uppercase;
-          text-align: center;
-        }
-
-        .info-card-desc {
-          color: #666666;
-          font-size: 0.85rem;
-          text-align: center;
-          line-height: 1.5;
-          margin-bottom: 20px;
-        }
-
-        /* Bottom Badge / Arrow Button */
-        .info-card-number {
-          margin-top: auto; 
-          width: 36px;
-          height: 36px;
-          background-color: var(--card-color);
-          color: #ffffff;
-          border: 1.5px solid var(--card-color);
+        .donation-icon {
+          width: 70px;
+          height: 70px;
+          background-color: rgba(0, 103, 84, 0.1);
+          color: #006754;
           border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
-          transition: all 0.3s ease;
-          z-index: 3;
+          font-size: 28px;
+          margin-bottom: 25px;
         }
-
-        .info-card-number svg {
-          transition: transform 0.3s ease;
+        .donation-card-title {
+          font-size: 1.4rem;
+          color: #111;
+          margin-bottom: 15px;
+          font-weight: 700;
         }
-
-        .donation-info-card:hover .info-card-number {
-          background-color: #ffffff;
-          color: var(--card-color);
+        .donation-card-desc {
+          font-size: 0.95rem;
+          color: #666;
+          line-height: 1.6;
+          margin-bottom: 30px;
+          flex-grow: 1;
         }
-        
-        .donation-info-card:hover .info-card-number svg {
-          transform: rotate(45deg);
+        .donation-btn {
+          background-color: #006754;
+          color: #fff;
+          text-decoration: none;
+          padding: 12px 30px;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 1rem;
+          transition: background-color 0.3s;
+          width: 100%;
+        }
+        .donation-btn:hover {
+          background-color: #005041;
         }
 
         /* RTL OVERRIDES FOR DONATION SECTION */
@@ -3454,30 +3386,198 @@
           font-weight: normal !important;
         }
 
-        html[dir="rtl"] .donation-title .green-highlight, html[lang="ur"] .donation-title .green-highlight {
-          font-family: 'ArsalanWessanExtraBold', 'Jameel Noori Nastaleeq', serif !important;
-          color: #006754;
+        html[dir="rtl"] .donation-card-title, html[lang="ur"] .donation-card-title {
+          font-family: 'Jameel Noori Nastaleeq', serif !important;
+          font-size: 1.8rem;
         }
 
-        html[dir="rtl"] .info-card-title, html[lang="ur"] .info-card-title {
-          font-family: 'ArsalanWessanExtraBold', 'Jameel Noori Nastaleeq', serif !important;
-          color: #006754; /* Green color as requested for Urdu titles */
-          font-size: 1.5rem;
-        }
-
-        html[dir="rtl"] .info-card-desc, html[lang="ur"] .info-card-desc {
+        html[dir="rtl"] .donation-card-desc, html[lang="ur"] .donation-card-desc {
           font-family: 'Jameel Noori Nastaleeq', serif !important;
           font-size: 1.1rem;
           line-height: 1.8;
         }
 
-        html[dir="rtl"] .donation-info-card::before, html[lang="ur"] .donation-info-card::before {
-          left: -15px;
-          right: 10px;
-          transform: skewY(3deg); /* Reverse the skew for RTL layout */
-          transform-origin: bottom left;
+        html[dir="rtl"] .donation-btn, html[lang="ur"] .donation-btn {
+          font-family: 'Jameel Noori Nastaleeq', serif !important;
+          font-size: 1.2rem;
         }
 
+        /* DONATION PAGE CSS */
+        .donation-page-section {
+          padding: 140px 5% 80px 5%;
+          background-color: #f7f9fc;
+        }
+        .bank-accounts-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 30px;
+          margin-bottom: 60px;
+        }
+        .bank-card {
+          background-color: #fff;
+          border-radius: 16px;
+          padding: 30px;
+          text-align: center;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          border-top: 4px solid #006754;
+        }
+        .bank-card:hover {
+          box-shadow: 0 15px 35px rgba(0, 103, 84, 0.1);
+        }
+        .bank-icon {
+          width: 60px;
+          height: 60px;
+          background-color: rgba(0, 103, 84, 0.1);
+          color: #006754;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 24px;
+          margin: 0 auto 20px auto;
+        }
+        .bank-icon.easypaisa {
+          background-color: #4CAF50;
+          color: #fff;
+        }
+        .bank-icon.jazzcash {
+          background-color: #f44336;
+          color: #fff;
+        }
+        .bank-name {
+          font-size: 1.5rem;
+          color: #111;
+          margin-bottom: 10px;
+          font-weight: 700;
+        }
+        .account-title {
+          font-size: 0.95rem;
+          color: #666;
+          margin-bottom: 20px;
+        }
+        .account-number {
+          background-color: #f0f4f8;
+          padding: 12px 15px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .acc-num {
+          font-weight: 700;
+          font-family: monospace;
+          font-size: 1.1rem;
+          color: #333;
+        }
+        .copy-btn {
+          background-color: #006754;
+          color: white;
+          border: none;
+          padding: 6px 12px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 0.85rem;
+          transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+          background-color: #005041;
+        }
+
+        /* Form styling */
+        .receipt-form-container {
+          background-color: #fff;
+          border-radius: 16px;
+          padding: 40px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .form-title {
+          font-size: 1.8rem;
+          color: #111;
+          margin-bottom: 30px;
+          text-align: center;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+        }
+        .receipt-form {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .form-group:last-of-type, .form-group:nth-last-of-type(2), .submit-btn {
+          grid-column: 1 / -1;
+        }
+        .form-group label {
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: #333;
+        }
+        .form-group input, .form-group select {
+          padding: 12px 15px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-family: 'Inter', sans-serif;
+        }
+        .form-group input:focus, .form-group select:focus {
+          outline: none;
+          border-color: #006754;
+          box-shadow: 0 0 0 3px rgba(0, 103, 84, 0.1);
+        }
+        .file-input {
+          padding: 8px !important;
+        }
+        .submit-btn {
+          background-color: #006754;
+          color: #fff;
+          border: none;
+          padding: 15px;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin-top: 10px;
+        }
+        .submit-btn:hover {
+          background-color: #005041;
+        }
+
+        @media (max-width: 768px) {
+          .receipt-form {
+            grid-template-columns: 1fr;
+          }
+          .form-group:last-of-type, .form-group:nth-last-of-type(2), .submit-btn {
+            grid-column: auto;
+          }
+        }
+        
+        /* RTL Overrides for Dedicated Page */
+        html[dir="rtl"] .bank-name, html[lang="ur"] .bank-name,
+        html[dir="rtl"] .account-title, html[lang="ur"] .account-title,
+        html[dir="rtl"] .copy-btn, html[lang="ur"] .copy-btn,
+        html[dir="rtl"] .form-title, html[lang="ur"] .form-title,
+        html[dir="rtl"] .form-group label, html[lang="ur"] .form-group label,
+        html[dir="rtl"] .submit-btn, html[lang="ur"] .submit-btn,
+        html[dir="rtl"] .form-group input, html[lang="ur"] .form-group input,
+        html[dir="rtl"] .form-group select, html[lang="ur"] .form-group select {
+          font-family: 'Jameel Noori Nastaleeq', serif !important;
+        }
+        html[dir="rtl"] .form-title, html[lang="ur"] .form-title {
+          font-size: 2.2rem;
+        }
+        html[dir="rtl"] .submit-btn, html[lang="ur"] .submit-btn {
+          font-size: 1.4rem;
+        }
+        html[dir="rtl"] .account-number, html[lang="ur"] .account-number {
+          flex-direction: row-reverse;
+        }
     </style>
 </head>
 <body>
@@ -3733,649 +3833,96 @@
 </script>
 
 <main>
-    <div class="hero-unified-bg">
-        <section class="hero-section">
-
-        <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
-            <div class="hero-badge welcome-pill welcome-badge" style="position: static !important; transform: none !important; left: auto !important;">
-                <span class="badge-dot"></span>
-                <span class="pill-text-en">
-                    <span class="pill-line-1">WELCOME TO MADRASSA</span>
-                    <span class="pill-line-2">RIAZ UL QURAN WAL SUNNAH</span>
-                </span>
-                <span class="pill-text-ur">مدرسہ ریاض القرآن والسنہ میں خوش آمدید</span>
-            </div>
-            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
-            
-            <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
-            <h1 class="hero-title urdu-hero-title" data-en="Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
-                Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>
-            </h1>
-            <p class="hero-subtitle" data-en="Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment." data-ur="صحیح تجوید، حفظِ قرآن اور اسلامی تربیت کے ساتھ بچوں کے روشن مستقبل کی تعمیر۔">
-                Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment.
-            </p>
-            <div class="hero-buttons">
-                <a href="#donation" class="btn-hero btn-primary-pill" data-en="<span>Support Our Mission</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>ہمارے مشن کو سپورٹ کریں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Support Our Mission</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="#about" class="btn-hero btn-secondary-pill" data-en="<span>Learn More</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>مزید جانئے</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Learn More</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-    </div>
-
-    <!-- Combined Hero Extension Section -->
-    <section class="hero-extension-section">
-        <div class="custom-loop-divider">
-            <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Deeper wavy path before and after the loop -->
-                <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-                      stroke="#025F55" 
-                      stroke-width="3.5" 
-                      fill="none" 
-                      stroke-linecap="round"/>
-            </svg>
-        </div>
-
-        <!-- Short Introduction Section -->
-        <div class="intro-section" id="about">
-        <div class="intro-container">
-            <h2 class="intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
-                Introduction to <span class="highlight-font">Madrassa</span>
-            </h2>
-            <h3 class="intro-subtitle" data-en="Building knowledge, practice, and character in the light of Quran &amp; Sunnah" data-ur="قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر">
-                Building knowledge, practice, and character in the light of Quran &amp; Sunnah
-            </h3>
-            <p class="intro-text" data-en="Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing." data-ur="مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔">
-                Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing.
-            </p>
-            <a href="about.html" class="btn-intro-special" data-en="<span class='btn-text'>Read Full Introduction</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>تفصیلی تعارف پڑھیں</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                <span class="btn-text">Read Full Introduction</span>
-                <span class="btn-arrow-circle">
-                    <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7"></line>
-                        <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                </span>
-            </a>
-        </div>
-        </div>
-
-        <!-- Leadership Preview Section -->
-        <!-- ========================================== -->
-        <!-- INTEGRATED CURVED CARD & CIRCLE PHOTO      -->
-        <!-- ========================================== -->
-        <section class="leadership-section" id="leadership">
-          <div class="leadership-header" style="text-align: center; margin-bottom: 40px;">
-              <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
-                  Leadership &amp; <span class="highlight-font">Founders</span>
-              </h2>
-              <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات" style="font-size: 1.1rem; color: #666666;">
-                  Key figures dedicated to the service of Quran and Sunnah
-              </p>
-          </div>
-          <div class="leadership-container">
-
-            <!-- 1. FOUNDER SECTION (IMAGE LEFT | TEXT RIGHT) -->
-            <div class="founder-quote-layout">
-              
-              <!-- LEFT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
-              <div class="quote-image-column">
-                <div class="image-with-backdrop-wrapper">
-                  <div class="image-accent-backdrop"></div>
-                  <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="cutout-portrait-img" />
-                </div>
-                
-                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
-                <div class="founder-author-meta">
-                  <span class="honorific-title" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                  <h3 class="author-name">
-                    <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> 
-                    <span class="nastaliq-sub" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
-                  </h3>
-                  <p class="author-title" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</p>
-                </div>
-              </div>
-
-              <!-- RIGHT COLUMN: QUOTE BOX ONLY -->
-              <div class="quote-text-column">
-                <!-- Outer Rounded Border Box with Quotation Marks -->
-                <div class="quote-bordered-box">
-                  <p class="founder-motto-text" data-en="“Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”" data-ur="“قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔”">
-                    “Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”
-                  </p>
-                  
-                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
-                  <span class="card-mini-tag bottom-right-tag" data-en="Motto of the Founder" data-ur="بانی کا پیغام">Motto of the Founder</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. PRINCIPAL SECTION (TEXT LEFT | IMAGE RIGHT) -->
-            <div class="founder-quote-layout principal-layout">
-              
-              <!-- LEFT COLUMN: QUOTE BOX ONLY -->
-              <div class="quote-text-column">
-                <!-- Outer Rounded Border Box with Quotation Marks -->
-                <div class="quote-bordered-box">
-                  <p class="founder-motto-text" data-en="“Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”" data-ur="“ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔”">
-                    “Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”
-                  </p>
-                  
-                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
-                  <span class="card-mini-tag bottom-right-tag" data-en="Message from the Principal" data-ur="مہتمم کا پیغام">Message from the Principal</span>
-                </div>
-              </div>
-
-              <!-- RIGHT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
-              <div class="quote-image-column">
-                <div class="image-with-backdrop-wrapper">
-                  <div class="image-accent-backdrop"></div>
-                  <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="cutout-portrait-img" />
-                </div>
-
-                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
-                <div class="founder-author-meta">
-                  <span class="honorific-title" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                  <h3 class="author-name">
-                    <span data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</span> 
-                  </h3>
-                  <p class="author-title" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">Principal of the Institution</p>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </section>
-
-    <!-- Arc Stats Section -->
-    <section class="donut-infographic-section">
-        <div class="donut-infographic-container">
-            
-            <!-- Desktop SVG View -->
-            <div class="desktop-svg-wrapper">
-                <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
-                <svg viewBox="-160 -20 800 340" width="100%" preserveAspectRatio="xMidYMid meet">
-                    <!-- Scaled Geometry Group (60% reduction) -->
-                    <g transform="scale(0.6)">
-                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
-                        <!-- Top pointer -->
-                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="110" r="5" fill="#025F55" />
-
-                        <!-- Mid pointer -->
-                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
-
-                        <!-- Bot pointer -->
-                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="440" r="5" fill="#01423B" />
-
-                        <!-- Segmented Arcs grouped for interactivity -->
-                        <!-- Segment 1: Top Arc -->
-                        <g class="stat-slice" data-index="0">
-                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
-                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
-                            <text x="264.8" y="161.5" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="550">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 2: Middle Arc -->
-                        <g class="stat-slice" data-index="1">
-                            <path d="M 328.5 227.1 A 180 180 0 0 1 293.2 359.1 L 239.8 313.5 A 110 110 0 0 0 259.5 239.9 Z" 
-                                  fill="#038C7F" stroke="#038C7F" stroke-width="16" stroke-linejoin="round" />
-                            <text x="289.9" y="287.4" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="60">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 3: Bottom Arc -->
-                        <g class="stat-slice" data-index="2">
-                            <path d="M 280.2 374.3 A 180 180 0 0 1 145.3 429.9 L 147.1 359.9 A 110 110 0 0 0 226.8 328.7 Z" 
-                                  fill="#01423B" stroke="#01423B" stroke-width="16" stroke-linejoin="round" />
-                            <text x="205.2" y="383.9" class="arc-text" text-anchor="middle"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
-                        </g>
-                    </g>
-
-                    <!-- Unscaled Elements -->
-                    <!-- Center Heading (Our Impact) -->
-                    <foreignObject x="-150" y="90" width="230" height="120">
-                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
-                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2'>Impact</span>" 
-                             data-ur="<span class='title-part-1'>ہمارا</span><span class='title-part-2'>اثر</span>">
-                            <span class="title-part-1">Our</span>
-                            <span class="title-part-2">Impact</span>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Right Side Text Blocks (Y coordinates re-aligned for scale 0.6, extended width/height to prevent text wrap clipping) -->
-                    <!-- Top Text (Scaled dot Y = 66) -->
-                    <foreignObject x="250" y="26" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Alumni" data-ur="فارغ التحصیل علماء / طالبات">Alumni</h4>
-                            <p data-en="Graduates serving worldwide" data-ur="دنیا بھر میں خدمات انجام دینے والے فضلاء">Graduates serving worldwide</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Mid Text (Scaled dot Y = 178) -->
-                    <foreignObject x="250" y="138" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Current Students" data-ur="زیرِ تعلیم طلباء">Current Students</h4>
-                            <p data-en="Currently enrolled in various courses" data-ur="مختلف کورسز میں زیرِ تعلیم طلباء">Currently enrolled in various courses</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Bot Text (Scaled dot Y = 264) -->
-                    <foreignObject x="250" y="224" width="400" height="160">
-                        <div class="svg-text-block">
-                            <h4 data-en="Years of Service" data-ur="سالہ خدمات">Years of Service</h4>
-                            <p data-en="Continuous religious & educational excellence since 1993" data-ur="1993 سے مسلسل دینی و تعلیمی خدمات">Continuous religious & educational excellence since 1993</p>
-                        </div>
-                    </foreignObject>
-                </svg>
-            </div>
-
-
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const startYear = 1993;
-            const currentYear = new Date().getFullYear();
-            const yearsValue = currentYear - startYear;
-            
-            const yearsCountElement = document.getElementById('years-count');
-            
-            if(yearsCountElement) {
-                yearsCountElement.setAttribute('data-target', yearsValue);
-            }
-
-            const statSection = document.querySelector('.donut-infographic-section');
-            let initialAnimated = false;
-
-            const runCounterAnimation = (counter) => {
-                if (counter.dataset.animating === "true") return; // Prevent overlapping animations
-                counter.dataset.animating = "true";
-                
-                const target = +counter.getAttribute('data-target');
-                const duration = 1000; // 1 second
-                const increment = target / (duration / 16);
-                let current = 0;
-
-                const animate = () => {
-                    current += increment;
-                    if(current < target) {
-                        counter.textContent = Math.ceil(current);
-                        requestAnimationFrame(animate);
-                    } else {
-                        counter.textContent = target;
-                        counter.dataset.animating = "false";
-                    }
-                };
-                animate();
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting && !initialAnimated) {
-                    initialAnimated = true;
-                    document.querySelectorAll('.count-up').forEach(runCounterAnimation);
-                }
-            }, { threshold: 0.5 });
-
-            if(statSection) {
-                observer.observe(statSection);
-            }
-
-            // Interactive Hover & Click re-trigger logic (Desktop)
-            const slices = document.querySelectorAll('.stat-slice');
-            const textBlocks = document.querySelectorAll('.desktop-svg-wrapper .svg-text-block');
-            
-            slices.forEach(slice => {
-                const index = slice.getAttribute('data-index');
-                const triggerInteraction = () => {
-                    if (textBlocks[index]) textBlocks[index].classList.add('highlight-text');
-                    const counter = slice.querySelector('.count-up');
-                    if (counter) runCounterAnimation(counter);
-                };
-                
-                slice.addEventListener('mouseenter', triggerInteraction);
-                slice.addEventListener('touchstart', triggerInteraction, {passive: true});
-                slice.addEventListener('mouseleave', () => {
-                    if (textBlocks[index]) textBlocks[index].classList.remove('highlight-text');
-                });
-            });
-
-
-        });
-    </script>
-    </div>
-
-<!-- Courses Section (Services) -->
-<section id="courses" class="services-section">
-  <div class="services-header">
-    <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
-    <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
-      Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
-    </p>
-  </div>
-
-  <div class="services-container">
-    <!-- Card 01: Soft Green -->
-    <div class="sticky-note note-1" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shadow -->
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <!-- Metal Needle -->
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <!-- Pin Body -->
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <!-- Highlight Gloss -->
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
+  <section class="donation-page-section">
+    <div class="donation-container">
+      <div class="donation-header">
+        <h1 class="donation-title" data-en="<span class='bold-text'>Make a</span> <span class='green-highlight'>Donation</span>" data-ur="<span class='green-highlight-arsalan'>????</span> <span class='bold-text'>???</span>">
+          <span class="bold-text">Make a</span>
+          <span class="green-highlight">Donation</span>
+        </h1>
+        <p class="donation-subtitle" data-en="Choose your preferred bank to donate securely and submit your receipt below." data-ur="???? ???? ?? ??? ???? ??????? ???? ????? ???? ??? ???? ???? ???? ??? ???????">Choose your preferred bank to donate securely and submit your receipt below.</p>
       </div>
-      <div class="note-number">01</div>
-      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
-      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
-        Complete memorization of the Holy Quran with proper Tajweed and guidance.
-      </p>
-    </div>
-
-    <!-- Card 02: Soft Blue/Teal -->
-    <div class="sticky-note note-2" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">02</div>
-      <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
-      <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
-        Fluent Quran recitation with precise pronunciation and Tajweed rules.
-      </p>
-    </div>
-
-    <!-- Card 03: Soft Lavender -->
-    <div class="sticky-note note-3" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">03</div>
-      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
-      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
-        Holistic moral character building rooted in Islamic teachings and Sunnah.
-      </p>
-    </div>
-
-    <!-- Card 04: Soft Yellow/Cream -->
-    <div class="sticky-note note-4" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">04</div>
-      <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
-      <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
-        Flexible learning options available for both local and international students.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Divider below Educational Services -->
-<div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 20px; margin-bottom: 40px;">
-    <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-              stroke="#025F55" 
-              stroke-width="3.5" 
-              fill="none" 
-              stroke-linecap="round"/>
-    </svg>
-</div>
-
-<!-- ========================================== -->
-<!-- NEWS & UPDATES SECTION                     -->
-<!-- ========================================== -->
-<section class="updates-section">
-  <div class="updates-container">
-    
-    <!-- Section Header -->
-    <div class="updates-header">
-      <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='green-highlight'>Recent</span> <span class='bold-text'>Updates</span>" data-ur="<span class='bold-text'>خبریں اور</span> <span class='green-highlight'>حالیہ</span> <span class='bold-text'>اپڈیٹس</span>">
-        <span class="bold-text">News &amp;</span>
-        <span class="green-highlight">Recent</span>
-        <span class="bold-text">Updates</span>
-      </h2>
-      <p class="updates-subtitle" data-en="Stay informed with the latest announcements, events, and educational insights from our institute." data-ur="ہمارے ادارے کی تازہ ترین اعلانات، تقریبات، اور تعلیمی معلومات سے باخبر رہیں۔">Stay informed with the latest announcements, events, and educational insights from our institute.</p>
-    </div>
-
-    <!-- 3 News Cards Grid -->
-    <div class="updates-grid">
       
-      <!-- Card 1 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-1.jpg" alt="Annual Prize Distribution" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">15 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+      <!-- Bank Accounts Grid -->
+      <div class="bank-accounts-grid">
+        <!-- Meezan Bank -->
+        <div class="bank-card">
+          <div class="bank-icon"><i class="fas fa-university"></i></div>
+          <h3 class="bank-name" data-en="Meezan Bank" data-ur="????? ????">Meezan Bank</h3>
+          <p class="account-title" data-en="Account Title: Madrassa Riaz ul Quran" data-ur="?????? ?????: ????? ???? ??????">Account Title: Madrassa Riaz ul Quran</p>
+          <div class="account-number">
+            <span class="acc-num">0123-4567890123</span>
+            <button class="copy-btn" onclick="copyToClipboard('0123-4567890123')" data-en="Copy" data-ur="????">Copy</button>
           </div>
-          <h3 class="news-heading" data-en="Annual Prize Distribution Ceremony Announced" data-ur="سالانہ تقسیمِ انعامات کی تقریب کا اعلان">Annual Prize Distribution Ceremony Announced</h3>
-          <p class="news-excerpt" data-en="Join us as we honor our top-performing students in Hifz and Tajweed for this academic year." data-ur="اس تعلیمی سال حفظ اور تجوید میں بہترین کارکردگی دکھانے والے طلباء کی حوصلہ افزائی میں ہمارے ساتھ شامل ہوں۔">Join us as we honor our top-performing students in Hifz and Tajweed for this academic year.</p>
-          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
         </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-2.jpg" alt="Admissions Open" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">10 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+        
+        <!-- EasyPaisa -->
+        <div class="bank-card">
+          <div class="bank-icon easypaisa"><i class="fas fa-mobile-alt"></i></div>
+          <h3 class="bank-name" data-en="EasyPaisa" data-ur="???? ????">EasyPaisa</h3>
+          <p class="account-title" data-en="Account Title: Riaz ul Quran" data-ur="?????? ?????: ???? ??????">Account Title: Riaz ul Quran</p>
+          <div class="account-number">
+            <span class="acc-num">0300-1234567</span>
+            <button class="copy-btn" onclick="copyToClipboard('0300-1234567')" data-en="Copy" data-ur="????">Copy</button>
           </div>
-          <h3 class="news-heading" data-en="New Batch Admissions for Online Tajweed Course" data-ur="آن لائن تجوید کورس کے نئے بیچ کے لیے داخلے جاری ہیں">New Batch Admissions for Online Tajweed Course</h3>
-          <p class="news-excerpt" data-en="Applications are now live for our flexible evening Tajweed and Islamic studies program." data-ur="ہمارے شام کے لچکدار تجوید اور اسلامیات پروگرام کے لیے اب درخواستیں وصول کی جا رہی ہیں۔">Applications are now live for our flexible evening Tajweed and Islamic studies program.</p>
-          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
         </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-3.jpg" alt="Teacher Workshop" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">01 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
+        
+        <!-- JazzCash -->
+        <div class="bank-card">
+          <div class="bank-icon jazzcash"><i class="fas fa-wallet"></i></div>
+          <h3 class="bank-name" data-en="JazzCash" data-ur="??? ???">JazzCash</h3>
+          <p class="account-title" data-en="Account Title: Riaz ul Quran" data-ur="?????? ?????: ???? ??????">Account Title: Riaz ul Quran</p>
+          <div class="account-number">
+            <span class="acc-num">0300-7654321</span>
+            <button class="copy-btn" onclick="copyToClipboard('0300-7654321')" data-en="Copy" data-ur="????">Copy</button>
           </div>
-          <h3 class="news-heading" data-en="Special Workshop on Modern Pedagogical Quran Teaching" data-ur="جدید تعلیمی اصولوں کے تحت قرآن پڑھانے پر خصوصی ورکشاپ">Special Workshop on Modern Pedagogical Quran Teaching</h3>
-          <p class="news-excerpt" data-en="Our faculty attended a 3-day training session to implement interactive teaching methodologies." data-ur="ہمارے اساتذہ نے جدید اور موثر تدریسی طریقوں کو اپنانے کے لیے تین روزہ تربیتی سیشن میں شرکت کی۔">Our faculty attended a 3-day training session to implement interactive teaching methodologies.</p>
-          <a href="#" class="news-read-link" data-en="READ MORE <span>→</span>" data-ur="مزید پڑھیں <span>→</span>">READ MORE <span>→</span></a>
         </div>
-      </article>
-
+      </div>
+      
+      <!-- Receipt Submission Form -->
+      <div class="receipt-form-container">
+        <h2 class="form-title" data-en="Submit Payment Receipt" data-ur="????? ?? ???? ??? ??????">Submit Payment Receipt</h2>
+        <form class="receipt-form" onsubmit="event.preventDefault(); alert('Receipt Submitted Successfully!');">
+          <div class="form-group">
+            <label data-en="Full Name" data-ur="???? ???">Full Name</label>
+            <input type="text" required placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <label data-en="Phone Number" data-ur="??? ????">Phone Number</label>
+            <input type="tel" required placeholder="Enter your phone number" />
+          </div>
+          <div class="form-group">
+            <label data-en="Donation Category" data-ur="???? ?? ???">Donation Category</label>
+            <select required>
+              <option value="" disabled selected data-en="Select category" data-ur="??? ????? ????">Select category</option>
+              <option value="zakat" data-en="Zakat" data-ur="????">Zakat</option>
+              <option value="sadaqah" data-en="Sadaqah" data-ur="????">Sadaqah</option>
+              <option value="scholarship" data-en="Scholarship" data-ur="????????">Scholarship</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-en="Amount (Rs)" data-ur="??? (????)">Amount (Rs)</label>
+            <input type="number" required placeholder="Enter amount" />
+          </div>
+          <div class="form-group">
+            <label data-en="Upload Receipt Screenshot" data-ur="???? ?? ?????? ??? ????? ????">Upload Receipt Screenshot</label>
+            <input type="file" accept="image/*" required class="file-input" />
+          </div>
+          <button type="submit" class="submit-btn" data-en="Submit Receipt" data-ur="???? ??? ??????">Submit Receipt</button>
+        </form>
+      </div>
     </div>
+  </section>
 
-    <!-- Bottom Center "View All Updates" Button -->
-    <div class="updates-bottom-cta">
-      <a href="updates.html" class="view-all-updates-btn" data-en="<span>View All News & Updates</span><span class='cta-arrow'>↗</span>" data-ur="<span>تمام خبریں اور اپڈیٹس دیکھیں</span><span class='cta-arrow'>↗</span>">
-        <span>View All News & Updates</span>
-        <span class="cta-arrow">↗</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Interactive Script for Mobile Tap -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const stickyNotes = document.querySelectorAll('.sticky-note');
-
-    stickyNotes.forEach(note => {
-      note.addEventListener('touchstart', function() {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-        this.classList.add('active-tap');
-      }, { passive: true });
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.sticky-note')) {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-      }
-    }, { passive: true });
-  });
-</script>
-
-<!-- DONATION SECTION                           -->
-<!-- ========================================== -->
-<section class="donation-section">
-  <div class="donation-container">
-    <div class="donation-header">
-      <h2 class="donation-title" data-en="<span class='bold-text'>Support</span> <span class='green-highlight'>Our</span> <span class='bold-text'>Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='green-highlight-arsalan'>تعاون</span> <span class='bold-text'>کریں</span>">
-        <span class="bold-text">Support</span>
-        <span class="green-highlight">Our</span>
-        <span class="bold-text">Mission</span>
-      </h2>
-      <p class="donation-subtitle" data-en="Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah." data-ur="آپ کے عطیات ہمیں قرآن اور صحیح سنت کی تعلیمات سے نوجوان نسل کی تربیت کرنے میں مدد دیتے ہیں۔">Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah.</p>
-    </div>
-    
-    <div class="donation-grid">
-      <!-- Card 1 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="ONE-TIME DONATION" data-ur="ایک بار عطیہ">ONE-TIME DONATION</h3>
-            <p class="info-card-desc" data-en="Make a single contribution to support our institute's general needs." data-ur="ہمارے ادارے کی عمومی ضروریات میں ایک بار حصہ ڈالیں۔">Make a single contribution to support our institute's general needs.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 2 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="GIVE MONTHLY" data-ur="ماہانہ عطیہ">GIVE MONTHLY</h3>
-            <p class="info-card-desc" data-en="Become a recurring donor to provide consistent support." data-ur="مسلسل تعاون فراہم کرنے کے لیے ماہانہ ڈونر بنیں۔">Become a recurring donor to provide consistent support.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 3 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="20" x2="12" y2="10"></line>
-                <line x1="18" y1="20" x2="18" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="16"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="GIVE A SCHOLARSHIP" data-ur="اسکالرشپ دیں">GIVE A SCHOLARSHIP</h3>
-            <p class="info-card-desc" data-en="Sponsor a student's education and shape their future." data-ur="کسی طالب علم کی تعلیم کو اسپانسر کریں اور ان کا مستقبل سنواریں۔">Sponsor a student's education and shape their future.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 4 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="SPONSOR A TEACHER" data-ur="اساتذہ کے لیے تعاون">SPONSOR A TEACHER</h3>
-            <p class="info-card-desc" data-en="Support our dedicated teachers who shape the next generation." data-ur="ہماری اگلی نسل کی تربیت کرنے والے محنتی اساتذہ کا تعاون کریں۔">Support our dedicated teachers who shape the next generation.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Copied: ' + text);
+      }, function(err) {
+        console.error('Could not copy text: ', err);
+      });
+    }
+  </script>
 </main>
 
 <footer class="site-footer">
