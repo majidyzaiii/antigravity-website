@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Madrassa Riaz ul Quran Wal Sunnah</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&family=Inter:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #F8FAF9; color: #1F2937; }
+    .page-banner { background: #006754; color: #FFF; padding: 50px 5%; text-align: center; }
+    .page-title { font-size: 2.5rem; margin: 0 0 10px 0; font-weight: 800; }
+    
+    .contact-page-grid { max-width: 1180px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    @media (max-width: 850px) { .contact-page-grid { grid-template-columns: 1fr; } }
+
+    .dept-card { background: #FFF; padding: 24px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-bottom: 20px; }
+    .dept-card h3 { color: #006754; margin: 0 0 10px 0; font-size: 1.2rem; }
+    
+    .map-section { max-width: 1180px; margin: 40px auto 60px auto; padding: 0 20px; }
+    .map-frame { width: 100%; height: 380px; border: none; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+
+    [dir="rtl"] body { text-align: right; }
+    [dir="rtl"] .page-title, [dir="rtl"] .dept-card h3 { font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif; }
+        .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
+  <style>
+    body, main, section {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Remove any light gray, blueish, or off-white background colors from wrappers */
+    .simple-contact-section,
+    .donation-container, .donation-grid,
+    .contact-main-container,
+    .contact-page-grid,
+    .services-section,
+    .news-section,
+    .about-section {
+      background-color: #FFFFFF !important;
+    }
+        .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- GLOBAL TYPOGRAPHY -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap');
+
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    .card-title,
+    .heading-text {
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 700 !important;
+      color: #111111 !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    /* CONSISTENT SIZING SCALE */
+    h1, .hero-title-main { font-size: 3.2rem !important; line-height: 1.15 !important; }
+    h2, .section-big-title { font-size: 2.4rem !important; line-height: 1.2 !important; }
+    h3, .card-main-title { font-size: 1.5rem !important; line-height: 1.3 !important; }
+    h4, .sub-heading { font-size: 1.15rem !important; line-height: 1.4 !important; }
+
+                              /* ACCENT / SCRIPT TEXT SPANS */
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        font-family: 'Caveat', cursive, sans-serif !important;
+        color: #006754 !important;
+        font-weight: 700 !important;
+      }
+  
+      .with-zigzag-underline,
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0px;
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+  
+      .with-zigzag-underline::after,
+      .script-text::after,
+      .green-script-accent::after,
+      .quran-sunnah-script::after,
+      .signature-font::after,
+      .highlight-font::after {
+        content: '';
+        position: absolute;
+        left: 0%;
+        bottom: -10px;
+        width: 100%;
+        height: 32px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        pointer-events: none;
+      }
+    </style>
+</head>
+<body>
+
+  <header class="page-banner">
+    <h1 class="page-title">
+      <span class="lang-en">Official Contact Directory</span>
+      <span class="lang-ur">مکمل رابطہ و ڈائریکٹری</span>
+    </h1>
+  </header>
+
+  <div class="contact-page-grid">
+    <div>
+      <div class="dept-card">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Admissions & Education</h3>
+        <p><strong>Phone:</strong> +92 300 1234567</p>
+        <p><strong>Email:</strong> admissions@madrassa.edu.pk</p>
+        <p><strong>Hours:</strong> Mon - Sat (8:00 AM - 2:00 PM)</p>
+      </div>
+
+      <div class="dept-card">
+        <h3><i class="fa-solid fa-hand-holding-heart"></i> Finance & Donations</h3>
+        <p><strong>Phone:</strong> +92 300 7654321</p>
+        <p><strong>Email:</strong> finance@madrassa.edu.pk</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="dept-card">
+        <h3><i class="fa-solid fa-building"></i> Central Administration</h3>
+        <p><strong>Address:</strong> Madrassa Riaz ul Quran Wal Sunnah, Main Branch, Pakistan.</p>
+        <p><strong>General Helpline:</strong> +92 51 1234567</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.3088927082305!2d73.0551!3d33.6844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDQxJzAzLjgiTiA3M8KwMDMnMTOCNC40IkU!5e0!3m2!1sen!2spk!4v1620000000000!5m2!1sen!2spk" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

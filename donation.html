@@ -1864,7 +1864,7 @@
 
         html[dir="rtl"] body span.highlight-font, html[lang="ur"] body span.highlight-font,
         html[dir="rtl"] body span.title-part-2, html[lang="ur"] body span.title-part-2,
-        html[dir="rtl"] body span.green-highlight, html[lang="ur"] body span.green-highlight {
+        html[dir="rtl"] body span.highlight-font, html[lang="ur"] body span.highlight-font {
             font-family: 'Aref Ruqaa', 'Amiri', serif !important;
             font-size: 1.3em !important;
             margin: 0 6px !important;
@@ -2857,7 +2857,7 @@
         }
 
         /* Style 2: Green Brush Font ("Recent") */
-        .updates-title .green-highlight {
+        .updates-title .highlight-font {
           color: #006754; /* Your Brand Green Code */
           font-family: 'Caveat', cursive, sans-serif;
           font-weight: 700;
@@ -3040,7 +3040,7 @@
             font-size: 2rem;
             gap: 6px;
           }
-          .updates-title .green-highlight {
+          .updates-title .highlight-font {
             font-size: 2.3rem;
           }
 
@@ -3301,7 +3301,7 @@
           font-family: 'Inter', sans-serif;
           font-weight: 700;
         }
-        .donation-title .green-highlight {
+        .donation-title .highlight-font {
           color: #006754;
           font-family: 'Caveat', cursive, sans-serif;
           font-weight: 700;
@@ -3374,7 +3374,7 @@
         }
 
         /* RTL OVERRIDES FOR DONATION SECTION */
-        html[dir="rtl"] body span.green-highlight-arsalan, html[lang="ur"] body span.green-highlight-arsalan {
+        html[dir="rtl"] body span.highlight-font-arsalan, html[lang="ur"] body span.highlight-font-arsalan {
           font-family: 'ArsalanWessanExtraBold', 'Jameel Noori Nastaleeq', serif !important;
           font-size: 1.3em !important;
           color: #006754;
@@ -3578,6 +3578,109 @@
         html[dir="rtl"] .account-number, html[lang="ur"] .account-number {
           flex-direction: row-reverse;
         }
+          .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
+  <style>
+    body, main, section {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Remove any light gray, blueish, or off-white background colors from wrappers */
+    .simple-contact-section,
+    .donation-container, .donation-grid,
+    .contact-main-container,
+    .contact-page-grid,
+    .services-section,
+    .news-section,
+    .about-section {
+      background-color: #FFFFFF !important;
+    }
+        .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- GLOBAL TYPOGRAPHY -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap');
+
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    .card-title,
+    .heading-text {
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 700 !important;
+      color: #111111 !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    /* CONSISTENT SIZING SCALE */
+    h1, .hero-title-main { font-size: 3.2rem !important; line-height: 1.15 !important; }
+    h2, .section-big-title { font-size: 2.4rem !important; line-height: 1.2 !important; }
+    h3, .card-main-title { font-size: 1.5rem !important; line-height: 1.3 !important; }
+    h4, .sub-heading { font-size: 1.15rem !important; line-height: 1.4 !important; }
+
+                              /* ACCENT / SCRIPT TEXT SPANS */
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        font-family: 'Caveat', cursive, sans-serif !important;
+        color: #006754 !important;
+        font-weight: 700 !important;
+      }
+  
+      .with-zigzag-underline,
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0px;
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+  
+      .with-zigzag-underline::after,
+      .script-text::after,
+      .green-script-accent::after,
+      .quran-sunnah-script::after,
+      .signature-font::after,
+      .highlight-font::after {
+        content: '';
+        position: absolute;
+        left: 0%;
+        bottom: -10px;
+        width: 100%;
+        height: 32px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        pointer-events: none;
+      }
     </style>
 </head>
 <body>
@@ -3836,9 +3939,9 @@
   <section class="donation-page-section">
     <div class="donation-container">
       <div class="donation-header">
-        <h1 class="donation-title" data-en="<span class='bold-text'>Make a</span> <span class='green-highlight'>Donation</span>" data-ur="<span class='green-highlight-arsalan'>????</span> <span class='bold-text'>???</span>">
+        <h1 class="donation-title" data-en="<span class='bold-text'>Make a</span> <span class='highlight-font'>Donation</span>" data-ur="<span class='highlight-font-arsalan'>????</span> <span class='bold-text'>???</span>">
           <span class="bold-text">Make a</span>
-          <span class="green-highlight">Donation</span>
+          <span class="highlight-font">Donation</span>
         </h1>
         <p class="donation-subtitle" data-en="Choose your preferred bank to donate securely and submit your receipt below." data-ur="???? ???? ?? ??? ???? ??????? ???? ????? ???? ??? ???? ???? ???? ??? ???????">Choose your preferred bank to donate securely and submit your receipt below.</p>
       </div>
@@ -3913,6 +4016,7 @@
       </div>
     </div>
   </section>
+<div class="section-divider"></div>
 
   <script>
     function copyToClipboard(text) {
@@ -3986,3 +4090,15 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

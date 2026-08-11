@@ -16,6 +16,7 @@
         }
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700;900&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
         @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
         @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
@@ -44,8 +45,13 @@
             line-height: 1.6;
             background-color: #ffffff !important;
             position: relative;
-            overflow-x: hidden;
+            overflow-x: hidden !important;
             padding-top: 220px !important; /* Prevents content from hiding behind fixed header on desktop */
+        }
+        
+        html {
+            overflow-x: hidden !important;
+            max-width: 100vw;
         }
 
 
@@ -931,13 +937,16 @@
             pointer-events: none;
         }
         
-        .hero-title {
-            font-size: 2.8rem;
-            font-weight: 800;
+        .hero-title-main,
+        h1.hero-title,
+        .hero-text-top {
+            font-family: 'Clash Display', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 3.2rem !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.1 !important;
+            color: #111111 !important;
             margin-bottom: 20px;
-            line-height: 1.25;
-            font-family: 'Montserrat', 'Poppins', sans-serif;
-            color: #000000;
         }
         
         .signature-font {
@@ -947,6 +956,28 @@
             font-weight: 700;
             display: inline-block;
             margin: 0 4px;
+        }
+        
+        .quran-sunnah-script,
+        span.script-text {
+          position: relative;
+          display: inline-block;
+          color: #006754 !important;
+          padding-bottom: 0px;
+        }
+
+        .quran-sunnah-script::after,
+        span.script-text::after {
+          content: '';
+          position: absolute;
+          left: 5%;
+          bottom: -8px;
+          width: 90%;
+          height: 28px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          pointer-events: none;
         }
         
         html[dir="rtl"] .hero-title, html[lang="ur"] .hero-title {
@@ -1390,10 +1421,10 @@
                 justify-content: center;
             }
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.2rem !important;
             }
             html[dir="rtl"] .hero-title, html[lang="ur"] .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.2rem !important;
             }
             .hero-buttons {
                 flex-direction: column;
@@ -1788,9 +1819,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(to bottom, #ffffff 0%, transparent 10%), linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), url('assets/hero-image.jpeg');
-            background-size: cover;
-            background-position: center top;
+            background: #FFFFFF !important;
             transform: scaleX(-1);
             z-index: -1;
             pointer-events: none;
@@ -1864,7 +1893,7 @@
 
         html[dir="rtl"] body span.highlight-font, html[lang="ur"] body span.highlight-font,
         html[dir="rtl"] body span.title-part-2, html[lang="ur"] body span.title-part-2,
-        html[dir="rtl"] body span.green-highlight, html[lang="ur"] body span.green-highlight {
+        html[dir="rtl"] body span.highlight-font, html[lang="ur"] body span.highlight-font {
             font-family: 'Aref Ruqaa', 'Amiri', serif !important;
             font-size: 1.3em !important;
             margin: 0 6px !important;
@@ -2341,7 +2370,7 @@
         .title-part-2 {
             font-family: 'Caveat', 'Dancing Script', cursive;
             color: #025F55;
-            font-size: 32px;
+            font-size: 44px;
             font-weight: 700;
             transform: translateY(2px); /* Slight manual vertical alignment for cursive font */
             display: inline-block;
@@ -2386,7 +2415,7 @@
                 width: 95%; /* Clean responsive width */
             }
             .title-part-1 { font-size: 40px; } /* Yields ~22px visually on mobile */
-            .title-part-2 { font-size: 46px; } /* Yields ~26px visually on mobile */
+            .title-part-2 { font-size: 54px; } /* Yields ~26px visually on mobile */
             .svg-text-block h4 { font-size: 26px; } /* Yields ~15px visually on mobile */
             .svg-text-block p { font-size: 20px; line-height: 1.2; } /* Yields ~11px visually on mobile */
             .arc-text { font-size: 28px; } /* Automatically scales with .stat-slice below */
@@ -2857,7 +2886,7 @@
         }
 
         /* Style 2: Green Brush Font ("Recent") */
-        .updates-title .green-highlight {
+        .updates-title .highlight-font {
           color: #006754; /* Your Brand Green Code */
           font-family: 'Caveat', cursive, sans-serif;
           font-weight: 700;
@@ -3040,7 +3069,7 @@
             font-size: 2rem;
             gap: 6px;
           }
-          .updates-title .green-highlight {
+          .updates-title .highlight-font {
             font-size: 2.3rem;
           }
 
@@ -3301,7 +3330,7 @@
           font-family: 'Inter', sans-serif;
           font-weight: 700;
         }
-        .donation-title .green-highlight {
+        .donation-title .highlight-font {
           color: #006754;
           font-family: 'Caveat', cursive, sans-serif;
           font-weight: 700;
@@ -3442,7 +3471,7 @@
         }
 
         /* RTL OVERRIDES FOR DONATION SECTION */
-        html[dir="rtl"] body span.green-highlight-arsalan, html[lang="ur"] body span.green-highlight-arsalan {
+        html[dir="rtl"] body span.highlight-font-arsalan, html[lang="ur"] body span.highlight-font-arsalan {
           font-family: 'ArsalanWessanExtraBold', 'Jameel Noori Nastaleeq', serif !important;
           font-size: 1.3em !important;
           color: #006754;
@@ -3454,7 +3483,7 @@
           font-weight: normal !important;
         }
 
-        html[dir="rtl"] .donation-title .green-highlight, html[lang="ur"] .donation-title .green-highlight {
+        html[dir="rtl"] .donation-title .highlight-font, html[lang="ur"] .donation-title .highlight-font {
           font-family: 'ArsalanWessanExtraBold', 'Jameel Noori Nastaleeq', serif !important;
           color: #006754;
         }
@@ -3478,6 +3507,109 @@
           transform-origin: bottom left;
         }
 
+          .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
+  <style>
+    body, main, section {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Remove any light gray, blueish, or off-white background colors from wrappers */
+    .simple-contact-section,
+    .donation-container, .donation-grid,
+    .contact-main-container,
+    .contact-page-grid,
+    .services-section,
+    .news-section,
+    .about-section {
+      background-color: #FFFFFF !important;
+    }
+        .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+  <!-- GLOBAL TYPOGRAPHY -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap');
+
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    .card-title,
+    .heading-text {
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 700 !important;
+      color: #111111 !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    /* CONSISTENT SIZING SCALE */
+    h1, .hero-title-main { font-size: 3.2rem !important; line-height: 1.15 !important; }
+    h2, .section-big-title { font-size: 2.4rem !important; line-height: 1.2 !important; }
+    h3, .card-main-title { font-size: 1.5rem !important; line-height: 1.3 !important; }
+    h4, .sub-heading { font-size: 1.15rem !important; line-height: 1.4 !important; }
+
+                              /* ACCENT / SCRIPT TEXT SPANS */
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        font-family: 'Caveat', cursive, sans-serif !important;
+        color: #006754 !important;
+        font-weight: 700 !important;
+      }
+  
+      .with-zigzag-underline,
+      .script-text,
+      .green-script-accent,
+      .quran-sunnah-script,
+      .signature-font,
+      .highlight-font {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0px;
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
+  
+      .with-zigzag-underline::after,
+      .script-text::after,
+      .green-script-accent::after,
+      .quran-sunnah-script::after,
+      .signature-font::after,
+      .highlight-font::after {
+        content: '';
+        position: absolute;
+        left: 0%;
+        bottom: -10px;
+        width: 100%;
+        height: 32px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        pointer-events: none;
+      }
     </style>
 </head>
 <body>
@@ -3748,8 +3880,9 @@
             <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
             
             <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
-            <h1 class="hero-title urdu-hero-title" data-en="Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
-                Empowering the Next Generation with <span class='signature-font'>Quran &amp; Sunnah</span>
+            <h1 class="hero-title urdu-hero-title" data-en="<span class='hero-text-top' style='display:block; margin-bottom:-10px !important;'>Empowering the Next Generation with</span> <span class='quran-sunnah-script signature-font' style='margin-top:0 !important;'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
+                <span class='hero-text-top' style='display:block; margin-bottom:-10px !important;'>Empowering the Next Generation with</span> 
+                <span class='quran-sunnah-script signature-font' style='margin-top:0 !important;'>Quran &amp; Sunnah</span>
             </h1>
             <p class="hero-subtitle" data-en="Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment." data-ur="صحیح تجوید، حفظِ قرآن اور اسلامی تربیت کے ساتھ بچوں کے روشن مستقبل کی تعمیر۔">
                 Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment.
@@ -3777,7 +3910,7 @@
             </div>
         </div>
     </section>
-    </div>
+</div>
 
     <!-- Combined Hero Extension Section -->
     <section class="hero-extension-section">
@@ -3954,10 +4087,10 @@
                     <!-- Center Heading (Our Impact) -->
                     <foreignObject x="-150" y="90" width="230" height="120">
                         <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
-                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2'>Impact</span>" 
+                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2 highlight-font'>Impact</span>" 
                              data-ur="<span class='title-part-1'>ہمارا</span><span class='title-part-2'>اثر</span>">
                             <span class="title-part-1">Our</span>
-                            <span class="title-part-2">Impact</span>
+                            <span class="title-part-2 highlight-font">Impact</span>
                         </div>
                     </foreignObject>
 
@@ -4091,9 +4224,9 @@
         </svg>
       </div>
       <div class="note-number">01</div>
-      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
-      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
-        Complete memorization of the Holy Quran with proper Tajweed and guidance.
+      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
+      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
+        Holistic moral character building rooted in Islamic teachings and Sunnah.
       </p>
     </div>
 
@@ -4129,9 +4262,9 @@
         </svg>
       </div>
       <div class="note-number">03</div>
-      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
-      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
-        Holistic moral character building rooted in Islamic teachings and Sunnah.
+      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
+      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
+        Complete memorization of the Holy Quran with proper Tajweed and guidance.
       </p>
     </div>
 
@@ -4155,7 +4288,6 @@
     </div>
   </div>
 </section>
-
 <!-- Divider below Educational Services -->
 <div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 20px; margin-bottom: 40px;">
     <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -4175,10 +4307,9 @@
     
     <!-- Section Header -->
     <div class="updates-header">
-      <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='green-highlight'>Recent</span> <span class='bold-text'>Updates</span>" data-ur="<span class='bold-text'>خبریں اور</span> <span class='green-highlight'>حالیہ</span> <span class='bold-text'>اپڈیٹس</span>">
+            <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>???? ????</span> <span class='highlight-font'>????? ???????</span>">
         <span class="bold-text">News &amp;</span>
-        <span class="green-highlight">Recent</span>
-        <span class="bold-text">Updates</span>
+        <span class="highlight-font">Recent Updates</span>
       </h2>
       <p class="updates-subtitle" data-en="Stay informed with the latest announcements, events, and educational insights from our institute." data-ur="ہمارے ادارے کی تازہ ترین اعلانات، تقریبات، اور تعلیمی معلومات سے باخبر رہیں۔">Stay informed with the latest announcements, events, and educational insights from our institute.</p>
     </div>
@@ -4246,7 +4377,6 @@
 
   </div>
 </section>
-
 <!-- Interactive Script for Mobile Tap -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -4272,10 +4402,9 @@
 <section class="donation-section">
   <div class="donation-container">
     <div class="donation-header">
-      <h2 class="donation-title" data-en="<span class='bold-text'>Support</span> <span class='green-highlight'>Our</span> <span class='bold-text'>Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='green-highlight-arsalan'>تعاون</span> <span class='bold-text'>کریں</span>">
+      <h2 class="donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Our Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='highlight-font'>تعاون کریں</span>">
         <span class="bold-text">Support</span>
-        <span class="green-highlight">Our</span>
-        <span class="bold-text">Mission</span>
+        <span class="highlight-font">Our Mission</span>
       </h2>
       <p class="donation-subtitle" data-en="Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah." data-ur="آپ کے عطیات ہمیں قرآن اور صحیح سنت کی تعلیمات سے نوجوان نسل کی تربیت کرنے میں مدد دیتے ہیں۔">Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah.</p>
     </div>
@@ -4285,14 +4414,7 @@
       <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
         <div class="donation-info-content">
           <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="ONE-TIME DONATION" data-ur="ایک بار عطیہ">ONE-TIME DONATION</h3>
+            <h4 class="info-card-title" data-en="ONE-TIME DONATION" data-ur="ایک بار عطیہ">ONE-TIME DONATION</h4>
             <p class="info-card-desc" data-en="Make a single contribution to support our institute's general needs." data-ur="ہمارے ادارے کی عمومی ضروریات میں ایک بار حصہ ڈالیں۔">Make a single contribution to support our institute's general needs.</p>
             <div class="info-card-number">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4308,15 +4430,7 @@
       <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
         <div class="donation-info-content">
           <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="GIVE MONTHLY" data-ur="ماہانہ عطیہ">GIVE MONTHLY</h3>
+            <h4 class="info-card-title" data-en="GIVE MONTHLY" data-ur="ماہانہ عطیہ">GIVE MONTHLY</h4>
             <p class="info-card-desc" data-en="Become a recurring donor to provide consistent support." data-ur="مسلسل تعاون فراہم کرنے کے لیے ماہانہ ڈونر بنیں۔">Become a recurring donor to provide consistent support.</p>
             <div class="info-card-number">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4332,14 +4446,7 @@
       <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
         <div class="donation-info-content">
           <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="20" x2="12" y2="10"></line>
-                <line x1="18" y1="20" x2="18" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="16"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="GIVE A SCHOLARSHIP" data-ur="اسکالرشپ دیں">GIVE A SCHOLARSHIP</h3>
+            <h4 class="info-card-title" data-en="GIVE A SCHOLARSHIP" data-ur="اسکالرشپ دیں">GIVE A SCHOLARSHIP</h4>
             <p class="info-card-desc" data-en="Sponsor a student's education and shape their future." data-ur="کسی طالب علم کی تعلیم کو اسپانسر کریں اور ان کا مستقبل سنواریں۔">Sponsor a student's education and shape their future.</p>
             <div class="info-card-number">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4355,13 +4462,7 @@
       <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
         <div class="donation-info-content">
           <div class="card-unskew">
-            <div class="info-card-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </div>
-            <h3 class="info-card-title" data-en="SPONSOR A TEACHER" data-ur="اساتذہ کے لیے تعاون">SPONSOR A TEACHER</h3>
+            <h4 class="info-card-title" data-en="SPONSOR A TEACHER" data-ur="اساتذہ کے لیے تعاون">SPONSOR A TEACHER</h4>
             <p class="info-card-desc" data-en="Support our dedicated teachers who shape the next generation." data-ur="ہماری اگلی نسل کی تربیت کرنے والے محنتی اساتذہ کا تعاون کریں۔">Support our dedicated teachers who shape the next generation.</p>
             <div class="info-card-number">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -4375,6 +4476,572 @@
     </div>
   </div>
 </section>
+<!-- ========================================== -->
+<!-- HOMEPAGE SIMPLE CONTACT SECTION            -->
+<!-- ========================================== -->
+<section class="simple-contact-section" id="contact">
+  <div class="contact-main-container">
+    
+    <!-- LEFT SIDE: TITLE, DIRECT CONTACT & SUB-DEPARTMENTS -->
+    <div class="contact-left-col">
+      <div class="contact-header-text">
+        <h2 class="contact-big-title">
+          <span class="lang-en"><span class="highlight-font">Contact</span> Us</span>
+          <span class="lang-ur">ہم سے <span class="highlight-font">رابطہ</span> کریں</span>
+        </h2>
+        <p class="contact-lead-p">
+          <span class="lang-en">Email, call, or complete the form to learn more about our courses, admissions, or donations.</span>
+          <span class="lang-ur">داخلیہ، کورسز یا عطیات سے متعلق معلومات کے لیے ای میل، فون کریں یا فارم پر کریں۔</span>
+        </p>
+        
+        <div class="direct-contact-links">
+          <a href="mailto:info@madrassa.edu.pk" class="direct-link">info@madrassa.edu.pk</a>
+          <a href="tel:+923001234567" class="direct-link">+92 300 1234567</a>
+          <a href="contact.html" class="support-underline-link">
+            <span class="lang-en">Official Contact Page & Map &rarr;</span>
+            <span class="lang-ur">مکمل رابطہ پیج اور میپ &larr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- BOTTOM 3 DEPARTMENTS / COLUMNS -->
+      <div class="contact-sub-columns">
+        <div class="sub-col-item">
+          <h4>
+            <span class="lang-en">Admissions Office</span>
+            <span class="lang-ur">شعبۂ داخلہ</span>
+          </h4>
+          <p>
+            <span class="lang-en">Our admissions team is available to assist with enrollment and course details.</span>
+            <span class="lang-ur">داخلہ فارم اور نصابِ تعلیم سے متعلق تمام معلومات فراہم کی جاتی ہیں۔</span>
+          </p>
+        </div>
+
+        <div class="sub-col-item">
+          <h4>
+            <span class="lang-en">Donations & Support</span>
+            <span class="lang-ur">عطیات و تعاون</span>
+          </h4>
+          <p>
+            <span class="lang-en">For queries regarding Zakat, Sadaqah, or student sponsorships.</span>
+            <span class="lang-ur">زکوٰۃ، صدقات اور طلبا کی کفالت کے لیے معلومات حاصل کریں۔</span>
+          </p>
+        </div>
+
+        <div class="sub-col-item">
+          <h4>
+            <span class="lang-en">General Inquiries</span>
+            <span class="lang-ur">عام معلومات</span>
+          </h4>
+          <p>
+            <span class="lang-en">Contact our main office for official visits and general queries.</span>
+            <span class="lang-ur">ادارے کے دفتر اور ملاقات کے اوقات کی تفاصیل کے لیے رابطہ کریں۔</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: FLOATING WHITE FORM CARD -->
+    <div class="contact-right-col">
+      <div class="floating-form-card">
+        <h3 class="form-card-title">
+          <span class="lang-en">Get in <span class="highlight-font">Touch</span></span>
+          <span class="lang-ur">پیغام <span class="highlight-font">روانہ</span> کریں</span>
+        </h3>
+        <p class="form-card-sub">
+          <span class="lang-en">You can reach us anytime</span>
+          <span class="lang-ur">ہمیں کسی بھی وقت پیغام بھیجیں</span>
+        </p>
+
+        <form action="#" method="POST" class="contact-quick-form">
+          <div class="form-row-2col">
+            <input type="text" placeholder="First name" required class="form-input-field">
+            <input type="text" placeholder="Last name" required class="form-input-field">
+          </div>
+
+          <div class="form-input-wrapper">
+            <span class="input-icon"><i class="fa-regular fa-envelope"></i></span>
+            <input type="email" placeholder="Your email" required class="form-input-field with-icon">
+          </div>
+
+          <div class="form-input-wrapper phone-group">
+            <select class="country-code-select">
+              <option>+92</option>
+            </select>
+            <input type="tel" placeholder="Phone number" required class="form-input-field">
+          </div>
+
+          <div class="form-input-wrapper">
+            <textarea placeholder="How can we help?" required class="form-textarea-field" maxlength="120"></textarea>
+            <span class="char-count">0/120</span>
+          </div>
+
+          <div class="swipe-submit-container" id="swipeContainer">
+            <div class="swipe-text" id="swipeText">
+              <span class="lang-en">Swipe to Submit</span>
+              <span class="lang-ur">سوائپ کر کے بھیجیں</span>
+            </div>
+            <div class="swipe-handle" id="swipeHandle">
+              <svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <button type="submit" id="hiddenSubmitBtn" style="display:none;"></button>
+          </div>
+
+          <p class="form-terms-text">
+            <span class="lang-en">By contacting us, you agree to our <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>.</span>
+            <span class="lang-ur">پیغام ارسال کر کے آپ ہماری <strong>شرائط</strong> اور <strong>پالیسی</strong> سے اتفاق کرتے ہیں۔</span>
+          </p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+<style>
+  .simple-contact-section {
+    background-color: #EBF1FA; /* Soft icy blue/gray background matching image */
+    padding: 70px 5%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .contact-main-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 50px;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN STYLING */
+  .contact-big-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+  }
+
+  .contact-big-title .green-accent {
+    color: #006754;
+  }
+
+  .contact-lead-p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 520px;
+  }
+
+  .direct-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+  .direct-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-decoration: none;
+  }
+
+  .support-underline-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #006754;
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
+  /* BOTTOM 3 SUB COLUMNS */
+  .contact-sub-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .sub-col-item h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 8px 0;
+  }
+
+  .sub-col-item p {
+    font-size: 0.82rem;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RIGHT FLOATING FORM CARD */
+  .floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 4px 0;
+  }
+
+  .form-card-sub {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0 0 24px 0;
+  }
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .form-input-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .form-input-field:focus, .form-textarea-field:focus {
+    border-color: #006754;
+  }
+
+  .form-input-field.with-icon {
+    padding-left: 42px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+  }
+
+  .phone-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .country-code-select {
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    padding: 0 12px;
+    background: #FFFFFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .form-textarea-field {
+    width: 100%;
+    height: 85px;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .char-count {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-size: 0.7rem;
+    color: #9CA3AF;
+  }
+
+  .form-submit-blue-btn {
+    background-color: #006754; /* Custom institute brand green matching theme */
+    color: #FFFFFF;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+
+  .form-submit-blue-btn:hover {
+    background-color: #004D3F;
+  }
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+  
+  .swipe-submit-container.success {
+    background-color: #158467;
+  }
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+  .form-terms-text {
+    font-size: 0.72rem;
+    color: #6B7280;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-sub-columns { grid-template-columns: 1fr; }
+  }
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+  [dir="rtl"] .form-input-field.with-icon {
+    padding-left: 16px;
+    padding-right: 42px;
+  }
+
+  [dir="rtl"] .input-icon {
+    left: auto;
+    right: 16px;
+  }
+
+  [dir="rtl"] .char-count {
+    right: auto;
+    left: 14px;
+  }
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+  
+  [dir="rtl"] .swipe-handle i {
+    transform: rotate(180deg);
+  }
+      .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('swipeContainer');
+  const handle = document.getElementById('swipeHandle');
+  const text = document.getElementById('swipeText');
+  const form = container ? container.closest('form') : null;
+  
+  if (!container || !handle || !text) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let maxTravel = 0;
+
+  function startDrag(e) {
+    if (container.classList.contains('success') || container.classList.contains('submitting')) return;
+    
+    isDragging = true;
+    handle.classList.add('dragging');
+    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    
+    const containerWidth = container.offsetWidth;
+    const handleWidth = handle.offsetWidth;
+    maxTravel = containerWidth - handleWidth - 8; // 4px padding on each side
+  }
+
+  function doDrag(e) {
+    if (!isDragging) return;
+    e.preventDefault(); 
+    
+    let clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    let dx = clientX - startX;
+    
+    const isRtl = window.getComputedStyle(container).direction === 'rtl';
+    
+    if (isRtl) {
+       currentX = Math.max(-maxTravel, Math.min(0, dx));
+    } else {
+       currentX = Math.max(0, Math.min(maxTravel, dx));
+    }
+    
+    handle.style.transform = `translateX(${currentX}px)`;
+    
+    const progress = Math.abs(currentX) / maxTravel;
+    text.style.opacity = 1 - progress;
+  }
+
+  function stopDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    handle.classList.remove('dragging');
+    
+    const threshold = maxTravel * 0.9; 
+    
+    if (Math.abs(currentX) >= threshold) {
+      handle.style.transform = `translateX(${currentX < 0 ? -maxTravel : maxTravel}px)`;
+      submitForm();
+    } else {
+      currentX = 0;
+      handle.style.transform = `translateX(0px)`;
+      text.style.opacity = 1;
+    }
+  }
+
+  function submitForm() {
+    container.classList.add('submitting');
+    
+    setTimeout(() => {
+      container.classList.remove('submitting');
+      container.classList.add('success');
+      
+      text.innerHTML = `
+        <span class="lang-en">Submitted Successfully</span>
+        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
+      `;
+      text.style.opacity = 1;
+      
+      handle.innerHTML = '<svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      handle.style.color = '#158467';
+      
+      // If you have a real backend, you can trigger form.submit() here
+      // if (form) form.submit();
+      
+    }, 800);
+  }
+
+  handle.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', doDrag, {passive: false});
+  document.addEventListener('mouseup', stopDrag);
+
+  handle.addEventListener('touchstart', startDrag, {passive: false});
+  document.addEventListener('touchmove', doDrag, {passive: false});
+  document.addEventListener('touchend', stopDrag);
+});
+</script>
 
 </main>
 
@@ -4439,3 +5106,23 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
