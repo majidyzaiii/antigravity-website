@@ -3329,7 +3329,21 @@
   color: #006754 !important;
 }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
+<style>
+.iti { width: 100%; }
+.iti__country-list { z-index: 999999 !important; }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
+<style>
+.iti { width: 100%; }
+.iti__country-list { z-index: 999999 !important; }
+</style>
 </head>
+
+
 <body>
 
 <div class="mobile-logo-container">
@@ -3791,7 +3805,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script>
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(input => {
+        window.intlTelInput(input, {
+      initialCountry: pk,
+      countrySearch: true,
+      nationalMode: false,
+      autoInsertDialCode: true,
+      preferredCountries: [pk, sa, ae, gb, us],
+      utilsScript: https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js,
+      dropdownContainer: document.body
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script>
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(input => {
+    window.intlTelInput(input, {
+      initialCountry: "pk",
+      countrySearch: true,
+      nationalMode: false,
+      autoInsertDialCode: true,
+      preferredCountries: ["pk", "sa", "ae", "gb", "us"],
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+      dropdownContainer: document.body
+    });
+  });
+</script>
 </body>
+
+
 </html>
 
 

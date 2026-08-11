@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +46,7 @@
             background-color: #ffffff !important;
             position: relative;
             overflow-x: hidden !important;
-            padding-top: 220px !important; /* Prevents content from hiding behind fixed header on desktop */
+            padding-top: 150px !important; /* Prevents content from hiding behind fixed header on desktop */
         }
         
         html {
@@ -1685,7 +1685,7 @@
                 max-height: none !important;
                 overflow: visible !important;
                 padding-top: 20px !important;
-                padding-bottom: 45px !important; /* increased to prevent overlap */
+                padding-bottom: 10px !important;
             }
 
             /* Enforce RTL Header Row Container */
@@ -2613,238 +2613,641 @@
         html[dir="rtl"] .services-header p { font-size: 1.3rem !important; }
         html[dir="rtl"] .note-title { font-size: 1.6rem !important; }
         html[dir="rtl"] .note-desc { font-size: 1.15rem !important; line-height: 1.5 !important; }
-
-
         /* ========================================== */
-        /* INTEGRATED CURVED CARD & CIRCLE PHOTO CSS  */
-        /* ========================================== */
-        /* ========================================== */
-        /* MINIMALIST FOUNDER QUOTE SECTION           */
+        /* KEY FIGURES SECTION (LAYERED POSTERS)      */
         /* ========================================== */
         .leadership-section {
           background-color: #EFEEF0;
-          padding: 60px 8%;
+          padding: 70px 5%;
+          position: relative;
         }
 
-        .leadership-container {
+        .key-figures-grid {
+          display: flex;
+          justify-content: center;
+          gap: 60px;
+          flex-wrap: wrap;
+          padding: 20px 0;
           max-width: 1000px;
           margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 45px;
         }
 
-        /* SIDE-BY-SIDE + VERTICAL MID ALIGNMENT */
-        .founder-quote-layout {
-          display: flex;
-          flex-direction: row !important;
-          align-items: center !important;
-          justify-content: center;
-          gap: 35px;
-          width: 100%;
-        }
-
-        /* RTL (Urdu) Support */
-        [dir="rtl"] .founder-quote-layout,
-        .urdu-lang .founder-quote-layout {
-          flex-direction: row-reverse !important;
-        }
-
-        /* Image Column */
-        .quote-image-column {
-          flex: 0 0 250px;
+        .figure-card {
           display: flex;
           flex-direction: column;
           align-items: center;
-          text-align: center;
+          width: 320px;
         }
 
-        /* Wrapper isolated for photo only */
-        .image-with-backdrop-wrapper {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 190px;
-          height: 220px;
-          margin-bottom: 12px;
+        .figure-frame-wrapper {
+  position: relative !important;
+  width: 260px !important;
+  height: 320px !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+/* GREEN FRAME - SITUATED BEHIND THE HEAD */
+.green-bg-frame {
+  position: absolute !important;
+  top: 55px !important;
+  left: 32px !important;
+  right: 32px !important;
+  bottom: 12px !important;
+  border: 3px solid #006754 !important;
+  border-radius: 20px !important;
+  z-index: 1 !important;
+  background: #ffffff !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* SUBJECT IMAGE - POPPING OUT OVER TOP LINE */
+
+.figure-img-pop {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  height: 100% !important;
+  width: auto !important;
+  z-index: 2 !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+  
+  /* Apply fade (gradient mask) on Left, Right, and Bottom */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to top, transparent 0%, black 10%, black 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to top, transparent 0%, black 10%, black 100%);
+  mask-composite: intersect;
+}
+
+/* OVERLAY TEXT ON IMAGE */
+.figure-overlay-info {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 36px !important;
+  z-index: 3 !important;
+  text-align: left !important;
+}
+
+[dir="rtl"] .figure-overlay-info {
+  left: auto !important;
+  right: 36px !important;
+  text-align: right !important;
+}
+
+.sub-prefix {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.65rem !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+  display: block !important;
+  margin-left: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.figure-name {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  background-color: #006754 !important;
+  padding: 2px 8px !important;
+  border-radius: 3px !important;
+  display: inline-block !important;
+  text-shadow: none !important;
+}
+
+/* DESIGNATION BELOW CARD */
+.figure-designation {
+  margin-top: 10px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  color: #006754 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.5px !important;
+  text-align: center !important;
+}
+
+        @media (max-width: 768px) {
+          .key-figures-grid { gap: 80px; }
+          .figure-card { width: 280px; }
+          .figure-frame-wrapper {
+  position: relative !important;
+  width: 260px !important;
+  height: 320px !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+/* GREEN FRAME - SITUATED BEHIND THE HEAD */
+.green-bg-frame {
+  position: absolute !important;
+  top: 55px !important;
+  left: 32px !important;
+  right: 32px !important;
+  bottom: 12px !important;
+  border: 3px solid #006754 !important;
+  border-radius: 20px !important;
+  z-index: 1 !important;
+  background: transparent !important;
+}
+
+/* SUBJECT IMAGE - POPPING OUT OVER TOP LINE */
+
+.figure-img-pop {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  height: 100% !important;
+  width: auto !important;
+  z-index: 2 !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+  
+  /* Apply fade (gradient mask) on Left, Right, and Bottom */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to top, transparent 0%, black 10%, black 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to top, transparent 0%, black 10%, black 100%);
+  mask-composite: intersect;
+}
+
+/* OVERLAY TEXT ON IMAGE */
+.figure-overlay-info {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 36px !important;
+  z-index: 3 !important;
+  text-align: left !important;
+}
+
+[dir="rtl"] .figure-overlay-info {
+  left: auto !important;
+  right: 36px !important;
+  text-align: right !important;
+}
+
+.sub-prefix {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.65rem !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+  display: block !important;
+  margin-left: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.figure-name {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  background-color: #006754 !important;
+  padding: 2px 8px !important;
+  border-radius: 3px !important;
+  display: inline-block !important;
+  text-shadow: none !important;
+}
+
+/* DESIGNATION BELOW CARD */
+.figure-designation {
+  margin-top: 10px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  color: #006754 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.5px !important;
+  text-align: center !important;
+}
+
+        @media (max-width: 768px) {
+          .updates-section {
+            padding: 50px 20px;
+          }
+
+          .updates-title {
+            font-size: 2rem;
+            gap: 6px;
+          }
+          .updates-title .highlight-font {
+            font-size: 2.3rem;
+          }
+
+          .news-card-content {
+            margin: -30px 12px 10px 12px;
+            padding: 20px;
+          }
+        }
+        /* OVERLAY BACKDROP */
+        .mobile-drawer-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.4);
+          backdrop-filter: blur(4px);
+          z-index: 9998;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
         }
 
-        .image-accent-backdrop {
-          position: absolute;
-          width: 170px;
-          height: 195px;
-          background: linear-gradient(135deg, rgba(0, 103, 84, 0.18) 0%, rgba(2, 95, 85, 0.28) 100%);
-          border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-          z-index: 1;
+        .mobile-drawer-overlay.active {
+          opacity: 1;
+          visibility: visible;
         }
 
-        .cutout-portrait-img {
-          position: relative;
-          z-index: 2;
-          max-width: 180px;
-          height: auto;
-          max-height: 220px;
-          object-fit: contain;
-          border: none !important;
-          background: transparent !important;
-          box-shadow: none !important;
-          filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
-        }
-
-        /* Text Meta Container Positioned Below Image */
-        .founder-author-meta {
-          position: relative;
-          z-index: 3;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-        }
-
-        .honorific-title {
-          font-size: 0.82rem;
-          font-weight: 600;
-          color: #444444;
-          margin-bottom: 2px;
-        }
-
-        .author-name {
-          font-size: 1.25rem;
-          font-weight: 800;
-          color: #006754;
-          margin: 0 0 3px 0;
-          line-height: 1.2;
-          white-space: nowrap;
-        }
-
-        .nastaliq-sub {
-          font-family: 'Noto Nastaliq Urdu', 'Almarai', serif;
-          font-size: 1rem;
-          font-weight: normal;
-          color: #555555;
-          margin-left: 2px;
-          display: inline-block;
-        }
-
-        .author-title {
-          font-size: 0.85rem;
-          color: #666666;
-          margin: 0;
-          font-weight: 500;
-          white-space: nowrap;
-        }
-
-        /* Quote Box Column - Controlled Max Width for 3 Lines */
-        .quote-text-column {
-          flex: 0 1 480px; /* Restricts width so text flows into 3 clean lines */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .quote-bordered-box {
-          position: relative;
-          border: 2px solid #006754;
-          border-radius: 20px;
-          padding: 24px 28px 20px 28px;
+        .mobile-drawer-menu {
+          position: fixed;
+          top: 0;
+          left: -220px;
+          width: 200px;
+          height: 100vh;
           background-color: #FFFFFF;
-          box-shadow: 0 8px 20px rgba(0, 103, 84, 0.05);
-          box-sizing: border-box;
+          z-index: 9999;
+          box-shadow: 8px 0 24px rgba(0, 0, 0, 0.15);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          padding: 20px 16px;
+          box-sizing: border-box;
+          transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          font-family: 'Inter', sans-serif;
         }
 
+        .mobile-drawer-menu.active { left: 0; }
 
-        .founder-motto-text {
-          font-size: 1.05rem;
-          font-weight: 600;
-          color: #222222;
-          line-height: 1.6;
-          margin: 0 0 12px 0;
-          font-style: italic;
+        .drawer-header { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+        .drawer-close-btn {
+          width: 36px; height: 36px; border-radius: 50%;
+          background-color: #F3F4F6; border: none; color: #374151;
+          display: flex; align-items: center; justify-content: center; cursor: pointer;
         }
 
-        /* MINI HEADER TAG - BOTTOM RIGHT CORNER */
-        .card-mini-tag.bottom-right-tag {
-          display: block;
-          text-align: right;
-          font-size: 0.72rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.8px;
+        .drawer-content { flex: 1; overflow-y: auto; padding-right: 4px; }
+        .drawer-section { margin-bottom: 24px; }
+        .drawer-section-title { font-size: 0.72rem; font-weight: 700; color: #9CA3AF; letter-spacing: 0.8px; margin-bottom: 12px; display: block; }
+        
+        .drawer-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+        .drawer-links-list li a { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 12px 14px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            color: #1F2937; 
+            font-size: 0.98rem; 
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 1;
+        }
+        .drawer-link-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .drawer-link-content i { font-size: 1.1rem; color: #6B7280; width: 20px; text-align: center; transition: color 0.3s ease; }
+        .drawer-link-arrow {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .drawer-links-list li a:hover { background-color: #F0FDF4; color: #006754; }
+        .drawer-links-list li a:hover .drawer-link-content i, .drawer-links-list li a:hover .drawer-link-arrow { color: #006754; }
+        .drawer-links-list li a:hover .drawer-link-arrow { transform: translateX(4px); }
+
+        /* Shine Effect for Drawer Links */
+        .drawer-links-list li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 103, 84, 0) 0%, rgba(0, 103, 84, 0.1) 50%, rgba(0, 103, 84, 0) 100%);
+            transform: skewX(-20deg);
+            z-index: -1;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        html:not([dir="rtl"]) .drawer-links-list li a::before { left: -100%; }
+        html:not([dir="rtl"]) .drawer-links-list li a:hover::before,
+        html:not([dir="rtl"]) .drawer-links-list li a:active::before {
+            opacity: 1;
+            animation: shine-ltr 0.6s ease-out forwards;
+        }
+
+        /* BOTTOM GREEN CARD */
+        .drawer-bottom-card {
+          background-color: #006754;
+          border-radius: 16px;
+          padding: 12px 10px 12px 10px;
+          color: #FFFFFF;
+          box-shadow: 0 10px 20px rgba(0, 103, 84, 0.25);
+          margin-top: 6px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* LOGO AND TITLE WRAPPER */
+        .card-brand-asset-wrapper {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2px;
+          margin-bottom: 8px;
+        }
+
+        .main-drawer-logo {
+          width: 60px;
+          height: 60px;
+          object-fit: contain;
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .brand-title-img {
+          max-width: 130px;
+          height: auto;
+          object-fit: contain;
+        }
+
+        /* DESCRIPTION & BUTTON STYLING */
+        .card-description {
+          font-size: 0.65rem;
+          line-height: 1.4;
+          color: #FFFFFF;
+          opacity: 0.95;
+          margin: 0 0 10px 0;
+          font-weight: 500;
+        }
+
+        .card-action-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          background-color: #FFFFFF;
           color: #006754;
-          opacity: 0.9;
-          margin-top: auto;
+          padding: 8px 0;
+          border-radius: 10px;
+          font-weight: 700;
+          font-size: 0.8rem;
+          text-decoration: none;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-          .leadership-section {
-            padding: 30px 3%;
-          }
-
-          .founder-quote-layout,
-          .founder-quote-layout.principal-layout {
-            gap: 12px !important;
-          }
-
-          .quote-image-column {
-            flex: 0 0 135px !important;
-          }
-
-          .image-with-backdrop-wrapper {
-            width: 120px;
-            height: 150px;
-            margin-bottom: 8px;
-          }
-
-          .quote-text-column {
-            flex: 1;
-          }
-
-          .image-accent-backdrop {
-            width: 110px;
-            height: 130px;
-          }
-
-          .cutout-portrait-img {
-            max-width: 115px;
-            max-height: 145px;
-          }
-
-          .honorific-title { font-size: 0.68rem; }
-          .author-name { font-size: 0.9rem; }
-          .nastaliq-sub { font-size: 0.78rem; }
-          .author-title { font-size: 0.7rem; }
-
-          .quote-bordered-box {
-            padding: 16px 14px 14px 14px;
-            border-radius: 14px;
-            border-width: 1.5px;
-            margin-top: 0;
-            text-align: left;
-          }
-
-          /* RTL alignment inside quote box for mobile */
-          [dir="rtl"] .quote-bordered-box,
-          .urdu-lang .quote-bordered-box {
-            text-align: right;
-          }
-
-          .card-mini-tag.bottom-right-tag {
-            font-size: 0.6rem;
-          }
-
-          .founder-motto-text {
-            font-size: 0.82rem;
-            line-height: 1.45;
-            margin-bottom: 8px;
-          }
+        .card-action-btn:active {
+          transform: scale(0.98);
         }
 
-        /* ========================================== */
+        .drawer-social-links {
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 10px;
+        }
+        
+        .drawer-social-links .social-btn {
+          width: 26px;
+          height: 26px;
+        }
+        
+        .drawer-social-links .social-btn svg {
+          width: 13px;
+          height: 13px;
+        }
+
+        /* LANGUAGE TOGGLING RULES */
+        .lang-ur { display: none !important; }
+        .lang-en { display: block !important; }
+
+        /* RTL / URDU MODE ENFORCEMENT */
+        [dir="rtl"] .mobile-drawer-menu, body.rtl .mobile-drawer-menu {
+          left: auto; right: -220px;
+          transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          text-align: right;
+        }
+
+        [dir="rtl"] .mobile-drawer-menu.active, body.rtl .mobile-drawer-menu.active { right: 0; left: auto; }
+        [dir="rtl"] .drawer-header, body.rtl .drawer-header { justify-content: flex-end; }
+        [dir="rtl"] .drawer-close-btn i, body.rtl .drawer-close-btn i { transform: rotate(180deg); }
+
+        [dir="rtl"] .lang-en, body.rtl .lang-en { display: none !important; }
+        [dir="rtl"] .lang-ur, body.rtl .lang-ur { display: block !important; }
+        [dir="rtl"] span.lang-ur, body.rtl span.lang-ur { display: inline-block !important; }
+
+        [dir="rtl"] .drawer-links-list li a, body.rtl .drawer-links-list li a { font-family: 'Noto Nastaliq Urdu', 'Almarai', sans-serif; font-size: 0.9rem; }
+        [dir="rtl"] .card-description, body.rtl .card-description { 
+          font-family: 'Noto Nastaliq Urdu', serif; 
+          line-height: 1.8; 
+          font-size: 0.82rem;
+        }
+        
+        [dir="rtl"] .card-action-btn, body.rtl .card-action-btn { 
+          font-family: 'Almarai', sans-serif; 
+          font-weight: 800;
+        }
+        [dir="rtl"] .drawer-link-arrow, body.rtl .drawer-link-arrow { transform: rotate(180deg); }
+        [dir="rtl"] .drawer-links-list li a:hover .drawer-link-arrow, body.rtl .drawer-links-list li a:hover .drawer-link-arrow { transform: rotate(180deg) translateX(4px); }
+        
+        html[dir="rtl"] .drawer-links-list li a::before { 
+            right: -100%; 
+            background: linear-gradient(to left, rgba(0, 103, 84, 0) 0%, rgba(0, 103, 84, 0.1) 50%, rgba(0, 103, 84, 0) 100%);
+        }
+        html[dir="rtl"] .drawer-links-list li a:hover::before,
+        html[dir="rtl"] .drawer-links-list li a:active::before {
+            opacity: 1;
+            animation: shine-rtl 0.6s ease-out forwards;
+        }
+        /* DONATION SECTION */
+        .donation-section {
+          padding: 80px 5%;
+          background-color: #f7f9fc;
+        }
+        .donation-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .donation-header {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+        .donation-title {
+          font-size: 2.4rem;
+          color: #111111;
+          margin-bottom: 15px;
+        }
+        .donation-title .bold-text {
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+        }
+        .donation-title .highlight-font {
+          color: #006754;
+          font-family: 'Caveat', cursive, sans-serif;
+          font-weight: 700;
+        }
+        .donation-subtitle {
+          font-size: 1rem;
+          color: #666;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+        .donation-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          padding: 50px 20px 60px 20px;
+          background-color: #F2F3F5;
+        }
+
+        @media (max-width: 1024px) {
+            .donation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .donation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .donation-info-card {
+          position: relative;
+          z-index: 1;
+          /* Center on mobile & add space for badge */
+          margin: 0 auto 40px auto;
+          /* Constrain width so it maintains tall aspect ratio on all screens */
+          max-width: 290px;
+          width: 100%;
+          text-decoration: none;
+          display: block;
+          transition: transform 0.3s ease;
+        }
+        
+        .donation-info-card:hover {
+          transform: translateY(-8px);
+        }
+
+        /* The Straight Background Rectangle */
+        .donation-info-card::before {
+          content: '';
+          position: absolute;
+          /* Placed to form the wedge at top-right and hide elsewhere */
+          top: 2px;
+          right: -10px;
+          bottom: 20px;
+          left: 20px;
+          background-color: var(--card-color);
+          border-radius: 16px;
+          z-index: 0;
+        }
+
+        /* The Skewed White Card */
+        .donation-info-content {
+          position: relative;
+          z-index: 2;
+          background: #FFFFFF;
+          border-radius: 16px;
+          height: 100%;
+          /* Skew to create the slanted top/bottom edges & door-open illusion */
+          transform: skewY(3deg);
+          /* Directional drop shadow falling heavily to bottom-left */
+          box-shadow: -15px 15px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Unskew the text content */
+        .card-unskew {
+          transform: skewY(-3deg);
+          padding: 40px 20px 25px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+        }
+
+        /* Typography & Icons */
+        .info-card-icon {
+          color: #333333;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .info-card-title {
+          font-weight: 800;
+          font-size: 1rem;
+          color: #111111;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          text-align: center;
+        }
+
+        .info-card-desc {
+          color: #666666;
+          font-size: 0.85rem;
+          text-align: center;
+          line-height: 1.5;
+          margin-bottom: 20px;
+        }
+
+        /* Bottom Badge / Arrow Button */
+        .info-card-number {
+          margin-top: auto; 
+          width: 36px;
+          height: 36px;
+          background-color: var(--card-color);
+          color: #ffffff;
+          border: 1.5px solid var(--card-color);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.3s ease;
+          z-index: 3;
+        }
+
+        .info-card-number svg {
+          transition: transform 0.3s ease;
+        }
+
+          .donation-info-card:hover .info-card-number { background: #ffffff !important; color: #025F55 !important; box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;  }
+  
+  /* Swipe To Submit Overrides */
+  .swipe-submit-container {
+      background: var(--primary-gradient) !important;
+  }
+  .swipe-submit-container.success {
+      background: #ffffff !important;
+      box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+  .swipe-submit-container.success .swipe-text {
+      color: #025F55 !important;
+  }
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+}
+
+/* ========================================== */
         /* NEWS & UPDATES SECTION                     */
         /* ========================================== */
         .updates-section {
@@ -2867,7 +3270,7 @@
 
         /* Main Heading Line */
         .updates-title {
-          font-size: 2.5rem; /* Clean natural size matching 'Introduction to' */
+          font-size: 2.1rem; /* Clean natural size matching 'Introduction to' */
           line-height: 1.2;
           margin-bottom: 12px;
           display: flex;
@@ -2890,7 +3293,7 @@
           color: #006754; /* Your Brand Green Code */
           font-family: 'Caveat', cursive, sans-serif;
           font-weight: 700;
-          font-size: 2.8rem; /* Balanced size matching 'Madrassa' */
+          font-size: 2.5rem; /* Balanced size matching 'Madrassa' */
           display: inline-block;
         }
 
@@ -3323,7 +3726,7 @@
           margin-bottom: 50px;
         }
         .donation-title {
-          font-size: 2.8rem;
+          font-size: 2.4rem;
           color: #111111;
           margin-bottom: 15px;
         }
@@ -4113,78 +4516,32 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                   Key figures dedicated to the service of Quran and Sunnah
               </p>
           </div>
-          <div class="leadership-container">
-
-            <!-- 1. FOUNDER SECTION (IMAGE LEFT | TEXT RIGHT) -->
-            <div class="founder-quote-layout">
-              
-              <!-- LEFT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
-              <div class="quote-image-column">
-                <div class="image-with-backdrop-wrapper">
-                  <div class="image-accent-backdrop"></div>
-                  <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="cutout-portrait-img" />
-                </div>
-                
-                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
-                <div class="founder-author-meta">
-                  <span class="honorific-title" data-en="Hazrat Maulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Maulana Mufti</span>
-                  <h3 class="author-name">
-                    <span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> 
-                    <span class="nastaliq-sub" data-en="(رحمہ اللہ)" data-ur="(رحمہ اللہ)">(رحمہ اللہ)</span>
-                  </h3>
-                  <p class="author-title" data-en="Founder of the Institution" data-ur="بانیِ ادارہ">Founder of the Institution</p>
+          <div class="key-figures-grid">
+            <!-- FOUNDER CARD -->
+            <div class="figure-card">
+              <div class="figure-frame-wrapper">
+                <div class="green-bg-frame"></div>
+                <img src="assets/founder.png" alt="Mufti Riaz Mahmood" class="figure-img-pop">
+                <div class="figure-overlay-info">
+                  <span class="sub-prefix" data-en="Hazrat Moulana" data-ur="حضرت مولانا">Hazrat Moulana</span>
+                  <h3 class="figure-name" data-en="Mufti Riaz Mahmood" data-ur="مفتی ریاض محمود">Mufti Riaz Mahmood</h3>
                 </div>
               </div>
-
-              <!-- RIGHT COLUMN: QUOTE BOX ONLY -->
-              <div class="quote-text-column">
-                <!-- Outer Rounded Border Box with Quotation Marks -->
-                <div class="quote-bordered-box">
-                  <p class="founder-motto-text" data-en="“Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”" data-ur="“قرآن و سنت کو مضبوطی سے تھام لو؛ یہی دنیا اور آخرت میں کامیابی کا حقیقی راستہ ہے۔”">
-                    “Hold fast to the Quran and Sunnah; this is the true path to success in this world and the Hereafter.”
-                  </p>
-                  
-                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
-                  <span class="card-mini-tag bottom-right-tag" data-en="Motto of the Founder" data-ur="بانی کا پیغام">Motto of the Founder</span>
-                </div>
-              </div>
+              <p class="figure-designation" data-en="FOUNDER OF THE INSTITUTE" data-ur="بانی ادارہ">FOUNDER OF THE INSTITUTE</p>
             </div>
 
-            <!-- 2. PRINCIPAL SECTION (TEXT LEFT | IMAGE RIGHT) -->
-            <div class="founder-quote-layout principal-layout">
-              
-              <!-- LEFT COLUMN: QUOTE BOX ONLY -->
-              <div class="quote-text-column">
-                <!-- Outer Rounded Border Box with Quotation Marks -->
-                <div class="quote-bordered-box">
-                  <p class="founder-motto-text" data-en="“Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”" data-ur="“ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایک ایسی نسل کی آبیاری کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی (صلی اللہ علیہ وسلم) کو اپنی عملی زندگی کا حصہ بنائے، اور اپنے اخلاق کے ذریعے دنیا کے سامنے اسلام کی حقیقی روح پیش کرے۔”">
-                    “Our responsibility is not merely to teach the Quran, but to nurture a generation that understands the Quran, acts upon it, integrates the Sunnah of the Prophet (ﷺ) into their daily lives, and presents the true essence of Islam to the world through their character.”
-                  </p>
-                  
-                  <!-- LABEL SHIFTED TO BOTTOM RIGHT -->
-                  <span class="card-mini-tag bottom-right-tag" data-en="Message from the Principal" data-ur="مہتمم کا پیغام">Message from the Principal</span>
+            <!-- PRINCIPAL CARD -->
+            <div class="figure-card">
+              <div class="figure-frame-wrapper">
+                <div class="green-bg-frame"></div>
+                <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="figure-img-pop">
+                <div class="figure-overlay-info">
+                  <span class="sub-prefix" data-en="Hazrat Moulana" data-ur="حضرت مولانا">Hazrat Moulana</span>
+                  <h3 class="figure-name" data-en="Mufti Aamir Mahmood" data-ur="مفتی عامر محمود">Mufti Aamir Mahmood</h3>
                 </div>
               </div>
-
-              <!-- RIGHT COLUMN: SMALLER IMAGE & AUTHOR META BELOW IT -->
-              <div class="quote-image-column">
-                <div class="image-with-backdrop-wrapper">
-                  <div class="image-accent-backdrop"></div>
-                  <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="cutout-portrait-img" />
-                </div>
-
-                <!-- NAME & TYPOGRAPHY ADJUSTED DIRECTLY BELOW IMAGE -->
-                <div class="founder-author-meta">
-                  <span class="honorific-title" data-en="Mufti" data-ur="مفتی">Mufti</span>
-                  <h3 class="author-name">
-                    <span data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</span> 
-                  </h3>
-                  <p class="author-title" data-en="Principal of the Institution" data-ur="مہتمم ادارہ">Principal of the Institution</p>
-                </div>
-              </div>
-
+              <p class="figure-designation" data-en="PRINCIPAL OF THE INSTITUTE" data-ur="مہتمم ادارہ">PRINCIPAL OF THE INSTITUTE</p>
             </div>
-
           </div>
         </section>
 
@@ -4852,7 +5209,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     background: #FFFFFF;
     border-radius: 24px;
     padding: 28px 26px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
     animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
