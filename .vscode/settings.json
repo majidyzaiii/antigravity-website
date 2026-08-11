@@ -1,6 +1,9 @@
-{
-    "antigravity.terminal.autoApprove": true,
-    "antigravity.autoExecutionPolicy": "always-proceed",
-    "cline.terminal.autoApprove": true,
-    "roo.terminal.autoApprove": true
+﻿{
+    "roo.terminal.autoApprove":  true,
+    "antigravity.chat.syncFileBuffers":  true,
+    "antigravity.terminal.autoApprove":  true,
+    "antigravity.autoExecutionPolicy":  "always-proceed",
+    "antigravity.history.enableStateCheckpoints":  true,
+    "files.autoSave":  "afterDelay",
+    "cline.terminal.autoApprove":  true
 }

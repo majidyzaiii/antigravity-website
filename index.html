@@ -3902,7 +3902,14 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     transform: scaleX(-1) rotate(45deg) !important;
 }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
+<style>
+.iti { width: 100%; }
+.iti__country-list { z-index: 999999 !important; }
+</style>
 </head>
+
 <body>
 
 <div class="mobile-logo-container">
@@ -4714,9 +4721,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
           </div>
 
           <div class="form-input-wrapper phone-group">
-            <select class="country-code-select">
-              <option>+92</option>
-            </select>
+            
             <input type="tel" placeholder="Phone number" required class="form-input-field">
           </div>
 
@@ -5314,7 +5319,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script>
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(input => {
+    window.intlTelInput(input, {
+      initialCountry: "pk",
+      countrySearch: true,
+      nationalMode: false,
+      autoInsertDialCode: true,
+      preferredCountries: ["pk", "sa", "ae", "gb", "us"],
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+      dropdownContainer: document.body
+    });
+  });
+</script>
 </body>
+
 </html>
 
 
