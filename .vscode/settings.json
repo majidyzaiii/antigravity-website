@@ -1,0 +1,6 @@
+{
+    "antigravity.terminal.autoApprove": true,
+    "antigravity.autoExecutionPolicy": "always-proceed",
+    "cline.terminal.autoApprove": true,
+    "roo.terminal.autoApprove": true
+}
