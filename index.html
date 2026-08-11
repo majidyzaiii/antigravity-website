@@ -2622,7 +2622,7 @@
           position: relative;
         }
 
-        .key-figures-grid {
+        .leadership-grid {
           display: flex;
           justify-content: center;
           gap: 60px;
@@ -2731,7 +2731,7 @@
 }
 
         @media (max-width: 768px) {
-          .key-figures-grid { gap: 80px; }
+          .leadership-grid { gap: 80px; }
           .figure-card { width: 280px; }
           .figure-frame-wrapper {
   position: relative !important;
@@ -3886,25 +3886,83 @@
   .swipe-submit-container.success .swipe-arrow-icon {
       color: #ffffff !important;
   }
+
+    /* Smooth gradient blend for Hero Section into body canvas */
+    .hero-section {
+        background: linear-gradient(180deg, #ffffff 0%, #ffffff 75%, #f4f8f6 100%) !important;
+        margin-bottom: 0 !important;
+    }
+
 </style>
 
-  <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
+  <!-- SECTION CARD CONTAINER STYLES -->
   <style>
-    body, main, section {
-      background-color: #FFFFFF !important;
+    /* Soft background page canvas */
+    body {
+      background-color: #f4f8f6 !important; /* Soft neutral grey-green canvas */
     }
-    
-    /* Remove any light gray, blueish, or off-white background colors from wrappers */
-    .simple-contact-section,
-    .donation-container, .donation-grid,
-    .contact-main-container,
-    .contact-page-grid,
-    .services-section,
-    .news-section,
-    .about-section {
-      background-color: #FFFFFF !important;
+
+    /* Light Shaded Floating Section Cards */
+    .section-card-container {
+      background: #ffffff !important;
+      background: linear-gradient(180deg, #ffffff 0%, #f7faf8 100%) !important;
+      border-radius: 28px !important;
+      padding: 50px 40px !important;
+      margin: 40px auto !important;
+      max-width: 1200px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.12) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
     }
-        .section-divider {
+
+    /* Mobile adjustments for section cards */
+    @media (max-width: 768px) {
+        .section-card-container {
+            padding: 30px 20px !important;
+            margin: 20px 4% !important;
+            border-radius: 20px !important;
+        }
+    }
+
+    /* Light Card Inner Elements */
+    .section-card-container h2, 
+    .section-card-container h3, 
+    .section-card-container p {
+      color: #1a2e2a !important;
+    }
+
+    /* Container spacing away from outer green frame border */
+    .figure-overlay-info {
+      position: absolute !important;
+      bottom: 25px !important;
+      left: 20px !important;
+      right: 20px !important; /* Prevents badge from touching the right line */
+      z-index: 3 !important;
+      text-align: left !important;
+    }
+
+    /* Small prefix above badge */
+    .sub-prefix {
+      display: block !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Green highlight badge box */
+    .name-badge {
+      display: inline-block !important;
+      background-color: #006754 !important; /* Brand green */
+      color: #FFFFFF !important; /* PURE WHITE TEXT FOR HIGH VISIBILITY */
+      font-size: 1.3rem !important;
+      font-weight: 700 !important;
+      padding: 6px 14px !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+      margin-right: 10px !important; /* Ensures gap from outer green line */
+    }
+  .section-divider {
         width: 100%;
         height: 80px;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -3915,6 +3973,53 @@
         margin: 20px 0;
         pointer-events: none;
       }
+
+    /* Fix intro card corners & Force Floating Card Styles on Intro Container */
+    .hero-extension-section,
+    #intro,
+    .intro-section,
+    section[class*="hero-extension"],
+    section[class*="intro"],
+    .section-card-container:first-of-type {
+      width: calc(100% - 40px) !important;
+      max-width: 1200px !important;
+      margin: 40px auto !important;
+      border-radius: 28px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.12) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04) !important;
+      overflow: hidden !important;
+    }
+
+    /* Hero bottom divider gradient line */
+    .hero-section::after,
+    .hero-bottom-divider,
+    hr.hero-line {
+      content: "" !important;
+      display: block !important;
+      width: 80% !important;
+      height: 2px !important;
+      margin: 40px auto 20px auto !important;
+      background: linear-gradient(90deg, rgba(0, 103, 84, 0) 0%, rgba(0, 103, 84, 0.4) 50%, rgba(0, 103, 84, 0) 100%) !important;
+      border: none !important;
+    }
+    /* Remove inner grey background from donation grid */
+    .donation-grid, .donation-grid-wrapper, .donation-container {
+        background-color: transparent !important;
+        background: transparent !important;
+    }
+    /* Center align the Introduction card content */
+    #about {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    
+
+    
+
     </style>
 
   <!-- GLOBAL TYPOGRAPHY -->
@@ -4465,23 +4570,20 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
         </div>
     </section>
 </div>
+<!-- Divider below Educational Services -->
+<div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 60px; margin-bottom: 20px; width: 100%; overflow: hidden;">
+    <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
+              stroke="#025F55" 
+              stroke-width="3.5" 
+              fill="none" 
+              stroke-linecap="round"/>
+    </svg>
+</div>
 
     <!-- Combined Hero Extension Section -->
-    <section class="hero-extension-section">
-        <div class="custom-loop-divider">
-            <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Deeper wavy path before and after the loop -->
-                <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-                      stroke="#025F55" 
-                      stroke-width="3.5" 
-                      fill="none" 
-                      stroke-linecap="round"/>
-            </svg>
-        </div>
-
+    <section class="hero-extension-section section-card-container" id="about">
         <!-- Short Introduction Section -->
-        <div class="intro-section" id="about">
-        <div class="intro-container">
             <h2 class="intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
                 Introduction to <span class="highlight-font">Madrassa</span>
             </h2>
@@ -4500,14 +4602,13 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                     </svg>
                 </span>
             </a>
-        </div>
-        </div>
+    </section>
 
-        <!-- Leadership Preview Section -->
+    <!-- Leadership Preview Section -->
         <!-- ========================================== -->
         <!-- INTEGRATED CURVED CARD & CIRCLE PHOTO      -->
         <!-- ========================================== -->
-        <section class="leadership-section" id="leadership">
+        <section class="leadership-section section-card-container" id="leadership">
           <div class="leadership-header" style="text-align: center; margin-bottom: 40px;">
               <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
                   Leadership &amp; <span class="highlight-font">Founders</span>
@@ -4516,37 +4617,38 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                   Key figures dedicated to the service of Quran and Sunnah
               </p>
           </div>
-          <div class="key-figures-grid">
-            <!-- FOUNDER CARD -->
-            <div class="figure-card">
-              <div class="figure-frame-wrapper">
-                <div class="green-bg-frame"></div>
-                <img src="assets/founder.png" alt="Mufti Riaz Mahmood" class="figure-img-pop">
-                <div class="figure-overlay-info">
-                  <span class="sub-prefix" data-en="Hazrat Moulana" data-ur="حضرت مولانا">Hazrat Moulana</span>
-                  <h3 class="figure-name" data-en="Mufti Riaz Mahmood" data-ur="مفتی ریاض محمود">Mufti Riaz Mahmood</h3>
-                </div>
-              </div>
-              <p class="figure-designation" data-en="FOUNDER OF THE INSTITUTE" data-ur="بانی ادارہ">FOUNDER OF THE INSTITUTE</p>
-            </div>
+          <div class="leadership-grid">
+  <!-- CARD 1: FOUNDER (WITH PHOTO) -->
+  <div class="figure-card">
+    <div class="figure-frame-wrapper">
+      <div class="green-bg-frame"></div>
+      <img src="assets/founder.png" alt="Hazrat Moulana Mufti Riaz Mahmood" class="figure-img-pop">
+      <div class="figure-overlay-info">
+        <span class="sub-prefix">Hazrat Moulana Mufti</span>
+        <div class="name-badge">Riaz Mahmood</div>
+      </div>
+    </div>
+    <p class="figure-designation">FOUNDER OF THE INSTITUTE</p>
+  </div>
 
-            <!-- PRINCIPAL CARD -->
-            <div class="figure-card">
-              <div class="figure-frame-wrapper">
-                <div class="green-bg-frame"></div>
-                <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="figure-img-pop">
-                <div class="figure-overlay-info">
-                  <span class="sub-prefix" data-en="Hazrat Moulana" data-ur="حضرت مولانا">Hazrat Moulana</span>
-                  <h3 class="figure-name" data-en="Mufti Aamir Mahmood" data-ur="مفتی عامر محمود">Mufti Aamir Mahmood</h3>
-                </div>
-              </div>
-              <p class="figure-designation" data-en="PRINCIPAL OF THE INSTITUTE" data-ur="مہتمم ادارہ">PRINCIPAL OF THE INSTITUTE</p>
-            </div>
-          </div>
+  <!-- CARD 2: PRINCIPAL (IMAGE PLACEHOLDER FOR LATER) -->
+  <div class="figure-card">
+    <div class="figure-frame-wrapper">
+      <div class="green-bg-frame"></div>
+      <!-- Placeholder div reserved for Mufti Aamir Mahmood's picture -->
+      <!-- Image will go here -->
+      <div class="figure-overlay-info">
+        <span class="sub-prefix">Moulana Mufti</span>
+        <div class="name-badge">Aamir Mahmood</div>
+      </div>
+    </div>
+    <p class="figure-designation">PRINCIPAL OF THE INSTITUTE</p>
+  </div>
+</div>
         </section>
 
     <!-- Arc Stats Section -->
-    <section class="donut-infographic-section">
+    <section class="donut-infographic-section section-card-container">
         <div class="donut-infographic-container">
             
             <!-- Desktop SVG View -->
@@ -4706,7 +4808,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     </div>
 
 <!-- Courses Section (Services) -->
-<section id="courses" class="services-section">
+<section id="courses" class="services-section section-card-container">
   <div class="services-header">
     <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
     <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
@@ -4796,21 +4898,12 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     </div>
   </div>
 </section>
-<!-- Divider below Educational Services -->
-<div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 20px; margin-bottom: 40px;">
-    <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-              stroke="#025F55" 
-              stroke-width="3.5" 
-              fill="none" 
-              stroke-linecap="round"/>
-    </svg>
-</div>
+
 
 <!-- ========================================== -->
 <!-- NEWS & UPDATES SECTION                     -->
 <!-- ========================================== -->
-<section class="updates-section">
+<section class="updates-section section-card-container">
   <div class="updates-container">
     
     <!-- Section Header -->
@@ -4912,7 +5005,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 
 <!-- DONATION SECTION                           -->
 <!-- ========================================== -->
-<section class="donation-section">
+<section class="donation-section section-card-container">
   <div class="donation-container">
     <div class="donation-header">
       <h2 class="donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Our Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='highlight-font'>تعاون کریں</span>">
@@ -4992,7 +5085,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 <!-- ========================================== -->
 <!-- HOMEPAGE SIMPLE CONTACT SECTION            -->
 <!-- ========================================== -->
-<section class="simple-contact-section" id="contact">
+<section class="simple-contact-section section-card-container" id="contact">
   <div class="contact-main-container">
     
     <!-- LEFT SIDE: TITLE, DIRECT CONTACT & SUB-DEPARTMENTS -->
