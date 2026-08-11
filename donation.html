@@ -3681,7 +3681,161 @@
         background-size: 100% 100%;
         pointer-events: none;
       }
-    </style>
+              /* GLOBAL BUTTON OVERRIDES TO MATCH PRIMARY PILL */
+  
+  /* PRIMARY STYLE BUTTONS (Default: Green, Hover: White) */
+  .btn-intro-special,
+  .view-all-updates-btn,
+  .card-action-btn {
+      background: var(--primary-gradient) !important;
+      color: #ffffff !important;
+      border: 2px solid transparent !important;
+  }
+  
+  .btn-intro-special .btn-text,
+  .view-all-updates-btn span,
+  .card-action-btn span {
+      color: #ffffff !important;
+  }
+  
+  .btn-intro-special .arrow-icon,
+  .btn-intro-special .btn-arrow-circle,
+  .view-all-updates-btn .cta-arrow,
+  .view-all-updates-btn .btn-arrow-circle,
+  .card-action-btn .cta-arrow,
+  .card-action-btn .btn-arrow-circle {
+      background-color: #ffffff !important;
+      color: #025F55 !important;
+      border: none !important;
+  }
+  
+  /* PRIMARY STYLE HOVER STATES (Green to White) */
+  .btn-intro-special:hover,
+  .view-all-updates-btn:hover,
+  .card-action-btn:hover {
+      background: #ffffff !important;
+      border: 2px solid #025F55 !important;
+      color: #025F55 !important;
+      box-shadow: 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+      transform: translateY(-3px) !important;
+  }
+  
+  .btn-intro-special:hover .btn-text,
+  .view-all-updates-btn:hover span,
+  .card-action-btn:hover span {
+      color: #025F55 !important;
+  }
+  
+  .btn-intro-special:hover .arrow-icon,
+  .btn-intro-special:hover .btn-arrow-circle,
+  .view-all-updates-btn:hover .cta-arrow,
+  .view-all-updates-btn:hover .btn-arrow-circle,
+  .card-action-btn:hover .cta-arrow,
+  .card-action-btn:hover .btn-arrow-circle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+  }
+  
+  /* ---------------------------------------------------- */
+  /* ONLY THIS BUTTON IS WHITE BY DEFAULT: btn-secondary-pill */
+  /* SECONDARY STYLE BUTTONS (Default: White, Hover: Green) */
+  
+  .btn-secondary-pill,
+  .hero-buttons a:nth-child(2),
+  .hero-buttons button:nth-child(2) {
+      background: #ffffff !important;
+      color: #025F55 !important;
+      border: 2px solid #025F55 !important;
+  }
+  
+  .btn-secondary-pill .btn-text,
+  .hero-buttons a:nth-child(2) span {
+      color: #025F55 !important;
+  }
+  
+  .btn-secondary-pill .btn-arrow-circle,
+  .hero-buttons a:nth-child(2) .btn-arrow-circle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: none !important;
+  }
+  
+  /* SECONDARY STYLE HOVER STATES (White to Green) */
+  .btn-secondary-pill:hover,
+  .hero-buttons a:nth-child(2):hover {
+      background: var(--primary-gradient) !important;
+      border: 2px solid transparent !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 18px rgba(2, 95, 85, 0.25) !important;
+      transform: translateY(-3px) !important;
+  }
+  
+  .btn-secondary-pill:hover .btn-text,
+  .hero-buttons a:nth-child(2):hover span {
+      color: #ffffff !important;
+  }
+  
+  .btn-secondary-pill:hover .btn-arrow-circle,
+  .hero-buttons a:nth-child(2):hover .btn-arrow-circle {
+      background-color: #ffffff !important;
+      color: #025F55 !important;
+  }
+  
+  /* SHARED ROTATION & STROKES FOR ALL BUTTONS ON HOVER */
+  .btn-secondary-pill:hover .btn-arrow-circle svg,
+  .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
+  .btn-intro-special:hover .arrow-icon svg,
+  .btn-intro-special:hover .btn-arrow-circle svg,
+  .view-all-updates-btn:hover .cta-arrow svg,
+  .view-all-updates-btn:hover .btn-arrow-circle svg,
+  .card-action-btn:hover .cta-arrow svg,
+  .card-action-btn:hover .btn-arrow-circle svg {
+      transform: rotate(45deg) !important;
+      transition: transform 0.3s ease !important;
+  }
+  
+  .btn-intro-special:hover .btn-arrow-circle svg stroke,
+  .view-all-updates-btn:hover .btn-arrow-circle svg stroke {
+      stroke: #ffffff !important;
+  }
+  .btn-intro-special .btn-arrow-circle svg stroke,
+  .view-all-updates-btn .btn-arrow-circle svg stroke {
+      stroke: #025F55 !important;
+  }
+  
+  /* MOBILE TOUCH STATES */
+  @media (max-width: 768px) {
+      .btn-intro-special:active,
+      .view-all-updates-btn:active,
+      .card-action-btn:active {
+          background: #ffffff !important;
+          color: #025F55 !important;
+          border: 2px solid #025F55 !important;
+          transform: scale(0.96) !important;
+      }
+      .btn-intro-special:active .arrow-icon,
+      .btn-intro-special:active .btn-arrow-circle,
+      .view-all-updates-btn:active .btn-arrow-circle,
+      .card-action-btn:active .btn-arrow-circle {
+          background-color: #025F55 !important;
+          color: #ffffff !important;
+      }
+      
+      .btn-secondary-pill:active,
+      .btn-secondary-pill:focus,
+      .hero-buttons a:nth-child(2):active {
+          background: var(--primary-gradient) !important;
+          color: #ffffff !important;
+          border: 2px solid transparent !important;
+          transform: scale(0.96) !important;
+      }
+      .btn-secondary-pill:active .btn-arrow-circle,
+      .hero-buttons a:nth-child(2):active .btn-arrow-circle {
+          background-color: #ffffff !important;
+          color: #025F55 !important;
+      }
+  }
+</style>
 </head>
 <body>
 
@@ -4090,6 +4244,11 @@
 
 </body>
 </html>
+
+
+
+
+
 
 
 
