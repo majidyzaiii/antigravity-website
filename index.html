@@ -3893,6 +3893,124 @@
         margin-bottom: 0 !important;
     }
 
+
+/* MOBILE HERO MEDIA QUERY OVERRIDES */
+@media (max-width: 768px) {
+  /* Center Hero Container */
+  .hero-section,
+  .hero-content,
+  .hero-text-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Center Badge and Quranic Hadees Image/Text */
+  .hero-badge,
+  .welcome-badge,
+  .quran-verse,
+  .arabic-calligraphy {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  /* Center All Headings and Paragraphs */
+  .hero-section h1,
+  .hero-section h2,
+  .hero-section p,
+  .hero-description {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Center Action Buttons Stack */
+  .hero-cta-group,
+  .hero-buttons,
+  .cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+  }
+
+  .hero-cta-group a,
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+}
+
+
+/* MOBILE CONTACT OVERRIDES */
+@media (max-width: 768px) {
+  /* Contact Section Container Fitting */
+  .simple-contact-section,
+  #contact,
+  section[class*="contact"] {
+    width: calc(100% - 30px) !important;
+    max-width: 100% !important;
+    margin: 20px auto !important;
+    padding: 25px 15px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Force 2-Column Grid/Flex to Stack in 1 Single Column */
+  .contact-container,
+  .contact-wrapper,
+  .contact-grid,
+  section[class*="contact"] > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 25px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Fix Inner Form Card & Contact Info Widths */
+  .contact-info,
+  .contact-form-card,
+  .get-in-touch-card,
+  [class*="contact"] .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    padding: 20px 15px !important;
+  }
+
+  /* Prevent First Name / Last Name inputs from overflowing */
+  .form-row,
+  .name-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100% !important;
+  }
+
+  .form-row input,
+  .form-group input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
 </style>
 
   <!-- SECTION CARD CONTAINER STYLES -->
