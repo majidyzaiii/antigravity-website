@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2006,6 +2006,89 @@
       }
   }
 </style>
+
+<style>
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex; justify-content: flex-end; padding: 16px;
+}
+
+.mobile-menu-card {
+  background: #FFFFFF; width: 85%; max-width: 320px;
+  border-radius: 24px; padding: 24px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: scale(0.6) translate(40px, -40px);
+  transform-origin: top right;
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.is-active { opacity: 1; pointer-events: auto; }
+.mobile-nav-overlay.is-active .mobile-menu-card { transform: scale(1) translate(0, 0); opacity: 1; }
+
+.mobile-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.menu-tag-label { font-size: 0.75rem; font-weight: 700; color: #9CA3AF; letter-spacing: 1.5px; }
+.mobile-menu-close { background: transparent; border: none; font-size: 1.8rem; color: #1F2937; cursor: pointer; }
+.mobile-nav-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.mobile-nav-links a { text-decoration: none; color: #1F2937; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; }
+.mobile-lang-btn { text-decoration: none; color: #1F2937; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; background: transparent; border: none; padding: 0; cursor: pointer; text-align: left; width: 100%; }
+</style>
+
+<style>
+/* COMPACT CARD DIMENSIONS & PADDING */
+.mobile-menu-card {
+  width: 240px !important;            /* Reduced width */
+  max-height: 380px !important;        /* Strict compact height limit */
+  padding: 16px 20px !important;       /* Tight compact padding */
+  border-radius: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* COMPACT HEADER */
+.mobile-menu-header {
+  margin-bottom: 10px !important;
+}
+
+.menu-tag-label {
+  font-size: 0.65rem !important;
+  letter-spacing: 1px !important;
+  color: #9CA3AF !important;
+}
+
+.mobile-menu-close {
+  font-size: 1.2rem !important;
+  color: #4B5563 !important;
+}
+
+/* COMPACT LINKS LIST */
+.mobile-nav-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;                /* Reduced gap between items */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mobile-nav-links a, .mobile-lang-btn {
+  font-size: 0.95rem !important;      /* Small sleek font size */
+  font-weight: 600 !important;
+  text-transform: capitalize !important; /* Sentence case like "Home", "About Us" */
+  color: #374151 !important;
+  line-height: 1.2 !important;
+}
+
+.mobile-nav-links a:hover, .mobile-lang-btn:hover {
+  color: #006754 !important;
+}
+</style>
 </head>
 <body>
 
@@ -2047,7 +2130,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
         const langSwitchBtn = document.getElementById('langSwitch');
         let currentLang = 'en';
 
@@ -2435,8 +2518,61 @@ html:not([dir="rtl"]) .profile-quote {
     </div>
 </footer>
 
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-menu-card">
+    <div class="mobile-menu-header">
+      <span class="menu-tag-label">MENU</span>
+      <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+    </div>
+            <ul class="mobile-nav-links">
+      <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
+      <li><a href="about.html" class="m-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
+      <li><a href="courses.html" class="m-link" data-en="COURSES" data-ur="کورسز">COURSES</a></li>
+      <li><a href="admissions.html" class="m-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
+      <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
+      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
+      <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
+      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="ENGLISH">URDU</button></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  if(mobileMenuBtn && mobileNavOverlay) {
+      mobileMenuBtn.removeAttribute('onclick');
+      
+      mobileMenuBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          mobileNavOverlay.classList.add('is-active');
+      });
+      
+      if(mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('is-active');
+        });
+      }
+      
+      mobileNavOverlay.addEventListener('click', (e) => {
+          if(e.target === mobileNavOverlay) {
+              mobileNavOverlay.classList.remove('is-active');
+          }
+      });
+  }
+});
+</script>
 </body>
 </html>
+
+
+
+
 
 
 
