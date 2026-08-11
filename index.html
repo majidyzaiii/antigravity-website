@@ -4011,6 +4011,50 @@
   }
 }
 
+
+/* MOBILE COMPACT BUTTON OVERRIDES */
+@media (max-width: 768px) {
+  /* Button container alignment */
+  .hero-cta-group,
+  .hero-buttons,
+  .cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Centers both buttons horizontally */
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+
+  /* Compact button width fitting text content */
+  .hero-cta-group a,
+  .hero-cta-group button,
+  .hero-buttons a,
+  .hero-buttons button {
+    width: auto !important; /* Fits text length naturally */
+    max-width: fit-content !important;
+    min-width: unset !important;
+    padding: 10px 18px !important; /* Compact padding */
+    font-size: 0.95rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin: 0 auto !important; /* Keeps individual button centered */
+  }
+
+  /* Make sure internal arrow icons stay proportional */
+  .hero-cta-group .btn-icon,
+  .hero-buttons .btn-icon,
+  .hero-cta-group span[class*="icon"],
+  .hero-buttons span[class*="icon"] {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
 </style>
 
   <!-- SECTION CARD CONTAINER STYLES -->
