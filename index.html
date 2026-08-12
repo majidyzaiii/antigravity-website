@@ -6117,10 +6117,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <style>
-/* FINAL SECTION BACKGROUND OVERRIDE (LIGHT, TILED, NOT STRETCHED) */
+/* FINAL SECTION BACKGROUND OVERRIDE (PSEUDO CORNERS REFINED) */
 .section-card-container,
 .intro-section,
-#about, .hero-extension-section,
+#about,
+.hero-extension-section,
 .leadership-section,
 .impact-section,
 .courses-section,
@@ -6129,58 +6130,88 @@ document.addEventListener("DOMContentLoaded", function() {
 .donation-section,
 .contact-section,
 .simple-contact-section {
-  background: transparent !important;
-  background-color: transparent !important;
+  position: relative !important;
+  background-color: #f2f4f3 !important; /* Pure light-grey middle background */
+  background-image: none !important;
+  overflow: hidden !important;
 }
 
-/* PC / DESKTOP STYLING */
-@media (min-width: 769px) {
-  .section-card-container,
-  .intro-section,
-  #about, .hero-extension-section,
-  .leadership-section,
-  .impact-section,
-  .courses-section,
-  .updates-section,
-  .news-updates-section,
-  .donation-section,
-  .contact-section,
-  .simple-contact-section {
-    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('assets/section-bg.jpeg') !important;
-    background-size: 500px auto !important; /* Smaller, natural size */
-    background-position: center top !important;
-    background-repeat: repeat !important; /* Tiles beautifully without stretching */
-    background-attachment: scroll !important;
-  }
+/* Ensure container children sit above the absolute pseudoelements */
+.section-card-container > *,
+.intro-section > *,
+#about > *,
+.hero-extension-section > *,
+.leadership-section > *,
+.impact-section > *,
+.courses-section > *,
+.updates-section > *,
+.news-updates-section > *,
+.donation-section > *,
+.contact-section > *,
+.simple-contact-section > * {
+  position: relative;
+  z-index: 2;
 }
 
-/* MOBILE STYLING */
-@media (max-width: 768px) {
-  .section-card-container,
-  .intro-section,
-  #about, .hero-extension-section,
-  .leadership-section,
-  .impact-section,
-  .courses-section,
-  .updates-section,
-  .news-updates-section,
-  .donation-section,
-  .contact-section,
-  .simple-contact-section {
-    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('assets/section-bg.jpeg') !important;
-    background-size: 300px auto !important; /* Even smaller for mobile */
-    background-position: center top !important;
-    background-repeat: repeat !important;
-  }
-}
-
-/* FIX INTRO MASK */
+/* Top Right Corner Design (Halka / Opacity Reduced) */
+.section-card-container::before,
+.intro-section::before,
+#about::before,
 .hero-extension-section::before,
-#about::before {
-  display: none !important;
-  background: transparent !important;
+.leadership-section::before,
+.impact-section::before,
+.courses-section::before,
+.updates-section::before,
+.news-updates-section::before,
+.donation-section::before,
+.contact-section::before,
+.simple-contact-section::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important; /* Prevents slipping to top-left */
+  width: 160px !important;
+  height: 160px !important;
+  background-image: url('assets/section-bg.jpeg') !important;
+  background-position: top right !important;
+  background-size: 300px auto !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  opacity: 0.35 !important; /* Makes the design soft / lighter */
+  z-index: 1 !important;
+  display: block !important;
 }
 
+/* Bottom Left Corner Design (Halka / Opacity Reduced) */
+.section-card-container::after,
+.intro-section::after,
+#about::after,
+.hero-extension-section::after,
+.leadership-section::after,
+.impact-section::after,
+.courses-section::after,
+.updates-section::after,
+.news-updates-section::after,
+.donation-section::after,
+.contact-section::after,
+.simple-contact-section::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  width: 160px !important;
+  height: 160px !important;
+  background-image: url('assets/section-bg.jpeg') !important;
+  background-position: bottom left !important;
+  background-size: 300px auto !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  opacity: 0.35 !important; /* Makes the design soft / lighter */
+  z-index: 1 !important;
+  display: block !important;
+}
 </style>
 
 </body>
