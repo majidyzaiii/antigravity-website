@@ -4854,7 +4854,9 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
             
             // Also translate footer and any other dynamic text elements
             document.querySelectorAll('[data-en]').forEach(item => {
-                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                    item.placeholder = item.getAttribute(`data-${currentLang}`);
+                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
                     item.innerHTML = item.getAttribute(`data-${currentLang}`);
                 }
             });
@@ -4896,14 +4898,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
         <section class="hero-section">
 
         <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
-            <div class="hero-badge welcome-pill welcome-badge" style="position: static !important; transform: none !important; left: auto !important;">
-                <span class="badge-dot"></span>
-                <span class="pill-text-en">
-                    <span class="pill-line-1">WELCOME TO MADRASSA</span>
-                    <span class="pill-line-2">RIAZ UL QURAN WAL SUNNAH</span>
-                </span>
-                <span class="pill-text-ur">مدرسہ ریاض القرآن والسنہ میں خوش آمدید</span>
-            </div>
+            <!-- Welcome badge removed as requested -->
             <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
             
             <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
@@ -4992,11 +4987,11 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
       <div class="green-bg-frame"></div>
       <img src="assets/founder.png" alt="Hazrat Moulana Mufti Riaz Mahmood" class="figure-img-pop">
       <div class="figure-overlay-info">
-        <span class="sub-prefix">Hazrat Moulana Mufti</span>
-        <div class="name-badge">Riaz Mahmood <span class="rh-badge">(RH)</span></div>
+        <span class="sub-prefix" data-en="Hazrat Moulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Moulana Mufti</span>
+        <div class="name-badge"><span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="rh-badge" data-en="(RH)" data-ur="(رح)">(RH)</span></div>
       </div>
     </div>
-    <p class="figure-designation">FOUNDER OF THE INSTITUTE</p>
+    <p class="figure-designation" data-en="FOUNDER OF THE INSTITUTE" data-ur="بانی مدرسہ ہذا">FOUNDER OF THE INSTITUTE</p>
   </div>
 
   <!-- CARD 2: PRINCIPAL (IMAGE PLACEHOLDER FOR LATER) -->
@@ -5005,11 +5000,11 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
       <div class="green-bg-frame"></div>
       <img src="assets/principal.png" alt="Moulana Mufti Aamir Mahmood" class="figure-img-pop">
       <div class="figure-overlay-info">
-        <span class="sub-prefix">Moulana Mufti</span>
-        <div class="name-badge">Aamir Mahmood</div>
+        <span class="sub-prefix" data-en="Moulana Mufti" data-ur="مولانا مفتی">Moulana Mufti</span>
+        <div class="name-badge" data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</div>
       </div>
     </div>
-    <p class="figure-designation">PRINCIPAL OF THE INSTITUTE</p>
+    <p class="figure-designation" data-en="PRINCIPAL OF THE INSTITUTE" data-ur="مہتمم مدرسہ ہذا">PRINCIPAL OF THE INSTITUTE</p>
   </div>
 </div>
         </section>
@@ -5275,7 +5270,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     
     <!-- Section Header -->
     <div class="updates-header">
-            <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>???? ????</span> <span class='highlight-font'>????? ???????</span>">
+            <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>خبریں اور </span> <span class='highlight-font'>تازہ ترین اپڈیٹس</span>">
         <span class="bold-text">News &amp;</span>
         <span class="highlight-font">Recent Updates</span>
       </h2>
@@ -5337,7 +5332,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 
     <!-- Bottom Center "View All Updates" Button -->
     <div class="updates-bottom-cta">
-            <a href="updates.html" class="view-all-updates-btn" data-en="<span>Views All</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>???? ????? ??? ?????? ??????</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
+            <a href="updates.html" class="view-all-updates-btn" data-en="<span>Views All</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>تمام اپڈیٹس دیکھیں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
         <span>Views All</span>
         <span class="btn-arrow-circle">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -5528,23 +5523,23 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 
         <form action="#" method="POST" class="contact-quick-form">
           <div class="form-row-2col">
-            <input type="text" placeholder="First name" required class="form-input-field">
-            <input type="text" placeholder="Last name" required class="form-input-field">
+            <input type="text" placeholder="First name" data-en="First name" data-ur="پہلا نام" required class="form-input-field">
+            <input type="text" placeholder="Last name" data-en="Last name" data-ur="دوسرا نام" required class="form-input-field">
           </div>
 
           <!-- EMAIL INPUT WITH SUGGESTIVE PLACEHOLDER -->
           <div class="form-group form-input-wrapper">
-            <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" class="form-input form-input-field" required>
+            <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" data-en="name@gmail.com" data-ur="ای میل (name@gmail.com)" class="form-input form-input-field" required>
           </div>
 
           <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
           <div class="form-group form-input-wrapper">
-            <input type="tel" id="contact-phone" name="phone" placeholder="e.g. +923001234567" class="form-input form-input-field" required>
+            <input type="tel" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
           </div>
 
           <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
           <div class="form-group form-input-wrapper textarea-wrapper">
-            <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" class="form-input form-textarea-field" required></textarea>
+            <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" data-en="How can we help?" data-ur="ہم آپ کی کیا مدد کر سکتے ہیں؟" class="form-input form-textarea-field" required></textarea>
             <span id="char-counter" class="char-count">300/300</span>
           </div>
 
@@ -5923,8 +5918,8 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     right: 4px;
   }
   
-  [dir="rtl"] .swipe-handle i {
-    transform: rotate(180deg);
+  [dir="rtl"] .swipe-handle svg {
+    transform: scaleX(-1) !important;
   }
       .section-divider {
         width: 100%;
@@ -6111,7 +6106,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
       <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
       <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
-      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="ENGLISH">URDU</button></li>
+      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="انگلش">URDU</button></li>
     </ul>
   </div>
 </div>
@@ -6297,6 +6292,206 @@ document.addEventListener("DOMContentLoaded", function() {
   font-weight: 600 !important;
   margin-left: 3px !important;
   opacity: 0.9 !important;
+}
+
+/* SLIDING COMPACT CARD OVERRIDES */
+.mobile-nav-overlay {
+  display: flex !important; 
+  align-items: flex-start !important; /* Move higher up */
+  padding-top: 80px !important; /* Distance from top */ 
+  justify-content: flex-start !important; /* Docks to the Left in English */
+}
+[dir="rtl"] .mobile-nav-overlay {
+  justify-content: flex-start !important; /* In RTL, flex-start is the Right edge! */
+}
+
+/* Default State (English / LTR) - Slides in from Left */
+.mobile-menu-card {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  height: auto !important;
+  max-height: 400px !important;
+  width: 175px !important; /* Further reduced width */
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  border-radius: 20px !important;
+  
+  /* Slide logic */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+  transform: translateX(-150vw) !important; /* Starts off-screen left */
+  opacity: 0;
+}
+.mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+  opacity: 1;
+}
+
+/* RTL Override (Urdu Mode) - Slides in from Right */
+[dir="rtl"] .mobile-menu-card {
+  transform: translateX(150vw) !important; /* Starts off-screen right */
+}
+[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* Ensure the hamburger icon aligns correctly */
+[dir="rtl"] .mobile-menu-btn {
+  margin-left: auto !important;
+  margin-right: 15px !important;
+}
+[dir="ltr"] .mobile-menu-btn {
+  margin-right: auto !important;
+  margin-left: 15px !important;
+}
+
+/* =========================================================
+   URDU (RTL) MIRRORING & DIRECTION FIXES
+   ========================================================= */
+
+/* 1. GLOBAL FLEX & GRID MIRRORING */
+[dir="rtl"] .flex-container,
+[dir="rtl"] .row,
+[dir="rtl"] .card-grid,
+[dir="rtl"] .section-content,
+[dir="rtl"] section[class*="-section"] .container {
+  flex-direction: row-reverse !important;
+}
+
+/* For flex containers that were column layout, keep flow clean */
+[dir="rtl"] .flex-column {
+  flex-direction: column !important;
+}
+
+/* Align all text to Right by default in Urdu mode */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] li,
+[dir="rtl"] span,
+[dir="rtl"] .form-input-field,
+[dir="rtl"] .form-textarea-field {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* 2. SPECIFIC SECTION CARDS & IMAGES SWAP */
+[dir="rtl"] .founder-card,
+[dir="rtl"] .about-card,
+[dir="rtl"] .course-card,
+[dir="rtl"] .feature-card {
+  direction: rtl !important;
+}
+
+/* Reverse image and text order inside feature cards */
+[dir="rtl"] .card-image {
+  order: 2 !important;
+}
+[dir="rtl"] .card-text {
+  order: 1 !important;
+}
+
+/* 3. BUTTONS & ICONS ALIGNMENT */
+[dir="rtl"] .btn i,
+[dir="rtl"] .btn svg {
+  transform: scaleX(-1) !important; /* Flips arrow direction for RTL */
+}
+
+/* SAFEGUARD: Protect Mobile Centering */
+@media (max-width: 768px) {
+  [dir="rtl"] .hero-section h1,
+  [dir="rtl"] .hero-section h2,
+  [dir="rtl"] .hero-section p,
+  [dir="rtl"] .hero-description {
+    text-align: center !important;
+  }
+}
+
+/* =========================================================
+   URDU MOBILE NAV MENU FIX (OPEN FROM RIGHT SIDE & ALIGNMENT)
+   ========================================================= */
+
+/* FORCE URDU MOBILE MENU TO RIGHT SIDE */
+html[dir="rtl"] .mobile-menu-card,
+body.ur .mobile-menu-card {
+  left: auto !important;
+  right: auto !important;
+  margin-right: 16px !important; /* Forces the gap */
+  transform: translateX(150vw) !important; /* Hide off-screen to the right */
+  border-radius: 20px !important; /* Rounded all corners */
+}
+
+/* WHEN MENU IS ACTIVE/OPENED IN URDU */
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+/* ALIGN TEXT & CLOSE BUTTON (X) FOR URDU MENU */
+html[dir="rtl"] .mobile-menu-card *,
+body.ur .mobile-menu-card * {
+  text-align: right !important;
+}
+
+/* Move Close (X) icon to top-left corner inside Urdu menu */
+html[dir="rtl"] .mobile-menu-card .mobile-menu-close,
+body.ur .mobile-menu-card .mobile-menu-close {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  float: left !important;
+}
+
+/* Ensure English has matching forced gap */
+html[dir="ltr"] .mobile-menu-card,
+body:not(.ur) .mobile-menu-card {
+  margin-left: 16px !important; /* Forces the gap */
+  border-radius: 20px !important; /* Rounded all corners */
+}
+
+/* LEADERSHIP RTL FIXES */
+/* Both images remain in their original un-flipped state */
+
+/* 3. ALL Badges (Founder & Principal) go to the Right Side in Urdu */
+[dir="rtl"] .figure-overlay-info {
+  left: auto !important;
+  right: 10px !important;
+  text-align: right !important;
+}
+[dir="rtl"] .sub-prefix {
+  margin-left: 0 !important;
+  margin-right: 14px !important;
+}
+
+/* =========================================================
+   DONATION CARDS RTL FIXES
+   ========================================================= */
+
+/* 1. Flip the green shadow background */
+[dir="rtl"] .donation-info-card::before {
+  right: 20px !important;
+  left: -10px !important;
+}
+
+/* 2. Reverse the skew to match RTL flow */
+[dir="rtl"] .donation-info-content {
+  transform: skewY(-3deg) !important;
+  box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.08) !important; /* Move drop shadow to the right */
+}
+[dir="rtl"] .card-unskew {
+  transform: skewY(3deg) !important;
+}
+
+/* 3. Flip the SVG Arrow so it points Up-Left in RTL */
+[dir="rtl"] .info-card-number svg {
+  transform: scaleX(-1) !important;
 }
 </style>
 </body>
