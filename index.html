@@ -4146,6 +4146,60 @@ img[src*="principal"] {
   z-index: 1 !important;
 }
 
+
+/* Contact Form Clean Up */
+#contact-phone {
+  padding-left: 15px !important;
+}
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.char-count {
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
+  font-size: 0.8rem;
+  color: #888888;
+  pointer-events: none;
+}
+
+
+/* Direct input overrides */
+#contact-phone,
+input[type="tel"] {
+  padding-left: 18px !important;
+  background-image: none !important;
+}
+
+/* Force hide all plugin elements */
+.iti,
+.iti__flag-container,
+.iti__selected-flag,
+.iti__country-list {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+}
+
+
+/* Ensure Phone Field Visibility and Styling */
+#contact-phone,
+.form-group input[type="tel"] {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: 48px !important;
+  padding: 10px 18px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 25px !important;
+  box-sizing: border-box !important;
+  margin-bottom: 15px !important;
+  font-size: 0.95rem !important;
+}
+
 </style>
 
   <!-- SECTION CARD CONTAINER STYLES -->
@@ -4664,11 +4718,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
-<style>
-.iti { width: 100%; }
-.iti__country-list { z-index: 999999 !important; }
-</style>
+
 </head>
 
 <body>
@@ -5417,19 +5467,20 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
             <input type="text" placeholder="Last name" required class="form-input-field">
           </div>
 
-          <div class="form-input-wrapper">
-            <span class="input-icon"><i class="fa-regular fa-envelope"></i></span>
-            <input type="email" placeholder="Your email" required class="form-input-field with-icon">
+          <!-- EMAIL INPUT WITH SUGGESTIVE PLACEHOLDER -->
+          <div class="form-group form-input-wrapper">
+            <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" class="form-input form-input-field" required>
           </div>
 
-          <div class="form-input-wrapper phone-group">
-            
-            <input type="tel" placeholder="Phone number" required class="form-input-field">
+          <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
+          <div class="form-group form-input-wrapper">
+            <input type="tel" id="contact-phone" name="phone" placeholder="e.g. +923001234567" class="form-input form-input-field" required>
           </div>
 
-          <div class="form-input-wrapper">
-            <textarea placeholder="How can we help?" required class="form-textarea-field" maxlength="120"></textarea>
-            <span class="char-count">0/120</span>
+          <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
+          <div class="form-group form-input-wrapper textarea-wrapper">
+            <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" class="form-input form-textarea-field" required></textarea>
+            <span id="char-counter" class="char-count">300/300</span>
           </div>
 
           <div class="swipe-submit-container" id="swipeContainer">
@@ -6022,20 +6073,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+
 <script>
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
-  phoneInputs.forEach(input => {
-    window.intlTelInput(input, {
-      initialCountry: "pk",
-      countrySearch: true,
-      nationalMode: false,
-      autoInsertDialCode: true,
-      preferredCountries: ["pk", "sa", "ae", "gb", "us"],
-      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
-      dropdownContainer: document.body
-    });
-  });
+
+
+// LIVE DECREMENT COUNTER
+document.addEventListener("DOMContentLoaded", function() {
+  const messageInput = document.getElementById('contact-message');
+  const charCounter = document.getElementById('char-counter');
+
+  if (messageInput && charCounter) {
+    const maxChars = 300;
+
+    function updateCounter() {
+      // Hard cap at 300 characters
+      if (messageInput.value.length > maxChars) {
+        messageInput.value = messageInput.value.substring(0, maxChars);
+      }
+      const remaining = maxChars - messageInput.value.length;
+      charCounter.textContent = remaining + '/300';
+
+      // Warning color when close to limit
+      if (remaining <= 30) {
+        charCounter.style.color = '#d9534f';
+      } else {
+        charCounter.style.color = '#888888';
+      }
+    }
+
+    // Listen to all input events
+    messageInput.addEventListener('input', updateCounter);
+    messageInput.addEventListener('keyup', updateCounter);
+    messageInput.addEventListener('paste', updateCounter);
+  }
+});
+
 </script>
 </body>
 
