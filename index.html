@@ -4055,6 +4055,97 @@
   }
 }
 
+
+/* FIX IMAGE CONTAINMENT & ALT OVERFLOW */
+.figure-img-pop {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  height: 100% !important;
+  max-height: 380px !important;
+  width: auto !important;
+  z-index: 2 !important;
+  object-fit: contain !important;
+}
+
+
+
+
+
+/* Specific adjustment for Principal Image */
+.figure-card:nth-child(2) .figure-img-pop,
+img[src*="principal"] {
+  height: 110% !important; /* Scale down slightly so head is aligned with Founder */
+  max-height: 350px !important;
+  top: -15px !important; /* Proper head pop-out alignment */
+  
+  /* Smoothly fade out lower arm edges so it doesn't spill over the green border */
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%),
+                      linear-gradient(to right, transparent calc(50% - 98px), black calc(50% - 96px), black calc(50% + 96px), transparent calc(50% + 98px)) !important;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%),
+              linear-gradient(to right, transparent calc(50% - 98px), black calc(50% - 96px), black calc(50% + 96px), transparent calc(50% + 98px)) !important;
+  -webkit-mask-composite: source-in !important;
+  mask-composite: intersect !important;
+}
+
+/* Ensure green border frame sits cleanly behind the head */
+.figure-frame-wrapper {
+  overflow: visible !important;
+}
+
+
+
+
+
+/* Fix Principal Card Frame Wrapper */
+.figure-card:nth-child(2) .figure-frame-wrapper {
+  position: relative !important;
+  width: 260px !important;
+  height: 320px !important;
+  margin: 0 auto !important;
+  overflow: visible !important; /* Allow top head pop-out */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+}
+
+/* Perfect Centering for Principal Image */
+.figure-card:nth-child(2) .figure-img-pop,
+img[src*="principal"] {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important; /* Perfect horizontal center */
+  height: 105% !important; /* Slight pop-out for head */
+  max-height: 380px !important;
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+  
+  /* Smoothly fade out lower arm edges so it doesn't spill over the green border */
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%),
+                      linear-gradient(to right, transparent calc(50% - 98px), black calc(50% - 96px), black calc(50% + 96px), transparent calc(50% + 98px)) !important;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%),
+              linear-gradient(to right, transparent calc(50% - 98px), black calc(50% - 96px), black calc(50% + 96px), transparent calc(50% + 98px)) !important;
+  -webkit-mask-composite: source-in !important;
+  mask-composite: intersect !important;
+}
+
+/* Ensure green frame sits centered behind image */
+.figure-card:nth-child(2) .green-bg-frame {
+  position: absolute !important;
+  top: 55px !important;
+  left: 32px !important;
+  right: 32px !important;
+  bottom: 12px !important;
+  border: 3px solid #006754 !important;
+  border-radius: 16px !important;
+  z-index: 1 !important;
+}
+
 </style>
 
   <!-- SECTION CARD CONTAINER STYLES -->
@@ -4797,8 +4888,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
   <div class="figure-card">
     <div class="figure-frame-wrapper">
       <div class="green-bg-frame"></div>
-      <!-- Placeholder div reserved for Mufti Aamir Mahmood's picture -->
-      <!-- Image will go here -->
+      <img src="assets/principal.png" alt="Moulana Mufti Aamir Mahmood" class="figure-img-pop">
       <div class="figure-overlay-info">
         <span class="sub-prefix">Moulana Mufti</span>
         <div class="name-badge">Aamir Mahmood</div>
