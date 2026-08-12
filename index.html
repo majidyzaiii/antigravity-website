@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -1759,7 +1759,7 @@
             }
         }
         .hero-section {
-            padding-top: 20px !important; /* Reduces upper gap from navbar */
+            padding-top: 100px !important; /* Restores upper gap from navbar since welcome badge is removed */
             margin-bottom: 0 !important;
             border-bottom: none !important;
         }
@@ -4215,14 +4215,27 @@ input[type="tel"] {
 
 
 
+
+/* 4. FORCE SECTION HEADERS TO BE CENTERED IN RTL */
+html[dir="rtl"] .leadership-header h1, html[dir="rtl"] .leadership-header h2, html[dir="rtl"] .leadership-header p,
+html[dir="rtl"] .services-header h1, html[dir="rtl"] .services-header h2, html[dir="rtl"] .services-header p,
+html[dir="rtl"] .updates-header h1, html[dir="rtl"] .updates-header h2, html[dir="rtl"] .updates-header p,
+html[dir="rtl"] .donation-header h1, html[dir="rtl"] .donation-header h2, html[dir="rtl"] .donation-header p,
+body.ur .leadership-header h1, body.ur .leadership-header h2, body.ur .leadership-header p,
+body.ur .services-header h1, body.ur .services-header h2, body.ur .services-header p,
+body.ur .updates-header h1, body.ur .updates-header h2, body.ur .updates-header p,
+body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-header p {
+    text-align: center !important;
+}
 </style>
+
 
   <!-- SECTION CARD CONTAINER STYLES -->
   <style>
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -4359,7 +4372,7 @@ input[type="tel"] {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -4612,7 +4625,7 @@ input[type="tel"] {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -4653,7 +4666,7 @@ input[type="tel"] {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -4711,7 +4724,7 @@ input[type="tel"] {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -4766,7 +4779,7 @@ input[type="tel"] {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -5571,7 +5584,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -5918,7 +5931,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
     right: 4px;
   }
   
-  [dir="rtl"] .swipe-handle svg {
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
     transform: scaleX(-1) !important;
   }
       .section-divider {
@@ -6011,7 +6024,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       text.style.opacity = 1;
       
-      handle.innerHTML = '<svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
       handle.style.color = '#ffffff';
       
       // If you have a real backend, you can trigger form.submit() here
@@ -6185,7 +6198,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/gh/zafeer/urdu-fonts@main/JameelNooriNastaleeq.ttf') format('truetype');
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -6494,6 +6507,103 @@ body:not(.ur) .mobile-menu-card {
   transform: scaleX(-1) !important;
 }
 </style>
+
+<style>
+/* 1. IMPORT JAMEEL NOORI NASTALEEQ REGULAR FONT */
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 2. APPLY FONT GLOBALLY TO ALL ELEMENTS IN URDU MODE */
+html[dir="rtl"] body,
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] a,
+html[dir="rtl"] li,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] div,
+body.ur body,
+body.ur p,
+body.ur span,
+body.ur a,
+body.ur li,
+body.ur button,
+body.ur input,
+body.ur textarea,
+body.ur div {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-weight: normal !important;
+  line-height: 1.8 !important;
+}
+
+/* 3. EXCLUDE GREEN COLORED WORDS IN HEADINGS */
+html[dir="rtl"] h1 span[style*="color"],
+html[dir="rtl"] h2 span[style*="color"],
+html[dir="rtl"] h3 span[style*="color"],
+html[dir="rtl"] h4 span[style*="color"],
+html[dir="rtl"] .highlight-green,
+html[dir="rtl"] .text-green,
+html[dir="rtl"] span.green-text,
+html[dir="rtl"] .highlight-font,
+body.ur h1 span[style*="color"],
+body.ur h2 span[style*="color"],
+body.ur h3 span[style*="color"],
+body.ur .highlight-green,
+body.ur .text-green,
+body.ur span.green-text,
+body.ur .highlight-font {
+  font-family: inherit !important;
+}
+
+/* 5. FIX RTL HOVER ARROW ROTATION FOR ALL BUTTONS */
+html[dir="rtl"] .btn-secondary-pill:hover .btn-arrow-circle svg,
+html[dir="rtl"] .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
+html[dir="rtl"] .btn-intro-special:hover .arrow-icon svg,
+html[dir="rtl"] .btn-intro-special:hover .btn-arrow-circle svg,
+html[dir="rtl"] .btn-intro-special:hover .arrow-icon,
+html[dir="rtl"] .view-all-updates-btn:hover .cta-arrow svg,
+html[dir="rtl"] .view-all-updates-btn:hover .btn-arrow-circle svg,
+html[dir="rtl"] .view-all-updates-btn:hover .cta-arrow,
+html[dir="rtl"] .card-action-btn:hover .cta-arrow svg,
+html[dir="rtl"] .card-action-btn:hover .btn-arrow-circle svg,
+html[dir="rtl"] .btn-primary-pill:active .btn-arrow-circle svg,
+html[dir="rtl"] .btn-secondary-pill:active .btn-arrow-circle svg,
+html[dir="rtl"] .btn-intro-special:active .arrow-icon svg,
+html[dir="rtl"] .btn-intro-special:active .btn-arrow-circle svg,
+html[dir="rtl"] .view-all-updates-btn:active .cta-arrow svg,
+html[dir="rtl"] .view-all-updates-btn:active .btn-arrow-circle svg,
+html[dir="rtl"] .card-action-btn:active .cta-arrow svg,
+html[dir="rtl"] .card-action-btn:active .btn-arrow-circle svg,
+html[dir="rtl"] .donation-info-card:hover .info-card-number svg,
+
+body.ur .btn-secondary-pill:hover .btn-arrow-circle svg,
+body.ur .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
+body.ur .btn-intro-special:hover .arrow-icon svg,
+body.ur .btn-intro-special:hover .btn-arrow-circle svg,
+body.ur .btn-intro-special:hover .arrow-icon,
+body.ur .view-all-updates-btn:hover .cta-arrow svg,
+body.ur .view-all-updates-btn:hover .btn-arrow-circle svg,
+body.ur .view-all-updates-btn:hover .cta-arrow,
+body.ur .card-action-btn:hover .cta-arrow svg,
+body.ur .card-action-btn:hover .btn-arrow-circle svg,
+body.ur .btn-primary-pill:active .btn-arrow-circle svg,
+body.ur .btn-secondary-pill:active .btn-arrow-circle svg,
+body.ur .btn-intro-special:active .arrow-icon svg,
+body.ur .btn-intro-special:active .btn-arrow-circle svg,
+body.ur .view-all-updates-btn:active .cta-arrow svg,
+body.ur .view-all-updates-btn:active .btn-arrow-circle svg,
+body.ur .card-action-btn:active .cta-arrow svg,
+body.ur .card-action-btn:active .btn-arrow-circle svg,
+body.ur .donation-info-card:hover .info-card-number svg {
+    transform: scaleX(-1) rotate(45deg) !important;
+}
+</style>
+
 </body>
 
 </html>
