@@ -1192,44 +1192,6 @@
             transition: all 0.3s ease;
         }
 
-        .btn-intro-special .arrow-icon {
-            transition: transform 0.3s ease;
-            transform: rotate(0deg);
-        }
-
-        .btn-intro-special:hover {
-            background-color: #ffffff;
-            border-color: #025F55;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(2, 95, 85, 0.2);
-        }
-
-        .btn-intro-special:hover .btn-text {
-            color: #025F55;
-        }
-
-        .btn-intro-special:hover .btn-arrow-circle {
-            background: var(--primary-gradient);
-            color: #ffffff;
-            box-shadow: none;
-        }
-
-        .btn-intro-special:hover .arrow-icon {
-            transform: rotate(45deg);
-        }
-
-        html[dir="rtl"] .btn-intro-special {
-            padding: 8px 24px 8px 10px;
-        }
-
-        html[dir="rtl"] .btn-intro-special .arrow-icon {
-            transform: rotate(-90deg);
-        }
-
-        html[dir="rtl"] .btn-intro-special:hover .arrow-icon {
-            transform: rotate(-135deg);
-        }
-
         /* 1. ENABLE INSTANT TOUCH RESPONSE ON MOBILE */
         .hero-buttons a,
         .btn-primary-pill,
@@ -2391,7 +2353,7 @@
         
         html[dir="rtl"] .title-part-2 {
             font-family: 'Aref Ruqaa', 'Amiri', serif !important;
-            font-size: 38px !important; /* Urdu specific enlargement */
+            font-size: 48px !important; /* Urdu specific enlargement */
         }
 
         /* Interactive Stats Animations */
@@ -5069,13 +5031,13 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                     </g>
 
                     <!-- Unscaled Elements -->
-                    <!-- Center Heading (Our Impact) -->
+                    <!-- Center Heading (Our Strengths) -->
                     <foreignObject x="-150" y="90" width="230" height="120">
                         <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
-                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2 highlight-font'>Impact</span>" 
-                             data-ur="<span class='title-part-1'>ہمارا</span><span class='title-part-2'>اثر</span>">
+                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2 highlight-font'>Strengths</span>" 
+                             data-ur="<span class='title-part-1'>ہماری</span><span class='title-part-2'>نمایاں خوبیاں</span>">
                             <span class="title-part-1">Our</span>
-                            <span class="title-part-2 highlight-font">Impact</span>
+                            <span class="title-part-2 highlight-font">Strengths</span>
                         </div>
                     </foreignObject>
 
@@ -6602,7 +6564,67 @@ body.ur .card-action-btn:active .btn-arrow-circle svg,
 body.ur .donation-info-card:hover .info-card-number svg {
     transform: scaleX(-1) rotate(45deg) !important;
 }
+
+/* 6. SIGNATURE SCRIPT FONT & ZIGZAG LINE FOR TITLES */
+.signature-font {
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-size: 1.2em !important;
+  color: #006754 !important;
+}
+
+.signature-font-urdu {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  font-size: 1.1em !important;
+  color: #006754 !important;
+  border-bottom: 2px dashed #006754 !important;
+}
+
+.zigzag-line {
+  width: 100px !important;
+  height: 5px !important;
+  margin: 10px auto !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="10" viewBox="0 0 100 10"><path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="%23006754" stroke-width="2"/></svg>') !important;
+  background-repeat: repeat-x !important;
+}
+
+/* 7. PERFECT BUTTON ALIGNMENT (Circle on Edge) */
+/* LTR Desktop (Circle on Right) */
+.btn-hero, .btn-primary-pill, .btn-secondary-pill, .btn-intro-special, .view-all-updates-btn, .card-action-btn, .hero-buttons a, .hero-buttons button {
+    padding: 8px 8px 8px 24px !important;
+}
+
+/* RTL Desktop (Circle on Left) */
+html[dir="rtl"] .btn-hero, html[dir="rtl"] .btn-primary-pill, html[dir="rtl"] .btn-secondary-pill, html[dir="rtl"] .btn-intro-special, html[dir="rtl"] .view-all-updates-btn, html[dir="rtl"] .card-action-btn, html[dir="rtl"] .hero-buttons a, html[dir="rtl"] .hero-buttons button,
+body.ur .btn-hero, body.ur .btn-primary-pill, body.ur .btn-secondary-pill, body.ur .btn-intro-special, body.ur .view-all-updates-btn, body.ur .card-action-btn, body.ur .hero-buttons a, body.ur .hero-buttons button {
+    padding: 8px 24px 8px 8px !important;
+}
+
+/* Mobile LTR */
+@media (max-width: 768px) {
+    .btn-hero, .btn-primary-pill, .btn-secondary-pill, .btn-intro-special, .view-all-updates-btn, .card-action-btn, .hero-buttons a, .hero-buttons button {
+        padding: 6px 6px 6px 20px !important;
+    }
+}
+
+/* Mobile RTL */
+@media (max-width: 768px) {
+    html[dir="rtl"] .btn-hero, html[dir="rtl"] .btn-primary-pill, html[dir="rtl"] .btn-secondary-pill, html[dir="rtl"] .btn-intro-special, html[dir="rtl"] .view-all-updates-btn, html[dir="rtl"] .card-action-btn, html[dir="rtl"] .hero-buttons a, html[dir="rtl"] .hero-buttons button,
+    body.ur .btn-hero, body.ur .btn-primary-pill, body.ur .btn-secondary-pill, body.ur .btn-intro-special, body.ur .view-all-updates-btn, body.ur .card-action-btn, body.ur .hero-buttons a, body.ur .hero-buttons button {
+        padding: 6px 20px 6px 6px !important;
+    }
+}
+
+/* 8. FLIP HERO BACKGROUND IN RTL */
+html[dir="rtl"] .hero-section {
+    transform: scaleX(-1) !important;
+}
+html[dir="rtl"] .hero-section > .hero-content {
+    transform: scaleX(-1) !important;
+}
 </style>
+
+
+
 
 </body>
 
