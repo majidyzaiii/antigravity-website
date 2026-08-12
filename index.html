@@ -4200,6 +4200,9 @@ input[type="tel"] {
   font-size: 0.95rem !important;
 }
 
+
+
+
 </style>
 
   <!-- SECTION CARD CONTAINER STYLES -->
@@ -4282,7 +4285,7 @@ input[type="tel"] {
       }
 
     /* Fix intro card corners & Force Floating Card Styles on Intro Container */
-    .hero-extension-section,
+    #about, .hero-extension-section,
     #intro,
     .intro-section,
     section[class*="hero-extension"],
@@ -6109,6 +6112,77 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
+
+
+
+
+<style>
+/* FINAL SECTION BACKGROUND OVERRIDE (LIGHT, TILED, NOT STRETCHED) */
+.section-card-container,
+.intro-section,
+#about, .hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* PC / DESKTOP STYLING */
+@media (min-width: 769px) {
+  .section-card-container,
+  .intro-section,
+  #about, .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('assets/section-bg.jpeg') !important;
+    background-size: 500px auto !important; /* Smaller, natural size */
+    background-position: center top !important;
+    background-repeat: repeat !important; /* Tiles beautifully without stretching */
+    background-attachment: scroll !important;
+  }
+}
+
+/* MOBILE STYLING */
+@media (max-width: 768px) {
+  .section-card-container,
+  .intro-section,
+  #about, .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('assets/section-bg.jpeg') !important;
+    background-size: 300px auto !important; /* Even smaller for mobile */
+    background-position: center top !important;
+    background-repeat: repeat !important;
+  }
+}
+
+/* FIX INTRO MASK */
+.hero-extension-section::before,
+#about::before {
+  display: none !important;
+  background: transparent !important;
+}
+
+</style>
+
 </body>
 
 </html>
