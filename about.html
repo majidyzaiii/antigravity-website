@@ -520,6 +520,23 @@ body.about-page .mobile-logo-container {
         let currentLang = 'en';
 
         langSwitchBtn.addEventListener('click', () => {
+            // Close mobile menu if open
+            const drawer = document.getElementById('mobileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            if (drawer) drawer.classList.remove('active', 'open');
+            if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+            
+            const navOverlay = document.getElementById('mobileNavOverlay');
+            if (navOverlay) navOverlay.classList.remove('active', 'open');
+
+            // Scroll window to top (0,0) before switching mode
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Force clean scroll restoration
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
             currentLang = currentLang === 'en' ? 'ur' : 'en';
             document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
