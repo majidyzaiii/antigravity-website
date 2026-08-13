@@ -433,6 +433,41 @@ body.about-page .mobile-logo-container {
 
         
 
+
+/* Profile Header for Founder/Principal */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.profile-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    border: 3px solid #006754;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-info {
+    flex: 1;
+}
+@media(max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* COMPACT HEADER */
 .mobile-menu-header {
   margin-bottom: 10px !important;
@@ -541,6 +576,30 @@ html[dir="rtl"] .mobile-menu *, body.ur .mobile-menu *, html[dir="rtl"] .mobile-
 html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[dir="rtl"] .drawer-header, html[dir="rtl"] .mobile-menu-header {
   margin-left: auto !important;
   margin-right: 0 !important;
+}
+</style>
+
+
+<style>
+/* Add front-page Islamic pattern to About Us cards */
+.content-card {
+    position: relative;
+    overflow: hidden;
+}
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('assets/pattern.png') !important;
+    background-size: 40px auto !important;
+    background-repeat: repeat !important;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+}
+.content-card > * {
+    position: relative;
+    z-index: 1;
 }
 </style>
 
@@ -1033,12 +1092,7 @@ html:not([dir="rtl"]) .profile-quote {
     box-shadow: 0 8px 25px rgba(0, 103, 84, 0.03) !important;
 }
 
-.vm-card.mission {
-    background: #006754 !important;
-    color: white !important;
-    border: none !important;
-    box-shadow: 0 10px 20px rgba(0, 103, 84, 0.15) !important;
-}
+
 
 .vm-card h3 {
     font-size: 1.4rem;
@@ -1049,12 +1103,8 @@ html:not([dir="rtl"]) .profile-quote {
     font-weight: bold;
 }
 
-.vm-card.mission h3 {
-    color: white !important;
-}
-.vm-card.mission h3 span.icon {
-    background: transparent;
-}
+
+
 .vm-card p {
     font-size: 1.05rem;
 }
@@ -1422,9 +1472,16 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
     <!-- 3. FOUNDER CONTAINER -->
     <div class="content-card">
-      <h2>بانیِ <span class="highlight-green">ادارہ کی تفصیلات</span></h2>
-      <h3 style="color:#006754; margin-bottom:10px;">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
-      <span class="role-badge">بانی و بانیِ مہتمم</span>
+      <div class="profile-header">
+        <div class="profile-circle">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="profile-info">
+          <h2>بانی <span class="highlight-green">مدرسہ کی تفصیلات</span></h2>
+          <h3 style="color:#006754; margin-bottom:10px;">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمۃ اللہ</span></h3>
+          <span class="role-badge">بانی و مہتمم اول</span>
+        </div>
+      </div>
       <p>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> نے 1989ء میں جامعہ علوم اسلامیہ علامہ محمد یوسف بنوری ٹاؤن، کراچی سے درسِ نظامی مکمل کیا۔ اس کے بعد حضرت مفتی عبدالستار <span class="arabic-calligraphy">رحمہ اللہ</span> کی نگرانی میں تخصص فی الفقہ (افتاء) مکمل کیا۔</p>
       <p>1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی۔ اسی سال آپ جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی میں امام و خطیب مقرر ہوئے، جہاں آپ نے 2020ء تک تقریباً 27 سال امامت، خطابت، تدریس اور اصلاحِ معاشرہ کی عظیم خدمات انجام دیں۔</p>
       <p>آپ کی دعوت ہمیشہ قرآن و سنت، خالص توحید، اتباعِ سنت، حسنِ اخلاق اور اتحادِ امت پر مبنی رہی۔ آپ نے اپنی پوری زندگی لوگوں کو قرآن و سنت سے جوڑنے، صحیح عقیدہ عام کرنے، شرک و بدعات کی علمی تردید کرنے اور معاشرے کی اصلاح کے لیے وقف کر دی۔</p>
@@ -1436,9 +1493,16 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
     <!-- 4. PRINCIPAL CONTAINER -->
     <div class="content-card">
-      <h2>قیادت و <span class="highlight-green">مہتمم کی تفصیلات</span></h2>
-      <h3 style="color:#006754; margin-bottom:10px;">مفتی عامر محمود</h3>
-      <span class="role-badge">موجودہ مہتمم و ڈائریکٹر</span>
+      <div class="profile-header">
+        <div class="profile-circle">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="profile-info">
+          <h2>موجودہ <span class="highlight-green">مہتمم کی تفصیلات</span></h2>
+          <h3 style="color:#006754; margin-bottom:10px;">مفتی عامر محمود</h3>
+          <span class="role-badge">موجودہ مہتمم و ناظم اعلیٰ</span>
+        </div>
+      </div>
       <p>عامر محمود نے 2006ء میں حضرت قاری ایوب شاہ دامت برکاتہم العالیہ سے حفظِ قرآن کریم مکمل کیا، جبکہ قرآنِ کریم کی دہرائی حضرت قاری محمد اقبال رحیمی دامت برکاتہم العالیہ سے کی۔</p>
       <p>آپ نے وفاق المدارس العربیہ پاکستان سے ملحق اداروں میں درسِ نظامی مکمل کیا۔ بعد ازاں الحمد یونیورسٹی سے ایم اے انگلش اور نیشنل یونیورسٹی آف ماڈرن لینگویجز (NUML) سے ایم فل کی ڈگری حاصل کی۔ اس کے ساتھ آپ نے تخصص فی الافتاء کی تکمیل بھی کی۔</p>
       <p>مارچ 2020ء میں اپنے والد گرامی حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> کے وصال کے بعد آپ نے مدرسہ ریاض القرآن والسنۃ کی ذمہ داریاں سنبھالیں اور اس علمی سفر کو کامیابی سے آگے بڑھا رہے ہیں۔</p>
@@ -1501,9 +1565,16 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
     <!-- 3. FOUNDER CONTAINER -->
     <div class="content-card">
-      <h2>Founder <span class="highlight-green">Details</span></h2>
-      <h3 style="color:#006754; margin-bottom:10px;">Hazrat Maulana Mufti Riaz Mahmood (رحمہ اللہ)</h3>
-      <span class="role-badge">Founder</span>
+      <div class="profile-header">
+        <div class="profile-circle">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="profile-info">
+          <h2>Founder <span class="highlight-green">Details</span></h2>
+          <h3 style="color:#006754; margin-bottom:10px;">Hazrat Maulana Mufti Riaz Mahmood (R.A)</h3>
+          <span class="role-badge">Founder</span>
+        </div>
+      </div>
       <p>Hazrat Maulana Mufti Riaz Mahmood (رحمہ اللہ) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. He then completed his specialization in Islamic Jurisprudence (Ifta).</p>
       <p>In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.</p>
       <div class="simple-quote-box">
@@ -1514,9 +1585,16 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
     <!-- 4. PRINCIPAL CONTAINER -->
     <div class="content-card">
-      <h2>Leadership & <span class="highlight-green">Principal</span></h2>
-      <h3 style="color:#006754; margin-bottom:10px;">Mufti Aamir Mahmood</h3>
-      <span class="role-badge">Principal & Director</span>
+      <div class="profile-header">
+        <div class="profile-circle">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="profile-info">
+          <h2>Leadership & <span class="highlight-green">Principal</span></h2>
+          <h3 style="color:#006754; margin-bottom:10px;">Mufti Aamir Mahmood</h3>
+          <span class="role-badge">Principal & Director</span>
+        </div>
+      </div>
       <p>Mufti Aamir Mahmood completed his Hifz in 2006 and subsequently completed his Dars-e-Nizami from Wifaq ul Madaris Al-Arabia Pakistan. He further broadened his academic horizons by earning an MA in English and an M.Phil from NUML University, alongside completing his specialization in Ifta.</p>
       <p>Since March 2020, he has taken over the responsibilities of the Madrassa, continuing his father's legacy of bridging traditional Islamic scholarship with contemporary educational excellence.</p>
       <div class="simple-quote-box">
