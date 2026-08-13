@@ -4769,6 +4769,76 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 </style>
 
 
+
+<!-- Mobile Drawer Strict RTL Positioning -->
+<style>
+/* Reset Default State */
+.mobile-menu, .nav-drawer, #mobile-nav, .mobile-drawer-menu, .mobile-menu-card {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100vh !important;
+  transition: transform 0.3s ease, left 0.3s ease, right 0.3s ease !important;
+  z-index: 9999 !important;
+}
+
+/* ENGLISH MODE (LTR) - Drawer on Left Side */
+html[dir="ltr"] .mobile-menu,
+html[dir="ltr"] .nav-drawer,
+body:not(.ur) .mobile-menu,
+html[dir="ltr"] .mobile-drawer-menu,
+html[dir="ltr"] .mobile-menu-card {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateX(-100%) !important; /* Hide to Left */
+}
+
+html[dir="ltr"] .mobile-menu.active,
+html[dir="ltr"] .nav-drawer.active,
+html[dir="ltr"] .mobile-menu.open,
+html[dir="ltr"] .mobile-drawer-menu.active,
+html[dir="ltr"] .mobile-menu-card.active,
+html[dir="ltr"] .mobile-menu-card.open {
+  transform: translateX(0) !important;
+}
+
+/* URDU MODE (RTL) - Drawer strictly on Right Side */
+html[dir="rtl"] .mobile-menu,
+html[dir="rtl"] .nav-drawer,
+body.ur .mobile-menu,
+body.ur .nav-drawer,
+html[dir="rtl"] .mobile-drawer-menu,
+html[dir="rtl"] .mobile-menu-card {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(100%) !important; /* Hide to Right */
+  border-radius: 20px 0 0 20px !important;
+}
+
+html[dir="rtl"] .mobile-menu.active,
+html[dir="rtl"] .nav-drawer.active,
+body.ur .mobile-menu.active,
+body.ur .nav-drawer.active,
+html[dir="rtl"] .mobile-menu.open,
+body.ur .mobile-menu.open,
+html[dir="rtl"] .mobile-drawer-menu.active,
+html[dir="rtl"] .mobile-menu-card.active,
+html[dir="rtl"] .mobile-menu-card.open {
+  transform: translateX(0) !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Text and Close Icon Alignment in Urdu Drawer */
+html[dir="rtl"] .mobile-menu *, body.ur .mobile-menu *, html[dir="rtl"] .mobile-drawer-menu *, html[dir="rtl"] .mobile-menu-card * {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[dir="rtl"] .drawer-header, html[dir="rtl"] .mobile-menu-header {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -6656,6 +6726,31 @@ html[dir="rtl"] .hero-section > .hero-content {
 
 
 
+
+
+<!-- Mobile Navbar Strict Force-Close and Scroll Restoration -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const langButtons = document.querySelectorAll('.lang-toggle-btn, .language-switcher, #lang-switch, a[href*="lang="], .lang-btn, .mobile-lang-btn, #mobileLangBtn, #langSwitch');
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Forcefully remove active/open/show classes from menu, drawers, and backdrops
+      const activeElements = document.querySelectorAll('.active, .open, .show, .is-active');
+      activeElements.forEach(el => {
+        el.classList.remove('active', 'open', 'show', 'is-active');
+      });
+
+      // Restore body scrolling
+      document.body.style.overflow = 'auto';
+      document.body.classList.remove('menu-open', 'nav-open');
+
+      // Scroll window to top
+      window.scrollTo(0, 0);
+    });
+  });
+});
+</script>
 
 </body>
 
