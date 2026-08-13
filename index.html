@@ -2258,7 +2258,7 @@
         .donut-infographic-container {
             max-width: 800px; /* Boosted desktop container width */
             width: 95%; /* Clean mobile 95% width */
-            overflow-x: hidden;
+            overflow: visible !important;
             margin: 0 auto;
         }
 
@@ -2327,10 +2327,11 @@
             direction: rtl; /* Maintains correct right-to-left sequencing for the Urdu text itself */
         }
 
+        
         html[dir="rtl"] .center-heading {
-            direction: rtl; /* Maintains correct Urdu reading order in flexbox */
-            justify-content: flex-end !important; /* Forces title to correctly adhere to the visual left edge of its mirrored bounding box */
+            
         }
+        
 
         .title-part-1 {
             font-weight: 800;
@@ -2380,6 +2381,15 @@
             transform: scaleX(-1) translateX(5px) !important; /* Applies hover push in the mirrored axis */
         }
 
+        
+        .donut-infographic-container svg {
+            overflow: visible !important;
+        }
+
+        
+        .lang-ur-only { display: none; }
+        html[dir="rtl"] .lang-ur-only { display: block; }
+        html[dir="rtl"] .lang-en-only { display: none; }
         /* Safe Mobile Scaling */
         @media (max-width: 768px) {
             .donut-infographic-container {
@@ -2400,8 +2410,8 @@
             }
             
             /* Massive font-boost for Urdu Nastaleeq readability on mobile */
-            html[dir="rtl"] .title-part-1 { font-size: 54px !important; }
-            html[dir="rtl"] .title-part-2 { font-size: 60px !important; }
+            html[dir="rtl"] .title-part-1 { font-size: 45px !important; }
+            html[dir="rtl"] body span.title-part-2 { font-size: 50px !important; transform: translateY(-4px) !important; }
             html[dir="rtl"] .svg-text-block h4 { font-size: 32px !important; } /* Scaled but safe */
             html[dir="rtl"] .svg-text-block p { font-size: 24px !important; line-height: 1.2 !important; } /* Scaled but safe */
         }
@@ -4991,7 +5001,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
             <!-- Desktop SVG View -->
             <div class="desktop-svg-wrapper">
                 <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
-                <svg viewBox="-260 -20 1000 340" width="100%" preserveAspectRatio="xMidYMid meet">
+                <svg viewBox="-160 -20 800 340" width="100%" preserveAspectRatio="xMidYMid meet">
                     <!-- Scaled Geometry Group (60% reduction) -->
                     <g transform="scale(0.6)">
                         <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
@@ -5032,18 +5042,22 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
 
                     <!-- Unscaled Elements -->
                     <!-- Center Heading (Our Strengths) -->
-                    <foreignObject x="-320" y="90" width="400" height="120">
-                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;" 
-                             data-en="<span class='title-part-1'>Our</span><span class='title-part-2 highlight-font'>Strengths</span>" 
-                             data-ur="<span class='title-part-1'>ہماری</span><span class='title-part-2'>نمایاں خوبیاں</span>">
+                    <foreignObject class="lang-en-only" x="-640" y="90" width="720" height="120">
+                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;">
                             <span class="title-part-1">Our</span>
                             <span class="title-part-2 highlight-font">Strengths</span>
+                        </div>
+                    </foreignObject>
+                    <foreignObject class="lang-ur-only" x="-160" y="30" width="260" height="240">
+                        <div class="center-heading" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding-right: 0; height: 100%;">
+                            <span class="title-part-1">ہماری</span>
+                            <span class="title-part-2">نمایاں خوبیاں</span>
                         </div>
                     </foreignObject>
 
                     <!-- Right Side Text Blocks (Y coordinates re-aligned for scale 0.6, extended width/height to prevent text wrap clipping) -->
                     <!-- Top Text (Scaled dot Y = 66) -->
-                    <foreignObject x="250" y="26" width="400" height="160">
+                    <foreignObject x="250" y="10" width="600" height="400">
                         <div class="svg-text-block">
                             <h4 data-en="Alumni" data-ur="فارغ التحصیل علماء / طالبات">Alumni</h4>
                             <p data-en="Graduates serving worldwide" data-ur="دنیا بھر میں خدمات انجام دینے والے فضلاء">Graduates serving worldwide</p>
@@ -5051,7 +5065,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                     </foreignObject>
 
                     <!-- Mid Text (Scaled dot Y = 178) -->
-                    <foreignObject x="250" y="138" width="400" height="160">
+                    <foreignObject x="250" y="130" width="600" height="400">
                         <div class="svg-text-block">
                             <h4 data-en="Current Students" data-ur="زیرِ تعلیم طلباء">Current Students</h4>
                             <p data-en="Currently enrolled in various courses" data-ur="مختلف کورسز میں زیرِ تعلیم طلباء">Currently enrolled in various courses</p>
@@ -5059,7 +5073,7 @@ html[lang="ur"] .donation-info-card:hover .info-card-number svg,
                     </foreignObject>
 
                     <!-- Bot Text (Scaled dot Y = 264) -->
-                    <foreignObject x="250" y="224" width="400" height="160">
+                    <foreignObject x="250" y="250" width="600" height="400">
                         <div class="svg-text-block">
                             <h4 data-en="Years of Service" data-ur="سالہ خدمات">Years of Service</h4>
                             <p data-en="Continuous religious & educational excellence since 1993" data-ur="1993 سے مسلسل دینی و تعلیمی خدمات">Continuous religious & educational excellence since 1993</p>
