@@ -1,0 +1,172 @@
+<main style="background-color: #f8fafc; padding: 40px 16px;">
+
+<!-- ================= URDU ABOUT PAGE (RTL) ================= -->
+<div class="about-page-ur" dir="rtl">
+
+  <!-- Urdu Version (RTL) -->
+  <div class="about-hero-wrapper" dir="rtl">
+    <div class="hero-rounded-banner urdu-banner">
+      <button class="back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+        <span class="back-arrow">➔</span> واپسی
+      </button>
+      <div class="banner-logo">
+        <img src="assets/logo.png" alt="Madrassa Logo">
+      </div>
+      <div class="banner-content">
+        <h1>ہمارے <span class="highlight-text" style="color:#ffffff !important;">بارے میں</span></h1>
+        <p>قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر</p>
+      </div>
+    </div>
+
+    <div class="hero-floating-image-box">
+      <img src="assets/hero-image.jpeg" alt="Madrassa Feature" class="floating-hero-img">
+    </div>
+  </div>
+
+    <!-- Featured Hero Image -->
+    <div class="hero-image-wrapper">
+      <img src="assets/hero-image.jpeg" alt="Madrassa Building" class="hero-featured-img">
+    </div>
+  </div>
+
+  <div class="about-content-wrapper">
+
+    <!-- VISION STATEMENT CARD -->
+    <div class="statement-card light-card">
+      <div class="card-header-icon">
+        <span class="icon-circle">🎯</span>
+        <h2>ہمارا وژن (Vision Statement)</h2>
+      </div>
+      <p>قرآن و سنت کی روشنی میں ایسی باکردار، باعلم اور باصلاحیت نسل تیار کرنا جو دین و دنیا میں کامیاب ہو، امت کی صحیح رہنمائی کرے اور دنیا بھر میں اسلام کے حقیقی پیغام کو حکمت، اعتدال اور محبت کے ساتھ عام کرے۔</p>
+    </div>
+
+    <!-- MISSION STATEMENT CARD -->
+    <div class="statement-card dark-green-card">
+      <div class="card-header-icon">
+        <span class="icon-circle light-icon">💚</span>
+        <h2>ہمارا نصب العین (Mission Statement)</h2>
+      </div>
+      <p>قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور عملی زندگی میں اسلامی تعلیمات کو فروغ دینا، تاکہ ایسی نسل تیار ہو جو علم، عمل، تقویٰ اور خدمتِ انسانیت کا نمونہ بنے۔</p>
+    </div>
+
+    <!-- BANI-E-IDARA (FOUNDER) CONTAINER -->
+    <div class="about-container">
+      <h2>بانیِ <span class="highlight-green">ادارہ کی تفصیلات</span></h2>
+      <h3>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
+      <span class="role-badge">Founder</span>
+      <p>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> نے 1989ء میں جامعہ علوم اسلامیہ علامہ محمد یوسف بنوری ٹاؤن، کراچی سے درسِ نظامی مکمل کیا۔ اس کے بعد حضرت مفتی عبدالستار <span class="arabic-calligraphy">رحمہ اللہ</span> کی نگرانی میں تخصص فی الفقہ (افتاء) مکمل کیا۔</p>
+      <p>1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی۔ اسی سال آپ جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی میں امام و خطیب مقرر ہوئے، جہاں آپ نے 2020ء تک تقریباً 27 سال امامت، خطابت، تدریس اور اصلاحِ معاشرہ کی عظیم خدمات انجام دیں۔</p>
+      <p>آپ کی دعوت ہمیشہ قرآن و سنت، خالص توحید، اتباعِ سنت، حسنِ اخلاق اور اتحادِ امت پر مبنی رہی۔ آپ نے اپنی پوری زندگی لوگوں کو قرآن و سنت سے جوڑنے، صحیح عقیدہ عام کرنے، شرک و بدعات کی علمی تردید کرنے اور معاشرے کی اصلاح کے لیے وقف کر دی۔</p>
+      <div class="simple-quote-box">
+        <strong>بانیِ ادارہ کا موٹو:</strong>
+        <p>"قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"</p>
+      </div>
+    </div>
+
+    <!-- MOHTAMIM (PRINCIPAL) CONTAINER -->
+    <div class="about-container">
+      <h2>قیادت و <span class="highlight-green">مہتمم کی تفصیلات</span></h2>
+      <h3>مفتی عامر محمود</h3>
+      <span class="role-badge">Principal & Director</span>
+      <p class="dob" style="font-weight:bold; color:#006754;">تاریخِ پیدائش: 06 اگست 1993ء</p>
+      <p>عامر محمود نے 2006ء میں حضرت قاری ایوب شاہ دامت برکاتہم العالیہ سے حفظِ قرآن کریم مکمل کیا، جبکہ قرآنِ کریم کی دہرائی حضرت قاری محمد اقبال رحیمی دامت برکاتہم العالیہ سے کی۔</p>
+      <p>آپ نے وفاق المدارس العربیہ پاکستان سے ملحق اداروں میں درسِ نظامی مکمل کیا۔ بعد ازاں الحمد یونیورسٹی سے ایم اے انگلش اور نیشنل یونیورسٹی آف ماڈرن لینگویجز (NUML) سے ایم فل کی ڈگری حاصل کی۔ اس کے ساتھ آپ نے تخصص فی الافتاء کی تکمیل بھی کی۔</p>
+      <p>مارچ 2020ء میں اپنے والد گرامی حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> کے وصال کے بعد آپ نے مدرسہ ریاض القرآن والسنۃ کی ذمہ داریاں سنبھالیں۔</p>
+      <div class="simple-quote-box">
+        <strong>مہتمم کا پیغام:</strong>
+        <p>"ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی ﷺ کو اپنی زندگی کا حصہ بنائے اور اپنے کردار سے اسلام کی حقیقی تصویر دنیا کے سامنے پیش کرے۔"</p>
+      </div>
+    </div>
+
+    <!-- CURRENT SERVICES CONTAINER -->
+    <div class="about-container">
+      <h2>ہماری <span class="highlight-green">موجودہ خدمات</span></h2>
+      <ul style="padding-right: 20px;">
+        <li>حفظِ قرآن کریم</li>
+        <li>ناظرۂ قرآن کریم</li>
+        <li>دینی و اخلاقی تربیت</li>
+        <li>آن لائن اور آف لائن تعلیمی سہولیات</li>
+      </ul>
+    </div>
+
+    <!-- FUTURE PLANS CONTAINER -->
+    <div class="about-container">
+      <h2>مستقبل کے <span class="highlight-green">منصوبے</span></h2>
+      <div class="simple-grid">
+        <div class="grid-card">درسِ نظامی</div>
+        <div class="grid-card">تخصص فی الافتاء</div>
+        <div class="grid-card">تجوید و قراءات کے خصوصی کورسز</div>
+        <div class="grid-card">عربی زبان کے تخصصی پروگرام</div>
+        <div class="grid-card">آن لائن عالمی تعلیمی پلیٹ فارم</div>
+        <div class="grid-card">جدید اسلامی لائبریری</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= ENGLISH ABOUT PAGE (LTR) ================= -->
+<div class="about-page-en" dir="ltr">
+
+  <!-- English Version (LTR) -->
+  <div class="about-hero-wrapper" dir="ltr">
+    <!-- Rounded Green Banner Background -->
+    <div class="hero-rounded-banner english-banner">
+      <button class="back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+        <span class="back-arrow">➔</span> Back
+      </button>
+      <div class="banner-logo">
+        <img src="assets/logo.png" alt="Madrassa Logo">
+      </div>
+      <div class="banner-content">
+        <h1>About <span class="highlight-text" style="color:#ffffff !important;">Us</span></h1>
+        <p>Nurturing purposeful individuals through holistic learning rooted in Islamic values</p>
+      </div>
+    </div>
+
+    <!-- Floating Overlapping Image -->
+    <div class="hero-floating-image-box">
+      <img src="assets/hero-image.jpeg" alt="Madrassa Feature" class="floating-hero-img">
+    </div>
+  </div>
+    <div class="hero-image-wrapper">
+      <img src="assets/hero-image.jpeg" alt="Madrassa Building" class="hero-featured-img">
+    </div>
+  </div>
+
+  <div class="about-content-wrapper">
+    <div class="statement-card light-card">
+      <div class="card-header-icon">
+        <span class="icon-circle">🎯</span>
+        <h2>Vision Statement</h2>
+      </div>
+      <p>We envision a world where learners are connected to their Creator, aware of their purpose in life, and perform at the level of Ehsan.</p>
+    </div>
+
+    <div class="statement-card dark-green-card">
+      <div class="card-header-icon">
+        <span class="icon-circle light-icon">💚</span>
+        <h2>Mission Statement</h2>
+      </div>
+      <p>Our mission is to provide learning rooted in Islamic values that prepares individuals who excel in this world and the Hereafter.</p>
+    </div>
+
+    <!-- Founder Container -->
+    <div class="about-container">
+      <h2>Founder <span class="highlight-green">Details</span></h2>
+      <h3>Hazrat Maulana Mufti Riaz Mahmood (رحمہ اللہ)</h3>
+      <span class="role-badge">Founder</span>
+      <p>Founded Madrassa Riaz ul Quran Wal Sunnah in 1993 after graduating from Banuri Town, Karachi, and completing Ifta specialization.</p>
+    </div>
+
+    <!-- Principal Container -->
+    <div class="about-container">
+      <h2>Leadership & <span class="highlight-green">Principal</span></h2>
+      <h3>Mufti Aamir Mahmood</h3>
+      <span class="role-badge">Principal & Director</span>
+      <p>M.Phil (NUML), Ifta Specialist leading education and administration since March 2020.</p>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,99 @@
+<main>
+    <div class="about-banner">
+        <h1 class="about-title" data-en="About Us" data-ur="ہمارے بارے میں">ہمارے بارے میں</h1>
+        <p class="about-subtitle" data-en="Introduction, Mission, and Leadership of Madrassa Riaz ul Quran Wal Sunnah" data-ur="مدرسہ ریاض القرآن والسنۃ کا تعارف، مقصد اور قیادت">مدرسہ ریاض القرآن والسنۃ کا تعارف، مقصد اور قیادت</p>
+    </div>
+
+    <!-- Intro & History -->
+    <section class="about-section">
+        <h2 class="section-heading" data-en="Introduction & History" data-ur="تعارف و تاریخ">تعارف و تاریخ</h2>
+        <p style="text-align: center; max-width: 900px; margin: 0 auto; font-size: 1.2rem; color: #475569;" data-en="Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him). Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing." data-ur="مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔">
+            مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔
+        </p>
+    </section>
+<div class="section-divider"></div>
+
+    <!-- Mission & Vision -->
+    <section class="about-section" style="background-color: #f1f5f9; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="mission-vision-grid">
+                <div class="mv-card">
+                    <h3 data-en="Our Mission" data-ur="ہمارا نصب العین (Our Mission)">ہمارا نصب العین (Our Mission)</h3>
+                    <p style="color: #475569; font-size: 1.1rem;" data-en="To promote the pure teachings of the Quran and Sunnah, correct beliefs, high morals, and Islamic values in practical life, so as to prepare a generation that becomes a model of knowledge, practice, piety, and service to humanity." data-ur="قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور عملی زندگی میں اسلامی تعلیمات کو فروغ دینا، تاکہ ایسی نسل تیار ہو جو علم، عمل، تقویٰ اور خدمتِ انسانیت کا نمونہ بنے۔">
+                        قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور عملی زندگی میں اسلامی تعلیمات کو فروغ دینا، تاکہ ایسی نسل تیار ہو جو علم، عمل، تقویٰ اور خدمتِ انسانیت کا نمونہ بنے۔
+                    </p>
+                </div>
+                <div class="mv-card">
+                    <h3 data-en="Our Vision" data-ur="ہمارا وژن (Our Vision)">ہمارا وژن (Our Vision)</h3>
+                    <p style="color: #475569; font-size: 1.1rem;" data-en="In the light of the Quran and Sunnah, to prepare a characterful, knowledgeable, and capable generation that succeeds in both religion and the world, correctly guides the Ummah, and spreads the true message of Islam worldwide with wisdom, moderation, and love." data-ur="قرآن و سنت کی روشنی میں ایسی باکردار، باعلم اور باصلاحیت نسل تیار کرنا جو دین و دنیا میں کامیاب ہو، امت کی صحیح رہنمائی کرے اور دنیا بھر میں اسلام کے حقیقی پیغام کو حکمت، اعتدال اور محبت کے ساتھ عام کرے۔">
+                        قرآن و سنت کی روشنی میں ایسی باکردار، باعلم اور باصلاحیت نسل تیار کرنا جو دین و دنیا میں کامیاب ہو، امت کی صحیح رہنمائی کرے اور دنیا بھر میں اسلام کے حقیقی پیغام کو حکمت، اعتدال اور محبت کے ساتھ عام کرے۔
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="section-divider"></div>
+
+    <!-- Founder Section -->
+    <section class="about-section">
+        <h2 class="section-heading" data-en="Founder of the Institution" data-ur="بانیِ ادارہ - حضرت مولانا مفتی ریاض محمود رحمہ اللہ">بانیِ ادارہ - حضرت مولانا مفتی ریاض محمود رحمہ اللہ</h2>
+        <div class="profile-block">
+            <div class="profile-img">
+                [Founder Image Placeholder]
+            </div>
+            <div class="profile-content">
+                <p style="color: #475569; font-size: 1.1rem;" data-en="Hazrat Maulana Mufti Riaz Mahmood (May Allah have mercy on him) completed Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yusuf Banuri Town, Karachi. After that, he completed Takhassus fil Fiqh (Iftaa) under the supervision of Hazrat Mufti Abdul Sattar (May Allah have mercy on him). In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah and served for 27 years until 2020 at Jamia Masjid Quba, Muhammadi Colony, Muslim Town, Rawalpindi." data-ur="حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے 1989ء میں جامعہ علوم اسلامیہ علامہ محمد یوسف بنوری ٹاؤن، کراچی سے درسِ نظامی مکمل کیا۔ اس کے بعد حضرت مفتی عبدالستار رحمہ اللہ کی نگرانی میں تخصص فی الفقہ (افتاء) مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی میں 2020ء تک 27 سال خدمات انجام دیں۔">
+                    حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے 1989ء میں جامعہ علوم اسلامیہ علامہ محمد یوسف بنوری ٹاؤن، کراچی سے درسِ نظامی مکمل کیا۔ اس کے بعد حضرت مفتی عبدالستار رحمہ اللہ کی نگرانی میں تخصص فی الفقہ (افتاء) مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی میں 2020ء تک 27 سال خدمات انجام دیں۔
+                </p>
+                <div class="profile-quote" data-en="&quot;Hold fast to the Quran and Sunnah, this is the path to success in this world and the Hereafter.&quot;" data-ur="&quot;قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔&quot;">
+                    "قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="section-divider"></div>
+
+    <!-- Principal Section -->
+    <section class="about-section" style="background-color: #f1f5f9; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-heading" data-en="Principal & Director" data-ur="مہتمم - مفتی عامر محمود (Principal & Director)">مہتمم - مفتی عامر محمود (Principal & Director)</h2>
+            <div class="profile-block">
+                <div class="profile-img">
+                    [Principal Image Placeholder]
+                </div>
+                <div class="profile-content">
+                    <p class="profile-details" data-en="Date of Birth: August 06, 1993 | Hifz-e-Quran (2006) | Dars-e-Nizami | MA English (Al-Hamd University) | M.Phil (NUML) | Takhassus fil Iftaa | Proficiency in 4 Languages (Urdu, Arabic, English, Pashto)" data-ur="تاریخِ پیدائش: 06 اگست 1993ء | حفظِ قرآن (2006ء) | درسِ نظامی | MA English (Al-Hamd University) | M.Phil (NUML) | تخصص فی الافتاء | 4 زبانوں پر عبور (اردو، عربی، انگریزی، پشتو)">
+                        تاریخِ پیدائش: 06 اگست 1993ء | حفظِ قرآن (2006ء) | درسِ نظامی | MA English (Al-Hamd University) | M.Phil (NUML) | تخصص فی الافتاء | 4 زبانوں پر عبور (اردو، عربی، انگریزی، پشتو)
+                    </p>
+                    <div class="profile-quote" style="margin-top: 10px;" data-en="&quot;Our responsibility is not just to teach the Quran, but to prepare a generation that understands the Quran, acts upon it, and makes the Sunnah of the Prophet (PBUH) a part of their lives...&quot;" data-ur="&quot;ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی ﷺ کو اپنی زندگی کا حصہ بنائے...&quot;">
+                        "ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی ﷺ کو اپنی زندگی کا حصہ بنائے..."
+                    </div>
+                    <div class="profile-motto" data-en="&quot;The Quran is our guide, the Sunnah is our path, and sincerity is our identity.&quot;" data-ur="&quot;قرآن ہماری رہنمائی، سنت ہمارا راستہ، اور اخلاص ہماری پہچان۔&quot;">
+                        "قرآن ہماری رہنمائی، سنت ہمارا راستہ، اور اخلاص ہماری پہچان۔"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="section-divider"></div>
+
+    <!-- Future Plans -->
+    <section class="about-section">
+        <h2 class="section-heading" data-en="Future Plans" data-ur="مستقبل کے منصوبے">مستقبل کے منصوبے</h2>
+        <div class="future-plans-grid">
+            <div class="plan-item" data-en="Dars-e-Nizami" data-ur="درسِ نظامی">درسِ نظامی</div>
+            <div class="plan-item" data-en="Takhassus fil Iftaa" data-ur="تخصص فی الافتاء">تخصص فی الافتاء</div>
+            <div class="plan-item" data-en="Tajweed and Qiraat" data-ur="تجوید و قراءات">تجوید و قراءات</div>
+            <div class="plan-item" data-en="Arabic Language" data-ur="عربی زبان">عربی زبان</div>
+            <div class="plan-item" data-en="Modern Islamic Programs" data-ur="اسلامیات کے جدید پروگرام">اسلامیات کے جدید پروگرام</div>
+            <div class="plan-item" data-en="Online Global Platform" data-ur="آن لائن عالمی پلیٹ فارم">آن لائن عالمی پلیٹ فارم</div>
+            <div class="plan-item" data-en="Modern Islamic Library & Research Center" data-ur="جدید اسلامی لائبریری و ریسرچ سینٹر">جدید اسلامی لائبریری و ریسرچ سینٹر</div>
+        </div>
+        
+        <h2 class="section-heading" style="margin-top: 80px;" data-en="Our Resolve" data-ur="ہمارا عزم">ہمارا عزم</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.3rem; font-style: italic; color: #025F55; font-weight: bold;" data-en="May Allah accept this institution and make it a continuous charity (Sadaqah Jariyah) for its founders and contributors. Ameen." data-ur="اللہ تعالیٰ اس ادارے کو قبول فرمائے اور اسے بانیان اور معاونین کے لیے صدقہ جاریہ بنائے۔ آمین۔">
+            اللہ تعالیٰ اس ادارے کو قبول فرمائے اور اسے بانیان اور معاونین کے لیے صدقہ جاریہ بنائے۔ آمین۔
+        </p>
+    </section>
+<div class="section-divider"></div>
+</main>
