@@ -603,6 +603,160 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 }
 </style>
 
+
+<style>
+/* Main Wrapper for Centered Profile Badge */
+.badge-profile-wrapper {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 15px auto 25px auto !important;
+  padding-top: 30px !important;
+}
+
+/* Top Vertical Ribbon Line (Brand Green) */
+.top-ribbon-line {
+  position: absolute !important;
+  top: 0 !important;
+  width: 38px !important;
+  height: 45px !important;
+  background-color: #006754 !important; /* Replacing blue with official green */
+  border-radius: 0 0 4px 4px !important;
+  z-index: 2 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Outer Circular Border Frame (Brand Green) */
+.circular-avatar-frame {
+  width: 170px !important;
+  height: 170px !important;
+  border-radius: 50% !important;
+  border: 3px solid #006754 !important; /* Replacing blue ring with official green */
+  padding: 6px !important;
+  background: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  z-index: 1 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Profile Image inside Frame */
+.profile-circle-img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Text & Badges Alignment */
+.profile-card-content {
+  text-align: center !important;
+}
+
+.profile-card-content h2 {
+  font-size: 2rem !important;
+  margin-bottom: 5px !important;
+  justify-content: center;
+  text-align: center;
+}
+
+.profile-card-content h3 {
+  font-size: 1.3rem !important;
+  color: #006754 !important;
+  margin-top: 10px !important;
+  margin-bottom: 4px !important;
+  text-align: center !important;
+  justify-content: center;
+}
+
+.profile-card-content .role-badge {
+  display: inline-block !important;
+  background-color: #e8f5e9 !important;
+  color: #006754 !important;
+  border: 1px solid #006754 !important;
+  padding: 4px 14px !important;
+  border-radius: 20px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+}
+
+html[dir="rtl"] .profile-card-content h2,
+html[dir="rtl"] .profile-card-content h3 {
+  display: block; /* Overrides flex from earlier CSS */
+}
+
+/* Remove old profile header css */
+.profile-header { display: none !important; }
+
+</style>
+
+<style>
+.profile-card-container {
+  position: relative !important;
+  overflow: hidden !important;
+  padding-top: 35px !important;
+}
+
+/* Diagonal Corner Strip / Patti Styling */
+.card-corner-strip {
+  position: absolute !important;
+  top: 25px !important;
+  width: 160px !important;
+  background-color: #006754 !important;
+  color: #ffffff !important;
+  padding: 8px 0 !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+  z-index: 10 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  border-radius: 0 !important;
+}
+
+.ur-strip {
+  right: -40px !important;
+  left: auto !important;
+  transform: rotate(45deg) !important;
+}
+
+.en-strip {
+  left: -40px !important;
+  right: auto !important;
+  transform: rotate(-45deg) !important;
+}
+
+
+html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .strip-text-en { display: inline !important; }
+
+/* Centered Content styling */
+.profile-card-content {
+  text-align: center !important;
+  margin-top: 10px !important;
+}
+
+.profile-card-content h3 {
+  font-size: 1.35rem !important;
+  color: #006754 !important;
+  margin-bottom: 8px !important;
+}
+
+.profile-bio {
+  color: #334155 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.8 !important;
+  max-width: 650px !important;
+  margin: 0 auto 15px auto !important;
+}
+</style>
+
 </head>
 <body class="about-page">
 
@@ -1471,46 +1625,51 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
     </div>
 
     <!-- 3. FOUNDER CONTAINER -->
-    <div class="content-card">
-      <div class="profile-header">
-        <div class="profile-circle">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <div class="profile-info">
-          <h2>بانی <span class="highlight-green">مدرسہ کی تفصیلات</span></h2>
-          <h3 style="color:#006754; margin-bottom:10px;">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمۃ اللہ</span></h3>
-          <span class="role-badge">بانی و مہتمم اول</span>
+    <div class="content-card profile-card-container">
+      <div class="card-corner-strip en-strip">
+        <span>Founder</span>
+      </div>
+      <div class="badge-profile-wrapper">
+        
+        <div class="circular-avatar-frame">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
       </div>
-      <p>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> نے 1989ء میں جامعہ علوم اسلامیہ علامہ محمد یوسف بنوری ٹاؤن، کراچی سے درسِ نظامی مکمل کیا۔ اس کے بعد حضرت مفتی عبدالستار <span class="arabic-calligraphy">رحمہ اللہ</span> کی نگرانی میں تخصص فی الفقہ (افتاء) مکمل کیا۔</p>
-      <p>1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی۔ اسی سال آپ جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی میں امام و خطیب مقرر ہوئے، جہاں آپ نے 2020ء تک تقریباً 27 سال امامت، خطابت، تدریس اور اصلاحِ معاشرہ کی عظیم خدمات انجام دیں۔</p>
-      <p>آپ کی دعوت ہمیشہ قرآن و سنت، خالص توحید، اتباعِ سنت، حسنِ اخلاق اور اتحادِ امت پر مبنی رہی۔ آپ نے اپنی پوری زندگی لوگوں کو قرآن و سنت سے جوڑنے، صحیح عقیدہ عام کرنے، شرک و بدعات کی علمی تردید کرنے اور معاشرے کی اصلاح کے لیے وقف کر دی۔</p>
-      <div class="simple-quote-box">
-        <strong>بانیِ ادارہ کا موٹو:</strong>
-        <p style="margin:5px 0 0 0;">"قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"</p>
+      <div class="profile-card-content">
+        <h3>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
+        <p class="profile-bio">
+          حضرت مولانا مفتی ریاض محمود (رحمہ اللہ) نے 1989ء میں جامعہ علوم اسلامیہ بنوری ٹاؤن سے درسِ نظامی مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور 27 سال تک عظیم تعلیمی و اصلاحی خدمات انجام دیں۔
+        </p>
+        <div class="simple-quote-box">
+          <strong>بانیِ ادارہ کا موٹو:</strong>
+          <p>"قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"</p>
+        </div>
       </div>
     </div>
 
     <!-- 4. PRINCIPAL CONTAINER -->
-    <div class="content-card">
-      <div class="profile-header">
-        <div class="profile-circle">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <div class="profile-info">
-          <h2>موجودہ <span class="highlight-green">مہتمم کی تفصیلات</span></h2>
-          <h3 style="color:#006754; margin-bottom:10px;">مفتی عامر محمود</h3>
-          <span class="role-badge">موجودہ مہتمم و ناظم اعلیٰ</span>
+    <div class="content-card profile-card-container">
+      <div class="card-corner-strip ur-strip">
+        <span>Principal</span>
+      </div>
+      <div class="badge-profile-wrapper">
+        
+        <div class="circular-avatar-frame">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
       </div>
-      <p>عامر محمود نے 2006ء میں حضرت قاری ایوب شاہ دامت برکاتہم العالیہ سے حفظِ قرآن کریم مکمل کیا، جبکہ قرآنِ کریم کی دہرائی حضرت قاری محمد اقبال رحیمی دامت برکاتہم العالیہ سے کی۔</p>
-      <p>آپ نے وفاق المدارس العربیہ پاکستان سے ملحق اداروں میں درسِ نظامی مکمل کیا۔ بعد ازاں الحمد یونیورسٹی سے ایم اے انگلش اور نیشنل یونیورسٹی آف ماڈرن لینگویجز (NUML) سے ایم فل کی ڈگری حاصل کی۔ اس کے ساتھ آپ نے تخصص فی الافتاء کی تکمیل بھی کی۔</p>
-      <p>مارچ 2020ء میں اپنے والد گرامی حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> کے وصال کے بعد آپ نے مدرسہ ریاض القرآن والسنۃ کی ذمہ داریاں سنبھالیں اور اس علمی سفر کو کامیابی سے آگے بڑھا رہے ہیں۔</p>
-      <div class="simple-quote-box">
-        <strong>مہتمم کا پیغام:</strong>
-        <p style="margin:5px 0 0 0;">"ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے، اس پر عمل کرے، سنتِ نبوی ﷺ کو اپنی زندگی کا حصہ بنائے اور اپنے کردار سے اسلام کی حقیقی تصویر دنیا کے سامنے پیش کرے۔"</p>
+      <div class="profile-card-content">
+        <h3>مفتی عامر محمود</h3>
+        <p class="profile-bio">
+          ایم فل (NUML)، فاضل وفاق المدارس، مارچ 2020ء سے مدرسہ ریاض القرآن والسنۃ کی تدریسی، دعوتی اور انتظامی سرپرستی فرمارہے ہیں۔
+        </p>
+        <div class="simple-quote-box">
+          <strong>مہتمم کا پیغام:</strong>
+          <p>"ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے اور اس پر عمل کرے۔"</p>
+        </div>
       </div>
     </div>
+
 
   </div>
 
@@ -1564,47 +1723,52 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
     </div>
 
     <!-- 3. FOUNDER CONTAINER -->
-    <div class="content-card">
-      <div class="profile-header">
-        <div class="profile-circle">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <div class="profile-info">
-          <h2>Founder <span class="highlight-green">Details</span></h2>
-          <h3 style="color:#006754; margin-bottom:10px;">Hazrat Maulana Mufti Riaz Mahmood (R.A)</h3>
-          <span class="role-badge">Founder</span>
+    <div class="content-card profile-card-container">
+      <div class="card-corner-strip en-strip">
+        <span>Founder</span>
+      </div>
+      <div class="badge-profile-wrapper">
+        
+        <div class="circular-avatar-frame">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
       </div>
-      <p>Hazrat Maulana Mufti Riaz Mahmood (رحمہ اللہ) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. He then completed his specialization in Islamic Jurisprudence (Ifta).</p>
-      <p>In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.</p>
-      <div class="simple-quote-box">
-        <strong>Founder's Motto:</strong>
-        <p style="margin:5px 0 0 0;">"Hold fast to the Quran and Sunnah; this is the path to success in this world and the hereafter."</p>
+      <div class="profile-card-content">
+        <h3>Hazrat Maulana Mufti Riaz Mahmood (R.A)</h3>
+        <p class="profile-bio">
+          Hazrat Maulana Mufti Riaz Mahmood (R.A) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.
+        </p>
+        <div class="simple-quote-box">
+          <strong>Founder's Motto:</strong>
+          <p>"Hold fast to the Quran and Sunnah; this is the path to success in this world and the hereafter."</p>
+        </div>
       </div>
     </div>
 
     <!-- 4. PRINCIPAL CONTAINER -->
-    <div class="content-card">
-      <div class="profile-header">
-        <div class="profile-circle">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <div class="profile-info">
-          <h2>Leadership & <span class="highlight-green">Principal</span></h2>
-          <h3 style="color:#006754; margin-bottom:10px;">Mufti Aamir Mahmood</h3>
-          <span class="role-badge">Principal & Director</span>
+    <div class="content-card profile-card-container">
+      <div class="card-corner-strip en-strip">
+        <span>Principal</span>
+      </div>
+      <div class="badge-profile-wrapper">
+        
+        <div class="circular-avatar-frame">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
       </div>
-      <p>Mufti Aamir Mahmood completed his Hifz in 2006 and subsequently completed his Dars-e-Nizami from Wifaq ul Madaris Al-Arabia Pakistan. He further broadened his academic horizons by earning an MA in English and an M.Phil from NUML University, alongside completing his specialization in Ifta.</p>
-      <p>Since March 2020, he has taken over the responsibilities of the Madrassa, continuing his father's legacy of bridging traditional Islamic scholarship with contemporary educational excellence.</p>
-      <div class="simple-quote-box">
-        <strong>Principal's Message:</strong>
-        <p style="margin:5px 0 0 0;">"Our responsibility is not just to teach the Quran, but to prepare a generation that understands it, practices it, and presents the true picture of Islam through their character."</p>
+      <div class="profile-card-content">
+        <h3>Mufti Aamir Mahmood</h3>
+        <p class="profile-bio">
+          Mufti Aamir Mahmood completed his Hifz in 2006 and his Dars-e-Nizami from Wifaq ul Madaris Al-Arabia Pakistan. He broadened his academic horizons by earning an MA in English and an M.Phil from NUML University, alongside specializing in Ifta. Since March 2020, he has been leading the Madrassa's teaching, preaching, and administrative efforts.
+        </p>
+        <div class="simple-quote-box">
+          <strong>Principal's Message:</strong>
+          <p>"Our responsibility is not just to teach the Quran, but to prepare a generation that understands it, practices it, and presents the true picture of Islam through their character."</p>
+        </div>
       </div>
     </div>
 
   </div>
-
 
 </div>
 </main>
