@@ -1700,6 +1700,44 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 
 
 
+
+<style>
+/* New Facebook-style Verified Badge */
+.profile-name {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+.verified-badge-inline {
+    width: 22px !important;
+    height: 22px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Shadow behind the inner image to highlight the white gap */
+.profile-circle-img {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+}
+</style>
+
+
+<style>
+.founder-img {
+    object-position: center 10% !important; /* Move face up by anchoring to bottom */
+    
+}
+.verified-badge-inline {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
+    flex-shrink: 0 !important;
+    aspect-ratio: 1/1 !important;
+    margin-bottom: 2px !important; /* Visual alignment fix */
+}
+</style>
+
 </head>
 <body class="about-page">
 
@@ -2716,16 +2754,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       </div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
-          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img">
-  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
-    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
-  </svg>
+          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img founder-img">
+  
 
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
+        <h3 class="profile-name">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span><svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
 
         <p class="profile-bio">
           حضرت مولانا مفتی ریاض محمود (رحمہ اللہ) نے 1989ء میں جامعہ علوم اسلامیہ بنوری ٹاؤن سے درسِ نظامی مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور 27 سال تک عظیم تعلیمی و اصلاحی خدمات انجام دیں۔
@@ -2745,15 +2780,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
-  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
-    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
-  </svg>
+  
 
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">مفتی عامر محمود</h3>
+        <h3 class="profile-name">مفتی عامر محمود<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
 
     <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
     <div class="profile-social-links">
@@ -2857,16 +2889,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       </div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
-          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img">
-  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
-    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
-  </svg>
+          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img founder-img">
+  
 
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">Hazrat Maulana Mufti Riaz Mahmood (RH)</h3>
+        <h3 class="profile-name">Hazrat Maulana Mufti Riaz Mahmood (RH)<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
         <p class="profile-bio">
           Hazrat Maulana Mufti Riaz Mahmood (RH) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.
         </p>
@@ -2885,15 +2914,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
-  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
-    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
-  </svg>
+  
 
         </div>
       </div>
       <div class="profile-card-content">
-    <h3 class="profile-name">Mufti Aamir Mahmood</h3>
+    <h3 class="profile-name">Mufti Aamir Mahmood<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
 
     <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
     <div class="profile-social-links">
