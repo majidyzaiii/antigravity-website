@@ -4839,6 +4839,74 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 }
 </style>
 
+
+<style>
+/* =========================================================
+   GLOBAL TYPOGRAPHY OVERRIDES (Google Fonts)
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@600;700&display=swap');
+
+/* Scope to LTR (English) only to protect Urdu fonts */
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h2:not(.preserve-heading):not(.primary-heading),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h3:not(.preserve-heading):not(.primary-heading),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h4,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-title,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .box-title,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .statement-card h2,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .about-container h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) p:not(.arabic-text):not(.urdu-text),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) li,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .profile-bio,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .description,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-body,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .statement-card p {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) button,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .btn,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .cta-button,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) nav a,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .nav-link,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .badge,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .role-badge,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-corner-strip,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) label,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) input,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) textarea,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) select {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .btn-bold,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-corner-strip,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .role-badge {
+  font-weight: 600 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) blockquote,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .simple-quote-box p,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .quote-text,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .testimonial-text {
+  font-family: 'Inter', sans-serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .simple-quote-box strong {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+}
+</style>
 </head>
 
 <body>
@@ -5019,7 +5087,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
     <!-- Combined Hero Extension Section -->
     <section class="hero-extension-section section-card-container" id="about">
         <!-- Short Introduction Section -->
-            <h2 class="intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
+            <h2 class="preserve-heading intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
                 Introduction to <span class="highlight-font">Madrassa</span>
             </h2>
             <h3 class="intro-subtitle" data-en="Building knowledge, practice, and character in the light of Quran &amp; Sunnah" data-ur="قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر">
@@ -5045,7 +5113,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
         <!-- ========================================== -->
         <section class="leadership-section section-card-container" id="leadership">
           <div class="leadership-header" style="text-align: center; margin-bottom: 40px;">
-              <h2 class="leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
+              <h2 class="preserve-heading leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
                   Leadership &amp; <span class="highlight-font">Founders</span>
               </h2>
               <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات" style="font-size: 1.1rem; color: #666666;">
@@ -5248,7 +5316,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 <!-- Courses Section (Services) -->
 <section id="courses" class="services-section section-card-container">
   <div class="services-header">
-    <h2 class="courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
+    <h2 class="preserve-heading courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
     <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
       Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
     </p>
@@ -5346,7 +5414,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
     
     <!-- Section Header -->
     <div class="updates-header">
-            <h2 class="updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>خبریں اور </span> <span class='highlight-font'>تازہ ترین اپڈیٹس</span>">
+            <h2 class="preserve-heading updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>خبریں اور </span> <span class='highlight-font'>تازہ ترین اپڈیٹس</span>">
         <span class="bold-text">News &amp;</span>
         <span class="highlight-font">Recent Updates</span>
       </h2>
@@ -5446,7 +5514,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 <section class="donation-section section-card-container">
   <div class="donation-container">
     <div class="donation-header">
-      <h2 class="donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Our Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='highlight-font'>تعاون کریں</span>">
+      <h2 class="preserve-heading donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Our Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='highlight-font'>تعاون کریں</span>">
         <span class="bold-text">Support</span>
         <span class="highlight-font">Our Mission</span>
       </h2>
@@ -5529,7 +5597,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
     <!-- LEFT SIDE: TITLE, DIRECT CONTACT & SUB-DEPARTMENTS -->
     <div class="contact-left-col">
       <div class="contact-header-text">
-        <h2 class="contact-big-title">
+        <h2 class="preserve-heading contact-big-title">
           <span class="lang-en"><span class="highlight-font">Contact</span> Us</span>
           <span class="lang-ur">ہم سے <span class="highlight-font">رابطہ</span> کریں</span>
         </h2>

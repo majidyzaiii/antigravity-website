@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
     <style>
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&display=swap');
+
 
 /* HIDE TOP MAIN HEADER ON ABOUT PAGE */
 body.about-page header.main-header,
@@ -296,7 +299,8 @@ body.about-page .mobile-logo-container {
             border-bottom: 2px solid #025F55 !important;
             border-radius: 0 !important;
             padding-bottom: 4px !important;
-            font-weight: 800 !important;
+            font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
         }
 
         .nav-accent {
@@ -508,6 +512,220 @@ body.about-page .mobile-logo-container {
 
 
 
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+
+.minimal-hamburger-btn {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  z-index: 100 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.minimal-hamburger-btn:hover {
+  opacity: 0.7 !important;
+}
+html[dir="rtl"] .minimal-hamburger-btn, body.ur .minimal-hamburger-btn, .about-page-ur .minimal-hamburger-btn {
+  right: auto !important;
+  left: 20px !important;
+}
+html[dir="rtl"] .minimal-back-btn, body.ur .minimal-back-btn, .about-page-ur .minimal-back-btn {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+}
+html[dir="rtl"] .minimal-back-btn svg, body.ur .minimal-back-btn svg, .about-page-ur .minimal-back-btn svg {
+  transform: rotate(180deg) !important;
+}
+
+.minimal-breadcrumbs {
+  position: absolute !important;
+  bottom: 15px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+.minimal-breadcrumbs .chevron {
+  color: #ffffff !important;
+  margin: 0 6px !important;
+  font-weight: 800 !important;
+}
+html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-ur .minimal-breadcrumbs {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 1.15rem !important;
+}
+
+
+.verified-badge {
+  position: absolute !important;
+  bottom: 9px !important;
+  right: 9px !important;
+  width: 20px !important;
+  height: 20px !important;
+  z-index: 10 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+html[dir="rtl"] .verified-badge, body.ur .verified-badge {
+  right: auto !important;
+  left: 9px !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
 <!-- Mobile Drawer Strict RTL Positioning -->
@@ -577,6 +795,146 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
   margin-left: auto !important;
   margin-right: 0 !important;
 }
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
 
@@ -601,6 +959,146 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
     position: relative;
     z-index: 1;
 }
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
 
@@ -612,8 +1110,8 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: 15px auto 25px auto !important;
-  padding-top: 30px !important;
+  margin: 5px auto 10px auto !important;
+  padding-top: 5px !important;
 }
 
 /* Top Vertical Ribbon Line (Brand Green) */
@@ -630,11 +1128,11 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 
 /* Outer Circular Border Frame (Brand Green) */
 .circular-avatar-frame {
-  width: 170px !important;
-  height: 170px !important;
+  width: 130px !important;
+  height: 130px !important;
   border-radius: 50% !important;
-  border: 3px solid #006754 !important; /* Replacing blue ring with official green */
-  padding: 6px !important;
+  border: 2px solid #006754 !important; /* Replacing blue ring with official green */
+  padding: 8px !important;
   background: #ffffff !important;
   display: flex !important;
   align-items: center !important;
@@ -650,7 +1148,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
   height: 100% !important;
   border-radius: 50% !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: top center !important;
 }
 
 /* Text & Badges Alignment */
@@ -694,13 +1192,153 @@ html[dir="rtl"] .profile-card-content h3 {
 /* Remove old profile header css */
 .profile-header { display: none !important; }
 
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
 <style>
 .profile-card-container {
   position: relative !important;
   overflow: hidden !important;
-  padding-top: 35px !important;
+  padding: 20px 15px 15px 15px !important;
 }
 
 /* Diagonal Corner Strip / Patti Styling */
@@ -718,7 +1356,6 @@ html[dir="rtl"] .profile-card-content h3 {
   text-align: center !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
-  border-radius: 0 !important;
 }
 
 .ur-strip {
@@ -749,14 +1386,420 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 }
 
 .profile-bio {
-  color: #334155 !important;
+  color: #1A1A1A !important;
   font-size: 0.95rem !important;
   line-height: 1.8 !important;
   max-width: 650px !important;
   margin: 0 auto 15px auto !important;
 }
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
+<style>
+.profile-social-links {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 12px 0 16px 0 !important;
+}
+
+.social-icon-circle {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background-color: #eaf4f1 !important;
+  color: #006754 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  border: 1px solid #bce0d6 !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Hover effects matching brand palette */
+.social-icon-circle:hover {
+  background-color: #006754 !important;
+  color: #ffffff !important;
+  border-color: #006754 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(0, 103, 84, 0.25) !important;
+}
+
+.profile-name {
+  font-size: 1.35rem !important;
+  color: #006754 !important;
+  font-weight: 700 !important;
+  margin: 6px 0 0 0 !important;
+}
+</style>
+<style>
+/* Fix highlight green inheriting wrong fonts inside headings */
+h2 .highlight-green, h3 .highlight-green, .about-content-wrapper h2 span {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+}
+.highlight-green {
+  color: #006754 !important;
+}
+</style>
+
+<style>
+/* -------------------------------------------------------------
+   NEW CLEAN MOBILE MENU OVERRIDES (Ported from index.html)
+   ------------------------------------------------------------- */
+.mobile-nav-overlay {
+  display: flex !important; 
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 9999 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  align-items: flex-start !important; 
+  padding-top: 80px !important; 
+  justify-content: flex-start !important; /* Docks to the Left in English */
+  transition: opacity 0.3s ease !important;
+}
+.mobile-nav-overlay.active { 
+  opacity: 1 !important; 
+  pointer-events: auto !important; 
+}
+
+/* RTL OVERRIDE */
+html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
+  justify-content: flex-end !important; /* Docks to the Right in Urdu */
+}
+
+/* CARD DEFAULT STATE (Slides in from Left) */
+.mobile-menu-card {
+  position: relative !important;
+  background: white !important;
+  height: auto !important;
+  max-height: 400px !important;
+  width: 175px !important;
+  padding: 20px 16px !important;
+  border-radius: 20px !important;
+  margin-left: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  
+  /* Slide logic */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(-150vw) !important; 
+}
+.mobile-nav-overlay.active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* CARD RTL STATE (Slides in from Right) */
+html[dir="rtl"] .mobile-menu-card, body.ur .mobile-menu-card {
+  margin-left: 0 !important;
+  margin-right: 16px !important;
+  transform: translateX(150vw) !important; 
+}
+html[dir="rtl"] .mobile-nav-overlay.active .mobile-menu-card,
+body.ur .mobile-nav-overlay.active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* HEADER & CLOSE BUTTON */
+.mobile-menu-header { 
+  display: flex !important; justify-content: space-between !important; align-items: center !important; 
+  margin-bottom: 20px !important; 
+}
+.menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
+.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
+
+/* LINKS LIST */
+.mobile-nav-links { 
+  list-style: none !important; padding: 0 !important; margin: 0 !important; 
+  display: flex !important; flex-direction: column !important; gap: 12px !important; 
+}
+.mobile-nav-links a, .mobile-lang-btn { 
+  text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
+  font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
+  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
+}
+.mobile-nav-links a:hover, .mobile-lang-btn:hover { color: #006754 !important; }
+
+/* RTL TEXT ALIGNMENT */
+html[dir="rtl"] .mobile-menu-card *, body.ur .mobile-menu-card * {
+  text-align: right !important;
+}
+html[dir="rtl"] .mobile-menu-close, body.ur .mobile-menu-close {
+  order: -1 !important; /* Moves X to the left side of the header in RTL */
+}
+</style>
+
+<style>
+/* =========================================================
+   GLOBAL TYPOGRAPHY OVERRIDES (Google Fonts)
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@600;700&display=swap');
+
+/* Scope to LTR (English) only to protect Urdu fonts */
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h2:not(.preserve-heading):not(.primary-heading),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h3:not(.preserve-heading):not(.primary-heading),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) h4,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-title,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .box-title,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .statement-card h2,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .about-container h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) p:not(.arabic-text):not(.urdu-text),
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) li,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .profile-bio,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .description,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .card-body,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .statement-card p {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) button,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .btn,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .cta-button,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) nav a,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .nav-link,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .badge,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .role-badge,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) label,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) input,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) textarea,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) select {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .btn-bold,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .role-badge {
+  font-weight: 600 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) blockquote,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .simple-quote-box p,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .quote-text,
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .testimonial-text {
+  font-family: 'Inter', sans-serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6 !important;
+}
+
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .simple-quote-box strong {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+}
+</style>
+
+<style>
+/* Custom Motto Highlight for Founder/Principal Quote Box */
+.motto-highlight {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  color: #006754 !important;
+  font-family: 'Caveat', 'Jameel Noori Nastaleeq', cursive, sans-serif !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px;
+}
+
+.motto-highlight::after {
+  content: '';
+  position: absolute;
+  left: 0%;
+  bottom: -6px;
+  width: 100%;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Override the previous Google Fonts rule for simple-quote-box strong if it targets our new class */
+:is(html:not([dir="rtl"]) body, [dir="ltr"]) .simple-quote-box strong.motto-highlight {
+  font-family: 'Caveat', cursive, sans-serif !important;
+}
+html[dir="rtl"] .motto-highlight, body.ur .motto-highlight {
+  font-size: 2rem !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  padding-bottom: 12px;
+}
+html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
+  bottom: 0px;
+}
+
+/* Override corner strip font to cursive */
+
+
+
+.card-corner-strip {
+  padding: 4px 0 !important;
+}
+.card-corner-strip, .card-corner-strip span {
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-size: 1.2rem !important; 
+  letter-spacing: 1px !important;
+  font-weight: 700 !important;
+  text-transform: capitalize !important;
+}
+
+
+
+
+</style>
 </head>
 <body class="about-page">
 
@@ -1094,31 +2137,13 @@ html:not([dir="rtl"]) .profile-quote {
 }
 
 /* Floating Image Box Overlapping Green Box */
-.hero-floating-image-box {
-  display: none !important;
-  width: 45% !important;
-  max-width: 550px !important;
-  position: absolute !important;
-  z-index: 2 !important;
-  bottom: -40px !important;
-}
 
-[dir="ltr"] .hero-floating-image-box {
-  right: 5% !important;
-}
 
-[dir="rtl"] .hero-floating-image-box {
-  left: 5% !important;
-}
+[dir="ltr"] 
 
-.floating-hero-img {
-  width: 100% !important;
-  height: 350px !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
-  border: none !important;
-}
+[dir="rtl"] 
+
+
 
 /* Logo & Back Button inner styling */
 
@@ -1275,7 +2300,7 @@ html[dir="rtl"] .about-page-ur, body.ur .about-page-ur { display: block !importa
 html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !important; }
 
 
-  .hero-shape-box.english-shape, .hero-shape-box.urdu-shape { width: 100% !important; border-radius: 20px 20px 40px 40px !important; }
+  
   .hero-image-wrapper { width: 100% !important; margin-top: -20px !important; }
 
 
@@ -1510,9 +2535,7 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
   .hero-rounded-banner.urdu-banner {
     border-radius: 0 0 50px 0 !important;
   }
-  .hero-floating-image-box {
-    display: none !important;
-  }
+  
   .banner-logo, #mobile-aligned-logo {
     position: relative !important;
     top: auto !important;
@@ -1569,6 +2592,146 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
     pointer-events: auto;
 }
 
+
+/* Top vertical ribbon for Founder/Principal as per reference */
+.badge-profile-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 50%; /* Anchors to the middle of the wrapper */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px !important; /* Thickness of the ribbon */
+  height: 200px !important; /* Tall enough to hit the top of the card */
+  background-color: #006754 !important;
+  z-index: 1 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background-color: #006754 !important;
+  padding: 30px 20px 45px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Clash Display', sans-serif !important;
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  -webkit-text-stroke: 1px #ffffff !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.85rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
 </style>
 
 
@@ -1583,31 +2746,46 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 <div class="about-page-ur" dir="rtl">
 
   <!-- Urdu Version (RTL) -->
-  <div class="about-hero-wrapper" dir="rtl">
-    <div class="hero-rounded-banner urdu-banner">
-      <button class="back-btn" onclick="window.history.back() || (window.location.href='index.html')">
-        <span class="back-arrow">➔</span> واپسی
-      </button>
-      <div class="banner-logo" id="mobile-aligned-logo">
-        <img src="assets/logo.png" alt="Madrassa Logo">
-      </div>
-      <div class="banner-content">
-        <h1>ہمارے <span class="highlight-text" style="color:#ffffff !important;">بارے میں</span></h1>
-        <p>قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر</p>
-      </div>
-    </div>
+  <div class="about-minimal-header">
+  <!-- Hamburger Menu -->
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
 
-    <div class="hero-floating-image-box">
-      <img src="assets/hero-image.jpeg" alt="Madrassa Feature" class="floating-hero-img">
-    </div>
+  <!-- Breadcrumbs -->
+  <div class="minimal-breadcrumbs">
+    مرکزی صفحہ <span class="chevron" style="font-family: sans-serif;">&lt;</span> ہمارے بارے میں
   </div>
+  <!-- Back Button -->
+  <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+
+  <!-- Centered Title with Green Swoosh -->
+  <div class="title-with-swoosh">
+    <h1 class="about-main-title">
+      <span class="title-en">About Us</span>
+      <span class="title-ur">ہمارے بارے میں</span>
+    </h1>
+
+    <!-- Vector Green Swoosh / Brush Stroke -->
+    <svg class="green-brush-stroke" viewBox="0 0 500 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 480 65" 
+            stroke="#ffffff" 
+            stroke-width="14" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
+
 
   
   <div class="about-content-wrapper">
 
     <!-- 1. HISTORY CONTAINER -->
     <div class="content-card">
-      <h2>ادارے کی <span class="highlight-green">تاریخ و تعارف</span></h2>
+      <h2 class="preserve-heading">ادارے کی تاریخ و تعارف</h2>
       <p>مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> نے رکھی۔ یہ ادارہ خالصتاً قرآن و سنت کی تعلیمات پر مبنی ہے، جس کا مقصد معاشرے میں صحیح اسلامی شعور بیدار کرنا اور ایسی نسل تیار کرنا ہے جو دین اور دنیا دونوں میں کامیاب ہو۔</p>
       <p>اپنے قیام سے لے کر آج تک، یہ مدرسہ ہزاروں طلباء کو زیورِ تعلیم سے آراستہ کر چکا ہے اور مستقل دعوت و تبلیغ کے کام میں سرگرمِ عمل ہے۔</p>
     </div>
@@ -1626,22 +2804,27 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
     <!-- 3. FOUNDER CONTAINER -->
     <div class="content-card profile-card-container">
-      <div class="card-corner-strip en-strip">
+      <div class="card-corner-strip ur-strip">
         <span>Founder</span>
       </div>
       <div class="badge-profile-wrapper">
-        
         <div class="circular-avatar-frame">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img">
+  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
+    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
+  </svg>
+
         </div>
       </div>
       <div class="profile-card-content">
-        <h3>حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
+        <h3 class="profile-name">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span></h3>
+
         <p class="profile-bio">
           حضرت مولانا مفتی ریاض محمود (رحمہ اللہ) نے 1989ء میں جامعہ علوم اسلامیہ بنوری ٹاؤن سے درسِ نظامی مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور 27 سال تک عظیم تعلیمی و اصلاحی خدمات انجام دیں۔
         </p>
         <div class="simple-quote-box">
-          <strong>بانیِ ادارہ کا موٹو:</strong>
+          <strong class="motto-highlight">بانیِ ادارہ کا موٹو:</strong>
           <p>"قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"</p>
         </div>
       </div>
@@ -1653,23 +2836,46 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
         <span>Principal</span>
       </div>
       <div class="badge-profile-wrapper">
-        
         <div class="circular-avatar-frame">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
+  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
+    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
+  </svg>
+
         </div>
       </div>
       <div class="profile-card-content">
-        <h3>مفتی عامر محمود</h3>
+        <h3 class="profile-name">مفتی عامر محمود</h3>
+
+    <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
+    <div class="profile-social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle fb" title="Facebook">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle tw" title="Twitter / X">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="social-icon-circle wa" title="WhatsApp">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+      </a>
+    </div>
+
         <p class="profile-bio">
           ایم فل (NUML)، فاضل وفاق المدارس، مارچ 2020ء سے مدرسہ ریاض القرآن والسنۃ کی تدریسی، دعوتی اور انتظامی سرپرستی فرمارہے ہیں۔
         </p>
         <div class="simple-quote-box">
-          <strong>مہتمم کا پیغام:</strong>
+          <strong class="motto-highlight">مہتمم کا پیغام:</strong>
           <p>"ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے اور اس پر عمل کرے۔"</p>
         </div>
       </div>
     </div>
-
 
   </div>
 
@@ -1679,34 +2885,48 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 <div class="about-page-en" dir="ltr">
 
   <!-- English Version (LTR) -->
-  <div class="about-hero-wrapper" dir="ltr">
-    <!-- Rounded Green Banner Background -->
-    <div class="hero-rounded-banner english-banner">
-      <button class="back-btn" onclick="window.history.back() || (window.location.href='index.html')">
-        <span class="back-arrow">➔</span> Back
-      </button>
-      <div class="banner-logo" id="mobile-aligned-logo">
-        <img src="assets/logo.png" alt="Madrassa Logo">
-      </div>
-      <div class="banner-content">
-        <h1>About <span class="highlight-text" style="color:#ffffff !important;">Us</span></h1>
-        <p>Nurturing purposeful individuals through holistic learning rooted in Islamic values</p>
-      </div>
-    </div>
+  <div class="about-minimal-header">
+  <!-- Hamburger Menu -->
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Breadcrumbs -->
+  <div class="minimal-breadcrumbs">
+    Home <span class="chevron">&gt;</span> About Us
+  </div>
+  <!-- Back Button -->
+  <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+
+  <!-- Centered Title with Green Swoosh -->
+  <div class="title-with-swoosh">
+    <h1 class="about-main-title">
+      <span class="title-en">About Us</span>
+      <span class="title-ur">ہمارے بارے میں</span>
+    </h1>
+
+    <!-- Vector Green Swoosh / Brush Stroke -->
+    <svg class="green-brush-stroke" viewBox="0 0 500 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 480 65" 
+            stroke="#ffffff" 
+            stroke-width="14" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"/>
+    </svg>
+  </div>
+</div>
 
     <!-- Floating Overlapping Image -->
-    <div class="hero-floating-image-box">
-      <img src="assets/hero-image.jpeg" alt="Madrassa Feature" class="floating-hero-img">
-    </div>
-  </div>
 
   
   <div class="about-content-wrapper">
 
     <!-- 1. HISTORY CONTAINER -->
     <div class="content-card">
-      <h2>History & <span class="highlight-green">Introduction</span></h2>
-      <p>Madrassa Riaz ul Quran Wal Sunnah is a premier educational and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (رحمہ اللہ). The institution is purely based on the teachings of the Quran and Sunnah, with the aim of awakening true Islamic consciousness in society and preparing a generation that is successful in both this world and the hereafter.</p>
+      <h2 class="preserve-heading">History & Introduction</h2>
+      <p>Madrassa Riaz ul Quran Wal Sunnah is a premier educational and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (RH). The institution is purely based on the teachings of the Quran and Sunnah, with the aim of awakening true Islamic consciousness in society and preparing a generation that is successful in both this world and the hereafter.</p>
       <p>Since its inception, the Madrassa has educated thousands of students and remains actively engaged in the work of Dawah and propagation.</p>
     </div>
 
@@ -1728,18 +2948,22 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
         <span>Founder</span>
       </div>
       <div class="badge-profile-wrapper">
-        
         <div class="circular-avatar-frame">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img">
+  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
+    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
+  </svg>
+
         </div>
       </div>
       <div class="profile-card-content">
-        <h3>Hazrat Maulana Mufti Riaz Mahmood (R.A)</h3>
+        <h3 class="profile-name">Hazrat Maulana Mufti Riaz Mahmood (RH)</h3>
         <p class="profile-bio">
-          Hazrat Maulana Mufti Riaz Mahmood (R.A) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.
+          Hazrat Maulana Mufti Riaz Mahmood (RH) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.
         </p>
         <div class="simple-quote-box">
-          <strong>Founder's Motto:</strong>
+          <strong class="motto-highlight">Founder's Motto:</strong>
           <p>"Hold fast to the Quran and Sunnah; this is the path to success in this world and the hereafter."</p>
         </div>
       </div>
@@ -1751,21 +2975,47 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
         <span>Principal</span>
       </div>
       <div class="badge-profile-wrapper">
-        
         <div class="circular-avatar-frame">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
+  <svg class="verified-badge" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#006754"/>
+    <path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/>
+  </svg>
+
         </div>
       </div>
       <div class="profile-card-content">
-        <h3>Mufti Aamir Mahmood</h3>
-        <p class="profile-bio">
-          Mufti Aamir Mahmood completed his Hifz in 2006 and his Dars-e-Nizami from Wifaq ul Madaris Al-Arabia Pakistan. He broadened his academic horizons by earning an MA in English and an M.Phil from NUML University, alongside specializing in Ifta. Since March 2020, he has been leading the Madrassa's teaching, preaching, and administrative efforts.
-        </p>
-        <div class="simple-quote-box">
-          <strong>Principal's Message:</strong>
-          <p>"Our responsibility is not just to teach the Quran, but to prepare a generation that understands it, practices it, and presents the true picture of Islam through their character."</p>
-        </div>
-      </div>
+    <h3 class="profile-name">Mufti Aamir Mahmood</h3>
+
+    <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
+    <div class="profile-social-links">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle fb" title="Facebook">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle tw" title="Twitter / X">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="social-icon-circle wa" title="WhatsApp">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Bio Description -->
+    <p class="profile-bio">
+      Mufti Aamir Mahmood completed his Hifz in 2006 and his Dars-e-Nizami from Wifaq ul Madaris Al-Arabia Pakistan. He broadened his academic horizons by earning an MA in English and an M.Phil from NUML University, alongside specializing in Ifta. Since March 2020, he has been leading the Madrassa's teaching, preaching, and administrative efforts.
+    </p>
+
+    <div class="simple-quote-box">
+      <strong class="motto-highlight">Principal's Message:</strong>
+      <p>"Our responsibility is not just to teach the Quran, but to prepare a generation that understands it, practices it, and presents the true picture of Islam through their character."</p>
+    </div>
+  </div>
     </div>
 
   </div>
@@ -1864,18 +3114,18 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          mobileNavOverlay.classList.add('is-active');
+          mobileNavOverlay.classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');
       });
       
       if(mobileMenuClose) {
         mobileMenuClose.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('is-active');
+            mobileNavOverlay.classList.remove('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.remove('active');
         });
       }
       
       mobileNavOverlay.addEventListener('click', (e) => {
           if(e.target === mobileNavOverlay) {
-              mobileNavOverlay.classList.remove('is-active');
+              mobileNavOverlay.classList.remove('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.remove('active');
           }
       });
   }
