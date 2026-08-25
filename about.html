@@ -544,7 +544,9 @@ body.about-page .mobile-logo-container {
 
 .minimal-hamburger-btn {
   position: absolute !important;
-  top: 20px !important;
+  right: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   right: 20px !important;
   background: transparent !important;
   border: none !important;
@@ -574,15 +576,17 @@ html[dir="rtl"] .minimal-back-btn svg, body.ur .minimal-back-btn svg, .about-pag
 }
 
 .minimal-breadcrumbs {
-  position: absolute !important;
-  bottom: 15px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
   width: max-content !important;
   color: #ffffff !important;
   font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-size: 1rem !important;
   font-weight: 500 !important;
+  margin-top: 5px !important;
 }
 .minimal-breadcrumbs .chevron {
   color: #ffffff !important;
@@ -590,9 +594,9 @@ html[dir="rtl"] .minimal-back-btn svg, body.ur .minimal-back-btn svg, .about-pag
   font-weight: 800 !important;
 }
 html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-ur .minimal-breadcrumbs {
-  left: 50% !important;
+  left: 0 !important;
   right: auto !important;
-  transform: translateX(-50%) !important;
+  transform: none !important;
   width: max-content !important;
   font-family: 'Jameel Noori Nastaleeq', serif !important;
   font-size: 1.15rem !important;
@@ -600,7 +604,7 @@ html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-
 
 
 .verified-badge {
-  position: absolute !important;
+  position: relative !important;
   bottom: 9px !important;
   right: 9px !important;
   width: 20px !important;
@@ -618,7 +622,7 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  background: linear-gradient(rgba(0, 103, 84, 0.7), rgba(0, 103, 84, 0.7)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -631,7 +635,8 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -650,7 +655,8 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -666,7 +672,8 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -827,7 +834,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  background: linear-gradient(rgba(0, 103, 84, 0.7), rgba(0, 103, 84, 0.7)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -840,7 +847,8 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -859,7 +867,8 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -875,7 +884,8 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1004,7 +1014,7 @@ body.ur .content-card::after {
 
 /* Top Vertical Ribbon Line (Brand Green) */
 .top-ribbon-line {
-  position: absolute !important;
+  position: relative !important;
   top: 0 !important;
   width: 38px !important;
   height: 45px !important;
@@ -1112,7 +1122,7 @@ html[dir="rtl"] .profile-card-content h3 {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  background: linear-gradient(rgba(0, 103, 84, 0.7), rgba(0, 103, 84, 0.7)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1125,7 +1135,8 @@ html[dir="rtl"] .profile-card-content h3 {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1144,7 +1155,8 @@ html[dir="rtl"] .profile-card-content h3 {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1160,7 +1172,8 @@ html[dir="rtl"] .profile-card-content h3 {
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1231,7 +1244,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
 /* Diagonal Corner Strip / Patti Styling */
 .card-corner-strip {
-  position: absolute !important;
+  position: relative !important;
   top: 25px !important;
   width: 160px !important;
   background-color: #006754 !important;
@@ -1312,7 +1325,7 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  background: linear-gradient(rgba(0, 103, 84, 0.7), rgba(0, 103, 84, 0.7)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1325,7 +1338,8 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1344,7 +1358,8 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1360,7 +1375,8 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -1693,7 +1709,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
   padding-bottom: 65px !important; 
 }
 .minimal-breadcrumbs {
-  bottom: 10px !important;
+  bottom: 0 !important;
 }
 
 </style>
@@ -1735,6 +1751,47 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
     flex-shrink: 0 !important;
     aspect-ratio: 1/1 !important;
     margin-bottom: 2px !important; /* Visual alignment fix */
+}
+</style>
+
+
+<style>
+.profile-name {
+    flex-direction: column !important;
+    gap: 2px !important;
+}
+.main-name-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+}
+.honorific {
+    font-size: 0.55em !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: -4px !important;
+}
+.suffix {
+    font-size: 0.6em !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+}
+</style>
+
+
+<style>
+.minimal-back-btn, .minimal-hamburger-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    backdrop-filter: blur(4px) !important;
+    
 }
 </style>
 
@@ -2095,7 +2152,7 @@ html:not([dir="rtl"]) .profile-quote {
 
 
 .banner-logo {
-  position: absolute !important;
+  position: relative !important;
   bottom: 10px !important;
 }
 [dir="ltr"] .banner-logo {
@@ -2125,7 +2182,7 @@ html:not([dir="rtl"]) .profile-quote {
 }
 
 .back-btn {
-  position: absolute !important;
+  position: relative !important;
   top: 15px !important;
   display: flex !important;
   align-items: center !important;
@@ -2330,7 +2387,7 @@ body.ur .site-footer {
         footer .footer-brand-title img,
         footer .footer-title-img-en,
         footer .footer-title {
-            margin-top: -10px !important;
+            
             padding-top: 0 !important;
         }
 
@@ -2568,7 +2625,7 @@ body.ur .site-footer {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  background: linear-gradient(rgba(0, 103, 84, 0.7), rgba(0, 103, 84, 0.7)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -2581,7 +2638,8 @@ body.ur .site-footer {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -2600,7 +2658,8 @@ body.ur .site-footer {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -2616,7 +2675,8 @@ body.ur .site-footer {
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top: 20px !important;
+  top:  50% !important;
+  transform: translateY(-50%) !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -2697,9 +2757,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   </button>
 
   <!-- Breadcrumbs -->
-  <div class="minimal-breadcrumbs">
-    مرکزی صفحہ <span class="chevron" style="font-family: sans-serif;">&lt;</span> ہمارے بارے میں
-  </div>
+  
   <!-- Back Button -->
   <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -2710,17 +2768,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <h1 class="about-main-title">
       <span class="title-en">About Us</span>
       <span class="title-ur">ہمارے بارے میں</span>
-    </h1>
+    </h1><div class="minimal-breadcrumbs">
+    مرکزی صفحہ <span class="chevron" style="font-family: sans-serif;">&lt;</span> ہمارے بارے میں
+  </div>
 
     <!-- Vector Green Swoosh / Brush Stroke -->
-    <svg class="green-brush-stroke" viewBox="0 0 515 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 470 61" 
-            stroke="#ffffff" 
-            stroke-width="14" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"/>
-      <circle cx="498" cy="72" r="10" fill="#ffffff"/>
-    </svg>
+    
   </div>
 </div>
 
@@ -2760,7 +2813,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span><svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
+        <h3 class="profile-name">
+        <span class="honorific">حضرت مولانا مفتی</span>
+        <span class="main-name-row">
+            ریاض محمود <span class="arabic-calligraphy suffix">رحمة الله</span> <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+        </span>
+    </h3>
 
         <p class="profile-bio">
           حضرت مولانا مفتی ریاض محمود (رحمہ اللہ) نے 1989ء میں جامعہ علوم اسلامیہ بنوری ٹاؤن سے درسِ نظامی مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور 27 سال تک عظیم تعلیمی و اصلاحی خدمات انجام دیں۔
@@ -2785,7 +2843,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">مفتی عامر محمود<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
+        <h3 class="profile-name">
+        <span class="honorific">مفتی</span>
+        <span class="main-name-row">
+            عامر محمود  <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+        </span>
+    </h3>
 
     <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
     <div class="profile-social-links">
@@ -2831,9 +2894,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   </button>
 
   <!-- Breadcrumbs -->
-  <div class="minimal-breadcrumbs">
-    Home <span class="chevron">&gt;</span> About Us
-  </div>
+  
   <!-- Back Button -->
   <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -2844,17 +2905,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <h1 class="about-main-title">
       <span class="title-en">About Us</span>
       <span class="title-ur">ہمارے بارے میں</span>
-    </h1>
+    </h1><div class="minimal-breadcrumbs">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home <span class="chevron">&gt;</span> About Us
+  </div>
 
     <!-- Vector Green Swoosh / Brush Stroke -->
-    <svg class="green-brush-stroke" viewBox="0 0 515 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 470 61" 
-            stroke="#ffffff" 
-            stroke-width="14" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"/>
-      <circle cx="498" cy="72" r="10" fill="#ffffff"/>
-    </svg>
+    
   </div>
 </div>
 
@@ -2895,7 +2951,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         </div>
       </div>
       <div class="profile-card-content">
-        <h3 class="profile-name">Hazrat Maulana Mufti Riaz Mahmood (RH)<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
+        <h3 class="profile-name">
+        <span class="honorific">Hazrat Maulana Mufti</span>
+        <span class="main-name-row">
+            Riaz Mahmood <span class="suffix">(RH)</span> <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+        </span>
+    </h3>
         <p class="profile-bio">
           Hazrat Maulana Mufti Riaz Mahmood (RH) completed his Dars-e-Nizami in 1989 from Jamia Uloom-e-Islamia Allama Muhammad Yousuf Banuri Town, Karachi. In 1993, he laid the foundation of Madrassa Riaz ul Quran Wal Sunnah. For nearly 27 years until his passing in 2020, he served humanity through teaching, preaching, and societal reform.
         </p>
@@ -2919,7 +2980,12 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         </div>
       </div>
       <div class="profile-card-content">
-    <h3 class="profile-name">Mufti Aamir Mahmood<svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg></h3>
+    <h3 class="profile-name">
+        <span class="honorific">Mufti</span>
+        <span class="main-name-row">
+            Aamir Mahmood  <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+        </span>
+    </h3>
 
     <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
     <div class="profile-social-links">
