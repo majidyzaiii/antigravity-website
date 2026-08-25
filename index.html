@@ -5159,7 +5159,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
             <!-- Desktop SVG View -->
             <div class="desktop-svg-wrapper">
                 <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
-                <svg viewBox="-160 -20 800 340" width="100%" preserveAspectRatio="xMidYMid meet">
+                <svg viewBox="-160 -20 1000 340" width="100%" preserveAspectRatio="xMidYMid meet">
                     <!-- Scaled Geometry Group (60% reduction) -->
                     <g transform="scale(0.6)">
                         <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
@@ -6898,6 +6898,34 @@ document.addEventListener('DOMContentLoaded', () => {
     background-repeat: no-repeat, no-repeat, no-repeat !important;
     background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
   }
+}
+</style>
+
+
+<style>
+/* Fix Swipe Submit Button text overlap on mobile */
+@media (max-width: 768px) {
+    .swipe-submit-container.success .swipe-text {
+        font-size: 0.85rem !important;
+        padding-right: 48px !important;
+        box-sizing: border-box !important;
+        white-space: nowrap !important;
+    }
+    html[dir="rtl"] .swipe-submit-container.success .swipe-text,
+    body.ur .swipe-submit-container.success .swipe-text {
+        padding-right: 0 !important;
+        padding-left: 48px !important;
+    }
+}
+/* Desktop tweak to be safe */
+.swipe-submit-container.success .swipe-text {
+    padding-right: 48px;
+    box-sizing: border-box;
+}
+html[dir="rtl"] .swipe-submit-container.success .swipe-text,
+body.ur .swipe-submit-container.success .swipe-text {
+    padding-right: 0;
+    padding-left: 48px;
 }
 </style>
 
