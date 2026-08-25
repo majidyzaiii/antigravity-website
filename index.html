@@ -4907,6 +4907,9 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
   font-weight: 600 !important;
 }
 </style>
+
+
+
 </head>
 
 <body>
@@ -6383,21 +6386,7 @@ document.addEventListener("DOMContentLoaded", function() {
 .donation-section::before,
 .contact-section::before,
 .simple-contact-section::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  left: auto !important; /* Prevents slipping to top-left */
-  width: 160px !important;
-  height: 160px !important;
-  background-image: url('assets/section-bg.jpeg') !important;
-  background-position: top right !important;
-  background-size: 300px auto !important;
-  background-repeat: no-repeat !important;
-  pointer-events: none !important;
-  opacity: 0.35 !important; /* Makes the design soft / lighter */
-  z-index: 1 !important;
-  display: block !important;
+  display: none !important;
 }
 
 /* Bottom Left Corner Design (Halka / Opacity Reduced) */
@@ -6413,21 +6402,7 @@ document.addEventListener("DOMContentLoaded", function() {
 .donation-section::after,
 .contact-section::after,
 .simple-contact-section::after {
-  content: "" !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: auto !important;
-  width: 160px !important;
-  height: 160px !important;
-  background-image: url('assets/section-bg.jpeg') !important;
-  background-position: bottom left !important;
-  background-size: 300px auto !important;
-  background-repeat: no-repeat !important;
-  pointer-events: none !important;
-  opacity: 0.35 !important; /* Makes the design soft / lighter */
-  z-index: 1 !important;
-  display: block !important;
+  display: none !important;
 }
 
 /* RH BADGE STYLING */
@@ -6819,6 +6794,112 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* Global Container Background Styling (Forced Override) */
+.about-container,
+.profile-card-container,
+.statement-card,
+.home-section-container,
+.content-box,
+.custom-card,
+.service-card,
+.section-card-container,
+.content-card,
+.vm-card,
+#about,
+#leadership,
+#courses,
+#contact,
+.intro-section,
+.hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+    url('assets/container-bg.jpg') !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7faf8 !important; /* Fallback color */
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  background-blend-mode: normal, multiply !important;
+}
+
+/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
+@media (min-width: 769px) {
+  /* Desktop already looks perfect with the base 100% 100% rule above */
+}
+
+/* ================= MOBILE MODE (Portrait / Lambai) ================= */
+@media (max-width: 768px) {
+  .about-container,
+  .profile-card-container,
+  .statement-card,
+  .home-section-container,
+  .content-box,
+  .custom-card,
+  .service-card,
+  .section-card-container,
+  .content-card,
+  .vm-card,
+  #about,
+  #leadership,
+  #courses,
+  #contact,
+  .intro-section,
+  .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
+        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
+    background-size: 
+        100% 100%, 
+        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
+  }
+}
+</style>
 
 </body>
 

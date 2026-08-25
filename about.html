@@ -618,7 +618,7 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background-color: #006754 !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -827,7 +827,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background-color: #006754 !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -944,161 +944,49 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     position: relative;
     overflow: hidden;
 }
-.content-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('assets/pattern.png') !important;
-    background-size: 40px auto !important;
-    background-repeat: repeat !important;
-    opacity: 0.04;
-    z-index: 0;
-    pointer-events: none;
-}
-.content-card > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
-}
-
-.circular-avatar-frame {
-  position: relative !important;
-  z-index: 2 !important;
-  border: 2px solid #006754 !important; /* Thinner border like reference */
-  padding: 8px !important; /* Slightly wider gap */
-}
 
 
-/* Remove old green banner background completely */
-.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
-  background: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
 
-/* Minimal Header Container */
-.about-minimal-header {
-  position: relative !important;
-  background-color: #006754 !important;
-  padding: 30px 20px 45px 20px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin-bottom: 25px !important;
-}
 
-/* Floating Back Button */
-.minimal-back-btn {
-  left: 20px !important;
-  position: absolute !important;
-  top: 20px !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: opacity 0.2s ease !important;
-}
-.minimal-back-btn:hover {
-  opacity: 0.7 !important;
+
+
+/* Card backgrounds completely removed as requested */
+.content-card::before,
+.content-card::after {
+  display: none !important;
 }
 
 
 
-[dir="ltr"] .minimal-back-btn {
-  left: 20px !important;
-  position: absolute !important;
-  top: 20px !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: opacity 0.2s ease !important;
-}
-.minimal-back-btn:hover {
-  opacity: 0.7 !important;
-}
-[dir="rtl"] .minimal-back-btn {
-  left: 20px !important;
-  position: absolute !important;
-  top: 20px !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: opacity 0.2s ease !important;
-}
-.minimal-back-btn:hover {
-  opacity: 0.7 !important;
-}
-[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
-
-/* Centered Title & Swoosh Container */
-.title-with-swoosh {
-  position: relative !important;
-  display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
+html[dir="rtl"] .content-card::after,
+body.ur .content-card::after {
+  left: auto !important;
+  right: 0 !important;
+  background-position: bottom right !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 28px !important;
+  transform: scaleX(-1) !important;
 }
 
-.about-main-title {
-  font-family: 'Clash Display', sans-serif !important;
-  font-size: 2.3rem !important;
-  font-weight: 700 !important;
-  -webkit-text-stroke: 1px #ffffff !important;
-  letter-spacing: -0.5px !important;
-  color: #ffffff !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  letter-spacing: -0.5px !important;
+
+html[dir="rtl"] .content-card::after,
+body.ur .content-card::after {
+  left: auto !important;
+  right: 0 !important;
+  background-position: bottom right !important;
+  transform: scaleX(-1) !important;
 }
 
-/* Green Brush Stroke / Swoosh Line */
-.green-brush-stroke {
-  width: 130% !important;
-  max-width: 260px !important;
-  height: 38px !important;
-  margin-top: -8px !important;
+
+html[dir="rtl"] .content-card::after,
+body.ur .content-card::after {
+  left: auto !important;
+  right: 0 !important;
+  background-position: bottom right !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 28px !important;
+  transform: scaleX(-1) !important;
 }
-
-/* Language Toggle Rules */
-.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
-.title-ur, .back-txt-ur { display: none !important; }
-.title-en, .back-txt-en { display: inline !important; }
-
-html[dir="rtl"] .title-ur, body.ur .title-ur,
-html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
-
-html[dir="rtl"] .title-en, body.ur .title-en,
-html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
-
-@media (max-width: 768px) {
-  .about-main-title { font-size: 1.85rem !important; }
-  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
-}
-
 </style>
 
 
@@ -1224,7 +1112,7 @@ html[dir="rtl"] .profile-card-content h3 {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background-color: #006754 !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1424,7 +1312,7 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background-color: #006754 !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1799,7 +1687,19 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 
 
 
+
+/* Adjust gap between title and breadcrumbs */
+.about-minimal-header {
+  padding-bottom: 65px !important; 
+}
+.minimal-breadcrumbs {
+  bottom: 10px !important;
+}
+
 </style>
+
+
+
 </head>
 <body class="about-page">
 
@@ -2306,7 +2206,7 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 
 /* === RESTORED FOOTER CSS === */
 .site-footer {
-            background: linear-gradient(135deg, #025F55 0%, #158467 100%) !important;
+            background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
             position: relative;
             overflow: hidden;
             color: #ffffff;
@@ -2315,6 +2215,12 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
             border-top: 5px solid #158467;
             text-align: left;
         }
+
+html[dir="rtl"] .site-footer,
+body.ur .site-footer {
+  background: linear-gradient(225deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+}
+
 
         html[dir="rtl"] .site-footer {
             text-align: right;
@@ -2624,7 +2530,7 @@ html[dir="rtl"] .about-page-en, body.ur .about-page-en { display: none !importan
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background-color: #006754 !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
   padding: 30px 20px 45px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -2769,12 +2675,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     </h1>
 
     <!-- Vector Green Swoosh / Brush Stroke -->
-    <svg class="green-brush-stroke" viewBox="0 0 500 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 480 65" 
+    <svg class="green-brush-stroke" viewBox="0 0 515 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 470 61" 
             stroke="#ffffff" 
             stroke-width="14" 
             stroke-linecap="round" 
             stroke-linejoin="round"/>
+      <circle cx="498" cy="72" r="10" fill="#ffffff"/>
     </svg>
   </div>
 </div>
@@ -2852,7 +2759,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <div class="profile-social-links">
       <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle fb" title="Facebook">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
         </svg>
       </a>
       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle tw" title="Twitter / X">
@@ -2908,12 +2815,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     </h1>
 
     <!-- Vector Green Swoosh / Brush Stroke -->
-    <svg class="green-brush-stroke" viewBox="0 0 500 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 480 65" 
+    <svg class="green-brush-stroke" viewBox="0 0 515 120" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 20 85 C 120 40, 320 20, 420 30 C 470 35, 490 55, 460 70 C 420 90, 350 95, 360 80 C 375 60, 430 45, 470 61" 
             stroke="#ffffff" 
             stroke-width="14" 
             stroke-linecap="round" 
             stroke-linejoin="round"/>
+      <circle cx="498" cy="72" r="10" fill="#ffffff"/>
     </svg>
   </div>
 </div>
@@ -2991,7 +2899,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <div class="profile-social-links">
       <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle fb" title="Facebook">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
         </svg>
       </a>
       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle tw" title="Twitter / X">
@@ -3176,6 +3084,112 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* Global Container Background Styling (Forced Override) */
+.about-container,
+.profile-card-container,
+.statement-card,
+.home-section-container,
+.content-box,
+.custom-card,
+.service-card,
+.section-card-container,
+.content-card,
+.vm-card,
+#about,
+#leadership,
+#courses,
+#contact,
+.intro-section,
+.hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+    url('assets/container-bg.jpg') !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7faf8 !important; /* Fallback color */
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  background-blend-mode: normal, multiply !important;
+}
+
+/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
+@media (min-width: 769px) {
+  /* Desktop already looks perfect with the base 100% 100% rule above */
+}
+
+/* ================= MOBILE MODE (Portrait / Lambai) ================= */
+@media (max-width: 768px) {
+  .about-container,
+  .profile-card-container,
+  .statement-card,
+  .home-section-container,
+  .content-box,
+  .custom-card,
+  .service-card,
+  .section-card-container,
+  .content-card,
+  .vm-card,
+  #about,
+  #leadership,
+  #courses,
+  #contact,
+  .intro-section,
+  .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
+        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
+    background-size: 
+        100% 100%, 
+        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
+  }
+}
+</style>
 
 </body>
 
