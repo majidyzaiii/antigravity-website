@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
         @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
 
@@ -568,7 +569,7 @@
         .footer-section h3 {
             font-size: 18px;
             margin-bottom: 25px;
-            color: #ffffff;
+            color: #ffffff !important;
             font-weight: 700;
         }
 
@@ -3341,6 +3342,97 @@
 .iti { width: 100%; }
 .iti__country-list { z-index: 999999 !important; }
 </style>
+<style>
+/* Hide home page header for admissions page just like about us */
+.sticky-header,
+.mobile-logo-container {
+    display: none !important;
+}
+</style>
+<style>
+/* -------------------------------------------------------------
+   NEW CLEAN MOBILE MENU OVERRIDES (Ported from about.html)
+   ------------------------------------------------------------- */
+.mobile-nav-overlay {
+  display: flex !important; 
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 9999 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  align-items: flex-start !important; 
+  padding-top: 80px !important; 
+  justify-content: flex-start !important; /* Docks to the Left in English */
+  transition: opacity 0.3s ease !important;
+}
+.mobile-nav-overlay.is-active { 
+  opacity: 1 !important; 
+  pointer-events: auto !important; 
+}
+
+/* RTL OVERRIDE */
+html[dir=rtl] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
+  justify-content: flex-end !important; /* Docks to the Right in Urdu */
+}
+
+/* CARD DEFAULT STATE (Slides in from Left) */
+.mobile-menu-card {
+  position: relative !important;
+  background: white !important;
+  height: auto !important;
+  max-height: 400px !important;
+  width: 175px !important;
+  padding: 20px 16px !important;
+  border-radius: 20px !important;
+  margin-left: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  
+  /* Slide logic */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(-150vw) !important; 
+}
+.mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* CARD RTL STATE (Slides in from Right) */
+html[dir=rtl] .mobile-menu-card, body.ur .mobile-menu-card {
+  margin-left: 0 !important;
+  margin-right: 16px !important;
+  transform: translateX(150vw) !important; 
+}
+html[dir=rtl] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* HEADER & CLOSE BUTTON */
+.mobile-menu-header { 
+  display: flex !important; justify-content: space-between !important; align-items: center !important; 
+  margin-bottom: 20px !important; 
+}
+.menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
+.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
+
+/* LINKS LIST */
+.mobile-nav-links { 
+  list-style: none !important; padding: 0 !important; margin: 0 !important; 
+  display: flex !important; flex-direction: column !important; gap: 12px !important; 
+}
+.mobile-nav-links a, .mobile-lang-btn { 
+  text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
+  font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
+  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
+}
+.mobile-nav-links a:hover, .mobile-lang-btn:hover { color: #006754 !important; }
+
+/* RTL TEXT ALIGNMENT */
+html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
+  text-align: right !important;
+}
+</style>
 </head>
 
 
@@ -3372,11 +3464,10 @@
         <nav class="floating-nav" id="mainNav">
             <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
             <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
-            <a href="#" class="nav-link" data-en="COURSES" data-ur="کورسز">COURSES</a>
-            <a href="#" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
-            <a href="#" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
-            <a href="#" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
-            <a href="#" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
+            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
+            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
+            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
+            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
             <button class="lang-toggle-btn" id="langSwitch">URDU</button>
         </nav>
     </div>
@@ -3451,250 +3542,124 @@
 
 <main>
     <!-- Admissions Hero Banner -->
-    <div class="admissions-hero" style="position: relative; background: linear-gradient(145deg, #004D40 0%, #002D24 100%); padding: 100px 5%; text-align: center; overflow: hidden;">
-        <div class="top-bracket" style="border-top-right-radius: 16px !important;"></div>
-        <div class="bottom-bracket" style="border-bottom-left-radius: 16px !important;"></div>
-        
-        <h1 style="color: #FFFFFF; font-size: 3rem; font-weight: 800; margin-bottom: 20px; position: relative; z-index: 2;" data-en="Admissions Center" data-ur="مرکزِ داخلہ">Admissions Center</h1>
-        <p style="color: #A3E4D7; font-size: 1.2rem; max-width: 600px; margin: 0 auto; position: relative; z-index: 2;" data-en="Join our institution and embark on a journey of profound learning and spiritual growth." data-ur="ہمارے ادارے میں شامل ہوں اور گہرے علم اور روحانی ترقی کے سفر کا آغاز کریں۔">Join our institution and embark on a journey of profound learning and spiritual growth.</p>
+<style>
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  padding: 20px 20px 30px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  backdrop-filter: blur(4px) !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s ease !important;
+}
+.minimal-back-btn:hover { opacity: 0.7 !important; }
+
+html[dir="rtl"] .minimal-back-btn svg { transform: rotate(180deg) !important; }
+html[dir="rtl"] .minimal-back-btn { left: auto !important; right: 20px !important; }
+
+.minimal-hamburger-btn {
+  right: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  backdrop-filter: blur(4px) !important;
+  border: none !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+html[dir="rtl"] .minimal-hamburger-btn { right: auto !important; left: 20px !important; }
+
+
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.about-main-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+.minimal-breadcrumbs {
+  margin-top: 12px !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-top: 8px !important;
+}
+.minimal-breadcrumbs .chevron {
+  font-size: 0.8rem !important;
+  opacity: 0.7 !important;
+}
+
+html[dir="rtl"] .about-main-title,
+html[dir="rtl"] .minimal-breadcrumbs {
+  margin-top: 12px !important;
+    font-family: 'Jameel Noori Nastaleeq', serif !important;
+    letter-spacing: normal !important;
+    -webkit-text-stroke: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.8rem !important; }
+}
+</style>
+
+<div class="about-minimal-header">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+
+  <div class="title-with-swoosh">
+    <h1 class="about-main-title" data-en="Admissions" data-ur="داخلہ">Admissions</h1>
+    <div class="minimal-breadcrumbs" data-en="<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='margin-right: 4px; position:relative; top:-1px;'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path><polyline points='9 22 9 12 15 12 15 22'></polyline></svg>Home <span class='chevron'>&gt;</span> Admissions" data-ur="ہوم <span class='chevron' style='font-family: sans-serif;'>&lt;</span> داخلہ">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home <span class="chevron">&gt;</span> Admissions
     </div>
+  </div>
+</div>
 
-    <!-- Course Eligibility Grid -->
-    <div style="background-color: #EFEEF0; padding: 80px 5%;">
-        <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Course Eligibility Requirements" data-ur="کورس کی اہلیت کے تقاضے">Course Eligibility Requirements</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
-            <!-- Nazra -->
-            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
-                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Nazra Quran" data-ur="ناظرہ قرآن">Nazra Quran</h3>
-                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Age: 5 to 10 years" data-ur="عمر: ۵ سے ۱۰ سال">Age: 5 to 10 years</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="No prior knowledge required" data-ur="سابقہ علم کی ضرورت نہیں">No prior knowledge required</span>
-                        </li>
-                        <li style="display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Required: B-Form / Birth Certificate" data-ur="ضروری دستاویز: ب فارم">Required: B-Form / Birth Certificate</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Hifz -->
-            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
-                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن">Hifz-ul-Quran</h3>
-                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Age: 8 to 14 years" data-ur="عمر: ۸ سے ۱۴ سال">Age: 8 to 14 years</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Must read Nazra fluently" data-ur="ناظرہ روانی سے پڑھنا ضروری ہے">Must read Nazra fluently</span>
-                        </li>
-                        <li style="display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Required: B-Form & Father's CNIC" data-ur="ضروری دستاویزات: ب فارم اور والد کا شناختی کارڈ">Required: B-Form & Father's CNIC</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Tajweed -->
-            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
-                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Tajweed Course" data-ur="تجوید کورس">Tajweed Course</h3>
-                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Age: 12+ years" data-ur="عمر: ۱۲ سال سے زائد">Age: 12+ years</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Basic Quranic recitation skills" data-ur="بنیادی تلاوت کی مہارت">Basic Quranic recitation skills</span>
-                        </li>
-                        <li style="display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Required: CNIC / B-Form" data-ur="ضروری دستاویز: شناختی کارڈ یا ب فارم">Required: CNIC / B-Form</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Islamic Studies -->
-            <div style="background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <div style="background: #F8F9FA; border-radius: 20px; padding: 32px 24px; height: 100%;">
-                    <h3 style="color: #1E293B; font-size: 1.4rem; font-weight: 700; margin-bottom: 16px;" data-en="Islamic Studies" data-ur="اسلامیات">Islamic Studies</h3>
-                    <ul style="list-style: none; padding: 0; color: #475569; font-size: 0.95rem;">
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Age: 15+ years" data-ur="عمر: ۱۵ سال سے زائد">Age: 15+ years</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Matriculation or equivalent" data-ur="میٹرک یا مساوی تعلیم">Matriculation or equivalent</span>
-                        </li>
-                        <li style="display: flex; gap: 10px;">
-                            <span style="color: #006754;">✔</span> <span data-en="Required: CNIC & Academic Docs" data-ur="ضروری دستاویزات: شناختی کارڈ اور تعلیمی اسناد">Required: CNIC & Academic Docs</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Fee Structure -->
-    <div style="background-color: #FFFFFF; padding: 80px 5%;">
-        <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Fee Structure" data-ur="فیس کی تفصیلات">Fee Structure</h2>
-        <div style="max-width: 800px; margin: 0 auto; background: #F8F9FA; border-radius: 20px; padding: 32px; border: 1px solid #E2E8F0;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                <thead>
-                    <tr style="border-bottom: 2px solid #006754;">
-                        <th style="padding: 16px; color: #004D40;" data-en="Program" data-ur="پروگرام">Program</th>
-                        <th style="padding: 16px; color: #004D40;" data-en="Admission Fee" data-ur="داخلہ فیس">Admission Fee</th>
-                        <th style="padding: 16px; color: #004D40;" data-en="Monthly Tuition" data-ur="ماہانہ فیس">Monthly Tuition</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #E2E8F0;">
-                        <td style="padding: 16px;">Nazra Quran</td>
-                        <td style="padding: 16px;">PKR 2,000</td>
-                        <td style="padding: 16px;">PKR 1,500</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #E2E8F0;">
-                        <td style="padding: 16px;">Hifz-ul-Quran</td>
-                        <td style="padding: 16px;">PKR 3,000</td>
-                        <td style="padding: 16px;">PKR 2,500</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #E2E8F0;">
-                        <td style="padding: 16px;">Tajweed Course</td>
-                        <td style="padding: 16px;">PKR 2,500</td>
-                        <td style="padding: 16px;">PKR 2,000</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 16px;">Islamic Studies</td>
-                        <td style="padding: 16px;">PKR 5,000</td>
-                        <td style="padding: 16px;">PKR 3,500</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="margin-top: 24px; padding: 16px; background-color: #E8F5E9; border-left: 4px solid #006754; border-radius: 4px;">
-                <p style="color: #004D40; font-size: 0.95rem; margin: 0;" data-en="<strong>Financial Assistance:</strong> Deserving students can apply for Zakat/Scholarships to cover their educational and hostel expenses. No student is turned away due to financial constraints." data-ur="<strong>مالی معاونت:</strong> مستحق طلباء اپنے تعلیمی اور ہاسٹل کے اخراجات پورے کرنے کے لیے زکوٰۃ یا وظائف کے لیے درخواست دے سکتے ہیں۔ مالی مجبوریوں کی وجہ سے کسی طالب علم کو واپس نہیں کیا جاتا۔"><strong>Financial Assistance:</strong> Deserving students can apply for Zakat/Scholarships to cover their educational and hostel expenses. No student is turned away due to financial constraints.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Application Form -->
-    <div style="background-color: #EFEEF0; padding: 80px 5%;">
-        <div style="max-width: 800px; margin: 0 auto; background: #FFFFFF; padding: 12px; border-radius: 32px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
-            <div style="background: #F8F9FA; border-radius: 20px; padding: 40px;">
-                <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 30px;" data-en="Online Application Form" data-ur="آن لائن داخلہ فارم">Online Application Form</h2>
-                
-                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-                    <!-- Student Details -->
-                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Student Details" data-ur="طالب علم کی تفصیلات">Student Details</h4>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div>
-                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Full Name *" data-ur="پورا نام *">Full Name *</label>
-                            <input type="text" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
-                        </div>
-                        <div>
-                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Date of Birth *" data-ur="تاریخ پیدائش *">Date of Birth *</label>
-                            <input type="date" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="B-Form / CNIC Number *" data-ur="ب فارم / شناختی کارڈ نمبر *">B-Form / CNIC Number *</label>
-                        <input type="text" required placeholder="XXXXX-XXXXXXX-X" style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
-                    </div>
-
-                    <!-- Guardian Details -->
-                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; margin-top: 20px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Guardian Details" data-ur="سرپرست کی تفصیلات">Guardian Details</h4>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div>
-                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Father/Guardian Name *" data-ur="والد/سرپرست کا نام *">Father/Guardian Name *</label>
-                            <input type="text" required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
-                        </div>
-                        <div>
-                            <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Contact Number *" data-ur="رابطہ نمبر *">Contact Number *</label>
-                            <input type="tel" required placeholder="03XX-XXXXXXX" style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem;">
-                        </div>
-                    </div>
-
-                    <!-- Course & Documents -->
-                    <h4 style="color: #025F55; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; margin-top: 20px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px;" data-en="Course Selection & Documents" data-ur="کورس کا انتخاب اور دستاویزات">Course Selection & Documents</h4>
-                    
-                    <div>
-                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Select Course *" data-ur="کورس کا انتخاب کریں *">Select Course *</label>
-                        <select required style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 1rem; background-color: #FFFFFF;">
-                            <option value="">-- Select a Course --</option>
-                            <option value="nazra">Nazra Quran</option>
-                            <option value="hifz">Hifz-ul-Quran</option>
-                            <option value="tajweed">Tajweed Course</option>
-                            <option value="islamic">Islamic Studies</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label style="display: block; font-size: 0.9rem; color: #475569; margin-bottom: 6px; font-weight: 600;" data-en="Upload B-Form / CNIC Photo" data-ur="ب فارم / شناختی کارڈ کی تصویر اپ لوڈ کریں">Upload B-Form / CNIC Photo</label>
-                        <input type="file" accept="image/*,.pdf" style="width: 100%; padding: 10px; border: 1px dashed #006754; border-radius: 8px; background: rgba(0, 103, 84, 0.05); font-family: inherit;">
-                    </div>
-
-                    <div style="margin-top: 20px; text-align: center;">
-                        <button type="submit" class="btn-primary-invert" style="width: 100%; justify-content: center; cursor: pointer; padding: 12px; font-size: 1.1rem;">
-                            <span class="btn-text" data-en="Submit Application" data-ur="درخواست جمع کرائیں">Submit Application</span>
-                            <span class="arrow-circle">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <div style="background-color: #FFFFFF; padding: 80px 5%;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; color: #004D40; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px;" data-en="Frequently Asked Questions" data-ur="اکثر پوچھے گئے سوالات">Frequently Asked Questions</h2>
-            
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="Are hostel facilities available for out-of-city students?" data-ur="کیا شہر سے باہر کے طلباء کے لیے ہاسٹل کی سہولت موجود ہے؟">Are hostel facilities available for out-of-city students?</summary>
-                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="Yes, we provide comfortable hostel facilities with meals for out-of-city students at nominal charges." data-ur="جی ہاں، ہم شہر سے باہر کے طلباء کے لیے معمولی فیس پر کھانے کے ساتھ آرام دہ ہاسٹل کی سہولیات فراہم کرتے ہیں۔">Yes, we provide comfortable hostel facilities with meals for out-of-city students at nominal charges.</p>
-                </details>
-                
-                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="Can I take classes online?" data-ur="کیا میں آن لائن کلاسز لے سکتا ہوں؟">Can I take classes online?</summary>
-                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="Absolutely. We offer dedicated online classes for Nazra, Hifz, and Tajweed for international and distant students." data-ur="بالکل۔ ہم بین الاقوامی اور دور دراز کے طلباء کے لیے ناظرہ، حفظ اور تجوید کی خصوصی آن لائن کلاسز پیش کرتے ہیں۔">Absolutely. We offer dedicated online classes for Nazra, Hifz, and Tajweed for international and distant students.</p>
-                </details>
-                
-                <details style="background: #F8F9FA; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; cursor: pointer;">
-                    <summary style="font-size: 1.1rem; font-weight: 700; color: #1E293B; outline: none;" data-en="What is the syllabus for the admission test?" data-ur="داخلہ ٹیسٹ کا نصاب کیا ہے؟">What is the syllabus for the admission test?</summary>
-                    <p style="margin-top: 12px; color: #475569; line-height: 1.6;" data-en="The test varies by course. For Hifz, students are tested on their Nazra fluency. For Islamic Studies, a basic general knowledge and aptitude test is conducted." data-ur="ٹیسٹ کورس کے لحاظ سے مختلف ہوتا ہے۔ حفظ کے لیے ناظرہ کی روانی کا ٹیسٹ لیا جاتا ہے۔ اسلامیات کے لیے بنیادی عمومی معلومات اور رجحان کا ٹیسٹ ہوتا ہے۔">The test varies by course. For Hifz, students are tested on their Nazra fluency. For Islamic Studies, a basic general knowledge and aptitude test is conducted.</p>
-                </details>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Helpdesk Widget -->
-    <a href="https://wa.me/923000000000" target="_blank" style="position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease;" class="helpdesk-widget">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-    <style>
-        .helpdesk-widget:hover {
-            transform: scale(1.1) !important;
-        }
-          .section-divider {
-        width: 100%;
-        height: 80px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 4000px 100px;
-        background-color: transparent !important;
-        margin: 20px 0;
-        pointer-events: none;
-      }
-    </style>
 </main>
 
 <footer class="site-footer">
@@ -3728,13 +3693,12 @@
         <div class="footer-section">
             <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
             <ul>
-                <li><a href="#" data-en="Home" data-ur="ہوم">Home</a></li>
-                <li><a href="#" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
-                <li><a href="#" data-en="Courses" data-ur="کورسز">Courses</a></li>
-                <li><a href="#" data-en="Admissions" data-ur="داخلہ">Admissions</a></li>
-                <li><a href="#" data-en="Updates" data-ur="اپڈیٹس">Updates</a></li>
-                <li><a href="#" data-en="Contact Us" data-ur="رابطہ">Contact Us</a></li>
-                <li><a href="#" data-en="Donate Now" data-ur="عطیات">Donate Now</a></li>
+                <li><a href="index.html" data-en="Home" data-ur="ہوم">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
+                <li><a href="admissions.html" data-en="Admissions" data-ur="داخلہ">Admissions</a></li>
+                <li><a href="updates.html" data-en="Updates" data-ur="اپڈیٹس">Updates</a></li>
+                <li><a href="donation.html" data-en="Donate Now" data-ur="عطیات">Donate Now</a></li>
+                <li><a href="contact.html" data-en="Contact Us" data-ur="رابطہ">Contact Us</a></li>
             </ul>
         </div>
 
@@ -3766,11 +3730,11 @@
             <ul class="mobile-nav-links">
       <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
       <li><a href="about.html" class="m-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
-      <li><a href="courses.html" class="m-link" data-en="COURSES" data-ur="کورسز">COURSES</a></li>
+      
       <li><a href="admissions.html" class="m-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
       <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
-      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
       <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
+      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
       <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="ENGLISH">URDU</button></li>
     </ul>
   </div>
@@ -3837,6 +3801,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
+
+<style>
+/* -------------------------------------------------------------
+   MOBILE HEADER CONTROLS COMPACT FIX
+   ------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Parent Container Needs Breathing Room */
+  .about-minimal-header {
+    padding-top: 45px !important; 
+  }
+
+  /* Force Corner Positioning and Small Glassmorphism Style */
+  .minimal-back-btn, 
+  .minimal-hamburger-btn {
+    position: absolute !important;
+    top: 14px !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    border-radius: 50% !important;
+    
+    /* Frosted Glassmorphism */
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    z-index: 99999 !important;
+  }
+
+  /* English Corner Alignment */
+  [dir="ltr"] .minimal-back-btn,
+  html:not([dir="rtl"]) .minimal-back-btn {
+    left: 14px !important;
+    right: auto !important;
+  }
+  [dir="ltr"] .minimal-hamburger-btn,
+  html:not([dir="rtl"]) .minimal-hamburger-btn {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  /* Urdu Corner Alignment */
+  [dir="rtl"] .minimal-back-btn {
+    right: 14px !important;
+    left: auto !important;
+  }
+  [dir="rtl"] .minimal-hamburger-btn {
+    left: 14px !important;
+    right: auto !important;
+  }
+
+  /* SVG Icon Sizing */
+  .minimal-back-btn svg,
+  .minimal-hamburger-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+</style>
+
 </body>
 
 
