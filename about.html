@@ -513,19 +513,6 @@ body.about-page .mobile-logo-container {
 
 
 
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
-}
-
 .circular-avatar-frame {
   position: relative !important;
   z-index: 2 !important;
@@ -803,19 +790,6 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
   margin-right: 0 !important;
 }
 
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
-}
-
 .circular-avatar-frame {
   position: relative !important;
   z-index: 2 !important;
@@ -1091,19 +1065,6 @@ html[dir="rtl"] .profile-card-content h3 {
 .profile-header { display: none !important; }
 
 
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
-}
-
 .circular-avatar-frame {
   position: relative !important;
   z-index: 2 !important;
@@ -1236,17 +1197,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 </style>
 
 <style>
-.profile-card-container {
-  position: relative !important;
-  overflow: hidden !important;
-  padding: 20px 15px 15px 15px !important;
-}
+
 
 /* Diagonal Corner Strip / Patti Styling */
 .card-corner-strip {
-  position: relative !important;
+  position: absolute !important;
   top: 25px !important;
-  width: 160px !important;
+  width: 250px !important;
   background-color: #006754 !important;
   color: #ffffff !important;
   padding: 8px 0 !important;
@@ -1260,13 +1217,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 }
 
 .ur-strip {
-  right: -40px !important;
+  right: -60px !important;
   left: auto !important;
   transform: rotate(45deg) !important;
 }
 
 .en-strip {
-  left: -40px !important;
+  left: -60px !important;
   right: auto !important;
   transform: rotate(-45deg) !important;
 }
@@ -1292,19 +1249,6 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
   line-height: 1.8 !important;
   max-width: 650px !important;
   margin: 0 auto 15px auto !important;
-}
-
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
 }
 
 .circular-avatar-frame {
@@ -1795,6 +1739,54 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 </style>
 
+
+<style>
+
+</style>
+
+
+<style>
+.corner-strip-wrapper {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    overflow: hidden !important;
+    border-radius: 20px !important; /* Match content-card radius */
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+</style>
+
+
+<style>
+.profile-card-container {
+    position: relative !important;
+}
+</style>
+
+
+<style>
+.badge-profile-wrapper {
+    position: relative !important;
+    z-index: 20 !important;
+}
+.corner-strip-wrapper {
+    z-index: 1 !important;
+}
+</style>
+
+
+<style>
+.card-corner-strip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 0 !important;
+}
+</style>
+
 </head>
 <body class="about-page">
 
@@ -2162,7 +2154,7 @@ html:not([dir="rtl"]) .profile-quote {
   right: 30px !important;
 }
 .banner-logo img {
-  max-width: 160px !important;
+  max-width: 250px !important;
   margin: 0 !important;
 }
 
@@ -2594,19 +2586,6 @@ body.ur .site-footer {
 }
 
 
-/* Top vertical ribbon for Founder/Principal as per reference */
-.badge-profile-wrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 50%; /* Anchors to the middle of the wrapper */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px !important; /* Thickness of the ribbon */
-  height: 200px !important; /* Tall enough to hit the top of the card */
-  background-color: #006754 !important;
-  z-index: 1 !important;
-}
-
 .circular-avatar-frame {
   position: relative !important;
   z-index: 2 !important;
@@ -2802,9 +2781,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 3. FOUNDER CONTAINER -->
     <div class="content-card profile-card-container">
-      <div class="card-corner-strip ur-strip">
+      <div class="corner-strip-wrapper">
+<div class="card-corner-strip ur-strip">
         <span>Founder</span>
       </div>
+</div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img founder-img">
@@ -2832,9 +2813,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 4. PRINCIPAL CONTAINER -->
     <div class="content-card profile-card-container">
-      <div class="card-corner-strip ur-strip">
+      <div class="corner-strip-wrapper">
+<div class="card-corner-strip ur-strip">
         <span>Principal</span>
       </div>
+</div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
@@ -2940,9 +2923,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 3. FOUNDER CONTAINER -->
     <div class="content-card profile-card-container">
-      <div class="card-corner-strip en-strip">
+      <div class="corner-strip-wrapper">
+<div class="card-corner-strip en-strip">
         <span>Founder</span>
       </div>
+</div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img founder-img">
@@ -2969,9 +2954,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 4. PRINCIPAL CONTAINER -->
     <div class="content-card profile-card-container">
-      <div class="card-corner-strip en-strip">
+      <div class="corner-strip-wrapper">
+<div class="card-corner-strip en-strip">
         <span>Principal</span>
       </div>
+</div>
       <div class="badge-profile-wrapper">
         <div class="circular-avatar-frame">
           <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
