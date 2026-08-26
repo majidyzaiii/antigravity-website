@@ -154,7 +154,7 @@
         header .navbar-brand {
             overflow: visible !important;
             display: flex !important;
-            align-items: center !important;
+            align-items: flex-end !important;
             height: auto !important;
             padding-top: 4px !important;
             padding-bottom: 4px !important;
@@ -189,8 +189,8 @@
         html[lang="ur"] .brand-title-block {
             display: flex !important;
             flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             text-align: center !important;
             width: 100% !important;
             margin-left: auto !important;
@@ -477,7 +477,7 @@
             html[dir="rtl"] header {
                 padding: 10px 15px !important;
                 flex-direction: row !important;
-                align-items: center !important;
+                align-items: flex-end !important;
                 justify-content: space-between !important;
                 gap: 12px !important;
                 width: 100% !important;
@@ -628,7 +628,7 @@
         .footer-brand {
             display: flex !important;
             flex-direction: column !important;
-            align-items: center !important;
+            align-items: flex-end !important;
             gap: 0 !important;
         }
 
@@ -750,8 +750,8 @@
             left: 50% !important;
             transform: translateX(-50%) !important;
             display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             gap: 10px !important;
             padding: 8px 20px !important;
             background-color: rgba(2, 95, 85, 0.08) !important;
@@ -819,8 +819,8 @@
         .hero-badge, .welcome-pill, .welcome-badge {
             position: absolute !important; /* Preserving original centering */
             display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             gap: 8px !important;
             padding: 6px 18px !important;
             background-color: rgba(2, 95, 85, 0.08) !important;
@@ -896,8 +896,8 @@
         .badge-text-group {
             display: flex !important;
             flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             text-align: center !important;
         }
 
@@ -1100,8 +1100,8 @@
             height: 32px !important;
             border-radius: 50% !important;
             display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             flex-shrink: 0 !important;
         }
 
@@ -1297,7 +1297,7 @@
             border-radius: 50px !important;
             padding: 10px 20px !important;
             display: inline-flex !important;
-            align-items: center !important;
+            align-items: flex-end !important;
             gap: 10px !important;
             text-decoration: none !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1312,8 +1312,8 @@
             width: 30px !important;
             height: 30px !important;
             display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             transition: all 0.3s ease !important;
         }
 
@@ -1340,7 +1340,7 @@
             border-radius: 50px !important;
             padding: 10px 20px !important;
             display: inline-flex !important;
-            align-items: center !important;
+            align-items: flex-end !important;
             gap: 10px !important;
             text-decoration: none !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1356,8 +1356,8 @@
             width: 30px !important;
             height: 30px !important;
             display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-end !important;
+            justify-content: flex-end !important;
             transition: all 0.3s ease !important;
         }
 
@@ -1429,7 +1429,7 @@
                 text-align: center;
                 display: flex;
                 flex-direction: column;
-                align-items: center !important;
+                align-items: flex-end !important;
             }
             html[dir="rtl"] .site-footer {
                 text-align: center;
@@ -1442,7 +1442,7 @@
             .footer-brand {
                 display: flex;
                 flex-direction: column;
-                align-items: center !important;
+                align-items: flex-end !important;
                 text-align: center !important;
                 width: 100%;
             }
@@ -1450,12 +1450,12 @@
             .footer-logo-wrapper {
                 display: flex;
                 flex-direction: column;
-                align-items: center !important;
+                align-items: flex-end !important;
                 text-align: center !important;
             }
 
             .footer-social-links {
-                justify-content: center !important;
+                justify-content: flex-end !important;
                 width: 100%;
             }
 
@@ -1463,7 +1463,7 @@
             .footer-section {
                 display: flex;
                 flex-direction: column;
-                align-items: center !important;
+                align-items: flex-end !important;
                 text-align: center !important;
                 width: 100%;
             }
@@ -1473,7 +1473,7 @@
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                align-items: center !important;
+                align-items: flex-end !important;
             }
 
             /* Fix alignment for both LTR and RTL/Urdu modes on mobile */
@@ -1485,9 +1485,9 @@
             .rtl .footer-logo-wrapper,
             .rtl .footer-social-links,
             .rtl .footer-section {
-                align-items: center !important;
+                align-items: flex-end !important;
                 text-align: center !important;
-                justify-content: center !important;
+                justify-content: flex-end !important;
             }
 
             .welcome-badge {
@@ -1534,8 +1534,8 @@
         @media (max-width: 480px) {
             .welcome-badge {
                 display: inline-flex !important;
-                align-items: center !important;
-                justify-content: center !important;
+                align-items: flex-end !important;
+                justify-content: flex-end !important;
                 gap: 6px !important;
                 padding: 6px 12px !important;
                 max-width: 96% !important;
@@ -1561,8 +1561,8 @@
             .pill-text-en {
                 display: flex !important;
                 flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
+                align-items: flex-end !important;
+                justify-content: flex-end !important;
                 text-align: center !important;
                 line-height: 1.3 !important;
             }
@@ -1625,8 +1625,8 @@
             html[lang="ur"] .brand-title-block,
             body.rtl .brand-title-block {
                 display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
+                justify-content: flex-end !important;
+                align-items: flex-end !important;
                 text-align: center !important;
                 width: 100% !important;
             }
@@ -1667,7 +1667,7 @@
                 display: flex !important;
                 flex-direction: row !important;
                 justify-content: space-between !important;
-                align-items: center !important;
+                align-items: flex-end !important;
                 direction: ltr !important; /* Lock container orientation */
             }
 
@@ -2395,7 +2395,17 @@
             .donut-infographic-container {
                 width: 95%; /* Clean responsive width */
             }
-            .title-part-1 { font-size: 40px; } /* Yields ~22px visually on mobile */
+            
+            /* Stack Our Strengths on mobile */
+                                    .lang-en-only .center-heading {
+                flex-direction: column !important;
+                align-items: flex-end !important;
+                justify-content: center !important;
+                transform: translateX(0) !important;
+                gap: 0 !important;
+            }
+
+            .title-part-1 { font-size: 36px !important; font-weight: 800 !important; margin-right: 50px !important; } /* Yields ~22px visually on mobile */
             .title-part-2 { font-size: 54px; } /* Yields ~26px visually on mobile */
             .svg-text-block h4 { font-size: 26px; } /* Yields ~15px visually on mobile */
             .svg-text-block p { font-size: 20px; line-height: 1.2; } /* Yields ~11px visually on mobile */
@@ -2442,8 +2452,8 @@
             /* Center alignment for all card action buttons on mobile */
             .editorial-card-action-btn {
                 display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
+                align-items: flex-end !important;
+                justify-content: flex-end !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
                 margin-top: 15px !important;
@@ -2456,11 +2466,11 @@
                 text-align: center !important;
                 display: flex !important;
                 flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
+                align-items: flex-end !important;
+                justify-content: flex-end !important;
             }
             .hero-text-wrapper {
-                align-items: center !important;
+                align-items: flex-end !important;
                 text-align: center !important;
             }
             .hero-hadith-img {
@@ -2506,7 +2516,7 @@
   .services-container {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
     align-items: stretch !important;
     gap: 20px !important;
     max-width: 1100px;
@@ -3886,9 +3896,9 @@
   .hero-text-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-end !important;
     text-align: center !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
     width: 100% !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
@@ -3923,8 +3933,8 @@
   .cta-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
     width: 100% !important;
     gap: 15px !important;
     margin-top: 25px !important;
@@ -4004,8 +4014,8 @@
   .cta-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; /* Centers both buttons horizontally */
-    justify-content: center !important;
+    align-items: flex-end !important; /* Centers both buttons horizontally */
+    justify-content: flex-end !important;
     width: 100% !important;
     gap: 12px !important;
     margin-top: 20px !important;
@@ -4022,8 +4032,8 @@
     padding: 10px 18px !important; /* Compact padding */
     font-size: 0.95rem !important;
     display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
     gap: 10px !important;
     margin: 0 auto !important; /* Keeps individual button centered */
   }
@@ -4090,7 +4100,7 @@ img[src*="principal"] {
   margin: 0 auto !important;
   overflow: visible !important; /* Allow top head pop-out */
   display: flex !important;
-  justify-content: center !important;
+  justify-content: flex-end !important;
   align-items: flex-end !important;
 }
 
@@ -4910,6 +4920,63 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 
 
 
+
+<style>
+/* Specific target for Our Strengths container card */
+.strengths-card, 
+.about-container:has(.strengths-content),
+.card-strengths,
+div:has(> .strengths-wrapper),
+.about-container.strengths-section,
+.donut-infographic-section {
+  padding: 30px 20px !important; /* Balanced internal padding to reduce empty space */
+  max-width: 900px !important;    /* Slightly larger max-width for PC */
+  margin: 0 auto 30px auto !important;
+}
+
+/* Make inner graphics, charts or text elements larger and well-fitted */
+.strengths-card img, 
+.strengths-content img,
+.strengths-container svg,
+.about-container:has(img[alt*="Strengths"]) img,
+.about-container img[src*="strength"],
+.donut-infographic-container svg {
+  width: 100% !important;
+  max-width: 650px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 15px auto !important;
+}
+
+/* ================= MOBILE VIEW ENHANCEMENT ================= */
+@media (max-width: 768px) {
+  .strengths-card, 
+  .about-container:has(.strengths-content),
+  .card-strengths,
+  div:has(> .strengths-wrapper),
+  .about-container.strengths-section,
+  .donut-infographic-section {
+    padding: 22px 12px !important; /* Minimal spacing for mobile to maximize content area */
+    width: 94% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Scale up the strengths visual/chart element specifically on mobile so it's not too small */
+  .strengths-card img, 
+  .strengths-content img,
+  .strengths-container svg,
+  .about-container img[src*="strength"],
+  .donut-infographic-container svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: scale(1.12) !important; /* Clean proportional zoom */
+    transform-origin: center center !important;
+    margin: 20px auto !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -5200,7 +5267,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 
                     <!-- Unscaled Elements -->
                     <!-- Center Heading (Our Strengths) -->
-                    <foreignObject class="lang-en-only" x="-640" y="90" width="720" height="120">
+                    <foreignObject class="lang-en-only" x="-640" y="60" width="720" height="180">
                         <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;">
                             <span class="title-part-1">Our</span>
                             <span class="title-part-2 highlight-font">Strengths</span>
