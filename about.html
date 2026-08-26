@@ -609,7 +609,7 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(rgba(0, 103, 84, 0.88), rgba(0, 103, 84, 0.88)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -808,7 +808,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(rgba(0, 103, 84, 0.88), rgba(0, 103, 84, 0.88)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1083,7 +1083,7 @@ html[dir="rtl"] .profile-card-content h3 {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(rgba(0, 103, 84, 0.88), rgba(0, 103, 84, 0.88)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1269,7 +1269,7 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(rgba(0, 103, 84, 0.88), rgba(0, 103, 84, 0.88)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -2922,7 +2922,7 @@ body.ur .site-footer {
 /* Minimal Header Container */
 .about-minimal-header {
   position: relative !important;
-  background: linear-gradient(rgba(0, 103, 84, 0.88), rgba(0, 103, 84, 0.88)), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
   padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -3587,6 +3587,68 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 </style>
+
+
+<!-- PERMANENT MOBILE HEADER FIX -->
+<style>
+@media (max-width: 768px) {
+  /* Force target any back button element */
+  html body .back-btn, 
+  html body .minimal-back-btn, 
+  html [dir="ltr"] .minimal-back-btn,
+  html [dir="rtl"] .minimal-back-btn,
+  html body .back-circle-btn, 
+  html body a.back-btn, 
+  html body button.back-btn,
+  html body [onclick*="history.back"] {
+    position: absolute !important;
+    top: 14px !important;
+    left: 14px !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    z-index: 99999 !important;
+  }
+
+  [dir="rtl"] .back-btn, 
+  [dir="rtl"] [onclick*="history.back"],
+  .about-page-ur [onclick*="history.back"],
+  .about-page-ur .minimal-back-btn {
+    right: 14px !important;
+    left: auto !important;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Find back button or link containing arrow/back text and ensure it has the correct class
+  const allLinks = document.querySelectorAll('a, button');
+  allLinks.forEach(el => {
+    if (el.textContent.includes('Back') || el.textContent.includes('واپسی') || el.innerHTML.includes('➔') || el.innerHTML.includes('←') || (el.getAttribute('onclick') && el.getAttribute('onclick').includes('history.back'))) {
+      if (!el.classList.contains('back-btn')) {
+        el.classList.add('back-btn');
+      }
+    }
+  });
+});
+</script>
+<!-- END PERMANENT MOBILE HEADER FIX -->
 
 </body>
 
