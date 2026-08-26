@@ -1806,6 +1806,104 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 </style>
 
+
+<style>
+@media (max-width: 768px) {
+  /* Parent Header Container */
+  .about-minimal-header,
+  .about-hero-container,
+  .hero-rounded-banner,
+  .about-page-header,
+  header {
+    position: relative !important;
+    padding-top: 45px !important; /* Creates breathing room for the top corner buttons */
+  }
+
+  /* Back Button (Left Top Corner in English / Right Top Corner in Urdu) */
+  .back-btn,
+  .minimal-back-btn,
+  .back-circle-btn {
+    position: absolute !important;
+    top: 12px !important;
+    transform: none !important;
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 0.85rem !important;
+    z-index: 100 !important;
+  }
+
+  /* Hamburger Menu Button (Right Top Corner in English / Left Top Corner in Urdu) */
+  .minimal-hamburger-btn,
+  .hamburger-icon,
+  .menu-toggle,
+  .nav-toggle-btn {
+    position: absolute !important;
+    top: 12px !important;
+    transform: none !important;
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 0.85rem !important;
+    z-index: 100 !important;
+  }
+
+  /* LTR (English) Corner Alignment */
+  [dir="ltr"] .back-btn,
+  [dir="ltr"] .minimal-back-btn,
+  [dir="ltr"] .back-circle-btn,
+  .about-page-en .minimal-back-btn {
+    left: 14px !important;
+    right: auto !important;
+  }
+
+  [dir="ltr"] .minimal-hamburger-btn,
+  [dir="ltr"] .hamburger-icon,
+  [dir="ltr"] .menu-toggle,
+  [dir="ltr"] .nav-toggle-btn,
+  .about-page-en .minimal-hamburger-btn {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  /* RTL (Urdu) Corner Alignment */
+  [dir="rtl"] .back-btn,
+  [dir="rtl"] .minimal-back-btn,
+  [dir="rtl"] .back-circle-btn,
+  .about-page-ur .minimal-back-btn {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  [dir="rtl"] .minimal-hamburger-btn,
+  [dir="rtl"] .hamburger-icon,
+  [dir="rtl"] .menu-toggle,
+  [dir="rtl"] .nav-toggle-btn,
+  .about-page-ur .minimal-hamburger-btn {
+    left: 14px !important;
+    right: auto !important;
+  }
+
+  /* SVG / Icon Sizing inside the buttons */
+  .back-btn svg,
+  .minimal-back-btn svg,
+  .minimal-hamburger-btn svg,
+  .hamburger-icon svg,
+  .menu-toggle svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+</style>
+
 </head>
 <body class="about-page">
 
