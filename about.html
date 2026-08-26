@@ -2007,6 +2007,104 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 </style>
 
+
+<style>
+@media (max-width: 768px) {
+  /* Common Glassmorphism Style for Both Corner Action Buttons */
+  .back-btn,
+  .minimal-back-btn,
+  .back-circle-btn,
+  a[href*="index.html"].back-btn,
+  button[onclick*="history.back"],
+  .menu-toggle,
+  .hamburger-icon,
+  .minimal-hamburger-btn,
+  .nav-toggle-btn {
+    position: absolute !important;
+    top: 14px !important;
+    transform: none !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    border-radius: 50% !important;
+    
+    /* Frosted Glassmorphism */
+    background: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    cursor: pointer !important;
+  }
+
+  /* English Mode (LTR) Alignments */
+  [dir="ltr"] .back-btn,
+  [dir="ltr"] .minimal-back-btn,
+  [dir="ltr"] .back-circle-btn,
+  .about-page-en .minimal-back-btn,
+  body:not(.ur) .back-btn,
+  body:not(.ur) button[onclick*="history.back"] {
+    left: 14px !important;
+    right: auto !important;
+  }
+
+  [dir="ltr"] .menu-toggle,
+  [dir="ltr"] .hamburger-icon,
+  [dir="ltr"] .minimal-hamburger-btn,
+  [dir="ltr"] .nav-toggle-btn,
+  .about-page-en .minimal-hamburger-btn,
+  body:not(.ur) .menu-toggle {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  /* Urdu Mode (RTL) Alignments */
+  [dir="rtl"] .back-btn,
+  [dir="rtl"] .minimal-back-btn,
+  [dir="rtl"] .back-circle-btn,
+  .about-page-ur .minimal-back-btn,
+  body.ur .back-btn,
+  body.ur button[onclick*="history.back"] {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  [dir="rtl"] .menu-toggle,
+  [dir="rtl"] .hamburger-icon,
+  [dir="rtl"] .minimal-hamburger-btn,
+  [dir="rtl"] .nav-toggle-btn,
+  .about-page-ur .minimal-hamburger-btn,
+  body.ur .menu-toggle {
+    left: 14px !important;
+    right: auto !important;
+  }
+
+  /* Inner arrow & lines adjustment */
+  .back-btn svg,
+  .minimal-back-btn svg,
+  button[onclick*="history.back"] svg,
+  .back-btn .back-arrow,
+  .hamburger-icon svg,
+  .minimal-hamburger-btn svg,
+  .menu-toggle svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke-width: 2.5 !important;
+    display: block !important;
+  }
+}
+</style>
+
 </head>
 <body class="about-page">
 
@@ -2958,7 +3056,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <!-- Breadcrumbs -->
   
   <!-- Back Button -->
-  <button class="minimal-back-btn" style="background: rgba(255, 255, 255, 0.1) !important; border-radius: 50% !important;" onclick="window.history.back() || (window.location.href='index.html')">
+  <button class="minimal-back-btn"  onclick="window.history.back() || (window.location.href='index.html')">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
 
@@ -3099,7 +3197,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <!-- Breadcrumbs -->
   
   <!-- Back Button -->
-  <button class="minimal-back-btn" style="background: rgba(255, 255, 255, 0.1) !important; border-radius: 50% !important;" onclick="window.history.back() || (window.location.href='index.html')">
+  <button class="minimal-back-btn"  onclick="window.history.back() || (window.location.href='index.html')">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
 
