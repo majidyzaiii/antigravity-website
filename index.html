@@ -2396,10 +2396,10 @@
                 width: 95%; /* Clean responsive width */
             }
             
-            /* Stack Our Strengths on mobile */
-                                    .lang-en-only .center-heading {
+                        /* Stack Our Strengths on mobile */
+            .lang-en-only .center-heading {
                 flex-direction: column !important;
-                align-items: center !important;
+                align-items: flex-end !important; /* MUST BE FLEX-END to stay inside SVG viewBox */
                 justify-content: center !important;
                 transform: translateX(0) !important;
                 gap: 0 !important;
@@ -4927,8 +4927,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 .about-container:has(.strengths-content),
 .card-strengths,
 div:has(> .strengths-wrapper),
-.about-container.strengths-section,
-.donut-infographic-section {
+.about-container.strengths-section {
   padding: 30px 20px !important; /* Balanced internal padding to reduce empty space */
   max-width: 900px !important;    /* Slightly larger max-width for PC */
   margin: 0 auto 30px auto !important;
@@ -4939,10 +4938,18 @@ div:has(> .strengths-wrapper),
 .strengths-content img,
 .strengths-container svg,
 .about-container:has(img[alt*="Strengths"]) img,
-.about-container img[src*="strength"],
-.donut-infographic-container svg {
+.about-container img[src*="strength"] {
   width: 100% !important;
   max-width: 650px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 15px auto !important;
+}
+
+/* Donut Infographic PC Sizing */
+.donut-infographic-container svg {
+  width: 100% !important;
+  max-width: 950px !important; /* Made shape significantly larger */
   height: auto !important;
   display: block !important;
   margin: 15px auto !important;
