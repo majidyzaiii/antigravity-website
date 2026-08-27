@@ -3433,6 +3433,107 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
   text-align: right !important;
 }
 </style>
+<style>
+/* User Requested White Top Bar and Clean Raw Icons for Mobile */
+.about-minimal-header {
+  border-top: 15px solid #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .about-minimal-header {
+    border-top: 45px solid #ffffff !important;
+    padding-top: 20px !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn,
+  html body div.about-minimal-header button[onclick*="history.back"],
+  html body div.about-minimal-header button.minimal-hamburger-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    padding: 6px !important;
+    position: absolute !important;
+    top: -40px !important;
+    z-index: 999 !important;
+    color: #006754 !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-back-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button[onclick*="history.back"] {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-hamburger-btn {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn svg,
+  html body div.about-minimal-header button[onclick*="history.back"] svg,
+  html body div.about-minimal-header button.minimal-hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #006754 !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn:hover,
+  html body div.about-minimal-header button[onclick*="history.back"]:hover,
+  html body div.about-minimal-header button.minimal-hamburger-btn:hover {
+    background: transparent !important;
+    opacity: 0.7 !important;
+  }
+}
+</style>
+<style>
+/* Transparent Logo Watermark behind Header Title */
+.about-minimal-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/logo.png');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure all content in the header stays above the watermark */
+/* Ensure all content in the header stays above the watermark */
+.about-minimal-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+</style>
 </head>
 
 
@@ -3452,7 +3553,7 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
             <img src="assets/logo.png" alt="Madrassa Logo">
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -3506,8 +3607,8 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const floatingNavContainer = document.querySelector('.floating-nav-container');
 
-        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
 
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent document click from immediately closing it
@@ -3562,17 +3663,19 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
   transform: translateY(-50%) !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   width: 44px !important;
   height: 44px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  backdrop-filter: blur(4px) !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  transition: opacity 0.2s ease !important;
+  color: #ffffff !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover { opacity: 0.7 !important; }
 
 html[dir="rtl"] .minimal-back-btn svg { transform: rotate(180deg) !important; }
@@ -3585,16 +3688,19 @@ html[dir="rtl"] .minimal-back-btn { left: auto !important; right: 20px !importan
   transform: translateY(-50%) !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   width: 44px !important;
   height: 44px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  backdrop-filter: blur(4px) !important;
-  border: none !important;
-  color: white !important;
-  cursor: pointer !important;
+  color: #ffffff !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-hamburger-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 html[dir="rtl"] .minimal-hamburger-btn { right: auto !important; left: 20px !important; }
 
 
@@ -3644,7 +3750,7 @@ html[dir="rtl"] .minimal-breadcrumbs {
 
 <div class="about-minimal-header">
   <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
-    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 
   <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
@@ -3874,6 +3980,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </html>
+
+
 
 
 

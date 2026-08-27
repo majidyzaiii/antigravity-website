@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +19,7 @@ body.about-page .site-branding-header,
 body.about-page header.site-header,
 body.about-page header,
 body.about-page .main-navbar,
+body.about-page .sticky-header,
 body.about-page nav,
 body.about-page .mobile-logo-container {
   display: none !important;
@@ -530,21 +531,25 @@ body.about-page .mobile-logo-container {
 
 
 .minimal-hamburger-btn {
+  right: 20px !important;
   position: absolute !important;
-  right: 20px !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  right: 20px !important;
-  background: transparent !important;
-  border: none !important;
-  color: #ffffff !important;
-  cursor: pointer !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
-  z-index: 100 !important;
+  cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-hamburger-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-hamburger-btn:hover {
   opacity: 0.7 !important;
 }
@@ -624,17 +629,23 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -644,34 +655,46 @@ html[dir="rtl"] .verified-badge, body.ur .verified-badge {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -823,17 +846,23 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -843,34 +872,46 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -1098,17 +1139,23 @@ html[dir="rtl"] .profile-card-content h3 {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -1118,34 +1165,46 @@ html[dir="rtl"] .profile-card-content h3 {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -1284,17 +1343,23 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -1304,34 +1369,46 @@ html[dir="ltr"] .strip-text-en, body:not(.ur) .strip-text-en, .about-page-en .st
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -1733,6 +1810,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
     width: 44px !important;
     height: 44px !important;
     display: flex !important;
+  color: #ffffff !important;
     align-items: center !important;
     justify-content: center !important;
     backdrop-filter: blur(4px) !important;
@@ -2108,6 +2186,133 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 </style>
 
+<style>
+/* User Requested White Top Bar and Clean Raw Icons for Mobile */
+.about-minimal-header {
+  border-top: 15px solid #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .about-minimal-header {
+    border-top: 45px solid #ffffff !important;
+    padding-top: 20px !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn,
+  html body div.about-minimal-header button[onclick*="history.back"],
+  html body div.about-minimal-header button.minimal-hamburger-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    padding: 6px !important;
+    position: absolute !important;
+    top: -40px !important;
+    z-index: 999 !important;
+    color: #006754 !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-back-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button[onclick*="history.back"] {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-hamburger-btn {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn svg,
+  html body div.about-minimal-header button[onclick*="history.back"] svg,
+  html body div.about-minimal-header button.minimal-hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #006754 !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn:hover,
+  html body div.about-minimal-header button[onclick*="history.back"]:hover,
+  html body div.about-minimal-header button.minimal-hamburger-btn:hover {
+    background: transparent !important;
+    opacity: 0.7 !important;
+  }
+}
+</style>
+<style>
+/* Transparent Logo Watermark behind Header Title */
+.about-minimal-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/logo.png');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure all content in the header stays above the watermark */
+/* Ensure all content in the header stays above the watermark */
+.about-minimal-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+</style>
+
+<style>
+/* Center Introduction and Mission/Vision headings with a green line */
+.content-card h2.preserve-heading,
+.vm-card h3 {
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 24px !important; /* give a bit more space below the line to breathe before the paragraph */
+    line-height: 1 !important; /* Remove natural font padding */
+    gap: 8px !important; /* Use gap for precise control of space between text and line */
+}
+
+.content-card h2.preserve-heading::after,
+.vm-card h3::after {
+    content: "";
+    display: block;
+    width: 50px; /* Slightly shorter line looks sharper */
+    height: 3px; /* Slightly thinner line */
+    background-color: #025F55 !important;
+    margin-top: 0 !important; /* Rely entirely on flex gap */
+    border-radius: 2px;
+}
+</style>
 </head>
 <body class="about-page">
 
@@ -2119,13 +2324,13 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
     <header>
         <div class="brand-title-container">
             <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
-            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+            <img src="assets/title-urdu.png" alt="Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Û" class="urdu-title-png">
         </div>
         <div class="header-logo desktop-logo">
             <img src="assets/logo.png" alt="Madrassa Logo">
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -2135,12 +2340,12 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 
     <div class="floating-nav-container">
         <nav class="floating-nav" id="mainNav">
-            <a href="index.html" class="nav-link" data-en="HOME" data-ur="ہوم">HOME</a>
-            <a href="about.html" class="nav-link active" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
-            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
-            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
-            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
-            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
+            <a href="index.html" class="nav-link" data-en="HOME" data-ur="ÛÙˆÙ…">HOME</a>
+            <a href="about.html" class="nav-link active" data-en="ABOUT US" data-ur="ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº">ABOUT US</a>
+            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="Ø¯Ø§Ø®Ù„Û">ADMISSIONS</a>
+            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="Ø§Ù¾ÚˆÛŒÙ¹Ø³">UPDATES</a>
+            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="Ø¹Ø·ÛŒØ§Øª">DONATION</a>
+            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="Ø±Ø§Ø¨Ø·Û">CONTACT US</a>
             <button class="lang-toggle-btn" id="langSwitch">URDU</button>
         </nav>
     </div>
@@ -2173,7 +2378,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
             currentLang = currentLang === 'en' ? 'ur' : 'en';
             document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
-            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
+            langSwitchBtn.textContent = currentLang === 'ur' ? 'Ø§Ù†Ú¯Ù„Ø´' : 'URDU';
             
             navLinks.forEach(item => {
                 item.textContent = item.getAttribute(`data-${currentLang}`);
@@ -2196,8 +2401,8 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const floatingNavContainer = document.querySelector('.floating-nav-container');
 
-        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
 
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent document click from immediately closing it
@@ -2937,17 +3142,23 @@ body.ur .site-footer {
 .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -2957,34 +3168,46 @@ body.ur .site-footer {
 [dir="ltr"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
 [dir="rtl"] .minimal-back-btn {
   left: 20px !important;
   position: absolute !important;
-  top:  50% !important;
+  top: 50% !important;
   transform: translateY(-50%) !important;
-  background: transparent !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
   padding: 0 !important;
   cursor: pointer !important;
   display: flex !important;
+  color: #ffffff !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
 }
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
 .minimal-back-btn:hover {
   opacity: 0.7 !important;
 }
@@ -3052,7 +3275,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <div class="about-minimal-header">
   <!-- Hamburger Menu -->
   <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
-    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 
   <!-- Breadcrumbs -->
@@ -3066,9 +3289,9 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <div class="title-with-swoosh">
     <h1 class="about-main-title">
       <span class="title-en">About Us</span>
-      <span class="title-ur">ہمارے بارے میں</span>
+      <span class="title-ur">ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº</span>
     </h1><div class="minimal-breadcrumbs" style="margin-top: 8px !important;">
-    مرکزی صفحہ <span class="chevron" style="font-family: sans-serif;">&lt;</span> ہمارے بارے میں
+    Ù…Ø±Ú©Ø²ÛŒ ØµÙØ­Û <span class="chevron" style="font-family: sans-serif;">&lt;</span> ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº
   </div>
 
     <!-- Vector Green Swoosh / Brush Stroke -->
@@ -3082,20 +3305,20 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 1. HISTORY CONTAINER -->
     <div class="content-card">
-      <h2 class="preserve-heading">ادارے کی تاریخ و تعارف</h2>
-      <p>مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود <span class="arabic-calligraphy">رحمہ اللہ</span> نے رکھی۔ یہ ادارہ خالصتاً قرآن و سنت کی تعلیمات پر مبنی ہے، جس کا مقصد معاشرے میں صحیح اسلامی شعور بیدار کرنا اور ایسی نسل تیار کرنا ہے جو دین اور دنیا دونوں میں کامیاب ہو۔</p>
-      <p>اپنے قیام سے لے کر آج تک، یہ مدرسہ ہزاروں طلباء کو زیورِ تعلیم سے آراستہ کر چکا ہے اور مستقل دعوت و تبلیغ کے کام میں سرگرمِ عمل ہے۔</p>
+      <h2 class="preserve-heading">ادارے کا تعارف</h2>
+      <p>Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ø§ÛŒÚ© Ø¯ÛŒÙ†ÛŒØŒ ØªØ¹Ù„ÛŒÙ…ÛŒ Ø§ÙˆØ± ØªØ±Ø¨ÛŒØªÛŒ Ø§Ø¯Ø§Ø±Û ÛÛ’ØŒ Ø¬Ø³ Ú©ÛŒ Ø¨Ù†ÛŒØ§Ø¯ 1993Ø¡ Ù…ÛŒÚº Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ <span class="arabic-calligraphy">Ø±Ø­Ù…Û Ø§Ù„Ù„Û</span> Ù†Û’ Ø±Ú©Ú¾ÛŒÛ” ÛŒÛ Ø§Ø¯Ø§Ø±Û Ø®Ø§Ù„ØµØªØ§Ù‹ Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ ØªØ¹Ù„ÛŒÙ…Ø§Øª Ù¾Ø± Ù…Ø¨Ù†ÛŒ ÛÛ’ØŒ Ø¬Ø³ Ú©Ø§ Ù…Ù‚ØµØ¯ Ù…Ø¹Ø§Ø´Ø±Û’ Ù…ÛŒÚº ØµØ­ÛŒØ­ Ø§Ø³Ù„Ø§Ù…ÛŒ Ø´Ø¹ÙˆØ± Ø¨ÛŒØ¯Ø§Ø± Ú©Ø±Ù†Ø§ Ø§ÙˆØ± Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ ÛÛ’ Ø¬Ùˆ Ø¯ÛŒÙ† Ø§ÙˆØ± Ø¯Ù†ÛŒØ§ Ø¯ÙˆÙ†ÙˆÚº Ù…ÛŒÚº Ú©Ø§Ù…ÛŒØ§Ø¨ ÛÙˆÛ”</p>
+      <p>Ø§Ù¾Ù†Û’ Ù‚ÛŒØ§Ù… Ø³Û’ Ù„Û’ Ú©Ø± Ø¢Ø¬ ØªÚ©ØŒ ÛŒÛ Ù…Ø¯Ø±Ø³Û ÛØ²Ø§Ø±ÙˆÚº Ø·Ù„Ø¨Ø§Ø¡ Ú©Ùˆ Ø²ÛŒÙˆØ±Ù ØªØ¹Ù„ÛŒÙ… Ø³Û’ Ø¢Ø±Ø§Ø³ØªÛ Ú©Ø± Ú†Ú©Ø§ ÛÛ’ Ø§ÙˆØ± Ù…Ø³ØªÙ‚Ù„ Ø¯Ø¹ÙˆØª Ùˆ ØªØ¨Ù„ÛŒØº Ú©Û’ Ú©Ø§Ù… Ù…ÛŒÚº Ø³Ø±Ú¯Ø±Ù…Ù Ø¹Ù…Ù„ ÛÛ’Û”</p>
     </div>
 
     <!-- 2. VISION & MISSION GRID -->
     <div class="vision-mission-grid">
       <div class="vm-card">
         <h3>ہمارا وژن</h3>
-        <p>قرآن و سنت کی روشنی میں ایسی باکردار، باعلم اور باصلاحیت نسل تیار کرنا جو دین و دنیا میں کامیاب ہو، امت کی صحیح رہنمائی کرے اور دنیا بھر میں اسلام کے حقیقی پیغام کو حکمت، اعتدال اور محبت کے ساتھ عام کرے۔</p>
+        <p>Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ Ø±ÙˆØ´Ù†ÛŒ Ù…ÛŒÚº Ø§ÛŒØ³ÛŒ Ø¨Ø§Ú©Ø±Ø¯Ø§Ø±ØŒ Ø¨Ø§Ø¹Ù„Ù… Ø§ÙˆØ± Ø¨Ø§ØµÙ„Ø§Ø­ÛŒØª Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ Ø¬Ùˆ Ø¯ÛŒÙ† Ùˆ Ø¯Ù†ÛŒØ§ Ù…ÛŒÚº Ú©Ø§Ù…ÛŒØ§Ø¨ ÛÙˆØŒ Ø§Ù…Øª Ú©ÛŒ ØµØ­ÛŒØ­ Ø±ÛÙ†Ù…Ø§Ø¦ÛŒ Ú©Ø±Û’ Ø§ÙˆØ± Ø¯Ù†ÛŒØ§ Ø¨Ú¾Ø± Ù…ÛŒÚº Ø§Ø³Ù„Ø§Ù… Ú©Û’ Ø­Ù‚ÛŒÙ‚ÛŒ Ù¾ÛŒØºØ§Ù… Ú©Ùˆ Ø­Ú©Ù…ØªØŒ Ø§Ø¹ØªØ¯Ø§Ù„ Ø§ÙˆØ± Ù…Ø­Ø¨Øª Ú©Û’ Ø³Ø§ØªÚ¾ Ø¹Ø§Ù… Ú©Ø±Û’Û”</p>
       </div>
       <div class="vm-card mission">
         <h3>ہمارا نصب العین</h3>
-        <p>قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور عملی زندگی میں اسلامی تعلیمات کو فروغ دینا، تاکہ ایسی نسل تیار ہو جو علم، عمل، تقویٰ اور خدمتِ انسانیت کا نمونہ بنے۔</p>
+        <p>Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ Ø®Ø§Ù„Øµ ØªØ¹Ù„ÛŒÙ…ØŒ ØµØ­ÛŒØ­ Ø¹Ù‚ÛŒØ¯ÛØŒ Ø§Ø¹Ù„ÛŒÙ° Ø§Ø®Ù„Ø§Ù‚ Ø§ÙˆØ± Ø¹Ù…Ù„ÛŒ Ø²Ù†Ø¯Ú¯ÛŒ Ù…ÛŒÚº Ø§Ø³Ù„Ø§Ù…ÛŒ ØªØ¹Ù„ÛŒÙ…Ø§Øª Ú©Ùˆ ÙØ±ÙˆØº Ø¯ÛŒÙ†Ø§ØŒ ØªØ§Ú©Û Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± ÛÙˆ Ø¬Ùˆ Ø¹Ù„Ù…ØŒ Ø¹Ù…Ù„ØŒ ØªÙ‚ÙˆÛŒÙ° Ø§ÙˆØ± Ø®Ø¯Ù…ØªÙ Ø§Ù†Ø³Ø§Ù†ÛŒØª Ú©Ø§ Ù†Ù…ÙˆÙ†Û Ø¨Ù†Û’Û”</p>
       </div>
     </div>
 
@@ -3115,18 +3338,18 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       </div>
       <div class="profile-card-content">
         <h3 class="profile-name">
-        <span class="honorific">حضرت مولانا مفتی</span>
+        <span class="honorific">Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ</span>
         <span class="main-name-row">
-            ریاض محمود <span class="arabic-calligraphy suffix">رحمة الله</span> <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+            Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ <span class="arabic-calligraphy suffix">Ø±Ø­Ù…Ø© Ø§Ù„Ù„Ù‡</span> <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
         </span>
     </h3>
 
         <p class="profile-bio">
-          حضرت مولانا مفتی ریاض محمود (رحمہ اللہ) نے 1989ء میں جامعہ علوم اسلامیہ بنوری ٹاؤن سے درسِ نظامی مکمل کیا۔ 1993ء میں آپ نے مدرسہ ریاض القرآن والسنۃ کی بنیاد رکھی اور 27 سال تک عظیم تعلیمی و اصلاحی خدمات انجام دیں۔
+          Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ (Ø±Ø­Ù…Û Ø§Ù„Ù„Û) Ù†Û’ 1989Ø¡ Ù…ÛŒÚº Ø¬Ø§Ù…Ø¹Û Ø¹Ù„ÙˆÙ… Ø§Ø³Ù„Ø§Ù…ÛŒÛ Ø¨Ù†ÙˆØ±ÛŒ Ù¹Ø§Ø¤Ù† Ø³Û’ Ø¯Ø±Ø³Ù Ù†Ø¸Ø§Ù…ÛŒ Ù…Ú©Ù…Ù„ Ú©ÛŒØ§Û” 1993Ø¡ Ù…ÛŒÚº Ø¢Ù¾ Ù†Û’ Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ú©ÛŒ Ø¨Ù†ÛŒØ§Ø¯ Ø±Ú©Ú¾ÛŒ Ø§ÙˆØ± 27 Ø³Ø§Ù„ ØªÚ© Ø¹Ø¸ÛŒÙ… ØªØ¹Ù„ÛŒÙ…ÛŒ Ùˆ Ø§ØµÙ„Ø§Ø­ÛŒ Ø®Ø¯Ù…Ø§Øª Ø§Ù†Ø¬Ø§Ù… Ø¯ÛŒÚºÛ”
         </p>
         <div class="simple-quote-box">
-          <strong class="motto-highlight">بانیِ ادارہ کا موٹو:</strong>
-          <p>"قرآن و سنت کو مضبوطی سے تھام لو، یہی دنیا و آخرت کی کامیابی کا راستہ ہے۔"</p>
+          <strong class="motto-highlight">Ø¨Ø§Ù†ÛŒÙ Ø§Ø¯Ø§Ø±Û Ú©Ø§ Ù…ÙˆÙ¹Ùˆ:</strong>
+          <p>"Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©Ùˆ Ù…Ø¶Ø¨ÙˆØ·ÛŒ Ø³Û’ ØªÚ¾Ø§Ù… Ù„ÙˆØŒ ÛŒÛÛŒ Ø¯Ù†ÛŒØ§ Ùˆ Ø¢Ø®Ø±Øª Ú©ÛŒ Ú©Ø§Ù…ÛŒØ§Ø¨ÛŒ Ú©Ø§ Ø±Ø§Ø³ØªÛ ÛÛ’Û”"</p>
         </div>
       </div>
     </div>
@@ -3147,9 +3370,9 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       </div>
       <div class="profile-card-content">
         <h3 class="profile-name">
-        <span class="honorific">مفتی</span>
+        <span class="honorific">Ù…ÙØªÛŒ</span>
         <span class="main-name-row">
-            عامر محمود  <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
+            Ø¹Ø§Ù…Ø± Ù…Ø­Ù…ÙˆØ¯  <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
         </span>
     </h3>
 
@@ -3173,11 +3396,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     </div>
 
         <p class="profile-bio">
-          ایم فل (NUML)، فاضل وفاق المدارس، مارچ 2020ء سے مدرسہ ریاض القرآن والسنۃ کی تدریسی، دعوتی اور انتظامی سرپرستی فرمارہے ہیں۔
+          Ø§ÛŒÙ… ÙÙ„ (NUML)ØŒ ÙØ§Ø¶Ù„ ÙˆÙØ§Ù‚ Ø§Ù„Ù…Ø¯Ø§Ø±Ø³ØŒ Ù…Ø§Ø±Ú† 2020Ø¡ Ø³Û’ Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ú©ÛŒ ØªØ¯Ø±ÛŒØ³ÛŒØŒ Ø¯Ø¹ÙˆØªÛŒ Ø§ÙˆØ± Ø§Ù†ØªØ¸Ø§Ù…ÛŒ Ø³Ø±Ù¾Ø±Ø³ØªÛŒ ÙØ±Ù…Ø§Ø±ÛÛ’ ÛÛŒÚºÛ”
         </p>
         <div class="simple-quote-box">
-          <strong class="motto-highlight">مہتمم کا پیغام:</strong>
-          <p>"ہماری ذمہ داری صرف قرآن پڑھانا نہیں، بلکہ ایسی نسل تیار کرنا ہے جو قرآن کو سمجھے اور اس پر عمل کرے۔"</p>
+          <strong class="motto-highlight">Ù…ÛØªÙ…Ù… Ú©Ø§ Ù¾ÛŒØºØ§Ù…:</strong>
+          <p>"ÛÙ…Ø§Ø±ÛŒ Ø°Ù…Û Ø¯Ø§Ø±ÛŒ ØµØ±Ù Ù‚Ø±Ø¢Ù† Ù¾Ú‘Ú¾Ø§Ù†Ø§ Ù†ÛÛŒÚºØŒ Ø¨Ù„Ú©Û Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ ÛÛ’ Ø¬Ùˆ Ù‚Ø±Ø¢Ù† Ú©Ùˆ Ø³Ù…Ø¬Ú¾Û’ Ø§ÙˆØ± Ø§Ø³ Ù¾Ø± Ø¹Ù…Ù„ Ú©Ø±Û’Û”"</p>
         </div>
       </div>
     </div>
@@ -3193,7 +3416,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <div class="about-minimal-header">
   <!-- Hamburger Menu -->
   <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
-    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 
   <!-- Breadcrumbs -->
@@ -3207,7 +3430,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
   <div class="title-with-swoosh">
     <h1 class="about-main-title">
       <span class="title-en">About Us</span>
-      <span class="title-ur">ہمارے بارے میں</span>
+      <span class="title-ur">ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº</span>
     </h1><div class="minimal-breadcrumbs" style="margin-top: 8px !important;">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home <span class="chevron">&gt;</span> About Us
   </div>
@@ -3224,7 +3447,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 1. HISTORY CONTAINER -->
     <div class="content-card">
-      <h2 class="preserve-heading">History & Introduction</h2>
+      <h2 class="preserve-heading">Introduction</h2>
       <p>Madrassa Riaz ul Quran Wal Sunnah is a premier educational and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (RH). The institution is purely based on the teachings of the Quran and Sunnah, with the aim of awakening true Islamic consciousness in society and preparing a generation that is successful in both this world and the hereafter.</p>
       <p>Since its inception, the Madrassa has educated thousands of students and remains actively engaged in the work of Dawah and propagation.</p>
     </div>
@@ -3232,11 +3455,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <!-- 2. VISION & MISSION GRID -->
     <div class="vision-mission-grid">
       <div class="vm-card">
-        <h3>Vision Statement</h3>
+        <h3>Vision</h3>
         <p>We envision a world where learners are connected to their Creator, aware of their purpose in life, and perform at the level of Ehsan. Preparing a character-driven, knowledgeable generation.</p>
       </div>
       <div class="vm-card mission">
-        <h3>Mission Statement</h3>
+        <h3>Mission</h3>
         <p>Our mission is to provide holistic learning rooted in Islamic values that prepares individuals who excel in this world and the Hereafter, becoming exemplary role models for humanity.</p>
       </div>
     </div>
@@ -3337,7 +3560,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
             <div class="footer-logo-wrapper">
                 <img src="assets/logo.png" alt="Madrassa Logo" class="footer-logo">
                 <img src="assets/title-logo.png" alt="Madrassa Title" class="footer-title-img-en" style="max-height: 45px; width: auto; display: block;">
-                <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+                <img src="assets/title-urdu.png" alt="Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Û" class="urdu-title-png">
             </div>
             
             <!-- Social Media Buttons -->
@@ -3359,30 +3582,30 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
         <!-- Section 2: Quick Links -->
         <div class="footer-section">
-            <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
+            <h3 data-en="Quick Links" data-ur="Ø§ÛÙ… Ù„Ù†Ú©Ø³">Quick Links</h3>
             <ul>
-                <li><a href="index.html" data-en="Home" data-ur="ہوم">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
-                <li><a href="admissions.html" data-en="Admissions" data-ur="داخلہ">Admissions</a></li>
-                <li><a href="updates.html" data-en="Updates" data-ur="اپڈیٹس">Updates</a></li>
-                <li><a href="donation.html" data-en="Donate Now" data-ur="عطیات">Donate Now</a></li>
-                <li><a href="contact.html" data-en="Contact Us" data-ur="رابطہ">Contact Us</a></li>
+                <li><a href="index.html" data-en="Home" data-ur="ÛÙˆÙ…">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-ur="ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº">About Us</a></li>
+                <li><a href="admissions.html" data-en="Admissions" data-ur="Ø¯Ø§Ø®Ù„Û">Admissions</a></li>
+                <li><a href="updates.html" data-en="Updates" data-ur="Ø§Ù¾ÚˆÛŒÙ¹Ø³">Updates</a></li>
+                <li><a href="donation.html" data-en="Donate Now" data-ur="Ø¹Ø·ÛŒØ§Øª">Donate Now</a></li>
+                <li><a href="contact.html" data-en="Contact Us" data-ur="Ø±Ø§Ø¨Ø·Û">Contact Us</a></li>
             </ul>
         </div>
 
         <!-- Section 3: Contact Info -->
         <div class="footer-section">
-            <h3 data-en="Contact Info" data-ur="رابطہ">Contact Info</h3>
+            <h3 data-en="Contact Info" data-ur="Ø±Ø§Ø¨Ø·Û">Contact Info</h3>
             <ul>
-                <li data-en="Email: info@madrassa.edu" data-ur="ای میل: info@madrassa.edu">Email: info@madrassa.edu</li>
-                <li data-en="Phone: +92 300 1234567" data-ur="فون: +92 300 1234567">Phone: +92 300 1234567</li>
-                <li data-en="Address: 123 Islamic Center Road, City" data-ur="پتہ: 123 اسلامک سینٹر روڈ، شہر">Address: 123 Islamic Center Road, City</li>
+                <li data-en="Email: info@madrassa.edu" data-ur="Ø§ÛŒ Ù…ÛŒÙ„: info@madrassa.edu">Email: info@madrassa.edu</li>
+                <li data-en="Phone: +92 300 1234567" data-ur="ÙÙˆÙ†: +92 300 1234567">Phone: +92 300 1234567</li>
+                <li data-en="Address: 123 Islamic Center Road, City" data-ur="Ù¾ØªÛ: 123 Ø§Ø³Ù„Ø§Ù…Ú© Ø³ÛŒÙ†Ù¹Ø± Ø±ÙˆÚˆØŒ Ø´ÛØ±">Address: 123 Islamic Center Road, City</li>
             </ul>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p data-en="&copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved." data-ur="&copy; 2026 مدرسہ ریاض القرآن والسنہ۔ جملہ حقوق محفوظ ہیں۔">
+        <p data-en="&copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved." data-ur="&copy; 2026 Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†ÛÛ” Ø¬Ù…Ù„Û Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸ ÛÛŒÚºÛ”">
             &copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved.
         </p>
     </div>
@@ -3396,13 +3619,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
       <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
     </div>
             <ul class="mobile-nav-links">
-      <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
-      <li><a href="about.html" class="m-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
+      <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ÛÙˆÙ…">HOME</a></li>
+      <li><a href="about.html" class="m-link" data-en="ABOUT US" data-ur="ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº">ABOUT US</a></li>
       
-      <li><a href="admissions.html" class="m-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
-      <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
-      <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
-      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
+      <li><a href="admissions.html" class="m-link" data-en="ADMISSIONS" data-ur="Ø¯Ø§Ø®Ù„Û">ADMISSIONS</a></li>
+      <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="Ø§Ù¾ÚˆÛŒÙ¹Ø³">UPDATES</a></li>
+      <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="Ø¹Ø·ÛŒØ§Øª">DONATION</a></li>
+      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="Ø±Ø§Ø¨Ø·Û">CONTACT US</a></li>
       <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="ENGLISH">URDU</button></li>
     </ul>
   </div>
@@ -3641,7 +3864,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Find back button or link containing arrow/back text and ensure it has the correct class
   const allLinks = document.querySelectorAll('a, button');
   allLinks.forEach(el => {
-    if (el.textContent.includes('Back') || el.textContent.includes('واپسی') || el.innerHTML.includes('➔') || el.innerHTML.includes('←') || (el.getAttribute('onclick') && el.getAttribute('onclick').includes('history.back'))) {
+    if (el.textContent.includes('Back') || el.textContent.includes('ÙˆØ§Ù¾Ø³ÛŒ') || el.innerHTML.includes('âž”') || el.innerHTML.includes('â†') || (el.getAttribute('onclick') && el.getAttribute('onclick').includes('history.back'))) {
       if (!el.classList.contains('back-btn')) {
         el.classList.add('back-btn');
       }
@@ -3655,6 +3878,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 </html>
+
+
 
 
 
