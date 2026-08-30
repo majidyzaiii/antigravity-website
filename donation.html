@@ -3931,6 +3931,90 @@
 .iti { width: 100%; }
 .iti__country-list { z-index: 999999 !important; }
 </style>
+﻿<style>
+/* Reset Default State */
+.mobile-menu, .nav-drawer, #mobile-nav, .mobile-drawer-menu, .mobile-menu-card {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100vh !important;
+  transition: transform 0.3s ease, left 0.3s ease, right 0.3s ease !important;
+  z-index: 9999 !important;
+}
+
+/* ENGLISH MODE (LTR) - Drawer on Left Side */
+html[dir="ltr"] .mobile-menu,
+html[dir="ltr"] .nav-drawer,
+body:not(.ur) .mobile-menu,
+html[dir="ltr"] .mobile-drawer-menu,
+html[dir="ltr"] .mobile-menu-card {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateX(-100%) !important; /* Hide to Left */
+}
+
+/* URDU MODE (RTL) - Drawer strictly on Right Side */
+html[dir="rtl"] .mobile-menu,
+html[dir="rtl"] .nav-drawer,
+body.ur .mobile-menu,
+body.ur .nav-drawer,
+html[dir="rtl"] .mobile-drawer-menu,
+html[dir="rtl"] .mobile-menu-card {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(100%) !important; /* Hide to Right */
+  border-radius: 20px 0 0 20px !important;
+}
+
+/* CARD DEFAULT STATE (Slides in from Left) */
+.mobile-menu-card {
+  position: relative !important;
+  background: white !important;
+  height: auto !important;
+  max-height: 400px !important;
+  width: 175px !important;
+  padding: 20px 16px !important;
+  border-radius: 20px !important;
+  margin-left: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(-150vw) !important; 
+}
+.mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* CARD RTL STATE (Slides in from Right) */
+html[dir="rtl"] .mobile-menu-card, body.ur .mobile-menu-card {
+  margin-left: 0 !important;
+  margin-right: 16px !important;
+  transform: translateX(150vw) !important; 
+}
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* HEADER & CLOSE BUTTON */
+.mobile-menu-header { 
+  display: flex !important; justify-content: space-between !important; align-items: center !important; 
+  margin-bottom: 20px !important; 
+}
+.menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
+.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
+
+/* LINKS LIST */
+.mobile-nav-links { 
+  list-style: none !important; padding: 0 !important; margin: 0 !important; 
+  display: flex !important; flex-direction: column !important; gap: 12px !important; 
+}
+.mobile-nav-links a, .mobile-lang-btn { 
+  text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
+  font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
+  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
+}
+.mobile-nav-links a:hover, .mobile-lang-btn:hover { color: #006754 !important; }
+</style>
+
 </head>
 
 
