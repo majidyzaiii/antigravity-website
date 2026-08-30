@@ -4068,6 +4068,15 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     font-size: 0.75rem !important;
 }
 </style>
+<style>
+/* Fix header height to match updates/about on mobile */
+@media (max-width: 768px) {
+  .about-minimal-header {
+    padding-bottom: 30px !important;
+    min-height: 160px !important;
+  }
+}
+</style>
 </head>
 
 
@@ -4640,6 +4649,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </html>
+
 
 
 
