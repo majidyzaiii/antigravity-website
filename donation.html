@@ -3947,7 +3947,6 @@
   align-items: center !important;
   justify-content: center !important;
   margin-bottom: 25px !important;
-  padding-bottom: 30px !important;
 }
 
 /* Floating Back Button */
@@ -3993,15 +3992,20 @@
 }
 
 .about-main-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
   color: #ffffff !important;
-  font-size: 2.2rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.5px !important;
   margin: 0 !important;
+  padding: 0 !important;
   text-align: center !important;
   position: relative !important;
   display: inline-block !important;
   z-index: 1 !important;
+}
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.8rem !important; }
 }
 
 .title-with-swoosh {
@@ -4013,22 +4017,28 @@
 }
 
 .minimal-breadcrumbs {
-  margin-top: 12px !important;
-  bottom: 0 !important;
-  font-family: inherit !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
+  width: max-content !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin-top: 5px !important;
   z-index: 1 !important;
 }
 
 .minimal-breadcrumbs .chevron {
-  font-size: 0.85rem !important;
-  opacity: 0.7 !important;
+  color: #ffffff !important;
+  margin: 0 6px !important;
+  font-weight: 800 !important;
+}
+html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-ur .minimal-breadcrumbs {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 1.15rem !important;
 }
 
 /* Mobile Overrides */
@@ -4120,20 +4130,24 @@
   z-index: 1;
 }
 
+body.hide-main-header { padding-top: 0 !important; }
+
 /* Hide old headers */
 .hide-main-header .sticky-header,
 .hide-main-header header.main-header,
 .hide-main-header header.site-header,
 .hide-main-header header,
 .hide-main-header .top-header-bar,
-.hide-main-header .mobile-logo-container {
+.hide-main-header .mobile-logo-container,
+.hide-main-header .page-banner {
     display: none !important;
 }
 </style>
 
 
+
 <div class="about-minimal-header">
-  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
     <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
   <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
@@ -4489,6 +4503,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </html>
+
+
 
 
 
