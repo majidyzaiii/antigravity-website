@@ -1,0 +1,215 @@
+<style>
+/* Reset Default State */
+.mobile-menu, .nav-drawer, #mobile-nav, .mobile-drawer-menu, .mobile-menu-card {
+  position: fixed !important;
+  top: 0 !important;
+  height: 100vh !important;
+  transition: transform 0.3s ease, left 0.3s ease, right 0.3s ease !important;
+  z-index: 9999 !important;
+}
+
+/* ENGLISH MODE (LTR) - Drawer on Left Side */
+html[dir="ltr"] .mobile-menu,
+html[dir="ltr"] .nav-drawer,
+body:not(.ur) .mobile-menu,
+html[dir="ltr"] .mobile-drawer-menu,
+html[dir="ltr"] .mobile-menu-card {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateX(-100%) !important; /* Hide to Left */
+}
+
+html[dir="ltr"] .mobile-menu.active,
+html[dir="ltr"] .nav-drawer.active,
+html[dir="ltr"] .mobile-menu.open,
+html[dir="ltr"] .mobile-drawer-menu.active,
+html[dir="ltr"] .mobile-menu-card.active,
+html[dir="ltr"] .mobile-menu-card.open {
+  transform: translateX(0) !important;
+}
+
+/* URDU MODE (RTL) - Drawer strictly on Right Side */
+html[dir="rtl"] .mobile-menu,
+html[dir="rtl"] .nav-drawer,
+body.ur .mobile-menu,
+body.ur .nav-drawer,
+html[dir="rtl"] .mobile-drawer-menu,
+html[dir="rtl"] .mobile-menu-card {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(100%) !important; /* Hide to Right */
+  border-radius: 20px 0 0 20px !important;
+}
+
+html[dir="rtl"] .mobile-menu.active,
+html[dir="rtl"] .nav-drawer.active,
+body.ur .mobile-menu.active,
+body.ur .nav-drawer.active,
+html[dir="rtl"] .mobile-menu.open,
+body.ur .mobile-menu.open,
+html[dir="rtl"] .mobile-drawer-menu.active,
+html[dir="rtl"] .mobile-menu-card.active,
+html[dir="rtl"] .mobile-menu-card.open {
+  transform: translateX(0) !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Text and Close Icon Alignment in Urdu Drawer */
+html[dir="rtl"] .mobile-menu *, body.ur .mobile-menu *, html[dir="rtl"] .mobile-drawer-menu *, html[dir="rtl"] .mobile-menu-card * {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[dir="rtl"] .drawer-header, html[dir="rtl"] .mobile-menu-header {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.circular-avatar-frame {
+  position: relative !important;
+  z-index: 2 !important;
+  border: 2px solid #006754 !important; /* Thinner border like reference */
+  padding: 8px !important; /* Slightly wider gap */
+}
+
+
+/* Remove old green banner background completely */
+.hero-rounded-banner, .about-hero-container, .about-hero-wrapper {
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  padding: 20px 20px 30px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  color: #ffffff !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
+}
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+
+
+
+[dir="ltr"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  color: #ffffff !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
+}
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="rtl"] .minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  color: #ffffff !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease, background 0.2s ease !important;
+}
+.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
+
+.minimal-back-btn:hover {
+  opacity: 0.7 !important;
+}
+[dir="ltr"] .minimal-back-btn .back-arrow { transform: rotate(180deg) !important; }
+
+/* Centered Title & Swoosh Container */
+.title-with-swoosh {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.about-main-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Green Brush Stroke / Swoosh Line */
+.green-brush-stroke {
+  width: 130% !important;
+  max-width: 260px !important;
+  height: 38px !important;
+  margin-top: -8px !important;
+}
+
+/* Language Toggle Rules */
+.title-ur { font-family: 'Jameel Noori Nastaleeq', serif !important; }
+.title-ur, .back-txt-ur { display: none !important; }
+.title-en, .back-txt-en { display: inline !important; }
+
+html[dir="rtl"] .title-ur, body.ur .title-ur,
+html[dir="rtl"] .back-txt-ur, body.ur .back-txt-ur { display: inline !important; }
+
+html[dir="rtl"] .title-en, body.ur .title-en,
+html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
+
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.8rem !important; }
+  .green-brush-stroke { max-width: 210px !important; height: 30px !important; }
+}
+
+</style>

@@ -1,0 +1,208 @@
+﻿<style>
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  padding: 20px 20px 30px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Floating Hamburger Menu */
+.minimal-hamburger-btn {
+  right: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+.about-main-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  position: relative !important;
+  display: inline-block !important;
+  z-index: 1 !important;
+}
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.8rem !important; }
+}
+
+.title-with-swoosh {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.minimal-breadcrumbs {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: max-content !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin-top: 5px !important;
+  z-index: 1 !important;
+}
+
+.minimal-breadcrumbs .chevron {
+  color: #ffffff !important;
+  margin: 0 6px !important;
+  font-weight: 800 !important;
+}
+html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-ur .minimal-breadcrumbs {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 1.15rem !important;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+  .about-minimal-header {
+    border-top: 45px solid #ffffff !important;
+    padding-top: 20px !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn,
+  html body div.about-minimal-header button[onclick*="history.back"],
+  html body div.about-minimal-header button.minimal-hamburger-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    padding: 6px !important;
+    position: absolute !important;
+    top: -40px !important;
+    z-index: 999 !important;
+    color: #006754 !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-back-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-hamburger-btn {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn svg,
+  html body div.about-minimal-header button[onclick*="history.back"] svg,
+  html body div.about-minimal-header button.minimal-hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #006754 !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn:hover,
+  html body div.about-minimal-header button[onclick*="history.back"]:hover,
+  html body div.about-minimal-header button.minimal-hamburger-btn:hover {
+    background: transparent !important;
+    opacity: 0.7 !important;
+  }
+}
+
+/* Transparent Logo Watermark behind Header Title */
+.about-minimal-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/logo.png');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-minimal-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide old headers */
+.hide-main-header .sticky-header,
+.hide-main-header header.main-header,
+.hide-main-header header.site-header,
+.hide-main-header header,
+.hide-main-header .top-header-bar,
+.hide-main-header .mobile-logo-container,
+.hide-main-header .page-banner {
+    display: none !important;
+}
+</style>
+body.hide-main-header {
+    padding-top: 0 !important;
+}
