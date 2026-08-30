@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -4527,11 +4527,11 @@ body.hide-main-header { padding-top: 0 !important; }
 </footer>
 
 
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="if(event.target === this) { this.classList.remove('is-active'); document.querySelector('.mobile-menu-card').classList.remove('is-active'); }">
   <div class="mobile-menu-card">
     <div class="mobile-menu-header">
       <span class="menu-tag-label">MENU</span>
-      <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+      <button class="mobile-menu-close" id="mobileMenuClose" onclick="document.getElementById('mobileNavOverlay').classList.remove('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.remove('is-active');">&times;</button>
     </div>
             <ul class="mobile-nav-links">
       <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
@@ -4611,6 +4611,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </html>
+
+
 
 
 
