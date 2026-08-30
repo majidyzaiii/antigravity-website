@@ -4065,7 +4065,7 @@ document.addEventListener("DOMContentLoaded", function() {
   position: relative;
   display: inline-block;
   padding-bottom: 0px;
-  font-size: 2.8rem !important; /* Make the cursive font a bit larger to match the sans-serif weight */
+  font-size: 2.8rem !important;
 }
 .teachers-header .highlight-green::after {
   content: '';
@@ -4086,12 +4086,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 }
 
-/* Infinite Marquee Track (Right-to-Left Scroll) */
+/* Infinite Marquee Track */
 .marquee-wrapper {
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 30px 0 100px 0;
+  padding: 30px 0 60px 0; /* Reduced from 100px due to smaller stagger */
 }
 
 .marquee-wrapper::before,
@@ -4099,7 +4099,7 @@ document.addEventListener("DOMContentLoaded", function() {
   content: "";
   position: absolute;
   top: 0;
-  width: 100px;
+  width: 80px;
   height: 100%;
   z-index: 2;
   pointer-events: none;
@@ -4118,61 +4118,70 @@ document.addEventListener("DOMContentLoaded", function() {
 .marquee-track {
   display: flex;
   align-items: flex-start;
-  gap: 35px;
-  width: max-content;
-  animation: scrollRTL 70s linear infinite;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: none !important; /* NO AUTO SCROLL ON PC */
+  flex-wrap: wrap; /* Wrap gracefully on smaller PC screens/tablets */
 }
 
+/* Hide the 7 duplicate cards on PC since it's not scrolling */
+.teacher-card:nth-child(n+8) {
+  display: none;
+}
+
+/* Hide the fade gradients on PC since it's static */
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  display: none;
+}
+
+/* Hover pause rule isn't needed on PC anymore, but keeping it doesn't hurt */
 .marquee-wrapper:hover .marquee-track {
-  animation-play-state: paused; /* Pause on hover */
+  animation-play-state: paused;
 }
 
 @keyframes scrollRTL {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Teacher Card Layout */
+/* ULTRA COMPACT TEACHER CARD (Fits 7 on PC) */
 .teacher-card {
-  flex: 0 0 215px;
-  height: 315px; /* FIXED HEIGHT FOR UNIFORMITY */
+  flex: 0 0 155px; /* Very narrow */
+  height: 245px;
   background: #ffffff;
-  border-radius: 22px;
-  padding: 35px 15px 35px 15px;
+  border-radius: 16px;
+  padding: 22px 10px 22px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* Extra soft shadow tightly focused on the bottom, ZERO shadow at the top */
-  box-shadow: 0 25px 45px -10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.08); /* Soft bottom shadow */
   border: none !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .teacher-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 55px -10px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.12);
 }
 
-
-/* Dynamic Staggered Vertical Positions (Up and Down) */
+/* Reduced Stagger */
 .card-pos-1, .card-pos-3 { margin-top: 0px !important; }
-.card-pos-2, .card-pos-4 { margin-top: 50px !important; }
+.card-pos-2, .card-pos-4 { margin-top: 35px !important; }
 
 /* Avatar Ring */
 .avatar-ring {
-  width: 145px;
-  height: 145px;
-  margin: 0 auto 25px auto;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px auto;
   border-radius: 50%;
-  padding: 5px;
+  padding: 4px;
   background: #ffffff;
-  /* First shadow: faint base. Second shadow: The solid crescent ring underneath! */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), 2px 3px 0px 0px rgba(0, 103, 84, 0.45);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04), 2px 3px 0px 0px rgba(0, 103, 84, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4186,34 +4195,63 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 .teacher-name {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: #1e293b;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
 }
 
 .teacher-role {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #006754;
   margin: 0;
+  line-height: 1.2;
 }
 
-/* Mobile Adjustments */
+/* Mobile Adjustments (Fits 4 on Mobile) */
 @media (max-width: 768px) {
-  .teachers-header .main-heading {
-    font-size: 1.7rem;
+  .teachers-header .main-heading { font-size: 1.7rem; }
+  .marquee-track { 
+    gap: 8px; 
+    width: max-content !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    animation: scrollRTL 45s linear infinite !important; /* ENABLE AUTO SCROLL ON MOBILE */
+  }
+  
+  .teacher-card:nth-child(n+8) {
+    display: flex !important; /* Show duplicates for infinite loop */
+  }
+
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    display: block !important; /* Show gradients on mobile */
   }
   .teacher-card {
-    flex: 0 0 220px;
-    padding: 30px 15px 25px 15px;
+    flex: 0 0 85px;
+    height: 160px;
+    border-radius: 10px;
+    padding: 12px 4px 12px 4px;
+    box-shadow: 0 8px 15px -4px rgba(0, 0, 0, 0.08);
   }
   .avatar-ring {
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 8px auto;
+    padding: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 1px 1px 0px 0px rgba(0, 103, 84, 0.45);
   }
-  .card-pos-1, .card-pos-2, .card-pos-3, .card-pos-4 {
-    margin-top: 0;
+  .teacher-name {
+    font-size: 0.65rem;
+    margin-bottom: 2px;
   }
+  .teacher-role {
+    font-size: 0.55rem;
+  }
+  .card-pos-1, .card-pos-3 { margin-top: 0px !important; }
+  .card-pos-2, .card-pos-4 { margin-top: 15px !important; }
+  .marquee-wrapper { padding: 15px 0 25px 0; }
 }
 </style>
