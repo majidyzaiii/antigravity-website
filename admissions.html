@@ -32,7 +32,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 500;
             line-height: 1.6;
-            background-color: #ffffff !important;
+            
             position: relative;
             overflow-x: hidden;
         }
@@ -1013,7 +1013,7 @@
 
         .btn-primary-pill .btn-arrow-circle,
         .hero-buttons a:first-child .btn-arrow-circle {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             transition: all 0.3s ease !important;
         }
@@ -1021,7 +1021,7 @@
         .btn-secondary-pill,
         .hero-buttons a:nth-child(2),
         .hero-buttons button:nth-child(2) {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border: 2px solid #025F55 !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1077,7 +1077,7 @@
 
         .hero-buttons a:nth-child(2):hover .btn-arrow-circle,
         .btn-secondary-pill:hover .btn-arrow-circle {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border-color: #ffffff !important;
         }
@@ -1186,7 +1186,7 @@
             .hero-buttons a:first-child:focus,
             .btn-primary-pill:active,
             .btn-primary-pill:focus {
-                background-color: #ffffff !important;
+                
                 color: #025F55 !important;
                 border: 2px solid #025F55 !important;
                 transform: scale(0.96) !important;
@@ -1217,7 +1217,7 @@
             .hero-buttons a:nth-child(2):focus .btn-arrow-circle,
             .btn-secondary-pill:active .btn-arrow-circle,
             .btn-secondary-pill:focus .btn-arrow-circle {
-                background-color: #ffffff !important;
+                
                 color: #025F55 !important;
                 border-color: #ffffff !important;
             }
@@ -1285,7 +1285,7 @@
 
         .btn-primary .arrow-icon,
         .btn-primary .icon-circle {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border-radius: 50% !important;
             width: 30px !important;
@@ -1298,7 +1298,7 @@
 
         /* Primary Hover & Click Inversion */
         .btn-primary:hover, .btn-primary:active {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border-color: #025F55 !important;
             transform: translateY(-2px) !important;
@@ -1313,7 +1313,7 @@
 
         /* --- Secondary Button Hover/Active --- */
         .btn-secondary {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border: 2px solid #025F55 !important;
             border-radius: 50px !important;
@@ -1349,7 +1349,7 @@
 
         .btn-secondary:hover .arrow-icon, .btn-secondary:active .arrow-icon,
         .btn-secondary:hover .icon-circle, .btn-secondary:active .icon-circle {
-            background-color: #ffffff !important;
+            
             color: #025F55 !important;
             border-color: #ffffff !important;
             transform: rotate(45deg) !important;
@@ -3000,10 +3000,10 @@
 /* Rules Card Base Container */
 .admission-rules-card {
   position: relative !important;
-  background-color: #ffffff !important;
+  
   border-radius: 24px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  
   padding: 40px 32px !important;
   max-width: 900px !important;
   margin: 0 auto 30px auto !important;
@@ -3079,6 +3079,8 @@
     font-size: 1.35rem !important;
   }
 }
+
+
 
 </style>
 
@@ -3324,12 +3326,7 @@
 
   <!-- Special Uniform Box at the Very End -->
   <!-- Special Uniform Box at the Very End -->
-    <ul class="uniform-list" style="list-style: none; padding-left: 20px; margin-top: 12px; margin-bottom: 0;">
-      <li style="position: relative; font-size: 0.95rem; color: #334155; line-height: 1.7;">
-        <span style="position: absolute; left: -20px; top: -1px; color: #006754; font-weight: 700;">&#x2714;&#xFE0E;</span>
-        <strong style="color: #006754;">Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.
-      </li>
-    </ul>
+    <div class="notice-badge"><strong>Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.</div>
 </div>
   </main>
 
@@ -3543,10 +3540,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Rules Card Base Container */
 .admission-rules-card {
   position: relative !important;
-  background-color: #ffffff !important;
+  
   border-radius: 24px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  
   padding: 40px 32px !important;
   max-width: 900px !important;
   margin: 0 auto 30px auto !important;
@@ -3659,10 +3656,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Base Container for Admission Instructions */
 .admission-instructions-card {
   position: relative !important;
-  background-color: #ffffff !important;
+  
   border-radius: 24px !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  
   padding: 40px 32px !important;
   max-width: 900px !important;
   margin: 40px auto 30px auto !important; /* Kept margin-top 40px for spacing from header */
@@ -3682,7 +3679,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 /* Notice Box */
-.admission-instructions-card .notice-badge {
+.admission-instructions-card .notice-badge, .admission-rules-card .notice-badge {
   background-color: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -3696,7 +3693,7 @@ document.addEventListener('DOMContentLoaded', () => {
   text-align: center !important; /* Looks more elegant centered as a cursive quote */
 }
 
-.admission-instructions-card .notice-badge strong {
+.admission-instructions-card .notice-badge strong, .admission-rules-card .notice-badge strong {
   font-weight: 700 !important;
   color: #006754 !important;
 }
@@ -3768,54 +3765,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <style>
-/* Safe Corner Dots */
-.admission-instructions-card, .admission-rules-card {
-    background-color: #ffffff !important;
-    position: relative !important;
-    
-    z-index: 1 !important;
-}
-
-/* Ensure content sits above background */
-.admission-instructions-card > *, .admission-rules-card > * {
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-/* Top Right Design */
-.admission-instructions-card::before, .admission-rules-card::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important; right: 0 !important;
-    width: 600px !important; height: 600px !important; /* Large enough to show the beautiful dots */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
-    background-size: 100% 100% !important; /* We scale a 600x600 square, so dots look normal! */
-    background-position: top right !important;
-    opacity: 0.8 !important;
-    z-index: 0 !important;
-    mix-blend-mode: multiply !important;
-    /* This fades out the hard edges into the white background! */
-    mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%) !important;
-    -webkit-mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%) !important;
-    pointer-events: none !important;
-}
-
-/* Bottom Left Design */
-.admission-instructions-card::after, .admission-rules-card::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: 0 !important; left: 0 !important;
-    width: 600px !important; height: 600px !important;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
-    background-size: 100% 100% !important;
-    background-position: bottom left !important;
-    opacity: 0.8 !important;
-    z-index: 0 !important;
-    mix-blend-mode: multiply !important;
-    mask-image: radial-gradient(ellipse at bottom left, black 20%, transparent 70%) !important;
-    -webkit-mask-image: radial-gradient(ellipse at bottom left, black 20%, transparent 70%) !important;
-    pointer-events: none !important;
-}
 </style>
 
 <style>
@@ -3895,5 +3844,71 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
   font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
   background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
   margin-bottom: 0 !important;
+}
+</style>
+
+
+<style>
+</style>
+
+
+<style>
+/* Admissions Cards Perfect Styling */
+.admission-instructions-card, .admission-rules-card {
+    position: relative !important;
+    background-color: #ffffff !important; /* Pure white to match About page visual lightness */
+    border: 1.5px solid rgba(0, 103, 84, 0.35) !important; /* Exact green border */
+    border-radius: 28px !important;
+    box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    overflow: hidden !important; /* Crucial to clip the pseudo-elements to the rounded corners! */
+    z-index: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .admission-instructions-card, .admission-rules-card {
+      border-radius: 20px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+      box-shadow: 0 8px 25px rgba(0, 103, 84, 0.03) !important;
+  }
+}
+
+/* Top Right Design Dots */
+.admission-instructions-card::before, .admission-rules-card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important; right: 0 !important;
+    width: 600px !important; height: 600px !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
+    background-size: 900px 600px !important;
+    background-position: top right !important;
+    opacity: 0.9 !important;
+    z-index: -1 !important;
+    mix-blend-mode: multiply !important;
+    mask-image: radial-gradient(ellipse at top right, black 30%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at top right, black 30%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+/* Bottom Left Design Dots */
+.admission-instructions-card::after, .admission-rules-card::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important; left: 0 !important;
+    width: 600px !important; height: 600px !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
+    background-size: 900px 600px !important;
+    background-position: bottom left !important;
+    opacity: 0.9 !important;
+    z-index: -1 !important;
+    mix-blend-mode: multiply !important;
+    mask-image: radial-gradient(ellipse at bottom left, black 30%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at bottom left, black 30%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+/* Ensure inner content stays above the dots */
+.admission-instructions-card > *, .admission-rules-card > * {
+    position: relative !important;
+    z-index: 2 !important;
 }
 </style>
