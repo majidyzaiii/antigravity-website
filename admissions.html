@@ -453,7 +453,7 @@
                 width: 100% !important;
                 height: 80px !important;
                 max-height: 80px !important;
-                overflow: hidden !important;
+                
                 box-shadow: none;
             }
             .brand-title-container {
@@ -684,7 +684,6 @@
         }
 
         .hero-unified-bg {
-            background-image: linear-gradient(to bottom, transparent 85%, #ffffff 100%), linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), url('assets/hero-image.jpeg') !important;
             background-size: cover;
             background-position: center top;
             width: 100%;
@@ -908,9 +907,6 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('assets/pattern.png') !important;
-            background-size: 40px auto !important;
-            background-repeat: repeat !important;
             opacity: 0.05;
             z-index: 1;
             pointer-events: none;
@@ -2577,7 +2573,7 @@
         .leader-card,
         .leader-img {
           border-radius: 28px !important;
-          overflow: hidden !important;
+          
         }
 
         /* Specific Backdrop Shadow Box Behind Image Fix */
@@ -2590,7 +2586,7 @@
         /* Card Base */
         .leadership-content-card {
           border-radius: 40px !important;
-          overflow: hidden !important;
+          
           background: linear-gradient(145deg, #004D40 0%, #002D24 100%) !important;
           padding: 32px 28px;
           position: relative;
@@ -3000,443 +2996,216 @@
         margin: 20px 0;
         pointer-events: none;
       }
-    </style>
-
-  <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
-  <style>
-    body, main, section {
-      background-color: #FFFFFF !important;
-    }
     
-    /* Remove any light gray, blueish, or off-white background colors from wrappers */
-    .simple-contact-section,
-    .donation-container, .donation-grid,
-    .contact-main-container,
-    .contact-page-grid,
-    .services-section,
-    .news-section,
-    .about-section {
-      background-color: #FFFFFF !important;
-    }
-        .section-divider {
-        width: 100%;
-        height: 80px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 4000px 100px;
-        background-color: transparent !important;
-        margin: 20px 0;
-        pointer-events: none;
-      }
-    </style>
+/* Rules Card Base Container */
+.admission-rules-card {
+  position: relative !important;
+  background-color: #ffffff !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  padding: 40px 32px !important;
+  max-width: 900px !important;
+  margin: 0 auto 30px auto !important;
+  
+  text-align: left !important;
+}
 
-  <!-- GLOBAL TYPOGRAPHY -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap');
+/* Heading */
+.admission-rules-card .container-main-heading {
+  font-family: inherit !important;
+  color: #1e293b !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.5px !important;
+}
 
-    h1, h2, h3, h4, h5, h6,
-    .section-title,
-    .card-title,
-    .heading-text {
-      font-family: 'Outfit', sans-serif !important;
-      font-weight: 700 !important;
-      color: #111111 !important;
-      letter-spacing: -0.5px !important;
-    }
+/* Ordered Rules List */
+.admission-rules-card .rules-list-container {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 10px !important;
+  margin-bottom: 20px !important;
+}
 
-    /* CONSISTENT SIZING SCALE */
-    h1, .hero-title-main { font-size: 3.2rem !important; line-height: 1.15 !important; }
-    h2, .section-big-title { font-size: 2.4rem !important; line-height: 1.2 !important; }
-    h3, .card-main-title { font-size: 1.5rem !important; line-height: 1.3 !important; }
-    h4, .sub-heading { font-size: 1.15rem !important; line-height: 1.4 !important; }
+.admission-rules-card .formal-rules-ordered-list {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  list-style-type: none !important;
+}
 
-                              /* ACCENT / SCRIPT TEXT SPANS */
-      .script-text,
-      .green-script-accent,
-      .quran-sunnah-script,
-      .signature-font,
-      .highlight-font {
-        font-family: 'Caveat', cursive, sans-serif !important;
-        color: #006754 !important;
-        font-weight: 700 !important;
-      }
-  
-      .with-zigzag-underline,
-      .script-text,
-      .green-script-accent,
-      .quran-sunnah-script,
-      .signature-font,
-      .highlight-font {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 0px;
-        text-decoration: none !important;
-        border-bottom: none !important;
-      }
-  
-      .with-zigzag-underline::after,
-      .script-text::after,
-      .green-script-accent::after,
-      .quran-sunnah-script::after,
-      .signature-font::after,
-      .highlight-font::after {
-        content: '';
-        position: absolute;
-        left: 0%;
-        bottom: -10px;
-        width: 100%;
-        height: 32px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 45' fill='none'%3E%3Cpath d='M 10 15 C 80 5, 200 5, 285 12 C 220 22, 140 28, 70 33 C 130 31, 180 30, 210 30' stroke='%23006754' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        pointer-events: none;
-      }
-              /* GLOBAL BUTTON OVERRIDES TO MATCH PRIMARY PILL */
-  
-  /* PRIMARY STYLE BUTTONS (Default: Green, Hover: White) */
-  .btn-intro-special,
-  .view-all-updates-btn,
-  .card-action-btn {
-      background: var(--primary-gradient) !important;
-      color: #ffffff !important;
-      border: 2px solid transparent !important;
+.admission-rules-card .formal-rules-ordered-list li {
+  position: relative !important;
+  font-size: 0.95rem !important;
+  color: #334155 !important;
+  line-height: 1.7 !important;
+  margin-bottom: 12px !important;
+  padding-left: 0 !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list li::before {
+  content: "\2714\FE0E" !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: -1px !important;
+  color: #006754 !important;
+  font-weight: 700 !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Uniform Highlight Box at the End */
+
+
+.admission-rules-card .uniform-title {
+  color: #006754 !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container.admission-rules-card {
+    padding: 30px 16px !important;
+    width: 92% !important;
   }
-  
-  .btn-intro-special .btn-text,
-  .view-all-updates-btn span,
-  .card-action-btn span {
-      color: #ffffff !important;
+  .admission-rules-card .rules-list-container {
+    padding: 0 !important;
   }
-  
-  .btn-intro-special .arrow-icon,
-  .btn-intro-special .btn-arrow-circle,
-  .view-all-updates-btn .cta-arrow,
-  .view-all-updates-btn .btn-arrow-circle,
-  .card-action-btn .cta-arrow,
-  .card-action-btn .btn-arrow-circle {
-      background-color: #ffffff !important;
-      color: #025F55 !important;
-      border: none !important;
+  .admission-rules-card .container-main-heading {
+    font-size: 1.35rem !important;
   }
-  
-  /* PRIMARY STYLE HOVER STATES (Green to White) */
-  .btn-intro-special:hover,
-  .view-all-updates-btn:hover,
-  .card-action-btn:hover {
-      background: #ffffff !important;
-      border: 2px solid #025F55 !important;
-      color: #025F55 !important;
-      box-shadow: 0 6px 18px rgba(2, 95, 85, 0.15) !important;
-      transform: translateY(-3px) !important;
-  }
-  
-  .btn-intro-special:hover .btn-text,
-  .view-all-updates-btn:hover span,
-  .card-action-btn:hover span {
-      color: #025F55 !important;
-  }
-  
-  .btn-intro-special:hover .arrow-icon,
-  .btn-intro-special:hover .btn-arrow-circle,
-  .view-all-updates-btn:hover .cta-arrow,
-  .view-all-updates-btn:hover .btn-arrow-circle,
-  .card-action-btn:hover .cta-arrow,
-  .card-action-btn:hover .btn-arrow-circle {
-      background-color: #025F55 !important;
-      color: #ffffff !important;
-  }
-  
-  /* ---------------------------------------------------- */
-  /* ONLY THIS BUTTON IS WHITE BY DEFAULT: btn-secondary-pill */
-  /* SECONDARY STYLE BUTTONS (Default: White, Hover: Green) */
-  
-  .btn-secondary-pill,
-  .hero-buttons a:nth-child(2),
-  .hero-buttons button:nth-child(2) {
-      background: #ffffff !important;
-      color: #025F55 !important;
-      border: 2px solid #025F55 !important;
-  }
-  
-  .btn-secondary-pill .btn-text,
-  .hero-buttons a:nth-child(2) span {
-      color: #025F55 !important;
-  }
-  
-  .btn-secondary-pill .btn-arrow-circle,
-  .hero-buttons a:nth-child(2) .btn-arrow-circle {
-      background-color: #025F55 !important;
-      color: #ffffff !important;
-      border: none !important;
-  }
-  
-  /* SECONDARY STYLE HOVER STATES (White to Green) */
-  .btn-secondary-pill:hover,
-  .hero-buttons a:nth-child(2):hover {
-      background: var(--primary-gradient) !important;
-      border: 2px solid transparent !important;
-      color: #ffffff !important;
-      box-shadow: 0 6px 18px rgba(2, 95, 85, 0.25) !important;
-      transform: translateY(-3px) !important;
-  }
-  
-  .btn-secondary-pill:hover .btn-text,
-  .hero-buttons a:nth-child(2):hover span {
-      color: #ffffff !important;
-  }
-  
-  .btn-secondary-pill:hover .btn-arrow-circle,
-  .hero-buttons a:nth-child(2):hover .btn-arrow-circle {
-      background-color: #ffffff !important;
-      color: #025F55 !important;
-  }
-  
-  /* SHARED ROTATION & STROKES FOR ALL BUTTONS ON HOVER */
-  .btn-secondary-pill:hover .btn-arrow-circle svg,
-  .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
-  .btn-intro-special:hover .arrow-icon svg,
-  .btn-intro-special:hover .btn-arrow-circle svg,
-  .view-all-updates-btn:hover .cta-arrow svg,
-  .view-all-updates-btn:hover .btn-arrow-circle svg,
-  .card-action-btn:hover .cta-arrow svg,
-  .card-action-btn:hover .btn-arrow-circle svg {
-      transform: rotate(45deg) !important;
-      transition: transform 0.3s ease !important;
-  }
-  
-  .btn-intro-special:hover .btn-arrow-circle svg stroke,
-  .view-all-updates-btn:hover .btn-arrow-circle svg stroke {
-      stroke: #ffffff !important;
-  }
-  .btn-intro-special .btn-arrow-circle svg stroke,
-  .view-all-updates-btn .btn-arrow-circle svg stroke {
-      stroke: #025F55 !important;
-  }
-  
-  /* MOBILE TOUCH STATES */
-  @media (max-width: 768px) {
-      .btn-intro-special:active,
-      .view-all-updates-btn:active,
-      .card-action-btn:active {
-          background: #ffffff !important;
-          color: #025F55 !important;
-          border: 2px solid #025F55 !important;
-          transform: scale(0.96) !important;
-      }
-      .btn-intro-special:active .arrow-icon,
-      .btn-intro-special:active .btn-arrow-circle,
-      .view-all-updates-btn:active .btn-arrow-circle,
-      .card-action-btn:active .btn-arrow-circle {
-          background-color: #025F55 !important;
-          color: #ffffff !important;
-      }
-      
-      .btn-secondary-pill:active,
-      .btn-secondary-pill:focus,
-      .hero-buttons a:nth-child(2):active {
-          background: var(--primary-gradient) !important;
-          color: #ffffff !important;
-          border: 2px solid transparent !important;
-          transform: scale(0.96) !important;
-      }
-      .btn-secondary-pill:active .btn-arrow-circle,
-      .hero-buttons a:nth-child(2):active .btn-arrow-circle {
-          background-color: #ffffff !important;
-          color: #025F55 !important;
-      }
-  }
+}
+
 </style>
 
 <style>
-.mobile-nav-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 9999;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease;
-  display: flex; justify-content: flex-end; padding: 16px;
-}
-
-.mobile-menu-card {
-  background: #FFFFFF; width: 85%; max-width: 320px;
-  border-radius: 24px; padding: 24px 28px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  transform: scale(0.6) translate(40px, -40px);
-  transform-origin: top right;
-  opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-.mobile-nav-overlay.is-active { opacity: 1; pointer-events: auto; }
-.mobile-nav-overlay.is-active .mobile-menu-card { transform: scale(1) translate(0, 0); opacity: 1; }
-
-.mobile-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.menu-tag-label { font-size: 0.75rem; font-weight: 700; color: #9CA3AF; letter-spacing: 1.5px; }
-.mobile-menu-close { background: transparent; border: none; font-size: 1.8rem; color: #1F2937; cursor: pointer; }
-.mobile-nav-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.mobile-nav-links a { text-decoration: none; color: #1F2937; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; }
-.mobile-lang-btn { text-decoration: none; color: #1F2937; font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 700; background: transparent; border: none; padding: 0; cursor: pointer; text-align: left; width: 100%; }
-</style>
-
-<style>
-/* COMPACT CARD DIMENSIONS & PADDING */
-.mobile-menu-card {
-  width: 240px !important;            /* Reduced width */
-  max-height: 380px !important;        /* Strict compact height limit */
-  padding: 16px 20px !important;       /* Tight compact padding */
-  border-radius: 20px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* COMPACT HEADER */
-.mobile-menu-header {
-  margin-bottom: 10px !important;
-}
-
-.menu-tag-label {
-  font-size: 0.65rem !important;
-  letter-spacing: 1px !important;
-  color: #9CA3AF !important;
-}
-
-.mobile-menu-close {
-  font-size: 1.2rem !important;
-  color: #4B5563 !important;
-}
-
-/* COMPACT LINKS LIST */
-.mobile-nav-links {
+/* Admissions Minimal Header */
+.about-minimal-header {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  padding: 20px 20px 30px 20px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;                /* Reduced gap between items */
-  padding: 0 !important;
-  margin: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+    border-top: 15px solid #ffffff !important;
 }
 
-.mobile-nav-links a, .mobile-lang-btn {
-  font-size: 0.95rem !important;      /* Small sleek font size */
-  font-weight: 600 !important;
-  text-transform: capitalize !important; /* Sentence case like "Home", "About Us" */
-  color: #374151 !important;
-  line-height: 1.2 !important;
-}
-
-.mobile-nav-links a:hover, .mobile-lang-btn:hover {
-  color: #006754 !important;
-}
-</style>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
-<style>
-.iti { width: 100%; }
-.iti__country-list { z-index: 999999 !important; }
-</style>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
-<style>
-.iti { width: 100%; }
-.iti__country-list { z-index: 999999 !important; }
-</style>
-<style>
-/* Hide home page header for admissions page just like about us */
-.sticky-header,
-.mobile-logo-container {
-    display: none !important;
-}
-</style>
-<style>
-/* -------------------------------------------------------------
-   NEW CLEAN MOBILE MENU OVERRIDES (Ported from about.html)
-   ------------------------------------------------------------- */
-.mobile-nav-overlay {
-  display: flex !important; 
-  position: fixed !important;
-  top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
-  background: rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(4px) !important;
-  z-index: 9999 !important;
-  opacity: 0 !important;
+/* Watermark Logo */
+.about-minimal-header::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('assets/logo.png') !important;
+  background-size: auto 95% !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.12 !important;
+  z-index: 1 !important;
   pointer-events: none !important;
-  align-items: flex-start !important; 
-  padding-top: 80px !important; 
-  justify-content: flex-start !important; /* Docks to the Left in English */
-  transition: opacity 0.3s ease !important;
-}
-.mobile-nav-overlay.is-active { 
-  opacity: 1 !important; 
-  pointer-events: auto !important; 
 }
 
-/* RTL OVERRIDE */
-html[dir=rtl] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
-  justify-content: flex-end !important; /* Docks to the Right in Urdu */
-}
-
-/* CARD DEFAULT STATE (Slides in from Left) */
-.mobile-menu-card {
+/* Ensure content sits above watermark */
+.about-minimal-header > * {
   position: relative !important;
-  background: white !important;
-  height: auto !important;
-  max-height: 400px !important;
-  width: 175px !important;
-  padding: 20px 16px !important;
-  border-radius: 20px !important;
-  margin-left: 16px !important;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
-  
-  /* Slide logic */
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  transform: translateX(-150vw) !important; 
-}
-.mobile-nav-overlay.is-active .mobile-menu-card {
-  transform: translateX(0) !important;
+  z-index: 2 !important;
 }
 
-/* CARD RTL STATE (Slides in from Right) */
-html[dir=rtl] .mobile-menu-card, body.ur .mobile-menu-card {
-  margin-left: 0 !important;
-  margin-right: 16px !important;
-  transform: translateX(150vw) !important; 
-}
-html[dir=rtl] .mobile-nav-overlay.is-active .mobile-menu-card,
-body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
-  transform: translateX(0) !important;
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #ffffff !important;
 }
 
-/* HEADER & CLOSE BUTTON */
-.mobile-menu-header { 
-  display: flex !important; justify-content: space-between !important; align-items: center !important; 
-  margin-bottom: 20px !important; 
+.minimal-back-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-50%) scale(1.05) !important;
 }
-.menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
-.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
 
-/* LINKS LIST */
-.mobile-nav-links { 
-  list-style: none !important; padding: 0 !important; margin: 0 !important; 
-  display: flex !important; flex-direction: column !important; gap: 12px !important; 
+/* Floating Hamburger Menu (Right side) */
+.minimal-hamburger-btn {
+  right: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #ffffff !important;
 }
-.mobile-nav-links a, .mobile-lang-btn { 
-  text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
-  font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
-  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
-}
-.mobile-nav-links a:hover, .mobile-lang-btn:hover { color: #006754 !important; }
 
-/* RTL TEXT ALIGNMENT */
-html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
-  text-align: right !important;
+.minimal-hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-50%) scale(1.05) !important;
 }
-</style>
-<style>
-/* User Requested White Top Bar and Clean Raw Icons for Mobile */
-.about-minimal-header {
-  border-top: 15px solid #ffffff !important;
+
+/* Main Title & Breadcrumbs Flex Layout */
+.title-with-swoosh {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+/* Typography */
+.about-main-title {
+  color: #ffffff !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  margin: 0 !important;
+  letter-spacing: 0.5px !important;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* Simple Breadcrumbs (No Button) */
+.minimal-breadcrumbs {
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.9 !important;
+}
+
+.minimal-breadcrumbs .chevron {
+  opacity: 0.8 !important;
+  font-size: 0.75rem !important;
+  margin: 0 6px !important;
 }
 
 @media (max-width: 768px) {
@@ -3444,7 +3213,7 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
     border-top: 45px solid #ffffff !important;
     padding-top: 20px !important;
   }
-
+  
   html body div.about-minimal-header button.minimal-back-btn,
   html body div.about-minimal-header button[onclick*="history.back"],
   html body div.about-minimal-header button.minimal-hamburger-btn {
@@ -3457,299 +3226,33 @@ html[dir=rtl] .mobile-menu-card *, body.ur .mobile-menu-card * {
     border-radius: 0 !important;
     width: auto !important;
     height: auto !important;
-    min-width: unset !important;
-    min-height: unset !important;
-    padding: 6px !important;
-    position: absolute !important;
+    padding: 0 !important;
     top: -40px !important;
-    z-index: 999 !important;
-    color: #006754 !important;
+    transform: none !important;
   }
-
-  html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
-  html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
-  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-back-btn,
-  html:not([dir="rtl"]) body div.about-minimal-header button[onclick*="history.back"] {
-    left: 10px !important;
-    right: auto !important;
-  }
-
-  html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
-  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-hamburger-btn {
-    right: 10px !important;
-    left: auto !important;
-  }
-
-  html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
-  html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
-    right: 10px !important;
-    left: auto !important;
-  }
-
-  html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
-    left: 10px !important;
-    right: auto !important;
-  }
-
+  
   html body div.about-minimal-header button.minimal-back-btn svg,
   html body div.about-minimal-header button[onclick*="history.back"] svg,
   html body div.about-minimal-header button.minimal-hamburger-btn svg {
-    width: 24px !important;
-    height: 24px !important;
-    stroke: #006754 !important;
+    stroke: #025F55 !important;
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .about-main-title {
+    font-size: 1.8rem !important;
   }
   
-  html body div.about-minimal-header button.minimal-back-btn:hover,
-  html body div.about-minimal-header button[onclick*="history.back"]:hover,
-  html body div.about-minimal-header button.minimal-hamburger-btn:hover {
-    background: transparent !important;
-    opacity: 0.7 !important;
+  .minimal-breadcrumbs {
+    font-size: 0.8rem !important;
+    padding: 5px 14px !important;
   }
 }
 </style>
-<style>
-/* Transparent Logo Watermark behind Header Title */
-.about-minimal-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('assets/logo.png');
-  background-size: auto 95%;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.12;
-  z-index: 0;
-  pointer-events: none;
-}
 
-/* Ensure all content in the header stays above the watermark */
-/* Ensure all content in the header stays above the watermark */
-.about-minimal-header > * {
-  position: relative;
-  z-index: 1;
-}
-
-
-</style>
-</head>
-
-
-<body>
-
-<div class="mobile-logo-container">
-    <img src="assets/logo.png" alt="Madrassa Logo">
-</div>
-
-<div class="sticky-header">
-    <header>
-        <div class="brand-title-container">
-            <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
-            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
-        </div>
-        <div class="header-logo desktop-logo">
-            <img src="assets/logo.png" alt="Madrassa Logo">
-        </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-    </header>
-
-    <div class="floating-nav-container">
-        <nav class="floating-nav" id="mainNav">
-            <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
-            <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
-            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
-            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
-            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
-            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
-            <button class="lang-toggle-btn" id="langSwitch">URDU</button>
-        </nav>
-    </div>
-</div> <!-- End sticky-header -->
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
-        const langSwitchBtn = document.getElementById('langSwitch');
-        let currentLang = 'en';
-
-        langSwitchBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'ur' : 'en';
-            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
-            
-            navLinks.forEach(item => {
-                item.textContent = item.getAttribute(`data-${currentLang}`);
-            });
-            
-            const brandTitle = document.querySelector('.brand-title');
-            if (brandTitle) {
-                brandTitle.textContent = brandTitle.getAttribute(`data-${currentLang}`);
-            }
-            
-            // Also translate footer and any other dynamic text elements
-            document.querySelectorAll('[data-en]').forEach(item => {
-                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
-                    item.innerHTML = item.getAttribute(`data-${currentLang}`);
-                }
-            });
-        });
-
-        // --- Mobile Menu Toggle Logic ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const floatingNavContainer = document.querySelector('.floating-nav-container');
-
-        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
-
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent document click from immediately closing it
-            floatingNavContainer.classList.toggle('active');
-            
-            if (floatingNavContainer.classList.contains('active')) {
-                mobileMenuBtn.innerHTML = closeSVG;
-            } else {
-                mobileMenuBtn.innerHTML = hamburgerSVG;
-            }
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (floatingNavContainer.classList.contains('active') && !floatingNavContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                floatingNavContainer.classList.remove('active');
-                mobileMenuBtn.innerHTML = hamburgerSVG;
-            }
-        });
-
-        // Close menu when a navigation link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (floatingNavContainer.classList.contains('active')) {
-                    floatingNavContainer.classList.remove('active');
-                    mobileMenuBtn.innerHTML = hamburgerSVG;
-                }
-            });
-        });
-    });
-</script>
-
-<main>
-    <!-- Admissions Hero Banner -->
-<style>
-/* Minimal Header Container */
-.about-minimal-header {
-  position: relative !important;
-  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
-  padding: 20px 20px 30px 20px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin-bottom: 25px !important;
-}
-
-.minimal-back-btn {
-  left: 20px !important;
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  width: 44px !important;
-  height: 44px !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #ffffff !important;
-  transition: opacity 0.2s ease, background 0.2s ease !important;
-}
-.minimal-back-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
-
-.minimal-back-btn:hover { opacity: 0.7 !important; }
-
-html[dir="rtl"] .minimal-back-btn svg { transform: rotate(180deg) !important; }
-html[dir="rtl"] .minimal-back-btn { left: auto !important; right: 20px !important; }
-
-.minimal-hamburger-btn {
-  right: 20px !important;
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  width: 44px !important;
-  height: 44px !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: #ffffff !important;
-  transition: opacity 0.2s ease, background 0.2s ease !important;
-}
-.minimal-hamburger-btn:hover { background: rgba(255, 255, 255, 0.2) !important; }
-
-html[dir="rtl"] .minimal-hamburger-btn { right: auto !important; left: 20px !important; }
-
-
-.title-with-swoosh {
-  position: relative !important;
-  display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-}
-.about-main-title {
-  font-family: 'Outfit', sans-serif !important;
-  font-size: 2rem !important;
-  font-weight: 600 !important;
-  
-  color: #ffffff !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  letter-spacing: -0.5px !important;
-}
-.minimal-breadcrumbs {
-  margin-top: 12px !important;
-  font-size: 0.95rem !important;
-  color: #ffffff !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  margin-top: 8px !important;
-}
-.minimal-breadcrumbs .chevron {
-  font-size: 0.8rem !important;
-  opacity: 0.7 !important;
-}
-
-html[dir="rtl"] .about-main-title,
-html[dir="rtl"] .minimal-breadcrumbs {
-  margin-top: 12px !important;
-    font-family: 'Jameel Noori Nastaleeq', serif !important;
-    letter-spacing: normal !important;
-    -webkit-text-stroke: 0px !important;
-}
-
-@media (max-width: 768px) {
-  .about-main-title { font-size: 1.8rem !important; }
-}
-</style>
 
 <div class="about-minimal-header">
-  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
     <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 
@@ -3764,9 +3267,71 @@ html[dir="rtl"] .minimal-breadcrumbs {
     </div>
   </div>
 </div>
+<div class="about-container admission-instructions-card">
+  
+  
+  <!-- Main Title -->
+  <h2 class="container-main-heading">Instructions for Admission Candidates</h2>
+  
+  <div class="instructions-content-list">
+    <!-- Point 1 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">1. Admission Condition for Hifz</h3>
+      <ul class="inst-subpoints">
+        <li>Candidate's age must not exceed 13 years.</li>
+      </ul>
+    </div>
 
+    <!-- Point 2 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">2. Required Documents (Must be attached with form)</h3>
+      <ul class="inst-subpoints">
+        <li>2 attested copies of Form 'B' or School/Birth Certificate</li>
+        <li>2 attested copies of Guardian's CNIC</li>
+        <li>4 recent passport-size photographs of the candidate</li>
+      </ul>
+    </div>
+  </div>
 
-</main>
+  <!-- Highlight Notice -->
+  <div class="notice-badge">
+    <strong>Note:</strong> Free education is provided to deserving and Zakat-eligible students.
+  </div>
+</div>
+<div class="about-container admission-rules-card">
+  <!-- Main Title -->
+  <h2 class="container-main-heading">Student Code of Conduct & Regulations</h2>
+
+  <!-- Rules List Container -->
+  <div class="rules-list-container">
+    <ul class="formal-rules-ordered-list">
+      <li>Every student must act according to Shariah, avoid prohibitions, and keep their appearance (Waz-e-Qat) strictly in accordance with Sunnah.</li>
+      <li>It is mandatory to show complete respect and honor to all teachers, administrators, and staff members.</li>
+      <li>Students must focus purely on education until the end of the academic year, and must not have any affiliation with political or non-political organizations, nor participate in processions or fund-raising campaigns.</li>
+      <li>Leaving the madrasa before annual exams without permission is strictly prohibited. Except for the period between Asr and Maghrib, going outside without permission, setting up tuition, or leading prayers (Imamat) elsewhere is not allowed.</li>
+      <li>Avoid quarrels, abusive language, and misconduct. In case of any complaint, report directly to the Nazim of the Madrasa.</li>
+      <li>The madrasa holds no responsibility for any accidents or damages occurring to students outside madrasa premises during or outside educational hours.</li>
+      <li>Protect all madrasa property and compensate for any damage caused without delay.</li>
+      <li>I authorize the Director and management of the madrasa to spend Zakat and other Sadaqat-e-Wajibah funds received on my behalf towards madrasa expenses.</li>
+      <li>No guest can be allowed to stay overnight at the madrasa without written permission from the Nazim.</li>
+      <li>Hair must be trimmed properly in the first week of every month (passing a fine-tooth machine/shaver over the head is not permitted unless specified, keep proper short Islamic haircut).</li>
+      <li><strong>Keeping a mobile phone of any kind is strictly prohibited and is an offense punishable by immediate expulsion.</strong></li>
+      <li>Monthly fees must be deposited personally at the Nazim office during the first week of every month and receipt must be collected. In case of delay, the guardian must submit it in person.</li>
+      <li>Consider the madrasa as your own educational home, regard it with sincere well-wishing, and prove your loyalty as a duty.</li>
+      <li>Obedience to the rules and regulations amended from time to time by the madrasa is mandatory for both the student and the guardian.</li>
+    </ol>
+  </div>
+
+  <!-- Special Uniform Box at the Very End -->
+  <!-- Special Uniform Box at the Very End -->
+    <ul class="uniform-list" style="list-style: none; padding-left: 20px; margin-top: 12px; margin-bottom: 0;">
+      <li style="position: relative; font-size: 0.95rem; color: #334155; line-height: 1.7;">
+        <span style="position: absolute; left: -20px; top: -1px; color: #006754; font-weight: 700;">&#x2714;&#xFE0E;</span>
+        <strong style="color: #006754;">Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.
+      </li>
+    </ul>
+</div>
+  </main>
 
 <footer class="site-footer">
     <div class="footer-content">
@@ -3827,11 +3392,11 @@ html[dir="rtl"] .minimal-breadcrumbs {
 </footer>
 
 
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="if(event.target === this) this.classList.remove('active');">
   <div class="mobile-menu-card">
     <div class="mobile-menu-header">
       <span class="menu-tag-label">MENU</span>
-      <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+      <button class="mobile-menu-close" id="mobileMenuClose" onclick="document.getElementById('mobileNavOverlay').classList.remove('active');">&times;</button>
     </div>
             <ul class="mobile-nav-links">
       <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
@@ -3858,18 +3423,18 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          mobileNavOverlay.classList.add('is-active');
+          mobileNavOverlay.classList.add('active');
       });
       
       if(mobileMenuClose) {
         mobileMenuClose.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('is-active');
+            mobileNavOverlay.classList.remove('active');
         });
       }
       
       mobileNavOverlay.addEventListener('click', (e) => {
           if(e.target === mobileNavOverlay) {
-              mobileNavOverlay.classList.remove('is-active');
+              mobileNavOverlay.classList.remove('active');
           }
       });
   }
@@ -3974,6 +3539,90 @@ document.addEventListener('DOMContentLoaded', () => {
     height: 16px !important;
   }
 }
+
+/* Rules Card Base Container */
+.admission-rules-card {
+  position: relative !important;
+  background-color: #ffffff !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  padding: 40px 32px !important;
+  max-width: 900px !important;
+  margin: 0 auto 30px auto !important;
+  
+  text-align: left !important;
+}
+
+/* Heading */
+.admission-rules-card .container-main-heading {
+  font-family: inherit !important;
+  color: #1e293b !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Ordered Rules List */
+.admission-rules-card .rules-list-container {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 10px !important;
+  margin-bottom: 20px !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  list-style-type: none !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list li {
+  position: relative !important;
+  font-size: 0.95rem !important;
+  color: #334155 !important;
+  line-height: 1.7 !important;
+  margin-bottom: 12px !important;
+  padding-left: 0 !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list li::before {
+  content: "\2714\FE0E" !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: -1px !important;
+  color: #006754 !important;
+  font-weight: 700 !important;
+}
+
+.admission-rules-card .formal-rules-ordered-list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Uniform Highlight Box at the End */
+
+
+.admission-rules-card .uniform-title {
+  color: #006754 !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container.admission-rules-card {
+    padding: 30px 16px !important;
+    width: 92% !important;
+  }
+  .admission-rules-card .rules-list-container {
+    padding: 0 !important;
+  }
+  .admission-rules-card .container-main-heading {
+    font-size: 1.35rem !important;
+  }
+}
+
 </style>
 
 </body>
@@ -4002,3 +3651,249 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+<style>
+/* Base Container for Admission Instructions */
+.admission-instructions-card {
+  position: relative !important;
+  background-color: #ffffff !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 103, 84, 0.08) !important;
+  padding: 40px 32px !important;
+  max-width: 900px !important;
+  margin: 40px auto 30px auto !important; /* Kept margin-top 40px for spacing from header */
+  
+  text-align: left !important;
+}
+
+/* Heading */
+.admission-instructions-card .container-main-heading {
+  font-family: inherit !important;
+  color: #1e293b !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Notice Box */
+.admission-instructions-card .notice-badge {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 1.6rem !important;
+  color: #006754 !important;
+  margin-top: 32px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.3 !important;
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-weight: 700 !important;
+  text-align: center !important; /* Looks more elegant centered as a cursive quote */
+}
+
+.admission-instructions-card .notice-badge strong {
+  font-weight: 700 !important;
+  color: #006754 !important;
+}
+
+/* Instruction Items */
+.admission-instructions-card .instructions-content-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.admission-instructions-card .instruction-box {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.admission-instructions-card .inst-head {
+  color: #006754 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  list-style-type: none !important;
+}
+
+.admission-instructions-card .inst-subpoints li {
+  position: relative !important;
+  font-size: 0.95rem !important;
+  color: #334155 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 6px !important;
+  padding-left: 5px !important;
+}
+
+.admission-instructions-card .inst-subpoints li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints li::before {
+  content: "\2714\FE0E" !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: -1px !important;
+  color: #006754 !important;
+  font-size: 1.1rem !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container.admission-instructions-card {
+    padding: 30px 16px !important;
+    width: 92% !important;
+  }
+  .admission-instructions-card .container-main-heading {
+    font-size: 1.35rem !important;
+  }
+}
+</style>
+
+
+<style>
+
+
+<style>
+/* Safe Corner Dots */
+.admission-instructions-card, .admission-rules-card {
+    background-color: #ffffff !important;
+    position: relative !important;
+    
+    z-index: 1 !important;
+}
+
+/* Ensure content sits above background */
+.admission-instructions-card > *, .admission-rules-card > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Top Right Design */
+.admission-instructions-card::before, .admission-rules-card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important; right: 0 !important;
+    width: 600px !important; height: 600px !important; /* Large enough to show the beautiful dots */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
+    background-size: 100% 100% !important; /* We scale a 600x600 square, so dots look normal! */
+    background-position: top right !important;
+    opacity: 0.8 !important;
+    z-index: 0 !important;
+    mix-blend-mode: multiply !important;
+    /* This fades out the hard edges into the white background! */
+    mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at top right, black 20%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+/* Bottom Left Design */
+.admission-instructions-card::after, .admission-rules-card::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important; left: 0 !important;
+    width: 600px !important; height: 600px !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('assets/container-bg.jpg') !important;
+    background-size: 100% 100% !important;
+    background-position: bottom left !important;
+    opacity: 0.8 !important;
+    z-index: 0 !important;
+    mix-blend-mode: multiply !important;
+    mask-image: radial-gradient(ellipse at bottom left, black 20%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at bottom left, black 20%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+</style>
+
+<style>
+/* -------------------------------------------------------------
+   NEW CLEAN MOBILE MENU OVERRIDES (Ported from index.html)
+   ------------------------------------------------------------- */
+.mobile-nav-overlay {
+  display: flex !important; 
+  position: fixed !important;
+  top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 9999 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  align-items: flex-start !important; 
+  padding-top: 80px !important; 
+  justify-content: flex-start !important; /* Docks to the Left in English */
+  transition: opacity 0.3s ease !important;
+}
+.mobile-nav-overlay.active { 
+  opacity: 1 !important; 
+  pointer-events: auto !important; 
+}
+
+/* RTL OVERRIDE */
+html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
+  justify-content: flex-end !important; /* Docks to the Right in Urdu */
+}
+
+/* CARD DEFAULT STATE (Slides in from Left) */
+.mobile-menu-card {
+  position: relative !important;
+  background: white !important;
+  height: auto !important;
+  max-height: 400px !important;
+  width: 175px !important;
+  padding: 20px 16px !important;
+  border-radius: 20px !important;
+  margin-left: 16px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  
+  /* Slide logic */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(-150vw) !important; 
+}
+.mobile-nav-overlay.active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* CARD RTL STATE (Slides in from Right) */
+html[dir="rtl"] .mobile-menu-card, body.ur .mobile-menu-card {
+  margin-left: 0 !important;
+  margin-right: 16px !important;
+  transform: translateX(150vw) !important; 
+}
+html[dir="rtl"] .mobile-nav-overlay.active .mobile-menu-card,
+body.ur .mobile-nav-overlay.active .mobile-menu-card {
+  transform: translateX(0) !important;
+}
+
+/* HEADER & CLOSE BUTTON */
+.mobile-menu-header { 
+  display: flex !important; justify-content: space-between !important; align-items: center !important; 
+  margin-bottom: 20px !important; 
+}
+.menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
+.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
+
+/* LINKS LIST */
+.mobile-nav-links { 
+  list-style: none !important; padding: 0 !important; margin: 0 !important; 
+  display: flex !important; flex-direction: column !important; gap: 12px !important; 
+}
+.mobile-nav-links a, .mobile-lang-btn { 
+  text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
+  font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
+  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
+  margin-bottom: 0 !important;
+}
+</style>
