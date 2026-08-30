@@ -86,7 +86,7 @@
             display: none !important;
             mix-blend-mode: screen !important;
             background: transparent !important;
-            border: none !important;
+            
         }
 
         html[dir="rtl"] header .urdu-title-png,
@@ -1471,7 +1471,7 @@
 
             .welcome-badge {
                 padding: 8px 14px !important;
-                max-width: 90% !important;
+                max-width: 98% !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
             }
@@ -1570,7 +1570,7 @@
                 height: auto !important;
                 padding: 8px 18px !important;
                 border-radius: 20px !important;
-                max-width: 90% !important;
+                max-width: 98% !important;
             }
             /* 1. Reduce Container Padding & Allow Overflow */
             header, 
@@ -1757,7 +1757,7 @@
         /* Combined Hero Extension Section */
         .hero-extension-section {
             margin-top: 0 !important;
-            border: none !important;
+            
             box-shadow: none !important;
             position: relative;
             overflow: visible !important;
@@ -2434,7 +2434,7 @@
             }
             .hero-hadith-img {
                 width: 100% !important;
-                max-width: 90% !important;
+                max-width: 98% !important;
                 margin: 0 auto 20px auto !important;
             }
             .hero-badge.welcome-badge {
@@ -3025,7 +3025,7 @@
 /* Ordered Rules List */
 .admission-rules-card .rules-list-container {
   background-color: transparent !important;
-  border: none !important;
+  
   padding: 0 10px !important;
   margin-bottom: 20px !important;
 }
@@ -3082,6 +3082,160 @@
 
 
 
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 <style>
@@ -3111,7 +3265,7 @@
   background-position: center center !important;
   background-repeat: no-repeat !important;
   opacity: 0.12 !important;
-  z-index: 1 !important;
+  z-index: 10 !important;
   pointer-events: none !important;
 }
 
@@ -3221,7 +3375,7 @@
   html body div.about-minimal-header button.minimal-hamburger-btn {
     background: transparent !important;
     background-color: transparent !important;
-    border: none !important;
+    
     box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -3250,6 +3404,160 @@
     padding: 5px 14px !important;
   }
 }
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 
@@ -3302,7 +3610,7 @@
 </div>
 <div class="about-container admission-rules-card">
   <!-- Main Title -->
-  <h2 class="container-main-heading">Student Code of Conduct & Regulations</h2>
+  <h2 class="container-main-heading" data-en="Rules and Regulations" data-ur="شرائط و ضوابط">Rules and Regulations</h2>
 
   <!-- Rules List Container -->
   <div class="rules-list-container">
@@ -3328,7 +3636,199 @@
   <!-- Special Uniform Box at the Very End -->
     <div class="notice-badge"><strong>Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.</div>
 </div>
-  </main>
+  
+<div class="about-container online-admission-form-container">
+  <!-- Background Watermark Logo -->
+  <div class="form-bg-logo"></div>
+  
+
+  <!-- Heading -->
+  <h2 class="container-main-heading" data-en="Online Admission Form" data-ur="آن لائن فارمِ داخلہ">Online Admission Form</h2>
+  <p class="form-subheading-text" data-en="Please fill in the official admission application details carefully." data-ur="براہ کرم داخلہ فارم کی تفصیلات احتیاط سے پُر کریں۔">Please fill in the official admission application details carefully.</p>
+
+  <form id="madrasaAdmissionForm" class="admission-form-grid" onsubmit="handleFormSubmission(event)">
+
+      <!-- Profile Photo Upload -->
+      <div class="photo-upload-container">
+        <label for="studentPhoto" class="photo-upload-label">
+          <div class="photo-upload-box" id="photoUploadBox">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span class="upload-text" data-en="Upload Photo" data-ur="تصویر اپلوڈ کریں">Upload Photo</span>
+            <span style="font-size: 0.65rem; color: #94a3b8; margin-top: 2px; text-align: center; padding: 0 5px;" data-en="(Passport Size 35x45mm)<br>Max 2MB" data-ur="(پاسپورٹ سائز 35x45mm)<br>زیادہ سے زیادہ 2MB">(Passport Size 35x45mm)<br>Max 2MB</span>
+          </div>
+        </label>
+        <input type="file" id="studentPhoto" name="studentPhoto" accept="image/*" style="display: none;" onchange="previewPhoto(event)">
+      </div>
+
+    
+    <!-- Section 1: Course Selection & Monthly Fees -->
+    <div class="form-section-title" data-en="1. Desired Program" data-ur="1. مطلوبہ جماعت">1. Desired Program</div>
+        <div class="form-row-1">
+      <div class="form-field">
+        <label data-en="Select Desired Program *" data-ur="مطلوبہ پروگرام کا انتخاب کریں *">Select Desired Program *</label>
+        <div class="radio-group-vertical">
+          <label class="simple-radio-label">
+            <input type="radio" name="programSelection" value="Islamic & Moral Tarbiyat" required checked>
+            <span data-en="Islamic & Moral Tarbiyat" data-ur="اسلامی و اخلاقی تربیت">Islamic & Moral Tarbiyat</span>
+          </label>
+          <label class="simple-radio-label">
+            <input type="radio" name="programSelection" value="Nazra Quran Kareem" required>
+            <span data-en="Nazra Quran Kareem" data-ur="ناظرہ قرآن کریم">Nazra Quran Kareem</span>
+          </label>
+          <label class="simple-radio-label">
+            <input type="radio" name="programSelection" value="Hifz-ul-Quran" required>
+            <span data-en="Hifz-ul-Quran" data-ur="حفظ القرآن">Hifz-ul-Quran</span>
+          </label>
+          <label class="simple-radio-label">
+            <input type="radio" name="programSelection" value="Online & Offline Classes" required>
+            <span data-en="Online & Offline Classes" data-ur="آن لائن اور آف لائن کلاسز">Online & Offline Classes</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Student Information -->
+    <div class="form-section-title" data-en="2. Student Information" data-ur="2. طالب علم کی معلومات">2. Student Information</div>
+    <div class="form-row-2">
+      <div class="form-field">
+        <label for="studentFirstName" data-en="First Name *" data-ur="پہلا نام *">First Name *</label>
+        <input type="text" id="studentFirstName" name="studentFirstName" required>
+      </div>
+      <div class="form-field">
+        <label for="studentLastName" data-en="Last Name *" data-ur="آخری نام *">Last Name *</label>
+        <input type="text" id="studentLastName" name="studentLastName" required>
+      </div>
+    </div>
+
+    <div class="form-row-3">
+      <div class="form-field">
+        <label for="studentDob" data-en="Date of Birth *" data-ur="تاریخِ پیدائش *">Date of Birth *</label>
+        <input type="date" id="studentDob" name="studentDob" required>
+      </div>
+      <div class="form-field">
+        <label for="studentBForm" data-en="Candidate B-Form / CNIC *" data-ur="امیدوار کا ب-فارم / شناختی کارڈ *">Candidate B-Form / CNIC *</label>
+        <input type="text" id="studentBForm" name="studentBForm" maxlength="15" required>
+      </div>
+      <div class="form-field">
+        <label for="studentNationality" data-en="Nationality" data-ur="شہریت">Nationality</label>
+        <input type="text" id="studentNationality" name="studentNationality" value="Pakistani" required>
+      </div>
+    </div>
+
+    <div class="form-row-2">
+      <div class="form-field">
+        <label for="prevEducation" data-en="Previous Education" data-ur="سابقہ تعلیمی قابلیت">Previous Education</label>
+        <input type="text" id="prevEducation" name="prevEducation">
+      </div>
+      <div class="form-field">
+        <label for="prevSchool" data-en="Previous School" data-ur="سابقہ اسکول کا نام">Previous School</label>
+        <input type="text" id="prevSchool" name="prevSchool">
+      </div>
+    </div>
+
+    <!-- Section 3: Father & Guardian Information -->
+    <div class="form-section-title" data-en="3. Father & Guardian Details" data-ur="3. والد و سرپرست کی تفصیلات">3. Father & Guardian Details</div>
+    <div class="form-row-2">
+      <div class="form-field">
+        <label for="fatherNameEn" data-en="Father's Name (Capital Letters) *" data-ur="والد کا نام (انگریزی میں) *">Father's Name (Capital Letters) *</label>
+        <input type="text" id="fatherNameEn" name="fatherNameEn" style="text-transform: uppercase;" required>
+      </div>
+      <div class="form-field">
+        <label for="fatherOccupation" data-en="Father's Occupation" data-ur="والد کا پیشہ">Father's Occupation</label>
+        <input type="text" id="fatherOccupation" name="fatherOccupation">
+      </div>
+    </div>
+
+    <div class="form-row-3">
+      <div class="form-field">
+        <label for="guardianName" data-en="Guardian's Name" data-ur="سرپرست کا نام">Guardian's Name</label>
+        <input type="text" id="guardianName" name="guardianName">
+      </div>
+      <div class="form-field">
+        <label for="guardianRelation" data-en="Relation with Candidate" data-ur="امیدوار سے رشتہ">Relation with Candidate</label>
+        <input type="text" id="guardianRelation" name="guardianRelation">
+      </div>
+      <div class="form-field">
+        <label for="guardianCnic" data-en="Guardian CNIC No *" data-ur="سرپرست کا شناختی کارڈ نمبر *">Guardian CNIC No *</label>
+        <input type="text" id="guardianCnic" name="guardianCnic" maxlength="15" required>
+      </div>
+    </div>
+
+    <!-- Section 4: Contact & Addresses -->
+    <div class="form-section-title" data-en="4. Contact & Address" data-ur="4. رابطہ اور پتہ">4. Contact & Address</div>
+    <div class="form-row-3">
+      <div class="form-field">
+        <label for="mobile1" data-en="Mobile Number 1 *" data-ur="موبائل نمبر 1 *">Mobile Number 1 *</label>
+        <input type="text" inputmode="numeric" id="mobile1" name="mobile1" required>
+      </div>
+      <div class="form-field">
+        <label for="mobile2" data-en="Mobile Number 2" data-ur="موبائل نمبر 2">Mobile Number 2</label>
+        <input type="text" inputmode="numeric" id="mobile2" name="mobile2">
+      </div>
+      <div class="form-field">
+        <label for="whatsappNo" data-en="WhatsApp Number *" data-ur="واٹس ایپ نمبر *">WhatsApp Number *</label>
+        <input type="text" inputmode="numeric" id="whatsappNo" name="whatsappNo" required>
+      </div>
+    </div>
+
+    <div class="form-row-1">
+      <div class="form-field">
+        <label for="tempAddress" data-en="Current / Temporary Address *" data-ur="موجودہ / عارضی پتہ *">Current / Temporary Address *</label>
+        <input type="text" id="tempAddress" name="tempAddress" required>
+      </div>
+    </div>
+
+    <div class="form-row-1">
+      <div class="form-field">
+        <label for="permAddress" data-en="Permanent Address *" data-ur="مستقل پتہ *">Permanent Address *</label>
+        <input type="text" id="permAddress" name="permAddress" required>
+      </div>
+    </div>
+
+    <!-- Section 5: Guardian Undertaking -->
+    <div class="undertaking-box">
+      <label class="checkbox-container">
+        <input type="checkbox" id="undertakingCheck1" required>
+        <span class="checkmark"></span>
+        <span class="undertaking-text" data-en="<strong>Guardian Undertaking:</strong> I verify that all the information provided in this admission form (date of birth, details, and address) is absolutely correct." data-ur="<strong>حلف نامہ برائے سرپرست:</strong> میں تصدیق کرتا ہوں کہ داخلہ فارم میں دی گئی تمام معلومات (تاریخِ پیدائش، کوائف اور پتہ) بالکل درست ہیں۔">
+          <strong>Guardian Undertaking:</strong> I verify that all the information provided in this admission form (date of birth, details, and address) is absolutely correct.
+        </span>
+      </label>
+      
+      <label class="checkbox-container" style="margin-top: 15px;">
+        <input type="checkbox" id="undertakingCheck2" required>
+        <span class="checkmark"></span>
+        <span class="undertaking-text" data-en="<strong>Rules & Regulations:</strong> By submitting this form, I agree that I have read and accepted all the Rules and Regulations of the Madrasa." data-ur="<strong>قواعد و ضوابط:</strong> یہ فارم جمع کروا کر میں تسلیم کرتا/کرتی ہوں کہ میں نے مدرسہ کے تمام قواعد و ضوابط پڑھ لیے ہیں اور مجھے قبول ہیں۔">
+          <strong>Rules & Regulations:</strong> By submitting this form, I agree that I have read and accepted all the Rules and Regulations of the Madrasa.
+        </span>
+      </label>
+    </div>
+
+    <!-- Submit Action -->
+    <div class="form-submit-container">
+      <div class="swipe-container" id="swipeContainer">
+        <div class="swipe-text" id="swipeText" data-en="Swipe to Submit" data-ur="سوائپ کریں">Swipe to Submit</div>
+        <div class="swipe-button" id="swipeBtn">
+          <svg id="swipeArrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#006754" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          <svg id="swipeCheck" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+      </div>
+      <!-- Hidden Real Submit Button to trigger HTML5 Validation -->
+      <button type="submit" id="realSubmitBtn" style="display:none;"></button>
+    </div>
+
+  </form>
+</div>
+
+</main>
 
 <footer class="site-footer">
     <div class="footer-content">
@@ -3436,9 +3936,43 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 });
+
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js">
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
 <script>
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
@@ -3452,9 +3986,43 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdownContainer: document.body
     });
   });
+
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js">
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
 <script>
   const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
@@ -3468,6 +4036,23 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdownContainer: document.body
     });
   });
+
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
 </script>
 
 <style>
@@ -3565,7 +4150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Ordered Rules List */
 .admission-rules-card .rules-list-container {
   background-color: transparent !important;
-  border: none !important;
+  
   padding: 0 10px !important;
   margin-bottom: 20px !important;
 }
@@ -3620,7 +4205,164 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
+
+
+  
 
 </body>
 
@@ -3681,7 +4423,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Notice Box */
 .admission-instructions-card .notice-badge, .admission-rules-card .notice-badge {
   background-color: transparent !important;
-  border: none !important;
+  
   padding: 0 !important;
   font-size: 1.6rem !important;
   color: #006754 !important;
@@ -3707,7 +4449,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 .admission-instructions-card .instruction-box {
   background-color: transparent !important;
-  border: none !important;
+  
   padding: 0 !important;
   margin-bottom: 20px !important;
 }
@@ -3758,6 +4500,160 @@ document.addEventListener('DOMContentLoaded', () => {
     font-size: 1.35rem !important;
   }
 }
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 
@@ -3765,6 +4661,160 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <style>
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 <style>
@@ -3832,7 +4882,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
   margin-bottom: 20px !important; 
 }
 .menu-tag-label { font-size: 0.75rem !important; font-weight: 700 !important; color: #9CA3AF !important; letter-spacing: 1.5px !important; }
-.mobile-menu-close { background: transparent !important; border: none !important; font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
+.mobile-menu-close { background: transparent !important; border: none !important; outline: none !important;  font-size: 1.8rem !important; color: #1F2937 !important; cursor: pointer !important; padding: 0 !important; line-height: 1 !important; }
 
 /* LINKS LIST */
 .mobile-nav-links { 
@@ -3842,13 +4892,321 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
 .mobile-nav-links a, .mobile-lang-btn { 
   text-decoration: none !important; color: #374151 !important; font-family: 'Outfit', sans-serif !important; 
   font-size: 1rem !important; font-weight: 600 !important; text-transform: capitalize !important;
-  background: transparent !important; border: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
+  background: transparent !important; border: none !important; outline: none !important; padding: 0 !important; cursor: pointer !important; text-align: left !important; width: 100% !important;
   margin-bottom: 0 !important;
 }
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 
 <style>
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
 
 
@@ -3861,7 +5219,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     border-radius: 28px !important;
     box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
     overflow: hidden !important; /* Crucial to clip the pseudo-elements to the rounded corners! */
-    z-index: 1 !important;
+    z-index: 10 !important;
 }
 
 @media (max-width: 768px) {
@@ -3877,7 +5235,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     content: "" !important;
     position: absolute !important;
     top: 0 !important; right: 0 !important;
-    width: 600px !important; height: 600px !important;
+    width: 750px !important; max-width: 98% !important; height: 750px !important; max-height: 98% !important;
     background-image: linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), url('assets/container-bg.jpg') !important;
     background-size: 900px 600px !important;
     background-position: top right !important;
@@ -3894,7 +5252,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     content: "" !important;
     position: absolute !important;
     bottom: 0 !important; left: 0 !important;
-    width: 600px !important; height: 600px !important;
+    width: 750px !important; max-width: 98% !important; height: 750px !important; max-height: 98% !important;
     background-image: linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), url('assets/container-bg.jpg') !important;
     background-size: 900px 600px !important;
     background-position: bottom left !important;
@@ -3911,4 +5269,727 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     position: relative !important;
     z-index: 2 !important;
 }
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
 </style>
+
+
+<style>
+.about-container.online-admission-form-container {
+  position: relative !important;
+  background-color: #ffffff !important;
+  
+  
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  padding: 45px 36px !important;
+  max-width: 900px !important;
+  margin: 0 auto 40px auto !important;
+  overflow: hidden !important;
+}
+
+
+/* Match the watermark dots style of other cards */
+.online-admission-form-container::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important; right: 0 !important;
+    width: 750px !important; max-width: 98% !important; height: 750px !important; max-height: 98% !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/container-bg.jpg') !important;
+    background-size: 900px 600px !important;
+    background-position: top right !important;
+    opacity: 0.9 !important;
+    z-index: 0 !important;
+    mix-blend-mode: multiply !important;
+    mask-image: radial-gradient(ellipse at top right, black 30%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at top right, black 30%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+.online-admission-form-container::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important; left: 0 !important;
+    width: 750px !important; max-width: 98% !important; height: 750px !important; max-height: 98% !important;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/container-bg.jpg') !important;
+    background-size: 900px 600px !important;
+    background-position: bottom left !important;
+    opacity: 0.9 !important;
+    z-index: 0 !important;
+    mix-blend-mode: multiply !important;
+    mask-image: radial-gradient(ellipse at bottom left, black 30%, transparent 70%) !important;
+    -webkit-mask-image: radial-gradient(ellipse at bottom left, black 30%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+/* Ensure form elements sit above the background watermark */
+.online-admission-form-container > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.online-admission-form-container .container-main-heading {
+  color: #1e293b !important;
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 6px !important;
+}
+
+.online-admission-form-container .form-subheading-text {
+  text-align: center !important;
+  color: #64748b !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 28px !important;
+}
+
+.admission-form-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.form-section-title {
+  color: #006754 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid rgba(0, 103, 84, 0.15) !important;
+  padding-bottom: 6px !important;
+  margin-top: 10px !important;
+}
+
+/* Program Radio Card Selector */
+.program-selection-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+}
+
+.program-radio-card {
+  position: relative !important;
+  display: block !important;
+  cursor: pointer !important;
+}
+
+.program-radio-card input {
+  position: absolute !important;
+  opacity: 0 !important;
+}
+
+.radio-card-content {
+  background: #f8fafc !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 16px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  transition: all 0.25s ease !important;
+}
+
+.program-radio-card input:checked + .radio-card-content {
+  border-color: #006754 !important;
+  background-color: #e6f4ea !important;
+  box-shadow: 0 4px 14px rgba(0, 103, 84, 0.12) !important;
+}
+
+.prog-name { font-weight: 700 !important; font-size: 1rem !important; color: #1e293b !important; }
+.prog-urdu { font-size: 0.95rem !important; color: #475569 !important; margin: 2px 0 6px 0 !important; }
+.prog-fee { font-weight: 800 !important; color: #006754 !important; font-size: 1.1rem !important; }
+
+/* Grid Layouts for Form Fields */
+.form-row-1 { display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; }
+.form-row-2 { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+.form-row-3 { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 16px !important; }
+
+.form-field {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+.form-field label {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  margin-bottom: 6px !important;
+}
+
+.form-field input:not([type="radio"]):not([type="checkbox"]), .form-field select {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 30px !important;
+  padding: 12px 20px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  outline: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.form-field input:not([type="radio"]):not([type="checkbox"]):focus, .form-field select:focus {
+  border-color: #006754 !important;
+  box-shadow: 0 0 0 3px rgba(0, 103, 84, 0.12) !important;
+}
+
+/* Undertaking Box */
+.undertaking-box {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-top: 10px !important;
+}
+
+.checkbox-container {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+}
+
+.checkbox-container input {
+  margin-top: 4px !important;
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: #006754 !important;
+}
+
+.undertaking-text {
+  font-size: 0.92rem !important;
+  color: #334155 !important;
+  line-height: 1.6 !important;
+}
+
+/* Submit Button */
+.form-submit-container {
+  text-align: center !important;
+  margin-top: 15px !important;
+}
+
+.submit-form-btn {
+  background-color: #006754 !important;
+  color: #ffffff !important;
+  
+  padding: 14px 40px !important;
+  border-radius: 30px !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 18px rgba(0, 103, 84, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+
+.submit-form-btn:hover {
+  background-color: #025041 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 103, 84, 0.35) !important;
+}
+
+@media (max-width: 768px) {
+  .about-container.online-admission-form-container {
+    padding: 30px 16px !important;
+    width: 92% !important;
+  }
+  .form-row-2, .form-row-3, .program-selection-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .submit-form-btn {
+    width: 100% !important;
+  }
+}
+
+
+
+
+
+/* Transparent Logo Watermark in Form Background */
+.online-admission-form-container .form-bg-logo {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 750px !important;
+  max-width: 98% !important;
+  height: 750px !important;
+  max-height: 98% !important;
+  background-image: url('assets/logo.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  
+  /* FORCE VISIBILITY EVEN IF LOGO IS WHITE */
+  opacity: 1 !important; /* Opacity controlled via filter */
+  filter: brightness(0) opacity(0.04) !important; /* Turns ANY logo black, then makes it 12% transparent */
+  
+  z-index: 99 !important;
+  pointer-events: none !important;
+}
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background-color: #006754 !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background-color: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background-color: #006754 !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
+</style>
+<script>
+function handleFormSubmission(e) {
+  e.preventDefault();
+  alert("آپ کی درخواست کامیابی سے موصول ہو گئی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔\nApplication submitted successfully. We will contact you soon!");
+  document.getElementById('madrasaAdmissionForm').reset();
+    // Reset Swipe Button
+    setTimeout(() => {
+      const container = document.getElementById('swipeContainer');
+      const btn = document.getElementById('swipeBtn');
+      const text = document.getElementById('swipeText');
+      const arrow = document.getElementById('swipeArrow');
+      const check = document.getElementById('swipeCheck');
+      if (container) {
+        container.classList.remove('success');
+        btn.style.transform = 'translateX(0px)';
+        arrow.style.display = 'block';
+        check.style.display = 'none';
+
+          
+          document.getElementById('photoUploadBox').style.backgroundImage = 'none';
+          let urduUploadText = document.documentElement.lang === 'ur' ? "تصویر اپلوڈ کریں" : "Upload Photo";
+          document.getElementById('photoUploadBox').innerHTML = <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span class="upload-text" data-en="Upload Photo" data-ur="تصویر اپلوڈ کریں"></span><span style="font-size: 0.65rem; color: #94a3b8; margin-top: 2px; text-align: center; padding: 0 5px;" data-en="(Passport Size 35x45mm)<br>Max 2MB" data-ur="(پاسپورٹ سائز 35x45mm)<br>زیادہ سے زیادہ 2MB"></span>;
+
+          // update translation manually if needed, but the span has data-ur so global lang toggle will handle it if toggled again.
+
+        let isUrdu = document.documentElement.lang === 'ur';
+        text.innerText = isUrdu ? "سوائپ کریں" : "Swipe to Submit";
+      }
+    }, 2500);
+
+}
+
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
+
+<script>
+  // Bulletproof Swipe to Submit Logic (Pointer Events)
+  (function initSwipeBtn() {
+    const container = document.getElementById('swipeContainer');
+    const btn = document.getElementById('swipeBtn');
+    const text = document.getElementById('swipeText');
+    const form = document.getElementById('madrasaAdmissionForm');
+    const arrow = document.getElementById('swipeArrow');
+    const check = document.getElementById('swipeCheck');
+    
+    if(!container || !btn) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let maxDrag = 0;
+
+    const onPointerDown = (e) => {
+      if (container.classList.contains('success')) return;
+      isDragging = true;
+      startX = e.clientX;
+      maxDrag = container.offsetWidth - btn.offsetWidth - 8;
+      btn.style.transition = 'none';
+      text.style.transition = 'none';
+      container.setPointerCapture(e.pointerId);
+    };
+
+    const onPointerMove = (e) => {
+      if (!isDragging) return;
+      
+      currentX = e.clientX - startX;
+      if (currentX < 0) currentX = 0;
+      if (currentX > maxDrag) currentX = maxDrag;
+      
+      btn.style.transform = `translateX(${currentX}px)`;
+      text.style.opacity = 1 - (currentX / maxDrag);
+    };
+
+    const onPointerUp = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      container.releasePointerCapture(e.pointerId);
+      
+      btn.style.transition = 'transform 0.3s ease, background-color 0.4s ease';
+      text.style.transition = 'opacity 0.3s ease, color 0.4s ease';
+      
+      if (currentX >= maxDrag * 0.85) {
+        if (form && typeof form.checkValidity === 'function' && form.checkValidity()) {
+          // Success
+          btn.style.transform = `translateX(${maxDrag}px)`;
+          container.classList.add('success');
+          arrow.style.display = 'none';
+          check.style.display = 'block';
+          text.style.opacity = 1;
+          
+          let isUrdu = document.documentElement.lang === 'ur';
+          text.innerText = isUrdu ? "کامیابی سے جمع ہو گیا" : "Submitted Successfully";
+          
+          // Submit the form manually
+          setTimeout(() => {
+              if (typeof handleFormSubmission === 'function') {
+                  handleFormSubmission({ preventDefault: () => {} });
+              }
+          }, 400); 
+        } else {
+          // Invalid form
+          snapBack();
+          if (form.reportValidity) {
+              form.reportValidity(); // Show tooltips
+          }
+        }
+      } else {
+        snapBack();
+      }
+    };
+
+    const snapBack = () => {
+      currentX = 0;
+      btn.style.transform = 'translateX(0px)';
+      text.style.opacity = 1;
+    };
+
+    // Use Pointer Events for unified mouse/touch handling
+    container.addEventListener('pointerdown', onPointerDown);
+    container.addEventListener('pointermove', onPointerMove);
+    container.addEventListener('pointerup', onPointerUp);
+    container.addEventListener('pointercancel', onPointerUp);
+    
+    // Prevent default touch behaviors like scrolling on the button
+    container.addEventListener('touchstart', (e) => { e.preventDefault(); }, {passive: false});
+  })();
+  
+// Photo preview function
+function previewPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const box = document.getElementById('photoUploadBox');
+            box.style.backgroundImage = 'url(' + e.target.result + ')';
+            box.style.backgroundSize = 'cover';
+            box.style.backgroundPosition = 'center';
+            box.innerHTML = ''; // Clear icon and text
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
