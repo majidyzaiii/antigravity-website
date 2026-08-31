@@ -967,6 +967,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
 <style>
 /* Add front-page Islamic pattern to About Us cards */
+
+@media (max-width: 768px) {
+  .content-card {
+    padding: 35px 20px !important;
+  }
+}
+
 .content-card {
     position: relative;
     overflow: hidden;
@@ -2314,25 +2321,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 </style>
 <style>
-/* Fix About Us page container width on mobile - match other pages */
-@media (max-width: 768px) {
-  .about-content-wrapper {
-    width: 100% !important;
-    padding: 0 16px !important;
-    box-sizing: border-box !important;
-    max-width: 100% !important;
-    margin: 20px 0 40px 0 !important;
-  }
-  .content-card {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 20px !important;
-    padding: 24px 20px !important;
-  }
-  .about-section {
-    padding: 30px 16px !important;
-  }
-}
+
 </style>
 </head>
 <body class="about-page">
@@ -2745,11 +2734,10 @@ html:not([dir="rtl"]) .profile-quote {
 /* Professional Container Layouts */
 
 .about-content-wrapper {
-    max-width: 1000px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 1200px !important;
     margin: 40px auto 60px auto !important;
-    padding: 0 5% !important;
     box-sizing: border-box !important;
-    width: 90% !important;
 }
 
 .content-card {

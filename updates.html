@@ -967,6 +967,13 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
 <style>
 /* Add front-page Islamic pattern to About Us cards */
+
+@media (max-width: 768px) {
+  .content-card {
+    padding: 35px 20px !important;
+  }
+}
+
 .content-card {
     position: relative;
     overflow: hidden;
@@ -2724,11 +2731,10 @@ html:not([dir="rtl"]) .profile-quote {
 /* Professional Container Layouts */
 
 .about-content-wrapper {
-    max-width: 1000px !important;
+    width: calc(100% - 40px) !important;
+    max-width: 1200px !important;
     margin: 40px auto 60px auto !important;
-    padding: 0 5% !important;
     box-sizing: border-box !important;
-    width: 90% !important;
 }
 
 .content-card {
