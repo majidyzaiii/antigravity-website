@@ -4374,95 +4374,7 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     transform: scaleX(-1) !important;
   }
 </style>
-<style>
-/* Global Container Background Styling (Forced Override) */
-.about-container,
-.profile-card-container,
-.statement-card,
-.home-section-container,
-.content-box,
-.custom-card,
-.service-card,
-.section-card-container,
-.content-card,
-.vm-card,
-#about,
-#leadership,
-#courses,
-#contact,
-.intro-section,
-.hero-extension-section,
-.leadership-section,
-.impact-section,
-.courses-section,
-.updates-section,
-.news-updates-section,
-.donation-section,
-.contact-section,
-.simple-contact-section {
-  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
-    url('assets/container-bg.jpg') !important;
-  background-position: center center !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat !important;
-  background-color: #f7faf8 !important; /* Fallback color */
-  position: relative !important;
-  overflow: hidden !important;
-  transition: all 0.3s ease !important;
-  background-blend-mode: normal, multiply !important;
-}
 
-/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
-@media (min-width: 769px) {
-  /* Desktop already looks perfect with the base 100% 100% rule above */
-}
-
-/* ================= MOBILE MODE (Portrait / Lambai) ================= */
-@media (max-width: 768px) {
-  .about-container,
-  .profile-card-container,
-  .statement-card,
-  .home-section-container,
-  .content-box,
-  .custom-card,
-  .service-card,
-  .section-card-container,
-  .content-card,
-  .vm-card,
-  #about,
-  #leadership,
-  #courses,
-  #contact,
-  .intro-section,
-  .hero-extension-section,
-  .leadership-section,
-  .impact-section,
-  .courses-section,
-  .updates-section,
-  .news-updates-section,
-  .donation-section,
-  .contact-section,
-  .simple-contact-section {
-    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
-        url('assets/container-bg.jpg'),
-        url('assets/container-bg.jpg') !important;
-    background-position: 
-        top left, 
-        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
-        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
-    background-size: 
-        100% 100%, 
-        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
-        800px auto !important; 
-    background-repeat: no-repeat, no-repeat, no-repeat !important;
-    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
-  }
-}
-</style>
 <style>
 
 @font-face {
@@ -4598,6 +4510,356 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     
 
     </style>
+<style>
+/* Base Container for Admission Instructions */
+.admission-instructions-card {
+  position: relative !important;
+  
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  
+  padding: 40px 32px !important;
+  max-width: 900px !important;
+  margin: 40px auto 30px auto !important; /* Kept margin-top 40px for spacing from header */
+  
+  text-align: left !important;
+}
+
+/* Heading */
+.admission-instructions-card .container-main-heading {
+  font-family: inherit !important;
+  color: #1e293b !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Notice Box */
+.admission-instructions-card .notice-badge, .admission-rules-card .notice-badge {
+  background-color: transparent !important;
+  
+  padding: 0 !important;
+  font-size: 1.6rem !important;
+  color: #006754 !important;
+  margin-top: 32px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.3 !important;
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-weight: 700 !important;
+  text-align: center !important; /* Looks more elegant centered as a cursive quote */
+}
+
+.admission-instructions-card .notice-badge strong, .admission-rules-card .notice-badge strong {
+  font-weight: 700 !important;
+  color: #006754 !important;
+}
+
+/* Instruction Items */
+.admission-instructions-card .instructions-content-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.admission-instructions-card .instruction-box {
+  background-color: transparent !important;
+  
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.admission-instructions-card .inst-head {
+  color: #006754 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  list-style-type: none !important;
+}
+
+.admission-instructions-card .inst-subpoints li {
+  position: relative !important;
+  font-size: 0.95rem !important;
+  color: #334155 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 6px !important;
+  padding-left: 5px !important;
+}
+
+.admission-instructions-card .inst-subpoints li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints li::before {
+  content: "\2714\FE0E" !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: -1px !important;
+  color: #006754 !important;
+  font-size: 1.1rem !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container.admission-instructions-card {
+    padding: 30px 16px !important;
+    width: 92% !important;
+  }
+  .admission-instructions-card .container-main-heading {
+    font-size: 1.35rem !important;
+  }
+}
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 380px !important;
+  height: 52px !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
+</style>
+<style>
+/* Global Container Background Styling (Forced Override) */
+.about-container,
+.profile-card-container,
+.statement-card,
+.home-section-container,
+.content-box,
+.custom-card,
+.service-card,
+.section-card-container,
+.content-card,
+.vm-card,
+#about,
+#leadership,
+#courses,
+#contact,
+.intro-section,
+.hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+    url('assets/container-bg.jpg') !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7faf8 !important; /* Fallback color */
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  background-blend-mode: normal, multiply !important;
+}
+
+/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
+@media (min-width: 769px) {
+  /* Desktop already looks perfect with the base 100% 100% rule above */
+}
+
+/* ================= MOBILE MODE (Portrait / Lambai) ================= */
+@media (max-width: 768px) {
+  .about-container,
+  .profile-card-container,
+  .statement-card,
+  .home-section-container,
+  .content-box,
+  .custom-card,
+  .service-card,
+  .section-card-container,
+  .content-card,
+  .vm-card,
+  #about,
+  #leadership,
+  #courses,
+  #contact,
+  .intro-section,
+  .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
+        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
+    background-size: 
+        100% 100%, 
+        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
+  }
+}
+</style>
 </head>
 
 
@@ -4954,80 +5216,47 @@ body.hide-main-header { padding-top: 0 !important; }
 </script>
 
 <main style="padding-bottom: 60px;">
-<section class="donation-section section-card-container">
-  <div class="donation-container">
-    <div class="donation-header">
-      <h2 class="preserve-heading donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Islamic Education</span>" data-ur=" "> <span class="bold-text">Support</span> <span class="highlight-font">Islamic Education</span> </h2>
-      <p class="donation-subtitle" data-en="&quot;The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains.&quot; (Surah Al-Baqarah: 261)" data-ur=" ">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains." (Surah Al-Baqarah: 261)</p>
+
+<section class="about-container admission-instructions-card section-card-container" style="max-width: 1200px !important;">
+  <h2 class="container-main-heading" data-en="Support <span class='highlight-font'>Islamic Education</span>" data-ur=" ">Support <span class='highlight-font'>Islamic Education</span></h2>
+  
+  <p class="donation-subtitle" style="text-align: center; margin-bottom: 40px; color: #4B5563;">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains." (Surah Al-Baqarah: 261)</p>
+  
+  <div class="instructions-content-list" >
+    <!-- Point 1 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">SADAQAH & GENERAL</h3>
+      <ul class="inst-subpoints">
+        <li>Contribute towards daily meals, utilities, and everyday running expenses.</li>
+      </ul>
     </div>
-    
-    <div class="donation-grid">
-      <!-- Card 1 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="SADAQAH &amp; GENERAL" data-ur=" ">SADAQAH &amp; GENERAL</h4>
-            <p class="info-card-desc" data-en="Contribute towards daily meals, utilities, and everyday running expenses." data-ur=" ">Contribute towards daily meals, utilities, and everyday running expenses.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
 
-      <!-- Card 2 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="SPONSOR A STUDENT" data-ur=" ">SPONSOR A STUDENT</h4>
-            <p class="info-card-desc" data-en="Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month)." data-ur=" ">Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month).</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
+    <!-- Point 2 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">SPONSOR A STUDENT</h3>
+      <ul class="inst-subpoints">
+        <li>Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month).</li>
+      </ul>
+    </div>
 
-      <!-- Card 3 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="100% ZAKAT FUND" data-ur=" ">100% ZAKAT FUND</h4>
-            <p class="info-card-desc" data-en="Dedicated exclusively to poor, orphaned, and Zakat-eligible students." data-ur=" ">Dedicated exclusively to poor, orphaned, and Zakat-eligible students.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
+    <!-- Point 3 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">100% ZAKAT FUND</h3>
+      <ul class="inst-subpoints">
+        <li>Dedicated exclusively to poor, orphaned, and Zakat-eligible students.</li>
+      </ul>
+    </div>
 
-      <!-- Card 4 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="MASJID EXTENSION" data-ur=" ">MASJID EXTENSION</h4>
-            <p class="info-card-desc" data-en="Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs." data-ur=" ">Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
+    <!-- Point 4 -->
+    <div class="instruction-box" >
+      <h3 class="inst-head">MASJID EXTENSION</h3>
+      <ul class="inst-subpoints">
+        <li>Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs.</li>
+      </ul>
     </div>
   </div>
 </section>
+
 <style>
 
 @font-face {
@@ -5394,7 +5623,7 @@ body.hide-main-header { padding-top: 0 !important; }
         pointer-events: none;
       }
     </style>
-<section class="simple-contact-section section-card-container" id="contact" style="margin-top: 40px;">
+<section class="about-container admission-instructions-card section-card-container" id="contact" style="margin-top: 40px; max-width: 1200px !important;">
   <div class="contact-main-container">
 
     <div class="contact-left-col">
