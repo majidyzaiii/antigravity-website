@@ -3573,16 +3573,22 @@
 
 
 
+
+
 <style>
 @media (min-width: 769px) {
     .about-minimal-header {
         margin-top: -20px !important;
-        border-top: 20px solid rgba(2, 95, 85, 0.95) !important;
-        background-clip: padding-box !important;
+        padding-top: 40px !important;
+        border-top: none !important;
+    }
+    
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn {
+        top: calc(50% + 10px) !important;
     }
 }
 </style>
-
 <div class="about-minimal-header">
   <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
     <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
