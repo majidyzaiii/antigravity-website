@@ -1116,5 +1116,23 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 </style>
 
+
+<script>
+function obliterateWhiteBar() {
+    var h = document.querySelector('.about-minimal-header');
+    if (h) {
+        var topGap = h.getBoundingClientRect().top;
+        if (topGap > 0 && topGap < 100) {
+            h.style.marginTop = '-' + topGap + 'px';
+            h.style.paddingTop = (20 + topGap) + 'px'; // compensate for text hitting top
+        }
+    }
+}
+window.addEventListener('load', obliterateWhiteBar);
+window.addEventListener('resize', obliterateWhiteBar);
+document.addEventListener('DOMContentLoaded', obliterateWhiteBar);
+obliterateWhiteBar();
+</script>
+
 </body>
 </html>
