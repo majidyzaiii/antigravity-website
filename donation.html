@@ -4374,6 +4374,230 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     transform: scaleX(-1) !important;
   }
 </style>
+<style>
+/* Global Container Background Styling (Forced Override) */
+.about-container,
+.profile-card-container,
+.statement-card,
+.home-section-container,
+.content-box,
+.custom-card,
+.service-card,
+.section-card-container,
+.content-card,
+.vm-card,
+#about,
+#leadership,
+#courses,
+#contact,
+.intro-section,
+.hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+    url('assets/container-bg.jpg') !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7faf8 !important; /* Fallback color */
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  background-blend-mode: normal, multiply !important;
+}
+
+/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
+@media (min-width: 769px) {
+  /* Desktop already looks perfect with the base 100% 100% rule above */
+}
+
+/* ================= MOBILE MODE (Portrait / Lambai) ================= */
+@media (max-width: 768px) {
+  .about-container,
+  .profile-card-container,
+  .statement-card,
+  .home-section-container,
+  .content-box,
+  .custom-card,
+  .service-card,
+  .section-card-container,
+  .content-card,
+  .vm-card,
+  #about,
+  #leadership,
+  #courses,
+  #contact,
+  .intro-section,
+  .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
+        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
+    background-size: 
+        100% 100%, 
+        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
+  }
+}
+</style>
+<style>
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    /* Soft background page canvas */
+    body {
+      background-color: #f4f8f6 !important; /* Soft neutral grey-green canvas */
+    }
+
+    /* Light Shaded Floating Section Cards */
+    .section-card-container {
+      background: #ffffff !important;
+      background: linear-gradient(180deg, #f0f7f2 0%, #dae6de 100%) !important;
+      border-radius: 28px !important;
+      padding: 50px 40px !important;
+      margin: 40px auto !important;
+      max-width: 1200px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    }
+
+    /* Mobile adjustments for section cards */
+    @media (max-width: 768px) {
+        .section-card-container {
+            padding: 30px 20px !important;
+            margin: 20px 4% !important;
+            border-radius: 20px !important;
+        }
+    }
+
+    /* Light Card Inner Elements */
+    .section-card-container h2, 
+    .section-card-container h3, 
+    .section-card-container p {
+      color: #1a2e2a !important;
+    }
+
+    /* Container spacing away from outer green frame border */
+    .figure-overlay-info {
+      position: absolute !important;
+      bottom: 25px !important;
+      left: 10px !important; /* Pulled left to create gap on the right */
+      right: 20px !important; /* Prevents badge from touching the right line */
+      z-index: 3 !important;
+      text-align: left !important;
+    }
+
+    /* Small prefix above badge */
+    .sub-prefix {
+      display: block !important;
+      font-size: 0.85rem !important;
+      margin-left: 14px !important; /* Pushes text inside the frame line, aligning with inner badge text */
+      font-weight: 600 !important;
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Green highlight badge box */
+    .name-badge {
+      white-space: nowrap !important; /* Force single line */
+      display: inline-block !important;
+      background: linear-gradient(135deg, #009378 0%, #005445 100%) !important; /* Premium Light to Dark Green */
+      color: #FFFFFF !important; /* PURE WHITE TEXT FOR HIGH VISIBILITY */
+      font-size: 1.3rem !important;
+      font-weight: 700 !important;
+      padding: 6px 14px !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+      margin-right: 10px !important; /* Ensures gap from outer green line */
+    }
+  .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+
+    /* Fix intro card corners & Force Floating Card Styles on Intro Container */
+    #about, .hero-extension-section,
+    #intro,
+    .intro-section,
+    section[class*="hero-extension"],
+    section[class*="intro"],
+    .section-card-container:first-of-type {
+      width: calc(100% - 40px) !important;
+      max-width: 1200px !important;
+      margin: 40px auto !important;
+      border-radius: 28px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04) !important;
+      overflow: hidden !important;
+    }
+
+    /* Hero bottom divider gradient line */
+    .hero-section::after,
+    .hero-bottom-divider,
+    hr.hero-line {
+      display: none !important; /* Removed horizontal line */
+      content: "" !important;
+      width: 80% !important;
+      height: 2px !important;
+      margin: 40px auto 20px auto !important;
+      background: linear-gradient(90deg, rgba(0, 103, 84, 0) 0%, rgba(0, 103, 84, 0.4) 50%, rgba(0, 103, 84, 0) 100%) !important;
+      border: none !important;
+    }
+    /* Remove inner grey background from donation grid */
+    .donation-grid, .donation-grid-wrapper, .donation-container {
+        background-color: transparent !important;
+        background: transparent !important;
+    }
+    /* Center align the Introduction card content */
+    #about {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    
+
+    
+
+    </style>
 </head>
 
 
