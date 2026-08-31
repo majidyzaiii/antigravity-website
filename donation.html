@@ -4167,6 +4167,213 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     html[dir='rtl'] .footer-bottom, html[lang='ur'] .footer-bottom { text-align: center !important; }
 }
 </style>
+<style>
+
+
+  .simple-contact-section {
+    background-color: #EBF1FA; /* Soft icy blue/gray background matching image */
+    padding: 70px 5%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+
+  .contact-main-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 50px;
+    align-items: start;
+  }
+
+
+  /* LEFT COLUMN STYLING */
+  .contact-big-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+  }
+
+
+  .contact-big-title .green-accent {
+    color: #006754;
+  }
+
+
+  .contact-lead-p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 520px;
+  }
+
+
+  .direct-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+
+  /* BOTTOM 3 SUB COLUMNS */
+  .contact-sub-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+
+  /* RIGHT FLOATING FORM CARD */
+  .floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+
+  
+    .swipe-submit-container.success {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+
+  .swipe-submit-container.success .swipe-text {
+    color: #025F55 !important;
+  }
+
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+
+    .contact-sub-columns { grid-template-columns: 1fr; }
+
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+
+  
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+  }
+</style>
 </head>
 
 
@@ -4522,8 +4729,558 @@ body.hide-main-header { padding-top: 0 !important; }
     });
 </script>
 
-<main>
-  <div style="min-height: 50vh;"></div>
+<main style="padding-bottom: 60px;">
+<section class="donation-section section-card-container">
+  <div class="donation-container">
+    <div class="donation-header">
+      <h2 class="preserve-heading donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Islamic Education</span>" data-ur=" "> <span class="bold-text">Support</span> <span class="highlight-font">Islamic Education</span> </h2>
+      <p class="donation-subtitle" data-en="&quot;The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains.&quot; (Surah Al-Baqarah: 261)" data-ur=" ">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains." (Surah Al-Baqarah: 261)</p>
+    </div>
+    
+    <div class="donation-grid">
+      <!-- Card 1 -->
+      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
+        <div class="donation-info-content">
+          <div class="card-unskew">
+            <h4 class="info-card-title" data-en="SADAQAH &amp; GENERAL" data-ur=" ">SADAQAH &amp; GENERAL</h4>
+            <p class="info-card-desc" data-en="Contribute towards daily meals, utilities, and everyday running expenses." data-ur=" ">Contribute towards daily meals, utilities, and everyday running expenses.</p>
+            <div class="info-card-number">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
+        <div class="donation-info-content">
+          <div class="card-unskew">
+            <h4 class="info-card-title" data-en="SPONSOR A STUDENT" data-ur=" ">SPONSOR A STUDENT</h4>
+            <p class="info-card-desc" data-en="Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month)." data-ur=" ">Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month).</p>
+            <div class="info-card-number">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
+        <div class="donation-info-content">
+          <div class="card-unskew">
+            <h4 class="info-card-title" data-en="100% ZAKAT FUND" data-ur=" ">100% ZAKAT FUND</h4>
+            <p class="info-card-desc" data-en="Dedicated exclusively to poor, orphaned, and Zakat-eligible students." data-ur=" ">Dedicated exclusively to poor, orphaned, and Zakat-eligible students.</p>
+            <div class="info-card-number">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
+        <div class="donation-info-content">
+          <div class="card-unskew">
+            <h4 class="info-card-title" data-en="MASJID EXTENSION" data-ur=" ">MASJID EXTENSION</h4>
+            <p class="info-card-desc" data-en="Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs." data-ur=" ">Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs.</p>
+            <div class="info-card-number">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+  .simple-contact-section {
+    background-color: #EBF1FA; /* Soft icy blue/gray background matching image */
+    padding: 70px 5%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .contact-main-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 50px;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN STYLING */
+  .contact-big-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+  }
+
+  .contact-big-title .green-accent {
+    color: #006754;
+  }
+
+  .contact-lead-p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 520px;
+  }
+
+  .direct-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+  .direct-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-decoration: none;
+  }
+
+  .support-underline-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #006754;
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
+  /* BOTTOM 3 SUB COLUMNS */
+  .contact-sub-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .sub-col-item h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 8px 0;
+  }
+
+  .sub-col-item p {
+    font-size: 0.82rem;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RIGHT FLOATING FORM CARD */
+  .floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 4px 0;
+  }
+
+  .form-card-sub {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0 0 24px 0;
+  }
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .form-input-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .form-input-field:focus, .form-textarea-field:focus {
+    border-color: #006754;
+  }
+
+  .form-input-field.with-icon {
+    padding-left: 42px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+  }
+
+  .phone-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .country-code-select {
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    padding: 0 12px;
+    background: #FFFFFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .form-textarea-field {
+    width: 100%;
+    height: 85px;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .char-count {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-size: 0.7rem;
+    color: #9CA3AF;
+  }
+
+  .form-submit-blue-btn {
+    background-color: #006754; /* Custom institute brand green matching theme */
+    color: #FFFFFF;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+
+  .form-submit-blue-btn:hover {
+    background-color: #004D3F;
+  }
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+  
+    .swipe-submit-container.success {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+  .swipe-submit-container.success .swipe-text {
+    color: #025F55 !important;
+  }
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+  .form-terms-text {
+    font-size: 0.72rem;
+    color: #6B7280;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-sub-columns { grid-template-columns: 1fr; }
+  }
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+  [dir="rtl"] .form-input-field.with-icon {
+    padding-left: 16px;
+    padding-right: 42px;
+  }
+
+  [dir="rtl"] .input-icon {
+    left: auto;
+    right: 16px;
+  }
+
+  [dir="rtl"] .char-count {
+    right: auto;
+    left: 14px;
+  }
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+  
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+  }
+      .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+<section class="simple-contact-section section-card-container" id="contact" style="margin-top: 40px;">
+  <div class="contact-main-container">
+
+    <div class="contact-left-col">
+      <div class="contact-header-text">
+        <h2 class="preserve-heading contact-big-title">
+          <span class="lang-en"><span class="highlight-font">Official</span> Payment Accounts</span>
+          <span class="lang-ur"> </span>
+        </h2>
+        <p class="contact-lead-p">
+          <span class="lang-en">Transfer your generous donations directly to the official accounts of the Madrasa.</span>
+          <span class="lang-ur"> </span>
+        </p>
+      </div>
+
+      <div class="contact-sub-columns" style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="sub-col-item">
+          <h4><span class="lang-en"><i class="fas fa-university" style="color: #006754;"></i> Bank Transfer</span><span class="lang-ur"> </span></h4>
+          <p style="margin-bottom: 8px;"><strong>Account Title:</strong> Madrasa Riaz ul Quran wal Sunnah</p>
+          <p style="margin-bottom: 8px;"><strong>Bank:</strong> Meezan Bank Ltd.</p>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <strong>Account Number:</strong> <span id="acc-num">01010102030405</span>
+            <button onclick="navigator.clipboard.writeText('01010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <strong>IBAN:</strong> <span id="iban-num">PK00MEZN0001010102030405</span>
+            <button onclick="navigator.clipboard.writeText('PK00MEZN0001010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+        </div>
+
+        <div class="sub-col-item">
+          <h4><span class="lang-en"><i class="fas fa-mobile-alt" style="color: #006754;"></i> Mobile Wallets</span><span class="lang-ur"> </span></h4>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <strong>EasyPaisa:</strong> <span>0300-1234567</span>
+            <button onclick="navigator.clipboard.writeText('0300-1234567'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+            <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <strong>JazzCash:</strong> <span>0300-7654321</span>
+            <button onclick="navigator.clipboard.writeText('0300-7654321'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+            <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="contact-right-col">
+      <div class="floating-form-card">
+        <h3 class="form-card-title">
+          <span class="lang-en">Donation <span class="highlight-font">Intimation</span></span>
+          <span class="lang-ur"> </span>
+        </h3>
+        <p class="form-card-sub">
+          <span class="lang-en">Notify us to receive your official receipt</span>
+          <span class="lang-ur"> </span>
+        </p>
+
+        <form action="#" method="POST" class="contact-quick-form">
+          <div class="form-row-2col">
+            <input type="text" placeholder="Donor Full Name" data-en="Donor Full Name" required class="form-input-field">
+            <input type="tel" placeholder="WhatsApp Number" data-en="WhatsApp Number" required class="form-input-field">
+          </div>
+          
+          <div class="form-row-2col">
+            <input type="number" placeholder="Amount (PKR)" data-en="Amount (PKR)" required class="form-input-field">
+            <select class="form-input-field" required style="cursor: pointer; appearance: auto;">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Sadaqah & General">Sadaqah & General</option>
+                <option value="Sponsor a Student">Sponsor a Student</option>
+                <option value="100% Zakat Fund">100% Zakat Fund</option>
+                <option value="Masjid Extension">Masjid Extension</option>
+            </select>
+          </div>
+
+          <div class="form-row-2col">
+            <select class="form-input-field" required style="cursor: pointer; appearance: auto;">
+                <option value="" disabled selected>Transferred Via</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="EasyPaisa">EasyPaisa</option>
+                <option value="JazzCash">JazzCash</option>
+                <option value="Cash">Cash</option>
+            </select>
+            <input type="date" required class="form-input-field">
+          </div>
+
+          <div class="form-group form-input-wrapper">
+            <input type="text" placeholder="Transaction ID / Reference Number" data-en="Transaction ID / Reference Number" class="form-input form-input-field" required>
+          </div>
+
+          <!-- Original Swipe Submit Container from index.html -->
+          <div class="swipe-submit-container" id="swipeContainer">
+            <div class="swipe-text" id="swipeText">
+              <span class="lang-en">Swipe to Submit & Request Receipt</span>
+              <span class="lang-ur"> </span>
+            </div>
+            <div class="swipe-handle" id="swipeHandle">
+              <svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <button type="submit" id="hiddenSubmitBtn" style="display:none;"></button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
@@ -4708,6 +5465,101 @@ document.addEventListener('DOMContentLoaded', obliterateWhiteBar);
 obliterateWhiteBar();
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('swipeContainer');
+  const handle = document.getElementById('swipeHandle');
+  const text = document.getElementById('swipeText');
+  const form = container ? container.closest('form') : null;
+  
+  if (!container || !handle || !text) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let maxTravel = 0;
+
+  function startDrag(e) {
+    if (container.classList.contains('success') || container.classList.contains('submitting')) return;
+    
+    isDragging = true;
+    handle.classList.add('dragging');
+    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    
+    const containerWidth = container.offsetWidth;
+    const handleWidth = handle.offsetWidth;
+    maxTravel = containerWidth - handleWidth - 8; // 4px padding on each side
+  }
+
+  function doDrag(e) {
+    if (!isDragging) return;
+    e.preventDefault(); 
+    
+    let clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    let dx = clientX - startX;
+    
+    const isRtl = window.getComputedStyle(container).direction === 'rtl';
+    
+    if (isRtl) {
+       currentX = Math.max(-maxTravel, Math.min(0, dx));
+    } else {
+       currentX = Math.max(0, Math.min(maxTravel, dx));
+    }
+    
+    handle.style.transform = `translateX(${currentX}px)`;
+    
+    const progress = Math.abs(currentX) / maxTravel;
+    text.style.opacity = 1 - progress;
+  }
+
+  function stopDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    handle.classList.remove('dragging');
+    
+    const threshold = maxTravel * 0.9; 
+    
+    if (Math.abs(currentX) >= threshold) {
+      handle.style.transform = `translateX(${currentX < 0 ? -maxTravel : maxTravel}px)`;
+      submitForm();
+    } else {
+      currentX = 0;
+      handle.style.transform = `translateX(0px)`;
+      text.style.opacity = 1;
+    }
+  }
+
+  function submitForm() {
+    container.classList.add('submitting');
+    
+    setTimeout(() => {
+      container.classList.remove('submitting');
+      container.classList.add('success');
+      
+      text.innerHTML = `
+        <span class="lang-en">Submitted Successfully</span>
+        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
+      `;
+      text.style.opacity = 1;
+      
+      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      handle.style.color = '#ffffff';
+      
+      // If you have a real backend, you can trigger form.submit() here
+      // if (form) form.submit();
+      
+    }, 800);
+  }
+
+  handle.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', doDrag, {passive: false});
+  document.addEventListener('mouseup', stopDrag);
+
+  handle.addEventListener('touchstart', startDrag, {passive: false});
+  document.addEventListener('touchmove', doDrag, {passive: false});
+  document.addEventListener('touchend', stopDrag);
+});
+</script>
 </body>
 
 
