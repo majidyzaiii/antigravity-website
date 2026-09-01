@@ -4860,6 +4860,15 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
   }
 }
 </style>
+
+<style>
+@media (max-width: 768px) {
+  .swipe-text {
+    font-size: 0.75rem !important;
+  }
+}
+</style>
+
 </head>
 
 
@@ -5218,7 +5227,7 @@ body.hide-main-header { padding-top: 0 !important; }
 <main style="padding-bottom: 60px;">
 
 <section class="about-container admission-instructions-card section-card-container" style="max-width: 1200px !important;">
-  <h2 class="container-main-heading" data-en="Support <span class='highlight-font'>Islamic Education</span>" data-ur=" ">Support <span class='highlight-font'>Islamic Education</span></h2>
+  <h2 class="container-main-heading" data-en="Support Islamic Education" data-ur=" ">Support Islamic Education</h2>
   
   <p class="donation-subtitle" style="text-align: center; margin-bottom: 40px; color: #4B5563;">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains." (Surah Al-Baqarah: 261)</p>
   
@@ -5629,7 +5638,7 @@ body.hide-main-header { padding-top: 0 !important; }
     <div class="contact-left-col">
       <div class="contact-header-text">
         <h2 class="preserve-heading contact-big-title">
-          <span class="lang-en">Official Payment <span class="highlight-font">Accounts</span></span>
+          <span class="lang-en">Official Payment Accounts</span>
           <span class="lang-ur"> </span>
         </h2>
         <p class="contact-lead-p">
@@ -5643,11 +5652,11 @@ body.hide-main-header { padding-top: 0 !important; }
           <h4><span class="lang-en"><i class="fas fa-university" style="color: #006754;"></i> Bank Transfer</span><span class="lang-ur"> </span></h4>
           <p style="margin-bottom: 8px;"><strong>Account Title:</strong> Madrasa Riaz ul Quran wal Sunnah</p>
           <p style="margin-bottom: 8px;"><strong>Bank:</strong> Meezan Bank Ltd.</p>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px;">
             <strong>Account Number:</strong> <span id="acc-num">01010102030405</span>
             <button onclick="navigator.clipboard.writeText('01010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
             <strong>IBAN:</strong> <span id="iban-num">PK00MEZN0001010102030405</span>
             <button onclick="navigator.clipboard.writeText('PK00MEZN0001010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
           </div>
@@ -5655,12 +5664,12 @@ body.hide-main-header { padding-top: 0 !important; }
 
         <div class="sub-col-item">
           <h4><span class="lang-en"><i class="fas fa-mobile-alt" style="color: #006754;"></i> Mobile Wallets</span><span class="lang-ur"> </span></h4>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px;">
             <strong>EasyPaisa:</strong> <span>0300-1234567</span>
             <button onclick="navigator.clipboard.writeText('0300-1234567'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
             <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
             <strong>JazzCash:</strong> <span>0300-7654321</span>
             <button onclick="navigator.clipboard.writeText('0300-7654321'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
             <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
