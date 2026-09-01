@@ -1,0 +1,17 @@
+setTimeout(() => {
+      container.classList.remove('submitting');
+      container.classList.add('success');
+      
+      text.innerHTML = `
+        <span class="lang-en">Submitted Successfully</span>
+        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
+      `;
+      text.style.opacity = 1;
+      
+      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      handle.style.color = '#ffffff';
+      
+      // If you have a real backend, you can trigger form.submit() here
+      // if (form) form.submit();
+      
+    }
