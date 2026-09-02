@@ -4860,6 +4860,358 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     font-size: 0.75rem !important;
   }
 }
+
+/* --- INJECTED FORM CSS --- */
+  .contact-main-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 50px;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN STYLING */
+  .contact-big-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+  }
+
+  .contact-big-title .green-accent {
+    color: #006754;
+  }
+
+  .contact-lead-p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 520px;
+  }
+
+  .direct-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+  .direct-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-decoration: none;
+  }
+
+  .support-underline-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #006754;
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
+  /* BOTTOM 3 SUB COLUMNS */
+  .contact-sub-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .sub-col-item h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 8px 0;
+  }
+
+  .sub-col-item p {
+    font-size: 0.82rem;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RIGHT FLOATING FORM CARD */
+  .floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 4px 0;
+  }
+
+  .form-card-sub {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0 0 24px 0;
+  }
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .form-input-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .form-input-field:focus, .form-textarea-field:focus {
+    border-color: #006754;
+  }
+
+  .form-input-field.with-icon {
+    padding-left: 42px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+  }
+
+  .phone-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .country-code-select {
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    padding: 0 12px;
+    background: #FFFFFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .form-textarea-field {
+    width: 100%;
+    height: 85px;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .char-count {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-size: 0.7rem;
+    color: #9CA3AF;
+  }
+
+  .form-submit-blue-btn {
+    background-color: #006754; /* Custom institute brand green matching theme */
+    color: #FFFFFF;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+
+  .form-submit-blue-btn:hover {
+    background-color: #004D3F;
+  }
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+  
+    .swipe-submit-container.success {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+  .swipe-submit-container.success .swipe-text {
+    color: #025F55 !important;
+  }
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+  .form-terms-text {
+    font-size: 0.72rem;
+    color: #6B7280;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-sub-columns { grid-template-columns: 1fr; }
+  }
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+  [dir="rtl"] .form-input-field.with-icon {
+    padding-left: 16px;
+    padding-right: 42px;
+  }
+
+  [dir="rtl"] .input-icon {
+    left: auto;
+    right: 16px;
+  }
+
+  [dir="rtl"] .char-count {
+    right: auto;
+    left: 14px;
+  }
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+  
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+  }
+      .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    
+/* --- END INJECTED FORM CSS --- */
 </style>
 
 </head>
@@ -5532,7 +5884,7 @@ body.hide-main-header { padding-top: 0 !important; }
 
           <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
           <div class="form-group form-input-wrapper">
-            <input type="tel" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
+            <input type="text" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
           </div>
 
           <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
@@ -5719,7 +6071,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  const phoneInputs = document.querySelectorAll('input[type="text"]');
   phoneInputs.forEach(input => {
         window.intlTelInput(input, {
       initialCountry: pk,
@@ -5735,7 +6087,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  const phoneInputs = document.querySelectorAll('input[type="text"]');
   phoneInputs.forEach(input => {
     window.intlTelInput(input, {
       initialCountry: "pk",
