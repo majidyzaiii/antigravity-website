@@ -5485,56 +5485,7 @@ body.hide-main-header { padding-top: 0 !important; }
 <!-- CONTAINER 2: INTERACTIVE MAP & ROUTE CALCULATOR (INDRIVE / YANGO STYLE) -->
 <div class="about-container section-card-container admission-instructions-card" style="max-width: 1200px !important;">
   
-  <h2 class="container-main-heading">Find Your Route to Madrasa</h2>
-  <p class="section-intro-text" style="text-align: center; color: #4b5563; margin-bottom: 30px;">Enter your current location to calculate distance and get turn-by-turn navigation via Car, Bike, or Walking.</p>
-
-  <!-- Route Finder Widget -->
-  <div class="route-finder-box">
-  <div class="route-inputs-wrapper">
-    <div class="input-with-icon">
-      <span class="dot-start">🟢</span>
-      <input type="text" id="userOrigin" placeholder="Enter pickup area (e.g. Faizabad, Saddar)" value="FAIZABAD ADDA">
-      <button type="button" class="gps-btn" onclick="useCurrentGpsLocation()">📍 GPS</button>
-    </div>
-
-    <div class="input-with-icon">
-      <span class="dot-end">🔴</span>
-      <input type="text" id="destinationAddress" value="Jamia Masjid Quba, Muslim Town, Rawalpindi" readonly class="destination-locked">
-    </div>
-  </div>
-
-  <!-- Travel Mode Selector Tabs -->
-  <div class="travel-modes">
-    <button type="button" class="mode-tab active" data-mode="driving" onclick="selectTransportMode(this, 'driving')">
-      🚗 Car / Taxi
-    </button>
-    <button type="button" class="mode-tab" data-mode="bicycling" onclick="selectTransportMode(this, 'bicycling')">
-      🏍️ Bike
-    </button>
-    <button type="button" class="mode-tab" data-mode="walking" onclick="selectTransportMode(this, 'walking')">
-      🚶 Walk
-    </button>
-  </div>
-
-  <button type="button" class="get-route-btn" onclick="calculateAndShowRoute()">
-    Get Live Route & Estimated Time
-  </button>
-
-  <!-- Live In-Page Distance & Time Card -->
-  <div id="routeEstimateBox" class="estimate-result-card" style="display: none;">
-    <div class="estimate-badge">
-      <span id="estimateModeIcon">🚗</span>
-      <div>
-        <h4 id="estimateTimeText">Calculating...</h4>
-        <p id="estimateDistanceText">Estimated distance: -- km</p>
-      </div>
-    </div>
-    <a id="externalNavBtn" href="#" target="_blank" class="turn-by-turn-btn">Open Turn-by-Turn Navigation ↗</a>
-  </div>
-</div>
-
-<!-- Dynamic Map Container -->
-<div class="map-embed-wrapper" style="margin-top: 20px;">
+  <div class="map-embed-wrapper" style="margin-top: 20px;">
   <iframe 
     id="liveRouteMap"
     src="https://maps.google.com/maps?q=Jamia+Masjid+Quba+Muslim+Town+Rawalpindi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
