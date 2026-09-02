@@ -5856,67 +5856,38 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 
-</html>﻿<script>
-let currentTravelMode = 'driving';
+</html>﻿﻿<script>
+let selectedTravelMode = 'driving';
 
-function selectTransportMode(buttonElement, mode) {
-  currentTravelMode = mode;
-  document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.remove('active'));
-  buttonElement.classList.add('active');
+function setMode(mode, element) {
+  selectedTravelMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.remove('active'));
+  element.classList.add('active');
 }
 
-function useCurrentGpsLocation() {
+function getCurrentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
-      document.getElementById('userOrigin').value = ${position.coords.latitude},;
-      calculateAndShowRoute();
+      document.getElementById('userOrigin').value = position.coords.latitude + "," + position.coords.longitude;
     }, () => {
-      alert("GPS location permission was denied. Please write your location name manually.");
+      alert("Location permission denied. Please type your starting area manually.");
     });
+  } else {
+    alert("Geolocation is not supported by your browser.");
   }
 }
 
-function calculateAndShowRoute() {
+function navigateToMadrasa() {
   const origin = document.getElementById('userOrigin').value.trim();
-  const destination = "Jamia Masjid Quba, Muslim Town, Rawalpindi";
-
+  const destination = encodeURIComponent("Jamia Masjid Quba, Muslim Town, Rawalpindi");
+  
   if (!origin) {
-    alert("Please enter a starting area!");
+    alert("Please enter your starting location or click GPS!");
     return;
   }
-
-  // Update in-page live map iframe with route directions
-  const mapIframe = document.getElementById('liveRouteMap');
-  mapIframe.src = https://maps.google.com/maps?saddr=&daddr=&output=embed;
-
-  // Update in-page estimate card
-  const estimateBox = document.getElementById('routeEstimateBox');
-  const timeText = document.getElementById('estimateTimeText');
-  const distText = document.getElementById('estimateDistanceText');
-  const modeIcon = document.getElementById('estimateModeIcon');
-  const navBtn = document.getElementById('externalNavBtn');
-
-  estimateBox.style.display = 'flex';
-
-  let icon = '🚗';
-  let estMinutes = '10 - 15 mins';
-  let speedKm = '4.5 km';
-
-  if (currentTravelMode === 'bicycling') {
-    icon = '🏍️';
-    estMinutes = '8 - 12 mins';
-    speedKm = '4.2 km';
-  } else if (currentTravelMode === 'walking') {
-    icon = '🚶';
-    estMinutes = '45 - 55 mins';
-    speedKm = '3.9 km';
-  }
-
-  modeIcon.innerText = icon;
-  timeText.innerText = Est. Time: ~;
-  distText.innerText = Direct Route: ~ to Jamia Masjid Quba;
-
-  // Set direct navigation link
-  navBtn.href = https://www.google.com/maps/dir/?api=1&origin=&destination=&travelmode=;
+  
+  const mapsUrl = \https://www.google.com/maps/dir/?api=1&origin=\&destination=\&travelmode=\\;
+  window.open(mapsUrl, '_blank');
 }
 </script>
+
