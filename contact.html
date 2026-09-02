@@ -5878,17 +5878,17 @@ body.hide-main-header { padding-top: 0 !important; }
           </div>
 
           <!-- EMAIL INPUT WITH SUGGESTIVE PLACEHOLDER -->
-          <div class="form-group form-input-wrapper">
+          <div class="form-input-wrapper">
             <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" data-en="name@gmail.com" data-ur="ای میل (name@gmail.com)" class="form-input form-input-field" required>
           </div>
 
           <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
-          <div class="form-group form-input-wrapper">
+          <div class="form-input-wrapper">
             <input type="text" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
           </div>
 
           <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
-          <div class="form-group form-input-wrapper textarea-wrapper">
+          <div class="form-input-wrapper textarea-wrapper">
             <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" data-en="How can we help?" data-ur="ہم آپ کی کیا مدد کر سکتے ہیں؟" class="form-input form-textarea-field" required></textarea>
             <span id="char-counter" class="char-count">300/300</span>
           </div>
@@ -6071,7 +6071,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
-  const phoneInputs = document.querySelectorAll('input[type="text"]');
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
         window.intlTelInput(input, {
       initialCountry: pk,
@@ -6087,7 +6087,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
-  const phoneInputs = document.querySelectorAll('input[type="text"]');
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
     window.intlTelInput(input, {
       initialCountry: "pk",
