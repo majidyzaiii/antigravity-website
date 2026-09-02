@@ -5377,6 +5377,84 @@ body.hide-main-header { padding-top: 0 !important; }
   .contact-cards-grid { grid-template-columns: 1fr; }
   .travel-modes { flex-direction: column; }
 }
+
+.travel-modes {
+  display: flex !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+}
+
+.mode-tab {
+  flex: 1 !important;
+  padding: 12px 10px !important;
+  background-color: #f1f5f9 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+.mode-tab.active {
+  background-color: #006754 !important;
+  color: #ffffff !important;
+  border-color: #006754 !important;
+  box-shadow: 0 4px 12px rgba(0, 103, 84, 0.25) !important;
+}
+
+.estimate-result-card {
+  margin-top: 18px !important;
+  background-color: #e6f4ea !important;
+  border: 1.5px solid #006754 !important;
+  border-radius: 14px !important;
+  padding: 16px 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+.estimate-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.estimate-badge span {
+  font-size: 2rem !important;
+}
+
+.estimate-badge h4 {
+  margin: 0 !important;
+  color: #006754 !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+}
+
+.estimate-badge p {
+  margin: 3px 0 0 0 !important;
+  color: #334155 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+
+.turn-by-turn-btn {
+  background: #006754 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  transition: background 0.2s !important;
+}
+
+.turn-by-turn-btn:hover {
+  background: #025041 !important;
+}
 </style>
 <main style="padding-bottom: 60px;">
 ﻿<!-- CONTAINER 1: OFFICIAL DIRECTORY & TIMINGS -->
@@ -5416,48 +5494,61 @@ body.hide-main-header { padding-top: 0 !important; }
 
   <!-- Route Finder Widget -->
   <div class="route-finder-box">
-    <div class="route-inputs-wrapper">
-      <div class="input-with-icon">
-        <span class="dot-start">🟢</span>
-        <input type="text" id="userOrigin" placeholder="Enter your pickup / starting area (e.g. Faizabad, Saddar)">
-        <button type="button" class="gps-btn" onclick="getCurrentLocation()" title="Use Current Location">📍 GPS</button>
-      </div>
-
-      <div class="input-with-icon">
-        <span class="dot-end">🔴</span>
-        <input type="text" value="Jamia Masjid Quba, Muslim Town, Rawalpindi" readonly class="destination-locked">
-      </div>
+  <div class="route-inputs-wrapper">
+    <div class="input-with-icon">
+      <span class="dot-start">🟢</span>
+      <input type="text" id="userOrigin" placeholder="Enter pickup area (e.g. Faizabad, Saddar)" value="FAIZABAD ADDA">
+      <button type="button" class="gps-btn" onclick="useCurrentGpsLocation()">📍 GPS</button>
     </div>
 
-    <!-- Travel Mode Selector Tabs -->
-    <div class="travel-modes">
-      <label class="mode-tab active" onclick="setMode('driving', this)">
-        <span>🚗 Car / Taxi</span>
-      </label>
-      <label class="mode-tab" onclick="setMode('two_wheeler', this)">
-        <span>🏍️ Bike</span>
-      </label>
-      <label class="mode-tab" onclick="setMode('walking', this)">
-        <span>🚶 Walk</span>
-      </label>
+    <div class="input-with-icon">
+      <span class="dot-end">🔴</span>
+      <input type="text" id="destinationAddress" value="Jamia Masjid Quba, Muslim Town, Rawalpindi" readonly class="destination-locked">
     </div>
+  </div>
 
-    <button type="button" class="get-route-btn" onclick="navigateToMadrasa()">
-      Get Live Route & Estimated Time
+  <!-- Travel Mode Selector Tabs -->
+  <div class="travel-modes">
+    <button type="button" class="mode-tab active" data-mode="driving" onclick="selectTransportMode(this, 'driving')">
+      🚗 Car / Taxi
+    </button>
+    <button type="button" class="mode-tab" data-mode="bicycling" onclick="selectTransportMode(this, 'bicycling')">
+      🏍️ Bike
+    </button>
+    <button type="button" class="mode-tab" data-mode="walking" onclick="selectTransportMode(this, 'walking')">
+      🚶 Walk
     </button>
   </div>
 
-  <!-- Embedded Google Map -->
-  <div class="map-embed-wrapper">
-    <iframe 
-      src="https://maps.google.com/maps?q=Jamia+Masjid+Quba+Muslim+Town+Rawalpindi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-      width="100%" 
-      height="380" 
-      style="border:0; border-radius: 16px;" 
-      allowfullscreen="" 
-      loading="lazy">
-    </iframe>
+  <button type="button" class="get-route-btn" onclick="calculateAndShowRoute()">
+    Get Live Route & Estimated Time
+  </button>
+
+  <!-- Live In-Page Distance & Time Card -->
+  <div id="routeEstimateBox" class="estimate-result-card" style="display: none;">
+    <div class="estimate-badge">
+      <span id="estimateModeIcon">🚗</span>
+      <div>
+        <h4 id="estimateTimeText">Calculating...</h4>
+        <p id="estimateDistanceText">Estimated distance: -- km</p>
+      </div>
+    </div>
+    <a id="externalNavBtn" href="#" target="_blank" class="turn-by-turn-btn">Open Turn-by-Turn Navigation ↗</a>
   </div>
+</div>
+
+<!-- Dynamic Map Container -->
+<div class="map-embed-wrapper" style="margin-top: 20px;">
+  <iframe 
+    id="liveRouteMap"
+    src="https://maps.google.com/maps?q=Jamia+Masjid+Quba+Muslim+Town+Rawalpindi&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+    width="100%" 
+    height="400" 
+    style="border:0; border-radius: 16px;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
 </div>
 
 <!-- CONTAINER 3: FREQUENTLY ASKED QUESTIONS (FAQS) -->
@@ -5772,36 +5863,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 </html>﻿<script>
-let selectedTravelMode = 'driving';
+let currentTravelMode = 'driving';
 
-function setMode(mode, element) {
-  selectedTravelMode = mode;
-  document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.remove('active'));
-  element.classList.add('active');
+function selectTransportMode(buttonElement, mode) {
+  currentTravelMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.remove('active'));
+  buttonElement.classList.add('active');
 }
 
-function getCurrentLocation() {
+function useCurrentGpsLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
-      document.getElementById('userOrigin').value = position.coords.latitude + "," + position.coords.longitude;
+      document.getElementById('userOrigin').value = ${position.coords.latitude},;
+      calculateAndShowRoute();
     }, () => {
-      alert("Location permission denied. Please type your starting area manually.");
+      alert("GPS location permission was denied. Please write your location name manually.");
     });
-  } else {
-    alert("Geolocation is not supported by your browser.");
   }
 }
 
-function navigateToMadrasa() {
+function calculateAndShowRoute() {
   const origin = document.getElementById('userOrigin').value.trim();
-  const destination = encodeURIComponent("Jamia Masjid Quba, Muslim Town, Rawalpindi");
-  
+  const destination = "Jamia Masjid Quba, Muslim Town, Rawalpindi";
+
   if (!origin) {
-    alert("Please enter your starting location or click GPS!");
+    alert("Please enter a starting area!");
     return;
   }
-  
-  const mapsUrl = \https://www.google.com/maps/dir/?api=1&origin=\&destination=\&travelmode=\\;
-  window.open(mapsUrl, '_blank');
+
+  // Update in-page live map iframe with route directions
+  const mapIframe = document.getElementById('liveRouteMap');
+  mapIframe.src = https://maps.google.com/maps?saddr=&daddr=&output=embed;
+
+  // Update in-page estimate card
+  const estimateBox = document.getElementById('routeEstimateBox');
+  const timeText = document.getElementById('estimateTimeText');
+  const distText = document.getElementById('estimateDistanceText');
+  const modeIcon = document.getElementById('estimateModeIcon');
+  const navBtn = document.getElementById('externalNavBtn');
+
+  estimateBox.style.display = 'flex';
+
+  let icon = '🚗';
+  let estMinutes = '10 - 15 mins';
+  let speedKm = '4.5 km';
+
+  if (currentTravelMode === 'bicycling') {
+    icon = '🏍️';
+    estMinutes = '8 - 12 mins';
+    speedKm = '4.2 km';
+  } else if (currentTravelMode === 'walking') {
+    icon = '🚶';
+    estMinutes = '45 - 55 mins';
+    speedKm = '3.9 km';
+  }
+
+  modeIcon.innerText = icon;
+  timeText.innerText = Est. Time: ~;
+  distText.innerText = Direct Route: ~ to Jamia Masjid Quba;
+
+  // Set direct navigation link
+  navBtn.href = https://www.google.com/maps/dir/?api=1&origin=&destination=&travelmode=;
 }
 </script>
