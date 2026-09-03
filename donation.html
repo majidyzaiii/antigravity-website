@@ -570,7 +570,7 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
-            align-items: start;
+            align-items: stretch;
             max-width: 950px;
             margin: 0 auto;
             padding: 40px 20px;
@@ -4180,7 +4180,7 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay {
     display: grid;
     grid-template-columns: 1fr 480px;
     gap: 50px;
-    align-items: start;
+    align-items: stretch;
   }
 
 
@@ -5285,7 +5285,7 @@ body.hide-main-header { padding-top: 0 !important; }
     display: grid;
     grid-template-columns: 1fr 480px;
     gap: 50px;
-    align-items: start;
+    align-items: stretch;
   }
 
   /* LEFT COLUMN STYLING */
@@ -5679,7 +5679,7 @@ body.hide-main-header { padding-top: 0 !important; }
 
 
     <div class="contact-right-col">
-      <div class="floating-form-card">
+      <div class="floating-form-card" style="height: 100%; display: flex; flex-direction: column;">
         <h3 class="form-card-title">
           <span class="lang-en"><span class="highlight-font">Donation</span> Intimation</span>
           <span class="lang-ur"> </span>
@@ -5689,7 +5689,7 @@ body.hide-main-header { padding-top: 0 !important; }
           <span class="lang-ur"> </span>
         </p>
 
-        <form action="#" method="POST" class="contact-quick-form">
+        <form action="#" method="POST" class="contact-quick-form" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
           <div class="form-row-2col">
             <input type="text" placeholder="Donor Full Name" data-en="Donor Full Name" required class="form-input-field">
             <input type="tel" placeholder="WhatsApp Number" data-en="WhatsApp Number" required class="form-input-field">
