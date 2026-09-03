@@ -1,17 +1,1512 @@
-setTimeout(() => {
-      container.classList.remove('submitting');
-      container.classList.add('success');
-      
-      text.innerHTML = `
-        <span class="lang-en">Submitted Successfully</span>
-        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
-      `;
-      text.style.opacity = 1;
-      
-      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-      handle.style.color = '#ffffff';
-      
-      // If you have a real backend, you can trigger form.submit() here
-      // if (form) form.submit();
-      
+floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+
+  
+    .swipe-submit-container.success {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+
+  .swipe-submit-container.success .swipe-text {
+    color: #025F55 !important;
+  }
+
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+
+    .contact-sub-columns { grid-template-columns: 1fr; }
+
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+
+  
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+  }
+</style>
+
+<style>
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    /* Soft background page canvas */
+    body {
+      background-color: #f4f8f6 !important; /* Soft neutral grey-green canvas */
     }
+
+    /* Light Shaded Floating Section Cards */
+    .section-card-container {
+      background: #ffffff !important;
+      background: linear-gradient(180deg, #f0f7f2 0%, #dae6de 100%) !important;
+      border-radius: 28px !important;
+      padding: 50px 40px !important;
+      margin: 40px auto !important;
+      max-width: 950px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+    }
+
+    /* Mobile adjustments for section cards */
+    @media (max-width: 768px) {
+        .section-card-container {
+            padding: 30px 20px !important;
+            margin: 20px 4% !important;
+            border-radius: 20px !important;
+        }
+    }
+
+    /* Light Card Inner Elements */
+    .section-card-container h2, 
+    .section-card-container h3, 
+    .section-card-container p {
+      color: #1a2e2a !important;
+    }
+
+    /* Container spacing away from outer green frame border */
+    .figure-overlay-info {
+      position: absolute !important;
+      bottom: 25px !important;
+      left: 10px !important; /* Pulled left to create gap on the right */
+      right: 20px !important; /* Prevents badge from touching the right line */
+      z-index: 3 !important;
+      text-align: left !important;
+    }
+
+    /* Small prefix above badge */
+    .sub-prefix {
+      display: block !important;
+      font-size: 0.85rem !important;
+      margin-left: 14px !important; /* Pushes text inside the frame line, aligning with inner badge text */
+      font-weight: 600 !important;
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* Green highlight badge box */
+    .name-badge {
+      white-space: nowrap !important; /* Force single line */
+      display: inline-block !important;
+      background: linear-gradient(135deg, #009378 0%, #005445 100%) !important; /* Premium Light to Dark Green */
+      color: #FFFFFF !important; /* PURE WHITE TEXT FOR HIGH VISIBILITY */
+      font-size: 1.3rem !important;
+      font-weight: 700 !important;
+      padding: 6px 14px !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+      margin-right: 10px !important; /* Ensures gap from outer green line */
+    }
+  .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+
+    /* Fix intro card corners & Force Floating Card Styles on Intro Container */
+    #about, .hero-extension-section,
+    #intro,
+    .intro-section,
+    section[class*="hero-extension"],
+    section[class*="intro"],
+    .section-card-container:first-of-type {
+      width: calc(100% - 40px) !important;
+      max-width: 950px !important;
+      margin: 40px auto !important;
+      border-radius: 28px !important;
+      border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+      box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04) !important;
+      overflow: hidden !important;
+    }
+
+    /* Hero bottom divider gradient line */
+    .hero-section::after,
+    .hero-bottom-divider,
+    hr.hero-line {
+      display: none !important; /* Removed horizontal line */
+      content: "" !important;
+      width: 80% !important;
+      height: 2px !important;
+      margin: 40px auto 20px auto !important;
+      background: linear-gradient(90deg, rgba(0, 103, 84, 0) 0%, rgba(0, 103, 84, 0.4) 50%, rgba(0, 103, 84, 0) 100%) !important;
+      border: none !important;
+    }
+    /* Remove inner grey background from donation grid */
+    .donation-grid, .donation-grid-wrapper, .donation-container {
+        background-color: transparent !important;
+        background: transparent !important;
+    }
+    /* Center align the Introduction card content */
+    #about {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    
+
+    
+
+    </style>
+<style>
+/* Base Container for Admission Instructions */
+.admission-instructions-card {
+  position: relative !important;
+  
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+  
+  padding: 40px 32px !important;
+  max-width: 900px !important;
+  margin: 40px auto 30px auto !important; /* Kept margin-top 40px for spacing from header */
+  
+  text-align: left !important;
+}
+
+/* Heading */
+.admission-instructions-card .container-main-heading {
+  font-family: inherit !important;
+  color: #1e293b !important;
+  font-size: 1.65rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Notice Box */
+.admission-instructions-card .notice-badge, .admission-rules-card .notice-badge {
+  background-color: transparent !important;
+  
+  padding: 0 !important;
+  font-size: 1.6rem !important;
+  color: #006754 !important;
+  margin-top: 32px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.3 !important;
+  font-family: 'Caveat', cursive, sans-serif !important;
+  font-weight: 700 !important;
+  text-align: center !important; /* Looks more elegant centered as a cursive quote */
+}
+
+.admission-instructions-card .notice-badge strong, .admission-rules-card .notice-badge strong {
+  font-weight: 700 !important;
+  color: #006754 !important;
+}
+
+/* Instruction Items */
+.admission-instructions-card .instructions-content-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.admission-instructions-card .instruction-box {
+  background-color: transparent !important;
+  
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.admission-instructions-card .inst-head span { font-weight: inherit !important; font-family: inherit !important; }
+.admission-instructions-card .inst-head {
+  color: #006754 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  list-style-type: none !important;
+}
+
+.admission-instructions-card .inst-subpoints li {
+  position: relative !important;
+  font-size: 0.95rem !important;
+  color: #334155 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 6px !important;
+  padding-left: 5px !important;
+}
+
+.admission-instructions-card .inst-subpoints li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.admission-instructions-card .inst-subpoints li::before {
+  content: "\2714\FE0E" !important;
+  position: absolute !important;
+  left: -20px !important;
+  top: -1px !important;
+  color: #006754 !important;
+  font-size: 1.1rem !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-container.admission-instructions-card {
+    padding: 30px 16px !important;
+    width: 92% !important;
+  }
+  .admission-instructions-card .container-main-heading {
+    font-size: 1.35rem !important;
+  }
+}
+
+
+
+
+
+/* Radio Group Styles */
+.radio-group-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 10px !important;
+  padding-left: 4px !important;
+}
+.simple-radio-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.95rem !important;
+  color: #1e293b !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+.simple-radio-label input[type="radio"] {
+  width: 20px !important;
+  height: 20px !important;
+  accent-color: #006754 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .swipe-submit-btn {
+    max-width: 100% !important;
+    font-size: 1rem !important;
+  }
+}
+
+
+/* Interactive Swipe Button Design */
+.swipe-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 52px !important;
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  border-radius: 50px !important;
+  margin: 15px auto 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.4) !important;
+  border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+}
+
+.swipe-container.success {
+  background: white !important;
+  border-color: #006754 !important;
+  box-shadow: 0 8px 20px -5px rgba(0, 103, 84, 0.2) !important;
+}
+
+.swipe-text {
+  color: white !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transition: color 0.4s ease !important;
+  user-select: none !important;
+}
+
+.swipe-container.success .swipe-text {
+  color: #006754 !important;
+}
+
+.swipe-button {
+  position: absolute !important;
+  left: 4px !important;
+  top: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: grab !important;
+  z-index: 2 !important;
+  transition: transform 0.3s ease, background-color 0.4s ease !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.swipe-button:active {
+  cursor: grabbing !important;
+}
+
+.swipe-container.success .swipe-button {
+  background: linear-gradient(135deg, #025F55 0%, #004D44 60%, #013832 100%) !important;
+  box-shadow: 0 0 0 3px white inset !important; /* To give the white border effect inside */
+}
+
+
+/* Photo Upload Styles */
+.photo-upload-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.photo-upload-label {
+    cursor: pointer !important;
+}
+
+.photo-upload-box {
+    width: 120px !important;
+    height: 140px !important; /* Passport aspect ratio */
+    border: 2px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f8fafc !important;
+    transition: all 0.2s ease !important;
+    overflow: hidden !important;
+    color: #64748b !important;
+    position: relative !important;
+}
+
+.photo-upload-box:hover {
+    border-color: #006754 !important;
+    color: #006754 !important;
+    background-color: #f0fdf4 !important;
+}
+
+.photo-upload-box svg {
+    margin-bottom: 8px !important;
+}
+
+.photo-upload-box .upload-text {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+}
+
+</style>
+<style>
+/* Global Container Background Styling (Forced Override) */
+.about-container,
+.profile-card-container,
+.statement-card,
+.home-section-container,
+.content-box,
+.custom-card,
+.service-card,
+.section-card-container,
+.content-card,
+.vm-card,
+#about,
+#leadership,
+#courses,
+#contact,
+.intro-section,
+.hero-extension-section,
+.leadership-section,
+.impact-section,
+.courses-section,
+.updates-section,
+.news-updates-section,
+.donation-section,
+.contact-section,
+.simple-contact-section {
+  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+    url('assets/container-bg.jpg') !important;
+  background-position: center center !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7faf8 !important; /* Fallback color */
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  background-blend-mode: normal, multiply !important;
+}
+
+/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
+@media (min-width: 769px) {
+  /* Desktop already looks perfect with the base 100% 100% rule above */
+}
+
+/* ================= MOBILE MODE (Portrait / Lambai) ================= */
+@media (max-width: 768px) {
+  .about-container,
+  .profile-card-container,
+  .statement-card,
+  .home-section-container,
+  .content-box,
+  .custom-card,
+  .service-card,
+  .section-card-container,
+  .content-card,
+  .vm-card,
+  #about,
+  #leadership,
+  #courses,
+  #contact,
+  .intro-section,
+  .hero-extension-section,
+  .leadership-section,
+  .impact-section,
+  .courses-section,
+  .updates-section,
+  .news-updates-section,
+  .donation-section,
+  .contact-section,
+  .simple-contact-section {
+    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
+        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
+    background-size: 
+        100% 100%, 
+        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
+  }
+}
+</style>
+
+<style>
+@media (max-width: 768px) {
+  .swipe-text {
+    font-size: 0.75rem !important;
+  }
+}
+</style>
+
+</head>
+
+
+<body class="hide-main-header" style="margin: 0 !important; padding: 0 !important;">
+
+<style>
+/* Minimal Header Container */
+.about-minimal-header {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(2, 95, 85, 0.92) 0%, rgba(0, 77, 68, 0.94) 60%, rgba(1, 56, 50, 0.96) 100%), url('assets/header-bg.jpg') center center / cover no-repeat !important;
+  padding: 20px 20px 30px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 25px !important;
+}
+
+/* Floating Back Button */
+.minimal-back-btn {
+  left: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Floating Hamburger Menu */
+.minimal-hamburger-btn {
+  right: 20px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+.about-main-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.5px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  position: relative !important;
+  display: inline-block !important;
+  z-index: 1 !important;
+}
+@media (max-width: 768px) {
+  .about-main-title { font-size: 1.8rem !important; }
+}
+
+.title-with-swoosh {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.minimal-breadcrumbs {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: max-content !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin-top: 5px !important;
+  z-index: 1 !important;
+}
+
+.minimal-breadcrumbs .chevron {
+  color: #ffffff !important;
+  margin: 0 6px !important;
+  font-weight: 800 !important;
+}
+html[dir="rtl"] .minimal-breadcrumbs, body.ur .minimal-breadcrumbs, .about-page-ur .minimal-breadcrumbs {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 1.15rem !important;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+  .about-minimal-header {
+    border-top: 45px solid #ffffff !important;
+    padding-top: 20px !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn,
+  html body div.about-minimal-header button[onclick*="history.back"],
+  html body div.about-minimal-header button.minimal-hamburger-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    padding: 6px !important;
+    position: absolute !important;
+    top: -40px !important;
+    z-index: 999 !important;
+    color: #006754 !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-back-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+  html:not([dir="rtl"]) body div.about-minimal-header button.minimal-hamburger-btn {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+  html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+    left: 10px !important;
+    right: auto !important;
+  }
+
+  html body div.about-minimal-header button.minimal-back-btn svg,
+  html body div.about-minimal-header button[onclick*="history.back"] svg,
+  html body div.about-minimal-header button.minimal-hamburger-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #006754 !important;
+  }
+  
+  html body div.about-minimal-header button.minimal-back-btn:hover,
+  html body div.about-minimal-header button[onclick*="history.back"]:hover,
+  html body div.about-minimal-header button.minimal-hamburger-btn:hover {
+    background: transparent !important;
+    opacity: 0.7 !important;
+  }
+}
+
+/* Transparent Logo Watermark behind Header Title */
+.about-minimal-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/logo.png');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-minimal-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.hide-main-header { padding-top: 0 !important; }
+
+/* Hide old headers */
+.hide-main-header .sticky-header,
+.hide-main-header header.main-header,
+.hide-main-header header.site-header,
+.hide-main-header header,
+.hide-main-header .top-header-bar,
+.hide-main-header .mobile-logo-container,
+.hide-main-header .page-banner {
+    display: none !important;
+}
+</style>
+
+
+
+
+
+
+
+
+
+<style>
+@media (min-width: 769px) {
+    .about-minimal-header {
+        margin-top: -20px !important;
+        padding-top: 40px !important;
+        border-top: none !important;
+    }
+    
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn {
+        top: calc(50% + 10px) !important;
+    }
+}
+</style>
+<div class="about-minimal-header">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="title-with-swoosh">
+    <h1 class="about-main-title" data-en="Donation" data-ur="عطیات">
+      Donation
+    </h1>
+    <div class="minimal-breadcrumbs" style="margin-top: 8px !important;" data-en="<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='margin-right: 4px; position:relative; top:-1px;'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path><polyline points='9 22 9 12 15 12 15 22'></polyline></svg>Home <span class='chevron'>&gt;</span> Donation" data-ur="ہوم <span class='chevron' style='font-family: sans-serif;'>&lt;</span> عطیات">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home <span class="chevron">&gt;</span> Donation
+    </div>
+  </div>
+</div>
+
+
+<div class="mobile-logo-container">
+    <img src="assets/logo.png" alt="Madrassa Logo">
+</div>
+
+<div class="sticky-header">
+    <header>
+        <div class="brand-title-container">
+            <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
+            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+        </div>
+        <div class="header-logo desktop-logo">
+            <img src="assets/logo.png" alt="Madrassa Logo">
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu" >
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <div class="floating-nav-container">
+        <nav class="floating-nav" id="mainNav">
+            <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
+            <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
+            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
+            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
+            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
+            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
+            <button class="lang-toggle-btn" id="langSwitch">URDU</button>
+        </nav>
+    </div>
+</div> <!-- End sticky-header -->
+
+<!-- ========================================== -->
+<!-- MOBILE DRAWER NAVIGATION MENU              -->
+<!-- ========================================== -->
+<div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
+        const langSwitchBtn = document.getElementById('langSwitch');
+        let currentLang = 'en';
+
+        langSwitchBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ur' : 'en';
+            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
+            
+            navLinks.forEach(item => {
+                item.textContent = item.getAttribute(`data-${currentLang}`);
+            });
+            
+            const brandTitle = document.querySelector('.brand-title');
+            if (brandTitle) {
+                brandTitle.textContent = brandTitle.getAttribute(`data-${currentLang}`);
+            }
+            
+            // Also translate footer and any other dynamic text elements
+            document.querySelectorAll('[data-en]').forEach(item => {
+                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                    item.innerHTML = item.getAttribute(`data-${currentLang}`);
+                }
+            });
+        });
+
+        window.toggleLanguage = function() {
+            document.getElementById('langSwitch').click();
+        };
+
+        // --- Mobile Menu Toggle Logic (Drawer) ---
+        window.toggleDrawer = function() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        };
+
+        // Close drawer when clicking outside on overlay
+        document.getElementById('drawerOverlay').addEventListener('click', window.toggleDrawer);
+        
+        // Close menu when a drawer navigation link is clicked
+        const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
+                    const drawer = document.getElementById('mobileDrawer');
+                    if (drawer.classList.contains('active')) {
+                        window.toggleDrawer();
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<main style="padding-bottom: 60px;">
+
+<section class="about-container admission-instructions-card section-card-container" style="max-width: 950px !important;">
+  <h2 class="container-main-heading" data-en="Support Islamic Education" data-ur=" ">Support Islamic Education</h2>
+  
+  <p class="donation-subtitle" style="text-align: center; margin-bottom: 40px; color: #4B5563;">"The example of those who spend their wealth in the way of Allah is like a seed of grain which grows seven spikes; in each spike is a hundred grains." (Surah Al-Baqarah: 261)</p>
+  
+  <div class="instructions-content-list" >
+    <!-- Point 1 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">SADAQAH & GENERAL</h3>
+      <ul class="inst-subpoints">
+        <li>Contribute towards daily meals, utilities, and everyday running expenses.</li>
+      </ul>
+    </div>
+
+    <!-- Point 2 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">SPONSOR A STUDENT</h3>
+      <ul class="inst-subpoints">
+        <li>Sponsor a full-time residential student's complete monthly educational and living expenses (Rs. 3,000 / Month).</li>
+      </ul>
+    </div>
+
+    <!-- Point 3 -->
+    <div class="instruction-box">
+      <h3 class="inst-head">100% ZAKAT FUND</h3>
+      <ul class="inst-subpoints">
+        <li>Dedicated exclusively to poor, orphaned, and Zakat-eligible students.</li>
+      </ul>
+    </div>
+
+    <!-- Point 4 -->
+    <div class="instruction-box" >
+      <h3 class="inst-head">MASJID EXTENSION</h3>
+      <ul class="inst-subpoints">
+        <li>Ongoing Sadqah Jariyah for classroom construction, wudu areas, and repairs.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+  .simple-contact-section {
+    background-color: #EBF1FA; /* Soft icy blue/gray background matching image */
+    padding: 70px 5%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .contact-main-container {
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 50px;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN STYLING */
+  .contact-big-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+  }
+
+  .contact-big-title .green-accent {
+    color: #006754;
+  }
+
+  .contact-lead-p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    max-width: 520px;
+  }
+
+  .direct-contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 50px;
+  }
+
+  .direct-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-decoration: none;
+  }
+
+  .support-underline-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #006754;
+    text-decoration: underline;
+    margin-top: 8px;
+  }
+
+  /* BOTTOM 3 SUB COLUMNS */
+  .contact-sub-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .sub-col-item h4 {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #006754 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 12px 0 !important;
+    font-family: "Outfit", sans-serif !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .sub-col-item p {
+    font-size: 0.82rem;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RIGHT FLOATING FORM CARD */
+  .floating-form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 26px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .floating-form-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 4px 0;
+  }
+
+  .form-card-sub {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0 0 24px 0;
+  }
+
+  .contact-quick-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .form-input-field {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .form-input-field:focus, .form-textarea-field:focus {
+    border-color: #006754;
+  }
+
+  .form-input-field.with-icon {
+    padding-left: 42px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+  }
+
+  .phone-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .country-code-select {
+    border: 1px solid #E5E7EB;
+    border-radius: 30px;
+    padding: 0 12px;
+    background: #FFFFFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .form-textarea-field {
+    width: 100%;
+    height: 85px;
+    padding: 12px 14px;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .char-count {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-size: 0.7rem;
+    color: #9CA3AF;
+  }
+
+  .form-submit-blue-btn {
+    background-color: #006754; /* Custom institute brand green matching theme */
+    color: #FFFFFF;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+
+  .form-submit-blue-btn:hover {
+    background-color: #004D3F;
+  }
+
+  /* SWIPE TO SUBMIT BUTTON */
+  .swipe-submit-container {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    background-color: #006754; 
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+    touch-action: none; /* Prevent scroll on touch devices while swiping */
+  }
+
+  .swipe-submit-container.submitting {
+    filter: blur(2px);
+    opacity: 0.8;
+  }
+  
+    .swipe-submit-container.success {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
+  }
+  .swipe-submit-container.success .swipe-text {
+    color: #025F55 !important;
+  }
+      .swipe-submit-container.success .swipe-handle {
+      background-color: #025F55 !important;
+      color: #ffffff !important;
+      border: 3px solid #ffffff !important;
+  }
+  .swipe-submit-container.success .swipe-arrow-icon {
+      color: #ffffff !important;
+  }
+
+  .swipe-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    z-index: 1;
+    pointer-events: none; 
+    transition: opacity 0.3s ease;
+  }
+
+  .swipe-handle {
+    position: absolute;
+    left: 4px; 
+    top: 4px;
+    width: 40px; 
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.2s ease; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .swipe-arrow-icon {
+    color: #006754 !important;
+  }
+
+  .swipe-handle:active {
+    cursor: grabbing;
+  }
+  
+  .swipe-handle.dragging {
+    transition: none; 
+  }
+
+  .form-terms-text {
+    font-size: 0.72rem;
+    color: #6B7280;
+    text-align: center;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 992px) {
+    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
+    .contact-sub-columns { grid-template-columns: 1fr; }
+  }
+
+  /* URDU & RTL MODE SUPPORT */
+  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
+    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
+  }
+
+  [dir="rtl"] .form-input-field.with-icon {
+    padding-left: 16px;
+    padding-right: 42px;
+  }
+
+  [dir="rtl"] .input-icon {
+    left: auto;
+    right: 16px;
+  }
+
+  [dir="rtl"] .char-count {
+    right: auto;
+    left: 14px;
+  }
+
+  [dir="rtl"] .swipe-handle {
+    left: auto;
+    right: 4px;
+  }
+  
+  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+  }
+      .section-divider {
+        width: 100%;
+        height: 80px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 4000px 100px;
+        background-color: transparent !important;
+        margin: 20px 0;
+        pointer-events: none;
+      }
+    </style>
+<section class="about-container admission-instructions-card section-card-container" id="contact" style="margin-top: 40px; max-width: 950px !important;">
+  <div class="contact-main-container" style="background-color: transparent !important;">
+
+    <div class="contact-left-col">
+      <div class="contact-header-text">
+        <h2 class="container-main-heading" style="text-align: left !important; font-weight: 800 !important; color: #1e293b !important;">
+          <span class="lang-en" style="font-weight: 800 !important; color: #1e293b !important;">Official Payment Accounts</span>
+          <span class="lang-ur"> </span>
+        </h2>
+        <p class="contact-lead-p">
+          <span class="lang-en">Transfer your generous donations directly to the official accounts of the Madrasa.</span>
+          <span class="lang-ur"> </span>
+        </p>
+      </div>
+
+      <div class="contact-sub-columns" style="display: flex; flex-direction: column; gap: 30px;">
+        <div class="sub-col-item">
+          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en">Bank Transfer</span><span class="lang-ur"> </span></h3>
+          <p style="margin-bottom: 8px;"><strong>Account Title:</strong> Madrasa Riaz ul Quran wal Sunnah</p>
+          <p style="margin-bottom: 8px;"><strong>Bank:</strong> Meezan Bank Ltd.</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <strong>Account Number:</strong> <span id="acc-num">01010102030405</span>
+            <button onclick="navigator.clipboard.writeText('01010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+            <strong>IBAN:</strong> <span id="iban-num">PK00MEZN0001010102030405</span>
+            <button onclick="navigator.clipboard.writeText('PK00MEZN0001010102030405'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+        </div>
+
+        <div class="sub-col-item">
+          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en">Mobile Wallets</span><span class="lang-ur"> </span></h3>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <strong>EasyPaisa:</strong> <span>0300-1234567</span>
+            <button onclick="navigator.clipboard.writeText('0300-1234567'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+            <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+            <strong>JazzCash:</strong> <span>0300-7654321</span>
+            <button onclick="navigator.clipboard.writeText('0300-7654321'); this.innerText='Copied!'; setTimeout(()=>this.innerHTML='<i class='fas fa-copy'></i> Copy', 2000)" style="background: #eef5f3; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; color: #006754; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-copy"></i> Copy</button>
+            <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="contact-right-col">
+      <div class="floating-form-card">
+        <h3 class="form-card-title">
+          <span class="lang-en"><span class="highlight-font">Donation</span> Intimation</span>
+          <span class="lang-ur"> </span>
+        </h3>
+        <p class="form-card-sub">
+          <span class="lang-en">Notify us to receive your official receipt</span>
+          <span class="lang-ur"> </span>
+        </p>
+
+        <form action="#" method="POST" class="contact-quick-form">
+          <div class="form-row-2col">
+            <input type="text" placeholder="Donor Full Name" data-en="Donor Full Name" required class="form-input-field">
+            <input type="tel" placeholder="WhatsApp Number" data-en="WhatsApp Number" required class="form-input-field">
+          </div>
+          
+          <div class="form-row-2col">
+            <input type="number" placeholder="Amount (PKR)" data-en="Amount (PKR)" required class="form-input-field">
+            <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Sadaqah & General">Sadaqah & General</option>
+                <option value="Sponsor a Student">Sponsor a Student</option>
+                <option value="100% Zakat Fund">100% Zakat Fund</option>
+                <option value="Masjid Extension">Masjid Extension</option>
+            </select>
+          </div>
+
+          <div class="form-row-2col">
+            <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
+                <option value="" disabled selected>Transferred Via</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="EasyPaisa">EasyPaisa</option>
+                <option value="JazzCash">JazzCash</option>
+                <option value="Cash">Cash</option>
+            </select>
+            <input type="date" required class="form-input-field">
+          </div>
+
+          <div class="form-group form-input-wrapper">
+            <input type="text" placeholder="Transaction ID / Reference Number" data-en="Transaction ID / Reference Number" class="form-input form-input-field" required>
+          </div>
+
+          <!-- Original Swipe Submit Container from index.html -->
+          <div class="swipe-submit-container" id="swipeContainer">
+            <div class="swipe-text" id="swipeText">
+              <span class="lang-en">Swipe to Submit</span>
+              <span class="lang-ur"> </span>
+            </div>
+            <div class="swipe-handle" id="swipeHandle">
+              <svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <button type="submit" id="hiddenSubmitBtn" style="display:none;"></button>
+          </div>
+
+        </form>
