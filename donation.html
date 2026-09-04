@@ -3612,6 +3612,66 @@
         text-align: center !important;
     }
 }
+
+/* CUSTOM SELECT DROPDOWN */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+.custom-select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.custom-select-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0,0,0,0.05);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+.custom-select-container.open .custom-select-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.custom-select-option {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    color: #4B5563;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+.custom-select-option:last-child {
+    border-bottom: none;
+}
+.custom-select-option:hover, .custom-select-option.selected {
+    background: #f0fdf4;
+    color: #025F55;
+    font-weight: 600;
+}
+.custom-select-trigger.selected {
+    color: #111111;
+}
+.custom-select-icon {
+    transition: transform 0.3s ease;
+}
+.custom-select-container.open .custom-select-icon {
+    transform: rotate(180deg);
+}
+
 </style>
 
 
@@ -6021,7 +6081,77 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('touchend', stopDrag);
 });
 </script>
-</body>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const selects = document.querySelectorAll("select.form-input-field");
+    
+    selects.forEach(select => {
+        select.style.display = 'none';
+        
+        const wrapper = document.createElement('div');
+        wrapper.className = 'custom-select-container';
+        select.parentNode.insertBefore(wrapper, select);
+        wrapper.appendChild(select);
+        
+        const trigger = document.createElement('div');
+        trigger.className = 'form-input-field custom-select-trigger';
+        trigger.style.backgroundImage = 'none';
+        trigger.style.paddingRight = '20px';
+        
+        const selectedOption = select.options[select.selectedIndex];
+        const placeholderText = selectedOption ? selectedOption.text : "Select";
+        
+        // Use standard quotes and string concat to avoid backtick issues in shell scripts
+        trigger.innerHTML = "<span>" + placeholderText + "</span> <svg class='custom-select-icon' style='width: 16px; height: 16px; margin: 0; transform: none; display: block;' viewBox='0 0 24 24' fill='none' stroke='#6B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>";
+        
+        const optionsList = document.createElement('div');
+        optionsList.className = 'custom-select-options';
+        
+        Array.from(select.options).forEach((option, index) => {
+            if(option.disabled) return;
+            
+            const optDiv = document.createElement('div');
+            optDiv.className = 'custom-select-option';
+            optDiv.textContent = option.text;
+            
+            optDiv.addEventListener('click', function(e) {
+                e.stopPropagation();
+                select.value = option.value;
+                select.dispatchEvent(new Event('change'));
+                
+                trigger.querySelector('span').textContent = option.text;
+                trigger.classList.add('selected');
+                
+                Array.from(optionsList.children).forEach(c => c.classList.remove('selected'));
+                optDiv.classList.add('selected');
+                
+                wrapper.classList.remove('open');
+            });
+            
+            optionsList.appendChild(optDiv);
+        });
+        
+        wrapper.appendChild(trigger);
+        wrapper.appendChild(optionsList);
+        
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = wrapper.classList.contains('open');
+            document.querySelectorAll('.custom-select-container').forEach(c => c.classList.remove('open'));
+            if(!isOpen) wrapper.classList.add('open');
+        });
+    });
+    
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.custom-select-container').forEach(c => c.classList.remove('open'));
+    });
+});
+</script>
+\n</body>
 
 
 </html>
