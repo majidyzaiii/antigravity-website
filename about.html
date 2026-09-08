@@ -6572,63 +6572,82 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
         const langSwitchBtn = document.getElementById('langSwitch');
         let currentLang = 'en';
 
-        langSwitchBtn.addEventListener('click', () => {
-            // Close mobile menu if open
-            const drawer = document.getElementById('mobileDrawer');
-            const drawerOverlay = document.getElementById('drawerOverlay');
-            if (drawer) drawer.classList.remove('active', 'open');
-            if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
-            
-            const navOverlay = document.getElementById('mobileNavOverlay');
-            if (navOverlay) navOverlay.classList.remove('active', 'open');
-
-            // Scroll window to top (0,0) before switching mode
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            
-            // Force clean scroll restoration
-            if ('scrollRestoration' in history) {
-                history.scrollRestoration = 'manual';
-            }
-
-            currentLang = currentLang === 'en' ? 'ur' : 'en';
-            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
+        function applyTranslations(lang) {
+            document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            if(langSwitchBtn) langSwitchBtn.textContent = lang === 'ur' ? 'انگلش' : 'URDU';
             
             navLinks.forEach(item => {
-                item.textContent = item.getAttribute(`data-${currentLang}`);
+                if(item.hasAttribute(`data-${lang}`)) {
+                    item.textContent = item.getAttribute(`data-${lang}`);
+                }
             });
             
             const brandTitle = document.querySelector('.brand-title');
-            if (brandTitle) {
-                brandTitle.textContent = brandTitle.getAttribute(`data-${currentLang}`);
+            if (brandTitle && brandTitle.hasAttribute(`data-${lang}`)) {
+                brandTitle.textContent = brandTitle.getAttribute(`data-${lang}`);
             }
             
             // Also translate footer and any other dynamic text elements
             document.querySelectorAll('[data-en]').forEach(item => {
                 if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
-                    item.placeholder = item.getAttribute(`data-${currentLang}`);
+                    item.placeholder = item.getAttribute(`data-${lang}`);
                 } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
-                    item.innerHTML = item.getAttribute(`data-${currentLang}`);
+                    item.innerHTML = item.getAttribute(`data-${lang}`);
                 }
             });
-        });
+        }
+
+        if (langSwitchBtn) {
+            langSwitchBtn.addEventListener('click', (e) => {
+                // Only scroll to top if it was a real user click
+                if(e && e.isTrusted) {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+
+                // Close mobile menu if open
+                const drawer = document.getElementById('mobileDrawer');
+                const drawerOverlay = document.getElementById('drawerOverlay');
+                if (drawer) drawer.classList.remove('active', 'open');
+                if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+                
+                const navOverlay = document.getElementById('mobileNavOverlay');
+                if (navOverlay) navOverlay.classList.remove('active', 'open');
+                
+                // Force clean scroll restoration
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+
+                currentLang = currentLang === 'en' ? 'ur' : 'en';
+                localStorage.setItem('siteLang', currentLang);
+                applyTranslations(currentLang);
+            });
+        }
+
+        // Restore language from localStorage
+        const savedLang = localStorage.getItem('siteLang');
+        if (savedLang === 'ur') {
+            currentLang = 'ur';
+            applyTranslations('ur');
+        }
 
         window.toggleLanguage = function() {
-            document.getElementById('langSwitch').click();
+            if (langSwitchBtn) langSwitchBtn.click();
         };
 
         // --- Mobile Menu Toggle Logic (Drawer) ---
         window.toggleDrawer = function() {
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('drawerOverlay');
-            
-            drawer.classList.toggle('active');
-            overlay.classList.toggle('active');
+            if(drawer) drawer.classList.toggle('active');
+            if(overlay) overlay.classList.toggle('active');
         };
 
-        // Close drawer when clicking outside on overlay
-        document.getElementById('drawerOverlay').addEventListener('click', window.toggleDrawer);
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        if(drawerOverlay) {
+            drawerOverlay.addEventListener('click', window.toggleDrawer);
+        }
         
         // Close menu when a drawer navigation link is clicked
         const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
@@ -6636,7 +6655,7 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
             link.addEventListener('click', (e) => {
                 if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
                     const drawer = document.getElementById('mobileDrawer');
-                    if (drawer.classList.contains('active')) {
+                    if (drawer && drawer.classList.contains('active')) {
                         window.toggleDrawer();
                     }
                 }
