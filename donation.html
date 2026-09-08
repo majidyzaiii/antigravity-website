@@ -5261,6 +5261,23 @@ body.hide-main-header { padding-top: 0 !important; }
         let currentLang = 'en';
 
         langSwitchBtn.addEventListener('click', () => {
+            // Close mobile menu if open
+            const drawer = document.getElementById('mobileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            if (drawer) drawer.classList.remove('active', 'open');
+            if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+            
+            const navOverlay = document.getElementById('mobileNavOverlay');
+            if (navOverlay) navOverlay.classList.remove('active', 'open');
+
+            // Scroll window to top (0,0) before switching mode
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Force clean scroll restoration
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
             currentLang = currentLang === 'en' ? 'ur' : 'en';
             document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
@@ -5277,7 +5294,9 @@ body.hide-main-header { padding-top: 0 !important; }
             
             // Also translate footer and any other dynamic text elements
             document.querySelectorAll('[data-en]').forEach(item => {
-                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                    item.placeholder = item.getAttribute(`data-${currentLang}`);
+                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
                     item.innerHTML = item.getAttribute(`data-${currentLang}`);
                 }
             });
@@ -5727,7 +5746,7 @@ body.hide-main-header { padding-top: 0 !important; }
     <div class="contact-left-col">
       <div class="contact-header-text">
         <h2 class="container-main-heading" style="text-align: left !important; font-weight: 800 !important; color: #1e293b !important;">
-          <span class="lang-en" style="font-weight: 800 !important; color: #1e293b !important;">Official Payment Accounts</span>
+          <span class="lang-en" style="font-weight: 800 !important; color: #1e293b !important;" data-ur="آفیشل پیمنٹ اکاؤنٹس" data-en="Official Payment Accounts">Official Payment Accounts</span>
           <span class="lang-ur"> </span>
         </h2>
         <p class="contact-lead-p">
@@ -5738,28 +5757,28 @@ body.hide-main-header { padding-top: 0 !important; }
 
       <div class="contact-sub-columns" style="display: flex; flex-direction: column; gap: 30px;">
         <div class="sub-col-item">
-          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en">Bank Transfer</span><span class="lang-ur"> </span></h3>
-          <p style="margin-bottom: 8px;"><strong>Account Title:</strong> Madrasa Riaz ul Quran wal Sunnah</p>
-          <p style="margin-bottom: 8px;"><strong>Bank:</strong> Meezan Bank Ltd.</p>
+          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en" data-ur="بینک ٹرانسفر" data-en="Bank Transfer">Bank Transfer</span><span class="lang-ur"> </span></h3>
+          <p style="margin-bottom: 8px;"><strong data-ur="اکاؤنٹ کا نام:" data-en="Account Title:">Account Title:</strong> Madrasa Riaz ul Quran wal Sunnah</p>
+          <p style="margin-bottom: 8px;"><strong data-ur="بینک:" data-en="Bank:">Bank:</strong> Meezan Bank Ltd.</p>
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px;">
-            <strong>Account Number:</strong> <span id="acc-num">01010102030405</span>
+            <strong data-ur="اکاؤنٹ نمبر:" data-en="Account Number:">Account Number:</strong> <span id="acc-num">01010102030405</span>
             <button onclick="navigator.clipboard.writeText('01010102030405'); const svg = this.innerHTML; this.innerHTML='&#10003;'; setTimeout(() => this.innerHTML = svg, 2000)" style="background: #eef5f3; border: none; padding: 0; border-radius: 6px; cursor: pointer; color: #006754; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all 0.2s; flex-shrink: 0;" title="Copy"><svg style="width: 16px; height: 16px; transform: none !important; margin: 0 !important; display: block !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
           </div>
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-            <strong>IBAN:</strong> <span id="iban-num">PK00MEZN0001010102030405</span>
+            <strong data-ur="آئی بی اے این:" data-en="IBAN:">IBAN:</strong> <span id="iban-num">PK00MEZN0001010102030405</span>
             <button onclick="navigator.clipboard.writeText('PK00MEZN0001010102030405'); const svg = this.innerHTML; this.innerHTML='&#10003;'; setTimeout(() => this.innerHTML = svg, 2000)" style="background: #eef5f3; border: none; padding: 0; border-radius: 6px; cursor: pointer; color: #006754; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all 0.2s; flex-shrink: 0;" title="Copy"><svg style="width: 16px; height: 16px; transform: none !important; margin: 0 !important; display: block !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
           </div>
         </div>
 
         <div class="sub-col-item">
-          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en">Mobile Wallets</span><span class="lang-ur"> </span></h3>
+          <h3 class="inst-head" style="text-transform: uppercase;"><span class="lang-en" data-ur="موبائل والیٹس" data-en="Mobile Wallets">Mobile Wallets</span><span class="lang-ur"> </span></h3>
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <strong>EasyPaisa:</strong> <span>0300-1234567</span>
+            <strong data-ur="ایزی پیسہ:" data-en="EasyPaisa:">EasyPaisa:</strong> <span>0300-1234567</span>
             <button onclick="navigator.clipboard.writeText('0300-1234567'); const svg = this.innerHTML; this.innerHTML='&#10003;'; setTimeout(() => this.innerHTML = svg, 2000)" style="background: #eef5f3; border: none; padding: 0; border-radius: 6px; cursor: pointer; color: #006754; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all 0.2s; flex-shrink: 0;" title="Copy"><svg style="width: 16px; height: 16px; transform: none !important; margin: 0 !important; display: block !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
             <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
           </div>
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-            <strong>JazzCash:</strong> <span>0300-7654321</span>
+            <strong data-ur="جاز کیش:" data-en="JazzCash:">JazzCash:</strong> <span>0300-7654321</span>
             <button onclick="navigator.clipboard.writeText('0300-7654321'); const svg = this.innerHTML; this.innerHTML='&#10003;'; setTimeout(() => this.innerHTML = svg, 2000)" style="background: #eef5f3; border: none; padding: 0; border-radius: 6px; cursor: pointer; color: #006754; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all 0.2s; flex-shrink: 0;" title="Copy"><svg style="width: 16px; height: 16px; transform: none !important; margin: 0 !important; display: block !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>
             <span style="font-size: 0.85rem; color: #666;">(Madrasa Riaz ul Quran)</span>
           </div>
@@ -5775,7 +5794,7 @@ body.hide-main-header { padding-top: 0 !important; }
           <span class="lang-ur"> </span>
         </h3>
         <p class="form-card-sub">
-          <span class="lang-en">Notify us to receive your official receipt</span>
+          <span class="lang-en" data-ur="سرکاری رسید حاصل کرنے کے لیے ہمیں مطلع کریں" data-en="Notify us to receive your official receipt">Notify us to receive your official receipt</span>
           <span class="lang-ur"> </span>
         </p>
 
@@ -5788,18 +5807,18 @@ body.hide-main-header { padding-top: 0 !important; }
           <div class="form-row-2col">
             <input type="number" placeholder="Amount (PKR)" data-en="Amount (PKR)" required class="form-input-field">
             <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
-                <option value="" disabled selected>Select Category</option>
-                <option value="Sadaqah & General">Sadaqah & General</option>
-                <option value="Sponsor a Student">Sponsor a Student</option>
-                <option value="100% Zakat Fund">100% Zakat Fund</option>
-                <option value="Masjid Extension">Masjid Extension</option>
+                <option value="" disabled selected data-ur="زمرہ منتخب کریں" data-en="Select Category">Select Category</option>
+                <option value="Sadaqah & General" data-ur="صدقہ و عام" data-en="Sadaqah & General">Sadaqah & General</option>
+                <option value="Sponsor a Student" data-ur="طالب علم کی کفالت" data-en="Sponsor a Student">Sponsor a Student</option>
+                <option value="100% Zakat Fund" data-ur="100% زکوٰۃ فنڈ" data-en="100% Zakat Fund">100% Zakat Fund</option>
+                <option value="Masjid Extension" data-ur="مسجد کی توسیع" data-en="Masjid Extension">Masjid Extension</option>
             </select>
           </div>
 
           <div class="form-row-2col">
             <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
-                <option value="" disabled selected>Transferred Via</option>
-                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="" disabled selected data-ur="منتقلی کا ذریعہ" data-en="Transferred Via">Transferred Via</option>
+                <option value="Bank Transfer" data-ur="بینک ٹرانسفر" data-en="Bank Transfer">Bank Transfer</option>
                 <option value="EasyPaisa">EasyPaisa</option>
                 <option value="JazzCash">JazzCash</option>
                 <option value="Cash">Cash</option>
@@ -5814,7 +5833,7 @@ body.hide-main-header { padding-top: 0 !important; }
           <!-- Original Swipe Submit Container from index.html -->
           <div class="swipe-submit-container" id="swipeContainer">
             <div class="swipe-text" id="swipeText">
-              <span class="lang-en">Swipe to Submit</span>
+              <span class="lang-en" data-ur="جمع کرائیں" data-en="Swipe to Submit">Swipe to Submit</span>
               <span class="lang-ur"> </span>
             </div>
             <div class="swipe-handle" id="swipeHandle">

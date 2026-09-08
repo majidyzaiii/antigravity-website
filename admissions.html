@@ -3609,7 +3609,7 @@
   
   
   <!-- Main Title -->
-  <h2 class="container-main-heading">Instructions for Admission Candidates</h2>
+  <h2 class="container-main-heading" data-ur="داخلہ کے امیدواروں کے لیے ہدایات" data-en="Instructions for Admission Candidates">Instructions for Admission Candidates</h2>
   
   <div class="instructions-content-list">
     <!-- Point 1 -->
@@ -4410,6 +4410,84 @@ document.addEventListener('DOMContentLoaded', obliterateWhiteBar);
 obliterateWhiteBar();
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
+        const langSwitchBtn = document.getElementById('langSwitch');
+        let currentLang = 'en';
+
+        langSwitchBtn.addEventListener('click', () => {
+            // Close mobile menu if open
+            const drawer = document.getElementById('mobileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            if (drawer) drawer.classList.remove('active', 'open');
+            if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+            
+            const navOverlay = document.getElementById('mobileNavOverlay');
+            if (navOverlay) navOverlay.classList.remove('active', 'open');
+
+            // Scroll window to top (0,0) before switching mode
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Force clean scroll restoration
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
+            currentLang = currentLang === 'en' ? 'ur' : 'en';
+            document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
+            
+            navLinks.forEach(item => {
+                item.textContent = item.getAttribute(`data-${currentLang}`);
+            });
+            
+            const brandTitle = document.querySelector('.brand-title');
+            if (brandTitle) {
+                brandTitle.textContent = brandTitle.getAttribute(`data-${currentLang}`);
+            }
+            
+            // Also translate footer and any other dynamic text elements
+            document.querySelectorAll('[data-en]').forEach(item => {
+                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                    item.placeholder = item.getAttribute(`data-${currentLang}`);
+                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                    item.innerHTML = item.getAttribute(`data-${currentLang}`);
+                }
+            });
+        });
+
+        window.toggleLanguage = function() {
+            document.getElementById('langSwitch').click();
+        };
+
+        // --- Mobile Menu Toggle Logic (Drawer) ---
+        window.toggleDrawer = function() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('drawerOverlay');
+            
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        };
+
+        // Close drawer when clicking outside on overlay
+        document.getElementById('drawerOverlay').addEventListener('click', window.toggleDrawer);
+        
+        // Close menu when a drawer navigation link is clicked
+        const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
+                    const drawer = document.getElementById('mobileDrawer');
+                    if (drawer.classList.contains('active')) {
+                        window.toggleDrawer();
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 

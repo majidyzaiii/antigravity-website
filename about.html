@@ -2388,7 +2388,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
             currentLang = currentLang === 'en' ? 'ur' : 'en';
             document.documentElement.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
-            langSwitchBtn.textContent = currentLang === 'ur' ? 'Ø§Ù†Ú¯Ù„Ø´' : 'URDU';
+            langSwitchBtn.textContent = currentLang === 'ur' ? 'انگلش' : 'URDU';
             
             navLinks.forEach(item => {
                 item.textContent = item.getAttribute(`data-${currentLang}`);
@@ -2401,44 +2401,39 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
             
             // Also translate footer and any other dynamic text elements
             document.querySelectorAll('[data-en]').forEach(item => {
-                if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                    item.placeholder = item.getAttribute(`data-${currentLang}`);
+                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
                     item.innerHTML = item.getAttribute(`data-${currentLang}`);
                 }
             });
         });
 
-        // --- Mobile Menu Toggle Logic ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const floatingNavContainer = document.querySelector('.floating-nav-container');
+        window.toggleLanguage = function() {
+            document.getElementById('langSwitch').click();
+        };
 
-        const hamburgerSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-        const closeSVG = `<svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
-
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent document click from immediately closing it
-            floatingNavContainer.classList.toggle('active');
+        // --- Mobile Menu Toggle Logic (Drawer) ---
+        window.toggleDrawer = function() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('drawerOverlay');
             
-            if (floatingNavContainer.classList.contains('active')) {
-                mobileMenuBtn.innerHTML = closeSVG;
-            } else {
-                mobileMenuBtn.innerHTML = hamburgerSVG;
-            }
-        });
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        };
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (floatingNavContainer.classList.contains('active') && !floatingNavContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                floatingNavContainer.classList.remove('active');
-                mobileMenuBtn.innerHTML = hamburgerSVG;
-            }
-        });
-
-        // Close menu when a navigation link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (floatingNavContainer.classList.contains('active')) {
-                    floatingNavContainer.classList.remove('active');
-                    mobileMenuBtn.innerHTML = hamburgerSVG;
+        // Close drawer when clicking outside on overlay
+        document.getElementById('drawerOverlay').addEventListener('click', window.toggleDrawer);
+        
+        // Close menu when a drawer navigation link is clicked
+        const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
+                    const drawer = document.getElementById('mobileDrawer');
+                    if (drawer.classList.contains('active')) {
+                        window.toggleDrawer();
+                    }
                 }
             });
         });
@@ -3334,149 +3329,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
     <!-- 1. HISTORY CONTAINER -->
     <div class="content-card">
-      <h2 class="preserve-heading">ادارے کا تعارف</h2>
-      <p>Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ø§ÛŒÚ© Ø¯ÛŒÙ†ÛŒØŒ ØªØ¹Ù„ÛŒÙ…ÛŒ Ø§ÙˆØ± ØªØ±Ø¨ÛŒØªÛŒ Ø§Ø¯Ø§Ø±Û ÛÛ’ØŒ Ø¬Ø³ Ú©ÛŒ Ø¨Ù†ÛŒØ§Ø¯ 1993Ø¡ Ù…ÛŒÚº Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ <span class="arabic-calligraphy">Ø±Ø­Ù…Û Ø§Ù„Ù„Û</span> Ù†Û’ Ø±Ú©Ú¾ÛŒÛ” ÛŒÛ Ø§Ø¯Ø§Ø±Û Ø®Ø§Ù„ØµØªØ§Ù‹ Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ ØªØ¹Ù„ÛŒÙ…Ø§Øª Ù¾Ø± Ù…Ø¨Ù†ÛŒ ÛÛ’ØŒ Ø¬Ø³ Ú©Ø§ Ù…Ù‚ØµØ¯ Ù…Ø¹Ø§Ø´Ø±Û’ Ù…ÛŒÚº ØµØ­ÛŒØ­ Ø§Ø³Ù„Ø§Ù…ÛŒ Ø´Ø¹ÙˆØ± Ø¨ÛŒØ¯Ø§Ø± Ú©Ø±Ù†Ø§ Ø§ÙˆØ± Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ ÛÛ’ Ø¬Ùˆ Ø¯ÛŒÙ† Ø§ÙˆØ± Ø¯Ù†ÛŒØ§ Ø¯ÙˆÙ†ÙˆÚº Ù…ÛŒÚº Ú©Ø§Ù…ÛŒØ§Ø¨ ÛÙˆÛ”</p>
-      <p>Ø§Ù¾Ù†Û’ Ù‚ÛŒØ§Ù… Ø³Û’ Ù„Û’ Ú©Ø± Ø¢Ø¬ ØªÚ©ØŒ ÛŒÛ Ù…Ø¯Ø±Ø³Û ÛØ²Ø§Ø±ÙˆÚº Ø·Ù„Ø¨Ø§Ø¡ Ú©Ùˆ Ø²ÛŒÙˆØ±Ù ØªØ¹Ù„ÛŒÙ… Ø³Û’ Ø¢Ø±Ø§Ø³ØªÛ Ú©Ø± Ú†Ú©Ø§ ÛÛ’ Ø§ÙˆØ± Ù…Ø³ØªÙ‚Ù„ Ø¯Ø¹ÙˆØª Ùˆ ØªØ¨Ù„ÛŒØº Ú©Û’ Ú©Ø§Ù… Ù…ÛŒÚº Ø³Ø±Ú¯Ø±Ù…Ù Ø¹Ù…Ù„ ÛÛ’Û”</p>
-    </div>
-
-    <!-- 2. VISION & MISSION GRID -->
-    <div class="vision-mission-grid">
-      <div class="vm-card">
-        <h3>ہمارا وژن</h3>
-        <p>Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ Ø±ÙˆØ´Ù†ÛŒ Ù…ÛŒÚº Ø§ÛŒØ³ÛŒ Ø¨Ø§Ú©Ø±Ø¯Ø§Ø±ØŒ Ø¨Ø§Ø¹Ù„Ù… Ø§ÙˆØ± Ø¨Ø§ØµÙ„Ø§Ø­ÛŒØª Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ Ø¬Ùˆ Ø¯ÛŒÙ† Ùˆ Ø¯Ù†ÛŒØ§ Ù…ÛŒÚº Ú©Ø§Ù…ÛŒØ§Ø¨ ÛÙˆØŒ Ø§Ù…Øª Ú©ÛŒ ØµØ­ÛŒØ­ Ø±ÛÙ†Ù…Ø§Ø¦ÛŒ Ú©Ø±Û’ Ø§ÙˆØ± Ø¯Ù†ÛŒØ§ Ø¨Ú¾Ø± Ù…ÛŒÚº Ø§Ø³Ù„Ø§Ù… Ú©Û’ Ø­Ù‚ÛŒÙ‚ÛŒ Ù¾ÛŒØºØ§Ù… Ú©Ùˆ Ø­Ú©Ù…ØªØŒ Ø§Ø¹ØªØ¯Ø§Ù„ Ø§ÙˆØ± Ù…Ø­Ø¨Øª Ú©Û’ Ø³Ø§ØªÚ¾ Ø¹Ø§Ù… Ú©Ø±Û’Û”</p>
-      </div>
-      <div class="vm-card mission">
-        <h3>ہمارا نصب العین</h3>
-        <p>Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©ÛŒ Ø®Ø§Ù„Øµ ØªØ¹Ù„ÛŒÙ…ØŒ ØµØ­ÛŒØ­ Ø¹Ù‚ÛŒØ¯ÛØŒ Ø§Ø¹Ù„ÛŒÙ° Ø§Ø®Ù„Ø§Ù‚ Ø§ÙˆØ± Ø¹Ù…Ù„ÛŒ Ø²Ù†Ø¯Ú¯ÛŒ Ù…ÛŒÚº Ø§Ø³Ù„Ø§Ù…ÛŒ ØªØ¹Ù„ÛŒÙ…Ø§Øª Ú©Ùˆ ÙØ±ÙˆØº Ø¯ÛŒÙ†Ø§ØŒ ØªØ§Ú©Û Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± ÛÙˆ Ø¬Ùˆ Ø¹Ù„Ù…ØŒ Ø¹Ù…Ù„ØŒ ØªÙ‚ÙˆÛŒÙ° Ø§ÙˆØ± Ø®Ø¯Ù…ØªÙ Ø§Ù†Ø³Ø§Ù†ÛŒØª Ú©Ø§ Ù†Ù…ÙˆÙ†Û Ø¨Ù†Û’Û”</p>
-      </div>
-    </div>
-
-    <!-- 3. FOUNDER CONTAINER -->
-    <div class="content-card profile-card-container">
-      <div class="corner-strip-wrapper">
-<div class="card-corner-strip ur-strip">
-        <span>Founder</span>
-      </div>
-</div>
-      <div class="badge-profile-wrapper">
-        <div class="circular-avatar-frame">
-          <img src="assets/founder.png" alt="Hazrat Maulana Mufti Riaz Mahmood" class="profile-circle-img founder-img">
-  
-
-        </div>
-      </div>
-      <div class="profile-card-content">
-        <h3 class="profile-name">
-        <span class="honorific">Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ</span>
-        <span class="main-name-row">
-            Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ <span class="arabic-calligraphy suffix">Ø±Ø­Ù…Ø© Ø§Ù„Ù„Ù‡</span> <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
-        </span>
-    </h3>
-
-        <p class="profile-bio">
-          Ø­Ø¶Ø±Øª Ù…ÙˆÙ„Ø§Ù†Ø§ Ù…ÙØªÛŒ Ø±ÛŒØ§Ø¶ Ù…Ø­Ù…ÙˆØ¯ (Ø±Ø­Ù…Û Ø§Ù„Ù„Û) Ù†Û’ 1989Ø¡ Ù…ÛŒÚº Ø¬Ø§Ù…Ø¹Û Ø¹Ù„ÙˆÙ… Ø§Ø³Ù„Ø§Ù…ÛŒÛ Ø¨Ù†ÙˆØ±ÛŒ Ù¹Ø§Ø¤Ù† Ø³Û’ Ø¯Ø±Ø³Ù Ù†Ø¸Ø§Ù…ÛŒ Ù…Ú©Ù…Ù„ Ú©ÛŒØ§Û” 1993Ø¡ Ù…ÛŒÚº Ø¢Ù¾ Ù†Û’ Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ú©ÛŒ Ø¨Ù†ÛŒØ§Ø¯ Ø±Ú©Ú¾ÛŒ Ø§ÙˆØ± 27 Ø³Ø§Ù„ ØªÚ© Ø¹Ø¸ÛŒÙ… ØªØ¹Ù„ÛŒÙ…ÛŒ Ùˆ Ø§ØµÙ„Ø§Ø­ÛŒ Ø®Ø¯Ù…Ø§Øª Ø§Ù†Ø¬Ø§Ù… Ø¯ÛŒÚºÛ”
-        </p>
-        <div class="simple-quote-box">
-          <strong class="motto-highlight">Ø¨Ø§Ù†ÛŒÙ Ø§Ø¯Ø§Ø±Û Ú©Ø§ Ù…ÙˆÙ¹Ùˆ:</strong>
-          <p>"Ù‚Ø±Ø¢Ù† Ùˆ Ø³Ù†Øª Ú©Ùˆ Ù…Ø¶Ø¨ÙˆØ·ÛŒ Ø³Û’ ØªÚ¾Ø§Ù… Ù„ÙˆØŒ ÛŒÛÛŒ Ø¯Ù†ÛŒØ§ Ùˆ Ø¢Ø®Ø±Øª Ú©ÛŒ Ú©Ø§Ù…ÛŒØ§Ø¨ÛŒ Ú©Ø§ Ø±Ø§Ø³ØªÛ ÛÛ’Û”"</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. PRINCIPAL CONTAINER -->
-    <div class="content-card profile-card-container">
-      <div class="corner-strip-wrapper">
-<div class="card-corner-strip ur-strip">
-        <span>Principal</span>
-      </div>
-</div>
-      <div class="badge-profile-wrapper">
-        <div class="circular-avatar-frame">
-          <img src="assets/principal.png" alt="Mufti Aamir Mahmood" class="profile-circle-img">
-  
-
-        </div>
-      </div>
-      <div class="profile-card-content">
-        <h3 class="profile-name">
-        <span class="honorific">Ù…ÙØªÛŒ</span>
-        <span class="main-name-row">
-            Ø¹Ø§Ù…Ø± Ù…Ø­Ù…ÙˆØ¯  <svg class="verified-badge-inline" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 256c0-37.7-23.7-69.9-57.1-82.4 14.7-32.4 8.8-71.9-15.4-96.1-24.2-24.2-63.7-30.1-96.1-15.4C325.9 23.7 293.7 0 256 0s-69.9 23.7-82.4 57.1c-32.4-14.7-71.9-8.8-96.1 15.4-24.2 24.2-30.1 63.7-15.4 96.1C23.7 186.1 0 218.3 0 256s23.7 69.9 57.1 82.4c-14.7 32.4-8.8 71.9 15.4 96.1 24.2 24.2 63.7 30.1 96.1 15.4 12.5 33.4 44.7 57.1 82.4 57.1s69.9-23.7 82.4-57.1c32.4 14.7 71.9 8.8 96.1-15.4 24.2-24.2 30.1-63.7 15.4-96.1C488.3 325.9 512 293.7 512 256z" fill="#0866FF"/><path d="M229.4 388.9l-81.8-81.8 31.8-31.8 50 50 144.3-144.3 31.8 31.8-176.1 176.1z" fill="#ffffff"/></svg>
-        </span>
-    </h3>
-
-    <!-- Social Media Links (Facebook, Twitter/X, WhatsApp) -->
-    <div class="profile-social-links">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle fb" title="Facebook">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
-        </svg>
-      </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-circle tw" title="Twitter / X">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-      </a>
-      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="social-icon-circle wa" title="WhatsApp">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-        </svg>
-      </a>
-    </div>
-
-        <p class="profile-bio">
-          Ø§ÛŒÙ… ÙÙ„ (NUML)ØŒ ÙØ§Ø¶Ù„ ÙˆÙØ§Ù‚ Ø§Ù„Ù…Ø¯Ø§Ø±Ø³ØŒ Ù…Ø§Ø±Ú† 2020Ø¡ Ø³Û’ Ù…Ø¯Ø±Ø³Û Ø±ÛŒØ§Ø¶ Ø§Ù„Ù‚Ø±Ø¢Ù† ÙˆØ§Ù„Ø³Ù†Ûƒ Ú©ÛŒ ØªØ¯Ø±ÛŒØ³ÛŒØŒ Ø¯Ø¹ÙˆØªÛŒ Ø§ÙˆØ± Ø§Ù†ØªØ¸Ø§Ù…ÛŒ Ø³Ø±Ù¾Ø±Ø³ØªÛŒ ÙØ±Ù…Ø§Ø±ÛÛ’ ÛÛŒÚºÛ”
-        </p>
-        <div class="simple-quote-box">
-          <strong class="motto-highlight">Ù…ÛØªÙ…Ù… Ú©Ø§ Ù¾ÛŒØºØ§Ù…:</strong>
-          <p>"ÛÙ…Ø§Ø±ÛŒ Ø°Ù…Û Ø¯Ø§Ø±ÛŒ ØµØ±Ù Ù‚Ø±Ø¢Ù† Ù¾Ú‘Ú¾Ø§Ù†Ø§ Ù†ÛÛŒÚºØŒ Ø¨Ù„Ú©Û Ø§ÛŒØ³ÛŒ Ù†Ø³Ù„ ØªÛŒØ§Ø± Ú©Ø±Ù†Ø§ ÛÛ’ Ø¬Ùˆ Ù‚Ø±Ø¢Ù† Ú©Ùˆ Ø³Ù…Ø¬Ú¾Û’ Ø§ÙˆØ± Ø§Ø³ Ù¾Ø± Ø¹Ù…Ù„ Ú©Ø±Û’Û”"</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ================= ENGLISH ABOUT PAGE (LTR) ================= -->
-<div class="about-page-en" dir="ltr">
-
-  <!-- English Version (LTR) -->
-  <div class="about-minimal-header">
-  <!-- Hamburger Menu -->
-  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
-    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  </button>
-
-  <!-- Breadcrumbs -->
-  
-  <!-- Back Button -->
-  <button class="minimal-back-btn"  onclick="window.history.back() || (window.location.href='index.html')">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-
-  <!-- Centered Title with Green Swoosh -->
-  <div class="title-with-swoosh">
-    <h1 class="about-main-title">
-      <span class="title-en">About Us</span>
-      <span class="title-ur">ÛÙ…Ø§Ø±Û’ Ø¨Ø§Ø±Û’ Ù…ÛŒÚº</span>
-    </h1><div class="minimal-breadcrumbs" style="margin-top: 8px !important;">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home <span class="chevron">&gt;</span> About Us
-  </div>
-
-    <!-- Vector Green Swoosh / Brush Stroke -->
-    
-  </div>
-</div>
-
-    <!-- Floating Overlapping Image -->
-
-  
-  <div class="about-content-wrapper">
-
-    <!-- 1. HISTORY CONTAINER -->
-    <div class="content-card">
-      <h2 class="preserve-heading">Introduction</h2>
+      <h2 class="preserve-heading" data-ur="ادارے کا تعارف" data-en="Introduction">Introduction</h2>
       <p>Madrassa Riaz ul Quran Wal Sunnah is a premier educational and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood (RH). The institution is purely based on the teachings of the Quran and Sunnah, with the aim of awakening true Islamic consciousness in society and preparing a generation that is successful in both this world and the hereafter.</p>
       <p>Since its inception, the Madrassa has educated thousands of students and remains actively engaged in the work of Dawah and propagation.</p>
     </div>
@@ -3484,11 +3337,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
     <!-- 2. VISION & MISSION GRID -->
     <div class="vision-mission-grid">
       <div class="vm-card">
-        <h3>Vision</h3>
+        <h3 data-ur="ہمارا وژن" data-en="Vision">Vision</h3>
         <p>We envision a world where learners are connected to their Creator, aware of their purpose in life, and perform at the level of Ehsan. Preparing a character-driven, knowledgeable generation.</p>
       </div>
       <div class="vm-card mission">
-        <h3>Mission</h3>
+        <h3 data-ur="ہمارا نصب العین" data-en="Mission">Mission</h3>
         <p>Our mission is to provide holistic learning rooted in Islamic values that prepares individuals who excel in this world and the Hereafter, becoming exemplary role models for humanity.</p>
       </div>
     </div>
@@ -3584,7 +3437,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 <section class="teachers-section">
   <div class="teachers-header">
     <span class="sub-badge">Qualified Faculty</span>
-    <h2 class="main-heading">Meet Our <span class="highlight-green">Teachers</span></h2>
+    <h2 class="main-heading" data-ur="ہمارے <span class="highlight-green">اساتذہ</span> سے ملیں" data-en="Meet Our <span class="highlight-green">Teachers</span>">Meet Our <span class="highlight-green">Teachers</span></h2>
   </div>
 
   <div class="marquee-wrapper">
@@ -3594,7 +3447,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+1" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Muhammad Ahmad</h3>
+        <h3 class="teacher-name" data-ur="قاری محمد احمد" data-en="Qari Muhammad Ahmad">Qari Muhammad Ahmad</h3>
         <p class="teacher-role">Head of Hifz-ul-Quran</p>
       </div>
 
@@ -3602,7 +3455,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+2" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Mufti Abdul Rahman</h3>
+        <h3 class="teacher-name" data-ur="مفتی عبدالرحمن" data-en="Mufti Abdul Rahman">Mufti Abdul Rahman</h3>
         <p class="teacher-role">Senior Lecturer (Hadith)</p>
       </div>
 
@@ -3610,7 +3463,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+3" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Bilal Usmani</h3>
+        <h3 class="teacher-name" data-ur="قاری بلال عثمانی" data-en="Qari Bilal Usmani">Qari Bilal Usmani</h3>
         <p class="teacher-role">Tajweed & Qira'at Specialist</p>
       </div>
 
@@ -3618,7 +3471,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+4" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Maulana Tariq Mahmood</h3>
+        <h3 class="teacher-name" data-ur="مولانا طارق محمود" data-en="Maulana Tariq Mahmood">Maulana Tariq Mahmood</h3>
         <p class="teacher-role">Dars-e-Nizami Faculty</p>
       </div>
 
@@ -3626,7 +3479,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+5" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Zubair Farooq</h3>
+        <h3 class="teacher-name" data-ur="قاری زبیر فاروق" data-en="Qari Zubair Farooq">Qari Zubair Farooq</h3>
         <p class="teacher-role">Nazra-e-Quran Instructor</p>
       </div>
 
@@ -3634,7 +3487,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+6" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Maulana Salman Khan</h3>
+        <h3 class="teacher-name" data-ur="مولانا سلمان خان" data-en="Maulana Salman Khan">Maulana Salman Khan</h3>
         <p class="teacher-role">Islamic Jurisprudence</p>
       </div>
 
@@ -3642,7 +3495,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+7" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Asim Rasheed</h3>
+        <h3 class="teacher-name" data-ur="قاری عاصم رشید" data-en="Qari Asim Rasheed">Qari Asim Rasheed</h3>
         <p class="teacher-role">Hifz Department</p>
       </div>
 
@@ -3651,7 +3504,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+1" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Muhammad Ahmad</h3>
+        <h3 class="teacher-name" data-ur="قاری محمد احمد" data-en="Qari Muhammad Ahmad">Qari Muhammad Ahmad</h3>
         <p class="teacher-role">Head of Hifz-ul-Quran</p>
       </div>
 
@@ -3659,7 +3512,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+2" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Mufti Abdul Rahman</h3>
+        <h3 class="teacher-name" data-ur="مفتی عبدالرحمن" data-en="Mufti Abdul Rahman">Mufti Abdul Rahman</h3>
         <p class="teacher-role">Senior Lecturer (Hadith)</p>
       </div>
 
@@ -3667,7 +3520,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+3" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Bilal Usmani</h3>
+        <h3 class="teacher-name" data-ur="قاری بلال عثمانی" data-en="Qari Bilal Usmani">Qari Bilal Usmani</h3>
         <p class="teacher-role">Tajweed & Qira'at Specialist</p>
       </div>
 
@@ -3675,7 +3528,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+4" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Maulana Tariq Mahmood</h3>
+        <h3 class="teacher-name" data-ur="مولانا طارق محمود" data-en="Maulana Tariq Mahmood">Maulana Tariq Mahmood</h3>
         <p class="teacher-role">Dars-e-Nizami Faculty</p>
       </div>
 
@@ -3683,7 +3536,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+5" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Zubair Farooq</h3>
+        <h3 class="teacher-name" data-ur="قاری زبیر فاروق" data-en="Qari Zubair Farooq">Qari Zubair Farooq</h3>
         <p class="teacher-role">Nazra-e-Quran Instructor</p>
       </div>
 
@@ -3691,7 +3544,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+6" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Maulana Salman Khan</h3>
+        <h3 class="teacher-name" data-ur="مولانا سلمان خان" data-en="Maulana Salman Khan">Maulana Salman Khan</h3>
         <p class="teacher-role">Islamic Jurisprudence</p>
       </div>
 
@@ -3699,7 +3552,7 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
         <div class="avatar-ring">
           <img src="https://placehold.co/180x180/e6f4ea/006754?text=Teacher+7" alt="Teacher" class="teacher-img">
         </div>
-        <h3 class="teacher-name">Qari Asim Rasheed</h3>
+        <h3 class="teacher-name" data-ur="قاری عاصم رشید" data-en="Qari Asim Rasheed">Qari Asim Rasheed</h3>
         <p class="teacher-role">Hifz Department</p>
       </div>
     </div>
