@@ -3244,6 +3244,26 @@
     padding: 0 4px !important;
 }
 
+
+/* RTL Override for Admission Lists */
+body.rtl .admission-rules-card .formal-rules-ordered-list li,
+body.rtl .admission-instructions-card .inst-subpoints li {
+  padding-left: 0 !important;
+  padding-right: 5px !important;
+  text-align: right !important;
+}
+
+body.rtl .admission-rules-card .formal-rules-ordered-list li::before,
+body.rtl .admission-instructions-card .inst-subpoints li::before {
+  left: auto !important;
+  right: -20px !important;
+}
+
+body.rtl .admission-rules-card h4.section-title,
+body.rtl .admission-instructions-card h4.section-title {
+  text-align: right !important;
+}
+
 </style>
 
 <style>
@@ -3614,7 +3634,7 @@
   <div class="instructions-content-list">
     <!-- Point 1 -->
     <div class="instruction-box">
-      <h3 class="inst-head">1. Admission Condition for Hifz</h3>
+      <h3 class="inst-head" data-en="1. Admission Condition for Hifz" data-ur="1. حفظ کے لئے داخلہ کی شرائط">1. Admission Condition for Hifz</h3>
       <ul class="inst-subpoints">
         <li data-en="Candidate's age must not exceed 13 years." data-ur="امیدوار کی عمر 13 سال سے زیادہ نہیں ہونی چاہیے۔">Candidate's age must not exceed 13 years.</li>
       </ul>
@@ -3622,7 +3642,7 @@
 
     <!-- Point 2 -->
     <div class="instruction-box">
-      <h3 class="inst-head">2. Required Documents (Must be attached with form)</h3>
+      <h3 class="inst-head" data-en="2. Required Documents (Must be attached with form)" data-ur="2. درکار دستاویزات (فارم کے ساتھ منسلک کرنا لازمی ہے)">2. Required Documents (Must be attached with form)</h3>
       <ul class="inst-subpoints">
         <li data-en="2 attested copies of Form 'B' or School/Birth Certificate" data-ur="فارم 'ب' یا سکول/برتھ سرٹیفکیٹ کی 2 تصدیق شدہ کاپیاں">2 attested copies of Form 'B' or School/Birth Certificate</li>
         <li data-en="2 attested copies of Guardian's CNIC" data-ur="سرپرست کے شناختی کارڈ کی 2 تصدیق شدہ کاپیاں">2 attested copies of Guardian's CNIC</li>
@@ -3633,7 +3653,7 @@
 
   <!-- Highlight Notice -->
   <div class="notice-badge">
-    <strong>Note:</strong> Free education is provided to deserving and Zakat-eligible students.
+    <strong data-en="Note:" data-ur="نوٹ:">Note:</strong> Free education is provided to deserving and Zakat-eligible students.
   </div>
 </div>
 <div class="about-container admission-rules-card">
@@ -3662,7 +3682,7 @@
 
   <!-- Special Uniform Box at the Very End -->
   <!-- Special Uniform Box at the Very End -->
-    <div class="notice-badge"><strong>Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.</div>
+    <div class="notice-badge"><strong data-en="Uniform Requirement:" data-ur="یونیفارم کی شرائط:">Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.</div>
 </div>
   
 <div class="about-container online-admission-form-container">
