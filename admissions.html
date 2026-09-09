@@ -3310,6 +3310,12 @@ html[dir="rtl"] .admission-instructions-card {
     text-align: right !important;
 }
 
+
+/* Fix swipe button position in Urdu mode */
+[dir="rtl"] .swipe-button, html[lang="ur"] .swipe-button {
+    left: auto !important;
+    right: 4px !important;
+}
 </style>
 
 <style>
@@ -6130,12 +6136,17 @@ function previewPhoto(event) {
     const onPointerMove = (e) => {
       if (!isDragging) return;
       
-      currentX = e.clientX - startX;
-      if (currentX < 0) currentX = 0;
-      if (currentX > maxDrag) currentX = maxDrag;
+      let dx = e.clientX - startX;
+      let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
+      
+      if (isRtl) {
+          currentX = Math.max(-maxDrag, Math.min(0, dx));
+      } else {
+          currentX = Math.max(0, Math.min(maxDrag, dx));
+      }
       
       btn.style.transform = `translateX(${currentX}px)`;
-      text.style.opacity = 1 - (currentX / maxDrag);
+      text.style.opacity = 1 - (Math.abs(currentX) / maxDrag);
     };
 
     const onPointerUp = (e) => {
@@ -6146,10 +6157,11 @@ function previewPhoto(event) {
       btn.style.transition = 'transform 0.3s ease, background-color 0.4s ease';
       text.style.transition = 'opacity 0.3s ease, color 0.4s ease';
       
-      if (currentX >= maxDrag * 0.85) {
+      let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
+      if (Math.abs(currentX) >= maxDrag * 0.85) {
         if (form && typeof form.checkValidity === 'function' && form.checkValidity()) {
           // Success
-          btn.style.transform = `translateX(${maxDrag}px)`;
+          btn.style.transform = `translateX(${isRtl ? -maxDrag : maxDrag}px)`;
           container.classList.add('success');
           arrow.style.display = 'none';
           check.style.display = 'block';
