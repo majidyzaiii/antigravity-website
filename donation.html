@@ -3679,7 +3679,65 @@
     text-align: center !important;
 }
 
+
+/* Fix RTL for Admission Instructions Card in Donation Page */
+html[dir="rtl"] .admission-instructions-card {
+    text-align: right !important;
+}
+html[dir="rtl"] .admission-instructions-card .inst-subpoints li {
+    padding-left: 0 !important;
+    padding-right: 5px !important;
+    text-align: right !important;
+}
+html[dir="rtl"] .admission-instructions-card .inst-subpoints li::before {
+    left: auto !important;
+    right: -20px !important;
+}
+html[dir="rtl"] .admission-instructions-card h4.section-title,
+html[dir="rtl"] .admission-instructions-card h3.inst-head {
+    text-align: right !important;
+}
+
+/* Fix Contact Layout to Keep Form on Right in RTL */
+html[dir="rtl"] .contact-main-container {
+    direction: ltr !important;
+}
+html[dir="rtl"] .contact-left-col,
+html[dir="rtl"] .contact-right-col {
+    direction: rtl !important;
+}
+html[dir="rtl"] .contact-quick-form {
+    direction: rtl !important;
+}
+
+/* Fix Form Fields and Labels */
+html[dir="rtl"] .form-field {
+    text-align: right !important;
+}
+html[dir="rtl"] .form-field input:not([type="radio"]):not([type="checkbox"]), 
+html[dir="rtl"] .form-field select {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* Fix Swipe Button Position */
+[dir="rtl"] .swipe-handle, html[lang="ur"] .swipe-handle {
+    left: auto !important;
+    right: 4px !important;
+}
+[dir="rtl"] .swipe-button #swipeArrow, html[lang="ur"] .swipe-button #swipeArrow,
+[dir="rtl"] .swipe-handle svg:not(.swipe-check-icon), html[lang="ur"] .swipe-handle svg:not(.swipe-check-icon) {
+    transform: scaleX(-1) !important;
+}
+
+/* Fix inline left alignment for headings in RTL */
+html[dir="rtl"] .contact-header-text h2,
+html[dir="rtl"] .contact-header-text p {
+    text-align: right !important;
+}
 </style>
+
+
 
 
   <!-- FORCED PURE WHITE SECTION BACKGROUNDS -->
