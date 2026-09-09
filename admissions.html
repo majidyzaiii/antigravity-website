@@ -3271,6 +3271,13 @@ body.rtl .admission-instructions-card h4.section-title {
     text-align: center !important;
 }
 
+
+
+/* Fix swipe arrow direction in Urdu mode */
+[dir="rtl"] .swipe-button #swipeArrow, html[lang="ur"] .swipe-button #swipeArrow {
+    transform: scaleX(-1) !important;
+}
+
 </style>
 
 <style>
@@ -3660,7 +3667,7 @@ body.rtl .admission-instructions-card h4.section-title {
 
   <!-- Highlight Notice -->
   <div class="notice-badge">
-    <strong data-en="Note:" data-ur="نوٹ:">Note:</strong> Free education is provided to deserving and Zakat-eligible students.
+    <strong data-en="Note:" data-ur="نوٹ:">Note:</strong> <span data-en="Free education is provided to deserving and Zakat-eligible students." data-ur="مستحق اور زکوٰۃ کے اہل طلباء کو مفت تعلیم فراہم کی جاتی ہے۔">Free education is provided to deserving and Zakat-eligible students.</span>
   </div>
 </div>
 <div class="about-container admission-rules-card">
@@ -3689,7 +3696,7 @@ body.rtl .admission-instructions-card h4.section-title {
 
   <!-- Special Uniform Box at the Very End -->
   <!-- Special Uniform Box at the Very End -->
-    <div class="notice-badge"><strong data-en="Uniform Requirement:" data-ur="یونیفارم کی شرائط:">Uniform Requirement:</strong> White Shalwar Kameez, and Maroon Jersey for winters.</div>
+    <div class="notice-badge"><strong data-en="Uniform Requirement:" data-ur="یونیفارم کی شرائط:">Uniform Requirement:</strong> <span data-en="White Shalwar Kameez, and Maroon Jersey for winters." data-ur="سفید شلوار قمیض، اور سردیوں کے لیے میرون جرسی۔">White Shalwar Kameez, and Maroon Jersey for winters.</span></div>
 </div>
   
 <div class="about-container online-admission-form-container">
