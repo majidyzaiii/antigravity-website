@@ -3246,21 +3246,21 @@
 
 
 /* RTL Override for Admission Lists */
-body.rtl .admission-rules-card .formal-rules-ordered-list li,
-body.rtl .admission-instructions-card .inst-subpoints li {
+html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list li,
+html[dir="rtl"] .admission-instructions-card .inst-subpoints li {
   padding-left: 0 !important;
   padding-right: 5px !important;
   text-align: right !important;
 }
 
-body.rtl .admission-rules-card .formal-rules-ordered-list li::before,
-body.rtl .admission-instructions-card .inst-subpoints li::before {
+html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list li::before,
+html[dir="rtl"] .admission-instructions-card .inst-subpoints li::before {
   left: auto !important;
   right: -20px !important;
 }
 
-body.rtl .admission-rules-card h4.section-title,
-body.rtl .admission-instructions-card h4.section-title {
+html[dir="rtl"] .admission-rules-card h4.section-title,
+html[dir="rtl"] .admission-instructions-card h4.section-title {
   text-align: right !important;
 }
 
@@ -3276,6 +3276,30 @@ body.rtl .admission-instructions-card h4.section-title {
 /* Fix swipe arrow direction in Urdu mode */
 [dir="rtl"] .swipe-button #swipeArrow, html[lang="ur"] .swipe-button #swipeArrow {
     transform: scaleX(-1) !important;
+}
+
+
+
+/* Fix RTL Padding for Admission Lists */
+html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list,
+html[dir="rtl"] .admission-instructions-card .inst-subpoints {
+    padding-left: 0 !important;
+    padding-right: 20px !important;
+}
+
+
+
+/* Fix RTL Form Field Alignment */
+html[dir="rtl"] .form-field {
+    text-align: right !important;
+}
+
+
+
+/* Fix RTL Form Field Input Alignment */
+html[dir="rtl"] .form-field input:not([type="radio"]):not([type="checkbox"]), html[dir="rtl"] .form-field select {
+    text-align: right !important;
+    direction: rtl !important;
 }
 
 </style>
