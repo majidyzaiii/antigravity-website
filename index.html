@@ -7288,7 +7288,107 @@ html[dir="rtl"] .admission-instructions-card .inst-subpoints {
     padding-right: 24px !important;
 }
 </style>
+
+<!-- UNIFIED MOBILE MENU STYLING FIX -->
+<style>
+/* 1. Unify the Card Size and Padding everywhere */
+.mobile-menu-card {
+    width: 220px !important; /* Perfect width matching reference */
+    max-height: 420px !important;
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 2. Menu Header (MENU text and X button) */
+.mobile-menu-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 24px !important; /* Proper spacing from links */
+}
+.mobile-menu-card .menu-tag-label {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 0.85rem !important;
+    color: #9CA3AF !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+.mobile-menu-card .mobile-menu-close {
+    font-size: 1.5rem !important;
+    color: #111827 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+}
+
+/* 3. Navigation Links List */
+.mobile-menu-card .mobile-nav-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important; /* Proper spacing matching reference */
+    flex-grow: 1 !important;
+}
+
+/* 4. Individual Links and Language Button */
+.mobile-menu-card .mobile-nav-links a,
+.mobile-menu-card .mobile-lang-btn {
+    text-decoration: none !important;
+    color: #374151 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+
+/* Language Button specific tweaks (bottom area) */
+.mobile-menu-card .mobile-lang-btn {
+    margin-top: auto !important;
+    padding-top: 16px !important;
+    color: #006754 !important; /* Green color for the language toggle */
+}
+
+
+/* 5. Urdu Mode Overrides */
+html[dir="rtl"] .mobile-menu-card .mobile-nav-links a,
+body.ur .mobile-menu-card .mobile-nav-links a {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+    font-size: 1.25rem !important; /* Make Nastaleeq visible and matched to English size */
+    text-transform: none !important;
+    text-align: right !important;
+    line-height: 1.4 !important;
+}
+/* Ensure the Lang Button in Urdu mode keeps English font and alignment */
+html[dir="rtl"] .mobile-menu-card .mobile-lang-btn,
+body.ur .mobile-menu-card .mobile-lang-btn {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1rem !important;
+    text-align: right !important;
+}
+
+/* Fix RTL Header Alignment (Menu on Right, X on Left) */
+html[dir="rtl"] .mobile-menu-header,
+body.ur .mobile-menu-header {
+    flex-direction: row-reverse !important;
+}
+</style>
 </body>
+
 
 
 
