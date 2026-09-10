@@ -5658,12 +5658,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Restore language from localStorage
+        // Explicitly set language on load (default to English)
         const savedLang = localStorage.getItem('siteLang');
         if (savedLang === 'ur') {
             currentLang = 'ur';
-            applyTranslations('ur');
+        } else {
+            currentLang = 'en';
         }
+        applyTranslations(currentLang);
 
         window.toggleLanguage = function() {
             if (langSwitchBtn) langSwitchBtn.click();
