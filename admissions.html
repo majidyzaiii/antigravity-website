@@ -3848,7 +3848,6 @@ html[dir="rtl"] .mobile-menu-header {
 document.addEventListener("DOMContentLoaded", () => {
     const scrollHeader = document.querySelector('.scroll-home-header');
     if(scrollHeader) {
-        // Detach and move to the root of body to avoid any CSS container trap
         if (scrollHeader.parentNode !== document.body) {
             document.body.appendChild(scrollHeader);
         }
@@ -3867,9 +3866,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const menuCard = document.querySelector('.mobile-menu-card');
         
         if (mobileMenuBtn && overlay && menuCard) {
-            mobileMenuBtn.addEventListener('click', () => {
-                overlay.classList.toggle('is-active');
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                overlay.classList.toggle('is-active'); // Used by some pages
+                overlay.classList.toggle('active');    // Used by other pages
                 menuCard.classList.toggle('active');
+            });
+        }
+        
+        // Ensure the language switch button on the scrolled header works
+        const stickyLangBtn = scrollHeader.querySelector('#langSwitch');
+        if (stickyLangBtn) {
+            stickyLangBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Find all lang switches and click the one that actually has the global event listener (usually the first one or original one)
+                // To avoid infinite loop, we won't click ourselves
+                const allLangBtns = document.querySelectorAll('#langSwitch, .lang-toggle-btn');
+                for (let btn of allLangBtns) {
+                    if (btn !== stickyLangBtn) {
+                        btn.click();
+                        break;
+                    }
+                }
             });
         }
     }
