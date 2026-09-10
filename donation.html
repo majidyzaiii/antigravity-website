@@ -6427,9 +6427,10 @@ html[dir="rtl"] .menu-tag-label {
 }
 </style>
 
+
 <!-- ULTIMATE HEADER BUTTONS FIX -->
 <style>
-/* Center buttons vertically inside the green header ALWAYS */
+/* Center buttons vertically inside the green header for DESKTOP */
 html body div.about-minimal-header {
     position: relative !important;
 }
@@ -6447,12 +6448,8 @@ html body button[onclick*="history.back"] {
     position: absolute !important;
     z-index: 99999 !important;
     margin: 0 !important;
-}
-
-/* Base button styles */
-html body div.about-minimal-header button.minimal-back-btn,
-html body div.about-minimal-header button.minimal-hamburger-btn,
-html body div.about-minimal-header button[onclick*="history.back"] {
+    
+    /* White glass style for green background (Desktop) */
     width: 40px !important;
     height: 40px !important;
     min-width: 40px !important;
@@ -6465,7 +6462,58 @@ html body div.about-minimal-header button[onclick*="history.back"] {
     justify-content: center !important;
     padding: 0 !important;
 }
+html body div.about-minimal-header button.minimal-back-btn svg,
+html body div.about-minimal-header button.minimal-hamburger-btn svg,
+html body div.about-minimal-header button[onclick*="history.back"] svg {
+    stroke: #ffffff !important;
+}
 
+/* MOBILE OVERRIDES: Put buttons in the white strip ABOVE the header */
+@media (max-width: 768px) {
+    html body div.about-minimal-header {
+        margin-top: 48px !important; /* Create white space above header */
+        border-top: none !important; /* Remove any old buggy border */
+    }
+    
+    /* To guarantee the white strip background */
+    html body div.about-minimal-header::before {
+        content: "" !important;
+        position: absolute !important;
+        top: -48px !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 48px !important;
+        background-color: #ffffff !important;
+        z-index: 0 !important;
+    }
+
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn,
+    html body div.about-minimal-header button[onclick*="history.back"] {
+        top: -24px !important; /* Exactly middle of the 48px white strip */
+        transform: translateY(-50%) !important;
+        
+        /* Clean look for white background */
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        min-height: 32px !important;
+    }
+    
+    /* Make SVG icons dark green so they are visible on white */
+    html body div.about-minimal-header button.minimal-back-btn svg,
+    html body div.about-minimal-header button.minimal-hamburger-btn svg,
+    html body div.about-minimal-header button[onclick*="history.back"] svg {
+        stroke: #006754 !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
+}
+
+/* ALIGNMENTS (Universal for Desktop and Mobile) */
 /* English (LTR): Back on Left, Hamburger on Right */
 html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
 html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
@@ -6503,6 +6551,7 @@ body.ur div.about-minimal-header button[onclick*="history.back"] svg {
 }
 </style>
 </body>
+
 
 
 
