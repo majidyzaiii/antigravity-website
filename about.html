@@ -7643,6 +7643,20 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 
 <!-- SCROLL-SWAP HEADER LOGIC -->
 <style>
+/* Force display to override page-specific hiding rules */
+html body div.scroll-home-header,
+html body div.scroll-home-header header,
+html body div.scroll-home-header nav {
+    display: flex !important;
+}
+.scroll-home-header .mobile-logo-container {
+    display: none !important; /* Keep mobile logo container hidden if it's supposed to be */
+}
+@media (max-width: 768px) {
+    .scroll-home-header .mobile-logo-container {
+        display: flex !important;
+    }
+}
 /* Base state: Hidden above viewport */
 .scroll-home-header {
     position: fixed !important;
@@ -7668,6 +7682,11 @@ html[dir="rtl"] .back-txt-en, body.ur .back-txt-en { display: none !important; }
 document.addEventListener("DOMContentLoaded", () => {
     const scrollHeader = document.querySelector('.scroll-home-header');
     if(scrollHeader) {
+        // Detach and move to the root of body to avoid any CSS container trap
+        if (scrollHeader.parentNode !== document.body) {
+            document.body.appendChild(scrollHeader);
+        }
+        
         window.addEventListener('scroll', () => {
             if(window.scrollY > 120) {
                 scrollHeader.classList.add('is-sticky');
