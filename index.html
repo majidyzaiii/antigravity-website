@@ -7455,14 +7455,12 @@ body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
 
 <!-- ULTIMATE FIX FOR MOBILE HEADER STRIP AND PC BUTTONS -->
 <style>
-/* HIDE ON PC - HIGHEST SPECIFICITY */
-@media (min-width: 769px) {
-    html:root body div.about-minimal-header button.minimal-back-btn,
-    html:root body div.about-minimal-header button.minimal-hamburger-btn,
-    html:root body div.about-minimal-header button[onclick*="history.back"],
-    #desktopHideBtn1, #desktopHideBtn2 {
-        display: none !important;
-    }
+/* HIDE EVERYWHERE - HIGHEST SPECIFICITY */
+html:root body div.about-minimal-header button.minimal-back-btn,
+html:root body div.about-minimal-header button.minimal-hamburger-btn,
+html:root body div.about-minimal-header button[onclick*="history.back"],
+#desktopHideBtn1, #desktopHideBtn2 {
+    display: none !important;
 }
 
 /* FIX MOBILE HEADER STRIP - HIGHEST SPECIFICITY */
