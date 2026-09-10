@@ -5483,16 +5483,11 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay { justify-conte
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    background: #004d44 !important; /* Ensure background is solid */
+    background: #004d44 !important;
     transform: translateY(-100%) !important;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     pointer-events: none !important;
     z-index: 99999 !important;
-}
-    transform: translateY(-100%) !important;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    pointer-events: none !important;
-    z-index: 99999 !important; /* Ensure it's above everything including popup overlays if they somehow interfere */
 }
 
 /* Active state: Slid down into view */
@@ -5500,8 +5495,7 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay { justify-conte
     transform: translateY(0) !important;
     pointer-events: auto !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-}
-</style>
+}</style>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const scrollHeader = document.querySelector('.scroll-home-header');
@@ -5516,7 +5510,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Ensure the hamburger button on the scrolled header works
         const mobileMenuBtn = scrollHeader.querySelector('#mobileMenuBtn');
-        const overlay = document.getElementById('drawerOverlay');
+        const overlay = document.getElementById('mobileNavOverlay') || document.getElementById('drawerOverlay');
         const menuCard = document.querySelector('.mobile-menu-card');
         
         if (mobileMenuBtn && overlay && menuCard) {
@@ -5893,7 +5887,7 @@ body.hide-main-header { padding-top: 0 !important; }
         // --- Mobile Menu Toggle Logic (Drawer) ---
         window.toggleDrawer = function() {
             const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('drawerOverlay');
+            const overlay = document.getElementById('mobileNavOverlay') || document.getElementById('drawerOverlay');
             if(drawer) drawer.classList.toggle('active');
             if(overlay) overlay.classList.toggle('active');
         };
