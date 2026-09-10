@@ -7289,199 +7289,171 @@ html[dir="rtl"] .admission-instructions-card .inst-subpoints {
 }
 </style>
 
-<!-- UNIFIED MOBILE MENU STYLING FIX -->
+
+<!-- UNIFIED STRICT UI SPECIFICATIONS FOR MENU POPUP (MOBILE & PC) -->
 <style>
-/* 1. Unify the Card Size and Padding everywhere */
+/* 1. POPUP CONTAINER DIMENSIONS & RADIUS */
 .mobile-menu-card {
-    width: 220px !important; /* Perfect width matching reference */
-    max-height: 420px !important;
-    padding: 24px 20px !important;
-    border-radius: 20px !important;
+    width: 230px !important;
+    max-width: 230px !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04) !important;
+    border: 1px solid #f1f5f9 !important;
+    padding: 12px 10px !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
+    /* Ensure it floats properly like a card */
+    position: relative !important;
+    max-height: calc(100vh - 100px) !important;
+    overflow-y: auto !important;
+    /* Reset old max-heights and padding */
+    height: auto !important;
 }
 
-/* 2. Menu Header (MENU text and X button) */
+/* Remove scrollbar for clean look */
+.mobile-menu-card::-webkit-scrollbar {
+    width: 0px !important;
+}
+
+/* Fix header positioning in the card (Menu Text & Close Icon) */
 .mobile-menu-header {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    margin-bottom: 24px !important; /* Proper spacing from links */
-}
-.mobile-menu-card .menu-tag-label {
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 0.85rem !important;
-    color: #9CA3AF !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
-}
-.mobile-menu-card .mobile-menu-close {
-    font-size: 1.5rem !important;
-    color: #111827 !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    line-height: 1 !important;
-    cursor: pointer !important;
+    margin-bottom: 8px !important; /* Tighter gap before items */
+    padding: 0 14px !important;
 }
 
-/* 3. Navigation Links List */
+/* 2. MENU ITEMS & VERTICAL SPACING */
 .mobile-menu-card .mobile-nav-links {
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important; /* Proper spacing matching reference */
-    flex-grow: 1 !important;
+    gap: 4px !important; /* Uniform vertical gap */
 }
 
-/* 4. Individual Links and Language Button */
+/* Item styling */
 .mobile-menu-card .mobile-nav-links a,
 .mobile-menu-card .mobile-lang-btn {
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 14px !important;
     text-decoration: none !important;
-    color: #374151 !important;
+    color: #1F2937 !important;
     font-family: 'Outfit', sans-serif !important;
-    font-size: 1rem !important;
+    font-size: 15px !important;
     font-weight: 600 !important;
-    text-transform: uppercase !important;
+    text-transform: capitalize !important;
     background: transparent !important;
     border: none !important;
-    padding: 0 !important;
     cursor: pointer !important;
-    text-align: left !important;
+    border-radius: 14px !important;
+    transition: all 0.2s ease !important;
     width: 100% !important;
-    display: block !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
 }
 
+/* Hover/Active State */
+.mobile-menu-card .mobile-nav-links a:hover,
+.mobile-menu-card .mobile-nav-links a:active,
+.mobile-menu-card .mobile-lang-btn:hover,
+.mobile-menu-card .mobile-lang-btn:active,
+.mobile-menu-card .mobile-nav-links a.active {
+    background: #f1f5f9 !important;
+}
 
-/* Language Button specific tweaks (bottom area) */
+/* Language Button specifically */
 .mobile-menu-card .mobile-lang-btn {
-    margin-top: auto !important;
-    padding-top: 16px !important;
-    color: #006754 !important; /* Green color for the language toggle */
+    color: #006754 !important; /* Keep brand color */
+    margin-top: 4px !important;
 }
 
+/* Dividers */
+.menu-divider {
+    border-top: 1px solid #f1f5f9 !important;
+    margin: 6px 8px !important;
+    height: 0 !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    display: block !important;
+    width: auto !important;
+}
 
-/* 5. Urdu Mode Overrides */
+/* 3. RESPONSIVE RULES & RTL (Urdu Mode) */
+/* RTL Typography Override */
 html[dir="rtl"] .mobile-menu-card .mobile-nav-links a,
 body.ur .mobile-menu-card .mobile-nav-links a {
     font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-    font-size: 1.25rem !important; /* Make Nastaleeq visible and matched to English size */
-    text-transform: none !important;
+    font-size: 19px !important; /* Nastaleeq requires larger size to match 15px English visually */
     text-align: right !important;
-    line-height: 1.4 !important;
+    justify-content: flex-start !important; /* Alignment */
 }
-/* Ensure the Lang Button in Urdu mode keeps English font and alignment */
 html[dir="rtl"] .mobile-menu-card .mobile-lang-btn,
 body.ur .mobile-menu-card .mobile-lang-btn {
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 1rem !important;
     text-align: right !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 15px !important;
+    justify-content: flex-start !important;
 }
 
-/* Fix RTL Header Alignment (Menu on Right, X on Left) */
-html[dir="rtl"] .mobile-menu-header,
-body.ur .mobile-menu-header {
-    flex-direction: row-reverse !important;
+/* Floating behavior for subpages PC view */
+@media (min-width: 769px) {
+    /* For subpages where hamburger is used on desktop */
+    .mobile-menu-card {
+        margin-top: 80px !important; /* Float below header */
+        margin-right: 20px !important;
+        margin-left: 20px !important;
+    }
 }
-</style>
-
-
-<!-- MOBILE HEADER LAYOUT FIX (CENTERED NAME) -->
-<style>
 @media (max-width: 768px) {
-    /* Container for the mobile header content */
-    .sticky-header header {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        width: 100% !important;
-        padding: 5px 15px !important;
-    }
-    
-    /* English (LTR): Logo Left, Name Center, Hamburger Right */
-    html[dir="ltr"] .header-logo,
-    body:not(.ur) .header-logo {
-        order: 1 !important;
-        margin: 0 !important;
-    }
-    html[dir="ltr"] .brand-title-container,
-    body:not(.ur) .brand-title-container {
-        order: 2 !important;
-        margin: 0 auto !important; /* Forces it to stay centered between the two */
-        display: flex !important;
-        justify-content: center !important;
-    }
-    html[dir="ltr"] .mobile-menu-btn,
-    body:not(.ur) .mobile-menu-btn {
-        order: 3 !important;
-        margin: 0 !important;
-    }
-
-    /* Urdu (RTL): Logo Right, Name Center, Hamburger Left */
-    /* Since flex direction reverses in RTL, the same order works visually reversed! */
-    /* Wait, earlier we used flex-direction: row-reverse. Let's just explicitly map it for safety. */
-    html[dir="rtl"] .sticky-header header,
-    body.ur .sticky-header header {
-        flex-direction: row !important; /* Let RTL handle the mirroring naturally */
-    }
-    
-    html[dir="rtl"] .header-logo,
-    body.ur .header-logo {
-        order: 1 !important; /* In RTL, order 1 is on the Right */
-        margin: 0 !important;
-    }
-    html[dir="rtl"] .brand-title-container,
-    body.ur .brand-title-container {
-        order: 2 !important; /* Center */
-        margin: 0 auto !important;
-        display: flex !important;
-        justify-content: center !important;
-    }
-    html[dir="rtl"] .mobile-menu-btn,
-    body.ur .mobile-menu-btn {
-        order: 3 !important; /* In RTL, order 3 is on the Left */
-        margin: 0 !important;
-    }
-    
-    
-    .brand-title-container img {
-        height: 35px !important; /* Scale text name */
-        width: auto !important;
-    }
-    .mobile-menu-btn {
-        padding: 5px !important;
-    }
-    .mobile-menu-btn svg {
-        width: 32px !important;
-        height: 32px !important;
+    .mobile-menu-card {
+        margin-top: 70px !important; /* Float below header */
     }
 }
-</style>
 
-<!-- MOBILE HEADER BRAND SIZE FIX -->
-<style>
-@media (max-width: 768px) {
-    /* Make the text brand logos bigger and perfectly sized */
-    .brand-title-container img.brand-title-img-en,
-    .brand-title-container img.urdu-title-png {
-        height: 55px !important;
-        max-height: 55px !important;
-        width: auto !important;
-        max-width: 200px !important;
-        object-fit: contain !important;
-    }
-    
-    /* Make the circular graphic logo also proportionally sized */
-    .header-logo img {
-        height: 65px !important;
-        width: auto !important;
-    }
+/* Ensure slide animations respect the card positioning */
+html[dir="ltr"] .mobile-menu-card,
+body:not(.ur) .mobile-menu-card {
+    transform: translateX(150vw) !important; /* Hide to the Right initially (since Hamburger is on Right) */
+}
+html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+html[dir="rtl"] .mobile-menu-card,
+body.ur .mobile-menu-card {
+    transform: translateX(-150vw) !important; /* Hide to the Left initially */
+}
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+
+/* Accurate Divider Injection */
+.mobile-nav-links li:has(a[href*="updates.html"])::before,
+.mobile-nav-links li:has(.mobile-lang-btn)::before {
+    content: "" !important;
+    display: block !important;
+    border-top: 1px solid #f1f5f9 !important;
+    margin: 6px 8px !important;
+}
+/* Fallback if :has is not perfectly supported on older mobile browsers */
+.mobile-nav-links a[href*="updates.html"],
+.mobile-lang-btn {
+    position: relative;
 }
 </style>
 </body>
+
 
 
 
