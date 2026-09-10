@@ -6572,7 +6572,37 @@ html[dir="rtl"] .menu-tag-label {
     font-family: 'Outfit', sans-serif !important;
 }
 </style>
+
+<!-- CHECKMARK RTL FIX -->
+<style>
+/* Fix bullet points and checkmarks in RTL */
+html[dir="rtl"] .inst-subpoints, 
+body.ur .inst-subpoints,
+html[dir="rtl"] ul.inst-subpoints {
+    padding-left: 0 !important;
+    padding-right: 24px !important; /* Make sure there's enough room for the checkmark */
+}
+html[dir="rtl"] .inst-subpoints li, 
+body.ur .inst-subpoints li {
+    padding-left: 0 !important;
+    padding-right: 6px !important;
+    text-align: right !important;
+}
+html[dir="rtl"] .inst-subpoints li::before, 
+body.ur .inst-subpoints li::before {
+    left: auto !important;
+    right: -24px !important; /* Place checkmark neatly in the padding area */
+    
+}
+
+/* Specifically for donation page lists */
+html[dir="rtl"] .admission-instructions-card .inst-subpoints {
+    padding-left: 0 !important;
+    padding-right: 24px !important;
+}
+</style>
 </body>
+
 
 
 
