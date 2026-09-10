@@ -5774,6 +5774,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+
+<style>
+
+@media (min-width: 769px) {
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn,
+    html body div.about-minimal-header button[onclick*="history.back"] {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    html body div.about-minimal-header {
+        margin-top: 0 !important;
+        padding-top: 30px !important; /* ensure space for text if needed */
+    }
+    html body div.about-minimal-header::before {
+        background-color: transparent !important; /* Remove white strip color */
+        top: 0 !important;
+        height: 100% !important;
+    }
+    
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn,
+    html body div.about-minimal-header button[onclick*="history.back"] {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        border-radius: 50% !important;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+    }
+    
+    html body div.about-minimal-header button.minimal-back-btn svg,
+    html body div.about-minimal-header button.minimal-hamburger-btn svg,
+    html body div.about-minimal-header button[onclick*="history.back"] svg {
+        stroke: #ffffff !important; /* White icon on green background */
+    }
+}
+
+</style>
 <div class="about-minimal-header">
   <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
     <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
