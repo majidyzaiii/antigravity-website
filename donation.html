@@ -3761,6 +3761,85 @@ html[dir="rtl"] select.form-input-field {
         transform: rotate(180deg) !important;
     }
 }
+
+/* UNIVERSAL FIX FOR HEADER BUTTONS (DESKTOP & MOBILE) */
+html body div.about-minimal-header button.minimal-back-btn,
+html body div.about-minimal-header button.minimal-hamburger-btn,
+html body div.about-minimal-header button[onclick*="history.back"] {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute !important;
+}
+
+/* Default (LTR) Alignment */
+html body div.about-minimal-header button.minimal-back-btn,
+html body div.about-minimal-header button[onclick*="history.back"] {
+    left: 20px !important;
+    right: auto !important;
+}
+html body div.about-minimal-header button.minimal-hamburger-btn {
+    right: 20px !important;
+    left: auto !important;
+}
+
+/* RTL (Urdu) Alignment */
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+    right: 20px !important;
+    left: auto !important;
+}
+html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+    left: 20px !important;
+    right: auto !important;
+}
+
+/* Flip Back Arrow SVG in RTL */
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn svg,
+html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] svg {
+    transform: rotate(180deg) !important;
+}
+
+/* Slightly smaller on mobile */
+@media (max-width: 768px) {
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button.minimal-hamburger-btn,
+    html body div.about-minimal-header button[onclick*="history.back"] {
+        width: 36px !important;
+        height: 36px !important;
+        left: 12px !important;
+        right: 12px !important;
+    }
+    
+    html body div.about-minimal-header button.minimal-back-btn,
+    html body div.about-minimal-header button[onclick*="history.back"] {
+        left: 12px !important;
+        right: auto !important;
+    }
+    html body div.about-minimal-header button.minimal-hamburger-btn {
+        right: 12px !important;
+        left: auto !important;
+    }
+    
+    html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+    html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] {
+        right: 12px !important;
+        left: auto !important;
+    }
+    html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn {
+        left: 12px !important;
+        right: auto !important;
+    }
+}
 </style>
 
 
