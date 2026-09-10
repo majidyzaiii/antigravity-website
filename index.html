@@ -7060,59 +7060,7 @@ body.ur .swipe-submit-container.success .swipe-text {
 
 
 
-<!-- SWAPPED MENU DIRECTIONS FIX (English=Right, Urdu=Left) -->
-<style>
-/* English (LTR): Open on Right */
-html[dir="ltr"] .mobile-nav-overlay,
-body:not(.ur) .mobile-nav-overlay {
-    justify-content: flex-end !important; /* Right edge */
-}
-html[dir="ltr"] .mobile-menu-card,
-body:not(.ur) .mobile-menu-card {
-    margin-right: 16px !important;
-    margin-left: 0 !important;
-    transform: translateX(150vw) !important; /* Hide to the Right */
-}
-html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
 
-/* Urdu (RTL): Open on Left */
-html[dir="rtl"] .mobile-nav-overlay,
-body.ur .mobile-nav-overlay {
-    justify-content: flex-end !important; /* Left edge in RTL */
-}
-html[dir="rtl"] .mobile-menu-card,
-body.ur .mobile-menu-card {
-    margin-left: 16px !important;
-    margin-right: 0 !important;
-    transform: translateX(-150vw) !important; /* Hide to the Left */
-}
-html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
-
-/* Always round all corners */
-.mobile-menu-card {
-    border-radius: 20px !important;
-}
-
-/* Nastaleeq Font for Urdu Menu Items */
-html[dir="rtl"] .mobile-nav-links a,
-body.ur .mobile-nav-links a {
-    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-    font-size: 1.2rem !important; /* Slightly larger for Nastaleeq readability */
-    text-align: right !important;
-}
-
-/* Keep ENGLISH text normal in the button and header */
-html[dir="rtl"] .mobile-lang-btn,
-html[dir="rtl"] .menu-tag-label {
-    font-family: 'Outfit', sans-serif !important;
-}
-</style>
 
 
 <!-- ULTIMATE HEADER BUTTONS FIX -->
@@ -7237,6 +7185,62 @@ body.ur div.about-minimal-header button[onclick*="history.back"] svg {
     transform: rotate(180deg) !important;
 }
 </style>
+
+<!-- SWAPPED MENU DIRECTIONS FIX (English=Left, Urdu=Right) -->
+<style>
+/* English (LTR): Open on Left */
+html[dir="ltr"] .mobile-nav-overlay,
+body:not(.ur) .mobile-nav-overlay {
+    justify-content: flex-start !important; /* Left edge */
+}
+html[dir="ltr"] .mobile-menu-card,
+body:not(.ur) .mobile-menu-card {
+    margin-left: 16px !important;
+    margin-right: 0 !important;
+    transform: translateX(-150vw) !important; /* Hide to the Left */
+}
+html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Urdu (RTL): Open on Right */
+html[dir="rtl"] .mobile-nav-overlay,
+body.ur .mobile-nav-overlay {
+    justify-content: flex-start !important; /* Right edge in RTL */
+}
+html[dir="rtl"] .mobile-menu-card,
+body.ur .mobile-menu-card {
+    margin-right: 16px !important;
+    margin-left: 0 !important;
+    transform: translateX(150vw) !important; /* Hide to the Right */
+}
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Always round all corners */
+.mobile-menu-card {
+    border-radius: 20px !important;
+}
+
+/* Nastaleeq Font for Urdu Menu Items */
+html[dir="rtl"] .mobile-nav-links a,
+body.ur .mobile-nav-links a {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+    font-size: 1.2rem !important; /* Slightly larger for Nastaleeq readability */
+    text-align: right !important;
+}
+
+/* Keep ENGLISH text normal in the button and header */
+html[dir="rtl"] .mobile-lang-btn,
+html[dir="rtl"] .menu-tag-label {
+    font-family: 'Outfit', sans-serif !important;
+}
+</style>
+<!-- END SWAPPED MENU DIRECTIONS FIX -->
+
 </body>
 
 
