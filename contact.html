@@ -6577,9 +6577,39 @@ body.ur div.about-minimal-header button[onclick*="history.back"] svg {
 }
 </style>
 
-<!-- SWAPPED MENU DIRECTIONS FIX (English=Left, Urdu=Right) -->
+
+<!-- SWAPPED BUTTON POSITIONS (Hamburger Left in EN, Right in UR) -->
 <style>
-/* English (LTR): Open on Left */
+/* English (LTR): Hamburger on Left, Back on Right */
+html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+body:not(.ur) div.about-minimal-header button.minimal-hamburger-btn {
+    left: 16px !important;
+    right: auto !important;
+}
+html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
+body:not(.ur) div.about-minimal-header button.minimal-back-btn,
+body:not(.ur) div.about-minimal-header button[onclick*="history.back"] {
+    right: 16px !important;
+    left: auto !important;
+}
+
+/* Urdu (RTL): Hamburger on Right, Back on Left */
+html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn,
+body.ur div.about-minimal-header button.minimal-hamburger-btn {
+    right: 16px !important;
+    left: auto !important;
+}
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"],
+body.ur div.about-minimal-header button.minimal-back-btn,
+body.ur div.about-minimal-header button[onclick*="history.back"] {
+    left: 16px !important;
+    right: auto !important;
+}
+
+/* Fix popup opening sides to match the new button positions */
+/* English (LTR): Open on Left (Hamburger is on Left) */
 html[dir="ltr"] .mobile-nav-overlay,
 body:not(.ur) .mobile-nav-overlay {
     justify-content: flex-start !important; /* Left edge */
@@ -6590,12 +6620,8 @@ body:not(.ur) .mobile-menu-card {
     margin-right: 0 !important;
     transform: translateX(-150vw) !important; /* Hide to the Left */
 }
-html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
 
-/* Urdu (RTL): Open on Right */
+/* Urdu (RTL): Open on Right (Hamburger is on Right) */
 html[dir="rtl"] .mobile-nav-overlay,
 body.ur .mobile-nav-overlay {
     justify-content: flex-start !important; /* Right edge in RTL */
@@ -6606,16 +6632,10 @@ body.ur .mobile-menu-card {
     margin-left: 0 !important;
     transform: translateX(150vw) !important; /* Hide to the Right */
 }
-html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
+</style>
 
-/* Always round all corners */
-.mobile-menu-card {
-    border-radius: 20px !important;
-}
-
+<!-- FONT FIX -->
+<style>
 /* Nastaleeq Font for Urdu Menu Items */
 html[dir="rtl"] .mobile-nav-links a,
 body.ur .mobile-nav-links a {
@@ -6630,9 +6650,9 @@ html[dir="rtl"] .menu-tag-label {
     font-family: 'Outfit', sans-serif !important;
 }
 </style>
-<!-- END SWAPPED MENU DIRECTIONS FIX -->
-
 </body>
+
+
 
 
 
