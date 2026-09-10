@@ -6912,7 +6912,55 @@ body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
     position: relative;
 }
 </style>
+
+<!-- ULTIMATE FIX FOR MOBILE HEADER STRIP AND PC BUTTONS -->
+<style>
+/* HIDE ON PC - HIGHEST SPECIFICITY */
+@media (min-width: 769px) {
+    html:root body div.about-minimal-header button.minimal-back-btn,
+    html:root body div.about-minimal-header button.minimal-hamburger-btn,
+    html:root body div.about-minimal-header button[onclick*="history.back"],
+    #desktopHideBtn1, #desktopHideBtn2 {
+        display: none !important;
+    }
+}
+
+/* FIX MOBILE HEADER STRIP - HIGHEST SPECIFICITY */
+@media (max-width: 768px) {
+    html:root body div.about-minimal-header {
+        margin-top: 0 !important;
+        padding-top: 30px !important;
+    }
+    
+    html:root body div.about-minimal-header::before {
+        background-color: transparent !important; /* Remove white strip color */
+        top: 0 !important;
+        height: 100% !important;
+    }
+    
+    html:root body div.about-minimal-header button.minimal-back-btn,
+    html:root body div.about-minimal-header button.minimal-hamburger-btn,
+    html:root body div.about-minimal-header button[onclick*="history.back"] {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        border-radius: 50% !important;
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+    }
+    
+    html:root body div.about-minimal-header button.minimal-back-btn svg,
+    html:root body div.about-minimal-header button.minimal-hamburger-btn svg,
+    html:root body div.about-minimal-header button[onclick*="history.back"] svg {
+        stroke: #ffffff !important;
+    }
+}
+</style>
 </body>
+
 
 
 
