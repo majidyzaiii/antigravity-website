@@ -6448,18 +6448,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- FINAL DEFINITIVE POPUP & FONT FIX -->
+
+
+
+<!-- SWAPPED MENU DIRECTIONS FIX (English=Right, Urdu=Left) -->
 <style>
-/* Force Popup to Right Side with gap */
+/* English (LTR): Open on Right */
+html[dir="ltr"] .mobile-nav-overlay,
+body:not(.ur) .mobile-nav-overlay {
+    justify-content: flex-end !important; /* Right edge */
+}
+html[dir="ltr"] .mobile-menu-card,
+body:not(.ur) .mobile-menu-card {
+    margin-right: 16px !important;
+    margin-left: 0 !important;
+    transform: translateX(150vw) !important; /* Hide to the Right */
+}
+html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Urdu (RTL): Open on Left */
 html[dir="rtl"] .mobile-nav-overlay,
 body.ur .mobile-nav-overlay {
-    justify-content: flex-start !important; /* Flex-start in RTL = Right Edge */
+    justify-content: flex-end !important; /* Left edge in RTL */
 }
 html[dir="rtl"] .mobile-menu-card,
 body.ur .mobile-menu-card {
-    margin-right: 16px !important; /* Distance from right edge */
-    margin-left: 0 !important;
-    border-radius: 20px !important; /* Fully rounded corners */
+    margin-left: 16px !important;
+    margin-right: 0 !important;
+    transform: translateX(-150vw) !important; /* Hide to the Left */
+}
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Always round all corners */
+.mobile-menu-card {
+    border-radius: 20px !important;
 }
 
 /* Nastaleeq Font for Urdu Menu Items */
@@ -6477,6 +6505,8 @@ html[dir="rtl"] .menu-tag-label {
 }
 </style>
 </body>
+
+
 
 
 
