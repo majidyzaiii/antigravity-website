@@ -4749,7 +4749,84 @@ html[dir="rtl"] .menu-tag-label {
     font-family: 'Outfit', sans-serif !important;
 }
 </style>
+
+<!-- ULTIMATE HEADER BUTTONS FIX -->
+<style>
+/* Center buttons vertically inside the green header ALWAYS */
+html body div.about-minimal-header {
+    position: relative !important;
+}
+
+html body div.about-minimal-header button.minimal-back-btn,
+html body div.about-minimal-header button.minimal-hamburger-btn,
+html body div.about-minimal-header button[onclick*="history.back"],
+html body .back-btn,
+html body .minimal-back-btn,
+html body .minimal-hamburger-btn,
+html body button[onclick*="history.back"] {
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    position: absolute !important;
+    z-index: 99999 !important;
+    margin: 0 !important;
+}
+
+/* Base button styles */
+html body div.about-minimal-header button.minimal-back-btn,
+html body div.about-minimal-header button.minimal-hamburger-btn,
+html body div.about-minimal-header button[onclick*="history.back"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+/* English (LTR): Back on Left, Hamburger on Right */
+html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
+body:not(.ur) div.about-minimal-header button.minimal-back-btn,
+body:not(.ur) div.about-minimal-header button[onclick*="history.back"] {
+    left: 16px !important;
+    right: auto !important;
+}
+html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+body:not(.ur) div.about-minimal-header button.minimal-hamburger-btn {
+    right: 16px !important;
+    left: auto !important;
+}
+
+/* Urdu (RTL): Back on Right, Hamburger on Left */
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"],
+body.ur div.about-minimal-header button.minimal-back-btn,
+body.ur div.about-minimal-header button[onclick*="history.back"] {
+    right: 16px !important;
+    left: auto !important;
+}
+html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn,
+body.ur div.about-minimal-header button.minimal-hamburger-btn {
+    left: 16px !important;
+    right: auto !important;
+}
+
+/* Arrow flip for RTL */
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn svg,
+html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] svg,
+body.ur div.about-minimal-header button.minimal-back-btn svg,
+body.ur div.about-minimal-header button[onclick*="history.back"] svg {
+    transform: rotate(180deg) !important;
+}
+</style>
 </body>
+
 
 
 
