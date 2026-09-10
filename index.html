@@ -7460,7 +7460,29 @@ body.ur .mobile-menu-header {
     }
 }
 </style>
+
+<!-- MOBILE HEADER BRAND SIZE FIX -->
+<style>
+@media (max-width: 768px) {
+    /* Make the text brand logos bigger and perfectly sized */
+    .brand-title-container img.brand-title-img-en,
+    .brand-title-container img.urdu-title-png {
+        height: 55px !important;
+        max-height: 55px !important;
+        width: auto !important;
+        max-width: 200px !important;
+        object-fit: contain !important;
+    }
+    
+    /* Make the circular graphic logo also proportionally sized */
+    .header-logo img {
+        height: 65px !important;
+        width: auto !important;
+    }
+}
+</style>
 </body>
+
 
 
 
