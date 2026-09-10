@@ -7056,7 +7056,37 @@ body.ur .swipe-submit-container.success .swipe-text {
 }
 </style>
 
+
+<!-- FINAL DEFINITIVE POPUP & FONT FIX -->
+<style>
+/* Force Popup to Right Side with gap */
+html[dir="rtl"] .mobile-nav-overlay,
+body.ur .mobile-nav-overlay {
+    justify-content: flex-start !important; /* Flex-start in RTL = Right Edge */
+}
+html[dir="rtl"] .mobile-menu-card,
+body.ur .mobile-menu-card {
+    margin-right: 16px !important; /* Distance from right edge */
+    margin-left: 0 !important;
+    border-radius: 20px !important; /* Fully rounded corners */
+}
+
+/* Nastaleeq Font for Urdu Menu Items */
+html[dir="rtl"] .mobile-nav-links a,
+body.ur .mobile-nav-links a {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+    font-size: 1.2rem !important; /* Slightly larger for Nastaleeq readability */
+    text-align: right !important;
+}
+
+/* Keep ENGLISH text normal in the button and header */
+html[dir="rtl"] .mobile-lang-btn,
+html[dir="rtl"] .menu-tag-label {
+    font-family: 'Outfit', sans-serif !important;
+}
+</style>
 </body>
+
 
 </html>
 
