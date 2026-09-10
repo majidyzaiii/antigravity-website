@@ -3316,6 +3316,23 @@ html[dir="rtl"] .admission-instructions-card {
     left: auto !important;
     right: 4px !important;
 }
+
+/* Fix for mobile header buttons in RTL */
+@media (max-width: 768px) {
+    html[dir="rtl"] .about-minimal-header .minimal-back-btn,
+    html[dir="rtl"] body .minimal-back-btn {
+        right: 12px !important;
+        left: auto !important;
+    }
+    html[dir="rtl"] .about-minimal-header .minimal-hamburger-btn,
+    html[dir="rtl"] body .minimal-hamburger-btn {
+        left: 12px !important;
+        right: auto !important;
+    }
+    html[dir="rtl"] .minimal-back-btn svg {
+        transform: rotate(180deg) !important;
+    }
+}
 </style>
 
 <style>
