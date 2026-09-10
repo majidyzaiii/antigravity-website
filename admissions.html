@@ -3774,7 +3774,7 @@ html[dir="rtl"] .mobile-menu-header {
     }
 }
 </style>
-<div class="sticky-header scroll-home-header">
+<div id="ultimateScrollHeader" class="sticky-header scroll-home-header">
     <header>
         <div class="brand-title-container">
             <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
@@ -3810,9 +3810,9 @@ html[dir="rtl"] .mobile-menu-header {
 <!-- SCROLL-SWAP HEADER LOGIC -->
 <style>
 /* Force display to override page-specific hiding rules */
-html body div.scroll-home-header,
-html body div.scroll-home-header header,
-html body div.scroll-home-header nav {
+#ultimateScrollHeader,
+#ultimateScrollHeader header,
+#ultimateScrollHeader nav {
     display: flex !important;
 }
 .scroll-home-header .mobile-logo-container {
