@@ -845,6 +845,23 @@ html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] sv
         right: auto !important;
     }
 }
+
+/* Definitive Mobile Popup RTL Fix */
+html[dir="rtl"] .mobile-nav-overlay, 
+body.ur .mobile-nav-overlay {
+  justify-content: flex-start !important; /* flex-start in RTL is RIGHT */
+}
+html[dir="rtl"] .mobile-menu-card, 
+body.ur .mobile-menu-card {
+  border-radius: 20px !important; /* All corners rounded, exactly like English */
+  margin-right: 16px !important;  /* Give it some spacing from the right edge */
+  margin-left: 0 !important;
+  width: 175px !important; /* Keep size same */
+}
+/* Ensure the close button is in the same place relative to the menu label */
+html[dir="rtl"] .mobile-menu-header {
+  flex-direction: row-reverse !important;
+}
 </style>
 
 <!-- Mobile Drawer Strict RTL Positioning -->
@@ -884,12 +901,7 @@ html[dir="rtl"] .nav-drawer,
 body.ur .mobile-menu,
 body.ur .nav-drawer,
 html[dir="rtl"] .mobile-drawer-menu,
-html[dir="rtl"] .mobile-menu-card {
-  right: 0 !important;
-  left: auto !important;
-  transform: translateX(100%) !important; /* Hide to Right */
-  border-radius: 20px 0 0 20px !important;
-}
+
 
 html[dir="rtl"] .mobile-menu.active,
 html[dir="rtl"] .nav-drawer.active,
