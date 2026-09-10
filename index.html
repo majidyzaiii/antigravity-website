@@ -7387,7 +7387,132 @@ body.ur .mobile-menu-header {
     flex-direction: row-reverse !important;
 }
 </style>
+
+<!-- MOBILE HEADER LAYOUT FIX -->
+<style>
+@media (max-width: 768px) {
+    /* Container for the mobile header content */
+    .sticky-header header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 10px 15px !important;
+    }
+    
+    /* English (LTR): Logo Left, Hamburger Right */
+    html[dir="ltr"] .sticky-header header,
+    body:not(.ur) .sticky-header header {
+        flex-direction: row !important;
+    }
+    html[dir="ltr"] .mobile-menu-btn,
+    body:not(.ur) .mobile-menu-btn {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        order: 2 !important;
+    }
+    html[dir="ltr"] .header-logo,
+    body:not(.ur) .header-logo,
+    html[dir="ltr"] .mobile-logo-container,
+    body:not(.ur) .mobile-logo-container,
+    html[dir="ltr"] .brand-title-container,
+    body:not(.ur) .brand-title-container {
+        order: 1 !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    /* Urdu (RTL): Logo Right, Hamburger Left */
+    html[dir="rtl"] .sticky-header header,
+    body.ur .sticky-header header {
+        flex-direction: row-reverse !important;
+    }
+    html[dir="rtl"] .mobile-menu-btn,
+    body.ur .mobile-menu-btn {
+        margin-right: auto !important;
+        margin-left: 0 !important;
+        order: 1 !important;
+    }
+    html[dir="rtl"] .header-logo,
+    body.ur .header-logo,
+    html[dir="rtl"] .mobile-logo-container,
+    body.ur .mobile-logo-container,
+    html[dir="rtl"] .brand-title-container,
+    body.ur .brand-title-container {
+        order: 2 !important;
+        margin-right: 0 !important;
+        margin-left: auto !important;
+    }
+}
+</style>
+
+<!-- SYNC POPUP TO NEW HAMBURGER POSITIONS -->
+<style>
+/* English (LTR): Hamburger is on Right -> Popup Opens on Right */
+html[dir="ltr"] .mobile-nav-overlay,
+body:not(.ur) .mobile-nav-overlay {
+    justify-content: flex-end !important; /* Right edge */
+}
+html[dir="ltr"] .mobile-menu-card,
+body:not(.ur) .mobile-menu-card {
+    margin-right: 16px !important;
+    margin-left: 0 !important;
+    transform: translateX(150vw) !important; /* Hide to the Right */
+}
+html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Urdu (RTL): Hamburger is on Left -> Popup Opens on Left */
+html[dir="rtl"] .mobile-nav-overlay,
+body.ur .mobile-nav-overlay {
+    justify-content: flex-end !important; /* Left edge in RTL */
+}
+html[dir="rtl"] .mobile-menu-card,
+body.ur .mobile-menu-card {
+    margin-left: 16px !important;
+    margin-right: 0 !important;
+    transform: translateX(-150vw) !important; /* Hide to the Left */
+}
+html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
+    transform: translateX(0) !important;
+}
+
+/* Sync Header Buttons for Inner Pages (Hamburger matching index.html) */
+/* English: Back Left, Hamburger Right */
+html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
+body:not(.ur) div.about-minimal-header button.minimal-back-btn {
+    left: 16px !important;
+    right: auto !important;
+}
+html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
+body:not(.ur) div.about-minimal-header button.minimal-hamburger-btn {
+    right: 16px !important;
+    left: auto !important;
+}
+/* Urdu: Back Right, Hamburger Left */
+html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
+body.ur div.about-minimal-header button.minimal-back-btn {
+    right: 16px !important;
+    left: auto !important;
+}
+html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn,
+body.ur div.about-minimal-header button.minimal-hamburger-btn {
+    left: 16px !important;
+    right: auto !important;
+}
+
+/* Fix RTL Card Inner Header Alignment (Menu on Left, X on Right to match Left-docked card) */
+html[dir="rtl"] .mobile-menu-header,
+body.ur .mobile-menu-header {
+    flex-direction: row !important; /* Back to normal, so MENU is Right and X is Left in RTL? Wait! */
+}
+</style>
 </body>
+
+
 
 
 
