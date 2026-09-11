@@ -6716,6 +6716,11 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                 const authorName = u.author ? u.author : 'Admin';
                 const finalAuthor = lang === 'ur' ? `?? ${authorName} ?? ??? ??` : `?? by ${authorName}`;
                 
+                const titleFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                const descFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                const descSize = lang === 'ur' ? '22px' : '16px';
+                const descLine = lang === 'ur' ? '2.2' : '1.8';
+                
                 return `
                 <div class="content-card" id="upd-${u.id}" style="margin-bottom: 25px; scroll-margin-top: 100px;">
                     <div style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center; flex-wrap: wrap;">
@@ -6723,9 +6728,9 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                         <span style="color: #64748b; font-size: 0.95rem; font-weight: 600;">${finalAuthor}</span>
                         <span style="color: #64748b; font-size: 0.95rem; font-weight: 600; border-left: 2px solid #e2e8f0; padding-left: 10px;">${u.cat}</span>
                     </div>
-                    <h2 style="font-size: 1.5rem; color: #004d44; margin-bottom: 15px; line-height: 1.4; font-family: ${lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif'};">${title}</h2>
+                    <h2 style="font-size: 1.5rem; color: #004d44; margin-bottom: 15px; line-height: 1.4; font-family: ${titleFont};">${title}</h2>
                     ${imgHtml}
-                    <div style="font-size: 1.05rem; color: #475569; line-height: 1.8; font-family: ${lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif'}; font-size: ${lang === 'ur' ? '22px' : '16px'}; line-height: ${lang === 'ur' ? '2.2' : '1.8'};">
+                    <div style="font-size: 1.05rem; color: #475569; line-height: 1.8; font-family: ${descFont}; font-size: ${descSize}; line-height: ${descLine};">
                         ${desc.split(`
 `).join(`<br>`)}
                     </div>

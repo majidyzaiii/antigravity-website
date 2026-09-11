@@ -5091,6 +5091,10 @@ div:has(> .strengths-wrapper),
                 const authorName = u.author ? u.author : 'Admin';
                 const finalAuthor = lang === 'ur' ? `?? ${authorName} ?? ??? ??` : `?? by ${authorName}`;
 
+                const titleFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                const descFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                const descSize = lang === 'ur' ? '20px' : '15px';
+                
                 return `
         <article class="news-card">
           <div class="news-img-wrapper">
@@ -5101,8 +5105,8 @@ div:has(> .strengths-wrapper),
               <span class="news-date-badge">${formattedDate}</span>
               <span class="news-author">${finalAuthor}</span>
             </div>
-            <h3 class="news-heading" style="font-family: ${lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif"};">${title}</h3>
-            <p class="news-excerpt" style="font-family: ${lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif"}; font-size: ${lang === 'ur' ? '20px' : '15px'};">${desc}</p>
+            <h3 class="news-heading" style="font-family: ${titleFont};">${title}</h3>
+            <p class="news-excerpt" style="font-family: ${descFont}; font-size: ${descSize};">${desc}</p>
             <a href="${hrefUrl}" class="news-read-link">${readMore}</a>
           </div>
         </article>`;
