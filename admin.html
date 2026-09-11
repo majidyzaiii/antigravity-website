@@ -5399,20 +5399,39 @@ div:has(> .strengths-wrapper),
             let descUr = '';
             
             try {
+                // Try Google Translate first
                 if(titleEn) {
                     const resT = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(titleEn)}`);
+                    if (!resT.ok) throw new Error('Google 429');
                     const dataT = await resT.json();
                     titleUr = dataT[0].map(x => x[0]).join('');
                 }
                 if(descEn) {
                     const resD = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(descEn)}`);
+                    if (!resD.ok) throw new Error('Google 429');
                     const dataD = await resD.json();
                     descUr = dataD[0].map(x => x[0]).join('');
                 }
             } catch(e) {
-                alert("Translation failed. Check network.");
-                btn.innerHTML = 'Auto-Translate to Urdu & Publish';
-                return;
+                console.warn("Google Translate failed, trying MyMemory...", e);
+                try {
+                    // Fallback to MyMemory Translate API
+                    if(titleEn) {
+                        const resT = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(titleEn)}&langpair=en|ur`);
+                        const dataT = await resT.json();
+                        titleUr = dataT.responseData.translatedText;
+                    }
+                    if(descEn) {
+                        const resD = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(descEn)}&langpair=en|ur`);
+                        const dataD = await resD.json();
+                        descUr = dataD.responseData.translatedText;
+                    }
+                } catch(e2) {
+                    console.warn("MyMemory failed too.", e2);
+                    alert("Auto-translation services are currently busy. Saving English text in Urdu version as fallback.");
+                    titleUr = titleEn;
+                    descUr = descEn;
+                }
             }
             
             const updates = getUpdates();
