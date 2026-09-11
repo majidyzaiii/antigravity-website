@@ -5393,7 +5393,37 @@ div:has(> .strengths-wrapper),
             }
         }
 
+        
+        window.deleteCard = function(index) {
+            if(!confirm(`Are you sure you want to delete Card ${index + 1}? It will be removed from the website.`)) return;
+            
+            // Empty the form fields
+            document.getElementById(`c${index}-title`).value = '';
+            document.getElementById(`c${index}-desc`).value = '';
+            document.getElementById(`c${index}-author`).value = 'Admin';
+            document.getElementById(`c${index}-cat`).value = 'General';
+            document.getElementById(`c${index}-img`).value = '';
+            
+            // Empty the data in localStorage
+            let updatesStr = localStorage.getItem('site_updates') || '[]';
+            let updates = JSON.parse(updatesStr);
+            if(updates.length < 3) {
+                while(updates.length < 3) updates.push({ id: Date.now() + updates.length, date: new Date().toISOString().split('T')[0], cat: 'General', author: 'Admin', title_en: '', desc_en: '', title_ur: '', desc_ur: '', image: null });
+            }
+            updates[index].title_en = '';
+            updates[index].desc_en = '';
+            updates[index].title_ur = '';
+            updates[index].desc_ur = '';
+            updates[index].image = null;
+            
+            localStorage.setItem('site_updates', JSON.stringify(updates));
+            sessionStorage.setItem('site_updates', JSON.stringify(updates));
+            
+            alert(`Card ${index + 1} has been deleted.`);
+        }
+        
         window.publishCard = async function(index) {
+
             const btn = document.getElementById(`btn-pub-${index}`);
             btn.innerHTML = 'Translating & Saving...';
             
