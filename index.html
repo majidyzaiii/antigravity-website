@@ -7628,7 +7628,36 @@ body > .mobile-logo-container { display: none !important; }
     }
 }
 </style>
+
+<!-- FIX NEWS CARDS EXPANSION -->
+<style>
+/* Make the news card stretch to full grid row height */
+.news-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+/* Make the content wrapper stretch and push the link to bottom */
+.news-card-content {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important; /* Grow to fill space */
+}
+
+/* Push the read more link to the very bottom */
+.news-read-link {
+    margin-top: auto !important;
+}
+
+/* Allow excerpt to grow as needed without hard restrictions */
+.news-excerpt {
+    height: auto !important;
+    min-height: min-content !important;
+}
+</style>
 </body>
+
 
 
 
