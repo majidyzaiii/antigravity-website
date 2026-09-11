@@ -1,0 +1,16 @@
+<header>
+        <div class="brand-title-container">
+            <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
+            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+        </div>
+        <div class="header-logo desktop-logo">
+            <img src="assets/logo.png" alt="Madrassa Logo">
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu" >
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>

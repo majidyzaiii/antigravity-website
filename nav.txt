@@ -1,0 +1,9 @@
+<nav class="floating-nav" id="mainNav">
+            <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
+            <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
+            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
+            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
+            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
+            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
+            <button class="lang-toggle-btn" id="langSwitch">URDU</button>
+        </nav>
