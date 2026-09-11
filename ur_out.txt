@@ -1,0 +1,36 @@
+<div class="ur-svg-wrapper" style="display: none;">
+    <svg viewBox="-160 -20 1000 340" width="100%" preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(680, 0) scale(-1, 1)">
+<g transform="scale(0.6)">
+                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
+                        <!-- Top pointer -->
+                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="110" r="5" fill="#025F55" />
+
+                        <!-- Mid pointer -->
+                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
+
+                        <!-- Bot pointer -->
+                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
+                        <circle cx="400" cy="440" r="5" fill="#01423B" />
+
+                        <!-- Segmented Arcs grouped for interactivity -->
+                        <!-- Segment 1: Top Arc -->
+                        <g class="stat-slice" data-index="0">
+                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
+                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
+                            
+                        </g>
+</g>
+        
+<text x="521.1" y="96.9" class="arc-text" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700"><tspan class="count-up" data-target="550">0</tspan>+</text>
+<text x="506.1" y="172.4" class="arc-text" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700"><tspan class="count-up" data-target="60">0</tspan>+</text>
+<text x="556.9" y="230.3" class="arc-text" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
+
+        
+<foreignObject x="600" y="30" width="260" height="240">
+    <div class="center-heading" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding-right: 0; height: 100%;">
+        <span class="title-part-1">?????</span>
+        <span class="title-part-2">?????? ??????</span>
+    </div>
