@@ -5303,13 +5303,25 @@ div:has(> .strengths-wrapper),
         }
         
         document.getElementById('btn-login').addEventListener('click', () => {
-            const u = document.getElementById('login-user').value;
-            const p = document.getElementById('login-pass').value;
+            const u = document.getElementById('login-user').value.trim().toLowerCase();
+            const p = document.getElementById('login-pass').value.trim();
             if(u === 'admin' && p === 'admin123') {
                 sessionStorage.setItem('admin_auth', 'true');
                 checkAuth();
             } else {
                 document.getElementById('login-error').style.display = 'block';
+            }
+        });
+        
+        // Allow pressing Enter to login
+        document.getElementById('login-pass').addEventListener('keyup', (e) => {
+            if(e.key === 'Enter') {
+                document.getElementById('btn-login').click();
+            }
+        });
+        document.getElementById('login-user').addEventListener('keyup', (e) => {
+            if(e.key === 'Enter') {
+                document.getElementById('btn-login').click();
             }
         });
         
@@ -5342,12 +5354,12 @@ div:has(> .strengths-wrapper),
             
             try {
                 if(titleEn) {
-                    const resT = await fetch(https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=);
+                    const resT = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(titleEn)}`);
                     const dataT = await resT.json();
                     document.getElementById('upd-title-ur').value = dataT[0].map(x => x[0]).join('');
                 }
                 if(descEn) {
-                    const resD = await fetch(https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=);
+                    const resD = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(descEn)}`);
                     const dataD = await resD.json();
                     document.getElementById('upd-desc-ur').value = dataD[0].map(x => x[0]).join('');
                 }
@@ -5377,14 +5389,14 @@ div:has(> .strengths-wrapper),
             
             updates.forEach(u => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = 
-                    <td></td>
-                    <td style="font-weight:600; color:var(--header-bg);"></td>
-                    <td><span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 12px;"></span></td>
+                tr.innerHTML = `
+                    <td>${u.date}</td>
+                    <td style="font-weight:600; color:var(--header-bg);">${u.title_en}</td>
+                    <td><span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 12px;">${u.cat}</span></td>
                     <td>
-                        <button class="btn btn-sm" onclick="deleteUpdate()" style="color: #ef4444; padding: 4px 8px; border: 1px solid #ef4444; border-radius: 4px; background: transparent;">Delete</button>
+                        <button class="btn btn-sm" onclick="deleteUpdate(${u.id})" style="color: #ef4444; padding: 4px 8px; border: 1px solid #ef4444; border-radius: 4px; background: transparent; cursor: pointer;">Delete</button>
                     </td>
-                ;
+                `;
                 tbody.appendChild(tr);
             });
         }
@@ -5448,17 +5460,19 @@ div:has(> .strengths-wrapper),
         // --- Dummy Tables for Admissions/Donations ---
         function renderAdmissionsTable() {
             const tbody = document.getElementById('admissions-table-body');
-            tbody.innerHTML = 
+            if(!tbody) return;
+            tbody.innerHTML = `
                 <tr><td>2026-09-11</td><td>Ahmed Khan</td><td>0300-1122334</td><td>Hifz ul Quran</td><td><span class="status-badge status-pending" onclick="toggleStatus(this)">Pending</span></td></tr>
                 <tr><td>2026-09-10</td><td>Usman Ali</td><td>0321-9988776</td><td>Nazra</td><td><span class="status-badge status-approved" onclick="toggleStatus(this)">Approved</span></td></tr>
-            ;
+            `;
         }
         function renderDonationsTable() {
             const tbody = document.getElementById('donations-table-body');
-            tbody.innerHTML = 
+            if(!tbody) return;
+            tbody.innerHTML = `
                 <tr><td>2026-09-11</td><td>Anonymous</td><td>Rs. 50,000</td><td>TRX-987123</td><td><span class="status-badge status-pending" onclick="toggleStatus(this)">Unverified</span></td></tr>
                 <tr><td>2026-09-08</td><td>Zaid Umar</td><td>Rs. 10,000</td><td>SLIP-091</td><td><span class="status-badge status-approved" onclick="toggleStatus(this)">Verified</span></td></tr>
-            ;
+            `;
         }
 
         window.toggleStatus = function(el) {
@@ -5488,11 +5502,11 @@ div:has(> .strengths-wrapper),
             
             document.querySelectorAll('[data-en]').forEach(item => {
                 if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
-                    item.placeholder = item.getAttribute(data-);
+                    item.placeholder = item.getAttribute(`data-${lang}`);
                 } else if (!item.classList.contains('admin-tab')) {
-                    item.innerHTML = item.getAttribute(data-);
+                    item.innerHTML = item.getAttribute(`data-${lang}`);
                 } else {
-                    item.textContent = item.getAttribute(data-);
+                    item.textContent = item.getAttribute(`data-${lang}`);
                 }
             });
             
