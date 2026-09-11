@@ -5653,13 +5653,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 currentLang = currentLang === 'en' ? 'ur' : 'en';
-                localStorage.setItem('siteLang', currentLang);
+                sessionStorage.setItem('siteLang', currentLang);
                 applyTranslations(currentLang);
             });
         }
 
         // Explicitly set language on load (default to English)
-        const savedLang = localStorage.getItem('siteLang');
+        const savedLang = sessionStorage.getItem('siteLang');
         if (savedLang === 'ur') {
             currentLang = 'ur';
         } else {
