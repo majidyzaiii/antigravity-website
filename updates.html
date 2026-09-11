@@ -6688,7 +6688,7 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
             const container = document.getElementById('dynamic-updates-container');
             if(!container) return;
             
-            const updatesStr = sessionStorage.getItem('site_updates') || localStorage.getItem('site_updates');
+            const updatesStr = localStorage.getItem('site_updates');
             if(!updatesStr) {
                 container.innerHTML = '<p style="text-align: center; color: #64748b;">No updates available.</p>';
                 return;

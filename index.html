@@ -5059,7 +5059,7 @@ div:has(> .strengths-wrapper),
             const grid = document.querySelector('.updates-grid');
             if(!grid) return;
             
-            const updatesStr = sessionStorage.getItem('site_updates') || localStorage.getItem('site_updates');
+            const updatesStr = localStorage.getItem('site_updates');
             if(!updatesStr) {
                 grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No updates available.</p>';
                 return;
