@@ -7629,34 +7629,36 @@ body > .mobile-logo-container { display: none !important; }
 }
 </style>
 
-<!-- FIX NEWS CARDS EXPANSION -->
+
+
+<!-- UNIFORM HOME PAGE CARDS (LINE CLAMP) -->
 <style>
-/* Make the news card stretch to full grid row height */
+/* Keep the excerpt uniform on the home page with an ellipsis */
+.news-excerpt {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important; /* Limit to 3 lines */
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Ensure the card content keeps the button aligned */
 .news-card {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
 }
-
-/* Make the content wrapper stretch and push the link to bottom */
 .news-card-content {
     display: flex !important;
     flex-direction: column !important;
-    flex: 1 !important; /* Grow to fill space */
+    flex: 1 !important;
 }
-
-/* Push the read more link to the very bottom */
 .news-read-link {
     margin-top: auto !important;
 }
-
-/* Allow excerpt to grow as needed without hard restrictions */
-.news-excerpt {
-    height: auto !important;
-    min-height: min-content !important;
-}
 </style>
 </body>
+
 
 
 
