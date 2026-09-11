@@ -5072,7 +5072,7 @@ div:has(> .strengths-wrapper),
                 return;
             }
             
-            grid.innerHTML = updates.map((u, i) => {
+            grid.innerHTML = updates.filter(u => u.title_en && u.title_en.trim() !== "").map((u, i) => {
                 const title = lang === 'ur' ? u.title_ur : u.title_en;
                 const desc = lang === 'ur' ? u.desc_ur : u.desc_en;
                 
