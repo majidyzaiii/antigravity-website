@@ -2262,23 +2262,6 @@
             margin: 0 auto;
         }
 
-        /* TRUE RTL MIRROR FOR STATS SECTION */
-        html[dir="rtl"] .donut-infographic-section svg {
-            transform: scaleX(-1);
-        }
-
-        /* Un-flip the inner HTML elements and numbers so they remain readable */
-        html[dir="rtl"] .center-heading,
-        html[dir="rtl"] .svg-text-block {
-            transform: scaleX(-1);
-        }
-
-        html[dir="rtl"] .arc-text {
-            transform: scaleX(-1);
-            transform-origin: center;
-            transform-box: fill-box;
-        }
-
         /* Desktop SVG View */
         .desktop-svg-wrapper {
             display: block;
@@ -2377,9 +2360,7 @@
         .svg-text-block.highlight-text {
             transform: translateX(5px);
         }
-        html[dir="rtl"] .svg-text-block.highlight-text {
-            transform: scaleX(-1) translateX(5px) !important; /* Applies hover push in the mirrored axis */
-        }
+        
 
         
         .donut-infographic-container svg {
