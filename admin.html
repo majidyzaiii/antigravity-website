@@ -5206,7 +5206,41 @@ div:has(> .strengths-wrapper),
 
     <!-- Additional Custom CSS for Admin -->
     <style>
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            color: #334155;
+            background: #ffffff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--header-bg);
+            box-shadow: 0 0 0 3px rgba(2, 95, 85, 0.1);
+        }
         .admin-tab {
+
             padding: 10px 20px;
             background: #f1f5f9;
             border: 1px solid #cbd5e1;
