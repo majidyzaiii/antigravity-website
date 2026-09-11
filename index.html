@@ -7534,7 +7534,8 @@ html[lang="ur"] .urdu-title-png {
     /* Order 1: Logo */
     header .header-logo, 
     .sticky-header header .header-logo,
-    .mobile-logo-container {
+    header .mobile-logo-container,
+    .sticky-header header .mobile-logo-container {
         order: 1 !important;
         display: flex !important;
     }
@@ -7555,6 +7556,7 @@ html[lang="ur"] .urdu-title-png {
         display: flex !important;
     }
 }
+body > .mobile-logo-container { display: none !important; }
 </style>
 </body>
 
