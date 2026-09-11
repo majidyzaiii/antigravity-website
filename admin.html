@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madrassa Riaz ul Quran wal Sunnah</title>
+    <title>Admin Portal - Madrassa Riaz ul Quran wal Sunnah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
@@ -5002,2836 +5002,477 @@ div:has(> .strengths-wrapper),
 }
 </style>
 </head>
-
-<body>
-
-<div class="mobile-logo-container">
-    <img src="assets/logo.png" alt="Madrassa Logo">
-</div>
-
-<div class="sticky-header">
-    <header>
-        <div class="brand-title-container">
-            <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
-            <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+<body class="light-mode">
+    <!-- AUTH GATEWAY -->
+    <div id="login-view" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8fafc; padding: 20px;">
+        <div class="content-card" style="width: 100%; max-width: 400px; padding: 40px; text-align: center;">
+            <div style="background: var(--header-bg); display: inline-block; padding: 15px; border-radius: 50%; margin-bottom: 20px;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; color: #0f172a; margin-bottom: 8px;">Admin Portal</h2>
+            <p style="color: #64748b; margin-bottom: 30px; font-size: 14px;">Please sign in to continue</p>
+            
+            <div style="text-align: left; margin-bottom: 20px;">
+                <label style="display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 8px;">Username</label>
+                <input type="text" id="login-user" class="form-input" placeholder="Enter username (admin)" style="width: 100%; box-sizing: border-box;">
+            </div>
+            <div style="text-align: left; margin-bottom: 30px;">
+                <label style="display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 8px;">Password</label>
+                <input type="password" id="login-pass" class="form-input" placeholder="Enter password (admin123)" style="width: 100%; box-sizing: border-box;">
+            </div>
+            
+            <p id="login-error" style="color: #ef4444; font-size: 14px; margin-bottom: 15px; display: none;">Invalid credentials. Please try again.</p>
+            
+            <button id="btn-login" class="btn btn-primary" style="width: 100%; border-radius: 8px; justify-content: center; padding: 12px;">Sign In</button>
         </div>
-        <div class="header-logo desktop-logo">
-            <img src="assets/logo.png" alt="Madrassa Logo">
-        </div>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu" >
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-    </header>
-
-    <div class="floating-nav-container">
-        <nav class="floating-nav" id="mainNav">
-            <a href="index.html" class="nav-link active" data-en="HOME" data-ur="ہوم">HOME</a>
-            <a href="about.html" class="nav-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a>
-            <a href="admissions.html" class="nav-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a>
-            <a href="updates.html" class="nav-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a>
-            <a href="donation.html" class="nav-link nav-accent" data-en="DONATION" data-ur="عطیات">DONATION</a>
-            <a href="contact.html" class="nav-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a>
-            <button class="lang-toggle-btn" id="langSwitch">URDU</button>
-        </nav>
     </div>
-</div> <!-- End sticky-header -->
 
-<!-- ========================================== -->
-<!-- MOBILE DRAWER NAVIGATION MENU              -->
-<!-- ========================================== -->
-<div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboard-view" style="display: none; min-height: 100vh; background: #f8fafc; padding-bottom: 50px;">
+        <!-- Top Header -->
+        <header style="background: var(--header-bg); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; color: white;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px;" data-en="Madrasa Admin" data-ur="مدرسہ ایڈمن">Madrasa Admin</h3>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="index.html" target="_blank" style="color: white; text-decoration: none; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span class="hide-mobile" data-en="Live Site" data-ur="لائیو سائٹ">Live Site</span>
+                </a>
+                <button id="lang-switch" class="lang-switch" style="margin:0;">URDU</button>
+                <button id="btn-logout" class="btn" style="background: rgba(255,255,255,0.1); color: white; padding: 6px 12px; border-radius: 6px;" data-en="Logout" data-ur="لاگ اآئوٹ">Logout</button>
+            </div>
+        </header>
 
+        <!-- Navigation Tabs -->
+        <div style="max-width: 1200px; margin: 30px auto 0; padding: 0 20px;">
+            <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; margin-bottom: 30px;" class="admin-tabs">
+                <button class="admin-tab active" data-target="panel-updates" data-en="Updates & Notices" data-ur="اپ ڈیٹس">Updates & Notices</button>
+                <button class="admin-tab" data-target="panel-admissions" data-en="Admissions" data-ur="داخلے">Admissions</button>
+                <button class="admin-tab" data-target="panel-donations" data-en="Donations" data-ur="عطیات">Donations</button>
+                <button class="admin-tab" data-target="panel-settings" data-en="Settings" data-ur="سیٹنگز">Settings</button>
+            </div>
+        </div>
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
-        const langSwitchBtn = document.getElementById('langSwitch');
-        let currentLang = 'en';
-
-        
-        // --- DYNAMIC UPDATES LOGIC ---
-        function renderUpdatesForLang(lang) {
-            const grid = document.getElementById('dynamic-news-grid');
-            if(!grid) return;
+        <!-- Panels Container -->
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             
-            const updatesStr = localStorage.getItem('site_updates');
-            if(!updatesStr) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No updates available.</p>';
-                return;
-            }
-            
-            const updates = JSON.parse(updatesStr).slice(0, 3); // Max 3 on home page
-            
-            if(updates.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No updates available.</p>';
-                return;
-            }
-            
-            grid.innerHTML = updates.map((u, i) => {
-                const title = lang === 'ur' ? u.title_ur : u.title_en;
-                const desc = lang === 'ur' ? u.desc_ur : u.desc_en;
-                const date = new Date(u.date).toLocaleDateString(lang === 'ur' ? 'ur-PK' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-                
-                // Add larr (left arrow) for Urdu, rarr for English
-                const arrow = lang === 'ur' ? '&larr;' : '&rarr;';
-                const readMore = lang === 'ur' ? 'مزید پڑھیں ' + arrow : 'Read More ' + arrow;
-                const hrefUrl = updates.html?lang=#upd-;
-                
-                return 
-                <article class="news-card">
-                    <div class="news-date">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        
+            <!-- PANEL: UPDATES -->
+            <div id="panel-updates" class="admin-panel active">
+                <div class="content-card" style="margin-bottom: 30px;">
+                    <h3 style="margin-top:0; color: var(--header-bg);" data-en="Create New Update" data-ur="نئی اپ ڈیٹ">Create New Update</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;" class="admin-grid">
+                        <div>
+                            <label class="form-label" data-en="Date" data-ur="تاریخ">Date</label>
+                            <input type="date" id="upd-date" class="form-input">
+                        </div>
+                        <div>
+                            <label class="form-label" data-en="Category" data-ur="کیٹیگری">Category</label>
+                            <select id="upd-cat" class="form-input">
+                                <option value="General">General</option>
+                                <option value="Admissions">Admissions</option>
+                                <option value="Events">Events</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="news-category"></div>
-                    <h3 class="news-title"></h3>
-                    <p class="news-excerpt" style="font-family: ; font-size: ;"></p>
-                    <a href="" class="news-read-link"></a>
-                </article>
-                ;
-            }).join('');
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;" class="admin-grid">
+                        <!-- English Side -->
+                        <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                <h4 style="margin:0; font-weight: 700;">English Version</h4>
+                                <button id="btn-translate" class="btn btn-primary" style="padding: 6px 12px; font-size: 12px; border-radius: 6px; gap: 5px;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                                    Translate to Urdu
+                                </button>
+                            </div>
+                            <label class="form-label">Title</label>
+                            <input type="text" id="upd-title-en" class="form-input" style="margin-bottom: 15px;">
+                            <label class="form-label">Description</label>
+                            <textarea id="upd-desc-en" class="form-input" rows="4"></textarea>
+                        </div>
+                        
+                        <!-- Urdu Side -->
+                        <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; direction: rtl;">
+                            <h4 style="margin:0 0 15px 0; font-weight: 700; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 24px;">اردو ورژن</h4>
+                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;">عنوان</label>
+                            <input type="text" id="upd-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;">
+                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;">تفصیل</label>
+                            <textarea id="upd-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: right;">
+                        <button id="btn-publish" class="btn btn-primary-pill" data-en="Publish Update" data-ur="پبلش کریں">Publish Update</button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3 style="margin-top:0; color: var(--header-bg);" data-en="Active Notices" data-ur="موجودہ نوٹس">Active Notices</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table" style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                            <thead>
+                                <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; text-align: left;">
+                                    <th style="padding: 12px; font-weight: 600;" data-en="Date" data-ur="تاریخ">Date</th>
+                                    <th style="padding: 12px; font-weight: 600;" data-en="Title (EN)" data-ur="عنوان">Title (EN)</th>
+                                    <th style="padding: 12px; font-weight: 600;" data-en="Category" data-ur="کیٹیگری">Category</th>
+                                    <th style="padding: 12px; font-weight: 600;" data-en="Actions" data-ur="ایکشنز">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="updates-table-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: ADMISSIONS -->
+            <div id="panel-admissions" class="admin-panel" style="display: none;">
+                <div class="content-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="margin:0; color: var(--header-bg);" data-en="Admission Applications" data-ur="داخلہ فارمز">Admission Applications</h3>
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="ڈاؤنلوڈ">Export CSV</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
+                            <thead>
+                                <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; text-align: left;">
+                                    <th style="padding: 12px; font-weight: 600;">Date</th>
+                                    <th style="padding: 12px; font-weight: 600;">Student Name</th>
+                                    <th style="padding: 12px; font-weight: 600;">Phone</th>
+                                    <th style="padding: 12px; font-weight: 600;">Course</th>
+                                    <th style="padding: 12px; font-weight: 600;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admissions-table-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: DONATIONS -->
+            <div id="panel-donations" class="admin-panel" style="display: none;">
+                <div class="content-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="margin:0; color: var(--header-bg);" data-en="Donation Intimations" data-ur="عطیات">Donation Intimations</h3>
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="ڈاؤنلوڈ">Export CSV</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
+                            <thead>
+                                <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; text-align: left;">
+                                    <th style="padding: 12px; font-weight: 600;">Date</th>
+                                    <th style="padding: 12px; font-weight: 600;">Donor Name</th>
+                                    <th style="padding: 12px; font-weight: 600;">Amount</th>
+                                    <th style="padding: 12px; font-weight: 600;">Ref/Slip</th>
+                                    <th style="padding: 12px; font-weight: 600;">Verification</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donations-table-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: SETTINGS -->
+            <div id="panel-settings" class="admin-panel" style="display: none;">
+                <div class="content-card">
+                    <h3 style="margin-top:0; color: var(--header-bg);" data-en="Quick Site Settings" data-ur="سیٹنگز">Quick Site Settings</h3>
+                    <p style="color: #64748b; margin-bottom: 20px;" data-en="Update contact numbers across the website." data-ur="ویب سائٹ پر موجود نمبرز تبدیل کریں">Update contact numbers across the website.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px;">
+                        <div>
+                            <label class="form-label" data-en="Primary Phone" data-ur="فون نمبر">Primary Phone</label>
+                            <input type="text" id="set-phone" class="form-input" value="+92 300 1234567">
+                        </div>
+                        <div>
+                            <label class="form-label" data-en="WhatsApp Helpline" data-ur="واٹس ایپ">WhatsApp Helpline</label>
+                            <input type="text" id="set-whatsapp" class="form-input" value="+92 300 1234567">
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button id="btn-save-settings" class="btn btn-primary" data-en="Save Settings" data-ur="محفوظ کریں">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Additional Custom CSS for Admin -->
+    <style>
+        .admin-tab {
+            padding: 10px 20px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #475569;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .admin-tab.active {
+            background: var(--header-bg);
+            color: white;
+            border-color: var(--header-bg);
+        }
+        .admin-tab:hover:not(.active) {
+            background: #e2e8f0;
+        }
+        .admin-table th { border-bottom: 2px solid #e2e8f0; }
+        .admin-table td { 
+            padding: 15px 12px; 
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 14px;
+        }
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .status-pending { background: #fef08a; color: #854d0e; }
+        .status-approved { background: #bbf7d0; color: #166534; }
+        .status-rejected { background: #fecaca; color: #991b1b; }
+        
+        @media (max-width: 768px) {
+            .admin-grid { grid-template-columns: 1fr !important; }
+            .hide-mobile { display: none !important; }
+        }
+    </style>
+
+    <!-- ADMIN LOGIC SCRIPT -->
+    <script>
+        // --- 1. AUTHENTICATION LOGIC ---
+        const loginView = document.getElementById('login-view');
+        const dashView = document.getElementById('dashboard-view');
+        
+        function checkAuth() {
+            if(sessionStorage.getItem('admin_auth') === 'true') {
+                loginView.style.display = 'none';
+                dashView.style.display = 'block';
+                renderUpdatesTable();
+                renderAdmissionsTable();
+                renderDonationsTable();
+            } else {
+                loginView.style.display = 'flex';
+                dashView.style.display = 'none';
+            }
+        }
+        
+        document.getElementById('btn-login').addEventListener('click', () => {
+            const u = document.getElementById('login-user').value;
+            const p = document.getElementById('login-pass').value;
+            if(u === 'admin' && p === 'admin123') {
+                sessionStorage.setItem('admin_auth', 'true');
+                checkAuth();
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+        
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            sessionStorage.removeItem('admin_auth');
+            checkAuth();
+        });
+
+        // Initialize today's date
+        document.getElementById('upd-date').valueAsDate = new Date();
+
+        // --- 2. TAB NAVIGATION ---
+        document.querySelectorAll('.admin-tab').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.admin-panel').forEach(p => p.style.display = 'none');
+                
+                btn.classList.add('active');
+                document.getElementById(btn.getAttribute('data-target')).style.display = 'block';
+            });
+        });
+
+        // --- 3. TRANSLATE LOGIC ---
+        document.getElementById('btn-translate').addEventListener('click', async () => {
+            const btn = document.getElementById('btn-translate');
+            btn.innerHTML = 'Translating...';
+            
+            const titleEn = document.getElementById('upd-title-en').value;
+            const descEn = document.getElementById('upd-desc-en').value;
+            
+            try {
+                if(titleEn) {
+                    const resT = await fetch(https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=);
+                    const dataT = await resT.json();
+                    document.getElementById('upd-title-ur').value = dataT[0].map(x => x[0]).join('');
+                }
+                if(descEn) {
+                    const resD = await fetch(https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=);
+                    const dataD = await resD.json();
+                    document.getElementById('upd-desc-ur').value = dataD[0].map(x => x[0]).join('');
+                }
+            } catch(e) {
+                alert("Translation failed. Check network.");
+            }
+            btn.innerHTML = 'Translate to Urdu';
+        });
+
+        // --- 4. DATA MANAGEMENT LOGIC ---
+        // Seed dummy updates if empty
+        if(!localStorage.getItem('site_updates')) {
+            const dummyUpdates = [
+                { id: 1, date: '2026-08-15', cat: 'Events', title_en: 'Annual Prize Distribution Ceremony', desc_en: 'Join us as we honor our top-performing students.', title_ur: 'سالانہ تقسیم انعامات', desc_ur: 'ہمارے ساتھ شامل ہوں۔' }
+            ];
+            localStorage.setItem('site_updates', JSON.stringify(dummyUpdates));
         }
 
+        function getUpdates() {
+            return JSON.parse(localStorage.getItem('site_updates') || '[]');
+        }
+
+        function renderUpdatesTable() {
+            const updates = getUpdates();
+            const tbody = document.getElementById('updates-table-body');
+            tbody.innerHTML = '';
+            
+            updates.forEach(u => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = 
+                    <td></td>
+                    <td style="font-weight:600; color:var(--header-bg);"></td>
+                    <td><span style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 12px;"></span></td>
+                    <td>
+                        <button class="btn btn-sm" onclick="deleteUpdate()" style="color: #ef4444; padding: 4px 8px; border: 1px solid #ef4444; border-radius: 4px; background: transparent;">Delete</button>
+                    </td>
+                ;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('btn-publish').addEventListener('click', () => {
+            const upd = {
+                id: Date.now(),
+                date: document.getElementById('upd-date').value,
+                cat: document.getElementById('upd-cat').value,
+                title_en: document.getElementById('upd-title-en').value,
+                desc_en: document.getElementById('upd-desc-en').value,
+                title_ur: document.getElementById('upd-title-ur').value,
+                desc_ur: document.getElementById('upd-desc-ur').value
+            };
+            
+            if(!upd.title_en || !upd.title_ur) {
+                alert("Please fill both English and Urdu titles!");
+                return;
+            }
+            
+            const updates = getUpdates();
+            updates.unshift(upd); // Add to top
+            localStorage.setItem('site_updates', JSON.stringify(updates));
+            
+            // Clear form
+            document.getElementById('upd-title-en').value = '';
+            document.getElementById('upd-desc-en').value = '';
+            document.getElementById('upd-title-ur').value = '';
+            document.getElementById('upd-desc-ur').value = '';
+            
+            renderUpdatesTable();
+            alert("Update Published Successfully!");
+        });
+
+        window.deleteUpdate = function(id) {
+            if(confirm("Are you sure you want to delete this notice?")) {
+                let updates = getUpdates();
+                updates = updates.filter(u => u.id !== id);
+                localStorage.setItem('site_updates', JSON.stringify(updates));
+                renderUpdatesTable();
+            }
+        };
+        
+        
+        document.getElementById('btn-save-settings').addEventListener('click', () => {
+            const phone = document.getElementById('set-phone').value;
+            const whatsapp = document.getElementById('set-whatsapp').value;
+            
+            localStorage.setItem('site_settings', JSON.stringify({ phone, whatsapp }));
+            alert("Settings saved successfully! They will now reflect on the live site.");
+        });
+        
+        // Load settings on init
+        const storedSet = localStorage.getItem('site_settings');
+        if(storedSet) {
+            const s = JSON.parse(storedSet);
+            if(s.phone) document.getElementById('set-phone').value = s.phone;
+            if(s.whatsapp) document.getElementById('set-whatsapp').value = s.whatsapp;
+        }
+
+        // --- Dummy Tables for Admissions/Donations ---
+        function renderAdmissionsTable() {
+            const tbody = document.getElementById('admissions-table-body');
+            tbody.innerHTML = 
+                <tr><td>2026-09-11</td><td>Ahmed Khan</td><td>0300-1122334</td><td>Hifz ul Quran</td><td><span class="status-badge status-pending" onclick="toggleStatus(this)">Pending</span></td></tr>
+                <tr><td>2026-09-10</td><td>Usman Ali</td><td>0321-9988776</td><td>Nazra</td><td><span class="status-badge status-approved" onclick="toggleStatus(this)">Approved</span></td></tr>
+            ;
+        }
+        function renderDonationsTable() {
+            const tbody = document.getElementById('donations-table-body');
+            tbody.innerHTML = 
+                <tr><td>2026-09-11</td><td>Anonymous</td><td>Rs. 50,000</td><td>TRX-987123</td><td><span class="status-badge status-pending" onclick="toggleStatus(this)">Unverified</span></td></tr>
+                <tr><td>2026-09-08</td><td>Zaid Umar</td><td>Rs. 10,000</td><td>SLIP-091</td><td><span class="status-badge status-approved" onclick="toggleStatus(this)">Verified</span></td></tr>
+            ;
+        }
+
+        window.toggleStatus = function(el) {
+            if(el.classList.contains('status-pending')) {
+                el.className = 'status-badge status-approved';
+                el.innerText = 'Approved';
+            } else if(el.classList.contains('status-approved')) {
+                el.className = 'status-badge status-rejected';
+                el.innerText = 'Rejected';
+            } else {
+                el.className = 'status-badge status-pending';
+                el.innerText = 'Pending';
+            }
+        };
+
+        // Initialize Auth State on load
+        checkAuth();
+
+        // Include translation script logic similar to index.html
+        let currentLang = 'en';
+        const langSwitchBtn = document.getElementById('lang-switch');
+        
         function applyTranslations(lang) {
-            renderUpdatesForLang(lang);
-            applyDynamicSettings();
             document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
             if(langSwitchBtn) langSwitchBtn.textContent = lang === 'ur' ? 'انگلش' : 'URDU';
             
-            navLinks.forEach(item => {
-                if(item.hasAttribute(`data-${lang}`)) {
-                    item.textContent = item.getAttribute(`data-${lang}`);
-                }
-            });
-            
-            const brandTitle = document.querySelector('.brand-title');
-            if (brandTitle && brandTitle.hasAttribute(`data-${lang}`)) {
-                brandTitle.textContent = brandTitle.getAttribute(`data-${lang}`);
-            }
-            
-            // Also translate footer and any other dynamic text elements
             document.querySelectorAll('[data-en]').forEach(item => {
                 if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
-                    item.placeholder = item.getAttribute(`data-${lang}`);
-                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
-                    item.innerHTML = item.getAttribute(`data-${lang}`);
+                    item.placeholder = item.getAttribute(data-);
+                } else if (!item.classList.contains('admin-tab')) {
+                    item.innerHTML = item.getAttribute(data-);
+                } else {
+                    item.textContent = item.getAttribute(data-);
                 }
             });
-        }
-
-        if (langSwitchBtn) {
-            langSwitchBtn.addEventListener('click', (e) => {
-                // Only scroll to top if it was a real user click
-                if(e && e.isTrusted) {
-                    window.scrollTo({ top: 0, behavior: 'instant' });
-                }
-
-                // Close mobile menu if open
-                const drawer = document.getElementById('mobileDrawer');
-                const drawerOverlay = document.getElementById('drawerOverlay');
-                if (drawer) drawer.classList.remove('active', 'open');
-                if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
-                
-                const navOverlay = document.getElementById('mobileNavOverlay');
-                if (navOverlay) navOverlay.classList.remove('active', 'open');
-                
-                // Force clean scroll restoration
-                if ('scrollRestoration' in history) {
-                    history.scrollRestoration = 'manual';
-                }
-
-                currentLang = currentLang === 'en' ? 'ur' : 'en';
-                sessionStorage.setItem('siteLang', currentLang);
-                applyTranslations(currentLang);
+            
+            // Adjust tables text-align for RTL
+            document.querySelectorAll('.admin-table th, .admin-table td').forEach(td => {
+                td.style.textAlign = lang === 'ur' ? 'right' : 'left';
             });
-        }
-
-        // Explicitly set language on load (default to English)
-        const savedLang = sessionStorage.getItem('siteLang');
-        if (savedLang === 'ur') {
-            currentLang = 'ur';
-        } else {
-            currentLang = 'en';
-        }
-        applyTranslations(currentLang);
-
-        window.toggleLanguage = function() {
-            if (langSwitchBtn) langSwitchBtn.click();
-        };
-
-        // --- Mobile Menu Toggle Logic (Drawer) ---
-        window.toggleDrawer = function() {
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('drawerOverlay');
-            if(drawer) drawer.classList.toggle('active');
-            if(overlay) overlay.classList.toggle('active');
-        };
-
-        const drawerOverlay = document.getElementById('drawerOverlay');
-        if(drawerOverlay) {
-            drawerOverlay.addEventListener('click', window.toggleDrawer);
         }
         
-        // Close menu when a drawer navigation link is clicked
-        const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
-        drawerLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
-                    const drawer = document.getElementById('mobileDrawer');
-                    if (drawer && drawer.classList.contains('active')) {
-                        window.toggleDrawer();
-                    }
-                }
-            });
+        langSwitchBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ur' : 'en';
+            applyTranslations(currentLang);
         });
-    });
-</script>
-
-<main>
-    <div class="hero-unified-bg">
-        <section class="hero-section">
-
-        <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
-            <!-- Welcome badge removed as requested -->
-            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
-            
-            <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
-            <h1 class="hero-title urdu-hero-title" data-en="<span class='hero-text-top' style='display:block; margin-bottom:-10px !important;'>Empowering the Next Generation with</span> <span class='quran-sunnah-script signature-font' style='margin-top:0 !important;'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
-                <span class='hero-text-top' style='display:block; margin-bottom:-10px !important;'>Empowering the Next Generation with</span> 
-                <span class='quran-sunnah-script signature-font' style='margin-top:0 !important;'>Quran &amp; Sunnah</span>
-            </h1>
-            <p class="hero-subtitle" data-en="Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment." data-ur="صحیح تجوید، حفظِ قرآن اور اسلامی تربیت کے ساتھ بچوں کے روشن مستقبل کی تعمیر۔">
-                Nurturing young minds with correct Tajweed, Quranic memorization (Hifz), and authentic Islamic values in a safe, disciplined environment.
-            </p>
-            <div class="hero-buttons">
-                <a href="#donation" class="btn-hero btn-primary-pill" data-en="<span>Support Our Mission</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>ہمارے مشن کو سپورٹ کریں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Support Our Mission</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="#" class="btn-hero btn-secondary-pill" data-en="<span>Watch Video</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>مزید جانئے</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                    <span>Watch Video</span>
-                    <span class="btn-arrow-circle">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-</div>
-<!-- Divider below Educational Services -->
-<div class="custom-loop-divider" style="position: relative !important; top: 0 !important; margin-top: 60px; margin-bottom: 20px; width: 100%; overflow: hidden;">
-    <svg viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,40 Q 200,100 380,50 C 420,35 460,-20 430,-35 C 390,-50 370,85 440,75 C 480,70 510,35 650,80 C 850,120 1050,10 1200,60" 
-              stroke="#025F55" 
-              stroke-width="3.5" 
-              fill="none" 
-              stroke-linecap="round"/>
-    </svg>
-</div>
-
-    <!-- Combined Hero Extension Section -->
-    <section class="hero-extension-section section-card-container" id="about">
-        <!-- Short Introduction Section -->
-            <h2 class="preserve-heading intro-title" data-en="Introduction to <span class='highlight-font'>Madrassa</span>" data-ur="مدرسہ کا <span class='highlight-font'>تعارف</span>">
-                Introduction to <span class="highlight-font">Madrassa</span>
-            </h2>
-            <h3 class="intro-subtitle" data-en="Building knowledge, practice, and character in the light of Quran &amp; Sunnah" data-ur="قرآن و سنت کی روشنی میں علم، عمل اور کردار کی تعمیر">
-                Building knowledge, practice, and character in the light of Quran &amp; Sunnah
-            </h3>
-            <p class="intro-text" data-en="Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood <span class='rh-badge'>(RH)</span>. Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing." data-ur="مدرسہ ریاض القرآن والسنۃ ایک دینی، تعلیمی اور تربیتی ادارہ ہے، جس کی بنیاد 1993ء میں حضرت مولانا مفتی ریاض محمود رحمہ اللہ نے رکھی۔ قیام سے لے کر آج تک یہ ادارہ قرآن و سنت کی خالص تعلیم، صحیح عقیدہ، اعلیٰ اخلاق اور بہترین دینی تربیت کے فروغ کے لیے مسلسل خدمات انجام دے رہا ہے۔">
-                Madrassa Riaz ul Quran Wal Sunnah is a religious, educational, and training institution founded in 1993 by Hazrat Maulana Mufti Riaz Mahmood <span class='rh-badge'>(RH)</span>. Since its inception, the institution has been continuously serving to promote pure Quran and Sunnah education, correct beliefs, high morals, and excellent religious upbringing.
-            </p>
-            <a href="about.html" class="btn-intro-special" data-en="<span class='btn-text'>Read Full Introduction</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span class='btn-text'>تفصیلی تعارف پڑھیں</span><span class='btn-arrow-circle'><svg class='arrow-icon' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-                <span class="btn-text">Read Full Introduction</span>
-                <span class="btn-arrow-circle">
-                    <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7"></line>
-                        <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                </span>
-            </a>
-    </section>
-
-    <!-- Leadership Preview Section -->
-        <!-- ========================================== -->
-        <!-- INTEGRATED CURVED CARD & CIRCLE PHOTO      -->
-        <!-- ========================================== -->
-        <section class="leadership-section section-card-container" id="leadership">
-          <div class="leadership-header" style="text-align: center; margin-bottom: 40px;">
-              <h2 class="preserve-heading leadership-title" data-en="Leadership &amp; <span class='highlight-font'>Founders</span>" data-ur="قیادت و <span class='highlight-font'>بانیان</span>" style="font-size: 2.5rem; font-weight: 800; color: #1A1A1A; margin-bottom: 12px;">
-                  Leadership &amp; <span class="highlight-font">Founders</span>
-              </h2>
-              <p class="leadership-subtitle" data-en="Key figures dedicated to the service of Quran and Sunnah" data-ur="قرآن و سنت کی خدمت میں مصروفِ عمل اہم شخصیات" style="font-size: 1.1rem; color: #666666;">
-                  Key figures dedicated to the service of Quran and Sunnah
-              </p>
-          </div>
-          <div class="leadership-grid">
-  <!-- CARD 1: FOUNDER (WITH PHOTO) -->
-  <div class="figure-card">
-    <div class="figure-frame-wrapper">
-      <div class="green-bg-frame"></div>
-      <img src="assets/founder.png" alt="Hazrat Moulana Mufti Riaz Mahmood" class="figure-img-pop">
-      <div class="figure-overlay-info">
-        <span class="sub-prefix" data-en="Hazrat Moulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Moulana Mufti</span>
-        <div class="name-badge"><span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="rh-badge" data-en="(RH)" data-ur="(رح)">(RH)</span></div>
-      </div>
-    </div>
-    <p class="figure-designation" data-en="FOUNDER OF THE INSTITUTE" data-ur="بانی مدرسہ ہذا">FOUNDER OF THE INSTITUTE</p>
-  </div>
-
-  <!-- CARD 2: PRINCIPAL (IMAGE PLACEHOLDER FOR LATER) -->
-  <div class="figure-card">
-    <div class="figure-frame-wrapper">
-      <div class="green-bg-frame"></div>
-      <img src="assets/principal.png" alt="Moulana Mufti Aamir Mahmood" class="figure-img-pop">
-      <div class="figure-overlay-info">
-        <span class="sub-prefix" data-en="Moulana Mufti" data-ur="مولانا مفتی">Moulana Mufti</span>
-        <div class="name-badge" data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</div>
-      </div>
-    </div>
-    <p class="figure-designation" data-en="PRINCIPAL OF THE INSTITUTE" data-ur="مہتمم مدرسہ ہذا">PRINCIPAL OF THE INSTITUTE</p>
-  </div>
-</div>
-        </section>
-
-    <!-- Arc Stats Section -->
-    <section class="donut-infographic-section section-card-container">
-        <div class="donut-infographic-container">
-            
-            <!-- Desktop SVG View -->
-            <div class="en-svg-wrapper">
-                <!-- Expanded viewBox to left and top with wide safety margin to prevent edge clipping -->
-                <svg viewBox="-160 -20 1000 340" width="100%" preserveAspectRatio="xMidYMid meet">
-                    <!-- Scaled Geometry Group (60% reduction) -->
-                    <g transform="scale(0.6)">
-                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
-                        <!-- Top pointer -->
-                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="110" r="5" fill="#025F55" />
-
-                        <!-- Mid pointer -->
-                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
-
-                        <!-- Bot pointer -->
-                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="440" r="5" fill="#01423B" />
-
-                        <!-- Segmented Arcs grouped for interactivity -->
-                        <!-- Segment 1: Top Arc -->
-                        <g class="stat-slice" data-index="0">
-                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
-                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
-                            <text x="264.8" y="161.5" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="550">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 2: Middle Arc -->
-                        <g class="stat-slice" data-index="1">
-                            <path d="M 328.5 227.1 A 180 180 0 0 1 293.2 359.1 L 239.8 313.5 A 110 110 0 0 0 259.5 239.9 Z" 
-                                  fill="#038C7F" stroke="#038C7F" stroke-width="16" stroke-linejoin="round" />
-                            <text x="289.9" y="287.4" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="60">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 3: Bottom Arc -->
-                        <g class="stat-slice" data-index="2">
-                            <path d="M 280.2 374.3 A 180 180 0 0 1 145.3 429.9 L 147.1 359.9 A 110 110 0 0 0 226.8 328.7 Z" 
-                                  fill="#01423B" stroke="#01423B" stroke-width="16" stroke-linejoin="round" />
-                            <text x="205.2" y="383.9" class="arc-text" text-anchor="middle"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
-                        </g>
-                    </g>
-
-                    <!-- Unscaled Elements -->
-                    <!-- Center Heading (Our Strengths) -->
-                    <foreignObject class="lang-en-only" x="-640" y="60" width="720" height="180">
-                        <div class="center-heading" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; white-space: nowrap; padding-right: 0; height: 100%;">
-                            <span class="title-part-1">Our</span>
-                            <span class="title-part-2 highlight-font">Strengths</span>
-                        </div>
-                    </foreignObject>
-                    
-
-                    <!-- Right Side Text Blocks (Y coordinates re-aligned for scale 0.6, extended width/height to prevent text wrap clipping) -->
-                    <!-- Top Text (Scaled dot Y = 66) -->
-                    <foreignObject x="250" y="10" width="600" height="400">
-                        <div class="svg-text-block">
-                            <h4 data-en="Alumni" data-ur="فارغ التحصیل علماء / طالبات">Alumni</h4>
-                            <p data-en="Graduates serving worldwide" data-ur="دنیا بھر میں خدمات انجام دینے والے فضلاء">Graduates serving worldwide</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Mid Text (Scaled dot Y = 178) -->
-                    <foreignObject x="250" y="130" width="600" height="400">
-                        <div class="svg-text-block">
-                            <h4 data-en="Current Students" data-ur="زیرِ تعلیم طلباء">Current Students</h4>
-                            <p data-en="Currently enrolled in various courses" data-ur="مختلف کورسز میں زیرِ تعلیم طلباء">Currently enrolled in various courses</p>
-                        </div>
-                    </foreignObject>
-
-                    <!-- Bot Text (Scaled dot Y = 264) -->
-                    <foreignObject x="250" y="250" width="600" height="400">
-                        <div class="svg-text-block">
-                            <h4 data-en="Years of Service" data-ur="سالہ خدمات">Years of Service</h4>
-                            <p data-en="Continuous religious & educational excellence since 1993" data-ur="1993 سے مسلسل دینی و تعلیمی خدمات">Continuous religious & educational excellence since 1993</p>
-                        </div>
-                    </foreignObject>
-                </svg>
-            </div>
-
-<div class="ur-svg-wrapper" style="display: none;">
-    <svg viewBox="-160 -20 1000 340" width="100%" preserveAspectRatio="xMidYMid meet">
-        <g transform="translate(580, 0) scale(-1, 1)">
-<g transform="scale(0.6)">
-                        <!-- Outside Angled Pointer Lines (Placed before arcs so they render behind them) -->
-                        <!-- Top pointer -->
-                        <polyline points="291.6,138.9 320,110 400,110" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="110" r="5" fill="#025F55" />
-
-                        <!-- Mid pointer -->
-                        <polyline points="323.9,296.6 400,296.6" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="296.6" r="5" fill="#038C7F" />
-
-                        <!-- Bot pointer -->
-                        <polyline points="217.1,417.0 260,440 400,440" fill="none" stroke="#cbd5e1" stroke-width="2" />
-                        <circle cx="400" cy="440" r="5" fill="#01423B" />
-
-                        <!-- Segmented Arcs grouped for interactivity -->
-                        <!-- Segment 1: Top Arc -->
-                        <g class="stat-slice" data-index="0">
-                            <path d="M 235.9 91.8 A 180 180 0 0 1 324.9 207.4 L 255.9 220.2 A 110 110 0 0 0 202.5 153.3 Z" 
-                                  fill="#025F55" stroke="#025F55" stroke-width="16" stroke-linejoin="round" />
-                            <text x="-264.8" transform="scale(-1, 1)" style="direction: ltr; unicode-bidi: isolate;" y="161.5" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="550">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 2: Middle Arc -->
-                        <g class="stat-slice" data-index="1">
-                            <path d="M 328.5 227.1 A 180 180 0 0 1 293.2 359.1 L 239.8 313.5 A 110 110 0 0 0 259.5 239.9 Z" 
-                                  fill="#038C7F" stroke="#038C7F" stroke-width="16" stroke-linejoin="round" />
-                            <text x="-289.9" transform="scale(-1, 1)" style="direction: ltr; unicode-bidi: isolate;" y="287.4" class="arc-text" text-anchor="middle"><tspan class="count-up" data-target="60">0</tspan>+</text>
-                        </g>
-                        
-                        <!-- Segment 3: Bottom Arc -->
-                        <g class="stat-slice" data-index="2">
-                            <path d="M 280.2 374.3 A 180 180 0 0 1 145.3 429.9 L 147.1 359.9 A 110 110 0 0 0 226.8 328.7 Z" 
-                                  fill="#01423B" stroke="#01423B" stroke-width="16" stroke-linejoin="round" />
-                            <text x="-205.2" transform="scale(-1, 1)" style="direction: ltr; unicode-bidi: isolate;" y="383.9" class="arc-text" text-anchor="middle"><tspan class="count-up" id="years-count" data-target="33">0</tspan>+</text>
-                        </g>
-                    </g>
-</g>
         
-<foreignObject x="400" y="30" width="340" height="240">
-    <div class="center-heading" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; padding-right: 0; height: 100%;">
-        <span class="title-part-1">ہماری</span>
-        <span class="title-part-2">نمایاں خوبیاں</span>
-    </div>
-</foreignObject>
-
-        
-<foreignObject x="-270" y="10" width="600" height="400">
-    <div class="svg-text-block">
-        <h4 style="text-align: right; color: #025F55; font-size: 15px; font-weight: 700; margin-bottom: 2px;">فارغ التحصیل علماء / طالبات</h4>
-        <p style="text-align: right; font-size: 12px; color: #64748b; margin: 0;">دنیا بھر میں خدمات انجام دینے والے فضلاء</p>
-    </div>
-</foreignObject>
-
-<foreignObject x="-270" y="130" width="600" height="400">
-    <div class="svg-text-block">
-        <h4 style="text-align: right; color: #025F55; font-size: 15px; font-weight: 700; margin-bottom: 2px;">زیرِ تعلیم طلباء</h4>
-        <p style="text-align: right; font-size: 12px; color: #64748b; margin: 0;">مختلف کورسز میں زیرِ تعلیم طلباء</p>
-    </div>
-</foreignObject>
-
-<foreignObject x="-270" y="250" width="600" height="400">
-    <div class="svg-text-block">
-        <h4 style="text-align: right; color: #025F55; font-size: 15px; font-weight: 700; margin-bottom: 2px;">سالہ خدمات</h4>
-        <p style="text-align: right; font-size: 12px; color: #64748b; margin: 0;">1993 سے مسلسل دینی و تعلیمی خدمات</p>
-    </div>
-</foreignObject>
-
-    </svg>
-</div>
-
-
-<style>
-html[dir="rtl"] .en-svg-wrapper { display: none !important; }
-html[dir="rtl"] .ur-svg-wrapper { display: block !important; }
-html[dir="ltr"] .en-svg-wrapper { display: block !important; }
-html[dir="ltr"] .ur-svg-wrapper { display: none !important; }
-</style>
-
-
-
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const startYear = 1993;
-            const currentYear = new Date().getFullYear();
-            const yearsValue = currentYear - startYear;
-            
-            const yearsCountElement = document.getElementById('years-count');
-            
-            if(yearsCountElement) {
-                yearsCountElement.setAttribute('data-target', yearsValue);
-            }
-
-            const statSection = document.querySelector('.donut-infographic-section');
-            let initialAnimated = false;
-
-            const runCounterAnimation = (counter) => {
-                if (counter.dataset.animating === "true") return; // Prevent overlapping animations
-                counter.dataset.animating = "true";
-                
-                const target = +counter.getAttribute('data-target');
-                const duration = 1000; // 1 second
-                const increment = target / (duration / 16);
-                let current = 0;
-
-                const animate = () => {
-                    current += increment;
-                    if(current < target) {
-                        counter.textContent = Math.ceil(current);
-                        requestAnimationFrame(animate);
-                    } else {
-                        counter.textContent = target;
-                        counter.dataset.animating = "false";
-                    }
-                };
-                animate();
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting && !initialAnimated) {
-                    initialAnimated = true;
-                    document.querySelectorAll('.count-up').forEach(runCounterAnimation);
-                }
-            }, { threshold: 0.5 });
-
-            if(statSection) {
-                observer.observe(statSection);
-            }
-
-            // Interactive Hover & Click re-trigger logic (Desktop)
-            const slices = document.querySelectorAll('.stat-slice');
-            const textBlocks = document.querySelectorAll('.desktop-svg-wrapper .svg-text-block');
-            
-            slices.forEach(slice => {
-                const index = slice.getAttribute('data-index');
-                const triggerInteraction = () => {
-                    if (textBlocks[index]) textBlocks[index].classList.add('highlight-text');
-                    const counter = slice.querySelector('.count-up');
-                    if (counter) runCounterAnimation(counter);
-                };
-                
-                slice.addEventListener('mouseenter', triggerInteraction);
-                slice.addEventListener('touchstart', triggerInteraction, {passive: true});
-                slice.addEventListener('mouseleave', () => {
-                    if (textBlocks[index]) textBlocks[index].classList.remove('highlight-text');
-                });
-            });
-
-
-        });
     </script>
-    </div>
-
-<!-- Courses Section (Services) -->
-<section id="courses" class="services-section section-card-container">
-  <div class="services-header">
-    <h2 class="preserve-heading courses-title" data-en="Our <span class='highlight-font'>Educational</span> Services" data-ur="ہماری موجودہ <span class='highlight-font'>خدمات</span>">Our <span class="highlight-font">Educational</span> Services</h2>
-    <p class="services-sub" data-en="Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:" data-ur="الحمد للہ، اس وقت مدرسہ ریاض القرآن والسنة میں درج ذیل تعلیمی خدمات جاری ہیں:">
-      Alhamdu Lillah, Madrassa Riaz Ul Quran Wal Sunnah currently provides the following services:
-    </p>
-  </div>
-
-  <div class="services-container">
-    <!-- Card 01: Soft Green -->
-    <div class="sticky-note note-1" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shadow -->
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <!-- Metal Needle -->
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <!-- Pin Body -->
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <!-- Highlight Gloss -->
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">01</div>
-      <h3 class="note-title" data-en="Islamic &amp; Moral Tarbiyat" data-ur="دینی و اخلاقی تربیت">Islamic &amp; Moral Tarbiyat</h3>
-      <p class="note-desc" data-en="Holistic moral character building rooted in Islamic teachings and Sunnah." data-ur="طلباء کی اسلامی اقدار، سنتِ نبوی اور بہترین اخلاقیات پر بنیادی تربیت۔">
-        Holistic moral character building rooted in Islamic teachings and Sunnah.
-      </p>
-    </div>
-
-    <!-- Card 02: Soft Blue/Teal -->
-    <div class="sticky-note note-2" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">02</div>
-      <h3 class="note-title" data-en="Nazra Quran Kareem" data-ur="ناظرۂ قرآن کریم">Nazra Quran Kareem</h3>
-      <p class="note-desc" data-en="Fluent Quran recitation with precise pronunciation and Tajweed rules." data-ur="صحیح مخارج اور تجوید کے قواعد کے ساتھ قرآن کریم کی تلاوت۔">
-        Fluent Quran recitation with precise pronunciation and Tajweed rules.
-      </p>
-    </div>
-
-    <!-- Card 03: Soft Lavender -->
-    <div class="sticky-note note-3" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">03</div>
-      <h3 class="note-title" data-en="Hifz-ul-Quran" data-ur="حفظِ قرآن کریم">Hifz-ul-Quran</h3>
-      <p class="note-desc" data-en="Complete memorization of the Holy Quran with proper Tajweed and guidance." data-ur="تجوید و اہتمام کے ساتھ قرآن مجید کا مکمل حفظ۔">
-        Complete memorization of the Holy Quran with proper Tajweed and guidance.
-      </p>
-    </div>
-
-    <!-- Card 04: Soft Yellow/Cream -->
-    <div class="sticky-note note-4" tabindex="0">
-      <div class="svg-pushpin">
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="14" cy="33" rx="8" ry="2.5" fill="black" fill-opacity="0.25"/>
-          <path d="M14 20L14 31" stroke="#888888" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 6C7 4.34315 8.34315 3 10 3H18C19.6569 3 21 4.34315 21 6V8C21 8.55228 20.5523 9 20 9H8C7.44772 9 7 8.55228 7 8V6Z" fill="#D32F2F"/>
-          <path d="M10 9H18L20 18C20 19.1046 19.1046 20 18 20H10C8.89543 20 8 19.1046 8 18L10 9Z" fill="#E53935"/>
-          <circle cx="14" cy="6" r="7" fill="#FF5252"/>
-          <circle cx="12" cy="4.5" r="2" fill="white" fill-opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="note-number">04</div>
-      <h3 class="note-title" data-en="Online &amp; Offline Classes" data-ur="آن لائن اور آف لائن سہولیات">Online &amp; Offline Classes</h3>
-      <p class="note-desc" data-en="Flexible learning options available for both local and international students." data-ur="مقامی اور بین الاقوامی طلباء کے لیے باقاعدہ اور آن لائن تعلیم کا انتظام۔">
-        Flexible learning options available for both local and international students.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ========================================== -->
-<!-- NEWS & UPDATES SECTION                     -->
-<!-- ========================================== -->
-<section class="updates-section section-card-container">
-  <div class="updates-container">
-    
-    <!-- Section Header -->
-    <div class="updates-header">
-            <h2 class="preserve-heading updates-title" data-en="<span class='bold-text'>News &amp;</span> <span class='highlight-font'>Recent Updates</span>" data-ur="<span class='bold-text'>خبریں اور </span> <span class='highlight-font'>تازہ ترین اپڈیٹس</span>">
-        <span class="bold-text">News &amp;</span>
-        <span class="highlight-font">Recent Updates</span>
-      </h2>
-      <p class="updates-subtitle" data-en="Stay informed with the latest announcements, events, and educational insights from our institute." data-ur="ہمارے ادارے کی تازہ ترین اعلانات، تقریبات، اور تعلیمی معلومات سے باخبر رہیں۔">Stay informed with the latest announcements, events, and educational insights from our institute.</p>
-    </div>
-
-    <!-- 3 News Cards Grid -->
-    <div class="updates-grid">
-      
-      <!-- Card 1 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-1.jpg" alt="Annual Prize Distribution" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">15 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
-          </div>
-          <h3 class="news-heading" data-en="Annual Prize Distribution Ceremony Announced" data-ur="سالانہ تقسیمِ انعامات کی تقریب کا اعلان">Annual Prize Distribution Ceremony Announced</h3>
-          <p class="news-excerpt" data-en="Join us as we honor our top-performing students in Hifz and Tajweed for this academic year." data-ur="اس تعلیمی سال حفظ اور تجوید میں بہترین کارکردگی دکھانے والے طلباء کی حوصلہ افزائی میں ہمارے ساتھ شامل ہوں۔">Join us as we honor our top-performing students in Hifz and Tajweed for this academic year.</p>
-          <a href="updates.html#update-1" class="news-read-link" data-en="READ MORE <span>&rarr;</span>" data-ur="مزید پڑھیں <span>&larr;</span>">READ MORE <span>&rarr;</span></a>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-2.jpg" alt="Admissions Open" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">10 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
-          </div>
-          <h3 class="news-heading" data-en="New Batch Admissions for Online Tajweed Course" data-ur="آن لائن تجوید کورس کے نئے بیچ کے لیے داخلے جاری ہیں">New Batch Admissions for Online Tajweed Course</h3>
-          <p class="news-excerpt" data-en="Applications are now live for our flexible evening Tajweed and Islamic studies program." data-ur="ہمارے شام کے لچکدار تجوید اور اسلامیات پروگرام کے لیے اب درخواستیں وصول کی جا رہی ہیں۔">Applications are now live for our flexible evening Tajweed and Islamic studies program.</p>
-          <a href="updates.html#update-2" class="news-read-link" data-en="READ MORE <span>&rarr;</span>" data-ur="مزید پڑھیں <span>&larr;</span>">READ MORE <span>&rarr;</span></a>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="news-card">
-        <div class="news-img-wrapper">
-          <img src="images/news-3.jpg" alt="Teacher Workshop" />
-        </div>
-        <div class="news-card-content">
-          <div class="news-meta">
-            <span class="news-date-badge">01 AUG, 2026</span>
-            <span class="news-author" data-en="👤 by Admin" data-ur="👤 ایڈمن کی طرف سے">👤 by Admin</span>
-          </div>
-          <h3 class="news-heading" data-en="Special Workshop on Modern Pedagogical Quran Teaching" data-ur="جدید تعلیمی اصولوں کے تحت قرآن پڑھانے پر خصوصی ورکشاپ">Special Workshop on Modern Pedagogical Quran Teaching</h3>
-          <p class="news-excerpt" data-en="Our faculty attended a 3-day training session to implement interactive teaching methodologies." data-ur="ہمارے اساتذہ نے جدید اور موثر تدریسی طریقوں کو اپنانے کے لیے تین روزہ تربیتی سیشن میں شرکت کی۔">Our faculty attended a 3-day training session to implement interactive teaching methodologies.</p>
-          <a href="updates.html#update-3" class="news-read-link" data-en="READ MORE <span>&rarr;</span>" data-ur="مزید پڑھیں <span>&larr;</span>">READ MORE <span>&rarr;</span></a>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- Bottom Center "View All Updates" Button -->
-    <div class="updates-bottom-cta">
-            <a href="updates.html" class="view-all-updates-btn" data-en="<span>Views All</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>" data-ur="<span>تمام اپڈیٹس دیکھیں</span><span class='btn-arrow-circle'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><line x1='7' y1='17' x2='17' y2='7'></line><polyline points='7 7 17 7 17 17'></polyline></svg></span>">
-        <span>Views All</span>
-        <span class="btn-arrow-circle">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-        </span>
-      </a>
-    </div>
-
-  </div>
-</section>
-<!-- Interactive Script for Mobile Tap -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const stickyNotes = document.querySelectorAll('.sticky-note');
-
-    stickyNotes.forEach(note => {
-      note.addEventListener('touchstart', function() {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-        this.classList.add('active-tap');
-      }, { passive: true });
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.sticky-note')) {
-        stickyNotes.forEach(n => n.classList.remove('active-tap'));
-      }
-    }, { passive: true });
-  });
-</script>
-
-<!-- DONATION SECTION                           -->
-<!-- ========================================== -->
-<section class="donation-section section-card-container">
-  <div class="donation-container">
-    <div class="donation-header">
-      <h2 class="preserve-heading donation-title" data-en="<span class='bold-text'>Support</span> <span class='highlight-font'>Our Mission</span>" data-ur="<span class='bold-text'>ہمارے مشن میں</span> <span class='highlight-font'>تعاون کریں</span>">
-        <span class="bold-text">Support</span>
-        <span class="highlight-font">Our Mission</span>
-      </h2>
-      <p class="donation-subtitle" data-en="Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah." data-ur="آپ کے عطیات ہمیں قرآن اور صحیح سنت کی تعلیمات سے نوجوان نسل کی تربیت کرنے میں مدد دیتے ہیں۔">Your contributions help us nurture young minds with the teachings of the Quran and authentic Sunnah.</p>
-    </div>
-    
-    <div class="donation-grid">
-      <!-- Card 1 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="SADAQAH &amp; GENERAL" data-ur="صدقہ و عطیات">SADAQAH &amp; GENERAL</h4>
-            <p class="info-card-desc" data-en="Contribute towards daily meals, utilities, and everyday running expenses of the madrasa." data-ur="مدرسہ کے روزمرہ اخراجات، طلباء کے کھانے اور بلز میں اپنا حصہ ڈالیں۔">Contribute towards daily meals, utilities, and everyday running expenses of the madrasa.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 2 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="SPONSOR A STUDENT" data-ur="طالب علم کی کفالت">SPONSOR A STUDENT</h4>
-            <p class="info-card-desc" data-en="Sponsor a full-time residential student\'s complete monthly educational and living expenses." data-ur="مدرسہ کے رہائشی طالب علم کے ماہانہ تعلیمی اور قیام و طعام کے مکمل اخراجات کی کفالت کریں۔">Sponsor a full-time residential student's complete monthly educational and living expenses.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 3 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="100% ZAKAT FUND" data-ur="100٪ زکوٰۃ فنڈ">100% ZAKAT FUND</h4>
-            <p class="info-card-desc" data-en="Fulfill your Islamic obligation dedicated exclusively to poor, orphaned, and deserving students." data-ur="غریب، یتیم اور مستحق طلباء کے لیے مختص زکوٰۃ فنڈ میں حصہ ڈال کر اپنا دینی فریضہ ادا کریں۔">Fulfill your Islamic obligation dedicated exclusively to poor, orphaned, and deserving students.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 4 -->
-      <a href="donation.html" class="donation-info-card" style="--card-color: #158467;">
-        <div class="donation-info-content">
-          <div class="card-unskew">
-            <h4 class="info-card-title" data-en="MASJID EXTENSION" data-ur="مسجد کی توسیع">MASJID EXTENSION</h4>
-            <p class="info-card-desc" data-en="Earn ongoing Sadqah Jariyah by contributing to classroom construction, wudu areas, and repairs." data-ur="کلاس رومز کی تعمیر، وضو خانہ اور مرمت کے کاموں میں حصہ لے کر صدقہ جاریہ کا ثواب کمائیں۔">Earn ongoing Sadqah Jariyah by contributing to classroom construction, wudu areas, and repairs.</p>
-            <div class="info-card-number">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- ========================================== -->
-<!-- HOMEPAGE SIMPLE CONTACT SECTION            -->
-<!-- ========================================== -->
-<section class="simple-contact-section section-card-container" id="contact">
-  <div class="contact-main-container">
-    
-    <!-- LEFT SIDE: TITLE, DIRECT CONTACT & SUB-DEPARTMENTS -->
-    <div class="contact-left-col">
-      <div class="contact-header-text">
-        <h2 class="preserve-heading contact-big-title">
-          <span class="lang-en"><span class="highlight-font">Contact</span> Us</span>
-          <span class="lang-ur">ہم سے <span class="highlight-font">رابطہ</span> کریں</span>
-        </h2>
-        <p class="contact-lead-p">
-          <span class="lang-en">Email, call, or complete the form to learn more about our courses, admissions, or donations.</span>
-          <span class="lang-ur">داخلیہ، کورسز یا عطیات سے متعلق معلومات کے لیے ای میل، فون کریں یا فارم پر کریں۔</span>
-        </p>
-        
-        <div class="direct-contact-links">
-          <a href="mailto:info@madrassa.edu.pk" class="direct-link">info@madrassa.edu.pk</a>
-          <a href="tel:+923001234567" class="direct-link">+92 300 1234567</a>
-          <a href="contact.html" class="support-underline-link">
-            <span class="lang-en">Official Contact Page & Map &rarr;</span>
-            <span class="lang-ur">مکمل رابطہ پیج اور میپ &larr;</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- BOTTOM 3 DEPARTMENTS / COLUMNS -->
-      <div class="contact-sub-columns">
-        <div class="sub-col-item">
-          <h4>
-            <span class="lang-en">Admissions Office</span>
-            <span class="lang-ur">شعبۂ داخلہ</span>
-          </h4>
-          <p>
-            <span class="lang-en">Our admissions team is available to assist with enrollment and course details.</span>
-            <span class="lang-ur">داخلہ فارم اور نصابِ تعلیم سے متعلق تمام معلومات فراہم کی جاتی ہیں۔</span>
-          </p>
-        </div>
-
-        <div class="sub-col-item">
-          <h4>
-            <span class="lang-en">Donations & Support</span>
-            <span class="lang-ur">عطیات و تعاون</span>
-          </h4>
-          <p>
-            <span class="lang-en">For queries regarding Zakat, Sadaqah, or student sponsorships.</span>
-            <span class="lang-ur">زکوٰۃ، صدقات اور طلبا کی کفالت کے لیے معلومات حاصل کریں۔</span>
-          </p>
-        </div>
-
-        <div class="sub-col-item">
-          <h4>
-            <span class="lang-en">General Inquiries</span>
-            <span class="lang-ur">عام معلومات</span>
-          </h4>
-          <p>
-            <span class="lang-en">Contact our main office for official visits and general queries.</span>
-            <span class="lang-ur">ادارے کے دفتر اور ملاقات کے اوقات کی تفاصیل کے لیے رابطہ کریں۔</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT SIDE: FLOATING WHITE FORM CARD -->
-    <div class="contact-right-col">
-      <div class="floating-form-card">
-        <h3 class="form-card-title">
-          <span class="lang-en">Get in <span class="highlight-font">Touch</span></span>
-          <span class="lang-ur">پیغام <span class="highlight-font">روانہ</span> کریں</span>
-        </h3>
-        <p class="form-card-sub">
-          <span class="lang-en" data-ur="آپ کسی بھی وقت ہم سے رابطہ کر سکتے ہیں" data-en="You can reach us anytime">You can reach us anytime</span>
-          <span class="lang-ur">ہمیں کسی بھی وقت پیغام بھیجیں</span>
-        </p>
-
-        <form action="#" method="POST" class="contact-quick-form">
-          <div class="form-row-2col">
-            <input type="text" placeholder="First name" data-en="First name" data-ur="پہلا نام" required class="form-input-field">
-            <input type="text" placeholder="Last name" data-en="Last name" data-ur="دوسرا نام" required class="form-input-field">
-          </div>
-
-          <!-- EMAIL INPUT WITH SUGGESTIVE PLACEHOLDER -->
-          <div class="form-group form-input-wrapper">
-            <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" data-en="name@gmail.com" data-ur="ای میل (name@gmail.com)" class="form-input form-input-field" required>
-          </div>
-
-          <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
-          <div class="form-group form-input-wrapper">
-            <input type="tel" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
-          </div>
-
-          <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
-          <div class="form-group form-input-wrapper textarea-wrapper">
-            <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" data-en="How can we help?" data-ur="ہم آپ کی کیا مدد کر سکتے ہیں؟" class="form-input form-textarea-field" required></textarea>
-            <span id="char-counter" class="char-count">300/300</span>
-          </div>
-
-          <div class="swipe-submit-container" id="swipeContainer">
-            <div class="swipe-text" id="swipeText">
-              <span class="lang-en" data-ur="جمع کرائیں" data-en="Swipe to Submit">Swipe to Submit</span>
-              <span class="lang-ur">سوائپ کر کے بھیجیں</span>
-            </div>
-            <div class="swipe-handle" id="swipeHandle">
-              <svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-            <button type="submit" id="hiddenSubmitBtn" style="display:none;"></button>
-          </div>
-
-          <p class="form-terms-text">
-            <span class="lang-en">By contacting us, you agree to our <strong data-ur="شرائط و ضوابط" data-en="Terms of Service">Terms of Service</strong> and <strong data-ur="پرائیویسی پالیسی" data-en="Privacy Policy">Privacy Policy</strong>.</span>
-            <span class="lang-ur">پیغام ارسال کر کے آپ ہماری <strong>شرائط</strong> اور <strong>پالیسی</strong> سے اتفاق کرتے ہیں۔</span>
-          </p>
-        </form>
-      </div>
-    </div>
-
-  </div>
-</section>
-<style>
-
-@font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-  .simple-contact-section {
-    background-color: #EBF1FA; /* Soft icy blue/gray background matching image */
-    padding: 70px 5%;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .contact-main-container {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 50px;
-    align-items: start;
-  }
-
-  /* LEFT COLUMN STYLING */
-  .contact-big-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #111111;
-    margin: 0 0 16px 0;
-    letter-spacing: -1px;
-  }
-
-  .contact-big-title .green-accent {
-    color: #006754;
-  }
-
-  .contact-lead-p {
-    font-size: 1.05rem;
-    color: #4B5563;
-    line-height: 1.6;
-    margin: 0 0 24px 0;
-    max-width: 520px;
-  }
-
-  .direct-contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 50px;
-  }
-
-  .direct-link {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #1F2937;
-    text-decoration: none;
-  }
-
-  .support-underline-link {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #006754;
-    text-decoration: underline;
-    margin-top: 8px;
-  }
-
-  /* BOTTOM 3 SUB COLUMNS */
-  .contact-sub-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .sub-col-item h4 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: #111111;
-    margin: 0 0 8px 0;
-  }
-
-  .sub-col-item p {
-    font-size: 0.82rem;
-    color: #6B7280;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  @keyframes cardEntrance {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* RIGHT FLOATING FORM CARD */
-  .floating-form-card {
-    background: #FFFFFF;
-    border-radius: 24px;
-    padding: 28px 26px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increased shadow to make it visible on white background */
-    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .floating-form-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  }
-
-  .form-card-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #111111;
-    margin: 0 0 4px 0;
-  }
-
-  .form-card-sub {
-    font-size: 0.9rem;
-    color: #6B7280;
-    margin: 0 0 24px 0;
-  }
-
-  .contact-quick-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .form-row-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .form-input-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .form-input-field {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #E5E7EB;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    box-sizing: border-box;
-    background-color: #FFFFFF;
-    outline: none;
-    transition: border 0.2s;
-  }
-
-  .form-input-field:focus, .form-textarea-field:focus {
-    border-color: #006754;
-  }
-
-  .form-input-field.with-icon {
-    padding-left: 42px;
-  }
-
-  .input-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9CA3AF;
-  }
-
-  .phone-group {
-    display: flex;
-    gap: 8px;
-  }
-
-  .country-code-select {
-    border: 1px solid #E5E7EB;
-    border-radius: 30px;
-    padding: 0 12px;
-    background: #FFFFFF;
-    font-size: 0.88rem;
-    font-weight: 600;
-  }
-
-  .form-textarea-field {
-    width: 100%;
-    height: 85px;
-    padding: 12px 14px;
-    border: 1px solid #E5E7EB;
-    border-radius: 18px;
-    font-size: 0.85rem;
-    box-sizing: border-box;
-    resize: none;
-    outline: none;
-    font-family: inherit;
-  }
-
-  .char-count {
-    position: absolute;
-    right: 14px;
-    bottom: 10px;
-    font-size: 0.7rem;
-    color: #9CA3AF;
-  }
-
-  .form-submit-blue-btn {
-    background-color: #006754; /* Custom institute brand green matching theme */
-    color: #FFFFFF;
-    border: none;
-    padding: 14px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 6px;
-  }
-
-  .form-submit-blue-btn:hover {
-    background-color: #004D3F;
-  }
-
-  /* SWIPE TO SUBMIT BUTTON */
-  .swipe-submit-container {
-    position: relative;
-    width: 100%;
-    height: 48px;
-    background-color: #006754; 
-    border-radius: 30px;
-    overflow: hidden;
-    margin-top: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    transition: filter 0.3s ease, background-color 0.3s ease;
-    touch-action: none; /* Prevent scroll on touch devices while swiping */
-  }
-
-  .swipe-submit-container.submitting {
-    filter: blur(2px);
-    opacity: 0.8;
-  }
-  
-    .swipe-submit-container.success {
-    background: #ffffff !important;
-    box-shadow: inset 0 0 0 2px #025F55, 0 6px 18px rgba(2, 95, 85, 0.15) !important;
-  }
-  .swipe-submit-container.success .swipe-text {
-    color: #025F55 !important;
-  }
-      .swipe-submit-container.success .swipe-handle {
-      background-color: #025F55 !important;
-      color: #ffffff !important;
-      border: 3px solid #ffffff !important;
-  }
-  .swipe-submit-container.success .swipe-arrow-icon {
-      color: #ffffff !important;
-  }
-
-  .swipe-text {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 0.95rem;
-    z-index: 1;
-    pointer-events: none; 
-    transition: opacity 0.3s ease;
-  }
-
-  .swipe-handle {
-    position: absolute;
-    left: 4px; 
-    top: 4px;
-    width: 40px; 
-    height: 40px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: grab;
-    z-index: 2;
-    transition: transform 0.2s ease; 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  }
-
-  .swipe-arrow-icon {
-    color: #006754 !important;
-  }
-
-  .swipe-handle:active {
-    cursor: grabbing;
-  }
-  
-  .swipe-handle.dragging {
-    transition: none; 
-  }
-
-  .form-terms-text {
-    font-size: 0.72rem;
-    color: #6B7280;
-    text-align: center;
-    margin: 8px 0 0 0;
-    line-height: 1.4;
-  }
-
-  /* RESPONSIVE DESIGN */
-  @media (max-width: 992px) {
-    .contact-main-container { grid-template-columns: 1fr; gap: 40px; }
-    .contact-sub-columns { grid-template-columns: 1fr; }
-  }
-
-  /* URDU & RTL MODE SUPPORT */
-  [dir="rtl"] .contact-lead-p, [dir="rtl"] .sub-col-item p, [dir="rtl"] .form-terms-text {
-    font-family: 'Noto Nastaliq Urdu', serif;
-    line-height: 1.8;
-  }
-
-  [dir="rtl"] .contact-big-title .green-accent, [dir="rtl"] .form-card-title {
-    font-family: 'ArsalanWessanExtraBold', 'Almarai', sans-serif;
-  }
-
-  [dir="rtl"] .form-input-field.with-icon {
-    padding-left: 16px;
-    padding-right: 42px;
-  }
-
-  [dir="rtl"] .input-icon {
-    left: auto;
-    right: 16px;
-  }
-
-  [dir="rtl"] .char-count {
-    right: auto;
-    left: 14px;
-  }
-
-  [dir="rtl"] .swipe-handle {
-    left: auto;
-    right: 4px;
-  }
-  
-  [dir="rtl"] .swipe-handle svg:not(.swipe-check-icon) {
-    transform: scaleX(-1) !important;
-  }
-      .section-divider {
-        width: 100%;
-        height: 80px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4000 100'%3E%3Cpath d='M 0 50 C 500 60, 1000 40, 1960 50 C 1980 50, 2010 10, 1990 10 C 1970 10, 1960 70, 1990 70 C 2010 70, 2020 50, 2040 50 C 3000 40, 3500 60, 4000 50' fill='none' stroke='%23006754' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 4000px 100px;
-        background-color: transparent !important;
-        margin: 20px 0;
-        pointer-events: none;
-      }
-    </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('swipeContainer');
-  const handle = document.getElementById('swipeHandle');
-  const text = document.getElementById('swipeText');
-  const form = container ? container.closest('form') : null;
-  
-  if (!container || !handle || !text) return;
-
-  let isDragging = false;
-  let startX = 0;
-  let currentX = 0;
-  let maxTravel = 0;
-
-  function startDrag(e) {
-    if (container.classList.contains('success') || container.classList.contains('submitting')) return;
-    
-    isDragging = true;
-    handle.classList.add('dragging');
-    startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-    
-    const containerWidth = container.offsetWidth;
-    const handleWidth = handle.offsetWidth;
-    maxTravel = containerWidth - handleWidth - 8; // 4px padding on each side
-  }
-
-  function doDrag(e) {
-    if (!isDragging) return;
-    e.preventDefault(); 
-    
-    let clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-    let dx = clientX - startX;
-    
-    const isRtl = window.getComputedStyle(container).direction === 'rtl';
-    
-    if (isRtl) {
-       currentX = Math.max(-maxTravel, Math.min(0, dx));
-    } else {
-       currentX = Math.max(0, Math.min(maxTravel, dx));
-    }
-    
-    handle.style.transform = `translateX(${currentX}px)`;
-    
-    const progress = Math.abs(currentX) / maxTravel;
-    text.style.opacity = 1 - progress;
-  }
-
-  function stopDrag(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    handle.classList.remove('dragging');
-    
-    const threshold = maxTravel * 0.9; 
-    
-    if (Math.abs(currentX) >= threshold) {
-      handle.style.transform = `translateX(${currentX < 0 ? -maxTravel : maxTravel}px)`;
-      submitForm();
-    } else {
-      currentX = 0;
-      handle.style.transform = `translateX(0px)`;
-      text.style.opacity = 1;
-    }
-  }
-
-  function submitForm() {
-    container.classList.add('submitting');
-    
-    setTimeout(() => {
-      container.classList.remove('submitting');
-      container.classList.add('success');
-      
-      text.innerHTML = `
-        <span class="lang-en">Submitted Successfully</span>
-        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
-      `;
-      text.style.opacity = 1;
-      
-      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-      handle.style.color = '#ffffff';
-      
-      // If you have a real backend, you can trigger form.submit() here
-      // if (form) form.submit();
-      
-    }, 800);
-  }
-
-  handle.addEventListener('mousedown', startDrag);
-  document.addEventListener('mousemove', doDrag, {passive: false});
-  document.addEventListener('mouseup', stopDrag);
-
-  handle.addEventListener('touchstart', startDrag, {passive: false});
-  document.addEventListener('touchmove', doDrag, {passive: false});
-  document.addEventListener('touchend', stopDrag);
-});
-</script>
-
-</main>
-
-<footer class="site-footer">
-    <div class="footer-content">
-        <!-- Section 1: Logo & About -->
-        <div class="footer-section footer-brand">
-            <div class="footer-logo-wrapper">
-                <img src="assets/logo.png" alt="Madrassa Logo" class="footer-logo">
-                <img src="assets/title-logo.png" alt="Madrassa Title" class="footer-title-img-en" style="max-height: 45px; width: auto; display: block;">
-                <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
-            </div>
-            
-            <!-- Social Media Buttons -->
-            <div class="footer-social-links">
-                <a href="#" class="social-btn" aria-label="WhatsApp">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                </a>
-                <a href="#" class="social-btn" aria-label="YouTube">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="#" class="social-btn" aria-label="Instagram">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="#" class="social-btn" aria-label="Facebook">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.592 9 4.415V8z"/></svg>
-                </a>
-            </div>
-        </div>
-
-        <!-- Section 2: Quick Links -->
-        <div class="footer-section">
-            <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
-            <ul>
-                <li><a href="index.html" data-en="Home" data-ur="ہوم">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
-                <li><a href="admissions.html" data-en="Admissions" data-ur="داخلہ">Admissions</a></li>
-                <li><a href="updates.html" data-en="Updates" data-ur="اپڈیٹس">Updates</a></li>
-                <li><a href="donation.html" data-en="Donate Now" data-ur="عطیات">Donate Now</a></li>
-                <li><a href="contact.html" data-en="Contact Us" data-ur="رابطہ">Contact Us</a></li>
-            </ul>
-        </div>
-
-        <!-- Section 3: Contact Info -->
-        <div class="footer-section">
-            <h3 data-en="Contact Info" data-ur="رابطہ">Contact Info</h3>
-            <ul>
-                <li data-en="Email: info@madrassa.edu" data-ur="ای میل: <span dir='ltr' style='display: inline-block;'>info@madrassa.edu</span>">Email: info@madrassa.edu</li>
-                <li data-en="Phone: +92 300 1234567" data-ur="فون: <span dir='ltr' style='display: inline-block;'>+92 300 1234567</span>">Phone: +92 300 1234567</li>
-                <li data-en="Address: 123 Islamic Center Road, City" data-ur="پتہ: 123 اسلامک سینٹر روڈ، شہر">Address: 123 Islamic Center Road, City</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p data-en="&copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved." data-ur="&copy; 2026 مدرسہ ریاض القرآن والسنہ۔ جملہ حقوق محفوظ ہیں۔">
-            &copy; 2026 Madrassa Riaz ul Quran wal Sunnah. All rights reserved.
-        </p>
-    </div>
-</footer>
-
-
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
-  <div class="mobile-menu-card">
-    <div class="mobile-menu-header">
-      <span class="menu-tag-label">MENU</span>
-      <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
-    </div>
-            <ul class="mobile-nav-links">
-      <li><a href="index.html" class="m-link" data-en="HOME" data-ur="ہوم">HOME</a></li>
-      <li><a href="about.html" class="m-link" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
-      
-      <li><a href="admissions.html" class="m-link" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
-      <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
-      <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
-      <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
-      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="انگلش">URDU</button></li>
-    </ul>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-  const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-  if(mobileMenuBtn && mobileNavOverlay) {
-      mobileMenuBtn.removeAttribute('onclick');
-      
-      mobileMenuBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          mobileNavOverlay.classList.add('is-active');
-      });
-      
-      if(mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('is-active');
-        });
-      }
-      
-      mobileNavOverlay.addEventListener('click', (e) => {
-          if(e.target === mobileNavOverlay) {
-              mobileNavOverlay.classList.remove('is-active');
-          }
-      });
-  }
-});
-</script>
-
-
-<script>
-
-
-// LIVE DECREMENT COUNTER
-document.addEventListener("DOMContentLoaded", function() {
-  const messageInput = document.getElementById('contact-message');
-  const charCounter = document.getElementById('char-counter');
-
-  if (messageInput && charCounter) {
-    const maxChars = 300;
-
-    function updateCounter() {
-      // Hard cap at 300 characters
-      if (messageInput.value.length > maxChars) {
-        messageInput.value = messageInput.value.substring(0, maxChars);
-      }
-      const remaining = maxChars - messageInput.value.length;
-      charCounter.textContent = remaining + '/300';
-
-      // Warning color when close to limit
-      if (remaining <= 30) {
-        charCounter.style.color = '#d9534f';
-      } else {
-        charCounter.style.color = '#888888';
-      }
-    }
-
-    // Listen to all input events
-    messageInput.addEventListener('input', updateCounter);
-    messageInput.addEventListener('keyup', updateCounter);
-    messageInput.addEventListener('paste', updateCounter);
-  }
-});
-
-</script>
-
-
-
-
-<style>
-
-@font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* FINAL SECTION BACKGROUND OVERRIDE (PSEUDO CORNERS REFINED) */
-.section-card-container,
-.intro-section,
-#about,
-.hero-extension-section,
-.leadership-section,
-.impact-section,
-.courses-section,
-.updates-section,
-.news-updates-section,
-.donation-section,
-.contact-section,
-.simple-contact-section {
-  position: relative !important;
-  background-color: #f2f4f3 !important; /* Pure light-grey middle background */
-  background-image: none !important;
-  overflow: hidden !important;
-}
-
-/* Ensure container children sit above the absolute pseudoelements */
-.section-card-container > *,
-.intro-section > *,
-#about > *,
-.hero-extension-section > *,
-.leadership-section > *,
-.impact-section > *,
-.courses-section > *,
-.updates-section > *,
-.news-updates-section > *,
-.donation-section > *,
-.contact-section > *,
-.simple-contact-section > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Top Right Corner Design (Halka / Opacity Reduced) */
-.section-card-container::before,
-.intro-section::before,
-#about::before,
-.hero-extension-section::before,
-.leadership-section::before,
-.impact-section::before,
-.courses-section::before,
-.updates-section::before,
-.news-updates-section::before,
-.donation-section::before,
-.contact-section::before,
-.simple-contact-section::before {
-  display: none !important;
-}
-
-/* Bottom Left Corner Design (Halka / Opacity Reduced) */
-.section-card-container::after,
-.intro-section::after,
-#about::after,
-.hero-extension-section::after,
-.leadership-section::after,
-.impact-section::after,
-.courses-section::after,
-.updates-section::after,
-.news-updates-section::after,
-.donation-section::after,
-.contact-section::after,
-.simple-contact-section::after {
-  display: none !important;
-}
-
-/* RH BADGE STYLING */
-.rh-badge {
-  font-size: 0.55em !important;
-  font-weight: 600 !important;
-  margin-left: 3px !important;
-  opacity: 0.9 !important;
-}
-
-/* SLIDING COMPACT CARD OVERRIDES */
-.mobile-nav-overlay {
-  display: flex !important; 
-  align-items: flex-start !important; /* Move higher up */
-  padding-top: 80px !important; /* Distance from top */ 
-  justify-content: flex-start !important; /* Docks to the Left in English */
-}
-[dir="rtl"] .mobile-nav-overlay {
-  justify-content: flex-start !important; /* In RTL, flex-start is the Right edge! */
-}
-
-/* Default State (English / LTR) - Slides in from Left */
-.mobile-menu-card {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  height: auto !important;
-  max-height: 400px !important;
-  width: 175px !important; /* Further reduced width */
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  border-radius: 20px !important;
-  
-  /* Slide logic */
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
-  transform: translateX(-150vw) !important; /* Starts off-screen left */
-  opacity: 0;
-}
-.mobile-nav-overlay.is-active .mobile-menu-card {
-  transform: translateX(0) !important;
-  opacity: 1;
-}
-
-/* RTL Override (Urdu Mode) - Slides in from Right */
-[dir="rtl"] .mobile-menu-card {
-  transform: translateX(150vw) !important; /* Starts off-screen right */
-}
-[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card {
-  transform: translateX(0) !important;
-}
-
-/* Ensure the hamburger icon aligns correctly */
-[dir="rtl"] .mobile-menu-btn {
-  margin-left: auto !important;
-  margin-right: 15px !important;
-}
-[dir="ltr"] .mobile-menu-btn {
-  margin-right: auto !important;
-  margin-left: 15px !important;
-}
-
-/* =========================================================
-   URDU (RTL) MIRRORING & DIRECTION FIXES
-   ========================================================= */
-
-/* 1. GLOBAL FLEX & GRID MIRRORING */
-[dir="rtl"] .flex-container,
-[dir="rtl"] .row,
-[dir="rtl"] .card-grid,
-[dir="rtl"] .section-content,
-[dir="rtl"] section[class*="-section"] .container {
-  flex-direction: row-reverse !important;
-}
-
-/* For flex containers that were column layout, keep flow clean */
-[dir="rtl"] .flex-column {
-  flex-direction: column !important;
-}
-
-/* Align all text to Right by default in Urdu mode */
-[dir="rtl"] body,
-[dir="rtl"] p,
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] h4,
-[dir="rtl"] h5,
-[dir="rtl"] h6,
-[dir="rtl"] li,
-[dir="rtl"] span,
-[dir="rtl"] .form-input-field,
-[dir="rtl"] .form-textarea-field {
-  text-align: right !important;
-  direction: rtl !important;
-}
-
-/* 2. SPECIFIC SECTION CARDS & IMAGES SWAP */
-[dir="rtl"] .founder-card,
-[dir="rtl"] .about-card,
-[dir="rtl"] .course-card,
-[dir="rtl"] .feature-card {
-  direction: rtl !important;
-}
-
-/* Reverse image and text order inside feature cards */
-[dir="rtl"] .card-image {
-  order: 2 !important;
-}
-[dir="rtl"] .card-text {
-  order: 1 !important;
-}
-
-/* 3. BUTTONS & ICONS ALIGNMENT */
-[dir="rtl"] .btn i,
-[dir="rtl"] .btn svg {
-  transform: scaleX(-1) !important; /* Flips arrow direction for RTL */
-}
-
-/* SAFEGUARD: Protect Mobile Centering */
-@media (max-width: 768px) {
-  [dir="rtl"] .hero-section h1,
-  [dir="rtl"] .hero-section h2,
-  [dir="rtl"] .hero-section p,
-  [dir="rtl"] .hero-description {
-    text-align: center !important;
-  }
-}
-
-/* =========================================================
-   URDU MOBILE NAV MENU FIX (OPEN FROM RIGHT SIDE & ALIGNMENT)
-   ========================================================= */
-
-/* FORCE URDU MOBILE MENU TO RIGHT SIDE */
-html[dir="rtl"] .mobile-menu-card,
-body.ur .mobile-menu-card {
-  left: auto !important;
-  right: auto !important;
-  margin-right: 16px !important; /* Forces the gap */
-  transform: translateX(150vw) !important; /* Hide off-screen to the right */
-  border-radius: 20px !important; /* Rounded all corners */
-}
-
-/* WHEN MENU IS ACTIVE/OPENED IN URDU */
-html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
-  transform: translateX(0) !important;
-  left: auto !important;
-  right: auto !important;
-}
-
-/* ALIGN TEXT & CLOSE BUTTON (X) FOR URDU MENU */
-html[dir="rtl"] .mobile-menu-card *,
-body.ur .mobile-menu-card * {
-  text-align: right !important;
-}
-
-/* Move Close (X) icon to top-left corner inside Urdu menu */
-html[dir="rtl"] .mobile-menu-card .mobile-menu-close,
-body.ur .mobile-menu-card .mobile-menu-close {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  float: left !important;
-}
-
-/* Ensure English has matching forced gap */
-html[dir="ltr"] .mobile-menu-card,
-body:not(.ur) .mobile-menu-card {
-  margin-left: 16px !important; /* Forces the gap */
-  border-radius: 20px !important; /* Rounded all corners */
-}
-
-/* LEADERSHIP RTL FIXES */
-/* Both images remain in their original un-flipped state */
-
-/* 3. ALL Badges (Founder & Principal) go to the Right Side in Urdu */
-[dir="rtl"] .figure-overlay-info {
-  left: auto !important;
-  right: 10px !important;
-  text-align: right !important;
-}
-[dir="rtl"] .sub-prefix {
-  margin-left: 0 !important;
-  margin-right: 14px !important;
-}
-
-/* =========================================================
-   DONATION CARDS RTL FIXES
-   ========================================================= */
-
-/* 1. Flip the green shadow background */
-[dir="rtl"] .donation-info-card::before {
-  right: 20px !important;
-  left: -10px !important;
-}
-
-/* 2. Reverse the skew to match RTL flow */
-[dir="rtl"] .donation-info-content {
-  transform: skewY(-3deg) !important;
-  box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.08) !important; /* Move drop shadow to the right */
-}
-[dir="rtl"] .card-unskew {
-  transform: skewY(3deg) !important;
-}
-
-/* 3. Flip the SVG Arrow so it points Up-Left in RTL */
-[dir="rtl"] .info-card-number svg {
-  transform: scaleX(-1) !important;
-}
-</style>
-
-<style>
-/* 1. IMPORT JAMEEL NOORI NASTALEEQ REGULAR FONT */
-@font-face {
-  font-family: 'Jameel Noori Nastaleeq';
-  src: url('https://cdn.jsdelivr.net/npm/jameel-noori/fonts/jameel-noori-nastaleeq4.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* 2. APPLY FONT GLOBALLY TO ALL ELEMENTS IN URDU MODE */
-html[dir="rtl"] body,
-html[dir="rtl"] p,
-html[dir="rtl"] span,
-html[dir="rtl"] a,
-html[dir="rtl"] li,
-html[dir="rtl"] button,
-html[dir="rtl"] input,
-html[dir="rtl"] textarea,
-html[dir="rtl"] div,
-body.ur body,
-body.ur p,
-body.ur span,
-body.ur a,
-body.ur li,
-body.ur button,
-body.ur input,
-body.ur textarea,
-body.ur div {
-  font-family: 'Jameel Noori Nastaleeq', serif !important;
-  font-weight: normal !important;
-  line-height: 1.8 !important;
-}
-
-/* 3. EXCLUDE GREEN COLORED WORDS IN HEADINGS */
-html[dir="rtl"] h1 span[style*="color"],
-html[dir="rtl"] h2 span[style*="color"],
-html[dir="rtl"] h3 span[style*="color"],
-html[dir="rtl"] h4 span[style*="color"],
-html[dir="rtl"] .highlight-green,
-html[dir="rtl"] .text-green,
-html[dir="rtl"] span.green-text,
-html[dir="rtl"] .highlight-font,
-body.ur h1 span[style*="color"],
-body.ur h2 span[style*="color"],
-body.ur h3 span[style*="color"],
-body.ur .highlight-green,
-body.ur .text-green,
-body.ur span.green-text,
-body.ur .highlight-font {
-  font-family: inherit !important;
-}
-
-/* 5. FIX RTL HOVER ARROW ROTATION FOR ALL BUTTONS */
-html[dir="rtl"] .btn-secondary-pill:hover .btn-arrow-circle svg,
-html[dir="rtl"] .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
-html[dir="rtl"] .btn-intro-special:hover .arrow-icon svg,
-html[dir="rtl"] .btn-intro-special:hover .btn-arrow-circle svg,
-html[dir="rtl"] .btn-intro-special:hover .arrow-icon,
-html[dir="rtl"] .view-all-updates-btn:hover .cta-arrow svg,
-html[dir="rtl"] .view-all-updates-btn:hover .btn-arrow-circle svg,
-html[dir="rtl"] .view-all-updates-btn:hover .cta-arrow,
-html[dir="rtl"] .card-action-btn:hover .cta-arrow svg,
-html[dir="rtl"] .card-action-btn:hover .btn-arrow-circle svg,
-html[dir="rtl"] .btn-primary-pill:active .btn-arrow-circle svg,
-html[dir="rtl"] .btn-secondary-pill:active .btn-arrow-circle svg,
-html[dir="rtl"] .btn-intro-special:active .arrow-icon svg,
-html[dir="rtl"] .btn-intro-special:active .btn-arrow-circle svg,
-html[dir="rtl"] .view-all-updates-btn:active .cta-arrow svg,
-html[dir="rtl"] .view-all-updates-btn:active .btn-arrow-circle svg,
-html[dir="rtl"] .card-action-btn:active .cta-arrow svg,
-html[dir="rtl"] .card-action-btn:active .btn-arrow-circle svg,
-html[dir="rtl"] .donation-info-card:hover .info-card-number svg,
-
-body.ur .btn-secondary-pill:hover .btn-arrow-circle svg,
-body.ur .hero-buttons a:nth-child(2):hover .btn-arrow-circle svg,
-body.ur .btn-intro-special:hover .arrow-icon svg,
-body.ur .btn-intro-special:hover .btn-arrow-circle svg,
-body.ur .btn-intro-special:hover .arrow-icon,
-body.ur .view-all-updates-btn:hover .cta-arrow svg,
-body.ur .view-all-updates-btn:hover .btn-arrow-circle svg,
-body.ur .view-all-updates-btn:hover .cta-arrow,
-body.ur .card-action-btn:hover .cta-arrow svg,
-body.ur .card-action-btn:hover .btn-arrow-circle svg,
-body.ur .btn-primary-pill:active .btn-arrow-circle svg,
-body.ur .btn-secondary-pill:active .btn-arrow-circle svg,
-body.ur .btn-intro-special:active .arrow-icon svg,
-body.ur .btn-intro-special:active .btn-arrow-circle svg,
-body.ur .view-all-updates-btn:active .cta-arrow svg,
-body.ur .view-all-updates-btn:active .btn-arrow-circle svg,
-body.ur .card-action-btn:active .cta-arrow svg,
-body.ur .card-action-btn:active .btn-arrow-circle svg,
-body.ur .donation-info-card:hover .info-card-number svg {
-    transform: scaleX(-1) rotate(45deg) !important;
-}
-
-/* 6. SIGNATURE SCRIPT FONT & ZIGZAG LINE FOR TITLES */
-.signature-font {
-  font-family: 'Caveat', cursive, sans-serif !important;
-  font-size: 1.2em !important;
-  color: #006754 !important;
-}
-
-.signature-font-urdu {
-  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
-  font-size: 1.1em !important;
-  color: #006754 !important;
-  border-bottom: 2px dashed #006754 !important;
-}
-
-.zigzag-line {
-  width: 100px !important;
-  height: 5px !important;
-  margin: 10px auto !important;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="10" viewBox="0 0 100 10"><path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="%23006754" stroke-width="2"/></svg>') !important;
-  background-repeat: repeat-x !important;
-}
-
-/* 7. PERFECT BUTTON ALIGNMENT (Circle on Edge) */
-/* LTR Desktop (Circle on Right) */
-.btn-hero, .btn-primary-pill, .btn-secondary-pill, .btn-intro-special, .view-all-updates-btn, .card-action-btn, .hero-buttons a, .hero-buttons button {
-    padding: 8px 8px 8px 24px !important;
-}
-
-/* RTL Desktop (Circle on Left) */
-html[dir="rtl"] .btn-hero, html[dir="rtl"] .btn-primary-pill, html[dir="rtl"] .btn-secondary-pill, html[dir="rtl"] .btn-intro-special, html[dir="rtl"] .view-all-updates-btn, html[dir="rtl"] .card-action-btn, html[dir="rtl"] .hero-buttons a, html[dir="rtl"] .hero-buttons button,
-body.ur .btn-hero, body.ur .btn-primary-pill, body.ur .btn-secondary-pill, body.ur .btn-intro-special, body.ur .view-all-updates-btn, body.ur .card-action-btn, body.ur .hero-buttons a, body.ur .hero-buttons button {
-    padding: 8px 24px 8px 8px !important;
-}
-
-/* Mobile LTR */
-@media (max-width: 768px) {
-    .btn-hero, .btn-primary-pill, .btn-secondary-pill, .btn-intro-special, .view-all-updates-btn, .card-action-btn, .hero-buttons a, .hero-buttons button {
-        padding: 6px 6px 6px 20px !important;
-    }
-}
-
-/* Mobile RTL */
-@media (max-width: 768px) {
-    html[dir="rtl"] .btn-hero, html[dir="rtl"] .btn-primary-pill, html[dir="rtl"] .btn-secondary-pill, html[dir="rtl"] .btn-intro-special, html[dir="rtl"] .view-all-updates-btn, html[dir="rtl"] .card-action-btn, html[dir="rtl"] .hero-buttons a, html[dir="rtl"] .hero-buttons button,
-    body.ur .btn-hero, body.ur .btn-primary-pill, body.ur .btn-secondary-pill, body.ur .btn-intro-special, body.ur .view-all-updates-btn, body.ur .card-action-btn, body.ur .hero-buttons a, body.ur .hero-buttons button {
-        padding: 6px 20px 6px 6px !important;
-    }
-}
-
-/* 8. FLIP HERO BACKGROUND IN RTL */
-html[dir="rtl"] .hero-section {
-    transform: scaleX(-1) !important;
-}
-html[dir="rtl"] .hero-section > .hero-content {
-    transform: scaleX(-1) !important;
-}
-</style>
-
-
-
-
-
-<!-- Mobile Navbar Strict Force-Close and Scroll Restoration -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const langButtons = document.querySelectorAll('.lang-toggle-btn, .language-switcher, #lang-switch, a[href*="lang="], .lang-btn, .mobile-lang-btn, #mobileLangBtn, #langSwitch');
-
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Forcefully remove active/open/show classes from menu, drawers, and backdrops
-      const activeElements = document.querySelectorAll('.active, .open, .show, .is-active');
-      activeElements.forEach(el => {
-        el.classList.remove('active', 'open', 'show', 'is-active');
-      });
-
-      // Restore body scrolling
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('menu-open', 'nav-open');
-
-      // Scroll window to top
-      window.scrollTo(0, 0);
-    });
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-/* Global Container Background Styling (Forced Override) */
-.about-container,
-.profile-card-container,
-.statement-card,
-.home-section-container,
-.content-box,
-.custom-card,
-.service-card,
-.section-card-container,
-.content-card,
-.vm-card,
-#about,
-#leadership,
-#courses,
-#contact,
-.intro-section,
-.hero-extension-section,
-.leadership-section,
-.impact-section,
-.courses-section,
-.updates-section,
-.news-updates-section,
-.donation-section,
-.contact-section,
-.simple-contact-section {
-  /* Using a white semi-transparent gradient overlay to make the background VERY light (halka) */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
-    url('assets/container-bg.jpg') !important;
-  background-position: center center !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat !important;
-  background-color: #f7faf8 !important; /* Fallback color */
-  position: relative !important;
-  overflow: hidden !important;
-  transition: all 0.3s ease !important;
-  background-blend-mode: normal, multiply !important;
-}
-
-/* ================= DESKTOP / PC MODE (Landscape / Chorai) ================= */
-@media (min-width: 769px) {
-  /* Desktop already looks perfect with the base 100% 100% rule above */
-}
-
-/* ================= MOBILE MODE (Portrait / Lambai) ================= */
-@media (max-width: 768px) {
-  .about-container,
-  .profile-card-container,
-  .statement-card,
-  .home-section-container,
-  .content-box,
-  .custom-card,
-  .service-card,
-  .section-card-container,
-  .content-card,
-  .vm-card,
-  #about,
-  #leadership,
-  #courses,
-  #contact,
-  .intro-section,
-  .hero-extension-section,
-  .leadership-section,
-  .impact-section,
-  .courses-section,
-  .updates-section,
-  .news-updates-section,
-  .donation-section,
-  .contact-section,
-  .simple-contact-section {
-    /* Magic trick to show BOTH corners on mobile without stretching or zooming massively! */
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), 
-        url('assets/container-bg.jpg'),
-        url('assets/container-bg.jpg') !important;
-    background-position: 
-        top left, 
-        top right,    /* Places the first image's top-right pattern precisely in the top-right corner */
-        bottom left !important; /* Places the second image's bottom-left pattern precisely in the bottom-left corner */
-    background-size: 
-        100% 100%, 
-        800px auto,   /* Fixed width prevents dots from becoming massive, keeps them PC sized! */
-        800px auto !important; 
-    background-repeat: no-repeat, no-repeat, no-repeat !important;
-    background-blend-mode: normal, multiply, multiply !important; /* Multiplies white background so both corners overlap cleanly! */
-  }
-}
-</style>
-
-
-<style>
-/* Fix Swipe Submit Button text overlap on mobile */
-@media (max-width: 768px) {
-    .swipe-submit-container.success .swipe-text {
-        font-size: 0.85rem !important;
-        padding-right: 48px !important;
-        box-sizing: border-box !important;
-        white-space: nowrap !important;
-    }
-    html[dir="rtl"] .swipe-submit-container.success .swipe-text,
-    body.ur .swipe-submit-container.success .swipe-text {
-        padding-right: 0 !important;
-        padding-left: 48px !important;
-    }
-}
-/* Desktop tweak to be safe */
-.swipe-submit-container.success .swipe-text {
-    padding-right: 48px;
-    box-sizing: border-box;
-}
-html[dir="rtl"] .swipe-submit-container.success .swipe-text,
-body.ur .swipe-submit-container.success .swipe-text {
-    padding-right: 0;
-    padding-left: 48px;
-}
-</style>
-
-
-
-
-
-
-
-
-<!-- ULTIMATE HEADER BUTTONS FIX -->
-<style>
-/* Center buttons vertically inside the green header for DESKTOP */
-html body div.about-minimal-header {
-    position: relative !important;
-}
-
-html body div.about-minimal-header button.minimal-back-btn,
-html body div.about-minimal-header button.minimal-hamburger-btn,
-html body div.about-minimal-header button[onclick*="history.back"],
-html body .back-btn,
-html body .minimal-back-btn,
-html body .minimal-hamburger-btn,
-html body button[onclick*="history.back"] {
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
-    position: absolute !important;
-    z-index: 99999 !important;
-    margin: 0 !important;
-    
-    /* White glass style for green background (Desktop) */
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    border-radius: 50% !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-}
-html body div.about-minimal-header button.minimal-back-btn svg,
-html body div.about-minimal-header button.minimal-hamburger-btn svg,
-html body div.about-minimal-header button[onclick*="history.back"] svg {
-    stroke: #ffffff !important;
-}
-
-/* MOBILE OVERRIDES: Put buttons in the white strip ABOVE the header */
-@media (max-width: 768px) {
-    html body div.about-minimal-header {
-        margin-top: 48px !important; /* Create white space above header */
-        border-top: none !important; /* Remove any old buggy border */
-    }
-    
-    /* To guarantee the white strip background */
-    html body div.about-minimal-header::before {
-        content: "" !important;
-        position: absolute !important;
-        top: -48px !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 48px !important;
-        background-color: #ffffff !important;
-        z-index: 0 !important;
-    }
-
-    html body div.about-minimal-header button.minimal-back-btn,
-    html body div.about-minimal-header button.minimal-hamburger-btn,
-    html body div.about-minimal-header button[onclick*="history.back"] {
-        top: -24px !important; /* Exactly middle of the 48px white strip */
-        transform: translateY(-50%) !important;
-        
-        /* Clean look for white background */
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 32px !important;
-        min-height: 32px !important;
-    }
-    
-    /* Make SVG icons dark green so they are visible on white */
-    html body div.about-minimal-header button.minimal-back-btn svg,
-    html body div.about-minimal-header button.minimal-hamburger-btn svg,
-    html body div.about-minimal-header button[onclick*="history.back"] svg {
-        stroke: #006754 !important;
-        width: 24px !important;
-        height: 24px !important;
-    }
-}
-
-/* ALIGNMENTS (Universal for Desktop and Mobile) */
-/* English (LTR): Back on Left, Hamburger on Right */
-html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
-html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
-body:not(.ur) div.about-minimal-header button.minimal-back-btn,
-body:not(.ur) div.about-minimal-header button[onclick*="history.back"] {
-    left: 16px !important;
-    right: auto !important;
-}
-html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
-body:not(.ur) div.about-minimal-header button.minimal-hamburger-btn {
-    right: 16px !important;
-    left: auto !important;
-}
-
-/* Urdu (RTL): Back on Right, Hamburger on Left */
-html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
-html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"],
-body.ur div.about-minimal-header button.minimal-back-btn,
-body.ur div.about-minimal-header button[onclick*="history.back"] {
-    right: 16px !important;
-    left: auto !important;
-}
-html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn,
-body.ur div.about-minimal-header button.minimal-hamburger-btn {
-    left: 16px !important;
-    right: auto !important;
-}
-
-/* Arrow flip for RTL */
-html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn svg,
-html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"] svg,
-body.ur div.about-minimal-header button.minimal-back-btn svg,
-body.ur div.about-minimal-header button[onclick*="history.back"] svg {
-    transform: rotate(180deg) !important;
-}
-</style>
-
-
-<!-- SWAPPED BUTTON POSITIONS (Hamburger Left in EN, Right in UR) -->
-<style>
-/* English (LTR): Hamburger on Left, Back on Right */
-html[dir="ltr"] body div.about-minimal-header button.minimal-hamburger-btn,
-body:not(.ur) div.about-minimal-header button.minimal-hamburger-btn {
-    left: 16px !important;
-    right: auto !important;
-}
-html[dir="ltr"] body div.about-minimal-header button.minimal-back-btn,
-html[dir="ltr"] body div.about-minimal-header button[onclick*="history.back"],
-body:not(.ur) div.about-minimal-header button.minimal-back-btn,
-body:not(.ur) div.about-minimal-header button[onclick*="history.back"] {
-    right: 16px !important;
-    left: auto !important;
-}
-
-/* Urdu (RTL): Hamburger on Right, Back on Left */
-html[dir="rtl"] body div.about-minimal-header button.minimal-hamburger-btn,
-body.ur div.about-minimal-header button.minimal-hamburger-btn {
-    right: 16px !important;
-    left: auto !important;
-}
-html[dir="rtl"] body div.about-minimal-header button.minimal-back-btn,
-html[dir="rtl"] body div.about-minimal-header button[onclick*="history.back"],
-body.ur div.about-minimal-header button.minimal-back-btn,
-body.ur div.about-minimal-header button[onclick*="history.back"] {
-    left: 16px !important;
-    right: auto !important;
-}
-
-/* Fix popup opening sides to match the new button positions */
-/* English (LTR): Open on Left (Hamburger is on Left) */
-html[dir="ltr"] .mobile-nav-overlay,
-body:not(.ur) .mobile-nav-overlay {
-    justify-content: flex-start !important; /* Left edge */
-}
-html[dir="ltr"] .mobile-menu-card,
-body:not(.ur) .mobile-menu-card {
-    margin-left: 16px !important;
-    margin-right: 0 !important;
-    transform: translateX(-150vw) !important; /* Hide to the Left */
-}
-
-/* Urdu (RTL): Open on Right (Hamburger is on Right) */
-html[dir="rtl"] .mobile-nav-overlay,
-body.ur .mobile-nav-overlay {
-    justify-content: flex-start !important; /* Right edge in RTL */
-}
-html[dir="rtl"] .mobile-menu-card,
-body.ur .mobile-menu-card {
-    margin-right: 16px !important;
-    margin-left: 0 !important;
-    transform: translateX(150vw) !important; /* Hide to the Right */
-}
-</style>
-
-<!-- FONT FIX -->
-<style>
-/* Nastaleeq Font for Urdu Menu Items */
-html[dir="rtl"] .mobile-nav-links a,
-body.ur .mobile-nav-links a {
-    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-    font-size: 1.2rem !important; /* Slightly larger for Nastaleeq readability */
-    text-align: right !important;
-}
-
-/* Keep ENGLISH text normal in the button and header */
-html[dir="rtl"] .mobile-lang-btn,
-html[dir="rtl"] .menu-tag-label {
-    font-family: 'Outfit', sans-serif !important;
-}
-</style>
-
-<!-- CHECKMARK RTL FIX -->
-<style>
-/* Fix bullet points and checkmarks in RTL */
-html[dir="rtl"] .inst-subpoints, 
-body.ur .inst-subpoints,
-html[dir="rtl"] ul.inst-subpoints {
-    padding-left: 0 !important;
-    padding-right: 24px !important; /* Make sure there's enough room for the checkmark */
-}
-html[dir="rtl"] .inst-subpoints li, 
-body.ur .inst-subpoints li {
-    padding-left: 0 !important;
-    padding-right: 6px !important;
-    text-align: right !important;
-}
-html[dir="rtl"] .inst-subpoints li::before, 
-body.ur .inst-subpoints li::before {
-    left: auto !important;
-    right: -24px !important; /* Place checkmark neatly in the padding area */
-    
-}
-
-/* Specifically for donation page lists */
-html[dir="rtl"] .admission-instructions-card .inst-subpoints {
-    padding-left: 0 !important;
-    padding-right: 24px !important;
-}
-</style>
-
-
-<!-- UNIFIED STRICT UI SPECIFICATIONS FOR MENU POPUP (MOBILE & PC) -->
-<style>
-/* 1. POPUP CONTAINER DIMENSIONS & RADIUS */
-.mobile-menu-card {
-    width: 210px !important;
-    max-width: 210px !important;
-    background: #ffffff !important;
-    border-radius: 24px !important;
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04) !important;
-    border: 1px solid #f1f5f9 !important;
-    padding: 12px 10px !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    /* Ensure it floats properly like a card */
-    position: relative !important;
-    max-height: calc(100vh - 100px) !important;
-    overflow-y: auto !important;
-    /* Reset old max-heights and padding */
-    height: auto !important;
-}
-
-/* Remove scrollbar for clean look */
-.mobile-menu-card::-webkit-scrollbar {
-    width: 0px !important;
-}
-
-/* Fix header positioning in the card (Menu Text & Close Icon) */
-.mobile-menu-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    margin-bottom: 8px !important; /* Tighter gap before items */
-    padding: 0 14px !important;
-}
-
-/* 2. MENU ITEMS & VERTICAL SPACING */
-.mobile-menu-card .mobile-nav-links {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important; /* Uniform vertical gap */
-}
-
-/* Item styling */
-.mobile-menu-card .mobile-nav-links a,
-.mobile-menu-card .mobile-lang-btn {
-    height: 40px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 0 14px !important;
-    text-decoration: none !important;
-    color: #1F2937 !important;
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    text-transform: capitalize !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    border-radius: 14px !important;
-    transition: all 0.2s ease !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    text-align: left !important;
-}
-
-/* Hover/Active State */
-.mobile-menu-card .mobile-nav-links a:hover,
-.mobile-menu-card .mobile-nav-links a:active,
-.mobile-menu-card .mobile-lang-btn:hover,
-.mobile-menu-card .mobile-lang-btn:active,
-.mobile-menu-card .mobile-nav-links a.active {
-    background: #f1f5f9 !important;
-}
-
-/* Language Button specifically */
-.mobile-menu-card .mobile-lang-btn {
-    color: #006754 !important; /* Keep brand color */
-    margin-top: 4px !important;
-}
-
-/* Dividers */
-.menu-divider {
-    border-top: 1px solid #f1f5f9 !important;
-    margin: 6px 8px !important;
-    height: 0 !important;
-    border-bottom: none !important;
-    border-left: none !important;
-    border-right: none !important;
-    display: block !important;
-    width: auto !important;
-}
-
-/* 3. RESPONSIVE RULES & RTL (Urdu Mode) */
-/* RTL Typography Override */
-html[dir="rtl"] .mobile-menu-card .mobile-nav-links a,
-body.ur .mobile-menu-card .mobile-nav-links a {
-    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-    font-size: 17px !important; /* Nastaleeq requires larger size to match 15px English visually */
-    text-align: right !important;
-    justify-content: flex-start !important; /* Alignment */
-}
-html[dir="rtl"] .mobile-menu-card .mobile-lang-btn,
-body.ur .mobile-menu-card .mobile-lang-btn {
-    text-align: right !important;
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 14px !important;
-    justify-content: flex-start !important;
-}
-
-/* Floating behavior for subpages PC view */
-@media (min-width: 769px) {
-    /* For subpages where hamburger is used on desktop */
-    .mobile-menu-card {
-        margin-top: 80px !important; /* Float below header */
-        margin-right: 20px !important;
-        margin-left: 20px !important;
-    }
-}
-@media (max-width: 768px) {
-    .mobile-menu-card {
-        margin-top: 70px !important; /* Float below header */
-    }
-}
-
-/* Ensure slide animations respect the card positioning */
-html[dir="ltr"] .mobile-menu-card,
-body:not(.ur) .mobile-menu-card {
-    transform: translateX(150vw) !important; /* Hide to the Right initially (since Hamburger is on Right) */
-}
-html[dir="ltr"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body:not(.ur) .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
-
-html[dir="rtl"] .mobile-menu-card,
-body.ur .mobile-menu-card {
-    transform: translateX(-150vw) !important; /* Hide to the Left initially */
-}
-html[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
-body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
-    transform: translateX(0) !important;
-}
-
-
-/* Accurate Divider Injection */
-.mobile-nav-links li:has(a[href*="updates.html"])::before,
-.mobile-nav-links li:has(.mobile-lang-btn)::before {
-    content: "" !important;
-    display: block !important;
-    border-top: 1px solid #f1f5f9 !important;
-    margin: 6px 8px !important;
-}
-/* Fallback if :has is not perfectly supported on older mobile browsers */
-.mobile-nav-links a[href*="updates.html"],
-.mobile-lang-btn {
-    position: relative;
-}
-</style>
-
-<!-- ULTIMATE FIX FOR MOBILE HEADER STRIP AND PC BUTTONS -->
-<style>
-/* HIDE EVERYWHERE - HIGHEST SPECIFICITY */
-html:root body div.about-minimal-header button.minimal-back-btn,
-html:root body div.about-minimal-header button.minimal-hamburger-btn,
-html:root body div.about-minimal-header button[onclick*="history.back"],
-#desktopHideBtn1, #desktopHideBtn2 {
-    display: none !important;
-}
-
-/* FIX MOBILE HEADER STRIP - HIGHEST SPECIFICITY */
-@media (max-width: 768px) {
-    html:root body div.about-minimal-header {
-        margin-top: 0 !important;
-        padding-top: 30px !important;
-    }
-    
-    html:root body div.about-minimal-header::before {
-        background-color: transparent !important; /* Remove white strip color */
-        top: 0 !important;
-        height: 100% !important;
-    }
-    
-    html:root body div.about-minimal-header button.minimal-back-btn,
-    html:root body div.about-minimal-header button.minimal-hamburger-btn,
-    html:root body div.about-minimal-header button[onclick*="history.back"] {
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        border-radius: 50% !important;
-        width: 36px !important;
-        height: 36px !important;
-        min-width: 36px !important;
-        min-height: 36px !important;
-    }
-    
-    html:root body div.about-minimal-header button.minimal-back-btn svg,
-    html:root body div.about-minimal-header button.minimal-hamburger-btn svg,
-    html:root body div.about-minimal-header button[onclick*="history.back"] svg {
-        stroke: #ffffff !important;
-    }
-}
-</style>
-
-<!-- ULTIMATE FIX FOR MOBILE HEADER LAYOUT AND LANG TOGGLE -->
-<style>
-/* 1. Ensure English/Urdu titles toggle correctly based on dir attribute */
-html[dir="rtl"] .brand-title-img-en, 
-html[lang="ur"] .brand-title-img-en {
-    display: none !important;
-}
-html[dir="ltr"] .urdu-title-png, 
-html[lang="en"] .urdu-title-png {
-    display: none !important;
-}
-html[dir="ltr"] .brand-title-img-en, 
-html[lang="en"] .brand-title-img-en {
-    display: block !important;
-}
-html[dir="rtl"] .urdu-title-png, 
-html[lang="ur"] .urdu-title-png {
-    display: block !important;
-}
-
-/* 2. Fix the flex order for mobile headers */
-@media (max-width: 768px) {
-    /* Main header and sticky header flex layout */
-    header, .sticky-header header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 10px 15px !important;
-    }
-    
-    /* Order 1: Logo */
-    header .header-logo, 
-    .sticky-header header .header-logo,
-    header .mobile-logo-container,
-    .sticky-header header .mobile-logo-container {
-        order: 1 !important;
-        display: flex !important;
-    }
-    
-    /* Order 2: Name/Title */
-    header .brand-title-container, 
-    .sticky-header header .brand-title-container {
-        order: 2 !important;
-        flex: 1 !important;
-        display: flex !important;
-        justify-content: center !important;
-    }
-    
-    /* Order 3: Hamburger */
-    header .mobile-menu-btn, 
-    .sticky-header header .mobile-menu-btn {
-        order: 3 !important;
-        display: flex !important;
-    }
-}
-body > .mobile-logo-container { display: none !important; }
-</style>
-
-<!-- ULTIMATE PERFECT MOBILE HEADER LAYOUT FIX V2 -->
-<style>
-@media (max-width: 768px) {
-    /* Main header container */
-    header, .sticky-header header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important; /* Forces items to left and right edges */
-        align-items: center !important;
-        padding: 10px 15px !important;
-        position: relative !important;
-        overflow: visible !important;
-    }
-    
-    /* Order 1: Logo on the edge */
-    header .header-logo, 
-    .sticky-header header .header-logo {
-        order: 1 !important;
-        display: flex !important;
-        margin: 0 !important;
-    }
-    
-    /* Increase Logo size slightly */
-    header .header-logo img, 
-    .sticky-header header .header-logo img {
-        max-height: 60px !important;
-    }
-    
-    /* Order 2: Absolutely centered Title */
-    header .brand-title-container, 
-    .sticky-header header .brand-title-container {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        order: 2 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: auto !important;
-        margin: 0 !important;
-        pointer-events: none; /* prevent blocking clicks */
-    }
-    
-    /* Increase Title size */
-    .brand-title-img-en, .urdu-title-png {
-        max-height: 55px !important;
-        width: auto !important;
-        max-width: 50vw !important; /* Prevent overlap on very small screens */
-        object-fit: contain !important;
-    }
-    
-    /* Order 3: Hamburger on the opposite edge */
-    header .mobile-menu-btn, 
-    .sticky-header header .mobile-menu-btn {
-        order: 3 !important;
-        display: flex !important;
-        margin: 0 !important; /* REMOVE ANY PREVIOUS BUGGY MARGINS */
-        padding: 5px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    /* RTL / LTR specific logic just in case it's needed for safety */
-    html[dir="rtl"] header, html[dir="rtl"] .sticky-header header {
-        flex-direction: row !important;
-    }
-}
-</style>
-
-
-
-<!-- UNIFORM HOME PAGE CARDS (LINE CLAMP) -->
-<style>
-/* Keep the excerpt uniform on the home page with an ellipsis */
-.news-excerpt {
-    display: -webkit-box !important;
-    -webkit-line-clamp: 3 !important; /* Limit to 3 lines */
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-}
-
-/* Ensure the card content keeps the button aligned */
-.news-card {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-}
-.news-card-content {
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 !important;
-}
-.news-read-link {
-    margin-top: auto !important;
-}
-</style>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
