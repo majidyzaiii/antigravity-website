@@ -6705,6 +6705,11 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                 const desc = lang === 'ur' ? u.desc_ur : u.desc_en;
                 const date = new Date(u.date).toLocaleDateString(lang === 'ur' ? 'ur-PK' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
                 
+                const imgHtml = u.image ? `<img src="${u.image}" style="width:100%; max-height:400px; object-fit:cover; border-radius:15px; margin: 20px 0; display:block; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">` : '';
+                
+                const authorName = u.author ? u.author : 'Admin';
+                const finalAuthor = lang === 'ur' ? `?? ${authorName} ?? ??? ??` : `?? by ${authorName}`;
+                
                 return `
                 <div class="update-content-box" id="upd-${u.id}">
                     <div class="update-header-row">
@@ -6712,9 +6717,11 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                             ${date}
                         </span>
+                        <span class="update-author-badge" style="display:inline-flex; align-items:center; gap:5px; padding:6px 12px; background:var(--header-bg); color:white; border-radius:50px; font-size:14px; font-weight:600; margin-left: 10px;">${finalAuthor}</span>
                         <span class="update-category-tag">${u.cat}</span>
                     </div>
                     <h2 class="update-title">${title}</h2>
+                    ${imgHtml}
                     <div class="update-body" style="font-family: ${lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif"}; font-size: ${lang === 'ur' ? '22px' : '16px'}; line-height: ${lang === 'ur' ? '2.2' : '1.8'};">
                         ${desc.replace(/
 /g, '<br>')}

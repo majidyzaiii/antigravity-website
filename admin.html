@@ -5061,10 +5061,14 @@ div:has(> .strengths-wrapper),
             <div id="panel-updates" class="admin-panel active">
                 <div class="content-card" style="margin-bottom: 30px;">
                     <h3 style="margin-top:0; color: var(--header-bg);" data-en="Create New Update" data-ur="نئی اپ ڈیٹ">Create New Update</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;" class="admin-grid">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
                         <div>
                             <label class="form-label" data-en="Date" data-ur="تاریخ">Date</label>
                             <input type="date" id="upd-date" class="form-input">
+                        </div>
+                        <div>
+                            <label class="form-label" data-en="Author Name" data-ur="ایڈمن کا نام">Author Name</label>
+                            <input type="text" id="upd-author" class="form-input" placeholder="e.g. Admin" value="Admin">
                         </div>
                         <div>
                             <label class="form-label" data-en="Category" data-ur="کیٹیگری">Category</label>
@@ -5075,12 +5079,10 @@ div:has(> .strengths-wrapper),
                             </select>
                         </div>
                         <div>
-                            <label class="form-label" data-en="Upload Image (Optional)" data-ur="????? ????? ???? (???????)">Upload Image (Optional)</label>
+                            <label class="form-label" data-en="Upload Image" data-ur="تصویر">Upload Image</label>
                             <input type="file" id="upd-image" accept="image/*" class="form-input" style="padding: 9px;">
                         </div>
                     </div>
-
-                    
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;" class="admin-grid">
                         <!-- English Side -->
                         <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
@@ -5413,6 +5415,7 @@ div:has(> .strengths-wrapper),
                 id: Date.now(),
                 date: document.getElementById('upd-date').value,
                 cat: document.getElementById('upd-cat').value,
+                author: document.getElementById('upd-author').value,
                 title_en: document.getElementById('upd-title-en').value,
                 desc_en: document.getElementById('upd-desc-en').value,
                 title_ur: document.getElementById('upd-title-ur').value,
