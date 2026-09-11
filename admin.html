@@ -5030,22 +5030,24 @@ div:has(> .strengths-wrapper),
     <!-- DASHBOARD VIEW -->
     <div id="dashboard-view" style="display: none; min-height: 100vh; background: #f8fafc; padding-bottom: 50px;">
         <!-- Exact Header from index.html -->
-        <header>
-            <div class="brand-title-container">
-                <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
-                <img src="assets/title-urdu.png" alt="Madrassa Urdu" class="urdu-title-png">
-            </div>
-            <div class="header-logo desktop-logo">
-                <img src="assets/logo.png" alt="Madrassa Logo">
-            </div>
-        </header>
+        <div class="sticky-header">
+            <header>
+                <div class="brand-title-container">
+                    <img src="assets/title-logo.png" alt="Madrassa Title" class="brand-title-img-en" style="max-height: 85px; width: auto; display: block; margin: 0;">
+                    <img src="assets/title-urdu.png" alt="Madrassa Urdu" class="urdu-title-png">
+                </div>
+                <div class="header-logo desktop-logo">
+                    <img src="assets/logo.png" alt="Madrassa Logo">
+                </div>
+            </header>
 
-        <div class="nav-container" style="position: relative; z-index: 100;">
-            <nav class="floating-nav" id="mainNav" style="display: flex; justify-content: center; align-items: center; gap: 15px;">
-                <a href="index.html" target="_blank" class="nav-link" data-en="Live Site" data-ur="لائیو سائٹ">Live Site</a>
-                <button class="lang-toggle-btn" id="lang-switch">URDU</button>
-                <button id="btn-logout" class="nav-link nav-accent" style="border: none; cursor: pointer; padding: 10px 20px;" data-en="Logout" data-ur="لاگ اآئوٹ">Logout</button>
-            </nav>
+            <div class="nav-container" style="position: relative; z-index: 100;">
+                <nav class="floating-nav" id="mainNav" style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+                    <a href="index.html" target="_blank" class="nav-link" data-en="Live Site" data-ur="لائیو سائٹ">Live Site</a>
+                    <button class="lang-toggle-btn" id="lang-switch">URDU</button>
+                    <button id="btn-logout" class="nav-link nav-accent" style="border: none; cursor: pointer; padding: 10px 20px;" data-en="Logout" data-ur="لاگ اآئوٹ">Logout</button>
+                </nav>
+            </div>
         </div>
 
         <!-- Navigation Tabs -->
