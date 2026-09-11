@@ -7184,6 +7184,27 @@ body > .mobile-logo-container { display: none !important; }
     }
 }
 </style>
+<script>
+
+        // --- DYNAMIC SETTINGS LOGIC ---
+        function applyDynamicSettings() {
+            const settingsStr = localStorage.getItem('site_settings');
+            if(settingsStr) {
+                const s = JSON.parse(settingsStr);
+                
+                // Use TreeWalker to find and replace the default phone number in all text nodes safely
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                let node;
+                while(node = walker.nextNode()) {
+                    if(node.nodeValue.includes('+92 300 1234567')) {
+                        node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+                    }
+                }
+            }
+        }
+        applyDynamicSettings();
+
+</script>
 </body>
 
 

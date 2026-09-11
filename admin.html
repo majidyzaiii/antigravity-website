@@ -5074,7 +5074,12 @@ div:has(> .strengths-wrapper),
                                 <option value="Events">Events</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="form-label" data-en="Upload Image (Optional)" data-ur="????? ????? ???? (???????)">Upload Image (Optional)</label>
+                            <input type="file" id="upd-image" accept="image/*" class="form-input" style="padding: 9px;">
+                        </div>
                     </div>
+
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;" class="admin-grid">
                         <!-- English Side -->
@@ -5402,6 +5407,8 @@ div:has(> .strengths-wrapper),
         }
 
         document.getElementById('btn-publish').addEventListener('click', () => {
+            const fileInput = document.getElementById('upd-image');
+            
             const upd = {
                 id: Date.now(),
                 date: document.getElementById('upd-date').value,
@@ -5409,7 +5416,8 @@ div:has(> .strengths-wrapper),
                 title_en: document.getElementById('upd-title-en').value,
                 desc_en: document.getElementById('upd-desc-en').value,
                 title_ur: document.getElementById('upd-title-ur').value,
-                desc_ur: document.getElementById('upd-desc-ur').value
+                desc_ur: document.getElementById('upd-desc-ur').value,
+                image: null
             };
             
             if(!upd.title_en || !upd.title_ur) {
@@ -5417,18 +5425,32 @@ div:has(> .strengths-wrapper),
                 return;
             }
             
-            const updates = getUpdates();
-            updates.unshift(upd); // Add to top
-            localStorage.setItem('site_updates', JSON.stringify(updates));
+            const finalizePublish = () => {
+                const updates = getUpdates();
+                updates.unshift(upd); // Add to top
+                localStorage.setItem('site_updates', JSON.stringify(updates));
+                
+                // Clear form
+                document.getElementById('upd-title-en').value = '';
+                document.getElementById('upd-desc-en').value = '';
+                document.getElementById('upd-title-ur').value = '';
+                document.getElementById('upd-desc-ur').value = '';
+                document.getElementById('upd-image').value = '';
+                
+                renderUpdatesTable();
+                alert("Update Published Successfully!");
+            };
             
-            // Clear form
-            document.getElementById('upd-title-en').value = '';
-            document.getElementById('upd-desc-en').value = '';
-            document.getElementById('upd-title-ur').value = '';
-            document.getElementById('upd-desc-ur').value = '';
-            
-            renderUpdatesTable();
-            alert("Update Published Successfully!");
+            if(fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    upd.image = e.target.result;
+                    finalizePublish();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                finalizePublish();
+            }
         });
 
         window.deleteUpdate = function(id) {
