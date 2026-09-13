@@ -6022,12 +6022,22 @@ div:has(> .strengths-wrapper),
             });
         }
 
+        
         function saveAllTeachers() {
-            syncTeachersFromDOM();
-            localStorage.setItem('site_teachers', JSON.stringify(siteTeachers));
-            window.dispatchEvent(new Event('storage'));
-            alert("All teachers saved successfully! Changes will appear on the live site.");
+            try {
+                syncTeachersFromDOM();
+                localStorage.setItem('site_teachers', JSON.stringify(siteTeachers));
+                window.dispatchEvent(new Event('storage'));
+                alert("All teachers saved successfully! Changes will appear on the live site.");
+            } catch (e) {
+                if (e.name === 'QuotaExceededError' || e.message.includes('quota')) {
+                    alert("ERROR: The images you uploaded are too large! Browser storage has a 5MB limit. Please compress the images or use smaller ones before saving.");
+                } else {
+                    alert("ERROR saving teachers: " + e.message);
+                }
+            }
         }
+
 
         // --- 1. AUTHENTICATION LOGIC ---
         const loginView = document.getElementById('login-view');
