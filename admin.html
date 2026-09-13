@@ -5618,12 +5618,12 @@ div:has(> .strengths-wrapper),
     <style>
         
         .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255,255,255,0.4);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(180deg, #f0f7f2 0%, #dae6de 100%) !important;
+            border-radius: 28px !important;
+            padding: 35px 40px !important;
+            margin-bottom: 30px !important;
+            border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+            box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
         }
         .form-label {
             display: block;
@@ -5634,21 +5634,26 @@ div:has(> .strengths-wrapper),
         }
         .form-input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px 20px;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            border-radius: 50px;
             font-size: 15px;
-            color: #334155;
-            background: #ffffff;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            font-family: inherit;
+            transition: all 0.3s;
             box-sizing: border-box;
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+        }
+        textarea.form-input {
+            border-radius: 20px;
+            padding: 15px 20px;
         }
         .form-input:focus {
             outline: none;
-            border-color: var(--header-bg);
+            border-color: #025F55;
             box-shadow: 0 0 0 3px rgba(2, 95, 85, 0.1);
         }
+        
         .admin-tab {
 
             padding: 10px 20px;
