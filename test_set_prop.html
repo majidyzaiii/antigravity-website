@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="test">TEST</div>
+    <script>
+        const el = document.getElementById('test');
+        try {
+            el.style.setProperty('animation', 'none', 'important');
+            el.innerHTML = "WORKED";
+        } catch(e) {
+            el.innerHTML = "ERROR: " + e.message;
+        }
+    </script>
+</body>
+</html>
