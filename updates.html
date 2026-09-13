@@ -8803,6 +8803,19 @@ body > .mobile-logo-container { display: none !important; }
 <script>
 
         // --- DYNAMIC SETTINGS LOGIC ---
+        
+        window.addEventListener('storage', (e) => {
+            if(e.key === 'site_updates') {
+                if (typeof renderUpdatesForLang === 'function') {
+                    renderUpdatesForLang(document.documentElement.lang);
+                }
+                if (typeof renderDetail === 'function' && new URLSearchParams(window.location.search).has('id')) {
+                    // It's a detail page, we should ideally re-render, but a reload is safer if ID might have changed/deleted
+                    window.location.reload();
+                }
+            }
+        });
+
         function applyDynamicSettings() {
             const settingsStr = localStorage.getItem('site_settings');
             if(settingsStr) {
