@@ -5377,6 +5377,7 @@ div:has(> .strengths-wrapper),
                 <button class="admin-tab active" data-target="panel-updates" data-en="Updates & Notices" data-ur="اپ ڈیٹس">Updates & Notices</button>
                 <button class="admin-tab" data-target="panel-admissions" data-en="Admissions" data-ur="داخلے">Admissions</button>
                 <button class="admin-tab" data-target="panel-donations" data-en="Donations" data-ur="عطیات">Donations</button>
+                                <button class="admin-tab" data-target="panel-teachers" data-en="Teachers" data-ur="اساتذہ">Teachers</button>
                 <button class="admin-tab" data-target="panel-settings" data-en="Settings" data-ur="سیٹنگز">Settings</button>
             </div>
         </div>
@@ -5879,6 +5880,7 @@ div:has(> .strengths-wrapper),
                 loginView.style.display = 'none';
                 dashView.style.display = 'block';
                 loadCardsIntoForms();
+            loadTeachersAdmin();
                 renderAdmissionsTable();
                 renderDonationsTable();
             } else {
