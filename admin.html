@@ -5903,65 +5903,78 @@ div:has(> .strengths-wrapper),
             { id: 7, name_en: 'Qari Asim Rasheed', name_ur: 'قاری عاصم رشید', role_en: 'Hifz Department', role_ur: 'شعبہ حفظ', image: '' }
         ];
 
+        
         let siteTeachers = [];
 
         function loadTeachersAdmin() {
-            const stored = localStorage.getItem('site_teachers');
-            if (stored) {
-                siteTeachers = JSON.parse(stored);
-            } else {
+            try {
+                const stored = localStorage.getItem('site_teachers');
+                if (stored && stored !== 'undefined' && stored !== 'null') {
+                    siteTeachers = JSON.parse(stored);
+                    if(!Array.isArray(siteTeachers)) siteTeachers = [];
+                } else {
+                    siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                }
+            } catch(e) {
+                console.error('Error loading teachers:', e);
                 siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
             }
             renderTeachersAdmin();
         }
 
         function renderTeachersAdmin() {
-            const container = document.getElementById('teachers-admin-container');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            siteTeachers.forEach((teacher, index) => {
-                const card = document.createElement('div');
-                card.className = 'content-card';
-                card.style.marginBottom = '25px';
+            try {
+                const container = document.getElementById('teachers-admin-container');
+                if (!container) return;
                 
-                card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3 style="margin: 0; color: #025F55;">Teacher ${index + 1}</h3>
-                        <button type="button" onclick="deleteTeacher(${index})" style="background: #fecaca; color: #b91c1c; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">Delete</button>
-                    </div>
+                container.innerHTML = '';
+                siteTeachers.forEach((teacher, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'content-card';
+                    card.style.marginBottom = '25px';
                     
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px;">
-                        <div>
-                            <label class="form-label">Upload Image (Square recommended)</label>
-                            <input type="file" accept="image/*" class="form-input" style="padding: 9px;" onchange="handleTeacherImage(this, ${index})">
-                            ${teacher.image ? `<img src="${teacher.image}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-top: 10px; border: 2px solid #025F55;">` : `<div style="width: 80px; height: 80px; border-radius: 50%; background: #e2e8f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.8rem;">No Image</div>`}
-                        </div>
-                    </div>
-                    
-                    <div class="translation-grid">
-                        <!-- English -->
-                        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
-                            <label class="form-label">Name (English)</label>
-                            <input type="text" id="teacher-name-en-${index}" class="form-input" value="${teacher.name_en}" placeholder="e.g. Qari Muhammad Ahmad">
-                            
-                            <label class="form-label">Role (English)</label>
-                            <input type="text" id="teacher-role-en-${index}" class="form-input" value="${teacher.role_en}" placeholder="e.g. Head of Hifz-ul-Quran">
+                    card.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0; color: #025F55;">Teacher ${index + 1}</h3>
+                            <button type="button" onclick="deleteTeacher(${index})" style="background: #fecaca; color: #b91c1c; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">Delete</button>
                         </div>
                         
-                        <!-- Urdu -->
-                        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
-                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">نام</label>
-                            <input type="text" id="teacher-name-ur-${index}" class="form-input" value="${teacher.name_ur}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="نام درج کریں...">
-                            
-                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">عہدہ</label>
-                            <input type="text" id="teacher-role-ur-${index}" class="form-input" value="${teacher.role_ur}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="عہدہ درج کریں...">
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px;">
+                            <div>
+                                <label class="form-label">Upload Image (Square recommended)</label>
+                                <input type="file" accept="image/*" class="form-input" style="padding: 9px;" onchange="handleTeacherImage(this, ${index})">
+                                ${teacher.image ? `<img src="${teacher.image}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-top: 10px; border: 2px solid #025F55;">` : `<div style="width: 80px; height: 80px; border-radius: 50%; background: #e2e8f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.8rem;">No Image</div>`}
+                            </div>
                         </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+                        
+                        <div class="translation-grid">
+                            <!-- English -->
+                            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                                <label class="form-label">Name (English)</label>
+                                <input type="text" id="teacher-name-en-${index}" class="form-input" value="${teacher.name_en || ''}" placeholder="e.g. Qari Muhammad Ahmad">
+                                
+                                <label class="form-label">Role (English)</label>
+                                <input type="text" id="teacher-role-en-${index}" class="form-input" value="${teacher.role_en || ''}" placeholder="e.g. Head of Hifz-ul-Quran">
+                            </div>
+                            
+                            <!-- Urdu -->
+                            <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                                <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">نام</label>
+                                <input type="text" id="teacher-name-ur-${index}" class="form-input" value="${teacher.name_ur || ''}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="نام درج کریں...">
+                                
+                                <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">عہدہ</label>
+                                <input type="text" id="teacher-role-ur-${index}" class="form-input" value="${teacher.role_ur || ''}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="عہدہ درج کریں...">
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch(e) {
+                console.error("Error rendering teachers:", e);
+                alert("Error rendering teachers. Please refresh the page.");
+            }
         }
+
 
         function handleTeacherImage(input, index) {
             syncTeachersFromDOM(); // Save DOM state before re-rendering!

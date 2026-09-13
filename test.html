@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="container"></div>
+    <button onclick="addNew()">Add</button>
+    <script>
+        let arr = [];
+        function sync() {
+            arr.forEach((t, i) => {
+                const el = document.getElementById('name-' + i);
+                if (el) t.name = el.value;
+            });
+        }
+        function addNew() {
+            sync();
+            arr.push({ name: '' });
+            render();
+        }
+        function render() {
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+            arr.forEach((t, i) => {
+                container.innerHTML += `<input id="name-${i}" value="${t.name}">`;
+            });
+        }
+    </script>
+</body>
+</html>

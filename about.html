@@ -8901,8 +8901,12 @@ body > .mobile-logo-container { display: none !important; }
         
         // The marquee requires the list to be duplicated for seamless infinite scroll
         // However, if there are very few teachers, we might need to duplicate it more times to fill the screen
-        const timesToDuplicate = Math.max(2, Math.ceil(15 / teachers.length));
-        track.innerHTML = htmlString.repeat(timesToDuplicate);
+        if(teachers.length > 0) {
+            const timesToDuplicate = Math.max(2, Math.ceil(15 / teachers.length));
+            track.innerHTML = htmlString.repeat(timesToDuplicate);
+        } else {
+            track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif;">No teachers added yet.</p>';
+        }
     }
 
     // Wrap the existing applyTranslations or hook into it
