@@ -9200,10 +9200,10 @@ body > .mobile-logo-container { display: none !important; }
         { id: 7, name_en: 'Qari Asim Rasheed', name_ur: 'قاری عاصم رشید', role_en: 'Hifz Department', role_ur: 'شعبہ حفظ', image: '' }
     ];
 
+    
     function renderTeachersForLang(lang) {
         const track = document.getElementById('dynamic-teachers-track');
         if (!track) return;
-        
         
         let teachers = [];
         try {
@@ -9215,81 +9215,51 @@ body > .mobile-logo-container { display: none !important; }
             }
         } catch(e) {
             console.error("localStorage access blocked or failed:", e);
-            teachers = defaultTeachers; // Fallback so it doesn't crash
+            teachers = defaultTeachers;
         }
 
-
+        let htmlString = '';
         
-          let htmlString = '';
-          
-          
-          // Generate the HTML for the teachers
-          alert("Hello! This is a test message. I found " + teachers.length + " teachers saved. If you see this, you are on the newest code!");
-
-          try {
-              teachers.forEach((t, index) => {
-                  try {
-                      const posClass = (index % 2 === 0) ? 'card-pos-1' : 'card-pos-2';
-                      
-                      const name = lang === 'ur' ? (t.name_ur || '') : (t.name_en || '');
-                      const role = lang === 'ur' ? (t.role_ur || '') : (t.role_en || '');
-                      const nameParts = name.split(' ');
-                      const firstName = nameParts.length > 0 ? nameParts[0] : '';
-                      const image = t.image || `https://placehold.co/180x180/e6f4ea/006754?text=${encodeURIComponent(firstName)}`;
-                      
-                      htmlString += `
-                          <div class="teacher-card ${posClass}">
-                              <div class="avatar-ring">
-                                  <img src="${image}" alt="Teacher" class="teacher-img">
-                              </div>
-                              <h3 class="teacher-name">${name}</h3>
-                              <p class="teacher-role">${role}</p>
-                          </div>
-                      `;
-                  } catch(innerErr) {
-                      htmlString += `<div style="color:red; padding:10px;">Error on card ${index}: ${innerErr.message}</div>`;
-                  }
-              });
-          } catch(e) {
-              htmlString = `<div style="color:red; padding:20px; width:100%; text-align:center;">CRITICAL JS ERROR: ${e.message}</div>`;
-          }
-
-        
-        // The marquee requires the list to be duplicated for seamless infinite scroll
-        // However, if there are very few teachers, we might need to duplicate it more times to fill the screen
-        
-        
-        
-        if(teachers.length > 0) {
-            if (teachers.length < 5) {
-                // Add a specific class to disable marquee for few teachers
-                track.classList.add('no-marquee');
-                track.innerHTML = htmlString;
-            } else {
-                // Remove class to enable marquee
-                track.classList.remove('no-marquee');
-                const timesToDuplicate = Math.max(2, Math.ceil(15 / teachers.length));
-                track.innerHTML = htmlString.repeat(timesToDuplicate);
-            }
-        } else {
+        if (teachers.length === 0) {
             track.classList.add('no-marquee');
-            track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif; width: 100%;">No teachers added yet.</p>';
+            track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif; width: 100%; color: #006754; font-size: 1.2rem;">No teachers added yet.</p>';
+            return;
         }
 
+        try {
+            teachers.forEach((t, index) => {
+                const posClass = (index % 2 === 0) ? 'card-pos-1' : 'card-pos-2';
+                const name = lang === 'ur' ? (t.name_ur || '') : (t.name_en || '');
+                const role = lang === 'ur' ? (t.role_ur || '') : (t.role_en || '');
+                const nameParts = name.split(' ');
+                const firstName = nameParts.length > 0 ? nameParts[0] : '';
+                const image = t.image || `https://placehold.co/180x180/e6f4ea/006754?text=${encodeURIComponent(firstName)}`;
+                
+                htmlString += `
+                    <div class="teacher-card ${posClass}">
+                        <div class="avatar-ring">
+                            <img src="${image}" alt="Teacher" class="teacher-img">
+                        </div>
+                        <h3 class="teacher-name">${name}</h3>
+                        <p class="teacher-role">${role}</p>
+                    </div>
+                `;
+            });
+        } catch (e) {
+            htmlString = `<div style="color:red; padding:20px; width:100%; text-align:center;">Error generating cards: ${e.message}</div>`;
+        }
+        
+        if (teachers.length < 5) {
+            track.classList.add('no-marquee');
+            track.innerHTML = htmlString;
         } else {
-            track.style.setProperty('animation', 'none', 'important');
-            track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif; width: 100%;">No teachers added yet.</p>';
+            track.classList.remove('no-marquee');
+            const timesToDuplicate = Math.max(2, Math.ceil(15 / teachers.length));
+            track.innerHTML = htmlString.repeat(timesToDuplicate);
         }
-
-        } else {
-            track.style.animation = 'none';
-            track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif; width: 100%;">No teachers added yet.</p>';
-        }
-
     }
 
-    // Wrap the existing applyTranslations or hook into it
-    const originalApplyTranslations = window.applyTranslations;
+      const originalApplyTranslations = window.applyTranslations;
     window.applyTranslations = function(lang) {
         if(originalApplyTranslations) originalApplyTranslations(lang);
         renderTeachersForLang(lang);
