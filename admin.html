@@ -5450,7 +5450,7 @@ div:has(> .strengths-wrapper),
         // Initialize default empty cards if not present
         function getUpdates() {
             let u = JSON.parse(localStorage.getItem('site_updates') || '[]');
-            while(u.length < 3) {
+            while(u.length < 6) {
                 u.push({ id: Date.now() + u.length, date: new Date().toISOString().split('T')[0], cat: 'General', author: 'Admin', title_en: '', desc_en: '', title_ur: '', desc_ur: '', image: null });
             }
             return u;

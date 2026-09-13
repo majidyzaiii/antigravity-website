@@ -3350,6 +3350,8 @@
 
         /* Heading & Excerpt */
         .news-heading {
+          word-break: break-word;
+          overflow-wrap: break-word;
           font-size: 1.15rem;
           font-weight: 700;
           color: #1A1A1A;
@@ -3358,6 +3360,8 @@
         }
 
         .news-excerpt {
+          word-break: break-word;
+          overflow-wrap: break-word;
           font-size: 0.88rem;
           color: #666666;
           line-height: 1.5;
@@ -5105,8 +5109,8 @@ div:has(> .strengths-wrapper),
               <span class="news-date-badge">${formattedDate}</span>
               <span class="news-author">${finalAuthor}</span>
             </div>
-            <h3 class="news-heading" style="font-family: ${titleFont};">${title}</h3>
-            <p class="news-excerpt" style="font-family: ${descFont}; font-size: ${descSize};">${desc}</p>
+            <h3 class="news-heading" style="word-break: break-word; overflow-wrap: break-word; font-family: ${titleFont};">${title}</h3>
+            <p class="news-excerpt" style="word-break: break-word; overflow-wrap: break-word; font-family: ${descFont}; font-size: ${descSize};">${desc}</p>
             <a href="${hrefUrl}" class="news-read-link">${readMore}</a>
           </div>
         </article>`;
@@ -7705,6 +7709,8 @@ body > .mobile-logo-container { display: none !important; }
 <style>
 /* Keep the excerpt uniform on the home page with an ellipsis */
 .news-excerpt {
+          word-break: break-word;
+          overflow-wrap: break-word;
     display: -webkit-box !important;
     -webkit-line-clamp: 3 !important; /* Limit to 3 lines */
     -webkit-box-orient: vertical !important;
