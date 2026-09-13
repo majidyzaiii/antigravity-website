@@ -5071,12 +5071,16 @@ div:has(> .strengths-wrapper),
             
             const updates = JSON.parse(updatesStr).slice(0, 6);
             
-            if(updates.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">No updates available.</p>';
+            const validUpdates = updates.filter(u => u.title_en && u.title_en.trim() !== "");
+            if(validUpdates.length === 0) {
+                const emptyText = lang === 'ur' ? '?? ????? ???? ??? ????? ????? ???? ???' : 'Currently, there are no new updates or announcements to display.';
+                const emptyFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                const emptySize = lang === 'ur' ? "1.5rem" : "1.1rem";
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: rgba(255,255,255,0.4); border-radius: 20px; border: 2px dashed #e2e8f0; margin-top: 10px;"><p style="color: #64748b; font-size: ${emptySize}; font-family: ${emptyFont}; font-weight: 500; margin: 0;">${emptyText}</p></div>`;
                 return;
             }
             
-            grid.innerHTML = updates.filter(u => u.title_en && u.title_en.trim() !== "").map((u, i) => {
+            grid.innerHTML = validUpdates.map((u, i) => {
                 const title = lang === 'ur' ? u.title_ur : u.title_en;
                 const desc = lang === 'ur' ? u.desc_ur : u.desc_en;
                 
