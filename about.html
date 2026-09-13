@@ -9212,28 +9212,38 @@ body > .mobile-logo-container { display: none !important; }
             teachers = defaultTeachers;
         }
 
-        let htmlString = '';
         
-        // Generate the HTML for the teachers
-        teachers.forEach((t, index) => {
-            // Replicate zigzag logic: 1, 2, 3, 4, 1, 2...
-            // Or simpler, just odd/even stagger: card-pos-1 vs card-pos-2
-            const posClass = (index % 2 === 0) ? 'card-pos-1' : 'card-pos-2';
-            
-            const name = lang === 'ur' ? t.name_ur : t.name_en;
-            const role = lang === 'ur' ? t.role_ur : t.role_en;
-            const image = t.image || `https://placehold.co/180x180/e6f4ea/006754?text=${encodeURIComponent(name.split(' ')[0])}`;
-            
-            htmlString += `
-                <div class="teacher-card ${posClass}">
-                    <div class="avatar-ring">
-                        <img src="${image}" alt="Teacher" class="teacher-img">
-                    </div>
-                    <h3 class="teacher-name">${name}</h3>
-                    <p class="teacher-role">${role}</p>
-                </div>
-            `;
-        });
+          let htmlString = '';
+          
+          // Generate the HTML for the teachers
+          try {
+              teachers.forEach((t, index) => {
+                  try {
+                      const posClass = (index % 2 === 0) ? 'card-pos-1' : 'card-pos-2';
+                      
+                      const name = lang === 'ur' ? (t.name_ur || '') : (t.name_en || '');
+                      const role = lang === 'ur' ? (t.role_ur || '') : (t.role_en || '');
+                      const nameParts = name.split(' ');
+                      const firstName = nameParts.length > 0 ? nameParts[0] : '';
+                      const image = t.image || `https://placehold.co/180x180/e6f4ea/006754?text=${encodeURIComponent(firstName)}`;
+                      
+                      htmlString += `
+                          <div class="teacher-card ${posClass}">
+                              <div class="avatar-ring">
+                                  <img src="${image}" alt="Teacher" class="teacher-img">
+                              </div>
+                              <h3 class="teacher-name">${name}</h3>
+                              <p class="teacher-role">${role}</p>
+                          </div>
+                      `;
+                  } catch(innerErr) {
+                      htmlString += `<div style="color:red; padding:10px;">Error on card ${index}: ${innerErr.message}</div>`;
+                  }
+              });
+          } catch(e) {
+              htmlString = `<div style="color:red; padding:20px; width:100%; text-align:center;">CRITICAL JS ERROR: ${e.message}</div>`;
+          }
+
         
         // The marquee requires the list to be duplicated for seamless infinite scroll
         // However, if there are very few teachers, we might need to duplicate it more times to fill the screen
@@ -9417,6 +9427,8 @@ body > .mobile-logo-container { display: none !important; }
 }
 
 .marquee-track {
+  min-height: 50px;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -9441,6 +9453,8 @@ body > .mobile-logo-container { display: none !important; }
 
 /* Hover pause rule isn't needed on PC anymore, but keeping it doesn't hurt */
 .marquee-wrapper:hover .marquee-track {
+  min-height: 50px;
+
   animation-play-state: paused;
 }
 
@@ -9514,7 +9528,9 @@ body > .mobile-logo-container { display: none !important; }
 /* Mobile Adjustments (Fits 4 on Mobile) */
 @media (max-width: 768px) {
   .teachers-header .main-heading { font-size: 1.7rem; }
-  .marquee-track { 
+  .marquee-track {
+  min-height: 50px;
+ 
     gap: 8px; 
     width: max-content !important;
     flex-wrap: nowrap !important;
