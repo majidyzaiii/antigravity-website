@@ -5376,41 +5376,295 @@ div:has(> .strengths-wrapper),
                 <p style="color: #64748b; margin-bottom: 20px;">Manage the 3 News/Updates cards displayed on the website homepage. Fill out the English details and click publish to automatically translate and update the site.</p>
                 
                 <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
-                    <!-- CARD 1 -->
-                    <div class="content-card" id="editor-card-0">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 1 (Left Slot)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c0-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c0-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c0-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c0-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c5-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c5-desc" class="form-input" rows="3" style="margin-bottom: 25px;" placeholder="Enter details here..."></textarea>
-                        
-                        <label class="form-label" style="text-align: right;" dir="rtl">Title (Urdu) - ?????</label>
-                        <input type="text" id="c5-title-ur" class="form-input" dir="rtl" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
-                        <label class="form-label" style="text-align: right;" dir="rtl">Description (Urdu) - ?????</label>
-                        <textarea id="c5-desc-ur" class="form-input" rows="3" dir="rtl" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
-                        
-                        <div style="margin-top: 25px; display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap;">
-                            <button class="btn" onclick="deleteCard(5)" style="color: #dc3545; border: 1.5px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete Card
-                            </button>
-                            
-                            <button class="btn" id="btn-trans-5" onclick="autoTranslate(5)" style="background-color: #f1f5f9; color: #025F55; border: 1.5px solid #025F55; padding: 12px 25px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate English to Urdu
-                            </button>
-                        
-                            <button class="btn" id="btn-pub-5" onclick="publishCard(5)" style="background-color: #025F55; color: #fff; padding: 12px 25px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: 0 4px 15px rgba(2, 95, 85, 0.2);">
-                                Publish Updates <span style="font-size: 1.2rem; margin-left: 6px; transform: rotate(45deg); display: inline-block;">&rarr;</span>
-                            </button>
-                        </div>
-                    </div>
+
+<!-- CARD 1 -->
+<div class="content-card" id="editor-card-0">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 1 (Left Slot)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c0-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c0-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c0-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c0-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c0-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c0-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c0-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c0-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(0)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-0" onclick="autoTranslate(0)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-0" onclick="publishCard(0)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-0">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="content-card" id="editor-card-1">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 2 (Middle Slot)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c1-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c1-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c1-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c1-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c1-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c1-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c1-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c1-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(1)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-1" onclick="autoTranslate(1)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-1" onclick="publishCard(1)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-1">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="content-card" id="editor-card-2">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 3 (Right Slot)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c2-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c2-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c2-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c2-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c2-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c2-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c2-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c2-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(2)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-2" onclick="autoTranslate(2)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-2" onclick="publishCard(2)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-2">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CARD 4 -->
+<div class="content-card" id="editor-card-3">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 4 (Row 2)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c3-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c3-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c3-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c3-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c3-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c3-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c3-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c3-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(3)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-3" onclick="autoTranslate(3)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-3" onclick="publishCard(3)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-3">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CARD 5 -->
+<div class="content-card" id="editor-card-4">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 5 (Row 2)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c4-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c4-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c4-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c4-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c4-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c4-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c4-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c4-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(4)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-4" onclick="autoTranslate(4)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-4" onclick="publishCard(4)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-4">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CARD 6 -->
+<div class="content-card" id="editor-card-5">
+    <h3 style="margin-top:0; color: var(--header-bg);">Card 6 (Row 2)</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
+        <div><label class="form-label">Date</label><input type="date" id="c5-date" class="form-input"></div>
+        <div><label class="form-label">Author Name</label><input type="text" id="c5-author" class="form-input" value="Admin"></div>
+        <div><label class="form-label">Category</label>
+            <select id="c5-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
+        </div>
+        <div><label class="form-label">Upload Image</label><input type="file" id="c5-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- English Side -->
+        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+            <label class="form-label">Title (English)</label>
+            <input type="text" id="c5-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+            <label class="form-label">Description (English)</label>
+            <textarea id="c5-desc" class="form-input" rows="4" placeholder="Enter details here..."></textarea>
+        </div>
+        
+        <!-- Urdu Side -->
+        <div style="background: rgba(2, 95, 85, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(2, 95, 85, 0.1);" dir="rtl">
+            <label class="form-label" style="text-align: right;">Title (Urdu) - ?????</label>
+            <input type="text" id="c5-title-ur" class="form-input" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+            <label class="form-label" style="text-align: right;">Description (Urdu) - ?????</label>
+            <textarea id="c5-desc-ur" class="form-input" rows="4" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <button class="btn" onclick="deleteCard(5)" style="color: #ef4444; border: 1.5px solid #fca5a5; padding: 10px 20px; border-radius: 50px; background: #fee2e2; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Delete
+        </button>
+        
+        <button class="btn" id="btn-trans-5" onclick="autoTranslate(5)" style="background-color: #ffffff; color: #025F55; border: 1.5px solid #025F55; padding: 10px 20px; display: inline-flex; align-items: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate to Urdu
+        </button>
+    
+        <button class="btn" id="btn-pub-5" onclick="publishCard(5)" style="background-color: #025F55; color: #ffffff; padding: 6px 6px 6px 20px; display: inline-flex; align-items: center; justify-content: space-between; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;">
+            <span style="margin-right: 15px;" id="pub-text-5">Publish Updates</span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #ffffff; color: #025F55; border-radius: 50%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
                 </div>
             </div>
 
