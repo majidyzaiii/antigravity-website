@@ -9204,18 +9204,28 @@ body > .mobile-logo-container { display: none !important; }
         const track = document.getElementById('dynamic-teachers-track');
         if (!track) return;
         
+        
         let teachers = [];
-        const stored = localStorage.getItem('site_teachers');
-        if (stored) {
-            teachers = JSON.parse(stored);
-        } else {
-            teachers = defaultTeachers;
+        try {
+            const stored = localStorage.getItem('site_teachers');
+            if (stored) {
+                teachers = JSON.parse(stored);
+            } else {
+                teachers = defaultTeachers;
+            }
+        } catch(e) {
+            console.error("localStorage access blocked or failed:", e);
+            teachers = defaultTeachers; // Fallback so it doesn't crash
         }
+
 
         
           let htmlString = '';
           
+          
           // Generate the HTML for the teachers
+          alert("Hello! This is a test message. I found " + teachers.length + " teachers saved. If you see this, you are on the newest code!");
+
           try {
               teachers.forEach((t, index) => {
                   try {
