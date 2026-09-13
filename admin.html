@@ -4247,7 +4247,19 @@ html[dir="rtl"] .mobile-menu-header {
             background: #fee2e2 !important;
             color: #ef4444 !important;
             border-color: #fca5a5 !important;
-        }</style>
+        }
+        .translation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .translation-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+</style>
 
 
   <!-- SECTION CARD CONTAINER STYLES -->
@@ -5390,7 +5402,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c0-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
@@ -5438,7 +5450,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c1-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
@@ -5486,7 +5498,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c2-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
@@ -5534,7 +5546,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c3-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
@@ -5582,7 +5594,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c4-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
@@ -5630,7 +5642,7 @@ div:has(> .strengths-wrapper),
         <div><label class="form-label">Upload Image</label><input type="file" id="c5-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
     </div>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="translation-grid">
         <!-- English Side -->
         <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
             <label class="form-label">Title (English)</label>
