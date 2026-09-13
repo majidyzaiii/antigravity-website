@@ -5388,149 +5388,26 @@ div:has(> .strengths-wrapper),
                             <div><label class="form-label">Upload Image</label><input type="file" id="c0-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
                         </div>
                         <label class="form-label">Title (English)</label>
-                        <input type="text" id="c0-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
+                        <input type="text" id="c5-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Annual Prize Distribution">
                         <label class="form-label">Description (English)</label>
-                        <textarea id="c0-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(0)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
+                        <textarea id="c5-desc" class="form-input" rows="3" style="margin-bottom: 25px;" placeholder="Enter details here..."></textarea>
+                        
+                        <label class="form-label" style="text-align: right;" dir="rtl">Title (Urdu) - ?????</label>
+                        <input type="text" id="c5-title-ur" class="form-input" dir="rtl" style="margin-bottom: 15px; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????...">
+                        <label class="form-label" style="text-align: right;" dir="rtl">Description (Urdu) - ?????</label>
+                        <textarea id="c5-desc-ur" class="form-input" rows="3" dir="rtl" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="????? ??? ????..."></textarea>
+                        
+                        <div style="margin-top: 25px; display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap;">
+                            <button class="btn" onclick="deleteCard(5)" style="color: #dc3545; border: 1.5px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete Card
                             </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(0)" id="btn-pub-0">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
+                            
+                            <button class="btn" id="btn-trans-5" onclick="autoTranslate(5)" style="background-color: #f1f5f9; color: #025F55; border: 1.5px solid #025F55; padding: 12px 25px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg> Auto-Translate English to Urdu
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- CARD 2 -->
-                    <div class="content-card" id="editor-card-1">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 2 (Middle Slot)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c1-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c1-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c1-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c1-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c1-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Admissions Open">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c1-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(1)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
-                            </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(1)" id="btn-pub-1">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- CARD 3 -->
-                    <div class="content-card" id="editor-card-2">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 3 (Right Slot)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c2-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c2-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c2-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c2-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c2-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Teacher Workshop">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c2-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(2)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
-                            </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(2)" id="btn-pub-2">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
-                            </button>
-                        </div>
-                    </div>
-<!-- CARD 4 -->
-                    <div class="content-card" id="editor-card-3">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 4 (Row 2)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c3-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c3-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c3-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c3-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c3-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Teacher Workshop">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c3-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(3)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
-                            </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(3)" id="btn-pub-3">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
-                            </button>
-                        </div>
-                    </div>
-<!-- CARD 5 -->
-                    <div class="content-card" id="editor-card-4">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 5 (Row 2)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c4-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c4-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c4-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c4-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c4-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Teacher Workshop">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c4-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(4)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
-                            </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(4)" id="btn-pub-4">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
-                            </button>
-                        </div>
-                    </div>
-<!-- CARD 6 -->
-                    <div class="content-card" id="editor-card-5">
-                        <h3 style="margin-top:0; color: var(--header-bg);">Card 6 (Row 2)</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;" class="admin-grid">
-                            <div><label class="form-label">Date</label><input type="date" id="c5-date" class="form-input"></div>
-                            <div><label class="form-label">Author Name</label><input type="text" id="c5-author" class="form-input" value="Admin"></div>
-                            <div><label class="form-label">Category</label>
-                                <select id="c5-cat" class="form-input"><option value="General">General</option><option value="Admissions">Admissions</option><option value="Events">Events</option></select>
-                            </div>
-                            <div><label class="form-label">Upload Image</label><input type="file" id="c5-image" accept="image/*" class="form-input" style="padding: 9px;"></div>
-                        </div>
-                        <label class="form-label">Title (English)</label>
-                        <input type="text" id="c5-title" class="form-input" style="margin-bottom: 15px;" placeholder="e.g. Teacher Workshop">
-                        <label class="form-label">Description (English)</label>
-                        <textarea id="c5-desc" class="form-input" rows="3" placeholder="Enter details here..."></textarea>
-                        <div style="margin-top: 15px; display: flex; justify-content: flex-end; gap: 15px;">
-                            <button class="btn" onclick="deleteCard(5)" style="color: #dc3545; border: 1px solid #dc3545; padding: 12px 25px; border-radius: 50px; background: transparent; cursor: pointer; display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px; position:relative; top:-1px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                Delete Card
-                            </button>
-                            <button class="btn btn-primary-pill" onclick="publishCard(5)" id="btn-pub-5">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
-                                Auto-Translate to Urdu & Publish
+                        
+                            <button class="btn" id="btn-pub-5" onclick="publishCard(5)" style="background-color: #025F55; color: #fff; padding: 12px 25px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: 0 4px 15px rgba(2, 95, 85, 0.2);">
+                                Publish Updates <span style="font-size: 1.2rem; margin-left: 6px; transform: rotate(45deg); display: inline-block;">&rarr;</span>
                             </button>
                         </div>
                     </div>
@@ -5806,6 +5683,8 @@ div:has(> .strengths-wrapper),
                     document.getElementById(`c${i}-cat`).value = updates[i].cat || 'General';
                     document.getElementById(`c${i}-title`).value = updates[i].title_en || '';
                     document.getElementById(`c${i}-desc`).value = updates[i].desc_en || '';
+                    document.getElementById(`c${i}-title-ur`).value = updates[i].title_ur || '';
+                    document.getElementById(`c${i}-desc-ur`).value = updates[i].desc_ur || '';
                 } else {
                     document.getElementById(`c${i}-date`).valueAsDate = new Date();
                 }
@@ -5819,6 +5698,8 @@ div:has(> .strengths-wrapper),
             // Empty the form fields
             document.getElementById(`c${index}-title`).value = '';
             document.getElementById(`c${index}-desc`).value = '';
+            document.getElementById(`c${index}-title-ur`).value = '';
+            document.getElementById(`c${index}-desc-ur`).value = '';
             document.getElementById(`c${index}-author`).value = 'Admin';
             document.getElementById(`c${index}-cat`).value = 'General';
             document.getElementById(`c${index}-image`).value = '';
