@@ -5608,7 +5608,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function applyTranslations(lang) {
             document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
-            if(langSwitchBtn) langSwitchBtn.textContent = lang === 'ur' ? 'انگلش' : 'URDU';
+            document.querySelectorAll('#langSwitch, .lang-toggle-btn').forEach(btn => btn.textContent = lang === 'ur' ? 'انگریزی' : 'URDU');
             
             navLinks.forEach(item => {
                 if(item.hasAttribute(`data-${lang}`)) {
@@ -6292,7 +6292,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <li><a href="updates.html" class="m-link" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
       <li><a href="donation.html" class="m-link" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
       <li><a href="contact.html" class="m-link" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
-      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="ENGLISH">URDU</button></li>
+      <li><button class="mobile-lang-btn" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="انگریزی">URDU</button></li>
     </ul>
   </div>
 </div>

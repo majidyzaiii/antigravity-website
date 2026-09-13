@@ -5139,7 +5139,7 @@ div:has(> .strengths-wrapper),
             applyDynamicSettings();
             document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
-            if(langSwitchBtn) langSwitchBtn.textContent = lang === 'ur' ? 'انگلش' : 'URDU';
+            document.querySelectorAll('#langSwitch, .lang-toggle-btn').forEach(btn => btn.textContent = lang === 'ur' ? 'انگریزی' : 'URDU');
             
             navLinks.forEach(item => {
                 if(item.hasAttribute(`data-${lang}`)) {
