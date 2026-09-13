@@ -6727,7 +6727,7 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                 const imgHtml = u.image ? `<img src="${u.image}" style="width:100%; max-height:400px; object-fit:cover; border-radius:15px; margin: 20px 0; display:block; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">` : '';
                 
                 const authorName = u.author ? u.author : 'Admin';
-                const finalAuthor = lang === 'ur' ? `?? ${authorName} ?? ??? ??` : `?? by ${authorName}`;
+                const finalAuthor = lang === 'ur' ? `\u2022 \u0627\u0632 \u0637\u0631\u0641 ${authorName}` : `\u2022 by ${authorName}`;
                 
                 const titleFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
                 const descFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
