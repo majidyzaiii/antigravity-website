@@ -6218,6 +6218,118 @@ div:has(> .strengths-wrapper),
             alert(`Card ${index + 1} has been deleted.`);
         }
         
+        window.autoTranslate = async function(index) {
+            const btn = document.getElementById(`btn-trans-${index}`);
+            const titleEn = document.getElementById(`c${index}-title`).value;
+            const descEn = document.getElementById(`c${index}-desc`).value;
+            
+            if(!titleEn && !descEn) {
+                alert("Please enter English text first.");
+                return;
+            }
+            
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Translating...';
+            try {
+                if(titleEn) {
+                    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(titleEn)}`);
+                    const data = await res.json();
+                    document.getElementById(`c${index}-title-ur`).value = data[0].map(x => x[0]).join('');
+                }
+                if(descEn) {
+                    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ur&dt=t&q=${encodeURIComponent(descEn)}`);
+                    const data = await res.json();
+                    document.getElementById(`c${index}-desc-ur`).value = data[0].map(x => x[0]).join('');
+                }
+            } catch(e) {
+                alert("Translation failed. You can type manually.");
+            }
+            btn.innerHTML = originalText;
+        }
+
+        window.publishCard = async function(index) {
+            const pubTextSpan = document.getElementById(`pub-text-${index}`);
+            if(pubTextSpan) pubTextSpan.innerText = 'Saving...';
+            
+            const titleEn = document.getElementById(`c${index}-title`).value;
+            const descEn = document.getElementById(`c${index}-desc`).value;
+            const titleUr = document.getElementById(`c${index}-title-ur`).value;
+            const descUr = document.getElementById(`c${index}-desc-ur`).value;
+            const fileInput = document.getElementById(`c${index}-image`);
+            
+            if(!titleEn && !titleUr) {
+                alert("Please enter a title.");
+                if(pubTextSpan) pubTextSpan.innerText = 'Publish Updates';
+                return;
+            }
+            
+            const updates = getUpdates();
+            const finalizePublish = (imgData) => {
+                updates[index] = {
+                    id: updates[index].id || Date.now(),
+                    date: document.getElementById(`c${index}-date`).value,
+                    author: document.getElementById(`c${index}-author`).value,
+                    cat: document.getElementById(`c${index}-cat`).value,
+                    title_en: titleEn,
+                    desc_en: descEn,
+                    title_ur: titleUr,
+                    desc_ur: descUr,
+                    image: imgData || updates[index].image
+                };
+                
+                localStorage.setItem('site_updates', JSON.stringify(updates));
+                sessionStorage.setItem('site_updates', JSON.stringify(updates));
+                
+                // Also trigger storage event for other tabs
+                window.dispatchEvent(new Event('storage'));
+                
+                if(pubTextSpan) pubTextSpan.innerText = 'Publish Updates';
+                alert(`Card ${index + 1} published successfully!`);
+            };
+
+            if (fileInput && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    finalizePublish(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                finalizePublish(null);
+            }
+        }
+        
+        window.deleteCard = function(index) {
+            if(!confirm(`Are you sure you want to delete Card ${index + 1}? It will be removed from the website.`)) return;
+            
+            // Empty the form fields
+            document.getElementById(`c${index}-title`).value = '';
+            document.getElementById(`c${index}-desc`).value = '';
+            document.getElementById(`c${index}-title-ur`).value = '';
+            document.getElementById(`c${index}-desc-ur`).value = '';
+            document.getElementById(`c${index}-author`).value = 'Admin';
+            document.getElementById(`c${index}-cat`).value = 'General';
+            document.getElementById(`c${index}-image`).value = '';
+            
+            // Empty the data in localStorage
+            let updatesStr = localStorage.getItem('site_updates') || '[]';
+            let updates = JSON.parse(updatesStr);
+            if(updates.length < 6) {
+                while(updates.length < 6) updates.push({ id: Date.now() + updates.length, date: new Date().toISOString().split('T')[0], cat: 'General', author: 'Admin', title_en: '', desc_en: '', title_ur: '', desc_ur: '', image: null });
+            }
+            updates[index].title_en = '';
+            updates[index].desc_en = '';
+            updates[index].title_ur = '';
+            updates[index].desc_ur = '';
+            updates[index].image = null;
+            updates[index].author = 'Admin';
+            updates[index].date = new Date().toISOString().split('T')[0];
+            
+            localStorage.setItem('site_updates', JSON.stringify(updates));
+            sessionStorage.setItem('site_updates', JSON.stringify(updates));
+            
+            alert(`Card ${index + 1} has been deleted.`);
+        }
+        
         window.publishCard = async function(index) {
 
             const btn = document.getElementById(`btn-pub-${index}`);
