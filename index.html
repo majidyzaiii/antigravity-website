@@ -4225,6 +4225,19 @@ body.ur .mobile-menu-card {
 html[dir="rtl"] .mobile-menu-header {
   flex-direction: row-reverse !important;
 }
+/* Sticky Footer Fix */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1 0 auto;
+}
+.site-footer {
+    flex-shrink: 0;
+    width: 100%;
+}
 </style>
 
 
