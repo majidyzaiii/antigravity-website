@@ -5891,6 +5891,131 @@ div:has(> .strengths-wrapper),
 
     <!-- ADMIN LOGIC SCRIPT -->
     <script>
+        
+        // --- TEACHERS DYNAMIC LOGIC ---
+        const defaultTeachers = [
+            { id: 1, name_en: 'Qari Muhammad Ahmad', name_ur: 'قاری محمد احمد', role_en: 'Head of Hifz-ul-Quran', role_ur: 'صدر شعبہ حفظ القرآن', image: '' },
+            { id: 2, name_en: 'Mufti Abdul Rahman', name_ur: 'مفتی عبدالرحمان', role_en: 'Senior Lecturer (Hadith)', role_ur: 'سینئر استاذ (حدیث)', image: '' },
+            { id: 3, name_en: 'Qari Bilal Usmani', name_ur: 'قاری بلال عثمانی', role_en: "Tajweed & Qira'at Specialist", role_ur: 'ماہر تجوید و قراءت', image: '' },
+            { id: 4, name_en: 'Maulana Tariq Mahmood', name_ur: 'مولانا طارق محمود', role_en: 'Dars-e-Nizami Faculty', role_ur: 'استاذ درس نظامی', image: '' },
+            { id: 5, name_en: 'Qari Zubair Farooq', name_ur: 'قاری زبیر فاروق', role_en: 'Nazra-e-Quran Instructor', role_ur: 'استاذ ناظرہ قرآن', image: '' },
+            { id: 6, name_en: 'Maulana Salman Khan', name_ur: 'مولانا سلمان خان', role_en: 'Islamic Jurisprudence', role_ur: 'فقہ اسلامی', image: '' },
+            { id: 7, name_en: 'Qari Asim Rasheed', name_ur: 'قاری عاصم رشید', role_en: 'Hifz Department', role_ur: 'شعبہ حفظ', image: '' }
+        ];
+
+        let siteTeachers = [];
+
+        function loadTeachersAdmin() {
+            const stored = localStorage.getItem('site_teachers');
+            if (stored) {
+                siteTeachers = JSON.parse(stored);
+            } else {
+                siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+            }
+            renderTeachersAdmin();
+        }
+
+        function renderTeachersAdmin() {
+            const container = document.getElementById('teachers-admin-container');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            siteTeachers.forEach((teacher, index) => {
+                const card = document.createElement('div');
+                card.className = 'content-card';
+                card.style.marginBottom = '25px';
+                
+                card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 style="margin: 0; color: #025F55;">Teacher ${index + 1}</h3>
+                        <button type="button" onclick="deleteTeacher(${index})" style="background: #fecaca; color: #b91c1c; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">Delete</button>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label class="form-label">Upload Image (Square recommended)</label>
+                            <input type="file" accept="image/*" class="form-input" style="padding: 9px;" onchange="handleTeacherImage(this, ${index})">
+                            ${teacher.image ? `<img src="${teacher.image}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-top: 10px; border: 2px solid #025F55;">` : `<div style="width: 80px; height: 80px; border-radius: 50%; background: #e2e8f0; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.8rem;">No Image</div>`}
+                        </div>
+                    </div>
+                    
+                    <div class="translation-grid">
+                        <!-- English -->
+                        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                            <label class="form-label">Name (English)</label>
+                            <input type="text" id="teacher-name-en-${index}" class="form-input" value="${teacher.name_en}" placeholder="e.g. Qari Muhammad Ahmad">
+                            
+                            <label class="form-label">Role (English)</label>
+                            <input type="text" id="teacher-role-en-${index}" class="form-input" value="${teacher.role_en}" placeholder="e.g. Head of Hifz-ul-Quran">
+                        </div>
+                        
+                        <!-- Urdu -->
+                        <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">نام</label>
+                            <input type="text" id="teacher-name-ur-${index}" class="form-input" value="${teacher.name_ur}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="نام درج کریں...">
+                            
+                            <label class="form-label" style="text-align: right; font-family: 'Jameel Noori Nastaleeq', serif; font-size: 22px;">عہدہ</label>
+                            <input type="text" id="teacher-role-ur-${index}" class="form-input" value="${teacher.role_ur}" style="font-family: 'Jameel Noori Nastaleeq', serif; font-size: 20px;" placeholder="عہدہ درج کریں...">
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleTeacherImage(input, index) {
+            syncTeachersFromDOM(); // Save DOM state before re-rendering!
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    siteTeachers[index].image = e.target.result;
+                    renderTeachersAdmin();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function addNewTeacher() {
+            syncTeachersFromDOM();
+            
+            siteTeachers.push({
+                id: Date.now(),
+                name_en: '',
+                name_ur: '',
+                role_en: '',
+                role_ur: '',
+                image: ''
+            });
+            renderTeachersAdmin();
+        }
+        
+        function deleteTeacher(index) {
+            if(confirm("Are you sure you want to delete this teacher?")) {
+                syncTeachersFromDOM();
+                siteTeachers.splice(index, 1);
+                renderTeachersAdmin();
+            }
+        }
+        
+        function syncTeachersFromDOM() {
+            siteTeachers.forEach((t, i) => {
+                const nameEn = document.getElementById(`teacher-name-en-${i}`);
+                if (nameEn) {
+                    t.name_en = nameEn.value;
+                    t.name_ur = document.getElementById(`teacher-name-ur-${i}`).value;
+                    t.role_en = document.getElementById(`teacher-role-en-${i}`).value;
+                    t.role_ur = document.getElementById(`teacher-role-ur-${i}`).value;
+                }
+            });
+        }
+
+        function saveAllTeachers() {
+            syncTeachersFromDOM();
+            localStorage.setItem('site_teachers', JSON.stringify(siteTeachers));
+            window.dispatchEvent(new Event('storage'));
+            alert("All teachers saved successfully! Changes will appear on the live site.");
+        }
+
         // --- 1. AUTHENTICATION LOGIC ---
         const loginView = document.getElementById('login-view');
         const dashView = document.getElementById('dashboard-view');
