@@ -6712,19 +6712,34 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
             
             const updatesStr = localStorage.getItem('site_updates');
             if(!updatesStr) {
-                container.innerHTML = '<p style="text-align: center; color: #64748b;">No updates available.</p>';
+                
+                  const emptyText = lang === 'ur' ? 'فی الحال کوئی نئی اپڈیٹ موجود نہیں ہے۔' : 'No updates have been published yet.';
+                  const emptyFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                  const emptySize = lang === 'ur' ? "1.5rem" : "1.2rem";
+                  container.innerHTML = `<div class="content-card" style="grid-column: 1 / -1; text-align: center; padding: 100px 20px; margin-bottom: 50px;"><p style="color: #64748b; font-size: ${emptySize}; font-family: ${emptyFont};">${emptyText}</p></div>`;
+
                 return;
             }
             
             const updates = JSON.parse(updatesStr);
             if(updates.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #64748b;">No updates available.</p>';
+                
+                  const emptyText = lang === 'ur' ? 'فی الحال کوئی نئی اپڈیٹ موجود نہیں ہے۔' : 'No updates have been published yet.';
+                  const emptyFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                  const emptySize = lang === 'ur' ? "1.5rem" : "1.2rem";
+                  container.innerHTML = `<div class="content-card" style="grid-column: 1 / -1; text-align: center; padding: 100px 20px; margin-bottom: 50px;"><p style="color: #64748b; font-size: ${emptySize}; font-family: ${emptyFont};">${emptyText}</p></div>`;
+
                 return;
             }
             
             const validUpdates = updates.filter(u => u.title_en && u.title_en.trim() !== "");
             if(validUpdates.length === 0) {
-                container.innerHTML = '<div class="content-card" style="text-align: center; padding: 100px 20px; margin-bottom: 50px;"><p style="color: #64748b; font-size: 1.2rem;">No updates have been published yet.</p></div>';
+                
+                  const emptyText2 = lang === 'ur' ? 'فی الحال کوئی نئی اپڈیٹ موجود نہیں ہے۔' : 'No updates have been published yet.';
+                  const emptyFont2 = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
+                  const emptySize2 = lang === 'ur' ? "1.5rem" : "1.2rem";
+                  container.innerHTML = `<div class="content-card" style="grid-column: 1 / -1; text-align: center; padding: 100px 20px; margin-bottom: 50px;"><p style="color: #64748b; font-size: ${emptySize2}; font-family: ${emptyFont2};">${emptyText2}</p></div>`;
+
                 return;
             }
             
