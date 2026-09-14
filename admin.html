@@ -5715,8 +5715,20 @@ div:has(> .strengths-wrapper),
             <div id="panel-admissions" class="admin-panel" style="display: none;">
                 <div class="content-card">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3 style="margin:0; color: var(--header-bg);" data-en="Admission Applications" data-ur="داخلہ فارمز">Admission Applications</h3>
-                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="ڈاؤنلوڈ">Export CSV</button>
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <h3 style="margin:0; color: var(--header-bg);" data-en="Admission Applications" data-ur="????? ????">Admission Applications</h3>
+                            
+                            <div style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.05); padding: 5px 15px; border-radius: 50px;">
+                                <span style="font-size: 14px; font-weight: 600; color: #334155;">Status:</span>
+                                <label class="switch" style="position: relative; display: inline-block; width: 44px; height: 24px;">
+                                    <input type="checkbox" id="adm-status-toggle" style="opacity: 0; width: 0; height: 0;">
+                                    <span class="slider round" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px;"></span>
+                                </label>
+                                <span id="adm-status-text" style="font-size: 14px; font-weight: 700; color: #dc2626;">CLOSED</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="???????">Export CSV</button>
                     </div>
                     <div style="overflow-x: auto;">
                         <table class="admin-table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
@@ -5741,8 +5753,20 @@ div:has(> .strengths-wrapper),
             <div id="panel-donations" class="admin-panel" style="display: none;">
                 <div class="content-card">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3 style="margin:0; color: var(--header-bg);" data-en="Donation Intimations" data-ur="عطیات">Donation Intimations</h3>
-                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="ڈاؤنلوڈ">Export CSV</button>
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <h3 style="margin:0; color: var(--header-bg);" data-en="Admission Applications" data-ur="????? ????">Admission Applications</h3>
+                            
+                            <div style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.05); padding: 5px 15px; border-radius: 50px;">
+                                <span style="font-size: 14px; font-weight: 600; color: #334155;">Status:</span>
+                                <label class="switch" style="position: relative; display: inline-block; width: 44px; height: 24px;">
+                                    <input type="checkbox" id="adm-status-toggle" style="opacity: 0; width: 0; height: 0;">
+                                    <span class="slider round" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px;"></span>
+                                </label>
+                                <span id="adm-status-text" style="font-size: 14px; font-weight: 700; color: #dc2626;">CLOSED</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 14px;" data-en="Export CSV" data-ur="???????">Export CSV</button>
                     </div>
                     <div style="overflow-x: auto;">
                         <table class="admin-table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
@@ -5820,6 +5844,13 @@ div:has(> .strengths-wrapper),
     <!-- Additional Custom CSS for Admin -->
     <style>
         
+        
+        /* Toggle Switch CSS */
+        .switch input:checked + .slider { background-color: #006754; }
+        .switch input:focus + .slider { box-shadow: 0 0 1px #006754; }
+        .switch input:checked + .slider:before { transform: translateX(20px); }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+
         .content-card {
             background: linear-gradient(180deg, #f0f7f2 0%, #dae6de 100%) !important;
             border-radius: 28px !important;
@@ -6457,6 +6488,28 @@ function saveAllTeachers() {
             }
         };
 
+        
+            if (document.getElementById('adm-status-toggle')) {
+                const admToggle = document.getElementById('adm-status-toggle');
+                const admText = document.getElementById('adm-status-text');
+                admToggle.addEventListener('change', (e) => {
+                    const isOpen = e.target.checked;
+                    admText.innerText = 'Saving...';
+                    
+                    db.ref('site_settings').update({ admissions_open: isOpen })
+                      .then(() => {
+                          admText.innerText = isOpen ? 'OPEN' : 'CLOSED';
+                          admText.style.color = isOpen ? '#006754' : '#dc2626';
+                      })
+                      .catch((err) => {
+                          alert('Error updating status: ' + err.message);
+                          e.target.checked = !isOpen; // revert
+                          admText.innerText = !isOpen ? 'OPEN' : 'CLOSED';
+                          admText.style.color = !isOpen ? '#006754' : '#dc2626';
+                      });
+                });
+            }
+
         // Initialize Auth State on load
         checkAuth();
 
@@ -6498,7 +6551,20 @@ function saveAllTeachers() {
                 if(document.getElementById('set-phone')) document.getElementById('set-phone').value = data.phone || '';
                 if(document.getElementById('set-whatsapp')) document.getElementById('set-whatsapp').value = data.whatsapp || '';
                 if(document.getElementById('set-time-morning')) document.getElementById('set-time-morning').value = data.time_morning || '08:00 AM - 01:00 PM';
+                
                 if(document.getElementById('set-time-evening')) document.getElementById('set-time-evening').value = data.time_evening || 'Asr to Maghrib';
+                
+                // Admissions Status
+                const admToggle = document.getElementById('adm-status-toggle');
+                const admText = document.getElementById('adm-status-text');
+                if (admToggle && admText) {
+                    // Default is OPEN if undefined
+                    const isOpen = data.admissions_open !== false; 
+                    admToggle.checked = isOpen;
+                    admText.innerText = isOpen ? 'OPEN' : 'CLOSED';
+                    admText.style.color = isOpen ? '#006754' : '#dc2626';
+                }
+
             }
         });
 
