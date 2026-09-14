@@ -6580,7 +6580,7 @@ function saveAllTeachers() {
                 time_evening: document.getElementById('set-time-evening').value
             };
             
-            db.ref('site_settings').set(settings)
+            db.ref('site_settings').update(settings)
               .then(() => {
                   btn.innerHTML = 'Saved Successfully!';
                   setTimeout(() => btn.innerHTML = originalText, 2000);
