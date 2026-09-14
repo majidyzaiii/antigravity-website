@@ -421,11 +421,40 @@ function saveAllTeachers() {
             };
 
             if (fileInput && fileInput.files[0]) {
+                const file = fileInput.files[0];
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    finalizePublish(e.target.result);
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 800; // Larger for updates
+                        const MAX_HEIGHT = 800;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Compress to JPEG 70% quality
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        finalizePublish(compressedDataUrl);
+                    };
+                    img.src = e.target.result;
                 };
-                reader.readAsDataURL(fileInput.files[0]);
+                reader.readAsDataURL(file);
             } else {
                 finalizePublish(null);
             }
@@ -475,6 +504,16 @@ function saveAllTeachers() {
         }
 });
 
+        
+        function renderAdmissionsTable() {
+            const tbody = document.getElementById('admissions-table-body');
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No new applications</td></tr>`;
+        }
+        function renderDonationsTable() {
+            const tbody = document.getElementById('donations-table-body');
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No new donations</td></tr>`;
+        }
+
         window.toggleStatus = function(el) {
             if(el.classList.contains('status-pending')) {
                 el.className = 'status-badge status-approved';
@@ -487,6 +526,28 @@ function saveAllTeachers() {
                 el.innerText = 'Pending';
             }
         };
+
+        
+            if (document.getElementById('adm-status-toggle')) {
+                const admToggle = document.getElementById('adm-status-toggle');
+                const admText = document.getElementById('adm-status-text');
+                admToggle.addEventListener('change', (e) => {
+                    const isOpen = e.target.checked;
+                    admText.innerText = 'Saving...';
+                    
+                    db.ref('site_settings').update({ admissions_open: isOpen })
+                      .then(() => {
+                          admText.innerText = isOpen ? 'OPEN' : 'CLOSED';
+                          admText.style.color = isOpen ? '#006754' : '#dc2626';
+                      })
+                      .catch((err) => {
+                          alert('Error updating status: ' + err.message);
+                          e.target.checked = !isOpen; // revert
+                          admText.innerText = !isOpen ? 'OPEN' : 'CLOSED';
+                          admText.style.color = !isOpen ? '#006754' : '#dc2626';
+                      });
+                });
+            }
 
         // Initialize Auth State on load
         checkAuth();
@@ -529,7 +590,20 @@ function saveAllTeachers() {
                 if(document.getElementById('set-phone')) document.getElementById('set-phone').value = data.phone || '';
                 if(document.getElementById('set-whatsapp')) document.getElementById('set-whatsapp').value = data.whatsapp || '';
                 if(document.getElementById('set-time-morning')) document.getElementById('set-time-morning').value = data.time_morning || '08:00 AM - 01:00 PM';
+                
                 if(document.getElementById('set-time-evening')) document.getElementById('set-time-evening').value = data.time_evening || 'Asr to Maghrib';
+                
+                // Admissions Status
+                const admToggle = document.getElementById('adm-status-toggle');
+                const admText = document.getElementById('adm-status-text');
+                if (admToggle && admText) {
+                    // Default is OPEN if undefined
+                    const isOpen = data.admissions_open !== false; 
+                    admToggle.checked = isOpen;
+                    admText.innerText = isOpen ? 'OPEN' : 'CLOSED';
+                    admText.style.color = isOpen ? '#006754' : '#dc2626';
+                }
+
             }
         });
 
@@ -545,7 +619,7 @@ function saveAllTeachers() {
                 time_evening: document.getElementById('set-time-evening').value
             };
             
-            db.ref('site_settings').set(settings)
+            db.ref('site_settings').update(settings)
               .then(() => {
                   btn.innerHTML = 'Saved Successfully!';
                   setTimeout(() => btn.innerHTML = originalText, 2000);
