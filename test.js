@@ -1,103 +1,40 @@
 
-  // Bulletproof Swipe to Submit Logic (Pointer Events)
-  (function initSwipeBtn() {
-    const container = document.getElementById('swipeContainer');
-    const btn = document.getElementById('swipeBtn');
-    const text = document.getElementById('swipeText');
-    const form = document.getElementById('madrasaAdmissionForm');
-    const arrow = document.getElementById('swipeArrow');
-    const check = document.getElementById('swipeCheck');
-    
-    if(!container || !btn) return;
+function handleFormSubmission(e) {
+  e.preventDefault();
+  alert("آپ کی درخواست کامیابی سے موصول ہو گئی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔\nApplication submitted successfully. We will contact you soon!");
+  document.getElementById('madrasaAdmissionForm').reset();
+    // Reset Swipe Button
+    setTimeout(() => {
+      const container = document.getElementById('swipeContainer');
+      const btn = document.getElementById('swipeBtn');
+      const text = document.getElementById('swipeText');
+      const arrow = document.getElementById('swipeArrow');
+      const check = document.getElementById('swipeCheck');
+      if (container) {
+        container.classList.remove('success');
+        btn.style.transform = 'translateX(0px)';
+        arrow.style.display = 'block';
+        check.style.display = 'none';
 
-    let isDragging = false;
-    let startX = 0;
-    let currentX = 0;
-    let maxDrag = 0;
-
-    const onPointerDown = (e) => {
-      if (container.classList.contains('success')) return;
-      isDragging = true;
-      startX = e.clientX;
-      maxDrag = container.offsetWidth - btn.offsetWidth - 8;
-      btn.style.transition = 'none';
-      text.style.transition = 'none';
-      container.setPointerCapture(e.pointerId);
-    };
-
-    const onPointerMove = (e) => {
-      if (!isDragging) return;
-      
-      let dx = e.clientX - startX;
-      let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
-      
-      if (isRtl) {
-          currentX = Math.max(-maxDrag, Math.min(0, dx));
-      } else {
-          currentX = Math.max(0, Math.min(maxDrag, dx));
-      }
-      
-      btn.style.transform = `translateX(${currentX}px)`;
-      text.style.opacity = 1 - (Math.abs(currentX) / maxDrag);
-    };
-
-    const onPointerUp = (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      container.releasePointerCapture(e.pointerId);
-      
-      btn.style.transition = 'transform 0.3s ease, background-color 0.4s ease';
-      text.style.transition = 'opacity 0.3s ease, color 0.4s ease';
-      
-      let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
-      if (Math.abs(currentX) >= maxDrag * 0.85) {
-        if (form && typeof form.checkValidity === 'function' && form.checkValidity()) {
-          // Success
-          btn.style.transform = `translateX(${isRtl ? -maxDrag : maxDrag}px)`;
-          container.classList.add('success');
-          arrow.style.display = 'none';
-          check.style.display = 'block';
-          text.style.opacity = 1;
           
-          let isUrdu = document.documentElement.lang === 'ur';
-          text.innerText = isUrdu ? "کامیابی سے جمع ہو گیا" : "Submitted Successfully";
-          
-          // Submit the form manually
-          setTimeout(() => {
-              if (typeof handleFormSubmission === 'function') {
-                  handleFormSubmission({ preventDefault: () => {}
-            });
-            setTimeout(() => applyDynamicSettings(), 50);
-        }
-}, 400); 
-        } else {
-          // Invalid form
-          snapBack();
-          if (form.reportValidity) {
-              form.reportValidity(); // Show tooltips
-          }
-        }
-      } else {
-        snapBack();
+          document.getElementById('photoUploadBox').style.backgroundImage = 'none';
+          let urduUploadText = document.documentElement.lang === 'ur' ? "تصویر اپلوڈ کریں" : "Upload Photo";
+          document.getElementById('photoUploadBox').innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span class="upload-text" data-en="Upload Photo" data-ur="تصویر اپلوڈ کریں"></span><span style="font-size: 0.65rem; color: #94a3b8; margin-top: 2px; text-align: center; padding: 0 5px;" data-en="(Passport Size 35x45mm)<br>Max 2MB" data-ur="(پاسپورٹ سائز 35x45mm)<br>زیادہ سے زیادہ 2MB"></span>`;
+
+          // update translation manually if needed, but the span has data-ur so global lang toggle will handle it if toggled again.
+
+        let isUrdu = document.documentElement.lang === 'ur';
+        text.innerText = isUrdu ? "سوائپ کریں" : "Swipe to Submit";
       }
-    };
+    }, 2500);
 
-    const snapBack = () => {
-      currentX = 0;
-      btn.style.transform = 'translateX(0px)';
-      text.style.opacity = 1;
-    };
+}
 
-    // Use Pointer Events for unified mouse/touch handling
-    container.addEventListener('pointerdown', onPointerDown);
-    container.addEventListener('pointermove', onPointerMove);
-    container.addEventListener('pointerup', onPointerUp);
-    container.addEventListener('pointercancel', onPointerUp);
-    
-    // Prevent default touch behaviors like scrolling on the button
-    container.addEventListener('touchstart', (e) => { e.preventDefault(); }, {passive: false});
-  })();
-  
 // Photo preview function
 function previewPhoto(event) {
     const file = event.target.files[0];
