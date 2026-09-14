@@ -7118,12 +7118,18 @@ body > .mobile-logo-container { display: none !important; }
             fetch('https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com/site_settings.json')
                 .then(r => r.json())
                 .then(s => {
-                    if (s && s.phone) {
+                    if (s) {
                         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
                         let node;
                         while(node = walker.nextNode()) {
-                            if(node.nodeValue.includes('+92 300 1234567')) {
+                            if(s.phone && node.nodeValue.includes('+92 300 1234567')) {
                                 node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+                            }
+                            if(s.time_morning && node.nodeValue.includes('08:00 AM - 01:00 PM')) {
+                                node.nodeValue = node.nodeValue.replace('08:00 AM - 01:00 PM', s.time_morning);
+                            }
+                            if(s.time_evening && node.nodeValue.includes('Asr to Maghrib')) {
+                                node.nodeValue = node.nodeValue.replace('Asr to Maghrib', s.time_evening);
                             }
                         }
                         // Save to localStorage as a cache for next page load speed
@@ -7135,12 +7141,18 @@ body > .mobile-logo-container { display: none !important; }
                     const settingsStr = localStorage.getItem('site_settings');
                     if(settingsStr) {
                         const s = JSON.parse(settingsStr);
-                        if (s && s.phone) {
+                        if (s) {
                             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
                             let node;
                             while(node = walker.nextNode()) {
-                                if(node.nodeValue.includes('+92 300 1234567')) {
+                                if(s.phone && node.nodeValue.includes('+92 300 1234567')) {
                                     node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+                                }
+                                if(s.time_morning && node.nodeValue.includes('08:00 AM - 01:00 PM')) {
+                                    node.nodeValue = node.nodeValue.replace('08:00 AM - 01:00 PM', s.time_morning);
+                                }
+                                if(s.time_evening && node.nodeValue.includes('Asr to Maghrib')) {
+                                    node.nodeValue = node.nodeValue.replace('Asr to Maghrib', s.time_evening);
                                 }
                             }
                         }

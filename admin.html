@@ -5791,13 +5791,22 @@ div:has(> .strengths-wrapper),
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px;">
                         <div>
-                            <label class="form-label" data-en="Primary Phone" data-ur="فون نمبر">Primary Phone</label>
+                            <label class="form-label" data-en="Primary Phone" data-ur="??? ????">Primary Phone</label>
                             <input type="text" id="set-phone" class="form-input" value="+92 300 1234567">
                         </div>
                         <div>
-                            <label class="form-label" data-en="WhatsApp Helpline" data-ur="واٹس ایپ">WhatsApp Helpline</label>
+                            <label class="form-label" data-en="WhatsApp Helpline" data-ur="???? ???">WhatsApp Helpline</label>
                             <input type="text" id="set-whatsapp" class="form-input" value="+92 300 1234567">
                         </div>
+                        <div>
+                            <label class="form-label" data-en="Morning Timing" data-ur="??? ?? ???">Morning Timing</label>
+                            <input type="text" id="set-time-morning" class="form-input" value="08:00 AM - 01:00 PM">
+                        </div>
+                        <div>
+                            <label class="form-label" data-en="Evening Timing" data-ur="??? ?? ???">Evening Timing</label>
+                            <input type="text" id="set-time-evening" class="form-input" value="Asr to Maghrib">
+                        </div>
+                    </div>
                     </div>
                     <div style="margin-top: 20px;">
                         <button id="btn-save-settings" class="btn btn-primary" data-en="Save Settings" data-ur="محفوظ کریں">Save Settings</button>
@@ -6448,8 +6457,10 @@ div:has(> .strengths-wrapper),
         db.ref('site_settings').on('value', (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                document.getElementById('setting-phone').value = data.phone || '';
-                document.getElementById('setting-whatsapp').value = data.whatsapp || '';
+                if(document.getElementById('set-phone')) document.getElementById('set-phone').value = data.phone || '';
+                if(document.getElementById('set-whatsapp')) document.getElementById('set-whatsapp').value = data.whatsapp || '';
+                if(document.getElementById('set-time-morning')) document.getElementById('set-time-morning').value = data.time_morning || '08:00 AM - 01:00 PM';
+                if(document.getElementById('set-time-evening')) document.getElementById('set-time-evening').value = data.time_evening || 'Asr to Maghrib';
             }
         });
 
@@ -6459,8 +6470,10 @@ div:has(> .strengths-wrapper),
             btn.innerHTML = 'Saving...';
             
             const settings = {
-                phone: document.getElementById('setting-phone').value,
-                whatsapp: document.getElementById('setting-whatsapp').value
+                phone: document.getElementById('set-phone').value,
+                whatsapp: document.getElementById('set-whatsapp').value,
+                time_morning: document.getElementById('set-time-morning').value,
+                time_evening: document.getElementById('set-time-evening').value
             };
             
             db.ref('site_settings').set(settings)
