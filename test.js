@@ -114,15 +114,15 @@ function previewPhoto(event) {
 
 
 
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  var phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
         window.intlTelInput(input, {
       initialCountry: pk,
       countrySearch: true,
       nationalMode: false,
       autoInsertDialCode: true,
-      preferredCountries: [pk, sa, ae, gb, us],
-      utilsScript: https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js,
+      preferredCountries: ["pk", "sa", "ae", "gb", "us"],
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
       dropdownContainer: document.body
     });
   });
@@ -163,7 +163,7 @@ function previewPhoto(event) {
 
 
 
-  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  var phoneInputs = document.querySelectorAll('input[type="tel"]');
   phoneInputs.forEach(input => {
     window.intlTelInput(input, {
       initialCountry: "pk",
@@ -318,25 +318,7 @@ if (langSwitchBtn) {
                 .then(r => r.json())
                 .then(s => {
                     if (s) {
-                        const form = document.getElementById('madrasaAdmissionForm');
-                        const ribbon = document.getElementById('admissions-closed-ribbon');
-                        if (form && ribbon) {
-                            if (s.admissions_open === false) {
-                                ribbon.style.display = 'block';
-                                form.style.opacity = '0.5';
-                                form.style.pointerEvents = 'none';
-                                form.style.userSelect = 'none';
-                                const inputs = form.querySelectorAll('input, select, textarea, button');
-                                inputs.forEach(el => el.disabled = true);
-                            } else {
-                                ribbon.style.display = 'none';
-                                form.style.opacity = '1';
-                                form.style.pointerEvents = 'auto';
-                                form.style.userSelect = 'auto';
-                                const inputs = form.querySelectorAll('input, select, textarea, button');
-                                inputs.forEach(el => el.disabled = false);
-                            }
-                        }
+
                         const form = document.getElementById('madrasaAdmissionForm');
                         const ribbon = document.getElementById('admissions-closed-ribbon');
                         if (form && ribbon) {
