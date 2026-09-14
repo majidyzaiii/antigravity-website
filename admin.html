@@ -6443,6 +6443,37 @@ div:has(> .strengths-wrapper),
             applyTranslations(currentLang);
         });
         
-    </script>
+    
+        // --- SITE SETTINGS LOGIC ---
+        db.ref('site_settings').on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                document.getElementById('setting-phone').value = data.phone || '';
+                document.getElementById('setting-whatsapp').value = data.whatsapp || '';
+            }
+        });
+
+        document.getElementById('btn-save-settings').addEventListener('click', () => {
+            const btn = document.getElementById('btn-save-settings');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Saving...';
+            
+            const settings = {
+                phone: document.getElementById('setting-phone').value,
+                whatsapp: document.getElementById('setting-whatsapp').value
+            };
+            
+            db.ref('site_settings').set(settings)
+              .then(() => {
+                  btn.innerHTML = 'Saved Successfully!';
+                  setTimeout(() => btn.innerHTML = originalText, 2000);
+              })
+              .catch((e) => {
+                  btn.innerHTML = originalText;
+                  alert("Error saving settings: " + e.message);
+              });
+        });
+
+</script>
 </body>
 </html>

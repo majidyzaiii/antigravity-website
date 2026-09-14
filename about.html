@@ -9948,19 +9948,37 @@ body > .mobile-logo-container { display: none !important; }
 
         // --- DYNAMIC SETTINGS LOGIC ---
         function applyDynamicSettings() {
-            const settingsStr = localStorage.getItem('site_settings');
-            if(settingsStr) {
-                const s = JSON.parse(settingsStr);
-                
-                // Use TreeWalker to find and replace the default phone number in all text nodes safely
-                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-                let node;
-                while(node = walker.nextNode()) {
-                    if(node.nodeValue.includes('+92 300 1234567')) {
-                        node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+            fetch('https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com/site_settings.json')
+                .then(r => r.json())
+                .then(s => {
+                    if (s && s.phone) {
+                        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                        let node;
+                        while(node = walker.nextNode()) {
+                            if(node.nodeValue.includes('+92 300 1234567')) {
+                                node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+                            }
+                        }
+                        // Save to localStorage as a cache for next page load speed
+                        localStorage.setItem('site_settings', JSON.stringify(s));
                     }
-                }
-            }
+                })
+                .catch(e => {
+                    // Fallback to localStorage if offline
+                    const settingsStr = localStorage.getItem('site_settings');
+                    if(settingsStr) {
+                        const s = JSON.parse(settingsStr);
+                        if (s && s.phone) {
+                            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                            let node;
+                            while(node = walker.nextNode()) {
+                                if(node.nodeValue.includes('+92 300 1234567')) {
+                                    node.nodeValue = node.nodeValue.replace('+92 300 1234567', s.phone);
+                                }
+                            }
+                        }
+                    }
+                });
         }
         applyDynamicSettings();
 
