@@ -6405,6 +6405,16 @@ function saveAllTeachers() {
         }
 });
 
+        
+        function renderAdmissionsTable() {
+            const tbody = document.getElementById('admissions-table-body');
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No new applications</td></tr>`;
+        }
+        function renderDonationsTable() {
+            const tbody = document.getElementById('donations-table-body');
+            if(tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No new donations</td></tr>`;
+        }
+
         window.toggleStatus = function(el) {
             if(el.classList.contains('status-pending')) {
                 el.className = 'status-badge status-approved';
