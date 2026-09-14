@@ -5937,7 +5937,7 @@ div:has(> .strengths-wrapper),
                 if (data) {
                     siteTeachers = data;
                 } else {
-                    siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                    siteTeachers = []; // Start completely empty!
                 }
                 renderTeachersAdmin();
             }).catch((error) => {
@@ -5948,10 +5948,10 @@ div:has(> .strengths-wrapper),
                     if (stored) {
                         siteTeachers = JSON.parse(stored);
                     } else {
-                        siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                        siteTeachers = [];
                     }
                 } catch(e) {
-                    siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                    siteTeachers = [];
                 }
                 renderTeachersAdmin();
             });

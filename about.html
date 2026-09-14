@@ -9982,7 +9982,7 @@ body > .mobile-logo-container { display: none !important; }
         // Fetch from Firebase first
         db.ref('site_teachers').once('value').then((snapshot) => {
             let teachers = snapshot.val();
-            if (!teachers) teachers = defaultTeachers;
+            if (!teachers) teachers = []; // Start completely empty!
             buildTeacherTrack(teachers, track, lang);
         }).catch((err) => {
             console.error("Firebase failed, using local fallback", err);
@@ -9991,19 +9991,15 @@ body > .mobile-logo-container { display: none !important; }
                 const stored = localStorage.getItem('site_teachers');
                 if (stored) {
                     teachers = JSON.parse(stored);
-                } else {
-                    teachers = defaultTeachers;
                 }
-            } catch(e) {
-                teachers = defaultTeachers;
-            }
+            } catch(e) {}
             buildTeacherTrack(teachers, track, lang);
         });
         
         // Setup real-time listener so it updates instantly when admin changes it!
         db.ref('site_teachers').on('value', (snapshot) => {
             let teachers = snapshot.val();
-            if (!teachers) teachers = defaultTeachers;
+            if (!teachers) teachers = []; // Start completely empty!
             buildTeacherTrack(teachers, track, document.documentElement.lang);
         });
     }
