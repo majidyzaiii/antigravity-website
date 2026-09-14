@@ -5322,6 +5322,30 @@ div:has(> .strengths-wrapper),
             transform: rotate(45deg) !important;
         }
 </style>
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<!-- Add the Realtime Database SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCaJmjm4XVKh-PKMFv1lvDiDTda10GN3Hw",
+    authDomain: "riaz-ul-quran-wal-sunnah.firebaseapp.com",
+    databaseURL: "https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com",
+    projectId: "riaz-ul-quran-wal-sunnah",
+    storageBucket: "riaz-ul-quran-wal-sunnah.firebasestorage.app",
+    messagingSenderId: "1037550565994",
+    appId: "1:1037550565994:web:6cc26d4c0b9aa48ad3a813"
+  };
+  
+  // Initialize Firebase
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.database();
+</script>
+
 </head>
 <body class="light-mode">
     <!-- AUTH GATEWAY -->
@@ -5906,21 +5930,33 @@ div:has(> .strengths-wrapper),
         
         let siteTeachers = [];
 
+        
         function loadTeachersAdmin() {
-            try {
-                const stored = localStorage.getItem('site_teachers');
-                if (stored && stored !== 'undefined' && stored !== 'null') {
-                    siteTeachers = JSON.parse(stored);
-                    if(!Array.isArray(siteTeachers)) siteTeachers = [];
+            db.ref('site_teachers').once('value').then((snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    siteTeachers = data;
                 } else {
                     siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
                 }
-            } catch(e) {
-                console.error('Error loading teachers:', e);
-                siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
-            }
-            renderTeachersAdmin();
+                renderTeachersAdmin();
+            }).catch((error) => {
+                console.error("Firebase load error:", error);
+                // Fallback to local storage if offline
+                try {
+                    const stored = localStorage.getItem('site_teachers');
+                    if (stored) {
+                        siteTeachers = JSON.parse(stored);
+                    } else {
+                        siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                    }
+                } catch(e) {
+                    siteTeachers = JSON.parse(JSON.stringify(defaultTeachers));
+                }
+                renderTeachersAdmin();
+            });
         }
+
 
         function renderTeachersAdmin() {
             try {
@@ -6023,20 +6059,33 @@ div:has(> .strengths-wrapper),
         }
 
         
+        
         function saveAllTeachers() {
             try {
                 syncTeachersFromDOM();
-                localStorage.setItem('site_teachers', JSON.stringify(siteTeachers));
-                window.dispatchEvent(new Event('storage'));
-                alert("All teachers saved successfully! Changes will appear on the live site.");
+                
+                // Save to localStorage as a backup
+                try { localStorage.setItem('site_teachers', JSON.stringify(siteTeachers)); } catch(e){}
+                
+                // Save to Firebase
+                const btn = document.querySelector('.btn-pub-custom .btn-text') || document.querySelector('button[onclick="saveAllTeachers()"]');
+                const oldText = btn.innerHTML;
+                if(btn) btn.innerHTML = "Saving...";
+                
+                db.ref('site_teachers').set(siteTeachers)
+                  .then(() => {
+                      if(btn) btn.innerHTML = oldText;
+                      alert("All teachers saved to LIVE DATABASE successfully! Changes are now visible to everyone worldwide.");
+                  })
+                  .catch((error) => {
+                      if(btn) btn.innerHTML = oldText;
+                      alert("ERROR saving to Firebase: " + error.message);
+                  });
             } catch (e) {
-                if (e.name === 'QuotaExceededError' || e.message.includes('quota')) {
-                    alert("ERROR: The images you uploaded are too large! Browser storage has a 5MB limit. Please compress the images or use smaller ones before saving.");
-                } else {
-                    alert("ERROR saving teachers: " + e.message);
-                }
+                alert("ERROR: " + e.message);
             }
         }
+
 
 
         // --- 1. AUTHENTICATION LOGIC ---

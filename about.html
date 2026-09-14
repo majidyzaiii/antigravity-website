@@ -7370,6 +7370,30 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 }
 
 </style>
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<!-- Add the Realtime Database SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCaJmjm4XVKh-PKMFv1lvDiDTda10GN3Hw",
+    authDomain: "riaz-ul-quran-wal-sunnah.firebaseapp.com",
+    databaseURL: "https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com",
+    projectId: "riaz-ul-quran-wal-sunnah",
+    storageBucket: "riaz-ul-quran-wal-sunnah.firebasestorage.app",
+    messagingSenderId: "1037550565994",
+    appId: "1:1037550565994:web:6cc26d4c0b9aa48ad3a813"
+  };
+  
+  // Initialize Firebase
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.database();
+</script>
+
 </head>
 <body class="about-page">
 
@@ -9950,26 +9974,44 @@ body > .mobile-logo-container { display: none !important; }
     ];
 
     
+    
     function renderTeachersForLang(lang) {
         const track = document.getElementById('dynamic-teachers-track');
         if (!track) return;
         
-        let teachers = [];
-        try {
-            const stored = localStorage.getItem('site_teachers');
-            if (stored) {
-                teachers = JSON.parse(stored);
-            } else {
+        // Fetch from Firebase first
+        db.ref('site_teachers').once('value').then((snapshot) => {
+            let teachers = snapshot.val();
+            if (!teachers) teachers = defaultTeachers;
+            buildTeacherTrack(teachers, track, lang);
+        }).catch((err) => {
+            console.error("Firebase failed, using local fallback", err);
+            let teachers = [];
+            try {
+                const stored = localStorage.getItem('site_teachers');
+                if (stored) {
+                    teachers = JSON.parse(stored);
+                } else {
+                    teachers = defaultTeachers;
+                }
+            } catch(e) {
                 teachers = defaultTeachers;
             }
-        } catch(e) {
-            console.error("localStorage access blocked or failed:", e);
-            teachers = defaultTeachers;
-        }
+            buildTeacherTrack(teachers, track, lang);
+        });
+        
+        // Setup real-time listener so it updates instantly when admin changes it!
+        db.ref('site_teachers').on('value', (snapshot) => {
+            let teachers = snapshot.val();
+            if (!teachers) teachers = defaultTeachers;
+            buildTeacherTrack(teachers, track, document.documentElement.lang);
+        });
+    }
 
+    function buildTeacherTrack(teachers, track, lang) {
         let htmlString = '';
         
-        if (teachers.length === 0) {
+        if (!teachers || teachers.length === 0) {
             track.classList.add('no-marquee');
             track.innerHTML = '<p style="text-align:center; padding: 20px; font-family: sans-serif; width: 100%; color: #006754; font-size: 1.2rem;">No teachers added yet.</p>';
             return;
@@ -9998,27 +10040,19 @@ body > .mobile-logo-container { display: none !important; }
             htmlString = `<div style="color:red; padding:20px; width:100%; text-align:center;">Error generating cards: ${e.message}</div>`;
         }
         
-        
         if (teachers.length < 5) {
             track.classList.add('no-marquee');
             track.innerHTML = htmlString;
         } else {
             track.classList.remove('no-marquee');
-            
-            // On PC, we want to show exactly the unique teachers, no repeats.
-            // On Mobile, we need repeats for the CSS infinite scrolling marquee.
-            // So we add a class 'duplicate-card' to the repeated ones.
-            
-            track.innerHTML = htmlString; // The original unique set
-            
             const timesToDuplicate = Math.max(2, Math.ceil(15 / teachers.length));
             const duplicateHtml = htmlString.replace(/class="teacher-card/g, 'class="teacher-card duplicate-card');
             
+            track.innerHTML = htmlString; // Originals
             for(let i=1; i < timesToDuplicate; i++) {
                 track.innerHTML += duplicateHtml;
             }
         }
-
     }
 
       const originalApplyTranslations = window.applyTranslations;
