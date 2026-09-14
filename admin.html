@@ -6099,11 +6099,9 @@ div:has(> .strengths-wrapper),
                     t.role_ur = document.getElementById(`teacher-role-ur-${i}`).value;
                 }
             });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-
-        
-        
-        function saveAllTeachers() {
+function saveAllTeachers() {
             try {
                 syncTeachersFromDOM();
                 
@@ -6402,9 +6400,10 @@ div:has(> .strengths-wrapper),
                         document.getElementById(`c${idx}-title-ur`).value = up.title_ur || '';
                         document.getElementById(`c${idx}-desc-ur`).value = up.desc_ur || '';
                     }
-                });
-            }
-        });
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
+});
 
         window.toggleStatus = function(el) {
             if(el.classList.contains('status-pending')) {
@@ -6447,7 +6446,7 @@ div:has(> .strengths-wrapper),
             });
         }
         
-        langSwitchBtn.addEventListener('click', () => {
+        if(langSwitchBtn) langSwitchBtn.addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'ur' : 'en';
             applyTranslations(currentLang);
         });

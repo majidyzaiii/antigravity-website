@@ -6841,9 +6841,9 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                     item.innerHTML = item.getAttribute(`data-${lang}`);
                 }
             });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-
-        if (langSwitchBtn) {
+if (langSwitchBtn) {
             langSwitchBtn.addEventListener('click', (e) => {
                 // Only scroll to top if it was a real user click
                 if(e && e.isTrusted) {
@@ -6907,7 +6907,9 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                     }
                 }
             });
-        });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
+);
     });
 </script>
 
@@ -7860,8 +7862,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-    }
+}
 });
 </script>
 
@@ -8047,8 +8050,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if(e.target === mobileNavOverlay) {
               mobileNavOverlay.classList.remove('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.remove('active');
           }
-      });
-  }
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
 });
 </script>
 
@@ -8260,8 +8264,10 @@ document.addEventListener("DOMContentLoaded", function() {
         el.classList.add('back-btn');
       }
     }
-  });
-});
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
+);
 </script>
 <!-- END PERMANENT MOBILE HEADER FIX -->
 
@@ -8910,9 +8916,10 @@ body > .mobile-logo-container { display: none !important; }
                             }
                         }
                     }
-                });
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-        applyDynamicSettings();
+applyDynamicSettings();
 
 </script>
 </body>

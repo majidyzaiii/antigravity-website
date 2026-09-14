@@ -5141,7 +5141,6 @@ div:has(> .strengths-wrapper),
 
         function applyTranslations(lang) {
             renderUpdatesForLang(lang);
-            applyDynamicSettings();
             document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
             document.querySelectorAll('#langSwitch, .lang-toggle-btn').forEach(btn => btn.textContent = lang === 'ur' ? 'انگریزی' : 'URDU');
@@ -5165,9 +5164,9 @@ div:has(> .strengths-wrapper),
                     item.innerHTML = item.getAttribute(`data-${lang}`);
                 }
             });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-
-        if (langSwitchBtn) {
+if (langSwitchBtn) {
             langSwitchBtn.addEventListener('click', (e) => {
                 // Only scroll to top if it was a real user click
                 if(e && e.isTrusted) {
@@ -5231,7 +5230,9 @@ div:has(> .strengths-wrapper),
                     }
                 }
             });
-        });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
+);
     });
 </script>
 
@@ -6508,8 +6509,9 @@ document.addEventListener('DOMContentLoaded', () => {
           if(e.target === mobileNavOverlay) {
               mobileNavOverlay.classList.remove('is-active');
           }
-      });
-  }
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
+        }
 });
 </script>
 
@@ -7801,9 +7803,10 @@ body > .mobile-logo-container { display: none !important; }
                             }
                         }
                     }
-                });
+            });
+            setTimeout(() => applyDynamicSettings(), 50);
         }
-        applyDynamicSettings();
+applyDynamicSettings();
 
 </script>
 </body>
