@@ -7137,6 +7137,27 @@ body > .mobile-logo-container { display: none !important; }
                             }
                         }
                         // Save to localStorage as a cache for next page load speed
+                        // Update Links
+                        if (s.whatsapp) {
+                            let cleanWa = s.whatsapp.replace(/[^0-9]/g, '');
+                            document.querySelectorAll('a').forEach(a => {
+                                let label = a.getAttribute('aria-label') || '';
+                                let title = a.getAttribute('title') || '';
+                                if (a.href.includes('wa.me') || label.includes('WhatsApp') || title.includes('WhatsApp') || a.classList.contains('floating-whatsapp')) {
+                                    a.href = `https://wa.me/${cleanWa}?text=Assalam-o-Alaikum`;
+                                    a.target = '_blank';
+                                }
+                            });
+                        }
+                        if (s.phone) {
+                            let cleanPhone = s.phone.replace(/[^0-9+]/g, '');
+                            document.querySelectorAll('a').forEach(a => {
+                                if (a.href.includes('tel:')) {
+                                    a.href = `tel:${cleanPhone}`;
+                                }
+                            });
+                        }
+                        
                         localStorage.setItem('site_settings', JSON.stringify(s));
                     }
                 })
