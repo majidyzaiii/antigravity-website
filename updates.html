@@ -6663,6 +6663,30 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
     align-items: start;
 }
 </style>
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<!-- Add the Realtime Database SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCaJmjm4XVKh-PKMFv1lvDiDTda10GN3Hw",
+    authDomain: "riaz-ul-quran-wal-sunnah.firebaseapp.com",
+    databaseURL: "https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com",
+    projectId: "riaz-ul-quran-wal-sunnah",
+    storageBucket: "riaz-ul-quran-wal-sunnah.firebasestorage.app",
+    messagingSenderId: "1037550565994",
+    appId: "1:1037550565994:web:6cc26d4c0b9aa48ad3a813"
+  };
+  
+  // Initialize Firebase
+  if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.database();
+</script>
+
 </head>
 <body class="about-page">
 
