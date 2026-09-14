@@ -3024,7 +3024,33 @@
   text-align: left !important;
 }
 
-/* Heading */
+
+  /* Closed Ribbon */
+  .closed-ribbon {
+    position: absolute;
+    top: 25px;
+    right: -45px;
+    background: #dc2626;
+    color: white;
+    padding: 5px 50px;
+    transform: rotate(45deg);
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    z-index: 10;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  html[dir="rtl"] .closed-ribbon {
+    right: auto;
+    left: -45px;
+    transform: rotate(-45deg);
+    font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+    font-size: 1.2rem;
+  }
+
+  /* Heading */
 .admission-rules-card .container-main-heading {
   font-family: inherit !important;
   color: #1e293b !important;
@@ -4034,7 +4060,10 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="notice-badge"><strong data-en="Uniform Requirement:" data-ur="یونیفارم کی شرائط:">Uniform Requirement:</strong> <span data-en="White Shalwar Kameez, and Maroon Jersey for winters." data-ur="سفید شلوار قمیض، اور سردیوں کے لیے میرون جرسی۔">White Shalwar Kameez, and Maroon Jersey for winters.</span></div>
 </div>
   
-<div class="about-container online-admission-form-container">
+
+<div class="about-container online-admission-form-container" style="position: relative; overflow: hidden;">
+  <div id="admissions-closed-ribbon" class="closed-ribbon" style="display: none;" data-en="Admission Closed" data-ur="????? ??? ??">Admission Closed</div>
+
   <!-- Background Watermark Logo -->
   <div class="form-bg-logo"></div>
   
@@ -4043,11 +4072,6 @@ document.addEventListener("DOMContentLoaded", () => {
   <h2 class="container-main-heading" data-en="Online Admission Form" data-ur="آن لائن فارمِ داخلہ">Online Admission Form</h2>
   <p class="form-subheading-text" data-en="Please fill in the official admission application details carefully." data-ur="براہ کرم داخلہ فارم کی تفصیلات احتیاط سے پُر کریں۔">Please fill in the official admission application details carefully.</p>
 
-  <div id="admissions-closed-msg" style="display: none; background: #fee2e2; border: 1px solid #f87171; border-radius: 12px; padding: 40px 20px; text-align: center; margin-bottom: 30px;">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 15px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-      <h3 style="color: #991b1b; margin: 0 0 10px 0; font-size: 1.5rem;" data-en="Admissions Are Currently Closed" data-ur="????? ?? ????? ??? ???">Admissions Are Currently Closed</h3>
-      <p style="color: #7f1d1d; margin: 0; font-size: 1.1rem;" data-en="We are not accepting new applications at this time. Please check back later." data-ur="?? ?? ????? ??? ????????? ???? ???? ?? ??? ???? ???? ??? ??? ?? ??? ?????? ??? ?????">We are not accepting new applications at this time. Please check back later.</p>
-  </div>
   <form id="madrasaAdmissionForm" class="admission-form-grid" onsubmit="handleFormSubmission(event)">
 
       <!-- Profile Photo Upload -->
@@ -4539,7 +4563,33 @@ function previewPhoto(event) {
   text-align: left !important;
 }
 
-/* Heading */
+
+  /* Closed Ribbon */
+  .closed-ribbon {
+    position: absolute;
+    top: 25px;
+    right: -45px;
+    background: #dc2626;
+    color: white;
+    padding: 5px 50px;
+    transform: rotate(45deg);
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    z-index: 10;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  html[dir="rtl"] .closed-ribbon {
+    right: auto;
+    left: -45px;
+    transform: rotate(-45deg);
+    font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+    font-size: 1.2rem;
+  }
+
+  /* Heading */
 .admission-rules-card .container-main-heading {
   font-family: inherit !important;
   color: #1e293b !important;
@@ -5588,7 +5638,33 @@ applyDynamicSettings();
   text-align: left !important;
 }
 
-/* Heading */
+
+  /* Closed Ribbon */
+  .closed-ribbon {
+    position: absolute;
+    top: 25px;
+    right: -45px;
+    background: #dc2626;
+    color: white;
+    padding: 5px 50px;
+    transform: rotate(45deg);
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    z-index: 10;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  html[dir="rtl"] .closed-ribbon {
+    right: auto;
+    left: -45px;
+    transform: rotate(-45deg);
+    font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+    font-size: 1.2rem;
+  }
+
+  /* Heading */
 .admission-instructions-card .container-main-heading {
   font-family: inherit !important;
   color: #1e293b !important;
