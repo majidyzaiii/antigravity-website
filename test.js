@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 }
 });
@@ -74,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
               mobileNavOverlay.classList.remove('active');
           }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 });
 
@@ -239,7 +237,6 @@ obliterateWhiteBar();
                     item.innerHTML = item.getAttribute(`data-${lang}`);
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 if (langSwitchBtn) {
             langSwitchBtn.addEventListener('click', (e) => {
@@ -265,6 +262,7 @@ if (langSwitchBtn) {
                 currentLang = currentLang === 'en' ? 'ur' : 'en';
                 sessionStorage.setItem('siteLang', currentLang);
                 applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
             });
         }
 
@@ -276,6 +274,7 @@ if (langSwitchBtn) {
             currentLang = 'en';
         }
         applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
 
         window.toggleLanguage = function() {
             if (langSwitchBtn) langSwitchBtn.click();
@@ -305,7 +304,6 @@ if (langSwitchBtn) {
                     }
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 );
     });
@@ -382,6 +380,27 @@ if (langSwitchBtn) {
                     if(settingsStr) {
                         const s = JSON.parse(settingsStr);
                         if (s) {
+
+                        const form = document.getElementById('madrasaAdmissionForm');
+                        const ribbon = document.getElementById('admissions-closed-ribbon');
+                        if (form && ribbon) {
+                            if (s.admissions_open === false) {
+                                ribbon.style.display = 'block';
+                                form.style.opacity = '0.5';
+                                form.style.pointerEvents = 'none';
+                                form.style.userSelect = 'none';
+                                const inputs = form.querySelectorAll('input, select, textarea, button');
+                                inputs.forEach(el => el.disabled = true);
+                            } else {
+                                ribbon.style.display = 'none';
+                                form.style.opacity = '1';
+                                form.style.pointerEvents = 'auto';
+                                form.style.userSelect = 'auto';
+                                const inputs = form.querySelectorAll('input, select, textarea, button');
+                                inputs.forEach(el => el.disabled = false);
+                            }
+                        }
+
                             const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
                             let node;
                             while(node = walker.nextNode()) {
@@ -398,7 +417,6 @@ if (langSwitchBtn) {
                         }
                     }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 applyDynamicSettings();
 
@@ -526,7 +544,6 @@ function previewPhoto(event) {
               if (typeof handleFormSubmission === 'function') {
                   handleFormSubmission({ preventDefault: () => {}
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 }, 400); 
         } else {

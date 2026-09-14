@@ -6841,7 +6841,6 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
                     item.innerHTML = item.getAttribute(`data-${lang}`);
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 if (langSwitchBtn) {
             langSwitchBtn.addEventListener('click', (e) => {
@@ -6867,6 +6866,7 @@ if (langSwitchBtn) {
                 currentLang = currentLang === 'en' ? 'ur' : 'en';
                 sessionStorage.setItem('siteLang', currentLang);
                 applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
             });
         }
 
@@ -6878,6 +6878,7 @@ if (langSwitchBtn) {
             currentLang = 'en';
         }
         applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
 
         window.toggleLanguage = function() {
             if (langSwitchBtn) langSwitchBtn.click();
@@ -6907,7 +6908,6 @@ if (langSwitchBtn) {
                     }
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 );
     });
@@ -7862,7 +7862,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 }
 });
@@ -8051,7 +8050,6 @@ document.addEventListener('DOMContentLoaded', () => {
               mobileNavOverlay.classList.remove('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.remove('active');
           }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 });
 </script>
@@ -8265,7 +8263,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 );
 </script>
@@ -8938,7 +8935,6 @@ body > .mobile-logo-container { display: none !important; }
                         }
                     }
             });
-            setTimeout(() => applyDynamicSettings(), 50);
         }
 applyDynamicSettings();
 
