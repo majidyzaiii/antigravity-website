@@ -1,71 +1,6 @@
-
-
-
-
-        let currentCropper = null;
-        let currentCropCallback = null;
-        let pendingUpdateImages = {};
-
-        function openCropper(file, ratio, callback) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const modal = document.getElementById('cropperModal');
-                const img = document.getElementById('cropperImage');
-                img.src = e.target.result;
-                modal.style.display = 'flex';
-                
-                if (currentCropper) {
-                    currentCropper.destroy();
-                }
-                
-                currentCropper = new Cropper(img, {
-                    aspectRatio: ratio,
-                    viewMode: 1,
-                    autoCropArea: 1
-                });
-                
-                currentCropCallback = callback;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function closeCropper() {
-            document.getElementById('cropperModal').style.display = 'none';
-            if (currentCropper) {
-                currentCropper.destroy();
-                currentCropper = null;
-            }
-        }
-
-        function applyCrop() {
-            if (!currentCropper) return;
-            
-            const canvas = currentCropper.getCroppedCanvas({
-                maxWidth: 800,
-                maxHeight: 800
-            });
-            
-            const base64 = canvas.toDataURL('image/jpeg', 0.8);
-            closeCropper();
-            
-            if (currentCropCallback) {
-                currentCropCallback(base64);
-            }
-        }
-
-        function handleUpdateImage(input, index) {
-            if (!input.files[0]) return;
-            openCropper(input.files[0], NaN, function(croppedBase64) {
-                pendingUpdateImages[index] = croppedBase64;
-                const preview = document.getElementById(`c${index}-preview`);
-                if (preview) {
-                    preview.innerHTML = `<img src="${croppedBase64}" style="width: 100%; max-height: 150px; object-fit: contain; border-radius: 8px; border: 1px solid #cbd5e1; margin-top: 10px;">`;
-                }
-            });
-            input.value = "";
-        }
-
-
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
   const firebaseConfig = {
     apiKey: "AIzaSyCaJmjm4XVKh-PKMFv1lvDiDTda10GN3Hw",
     authDomain: "riaz-ul-quran-wal-sunnah.firebaseapp.com",
@@ -81,10 +16,8 @@
       firebase.initializeApp(firebaseConfig);
   }
   const db = firebase.database();
-
-
-
-
+</script>
+<script>
         
         // --- TEACHERS DYNAMIC LOGIC ---
         const defaultTeachers = [
@@ -183,13 +116,44 @@
 
 
         function handleTeacherImage(input, index) {
-            if (!input.files[0]) return;
-            openCropper(input.files[0], 1, function(croppedBase64) {
-                syncTeachersFromDOM();
-                siteTeachers[index].image = croppedBase64;
-                renderTeachersAdmin();
-            });
-            input.value = "";
+            syncTeachersFromDOM(); // Save DOM state before re-rendering!
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 300;
+                        const MAX_HEIGHT = 300;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6); // 60% quality JPEG
+                        
+                        siteTeachers[index].image = compressedBase64;
+                        renderTeachersAdmin();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
         function addNewTeacher() {
@@ -495,13 +459,44 @@ function saveAllTeachers() {
                   });
             };
 
-            if (pendingUpdateImages[index]) {
-                  finalizePublish(pendingUpdateImages[index]);
-                  pendingUpdateImages[index] = null;
-                  if (document.getElementById(`c${index}-preview`)) document.getElementById(`c${index}-preview`).innerHTML = '';
-              } else {
-                  finalizePublish(null);
-              }
+            if (fileInput && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 800; // Larger for updates
+                        const MAX_HEIGHT = 800;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Compress to JPEG 70% quality
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        finalizePublish(compressedDataUrl);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                finalizePublish(null);
+            }
         }
         
         window.deleteCard = function(index) {
@@ -674,3 +669,4 @@ function saveAllTeachers() {
               });
         });
 
+</script>
