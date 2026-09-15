@@ -8962,6 +8962,79 @@ body > .mobile-logo-container { display: none !important; }
 applyDynamicSettings();
 
 </script>
+
+<style>
+/* ABSOLUTE FIX FOR MOBILE HEADER LOGO AND TITLE PROPORTIONS */
+@media (max-width: 768px) {
+    /* 1. Ensure Logo is properly sized */
+    html:root body header .header-logo img,
+    html:root body .sticky-header header .header-logo img {
+        height: auto !important;
+        max-height: 50px !important;
+        width: auto !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+    }
+    
+    /* 2. Ensure Title is properly sized and proportional */
+    html:root body header .brand-title-container img,
+    html:root body .sticky-header header .brand-title-container img,
+    html:root body header img.urdu-title-png,
+    html:root body header img.brand-title-img-en {
+        height: auto !important;
+        max-height: 45px !important;
+        min-height: 0 !important;
+        width: auto !important;
+        max-width: 55vw !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+    
+    /* 3. Ensure the Title Container is absolutely centered */
+    html:root body header .brand-title-container,
+    html:root body .sticky-header header .brand-title-container {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        width: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex: none !important;
+    }
+}
+
+/* ABSOLUTE FIX FOR ENGLISH SCROLL HEADER NOT SHOWING */
+html[lang="en"] body #ultimateScrollHeader.is-sticky,
+html[dir="ltr"] body #ultimateScrollHeader.is-sticky,
+body #ultimateScrollHeader.is-sticky {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    z-index: 999999 !important;
+}
+
+html[lang="en"] body #ultimateScrollHeader,
+html[dir="ltr"] body #ultimateScrollHeader,
+body #ultimateScrollHeader {
+    display: flex !important;
+    visibility: visible !important;
+}
+
+/* Make sure the English Title image actually displays! */
+html[lang="en"] body #ultimateScrollHeader .brand-title-img-en,
+html[dir="ltr"] body #ultimateScrollHeader .brand-title-img-en {
+    display: block !important;
+}
+</style>
+
 </body>
 
 
