@@ -10226,6 +10226,58 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 <!-- END TEACHER ZOOM MODAL -->
 
+
+
+
+
+<style>
+/* ABSOLUTE GUARANTEE SCROLL HEADER VISIBILITY FOR ALL DEVICES AND LANGUAGES */
+html[lang="en"] body #ultimateScrollHeader.is-sticky,
+html[lang="ur"] body #ultimateScrollHeader.is-sticky,
+html[dir="ltr"] body #ultimateScrollHeader.is-sticky,
+html[dir="rtl"] body #ultimateScrollHeader.is-sticky,
+body #ultimateScrollHeader.is-sticky {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    z-index: 999999 !important;
+    background: #004d44 !important;
+}
+
+html[lang="en"] body #ultimateScrollHeader,
+html[lang="ur"] body #ultimateScrollHeader,
+html[dir="ltr"] body #ultimateScrollHeader,
+html[dir="rtl"] body #ultimateScrollHeader,
+body #ultimateScrollHeader {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+}
+
+/* Guarantee inner header doesn't collapse on PC */
+body #ultimateScrollHeader header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Hide first sticky header completely on PC to avoid overlap confusion */
+@media (min-width: 769px) {
+    body.about-page > .sticky-header:not(#ultimateScrollHeader) {
+        display: none !important;
+    }
+}
+</style>
+
 </body>
 
 
