@@ -9035,6 +9035,48 @@ html[dir="ltr"] body #ultimateScrollHeader .brand-title-img-en {
 }
 </style>
 
+
+<style>
+/* BULLETPROOF FIX FOR SCROLL HEADER VISIBILITY AND SIZING */
+@media (max-width: 768px) {
+    /* 1. Force the inner header to ALWAYS display, overriding ANY global hide rules */
+    html:root body #ultimateScrollHeader header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+    }
+
+    /* 2. Set the exact perfect sizes for Logo and Title on Mobile (not too big, not too small) */
+    html:root body #ultimateScrollHeader header .header-logo img,
+    html:root body .sticky-header header .header-logo img {
+        height: auto !important;
+        max-height: 60px !important; 
+        min-height: 0 !important;
+        width: auto !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+    }
+    
+    html:root body #ultimateScrollHeader header .brand-title-container img,
+    html:root body .sticky-header header .brand-title-container img,
+    html:root body header img.urdu-title-png,
+    html:root body header img.brand-title-img-en {
+        height: auto !important;
+        max-height: 50px !important; 
+        min-height: 0 !important;
+        width: auto !important;
+        max-width: 55vw !important;
+        object-fit: contain !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+}
+</style>
+
 </body>
 
 
