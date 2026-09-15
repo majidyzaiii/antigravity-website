@@ -24,10 +24,12 @@ body.about-page .site-branding-header,
 body.about-page header.site-header,
 body.about-page header,
 body.about-page .main-navbar,
-body.about-page .sticky-header,
-body.about-page nav,
-body.about-page .mobile-logo-container {
-  display: none !important;
+@media (max-width: 768px) {
+  body.about-page .sticky-header:not(#ultimateScrollHeader),
+  body.about-page nav,
+  body.about-page .mobile-logo-container {
+    display: none !important;
+  }
 }
 
         @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
@@ -8832,11 +8834,32 @@ body > .mobile-logo-container { display: none !important; }
     }
     
     /* Increase Title size */
-    .brand-title-img-en, .urdu-title-png {
+    /* High Specificity Overrides for Mobile Header */
+    html:root body header .brand-title-container img,
+    html:root body .sticky-header header .brand-title-container img,
+    html:root body header img.urdu-title-png,
+    html:root body header img.brand-title-img-en {
+        height: auto !important;
         max-height: 55px !important;
+        min-height: 0 !important;
         width: auto !important;
-        max-width: 50vw !important; /* Prevent overlap on very small screens */
+        max-width: 50vw !important;
         object-fit: contain !important;
+        margin: 0 !important;
+    }
+    
+    html:root body header .brand-title-container,
+    html:root body .sticky-header header .brand-title-container {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex: none !important;
     }
     
     /* Order 3: Hamburger on the opposite edge */

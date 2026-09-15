@@ -24,10 +24,12 @@ body.about-page .site-branding-header,
 body.about-page header.site-header,
 body.about-page header,
 body.about-page .main-navbar,
-body.about-page .sticky-header,
-body.about-page nav,
-body.about-page .mobile-logo-container {
-  display: none !important;
+@media (max-width: 768px) {
+  body.about-page .sticky-header:not(#ultimateScrollHeader),
+  body.about-page nav,
+  body.about-page .mobile-logo-container {
+    display: none !important;
+  }
 }
 
         @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
@@ -9975,11 +9977,32 @@ applyDynamicSettings();
     }
     
     /* Increase Title size */
-    .brand-title-img-en, .urdu-title-png {
+    /* High Specificity Overrides for Mobile Header */
+    html:root body header .brand-title-container img,
+    html:root body .sticky-header header .brand-title-container img,
+    html:root body header img.urdu-title-png,
+    html:root body header img.brand-title-img-en {
+        height: auto !important;
         max-height: 55px !important;
+        min-height: 0 !important;
         width: auto !important;
-        max-width: 50vw !important; /* Prevent overlap on very small screens */
+        max-width: 50vw !important;
         object-fit: contain !important;
+        margin: 0 !important;
+    }
+    
+    html:root body header .brand-title-container,
+    html:root body .sticky-header header .brand-title-container {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex: none !important;
     }
     
     /* Order 3: Hamburger on the opposite edge */
@@ -10230,53 +10253,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<style>
-/* ABSOLUTE GUARANTEE SCROLL HEADER VISIBILITY FOR ALL DEVICES AND LANGUAGES */
-html[lang="en"] body #ultimateScrollHeader.is-sticky,
-html[lang="ur"] body #ultimateScrollHeader.is-sticky,
-html[dir="ltr"] body #ultimateScrollHeader.is-sticky,
-html[dir="rtl"] body #ultimateScrollHeader.is-sticky,
-body #ultimateScrollHeader.is-sticky {
-    display: flex !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-    pointer-events: auto !important;
-    z-index: 999999 !important;
-    background: #004d44 !important;
-}
 
-html[lang="en"] body #ultimateScrollHeader,
-html[lang="ur"] body #ultimateScrollHeader,
-html[dir="ltr"] body #ultimateScrollHeader,
-html[dir="rtl"] body #ultimateScrollHeader,
-body #ultimateScrollHeader {
-    display: flex !important;
-    flex-direction: column !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-}
-
-/* Guarantee inner header doesn't collapse on PC */
-body #ultimateScrollHeader header {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Hide first sticky header completely on PC to avoid overlap confusion */
-@media (min-width: 769px) {
-    body.about-page > .sticky-header:not(#ultimateScrollHeader) {
-        display: none !important;
-    }
-}
-</style>
 
 </body>
 
