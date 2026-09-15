@@ -1665,67 +1665,7 @@
                 padding-bottom: 20px !important;
             }
 
-            /* Enforce RTL Header Row Container */
-            html[lang="ur"] header,
-            html[lang="ur"] .site-header,
-            body.rtl header,
-            body.rtl .site-header {
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                direction: ltr !important; /* Lock container orientation */
-            }
-
-            /* 2. FORCE LOGO TO THE LEFT (ORDER: 1) AND MATCH LARGE ENGLISH LOGO (110px) */
-            html[lang="ur"] header .brand-logo-wrapper,
-            html[lang="ur"] header .header-logo,
-            html[lang="ur"] header .site-logo,
-            html[lang="ur"] header a:has(.site-logo),
-            body.rtl header .brand-logo-wrapper,
-            body.rtl header .header-logo,
-            body.rtl header .site-logo {
-                order: 1 !important;
-                margin-right: auto !important;
-                margin-left: 0 !important;
-                height: 110px !important;
-                min-height: 110px !important;
-                width: auto !important;
-                max-height: none !important;
-                max-width: none !important;
-                display: block !important;
-            }
             
-            /* Apply height to logo image itself */
-            html[lang="ur"] header .header-logo img,
-            body.rtl header .header-logo img {
-                height: 110px !important;
-                min-height: 110px !important;
-                width: auto !important;
-                max-height: none !important;
-                max-width: none !important;
-            }
-
-            /* 3. FORCE URDU CALLIGRAPHY NAME TO BE LARGE & PROMINENT (110px) */
-            html[lang="ur"] header .brand-title-block,
-            html[lang="ur"] header .brand-title-container,
-            html[lang="ur"] header img.brand-title-ur,
-            html[lang="ur"] header img.urdu-title-png,
-            body.rtl header .brand-title-block,
-            body.rtl header .brand-title-container,
-            body.rtl header img.brand-title-ur,
-            body.rtl header img.urdu-title-png {
-                order: 2 !important;
-                margin-left: auto !important;
-                margin-right: 0 !important;
-                height: 110px !important;
-                min-height: 110px !important;
-                width: auto !important;
-                max-width: 650px !important;
-                object-fit: contain !important;
-                display: block !important;
-            }
-        }
         .hero-section {
             padding-top: 20px !important; /* Reduces upper gap from navbar */
             margin-bottom: 0 !important;
