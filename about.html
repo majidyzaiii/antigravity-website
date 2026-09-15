@@ -4801,7 +4801,7 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
 }
 
 
-            
+        }
         .hero-section {
             padding-top: 100px !important; /* Restores upper gap from navbar since welcome badge is removed */
             margin-bottom: 0 !important;
@@ -10094,6 +10094,22 @@ body.rtl header, body.rtl #ultimateScrollHeader header {
 }
 </style>
 
+<!-- CLEAN HEADER FIXES -->
+<style id="clean-fixes">
+/* 1. Fix English Scroll Header Visibility in internal pages */
+html:root body #ultimateScrollHeader header {
+    display: flex !important;
+}
+
+/* 2. Fix Urdu Logo Overflow by adding the missing native padding from index.html */
+body.rtl header, body.rtl #ultimateScrollHeader header {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
+}
+</style>
 </body>
 
 
