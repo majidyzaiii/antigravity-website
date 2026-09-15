@@ -10000,6 +10000,85 @@ applyDynamicSettings();
 }
 </style>
 
+<style>
+.scroll-home-header .mobile-logo-container {
+    display: none !important; /* Keep mobile logo container hidden if it's supposed to be */
+}
+@media (max-width: 768px) {
+    .scroll-home-header .mobile-logo-container {
+        display: flex !important;
+    }
+}
+/* Base state: Hidden above viewport */
+.scroll-home-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #004d44 !important;
+    transform: translateY(-100%) !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
+}
+
+/* Active state: Slid down into view */
+.scroll-home-header.is-sticky {
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollHeader = document.querySelector('.scroll-home-header');
+    if(scrollHeader) {
+        if (scrollHeader.parentNode !== document.body) {
+            document.body.appendChild(scrollHeader);
+        }
+        
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 120) {
+                scrollHeader.classList.add('is-sticky');
+            } else {
+                scrollHeader.classList.remove('is-sticky');
+            }
+        });
+        
+        // Ensure the hamburger button on the scrolled header works
+        const mobileMenuBtn = scrollHeader.querySelector('#mobileMenuBtn');
+        const overlay = document.getElementById('mobileNavOverlay') || document.getElementById('drawerOverlay');
+        const menuCard = document.querySelector('.mobile-menu-card');
+        
+        if (mobileMenuBtn && overlay && menuCard) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                overlay.classList.toggle('is-active'); // Used by some pages
+                overlay.classList.toggle('active');    // Used by other pages
+                menuCard.classList.toggle('active');
+            });
+        }
+        
+        // Ensure the language switch button on the scrolled header works
+        const stickyLangBtn = scrollHeader.querySelector('#langSwitch');
+        if (stickyLangBtn) {
+            stickyLangBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Find all lang switches and click the one that actually has the global event listener (usually the first one or original one)
+                // To avoid infinite loop, we won't click ourselves
+                const allLangBtns = document.querySelectorAll('#langSwitch, .lang-toggle-btn');
+                for (let btn of allLangBtns) {
+                    if (btn !== stickyLangBtn) {
+                        btn.click();
+                        break;
+                    }
+                }
+            });
+        }
+}
+});
+</script>
 </body>
 
 
