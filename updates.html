@@ -7725,6 +7725,107 @@ body.rtl header, body.rtl #ultimateScrollHeader header {
     padding-bottom: 10px !important;
 }
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll('.nav-link, .m-link, .mobile-lang-btn');
+        const langSwitchBtn = document.getElementById('langSwitch');
+        let currentLang = 'en';
+
+        function applyTranslations(lang) {
+            document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            document.querySelectorAll('#langSwitch, .lang-toggle-btn').forEach(btn => btn.textContent = lang === 'ur' ? 'انگریزی' : 'URDU');
+            
+            navLinks.forEach(item => {
+                if(item.hasAttribute(`data-${lang}`)) {
+                    item.textContent = item.getAttribute(`data-${lang}`);
+                }
+            });
+            
+            const brandTitle = document.querySelector('.brand-title');
+            if (brandTitle && brandTitle.hasAttribute(`data-${lang}`)) {
+                brandTitle.textContent = brandTitle.getAttribute(`data-${lang}`);
+            }
+            
+            // Also translate footer and any other dynamic text elements
+            document.querySelectorAll('[data-en]').forEach(item => {
+                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                    item.placeholder = item.getAttribute(`data-${lang}`);
+                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                    item.innerHTML = item.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+if (langSwitchBtn) {
+            langSwitchBtn.addEventListener('click', (e) => {
+                // Only scroll to top if it was a real user click
+                if(e && e.isTrusted) {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+
+                // Close mobile menu if open
+                const drawer = document.getElementById('mobileDrawer');
+                const drawerOverlay = document.getElementById('drawerOverlay');
+                if (drawer) drawer.classList.remove('active', 'open');
+                if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+                
+                const navOverlay = document.getElementById('mobileNavOverlay');
+                if (navOverlay) navOverlay.classList.remove('active', 'open');
+                
+                // Force clean scroll restoration
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+
+                currentLang = currentLang === 'en' ? 'ur' : 'en';
+                sessionStorage.setItem('siteLang', currentLang);
+                applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
+            });
+        }
+
+        // Explicitly set language on load (default to English)
+        const savedLang = sessionStorage.getItem('siteLang');
+        if (savedLang === 'ur') {
+            currentLang = 'ur';
+        } else {
+            currentLang = 'en';
+        }
+        applyTranslations(currentLang);
+                setTimeout(() => applyDynamicSettings(), 50);
+
+        window.toggleLanguage = function() {
+            if (langSwitchBtn) langSwitchBtn.click();
+        };
+
+        // --- Mobile Menu Toggle Logic (Drawer) ---
+        window.toggleDrawer = function() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileNavOverlay') || document.getElementById('drawerOverlay');
+            if(drawer) drawer.classList.toggle('active');
+            if(overlay) overlay.classList.toggle('active');
+        };
+
+        const drawerOverlay = document.getElementById('drawerOverlay');
+        if(drawerOverlay) {
+            drawerOverlay.addEventListener('click', window.toggleDrawer);
+        }
+        
+        // Close menu when a drawer navigation link is clicked
+        const drawerLinks = document.querySelectorAll('.drawer-links-list li a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(!link.hasAttribute('onclick')) { // Don't close drawer if clicking lang switch which has onclick
+                    const drawer = document.getElementById('mobileDrawer');
+                    if (drawer && drawer.classList.contains('active')) {
+                        window.toggleDrawer();
+                    }
+                }
+            });
+        }
+);
+    });
+</script>
 </body>
 
 
