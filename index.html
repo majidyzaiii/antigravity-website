@@ -7617,42 +7617,6 @@ html[lang="ur"] .urdu-title-png {
     display: block !important;
 }
 
-/* 2. Fix the flex order for mobile headers */
-@media (max-width: 768px) {
-    /* Main header and sticky header flex layout */
-    header, .sticky-header header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 10px 15px !important;
-    }
-    
-    /* Order 1: Logo */
-    header .header-logo, 
-    .sticky-header header .header-logo,
-    header .mobile-logo-container,
-    .sticky-header header .mobile-logo-container {
-        order: 1 !important;
-        display: flex !important;
-    }
-    
-    /* Order 2: Name/Title */
-    header .brand-title-container, 
-    .sticky-header header .brand-title-container {
-        order: 2 !important;
-        flex: 1 !important;
-        display: flex !important;
-        justify-content: center !important;
-    }
-    
-    /* Order 3: Hamburger */
-    header .mobile-menu-btn, 
-    .sticky-header header .mobile-menu-btn {
-        order: 3 !important;
-        display: flex !important;
-    }
-}
 body > .mobile-logo-container { display: none !important; }
 </style>
 
@@ -7915,23 +7879,13 @@ html:root body #ultimateScrollHeader header {
     display: flex !important;
 }
 
-/* 2. Ensure the RTL header has the correct padding to fit the native 110px logo perfectly (backported from index.html) */
+/* 2. Fix Urdu Logo Overflow by adding the missing native padding from index.html */
 body.rtl header, body.rtl #ultimateScrollHeader header {
     height: auto !important;
     max-height: none !important;
     overflow: visible !important;
     padding-top: 20px !important;
     padding-bottom: 10px !important;
-}
-
-html[dir="rtl"] header, html[dir="rtl"] #ultimateScrollHeader header {
-    padding: 10px 15px !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    overflow: visible !important;
-    box-shadow: none;
 }
 </style>
 
