@@ -8789,96 +8789,7 @@ html[lang="ur"] .urdu-title-png {
 body > .mobile-logo-container { display: none !important; }
 </style>
 
-<!-- ULTIMATE PERFECT MOBILE HEADER LAYOUT FIX V2 -->
-<style>
-@media (max-width: 768px) {
-    /* Main header container */
-    header, .sticky-header header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important; /* Forces items to left and right edges */
-        align-items: center !important;
-        padding: 10px 15px !important;
-        position: relative !important;
-        overflow: visible !important;
-    }
-    
-    /* Order 1: Logo on the edge */
-    header .header-logo, 
-    .sticky-header header .header-logo {
-        order: 1 !important;
-        display: flex !important;
-        margin: 0 !important;
-    }
-    
-    /* Increase Logo size slightly */
-    header .header-logo img, 
-    .sticky-header header .header-logo img {
-        max-height: 60px !important;
-    }
-    
-    /* Order 2: Absolutely centered Title */
-    header .brand-title-container, 
-    .sticky-header header .brand-title-container {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        order: 2 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: auto !important;
-        margin: 0 !important;
-        pointer-events: none; /* prevent blocking clicks */
-    }
-    
-    /* Increase Title size */
-    /* High Specificity Overrides for Mobile Header */
-    html:root body header .brand-title-container img,
-    html:root body .sticky-header header .brand-title-container img,
-    html:root body header img.urdu-title-png,
-    html:root body header img.brand-title-img-en {
-        height: auto !important;
-        max-height: 55px !important;
-        min-height: 0 !important;
-        width: auto !important;
-        max-width: 50vw !important;
-        object-fit: contain !important;
-        margin: 0 !important;
-    }
-    
-    html:root body header .brand-title-container,
-    html:root body .sticky-header header .brand-title-container {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        justify-content: center !important;
-        align-items: center !important;
-        flex: none !important;
-    }
-    
-    /* Order 3: Hamburger on the opposite edge */
-    header .mobile-menu-btn, 
-    .sticky-header header .mobile-menu-btn {
-        order: 3 !important;
-        display: flex !important;
-        margin: 0 !important; /* REMOVE ANY PREVIOUS BUGGY MARGINS */
-        padding: 5px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    /* RTL / LTR specific logic just in case it's needed for safety */
-    html[dir="rtl"] header, html[dir="rtl"] .sticky-header header {
-        flex-direction: row !important;
-    }
-}
-</style>
+
 
 <!-- FIX UPDATES PAGE CARDS EXPANSION -->
 <style>
@@ -8963,117 +8874,36 @@ applyDynamicSettings();
 
 </script>
 
-<style>
-/* ABSOLUTE FIX FOR MOBILE HEADER LOGO AND TITLE PROPORTIONS */
-@media (max-width: 768px) {
-    /* 1. Ensure Logo is properly sized */
-    html:root body header .header-logo img,
-    html:root body .sticky-header header .header-logo img {
-        height: auto !important;
-        max-height: 50px !important;
-        width: auto !important;
-        object-fit: contain !important;
-        margin: 0 !important;
-    }
-    
-    /* 2. Ensure Title is properly sized and proportional */
-    html:root body header .brand-title-container img,
-    html:root body .sticky-header header .brand-title-container img,
-    html:root body header img.urdu-title-png,
-    html:root body header img.brand-title-img-en {
-        height: auto !important;
-        max-height: 45px !important;
-        min-height: 0 !important;
-        width: auto !important;
-        max-width: 55vw !important;
-        object-fit: contain !important;
-        margin: 0 !important;
-        transform: none !important;
-    }
-    
-    /* 3. Ensure the Title Container is absolutely centered */
-    html:root body header .brand-title-container,
-    html:root body .sticky-header header .brand-title-container {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        width: auto !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        flex: none !important;
-    }
-}
 
-/* ABSOLUTE FIX FOR ENGLISH SCROLL HEADER NOT SHOWING */
-html[lang="en"] body #ultimateScrollHeader.is-sticky,
-html[dir="ltr"] body #ultimateScrollHeader.is-sticky,
-body #ultimateScrollHeader.is-sticky {
+
+
+
+
+
+<!-- CLEAN HEADER FIXES -->
+<style id="clean-fixes">
+/* 1. Fix English Scroll Header Visibility in internal pages */
+html:root body #ultimateScrollHeader header {
     display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    pointer-events: auto !important;
-    z-index: 999999 !important;
 }
 
-html[lang="en"] body #ultimateScrollHeader,
-html[dir="ltr"] body #ultimateScrollHeader,
-body #ultimateScrollHeader {
-    display: flex !important;
-    visibility: visible !important;
+/* 2. Ensure the RTL header has the correct padding to fit the native 110px logo perfectly (backported from index.html) */
+body.rtl header, body.rtl #ultimateScrollHeader header {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
 }
 
-/* Make sure the English Title image actually displays! */
-html[lang="en"] body #ultimateScrollHeader .brand-title-img-en,
-html[dir="ltr"] body #ultimateScrollHeader .brand-title-img-en {
-    display: block !important;
-}
-</style>
-
-
-<style>
-/* BULLETPROOF FIX FOR SCROLL HEADER VISIBILITY AND SIZING */
-@media (max-width: 768px) {
-    /* 1. Force the inner header to ALWAYS display, overriding ANY global hide rules */
-    html:root body #ultimateScrollHeader header {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-    }
-
-    /* 2. Set the exact perfect sizes for Logo and Title on Mobile (not too big, not too small) */
-    html:root body #ultimateScrollHeader header .header-logo img,
-    html:root body .sticky-header header .header-logo img {
-        height: auto !important;
-        max-height: 60px !important; 
-        min-height: 0 !important;
-        width: auto !important;
-        object-fit: contain !important;
-        margin: 0 !important;
-    }
-    
-    html:root body #ultimateScrollHeader header .brand-title-container img,
-    html:root body .sticky-header header .brand-title-container img,
-    html:root body header img.urdu-title-png,
-    html:root body header img.brand-title-img-en {
-        height: auto !important;
-        max-height: 50px !important; 
-        min-height: 0 !important;
-        width: auto !important;
-        max-width: 55vw !important;
-        object-fit: contain !important;
-        margin: 0 !important;
-        transform: none !important;
-    }
+html[dir="rtl"] header, html[dir="rtl"] #ultimateScrollHeader header {
+    padding: 10px 15px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    overflow: visible !important;
+    box-shadow: none;
 }
 </style>
 
