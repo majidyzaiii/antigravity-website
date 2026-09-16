@@ -7272,6 +7272,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<!-- MOBILE MENU FONT SIZE FIX -->
+<style id="mobile-menu-font-size-fix">
+/* 1. Force strict uniform small size for ALL mobile menu links (English & Urdu) */
+html:root body .mobile-nav-links a,
+html:root body .mobile-nav-links .m-link,
+html:root body .mobile-lang-btn,
+html:root body[dir="rtl"] .mobile-nav-links a,
+html:root html[lang="ur"] body .mobile-nav-links a,
+html:root body[dir="rtl"] .mobile-lang-btn,
+html:root html[lang="ur"] body .mobile-lang-btn {
+    font-size: 14px !important; /* Uniform small size */
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure no rogue scaling on active states */
+html:root body .mobile-nav-links a.active,
+html:root body[dir="rtl"] .mobile-nav-links a.active {
+    font-size: 14px !important;
+    font-weight: 700 !important; /* Make active just bold, not larger */
+}
+</style>
+
 </body>
 
 
