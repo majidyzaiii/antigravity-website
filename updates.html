@@ -6580,14 +6580,42 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
   const db = firebase.database();
 </script>
 
+
 <style id="global-header-size-fix">
 @media (min-width: 769px) {
+    /* 1. Force strict 100px header container */
     header, #ultimateScrollHeader header {
         height: 100px !important;
         max-height: 100px !important;
         min-height: 100px !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* 2. Force text logos to exactly 65px */
+    header .brand-title-img-en, 
+    #ultimateScrollHeader header .brand-title-img-en,
+    header .urdu-title-png, 
+    #ultimateScrollHeader header .urdu-title-png {
+        height: 65px !important;
+        max-height: 65px !important;
+        min-height: 65px !important;
+        width: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+    }
+    
+    /* 3. Force crest logo to exactly 75px */
+    header .header-logo img,
+    #ultimateScrollHeader header .header-logo img {
+        height: 75px !important;
+        max-height: 75px !important; 
+        min-height: 75px !important;
+        width: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
     }
 }
 </style>
