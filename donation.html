@@ -5139,6 +5139,9 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay { justify-conte
 
 
 
+
+
+
 <!-- REMOVE SOLID WHITE STRIP UNDER PILL MENU -->
 <style id="remove-white-strip-fix">
 @media (min-width: 769px) {
@@ -5146,6 +5149,17 @@ html[dir="rtl"] .mobile-nav-overlay, body.ur .mobile-nav-overlay { justify-conte
         background-color: transparent !important;
         box-shadow: none !important;
         border: none !important;
+    }
+    
+    /* Remove the shadow line from the wrapper so it doesn't cast a line below the pill */
+    html body .sticky-header {
+        box-shadow: none !important;
+        border-bottom: none !important;
+    }
+    
+    /* Optionally, if you want the green header to have a shadow, add it directly to the header */
+    html body .sticky-header header {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
     }
 }
 </style>
