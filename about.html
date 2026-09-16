@@ -7336,6 +7336,30 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 }
 </style>
 
+
+<!-- EXTEND HERO BACKGROUND TO TOP FIX -->
+<style id="extend-hero-bg-fix">
+@media (min-width: 769px) {
+    /* Pull the hero section up to cover the body padding, and increase its padding so content stays in place */
+    html body .hero-section {
+        margin-top: -150px !important;
+        padding-top: 250px !important;
+    }
+}
+</style>
+
+
+<!-- EXTEND ABOUT HEADER TO TOP FIX -->
+<style id="extend-about-header-fix">
+@media (min-width: 769px) {
+    /* Pull the about minimal header up to cover the body padding, and increase its padding so content stays in place */
+    html body div.about-minimal-header {
+        margin-top: -150px !important;
+        padding-top: 200px !important; /* Original was 50px */
+    }
+}
+</style>
+
 </head>
 <body class="about-page">
 
