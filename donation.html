@@ -7478,6 +7478,52 @@ html:root body .mobile-menu-card {
 }
 </style>
 
+
+<!-- COMPACT MENU SIZE & BULLETPROOF TOGGLE FIX -->
+<style id="compact-menu-fix">
+/* Shrink the card itself */
+@media (max-width: 768px) {
+    html:root body .mobile-menu-card {
+        width: 220px !important; /* Extremely compact width */
+        min-width: 200px !important;
+        max-width: 240px !important;
+        padding: 12px 16px !important; /* Tight padding */
+        border-radius: 16px !important;
+    }
+}
+
+/* Shrink the links inside the card */
+html:root body .mobile-menu-card .mobile-nav-links {
+    gap: 0 !important; /* Remove gaps between links */
+}
+html:root body .mobile-menu-card .mobile-nav-links a,
+html:root body .mobile-menu-card .mobile-lang-btn {
+    height: 32px !important; /* Compact height */
+    padding: 0 8px !important;
+    font-size: 13px !important; /* Even smaller font size */
+}
+html:root body .mobile-menu-card .menu-divider {
+    margin: 4px 8px !important; /* Tighter margins on dividers */
+}
+html:root body .mobile-menu-header {
+    margin-bottom: 8px !important; /* Tighter gap below header */
+}
+</style>
+
+<script>
+// Bulletproof delegated listener for ALL hamburger buttons to fix about.html and others
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest('.mobile-menu-btn') || e.target.closest('.minimal-hamburger-btn');
+        if (btn) {
+            e.preventDefault();
+            const overlay = document.getElementById('mobileNavOverlay');
+            if (overlay) overlay.classList.add('is-active');
+        }
+    });
+});
+</script>
+
 </body>
 
 
