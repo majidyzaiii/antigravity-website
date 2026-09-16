@@ -3952,7 +3952,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </style>
 <div class="about-minimal-header">
-  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('active');" aria-label="Toggle Menu">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active')" aria-label="Toggle Menu">
     <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 
@@ -4313,18 +4313,18 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenuBtn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          mobileNavOverlay.classList.add('active');
+          mobileNavOverlay.classList.add('is-active');
       });
       
       if(mobileMenuClose) {
         mobileMenuClose.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('active');
+            mobileNavOverlay.classList.remove('is-active');
         });
       }
       
       mobileNavOverlay.addEventListener('click', (e) => {
           if(e.target === mobileNavOverlay) {
-              mobileNavOverlay.classList.remove('active');
+              mobileNavOverlay.classList.remove('is-active');
           }
             });
         }
