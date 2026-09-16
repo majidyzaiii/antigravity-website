@@ -459,5 +459,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<!-- GOD MODE CSS VARIABLES FIX -->
+<style id="god-mode-menu-fix">
+html {
+    --m-size: 14px;
+    --m-font: 'Outfit', sans-serif;
+    --m-height: 32px;
+}
+html[lang="ur"], html[dir="rtl"] {
+    --m-size: 17px;
+    --m-font: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+}
+/* Force absolute uniformity */
+#mobileNavOverlay * {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+}
+#mobileNavOverlay .mobile-menu-card .mobile-nav-links a,
+#mobileNavOverlay .mobile-menu-card .mobile-nav-links a.active,
+#mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
+#mobileNavOverlay .mobile-menu-card .mobile-lang-btn.active {
+    font-size: var(--m-size) !important;
+    font-family: var(--m-font) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    height: var(--m-height) !important;
+    line-height: var(--m-height) !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 14px !important;
+}
+/* Keep Urdu button as Outfit */
+html[lang="ur"] #mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
+html[dir="rtl"] #mobileNavOverlay .mobile-menu-card .mobile-lang-btn {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+}
+</style>
+
 </body>
 </html>
