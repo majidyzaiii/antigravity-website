@@ -116,6 +116,10 @@
 </style>
 
 
+
+
+
+
 <!-- MOBILE HEADER LAYOUT FIX -->
 <style id="mobile-header-layout-fix">
 @media (max-width: 768px) {
@@ -125,6 +129,7 @@
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
+        position: relative !important; /* Required for absolute centering */
     }
     
     /* 1. Logo should ALWAYS be at the START (Left in EN, Right in UR) */
@@ -132,14 +137,19 @@
     html:root body #ultimateScrollHeader header .header-logo {
         order: 1 !important;
         margin: 0 !important;
+        z-index: 20 !important; /* Keep clickable */
     }
     
-    /* 2. Title should ALWAYS be in the MIDDLE */
+    /* 2. Title should ALWAYS be perfectly CENTERED absolutely */
     html:root body header .brand-title-container,
     html:root body #ultimateScrollHeader header .brand-title-container {
-        order: 2 !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         margin: 0 !important;
-        flex: 1 !important;
+        z-index: 10 !important;
+        width: max-content !important; /* Prevent text wrapping */
+        display: flex !important;
         justify-content: center !important;
     }
     
@@ -148,6 +158,7 @@
     html:root body #ultimateScrollHeader header .mobile-menu-btn {
         order: 3 !important;
         margin: 0 !important;
+        z-index: 20 !important; /* Keep clickable */
     }
 }
 </style>
