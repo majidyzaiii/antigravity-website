@@ -5545,8 +5545,12 @@ html:root body #ultimateScrollHeader header {
 
 
 
-<!-- STRICT GLOBAL HEADER SIZE FIX V5 -->
-<style id="global-header-size-fix-v5">
+
+
+
+
+<!-- STRICT GLOBAL HEADER SIZE FIX V6 -->
+<style id="global-header-size-fix-v6">
 @media (min-width: 769px) {
     /* 1. Force strict 100px header container */
     html:root body header, 
@@ -5569,9 +5573,10 @@ html:root body #ultimateScrollHeader header {
         width: auto !important;
         margin: 0 !important;
         object-fit: contain !important;
+        transform: scale(1) !important;
     }
     
-    /* 3. Urdu Text Logo - Make it significantly larger to overcome transparent padding */
+    /* 3. Urdu Text Logo - Scaled up visually to overcome transparent padding */
     html:root body header .urdu-title-png, 
     html:root body #ultimateScrollHeader header .urdu-title-png,
     html:root body.ur header .urdu-title-png,
@@ -5582,6 +5587,7 @@ html:root body #ultimateScrollHeader header {
         width: auto !important;
         margin: 0 !important;
         object-fit: contain !important;
+        transform: scale(1.3) !important;
     }
     
     /* 4. Crest Logo in English (Default) */
@@ -5593,9 +5599,10 @@ html:root body #ultimateScrollHeader header {
         width: auto !important;
         margin: 0 !important;
         object-fit: contain !important;
+        transform: scale(1) !important;
     }
     
-    /* 5. Crest Logo specifically in Urdu Mode - slightly larger if requested */
+    /* 5. Crest Logo specifically in Urdu Mode - Scaled up visually */
     html:root body.rtl header .header-logo img,
     html:root body[dir="rtl"] header .header-logo img,
     html:root body.ur header .header-logo img,
@@ -5603,6 +5610,7 @@ html:root body #ultimateScrollHeader header {
         height: 95px !important;
         max-height: 95px !important; 
         min-height: 95px !important;
+        transform: scale(1.15) !important;
     }
 }
 </style>
