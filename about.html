@@ -7299,44 +7299,7 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 </script>
 
 
-<style id="global-header-size-fix">
-@media (min-width: 769px) {
-    /* 1. Force strict 100px header container */
-    header, #ultimateScrollHeader header {
-        height: 100px !important;
-        max-height: 100px !important;
-        min-height: 100px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-    
-    /* 2. Force text logos to exactly 65px */
-    header .brand-title-img-en, 
-    #ultimateScrollHeader header .brand-title-img-en,
-    header .urdu-title-png, 
-    #ultimateScrollHeader header .urdu-title-png {
-        height: 65px !important;
-        max-height: 65px !important;
-        min-height: 65px !important;
-        width: auto !important;
-        margin: 0 !important;
-        object-fit: contain !important;
-    }
-    
-    /* 3. Force crest logo to exactly 75px */
-    header .header-logo img,
-    #ultimateScrollHeader header .header-logo img {
-        height: 75px !important;
-        max-height: 75px !important; 
-        min-height: 75px !important;
-        width: auto !important;
-        margin: 0 !important;
-        object-fit: contain !important;
-    }
-}
-</style>
+
 </head>
 <body class="about-page">
 
@@ -10059,6 +10022,56 @@ html:root body #ultimateScrollHeader header {
 /* 2. Fix Urdu Logo Overflow by adding the missing native padding from index.html */
 
 </style>
+
+
+
+
+
+<!-- STRICT GLOBAL HEADER SIZE FIX -->
+<style id="global-header-size-fix-v4">
+@media (min-width: 769px) {
+    /* 1. Force strict 100px header container */
+    html:root body header, 
+    html:root body #ultimateScrollHeader header {
+        height: 100px !important;
+        max-height: 100px !important;
+        min-height: 100px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* 2. Force text logos to exactly 65px */
+    html:root body header .brand-title-img-en, 
+    html:root body #ultimateScrollHeader header .brand-title-img-en,
+    html:root body header .urdu-title-png, 
+    html:root body #ultimateScrollHeader header .urdu-title-png,
+    html:root body.ur header .urdu-title-png,
+    html:root body[dir="rtl"] header .urdu-title-png {
+        height: 65px !important;
+        max-height: 65px !important;
+        min-height: 65px !important;
+        width: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+    }
+    
+    /* 3. Force crest logo to exactly 75px */
+    html:root body header .header-logo img,
+    html:root body #ultimateScrollHeader header .header-logo img,
+    html:root body.rtl header .header-logo img,
+    html:root body[dir="rtl"] header .header-logo img {
+        height: 75px !important;
+        max-height: 75px !important; 
+        min-height: 75px !important;
+        width: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+    }
+}
+</style>
+
 </body>
 
 
