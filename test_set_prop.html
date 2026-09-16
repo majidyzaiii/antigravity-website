@@ -366,5 +366,43 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<!-- ULTIMATE UNIFORM MOBILE MENU FIX -->
+<style id="ultimate-uniform-menu-fix">
+/* Base font family and strict sizes for ALL English links (active or not) */
+html:root body .mobile-menu-card .mobile-nav-links a,
+html:root body .mobile-menu-card .mobile-nav-links a.active,
+html:root body .mobile-menu-card .mobile-lang-btn,
+html:root body .mobile-menu-card .mobile-lang-btn.active {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important; /* Uniform exact size */
+    font-weight: 600 !important;
+    text-transform: uppercase !important; /* Guarantee uniform casing */
+}
+
+/* Base font family and strict sizes for ALL Urdu links (active or not) */
+html:root body[dir="rtl"] .mobile-menu-card .mobile-nav-links a,
+html:root body[dir="rtl"] .mobile-menu-card .mobile-nav-links a.active,
+html:root html[lang="ur"] body .mobile-menu-card .mobile-nav-links a,
+html:root html[lang="ur"] body .mobile-menu-card .mobile-nav-links a.active {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+    font-size: 17px !important; /* Nastaleeq needs to be slightly larger to visually match 14px Outfit */
+    font-weight: 600 !important;
+}
+
+/* Ensure Urdu language button stays Outfit in RTL mode */
+html:root body[dir="rtl"] .mobile-menu-card .mobile-lang-btn,
+html:root html[lang="ur"] body .mobile-menu-card .mobile-lang-btn {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+}
+
+/* Force active state to only change color/background, NOT size! */
+html:root body .mobile-menu-card .mobile-nav-links a.active {
+    background: #f1f5f9 !important;
+    color: #006754 !important; /* Accent color to indicate active, but NO size change */
+}
+</style>
+
 </body>
 </html>
