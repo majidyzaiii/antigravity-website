@@ -6635,8 +6635,12 @@ function saveAllTeachers() {
 
 
 
-<!-- STRICT GLOBAL HEADER SIZE FIX V6 -->
-<style id="global-header-size-fix-v6">
+
+
+
+
+<!-- STRICT GLOBAL HEADER SIZE FIX V7 -->
+<style id="global-header-size-fix-v7">
 @media (min-width: 769px) {
     /* 1. Force strict 100px header container */
     html:root body header, 
@@ -6664,16 +6668,14 @@ function saveAllTeachers() {
     
     /* 3. Urdu Text Logo - Scaled up visually to overcome transparent padding */
     html:root body header .urdu-title-png, 
-    html:root body #ultimateScrollHeader header .urdu-title-png,
-    html:root body.ur header .urdu-title-png,
-    html:root body[dir="rtl"] header .urdu-title-png {
+    html:root body #ultimateScrollHeader header .urdu-title-png {
         height: 95px !important;
         max-height: 95px !important;
         min-height: 95px !important;
         width: auto !important;
         margin: 0 !important;
         object-fit: contain !important;
-        transform: scale(1.3) !important;
+        transform: scale(1.35) !important; /* Increased scale slightly more */
     }
     
     /* 4. Crest Logo in English (Default) */
@@ -6688,11 +6690,11 @@ function saveAllTeachers() {
         transform: scale(1) !important;
     }
     
-    /* 5. Crest Logo specifically in Urdu Mode - Scaled up visually */
-    html:root body.rtl header .header-logo img,
-    html:root body[dir="rtl"] header .header-logo img,
-    html:root body.ur header .header-logo img,
-    html:root html[lang="ur"] body header .header-logo img {
+    /* 5. Crest Logo specifically in Urdu Mode - Correct Selectors! */
+    html[lang="ur"]:root body header .header-logo img,
+    html[lang="ur"]:root body #ultimateScrollHeader header .header-logo img,
+    html[dir="rtl"]:root body header .header-logo img,
+    html[dir="rtl"]:root body #ultimateScrollHeader header .header-logo img {
         height: 95px !important;
         max-height: 95px !important; 
         min-height: 95px !important;
