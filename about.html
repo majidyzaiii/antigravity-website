@@ -10133,7 +10133,8 @@ html:root body #ultimateScrollHeader header {
     html:root body #ultimateScrollHeader header .brand-title-container {
         position: absolute !important;
         left: 50% !important;
-        transform: translateX(-50%) !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
         margin: 0 !important;
         z-index: 10 !important;
         width: max-content !important; /* Prevent text wrapping */
@@ -10210,6 +10211,19 @@ html:root body .mobile-nav-links a.active,
 html:root body[dir="rtl"] .mobile-nav-links a.active {
     font-size: 14px !important;
     font-weight: 700 !important; /* Make active just bold, not larger */
+}
+</style>
+
+
+<!-- MOBILE MENU ALIGNMENT FIX -->
+<style id="mobile-menu-align-fix">
+html:root body .mobile-menu-card .mobile-nav-links a,
+html:root body .mobile-menu-card .mobile-lang-btn {
+    justify-content: flex-start !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 </style>
 
