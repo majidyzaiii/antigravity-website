@@ -10415,6 +10415,61 @@ html:root body .mobile-menu-card .mobile-nav-links a.active {
 }
 </style>
 
+
+<!-- OMEGA MENU FIX -->
+<style id="omega-menu-fix">
+/* FORCE ALL LINKS TO EXACT SAME SIZE WITH EXTREME SPECIFICITY */
+html body #mobileNavOverlay .mobile-menu-card .mobile-nav-links a,
+html body #mobileNavOverlay .mobile-menu-card .mobile-nav-links a.active,
+html body #mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
+html body #mobileNavOverlay .mobile-menu-card .mobile-lang-btn.active {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    height: 32px !important;
+    padding: 0 10px !important;
+    text-transform: uppercase !important;
+    display: flex !important;
+    align-items: center !important;
+    -webkit-text-size-adjust: none !important;
+}
+
+html[lang="ur"] body #mobileNavOverlay .mobile-menu-card .mobile-nav-links a,
+html[dir="rtl"] body #mobileNavOverlay .mobile-menu-card .mobile-nav-links a,
+body[dir="rtl"] #mobileNavOverlay .mobile-menu-card .mobile-nav-links a {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+    font-size: 17px !important;
+}
+
+html[lang="ur"] body #mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
+html[dir="rtl"] body #mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
+body[dir="rtl"] #mobileNavOverlay .mobile-menu-card .mobile-lang-btn {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+}
+
+#mobileNavOverlay .mobile-menu-card .mobile-nav-links a.active {
+    background: #f1f5f9 !important;
+    color: #006754 !important;
+}
+</style>
+
+<script>
+// OVERRIDE ALL OTHER HAMBURGER LISTENERS TO PREVENT DOUBLE-TOGGLE BUGS
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest('.mobile-menu-btn') || e.target.closest('.minimal-hamburger-btn');
+        if (btn) {
+            e.preventDefault();
+            e.stopPropagation(); // STOP BUBBLING! Prevents inline or other listeners from immediately closing it!
+            const overlay = document.getElementById('mobileNavOverlay');
+            if (overlay) overlay.classList.add('is-active');
+        }
+    }, true); // Use CAPTURE phase to intercept before any other scripts!
+});
+</script>
+
 </body>
 
 
