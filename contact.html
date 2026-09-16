@@ -7110,8 +7110,12 @@ html:root body #ultimateScrollHeader header {
 
 
 
-<!-- STRICT GLOBAL HEADER SIZE FIX -->
-<style id="global-header-size-fix-v4">
+
+
+
+
+<!-- STRICT GLOBAL HEADER SIZE FIX V5 -->
+<style id="global-header-size-fix-v5">
 @media (min-width: 769px) {
     /* 1. Force strict 100px header container */
     html:root body header, 
@@ -7125,13 +7129,9 @@ html:root body #ultimateScrollHeader header {
         align-items: center !important;
     }
     
-    /* 2. Force text logos to exactly 65px */
+    /* 2. English Text Logo */
     html:root body header .brand-title-img-en, 
-    html:root body #ultimateScrollHeader header .brand-title-img-en,
-    html:root body header .urdu-title-png, 
-    html:root body #ultimateScrollHeader header .urdu-title-png,
-    html:root body.ur header .urdu-title-png,
-    html:root body[dir="rtl"] header .urdu-title-png {
+    html:root body #ultimateScrollHeader header .brand-title-img-en {
         height: 65px !important;
         max-height: 65px !important;
         min-height: 65px !important;
@@ -7140,17 +7140,38 @@ html:root body #ultimateScrollHeader header {
         object-fit: contain !important;
     }
     
-    /* 3. Force crest logo to exactly 75px */
-    html:root body header .header-logo img,
-    html:root body #ultimateScrollHeader header .header-logo img,
-    html:root body.rtl header .header-logo img,
-    html:root body[dir="rtl"] header .header-logo img {
-        height: 75px !important;
-        max-height: 75px !important; 
-        min-height: 75px !important;
+    /* 3. Urdu Text Logo - Make it significantly larger to overcome transparent padding */
+    html:root body header .urdu-title-png, 
+    html:root body #ultimateScrollHeader header .urdu-title-png,
+    html:root body.ur header .urdu-title-png,
+    html:root body[dir="rtl"] header .urdu-title-png {
+        height: 95px !important;
+        max-height: 95px !important;
+        min-height: 95px !important;
         width: auto !important;
         margin: 0 !important;
         object-fit: contain !important;
+    }
+    
+    /* 4. Crest Logo in English (Default) */
+    html:root body header .header-logo img,
+    html:root body #ultimateScrollHeader header .header-logo img {
+        height: 80px !important;
+        max-height: 80px !important; 
+        min-height: 80px !important;
+        width: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+    }
+    
+    /* 5. Crest Logo specifically in Urdu Mode - slightly larger if requested */
+    html:root body.rtl header .header-logo img,
+    html:root body[dir="rtl"] header .header-logo img,
+    html:root body.ur header .header-logo img,
+    html:root html[lang="ur"] body header .header-logo img {
+        height: 95px !important;
+        max-height: 95px !important; 
+        min-height: 95px !important;
     }
 }
 </style>
