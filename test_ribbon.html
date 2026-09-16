@@ -239,5 +239,109 @@ html:root body .mobile-menu-card .mobile-lang-btn {
 }
 </style>
 
+
+<!-- NEW UNIFIED RESPONSIVE MENU DRAWER/MODAL FIX -->
+<style id="new-unified-menu-modal">
+/* 1. Reset the Overlay */
+html:root body .mobile-nav-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+}
+html:root body .mobile-nav-overlay.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* 2. Base Card Styling (Fluid & Hug Content) */
+html:root body .mobile-menu-card {
+    background: #ffffff !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: max-content !important; /* Hug content */
+    overflow-y: auto !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. MOBILE VIEW (< 768px): Acts as a Side Drawer */
+@media (max-width: 768px) {
+    html:root body .mobile-nav-overlay {
+        align-items: flex-start !important; /* Align to top */
+    }
+    
+    html:root body .mobile-menu-card {
+        width: 90% !important;
+        min-width: 280px !important;
+        max-width: 340px !important;
+        padding: 24px !important;
+        border-radius: 20px !important;
+        position: absolute !important;
+        top: 90px !important; /* Just below the mobile header */
+        
+        /* Default English (LTR): Slide from RIGHT */
+        right: 16px !important;
+        left: auto !important;
+        transform: translateX(120%) scale(0.95) !important;
+        opacity: 0 !important;
+    }
+    
+    html:root body .mobile-nav-overlay.is-active .mobile-menu-card {
+        transform: translateX(0) scale(1) !important;
+        opacity: 1 !important;
+    }
+
+    /* Urdu Mode (RTL): Slide from LEFT */
+    html:root body[dir="rtl"] .mobile-menu-card,
+    html:root html[lang="ur"] body .mobile-menu-card {
+        right: auto !important;
+        left: 16px !important;
+        transform: translateX(-120%) scale(0.95) !important;
+    }
+    html:root body[dir="rtl"] .mobile-nav-overlay.is-active .mobile-menu-card,
+    html:root html[lang="ur"] body .mobile-nav-overlay.is-active .mobile-menu-card {
+        transform: translateX(0) scale(1) !important;
+    }
+}
+
+/* 4. PC / DESKTOP VIEW (>= 768px): Acts as a Centered Modal */
+@media (min-width: 769px) {
+    html:root body .mobile-nav-overlay {
+        justify-content: center !important;
+        align-items: center !important; /* Perfectly centered */
+    }
+    
+    html:root body .mobile-menu-card {
+        width: 100% !important;
+        max-width: 400px !important;
+        padding: 32px !important;
+        border-radius: 24px !important;
+        position: relative !important;
+        transform: translateY(30px) scale(0.95) !important;
+        opacity: 0 !important;
+        margin: 0 auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+    }
+    
+    html:root body .mobile-nav-overlay.is-active .mobile-menu-card {
+        transform: translateY(0) scale(1) !important;
+        opacity: 1 !important;
+    }
+}
+</style>
+
 </body>
 </html>
