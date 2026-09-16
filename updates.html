@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 
+
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -6587,6 +6590,24 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 
 
 
+
+<style id="hide-breadcrumbs-elegant">
+html body div.about-minimal-header .minimal-breadcrumbs,
+html body div.about-minimal-header .about-breadcrumb {
+    display: none !important;
+}
+html body div.about-minimal-header h1.about-main-title,
+html body div.about-minimal-header h1.minimal-title {
+    margin: 0 auto !important; /* Keep it centered but in document flow */
+    text-align: center !important;
+    position: static !important;
+}
+html body div.about-minimal-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+</style>
 </head>
 <body class="about-page">
 
@@ -7543,12 +7564,7 @@ body.ur .mobile-nav-overlay.is-active .mobile-menu-card {
 <!-- ULTIMATE FIX FOR MOBILE HEADER STRIP AND PC BUTTONS -->
 <style>
 /* HIDE EVERYWHERE - HIGHEST SPECIFICITY */
-html:root body div.about-minimal-header button.minimal-back-btn,
-html:root body div.about-minimal-header button.minimal-hamburger-btn,
-html:root body div.about-minimal-header button[onclick*="history.back"],
-#desktopHideBtn1, #desktopHideBtn2 {
-    display: none !important;
-}
+
 
 /* FIX MOBILE HEADER STRIP - HIGHEST SPECIFICITY */
 @media (max-width: 768px) {
@@ -7563,19 +7579,7 @@ html:root body div.about-minimal-header button[onclick*="history.back"],
         height: 100% !important;
     }
     
-    html:root body div.about-minimal-header button.minimal-back-btn,
-    html:root body div.about-minimal-header button.minimal-hamburger-btn,
-    html:root body div.about-minimal-header button[onclick*="history.back"] {
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background: rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-        border-radius: 50% !important;
-        width: 36px !important;
-        height: 36px !important;
-        min-width: 36px !important;
-        min-height: 36px !important;
-    }
+    
     
     html:root body div.about-minimal-header button.minimal-back-btn svg,
     html:root body div.about-minimal-header button.minimal-hamburger-btn svg,
