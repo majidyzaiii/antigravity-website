@@ -6869,14 +6869,14 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
     </div>
             <ul class="mobile-nav-links">
-      <li><a href="index.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="HOME" data-ur="ہوم">HOME</a></li>
-      <li><a href="about.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
+      <li><a href="index.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="HOME" data-ur="ہوم">HOME</a></li>
+      <li><a href="about.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="ABOUT US" data-ur="ہمارے بارے میں">ABOUT US</a></li>
       
-      <li><a href="admissions.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
-      <li><a href="updates.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
-      <li><a href="donation.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
-      <li><a href="contact.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
-      <li><button class="mobile-lang-btn" style="font-size: 14px !important; font-family: \'Outfit\', sans-serif !important; font-weight: 600 !important; display: flex !important; height: 32px !important; align-items: center !important;" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="انگریزی">URDU</button></li>
+      <li><a href="admissions.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="ADMISSIONS" data-ur="داخلہ">ADMISSIONS</a></li>
+      <li><a href="updates.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="UPDATES" data-ur="اپڈیٹس">UPDATES</a></li>
+      <li><a href="donation.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="DONATION" data-ur="عطیات">DONATION</a></li>
+      <li><a href="contact.html" class="m-link" style="font-size: var(--m-size) !important; font-family: var(--m-font) !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" data-en="CONTACT US" data-ur="رابطہ">CONTACT US</a></li>
+      <li><button class="mobile-lang-btn" style="font-size: 16px !important; font-family: \'Outfit\', sans-serif !important; font-weight: 600 !important; display: flex !important; height: var(--m-height) !important; align-items: center !important;" id="mobileLangBtn" onclick="document.getElementById('langSwitch').click();" data-en="URDU" data-ur="انگریزی">URDU</button></li>
     </ul>
   </div>
 </div>
@@ -8271,14 +8271,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- GOD MODE CSS VARIABLES FIX -->
+
+
+
+<!-- GOD MODE CSS VARIABLES FIX -->
 <style id="god-mode-menu-fix">
 html {
-    --m-size: 14px;
+    --m-size: 18px; /* LARGE SIZE AS REQUESTED */
     --m-font: 'Outfit', sans-serif;
-    --m-height: 32px;
+    --m-height: 40px; /* Taller links for the large text */
 }
 html[lang="ur"], html[dir="rtl"] {
-    --m-size: 17px;
+    --m-size: 22px; /* Large Nastaleeq */
     --m-font: 'Jameel Noori Nastaleeq', Arial, sans-serif;
 }
 /* Force absolute uniformity */
@@ -8304,7 +8308,7 @@ html[lang="ur"], html[dir="rtl"] {
 html[lang="ur"] #mobileNavOverlay .mobile-menu-card .mobile-lang-btn,
 html[dir="rtl"] #mobileNavOverlay .mobile-menu-card .mobile-lang-btn {
     font-family: 'Outfit', sans-serif !important;
-    font-size: 14px !important;
+    font-size: 16px !important; /* Slightly larger Urdu button */
 }
 </style>
 
