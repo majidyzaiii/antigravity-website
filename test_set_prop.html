@@ -140,5 +140,43 @@
 }
 </style>
 
+
+<!-- MOBILE MENU CLOSE FIX -->
+<style id="mobile-menu-close-fix">
+/* 1. Fix the Header Layout */
+html:root body .mobile-menu-header {
+    display: flex !important;
+    flex-direction: row !important; /* Respects LTR/RTL natively */
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+html:root body[dir="rtl"] .mobile-menu-header,
+html:root html[lang="ur"] body .mobile-menu-header {
+    flex-direction: row !important; /* Neutralize any old row-reverse hacks */
+}
+html:root body .mobile-menu-close {
+    order: 2 !important; /* Force to the end of the flex container */
+    margin: 0 !important; /* Neutralize any old margin hacks */
+}
+html:root body .menu-tag-label {
+    order: 1 !important; /* Force to the start of the flex container */
+    margin: 0 !important;
+}
+</style>
+
+<!-- 2. Fix the Close Button Click Logic -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Attach listener to ALL close buttons dynamically
+    document.body.addEventListener('click', (e) => {
+        if (e.target.closest('.mobile-menu-close')) {
+            const overlay = document.getElementById('mobileNavOverlay');
+            if (overlay) overlay.classList.remove('is-active');
+        }
+    });
+});
+</script>
+
 </body>
 </html>
