@@ -44,6 +44,32 @@
 }
 </style>
 
+
+
+
+
+<!-- FIX HERO BACKGROUND MISMATCH -->
+<style id="fix-hero-bg-mismatch">
+/* Force hero-section to be completely transparent so we only see hero-unified-bg */
+html:root body .hero-section {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+/* Flip the unified background in RTL so the image matches, and flip the section back so text is normal */
+html[dir="rtl"] body .hero-unified-bg {
+    transform: scaleX(-1) !important;
+}
+html[dir="rtl"] body .hero-unified-bg > .hero-section {
+    transform: scaleX(-1) !important;
+}
+
+/* Override old rules that might flip hero-section or hero-content incorrectly now */
+html[dir="rtl"] body .hero-section > .hero-content {
+    transform: none !important;
+}
+</style>
+
 <div id="test">TEST</div>
     <script>
         const el = document.getElementById('test');
