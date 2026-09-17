@@ -3796,6 +3796,28 @@ html[lang="ur"] .admission-rules-card .notice-badge span {
     }
 }
 </style>
+
+<style id="remove-white-strip-fix">
+@media (min-width: 769px) {
+    html body .floating-nav-container {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+}
+</style>
+<style id="fix-scroll-header-bg">
+/* Remove the solid green background from the sticky header wrapper so the nav pill floats cleanly */
+html:root body .scroll-home-header,
+html:root body #ultimateScrollHeader,
+html:root body .scroll-home-header.is-sticky {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+</style>
+
 <div id="ultimateScrollHeader" class="sticky-header scroll-home-header">
     <header>
         <div class="brand-title-container">
