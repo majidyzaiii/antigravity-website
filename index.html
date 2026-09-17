@@ -5082,6 +5082,33 @@ html[dir="rtl"] body .hero-section > .hero-content {
 }
 </style>
 
+
+<!-- FIX FAQ RTL ALIGNMENT -->
+<style id="fix-faq-rtl-alignment">
+/* Force FAQ items to align right and use RTL direction in Urdu mode */
+html[dir="rtl"] body .faq-accordion,
+html[dir="rtl"] body .faq-item,
+html[dir="rtl"] body .faq-item summary,
+html[dir="rtl"] body .faq-item p,
+html[lang="ur"] body .faq-accordion,
+html[lang="ur"] body .faq-item,
+html[lang="ur"] body .faq-item summary,
+body.ur .faq-accordion,
+body.ur .faq-item,
+body.ur .faq-item summary {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* Ensure the disclosure triangle is properly spaced on the right in RTL */
+html[dir="rtl"] body .faq-item summary::-webkit-details-marker,
+html[lang="ur"] body .faq-item summary::-webkit-details-marker {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+}
+</style>
+
 <div class="mobile-logo-container">
     <img src="assets/logo.png" alt="Madrassa Logo">
 </div>
