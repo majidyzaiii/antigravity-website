@@ -7361,14 +7361,17 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 </style>
 
 
+
+
+
 <!-- FIX ABOUT HEADER BUTTONS ON DESKTOP -->
 <style id="fix-about-buttons-desktop">
 @media (min-width: 769px) {
     /* Since we added 150px to padding-top, the geometric center shifted by 75px, but the content shifted by 150px. 
        We must add 75px to the buttons' top position so they remain perfectly aligned with the content! */
-    html body div.about-minimal-header button.minimal-hamburger-btn,
-    html body div.about-minimal-header button.minimal-back-btn,
-    html body div.about-minimal-header button[onclick*="history.back"] {
+    html:root body div.about-minimal-header button.minimal-hamburger-btn,
+    html:root body div.about-minimal-header button.minimal-back-btn,
+    html:root body div.about-minimal-header button[onclick*="history.back"] {
         top: calc(50% + 75px) !important;
     }
 }
