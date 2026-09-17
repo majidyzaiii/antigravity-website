@@ -4978,16 +4978,7 @@ div:has(> .strengths-wrapper),
 </style>
 
 
-<!-- EXTEND HERO BACKGROUND TO TOP FIX -->
-<style id="extend-hero-bg-fix">
-@media (min-width: 769px) {
-    /* Pull the hero section up to cover the body padding, and increase its padding so content stays in place */
-    html body .hero-section {
-        margin-top: -150px !important;
-        padding-top: 250px !important;
-    }
-}
-</style>
+
 
 
 <!-- EXTEND ABOUT HEADER TO TOP FIX -->
@@ -4997,6 +4988,18 @@ div:has(> .strengths-wrapper),
     html body div.about-minimal-header {
         margin-top: -150px !important;
         padding-top: 200px !important; /* Original was 50px */
+    }
+}
+</style>
+
+
+<!-- EXTEND HERO BACKGROUND TO TOP FIX -->
+<style id="extend-hero-bg-fix">
+@media (min-width: 769px) {
+    /* Pull the hero background wrapper up to cover the body padding, and increase its padding so content stays in place */
+    html body .hero-unified-bg {
+        margin-top: -150px !important;
+        padding-top: 150px !important;
     }
 }
 </style>
