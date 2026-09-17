@@ -5676,6 +5676,23 @@ body.hide-main-header { padding-top: 0 !important; }
     }
 }
 </style>
+
+<!-- REMOVE ROUND BUTTONS FROM SUBPAGE HEADERS -->
+
+
+
+<!-- REMOVE ROUND BUTTONS FROM SUBPAGE HEADERS ON DESKTOP -->
+<style id="remove-minimal-buttons">
+/* The user explicitly requested to remove the round back button and hamburger button from the sides of the subpage headers on desktop, since the Nav Pill exists */
+@media (min-width: 769px) {
+    html:root body div.about-minimal-header button.minimal-back-btn,
+    html:root body div.about-minimal-header button[onclick*="history.back"],
+    html:root body div.about-minimal-header button.minimal-hamburger-btn {
+        display: none !important;
+    }
+}
+</style>
+
 <div id="ultimateScrollHeader" class="sticky-header scroll-home-header">
     <header>
         <div class="brand-title-container">

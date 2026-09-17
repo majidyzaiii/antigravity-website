@@ -5476,7 +5476,24 @@ html:root body .scroll-home-header.is-sticky {
 </head>
 <body class="light-mode">
     <!-- AUTH GATEWAY -->
-    <div id="login-view" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8fafc; padding: 20px;">
+    
+<!-- REMOVE ROUND BUTTONS FROM SUBPAGE HEADERS -->
+
+
+
+<!-- REMOVE ROUND BUTTONS FROM SUBPAGE HEADERS ON DESKTOP -->
+<style id="remove-minimal-buttons">
+/* The user explicitly requested to remove the round back button and hamburger button from the sides of the subpage headers on desktop, since the Nav Pill exists */
+@media (min-width: 769px) {
+    html:root body div.about-minimal-header button.minimal-back-btn,
+    html:root body div.about-minimal-header button[onclick*="history.back"],
+    html:root body div.about-minimal-header button.minimal-hamburger-btn {
+        display: none !important;
+    }
+}
+</style>
+
+<div id="login-view" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8fafc; padding: 20px;">
         <div class="content-card" style="width: 100%; max-width: 400px; padding: 40px; text-align: center;">
             <div style="background: var(--header-bg); display: inline-block; padding: 15px; border-radius: 50%; margin-bottom: 20px;">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
