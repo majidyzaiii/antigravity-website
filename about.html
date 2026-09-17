@@ -7349,33 +7349,13 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 </style>
 
 
-<!-- EXTEND ABOUT HEADER TO TOP FIX -->
-<style id="extend-about-header-fix">
-@media (min-width: 769px) {
-    /* Pull the about minimal header up to cover the body padding, and increase its padding so content stays in place */
-    html body div.about-minimal-header {
-        margin-top: -150px !important;
-        padding-top: 200px !important; /* Original was 50px */
-    }
-}
-</style>
 
 
 
 
 
-<!-- FIX ABOUT HEADER BUTTONS ON DESKTOP -->
-<style id="fix-about-buttons-desktop">
-@media (min-width: 769px) {
-    /* Since we added 150px to padding-top, the geometric center shifted by 75px, but the content shifted by 150px. 
-       We must add 75px to the buttons' top position so they remain perfectly aligned with the content! */
-    html:root body div.about-minimal-header button.minimal-hamburger-btn,
-    html:root body div.about-minimal-header button.minimal-back-btn,
-    html:root body div.about-minimal-header button[onclick*="history.back"] {
-        top: calc(50% + 75px) !important;
-    }
-}
-</style>
+
+
 
 </head>
 <body class="about-page">
