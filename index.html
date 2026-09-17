@@ -7788,6 +7788,21 @@ body > .mobile-logo-container { display: none !important; }
         }
 applyDynamicSettings();
 
+        // Fetch updates from Firebase
+        fetch('https://riaz-ul-quran-wal-sunnah-default-rtdb.firebaseio.com/site_updates.json?nocache=' + new Date().getTime())
+            .then(r => r.json())
+            .then(updates => {
+                if (updates && Array.isArray(updates)) {
+                    localStorage.setItem('site_updates', JSON.stringify(updates));
+                    const currentLang = sessionStorage.getItem('siteLang') || 'en';
+                    if(typeof renderUpdatesForLang === 'function') {
+                        renderUpdatesForLang(currentLang);
+                    }
+                }
+            })
+            .catch(e => console.error('Failed to fetch updates from Firebase', e));
+    
+
 </script>
 
 <!-- TEACHER ZOOM MODAL -->
