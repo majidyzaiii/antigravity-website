@@ -7394,6 +7394,29 @@ html:root body .scroll-home-header.is-sticky {
 }
 </style>
 
+
+<!-- NUKE ALL STRIP BACKGROUNDS -->
+<style id="nuke-strip-bgs">
+@media (min-width: 769px) {
+    html:root body .floating-nav-container,
+    html:root body .sticky-header,
+    html:root body .scroll-home-header,
+    html:root body #ultimateScrollHeader {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    html:root body .sticky-header header {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    }
+}
+</style>
+
 <div id="ultimateScrollHeader" class="sticky-header scroll-home-header">
     <header>
         <div class="brand-title-container">

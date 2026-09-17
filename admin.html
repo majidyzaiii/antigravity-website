@@ -5493,6 +5493,29 @@ html:root body .scroll-home-header.is-sticky {
 }
 </style>
 
+
+<!-- NUKE ALL STRIP BACKGROUNDS -->
+<style id="nuke-strip-bgs">
+@media (min-width: 769px) {
+    html:root body .floating-nav-container,
+    html:root body .sticky-header,
+    html:root body .scroll-home-header,
+    html:root body #ultimateScrollHeader {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    html:root body .sticky-header header {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    }
+}
+</style>
+
 <div id="login-view" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8fafc; padding: 20px;">
         <div class="content-card" style="width: 100%; max-width: 400px; padding: 40px; text-align: center;">
             <div style="background: var(--header-bg); display: inline-block; padding: 15px; border-radius: 50%; margin-bottom: 20px;">
