@@ -5456,6 +5456,17 @@ div:has(> .strengths-wrapper),
 
 
 
+
+<!-- FIX SOLID GREEN STRIP BEHIND NAV PILL -->
+<style id="fix-scroll-header-bg">
+/* Remove the solid green background from the sticky header wrapper so the nav pill floats cleanly */
+html:root body .scroll-home-header,
+html:root body #ultimateScrollHeader {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+</style>
+
 </head>
 <body class="light-mode">
     <!-- AUTH GATEWAY -->
