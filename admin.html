@@ -5527,6 +5527,19 @@ html:root body .scroll-home-header.is-sticky {
     border-radius: 2px;
 }
 </style>
+
+<style id="fries-menu-css">
+html[dir="rtl"] .fries-menu-icon {
+    transform: scaleX(-1);
+}
+.fries-menu-icon path {
+    transition: all 0.3s ease;
+}
+.mobile-menu-btn:hover .fries-menu-icon path:nth-child(1) {
+    d: path("M4 6h16 M6 12h14 M4 18h16");
+}
+</style>
+
 </head>
 <body class="light-mode">
     <!-- AUTH GATEWAY -->
