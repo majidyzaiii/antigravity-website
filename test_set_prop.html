@@ -208,7 +208,7 @@ html[lang="ur"] body .faq-item summary::-webkit-details-marker {
     /* 1. Logo should ALWAYS be at the START (Left in EN, Right in UR) */
     html:root body header .header-logo,
     html:root body #ultimateScrollHeader header .header-logo {
-        order: 1 !important;
+        
         margin: 0 !important;
         z-index: 20 !important; /* Keep clickable */
     }
@@ -257,7 +257,7 @@ html:root body .mobile-menu-close {
     margin: 0 !important; /* Neutralize any old margin hacks */
 }
 html:root body .menu-tag-label {
-    order: 1 !important; /* Force to the start of the flex container */
+     /* Force to the start of the flex container */
     margin: 0 !important;
 }
 </style>
@@ -658,6 +658,7 @@ html[lang="ur"], html[dir="rtl"] {
     .capsule-item {
         display: flex !important;
         align-items: center !important;
+        gap: 14px !important;
         background: #ffffff !important;
         border: 1px solid rgba(226, 232, 240, 0.8) !important;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07) !important;
@@ -716,8 +717,7 @@ html[lang="ur"], html[dir="rtl"] {
         transform: translateX(100%);
     }
     .capsule-item .capsule-icon-badge {
-        margin-right: 14px !important;
-        margin-left: 0 !important;
+        /* Removed margins, using gap instead */
     }
     .capsule-text {
         text-align: left !important;
@@ -732,22 +732,15 @@ html[lang="ur"], html[dir="rtl"] {
     }
     html[dir="rtl"] .capsule-item .capsule-icon-badge,
     html[lang="ur"] .capsule-item .capsule-icon-badge {
-        margin-right: 0 !important;
-        margin-left: 14px !important;
-        order: 2 !important; /* Move icon to the right */
+        /* Automatically handled by RTL flex direction */
     }
     html[dir="rtl"] .capsule-text,
     html[lang="ur"] .capsule-text {
         text-align: right !important;
-        order: 1 !important;
+        
     }
 
-    /* Ensure lang switch stays Outfit in Urdu mode if text is English */
-    html[dir="rtl"] .capsule-lang-item .capsule-text,
-    html[lang="ur"] .capsule-lang-item .capsule-text {
-        font-family: 'Outfit', sans-serif !important;
-        font-size: 16px !important;
-    }
+    /* Removed Outfit override since we use Urdu script for English now */
 
     /* Active Entrance Animation */
     .capsule-nav-overlay.is-active .capsule-item {
@@ -851,7 +844,7 @@ html[lang="ur"], html[dir="rtl"] {
         </a>
         <div class="capsule-item capsule-lang-item" id="capsuleLangBtn">
             <div class="capsule-icon-badge"><svg><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-            <div class="capsule-text" data-en="URDU" data-ur="English">URDU</div>
+            <div class="capsule-text" data-en="URDU" data-ur="انگریزی">URDU</div>
         </div>
     </div>
     
