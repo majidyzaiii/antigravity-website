@@ -7442,6 +7442,7 @@ html[dir="rtl"] .fries-menu-icon {
 </style>
 
 
+
 <!-- FIX FOR SCROLLING STICKY HEADER -->
 <style id="sticky-header-scroll-fix">
 @media (max-width: 768px) {
@@ -7451,17 +7452,20 @@ html[dir="rtl"] .fries-menu-icon {
     }
     
     /* Hide the main header at scroll 0 */
-    .scroll-home-header:not(.is-sticky) {
+    html body .scroll-home-header:not(.is-sticky) {
         display: none !important;
         opacity: 0 !important;
         pointer-events: none !important;
     }
     
-    /* When scrolled, the main header gets .is-sticky and appears */
-    .scroll-home-header.is-sticky {
+    /* When scrolled, the main header gets .is-sticky and appears, WITH SOLID BACKGROUND */
+    html body .scroll-home-header.is-sticky {
         display: flex !important;
         opacity: 1 !important;
         pointer-events: auto !important;
+        background: linear-gradient(135deg, #004d3e, #007a62) !important;
+        background-color: #006754 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
         animation: slideDown 0.3s ease-out forwards !important;
     }
     
