@@ -6725,7 +6725,8 @@ html[dir="rtl"] .fries-menu-icon {
 
 
 
-<!-- FIX FOR SCROLLING STICKY HEADER -->
+
+<!-- FIX FOR SCROLLING STICKY HEADER v3 -->
 <style id="sticky-header-scroll-fix">
 @media (max-width: 768px) {
     /* Remove padding so minimal header sits at the top */
@@ -6733,27 +6734,25 @@ html[dir="rtl"] .fries-menu-icon {
         padding-top: 0 !important;
     }
     
-    /* Hide the main header at scroll 0 */
-    html body .scroll-home-header:not(.is-sticky) {
-        display: none !important;
+    /* Hide the main header at scroll 0, but keep it in DOM so it can transition */
+    html body .scroll-home-header {
+        visibility: hidden !important;
         opacity: 0 !important;
         pointer-events: none !important;
+        transform: translateY(-100%) !important;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
     }
     
-    /* When scrolled, the main header gets .is-sticky and appears, WITH SOLID BACKGROUND */
+    /* When scrolled, the main header gets .is-sticky and slides in */
     html body .scroll-home-header.is-sticky {
-        display: flex !important;
+        visibility: visible !important;
         opacity: 1 !important;
         pointer-events: auto !important;
+        transform: translateY(0) !important;
         background: linear-gradient(135deg, #004d3e, #007a62) !important;
         background-color: #006754 !important;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-        animation: slideDown 0.3s ease-out forwards !important;
-    }
-    
-    @keyframes slideDown {
-        from { transform: translateY(-100%); }
-        to { transform: translateY(0); }
+        z-index: 99999 !important;
     }
 }
 </style>
@@ -7018,16 +7017,12 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 <div class="about-minimal-header">
   <!-- Hamburger Menu -->
-  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active')" aria-label="Toggle Menu">
-    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  </button>
+  
 
   <!-- Breadcrumbs -->
   
   <!-- Back Button -->
-  <button class="minimal-back-btn"  onclick="window.history.back() || (window.location.href='index.html')">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
+  
 
   <!-- Centered Title with Green Swoosh -->
   <div class="title-with-swoosh">
