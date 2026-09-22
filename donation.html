@@ -5271,10 +5271,40 @@ html[dir="rtl"] .fries-menu-icon {
 }
 </style>
 
+
+<!-- FIX FOR SCROLLING STICKY HEADER -->
+<style id="sticky-header-scroll-fix">
+@media (max-width: 768px) {
+    /* Remove padding so minimal header sits at the top */
+    body {
+        padding-top: 0 !important;
+    }
+    
+    /* Hide the main header at scroll 0 */
+    .scroll-home-header:not(.is-sticky) {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    /* When scrolled, the main header gets .is-sticky and appears */
+    .scroll-home-header.is-sticky {
+        display: flex !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        animation: slideDown 0.3s ease-out forwards !important;
+    }
+    
+    @keyframes slideDown {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+    }
+}
+</style>
 </head>
 
 
-<body>
+<body style="margin: 0 !important; padding: 0 !important;">
 
 
 
@@ -5762,7 +5792,22 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 </style>
-
+<div class="about-minimal-header">
+  <button class="minimal-hamburger-btn" onclick="document.getElementById('mobileNavOverlay').classList.add('is-active'); document.querySelector('#mobileNavOverlay .mobile-menu-card').classList.add('is-active');" aria-label="Toggle Menu">
+    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+  <button class="minimal-back-btn" onclick="window.history.back() || (window.location.href='index.html')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <div class="title-with-swoosh">
+    <h1 class="about-main-title" data-en="Donation" data-ur="عطیات">
+      Donation
+    </h1>
+    <div class="minimal-breadcrumbs" style="margin-top: 8px !important;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; position:relative; top:-1px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span data-en="Home" data-ur="ہوم">Home</span> <span class="chevron">&gt;</span> <span data-en="Donate Now" data-ur="عطیات">Donate Now</span>
+    </div>
+  </div>
+</div>
 
 
 <div class="mobile-logo-container">
