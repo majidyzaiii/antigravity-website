@@ -1,67 +1,39 @@
 const fs = require('fs');
-let html = fs.readFileSync('contact.html', 'utf8');
+const files = fs.readdirSync('.').filter(f => f.endsWith('.html'));
 
-const oldCss = `.floating-whatsapp {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background-color: #25D366;
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-  z-index: 999;
-}`;
+const badWaPath = 'M12.031 21c-1.606 0-3.18-.415-4.57-1.203L2 21.365l1.62-5.321A8.93 8.93 0 012.39 12 9.01 9.01 0 0111.411 3h.62A9 9 0 0121 12.019a9.01 9.01 0 01-8.969 8.981zm-4.757-2.071c1.378.817 2.99 1.25 4.674 1.25 5.034 0 9.13-4.093 9.136-9.133A9.1 9.1 0 0012 1.954 9.1 9.1 0 002.868 11.08c0 1.62.408 3.195 1.183 4.544l-.995 3.268 3.342-.993a.276.276 0 00.124-.03L7.274 18.93zM16.48 14.3c-.26-.13-1.542-.762-1.78-.85-.238-.086-.411-.13-.585.13-.173.26-.672.85-.824 1.024-.15.173-.303.195-.563.065-.26-.13-1.1-.406-2.097-1.296-.775-.693-1.298-1.55-1.45-1.81-.151-.26-.016-.401.114-.53.117-.116.26-.303.39-.455.13-.151.173-.26.26-.433.086-.173.043-.325-.022-.455-.065-.13-.584-1.41-.8-1.93-.21-.508-.423-.44-.585-.448l-.497-.008c-.174 0-.455.065-.694.325-.238.26-.91 .888-.91 2.167 0 1.278.931 2.513 1.061 2.686.13.173 1.83 2.796 4.433 3.896.619.262 1.103.419 1.482.536.621.193 1.187.165 1.63.1.498-.073 1.543-.63 1.76-1.237.216-.607.216-1.127.151-1.237-.065-.11-.238-.174-.498-.304z';
+const goodWaPath = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z';
 
-const newCss = `.floating-whatsapp {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background-color: #25D366;
-  color: #ffffff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-  z-index: 999;
-  animation: bounceWa 2s infinite ease-in-out;
-  transition: transform 0.3s ease;
+const cssInject = `
+<style>
+/* WhatsApp Pulse Effect */
+@keyframes pulseWaIcon {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
-
-.floating-whatsapp:hover {
-  transform: scale(1.1);
+.floating-whatsapp {
+  animation: pulseWaIcon 2s infinite !important;
 }
+</style>
+`;
 
-@keyframes bounceWa {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}`;
-
-html = html.replace(oldCss, newCss);
-
-// Find the HTML part dynamically
-const startIdx = html.indexOf('<a href="https://wa.me');
-const endIdx = html.indexOf('</a>', startIdx) + 4;
-const oldHtml = html.substring(startIdx, endIdx);
-
-const newHtml = `<a href="https://wa.me/923001234567?text=Assalam-o-Alaikum,%20I%20would%20like%20information%20regarding%20Madrasa%20Riaz%20ul%20Quran." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-  <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133-.298-.347-.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>`;
-
-if(oldHtml) {
-    html = html.replace(oldHtml, newHtml);
-    fs.writeFileSync('contact.html', html, 'utf8');
-    console.log('Fixed contact.html');
-} else {
-    console.log('Could not find old html');
-}
+files.forEach(file => {
+    let html = fs.readFileSync(file, 'utf8');
+    let changed = false;
+    
+    if (html.includes(badWaPath)) {
+        html = html.replace(badWaPath, goodWaPath);
+        changed = true;
+    }
+    
+    if (html.includes('floating-whatsapp') && !html.includes('pulseWaIcon')) {
+        html += '\n' + cssInject;
+        changed = true;
+    }
+    
+    if (changed) {
+        fs.writeFileSync(file, html, 'utf8');
+        console.log('Fixed WA in ' + file);
+    }
+});
