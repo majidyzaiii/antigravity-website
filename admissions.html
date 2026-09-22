@@ -3988,7 +3988,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         window.addEventListener('scroll', () => {
-            if(window.scrollY > 120) {
+            const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if(scrollTop > 120) {
                 scrollHeader.classList.add('is-sticky');
             } else {
                 scrollHeader.classList.remove('is-sticky');

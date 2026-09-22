@@ -5510,9 +5510,7 @@ html[dir="rtl"] .fries-menu-icon {
 
 
 <style id="sticky-footer-fix">
-  html, body {
-      height: 100%;
-  }
+  
   body {
       display: flex !important;
       flex-direction: column !important;
@@ -5529,7 +5527,8 @@ html[dir="rtl"] .fries-menu-icon {
 
 
 
-<!-- FIX FOR SCROLLING STICKY HEADER v3 -->
+
+<!-- FIX FOR SCROLLING STICKY HEADER v4 -->
 <style id="sticky-header-scroll-fix">
 @media (max-width: 768px) {
     /* Remove padding so minimal header sits at the top */
@@ -5537,8 +5536,8 @@ html[dir="rtl"] .fries-menu-icon {
         padding-top: 0 !important;
     }
     
-    /* Hide the main header at scroll 0, but keep it in DOM so it can transition */
-    html body .scroll-home-header {
+    /* Hide the main header at scroll 0 */
+    #ultimateScrollHeader:not(.is-sticky) {
         visibility: hidden !important;
         opacity: 0 !important;
         pointer-events: none !important;
@@ -5546,8 +5545,8 @@ html[dir="rtl"] .fries-menu-icon {
         transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
     }
     
-    /* When scrolled, the main header gets .is-sticky and slides in */
-    html body .scroll-home-header.is-sticky {
+    /* When scrolled, use ID for highest specificity to override the transparent bug! */
+    #ultimateScrollHeader.is-sticky {
         visibility: visible !important;
         opacity: 1 !important;
         pointer-events: auto !important;
@@ -5966,7 +5965,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         window.addEventListener('scroll', () => {
-            if(window.scrollY > 120) {
+            const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if(scrollTop > 120) {
                 scrollHeader.classList.add('is-sticky');
             } else {
                 scrollHeader.classList.remove('is-sticky');
