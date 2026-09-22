@@ -7136,30 +7136,13 @@ html:root body .mobile-menu-card {
     }
 }
 
-/* 4. PC / DESKTOP VIEW (>= 768px): Acts as a Centered Modal */
+/* 4. PC / DESKTOP VIEW (>= 768px): Hide mobile menu entirely */
 @media (min-width: 769px) {
     html:root body .mobile-nav-overlay {
-        justify-content: center !important;
-        align-items: center !important; /* Perfectly centered */
-    }
-    
-    html:root body .mobile-menu-card {
-        width: 100% !important;
-        max-width: 400px !important;
-        padding: 32px !important;
-        border-radius: 24px !important;
-        position: relative !important;
-        transform: translateY(30px) scale(0.95) !important;
+        display: none !important;
         opacity: 0 !important;
-        margin: 0 auto !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-    }
-    
-    html:root body .mobile-nav-overlay.is-active .mobile-menu-card {
-        transform: translateY(0) scale(1) !important;
-        opacity: 1 !important;
+        pointer-events: none !important;
+        z-index: -999 !important;
     }
 }
 </style>
