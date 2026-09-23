@@ -859,6 +859,34 @@ main {
     flex-shrink: 0;
     width: 100%;
 }
+
+/* Text Overflow Fix */
+.new-card-excerpt {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 0;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* Background pattern matching other containers */
+.new-update-card {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,
+        bottom left !important;
+    background-size: 
+        100% 100%, 
+        800px auto,
+        800px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important;
+}
+
 </style>
 
 <!-- Mobile Drawer Strict RTL Positioning -->
@@ -6849,7 +6877,7 @@ html[dir="rtl"] .fries-menu-icon {
     flex-direction: column;
 }
 
-.new-card-excerpt {
+.new-card-excerpt-old {
     color: #334155;
     line-height: 1.6;
     margin-bottom: 0;
