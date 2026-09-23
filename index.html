@@ -5691,11 +5691,7 @@ html[dir="ltr"] .ur-svg-wrapper { display: none !important; }
             const currentYear = new Date().getFullYear();
             const yearsValue = currentYear - startYear;
             
-            const yearsCountElement = document.getElementById('years-count');
-            
-            if(yearsCountElement) {
-                yearsCountElement.setAttribute('data-target', yearsValue);
-            }
+            document.querySelectorAll('#years-count').forEach(el => el.setAttribute('data-target', yearsValue));
 
             const statSection = document.querySelector('.donut-infographic-section');
             let initialAnimated = false;
@@ -5735,22 +5731,34 @@ html[dir="ltr"] .ur-svg-wrapper { display: none !important; }
 
             // Interactive Hover & Click re-trigger logic (Desktop)
             const slices = document.querySelectorAll('.stat-slice');
-            const textBlocks = document.querySelectorAll('.desktop-svg-wrapper .svg-text-block');
             
             slices.forEach(slice => {
                 const index = slice.getAttribute('data-index');
                 const triggerInteraction = () => {
-                    if (textBlocks[index]) textBlocks[index].classList.add('highlight-text');
+                    const parentWrapper = slice.closest('.en-svg-wrapper, .ur-svg-wrapper');
+                    if (parentWrapper) {
+                        const localTextBlocks = parentWrapper.querySelectorAll('.svg-text-block');
+                        if (localTextBlocks[index]) localTextBlocks[index].classList.add('highlight-text');
+                    }
                     const counter = slice.querySelector('.count-up');
-                    if (counter) runCounterAnimation(counter);
+                    if (counter) {
+                        counter.textContent = '0'; // Reset text to 0 to force visual recount
+                        counter.dataset.animating = 'false'; // Reset animation state
+                        runCounterAnimation(counter);
+                    }
                 };
                 
                 slice.addEventListener('mouseenter', triggerInteraction);
                 slice.addEventListener('touchstart', triggerInteraction, {passive: true});
                 slice.addEventListener('mouseleave', () => {
-                    if (textBlocks[index]) textBlocks[index].classList.remove('highlight-text');
+                    const parentWrapper = slice.closest('.en-svg-wrapper, .ur-svg-wrapper');
+                    if (parentWrapper) {
+                        const localTextBlocks = parentWrapper.querySelectorAll('.svg-text-block');
+                        if (localTextBlocks[index]) localTextBlocks[index].classList.remove('highlight-text');
+                    }
                 });
             });
+        });
 
 
         });
