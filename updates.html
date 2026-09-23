@@ -5605,9 +5605,15 @@ html[dir="rtl"] .motto-highlight::after, body.ur .motto-highlight::after {
         }
 
         .updates-container {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 20px 140px 20px !important;
+}
+@media (max-width: 768px) {
+    .updates-container {
+        padding: 100px 20px 100px 20px !important;
+    }
+}
 
         /* Section Header Styling */
         .updates-header {
