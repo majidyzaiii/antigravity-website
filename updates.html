@@ -6801,6 +6801,21 @@ html[dir="rtl"] .fries-menu-icon {
 .new-update-card {
     position: relative !important;
     background-color: #ffffff !important;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), 
+        url('assets/container-bg.jpg'),
+        url('assets/container-bg.jpg') !important;
+    background-position: 
+        top left, 
+        top right,
+        bottom left !important;
+    background-size: 
+        100% 100%, 
+        600px auto,
+        600px auto !important; 
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, multiply !important;
+    
     border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
     border-radius: 28px !important;
     box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
@@ -6826,22 +6841,7 @@ html[dir="rtl"] .fries-menu-icon {
     }
 }
 
-/* Top Right Design Dots */
-.new-update-card::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important; right: 0 !important;
-    width: 750px !important; max-width: 180% !important;
-    min-width: 550px !important; height: 750px !important; max-height: 180% !important;
-    min-height: 550px !important;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.80), rgba(255, 255, 255, 0.80)), url('assets/container-bg.jpg') !important;
-    background-size: 900px 600px !important;
-    background-position: top right !important;
-    opacity: 0.9 !important;
-    z-index: 1 !important;
-    transform: translate(20%, -20%) !important;
-    pointer-events: none !important;
-}
+
 
 /* Bottom Left Design Dots */
 .new-update-card::after {
