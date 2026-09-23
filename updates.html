@@ -6774,6 +6774,88 @@ html[dir="rtl"] .fries-menu-icon {
     font-size: 15px !important;
 }
 </style>
+
+<style>
+/* New Update Card Design matching section-card-container */
+.new-update-card {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 103, 84, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04) !important;
+    border-radius: 20px !important;
+    padding: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Optional: add the faint dot background pattern if needed */
+}
+
+.new-update-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08) !important;
+}
+
+.new-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.new-card-date {
+    background: #006754;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.new-card-heading {
+    text-align: center;
+    color: #025F55;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.new-card-img-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+}
+
+.new-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.new-update-card:hover .new-card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.new-card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-card-excerpt {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+</style>
+
 </head>
 <body class="about-page">
 
@@ -8607,20 +8689,24 @@ document.addEventListener("DOMContentLoaded", () => {
             const descFont = lang === 'ur' ? "'Jameel Noori Nastaleeq', serif" : "'Plus Jakarta Sans', sans-serif";
             const descSize = lang === 'ur' ? '20px' : '15px';
             
+            
             return `
-            <article class="news-card" id="upd-${u.id}">
-                <div class="news-img-wrapper">
-                    <img src="${imgSrc}" alt="${title}" style="width: 100%; height: 250px; object-fit: cover;" />
+            <article class="news-card new-update-card" id="upd-${u.id}">
+                <div class="new-card-header">
+                    <span class="new-card-date">${formattedDate}</span>
+                    <span class="new-card-author">${finalAuthor.replace('&bull; ', '')}</span>
                 </div>
-                <div class="news-card-content">
-                    <div class="news-meta">
-                        <span class="news-date-badge">${formattedDate}</span>
-                        <span class="news-author">${finalAuthor}</span>
-                    </div>
-                    <h3 class="news-heading" style="word-break: break-word; overflow-wrap: break-word; font-family: ${titleFont}; margin-bottom:15px;">${title}</h3>
-                    <p class="news-excerpt" style="word-break: break-word; overflow-wrap: break-word; font-family: ${descFont}; font-size: ${descSize};">${desc}</p>
+                <h3 class="new-card-heading" style="font-family: ${titleFont};">${title}</h3>
+                
+                <div class="new-card-img-wrapper">
+                    <img src="${imgSrc}" alt="${title}" />
+                </div>
+                
+                <div class="new-card-body">
+                    <p class="new-card-excerpt" style="font-family: ${descFont}; font-size: ${descSize};">${desc}</p>
                 </div>
             </article>`;
+
         }).join('');
     }
 
