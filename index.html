@@ -8838,11 +8838,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
+
 <style>
-/* Shift hero content up slightly in PC mode as requested */
+/* Shift ONLY the Hadees image up in PC mode, keeping the text below in its original position */
 @media (min-width: 992px) {
-    .hero-content {
-        margin-top: -50px !important;
+    .hero-hadith-img {
+        margin-top: -35px !important;
+        margin-bottom: 80px !important; /* Add the 50px difference here so text doesn't move up */
     }
 }
 </style>
