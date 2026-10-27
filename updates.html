@@ -871,6 +871,18 @@ main {
 
 
 
+
+@media (max-width: 1024px) {
+    #dynamic-updates-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+@media (max-width: 768px) {
+    #dynamic-updates-container {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 </style>
 
 <!-- Mobile Drawer Strict RTL Positioning -->
@@ -6577,7 +6589,7 @@ body.ur .donation-header h1, body.ur .donation-header h2, body.ur .donation-head
 /* Make the updates list a 3-column grid */
 #dynamic-updates-container {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 30px !important;
     align-items: start;
 }
