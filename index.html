@@ -20,7 +20,12 @@
     <title>Madrassa Riaz ul Quran wal Sunnah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Caveat:wght@600;700&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Almarai:wght@700;800;900&family=Reem+Kufi+Fun:wght@700&family=Sacramento&display=swap" rel="stylesheet">
     <style>
 
 @font-face {
@@ -36,14 +41,14 @@
             font-weight: normal;
             font-style: normal;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700;900&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        /* Fonts loaded asynchronously in <head> to prevent render-blocking */
+
         @import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
-        @import url('https://fonts.cdnfonts.com/css/jameel-noori-nastaleeq');
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+
+
+
 
 
         :root {
@@ -4318,7 +4323,7 @@ main {
   font-style: normal;
 }
 
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap');
+    /* Outfit font preloaded in <head> */
 
     h1, h2, h3, h4, h5, h6,
     .section-title,
@@ -4808,7 +4813,7 @@ html[dir="rtl"] .mobile-menu .close-btn, body.ur .mobile-menu .close-btn, html[d
 /* =========================================================
    GLOBAL TYPOGRAPHY OVERRIDES (Google Fonts)
    ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@600;700&display=swap');
+/* Inter & Plus Jakarta Sans fonts preloaded in <head> */
 
 /* Scope to LTR (English) only to protect Urdu fonts */
 :is(html:not([dir="rtl"]) body, [dir="ltr"]) h2:not(.preserve-heading):not(.primary-heading),
@@ -5289,7 +5294,7 @@ html[lang="ur"] body .faq-item summary::-webkit-details-marker {
                 return `
         <article class="news-card">
           <div class="news-img-wrapper">
-            <img src="${imgSrc}" alt="${title}" style="width: 100%; height: 250px; object-fit: cover;" />
+            <img src="${imgSrc}" alt="${title}" loading="lazy" decoding="async" style="width: 100%; height: 250px; object-fit: cover;" />
           </div>
           <div class="news-card-content">
             <div class="news-meta">
@@ -5407,7 +5412,7 @@ if (langSwitchBtn) {
 
         <div class="hero-content" style="display: block; width: 100%; max-width: 100%;">
             <!-- Welcome badge removed as requested -->
-            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah">
+            <img src="assets/hero-hadith.png" class="hero-hadith-img" alt="Hadith Bismillah" fetchpriority="high" decoding="async">
             
             <div class="hero-text-wrapper" style="max-width: 620px; display: flex; flex-direction: column; gap: 20px;">
             <h1 class="hero-title urdu-hero-title" data-en="<span class='hero-text-top' style='display:block; margin-bottom:-10px !important;'>Empowering the Next Generation with</span> <span class='quran-sunnah-script signature-font' style='margin-top:0 !important;'>Quran &amp; Sunnah</span>" data-ur="<span class='quran-accent-word'>قرآن وسنت</span><span class='urdu-title-rest'>کے ساتھ اگلی نسل کی تعمیر و ترقی</span>">
@@ -5493,7 +5498,7 @@ if (langSwitchBtn) {
   <div class="figure-card">
     <div class="figure-frame-wrapper">
       <div class="green-bg-frame"></div>
-      <img src="assets/founder.png" alt="Hazrat Moulana Mufti Riaz Mahmood" class="figure-img-pop">
+      <img src="assets/founder.png" alt="Hazrat Moulana Mufti Riaz Mahmood" class="figure-img-pop" loading="lazy" decoding="async" width="500" height="750">
       <div class="figure-overlay-info">
         <span class="sub-prefix" data-en="Hazrat Moulana Mufti" data-ur="حضرت مولانا مفتی">Hazrat Moulana Mufti</span>
         <div class="name-badge"><span data-en="Riaz Mahmood" data-ur="ریاض محمود">Riaz Mahmood</span> <span class="rh-badge" data-en="(RH)" data-ur="(رح)">(RH)</span></div>
@@ -5506,7 +5511,7 @@ if (langSwitchBtn) {
   <div class="figure-card">
     <div class="figure-frame-wrapper">
       <div class="green-bg-frame"></div>
-      <img src="assets/principal.png" alt="Moulana Mufti Aamir Mahmood" class="figure-img-pop">
+      <img src="assets/principal.png" alt="Moulana Mufti Aamir Mahmood" class="figure-img-pop" loading="lazy" decoding="async" width="640" height="640">
       <div class="figure-overlay-info">
         <span class="sub-prefix" data-en="Moulana Mufti" data-ur="مولانا مفتی">Moulana Mufti</span>
         <div class="name-badge" data-en="Aamir Mahmood" data-ur="عامر محمود">Aamir Mahmood</div>
@@ -6581,9 +6586,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Section 1: Logo & About -->
         <div class="footer-section footer-brand">
             <div class="footer-logo-wrapper">
-                <img src="assets/logo.png" alt="Madrassa Logo" class="footer-logo">
-                <img src="assets/title-logo.png" alt="Madrassa Title" class="footer-title-img-en" style="max-height: 45px; width: auto; display: block;">
-                <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png">
+                <img src="assets/logo.png" alt="Madrassa Logo" class="footer-logo" loading="lazy" decoding="async">
+                <img src="assets/title-logo.png" alt="Madrassa Title" class="footer-title-img-en" style="max-height: 45px; width: auto; display: block;" loading="lazy" decoding="async">
+                <img src="assets/title-urdu.png" alt="مدرسہ ریاض القرآن والسنہ" class="urdu-title-png" loading="lazy" decoding="async">
             </div>
             
             <!-- Social Media Buttons -->
