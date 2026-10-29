@@ -6785,7 +6785,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-\n
 
 
 
@@ -8219,6 +8218,21 @@ document.addEventListener('DOMContentLoaded', () => {
 /* 2. Fix footer heading size */
 .footer-section h3 {
     font-size: 15px !important;
+}
+
+/* 4. Eliminate any white gap or margin below footer on Mobile and Desktop */
+html, body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+.site-footer {
+    margin-bottom: 0 !important;
+}
+.footer-bottom {
+    margin-bottom: 0 !important;
+}
+.footer-bottom p {
+    margin-bottom: 0 !important;
 }
 
 /* 3. Sticky header slide and green background fix for mobile */
