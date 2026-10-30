@@ -6475,7 +6475,7 @@ if (langSwitchBtn) {
       <div>
         <h3 data-en="CONTACT" data-ur="رابطہ">CONTACT</h3>
         <p style="color: #475569; font-size: 1rem; margin: 0 0 4px 0;" data-en="Phone : 051-5401679" data-ur="فون : <span dir='ltr' style='display: inline-block;'>051-5401679</span>">Phone : 051-5401679</p>
-        <p style="color: #475569; font-size: 1rem; margin: 0;" data-en="Email : info@madrassa.edu.pk" data-ur="ای میل : <span dir='ltr' style='display: inline-block;'>info@madrassa.edu.pk</span>">Email : info@madrassa.edu.pk</p>
+        <p style="color: #475569; font-size: 1rem; margin: 0;" data-en="Email : info@mrqs.pk" data-ur="ای میل : <span dir='ltr' style='display: inline-block;'>info@mrqs.pk</span>">Email : info@mrqs.pk</p>
       </div>
 
       <div>
@@ -6508,25 +6508,28 @@ if (langSwitchBtn) {
           <span class="lang-ur">ہمیں کسی بھی وقت پیغام بھیجیں</span>
         </p>
 
-        <form action="#" method="POST" class="contact-quick-form">
+        <form action="https://formsubmit.co/info@mrqs.pk" method="POST" class="contact-quick-form" id="contactQuickForm">
+          <input type="hidden" name="_subject" value="New Contact Message - MRQS">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
           <div class="form-row-2col">
-            <input type="text" placeholder="First name" data-en="First name" data-ur="پہلا نام" required class="form-input-field">
-            <input type="text" placeholder="Last name" data-en="Last name" data-ur="دوسرا نام" required class="form-input-field">
+            <input type="text" name="First Name" placeholder="First name" data-en="First name" data-ur="پہلا نام" required class="form-input-field">
+            <input type="text" name="Last Name" placeholder="Last name" data-en="Last name" data-ur="دوسرا نام" required class="form-input-field">
           </div>
 
           <!-- EMAIL INPUT WITH SUGGESTIVE PLACEHOLDER -->
           <div class="form-input-wrapper">
-            <input type="email" id="contact-email" name="email" placeholder="name@gmail.com" data-en="name@gmail.com" data-ur="ای میل (name@gmail.com)" class="form-input form-input-field" required>
+            <input type="email" id="contact-email" name="Email" placeholder="name@gmail.com" data-en="name@gmail.com" data-ur="ای میل (name@gmail.com)" class="form-input form-input-field" required>
           </div>
 
           <!-- SIMPLE PHONE INPUT (NO FLAG / COUNTRY CODE DROPDOWN) -->
           <div class="form-input-wrapper">
-            <input type="text" id="contact-phone" name="phone" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
+            <input type="text" id="contact-phone" name="Phone Number" placeholder="e.g. +923001234567" data-en="e.g. +923001234567" data-ur="مثال کے طور پر ‪(+923001234567)‬" class="form-input form-input-field" required>
           </div>
 
           <!-- MESSAGE TEXTAREA WITH LIVE COUNTDOWN (300 MAX) -->
           <div class="form-input-wrapper textarea-wrapper">
-            <textarea id="contact-message" name="message" maxlength="300" placeholder="How can we help?" data-en="How can we help?" data-ur="ہم آپ کی کیا مدد کر سکتے ہیں؟" class="form-input form-textarea-field" required></textarea>
+            <textarea id="contact-message" name="Message" maxlength="300" placeholder="How can we help?" data-en="How can we help?" data-ur="ہم آپ کی کیا مدد کر سکتے ہیں؟" class="form-input form-textarea-field" required></textarea>
             <span id="char-counter" class="char-count">300/300</span>
           </div>
 
@@ -6636,7 +6639,7 @@ if (langSwitchBtn) {
         <div class="footer-section">
             <h3 data-en="Contact Info" data-ur="رابطہ">Contact Info</h3>
             <ul>
-                <li data-en="Email: info@madrassa.edu" data-ur="ای میل: <span dir='ltr' style='display: inline-block;'>info@madrassa.edu</span>">Email: info@madrassa.edu</li>
+                <li data-en="Email: info@mrqs.pk" data-ur="ای میل: <span dir='ltr' style='display: inline-block;'>info@mrqs.pk</span>">Email: info@mrqs.pk</li>
                 <li data-en="Phone: 051-5401679" data-ur="فون: <span dir='ltr' style='display: inline-block;'>051-5401679</span>"><a href="tel:0515401679" style="color: inherit; text-decoration: none;">Phone: 051-5401679</a></li>
                 <li data-en="Address: Jamia Masjid Quba, Mohammadi Colony, Muslim Town, Rawalpindi" data-ur="پتہ: جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی">Address: Jamia Masjid Quba, Mohammadi Colony, Muslim Town, Rawalpindi</li>
             </ul>
@@ -6811,6 +6814,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function submitForm() {
     container.classList.add('submitting');
     
+    if (form) {
+      const formData = new FormData(form);
+      fetch('https://formsubmit.co/ajax/info@mrqs.pk', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => console.log('Contact form sent to info@mrqs.pk:', data))
+      .catch(err => console.error('Error submitting contact form:', err));
+    }
+
     setTimeout(() => {
       container.classList.remove('submitting');
       container.classList.add('success');
@@ -6823,12 +6838,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
       handle.style.color = '#ffffff';
-      
-      // If you have a real backend, you can trigger form.submit() here
-      // if (form) form.submit();
-      
+
+      setTimeout(() => {
+        if (form) form.reset();
+      }, 1000);
     }, 800);
   }
+
 
   handle.addEventListener('mousedown', startDrag);
   document.addEventListener('mousemove', doDrag, {passive: false});

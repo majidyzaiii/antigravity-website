@@ -6415,15 +6415,18 @@ if (langSwitchBtn) {
           <span class="lang-ur">سرکاری رسید حاصل کرنے کے لیے ہمیں مطلع کریں</span>
         </p>
 
-        <form action="#" method="POST" class="contact-quick-form" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
+        <form action="https://formsubmit.co/info@mrqs.pk" method="POST" class="contact-quick-form" id="donationForm" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
+          <input type="hidden" name="_subject" value="New Donation Intimation - MRQS">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
           <div class="form-row-2col donation-fields-row">
-            <input type="text" placeholder="Donor Full Name" data-en="Donor Full Name" data-ur="عطیہ دہندہ کا پورا نام" required class="form-input-field name-input">
-            <input type="tel" placeholder="WhatsApp Number" data-en="WhatsApp Number" data-ur="واٹس ایپ نمبر" required class="form-input-field whatsapp-input">
+            <input type="text" name="Donor Full Name" placeholder="Donor Full Name" data-en="Donor Full Name" data-ur="عطیہ دہندہ کا پورا نام" required class="form-input-field name-input">
+            <input type="tel" name="WhatsApp Number" placeholder="WhatsApp Number" data-en="WhatsApp Number" data-ur="واٹس ایپ نمبر" required class="form-input-field whatsapp-input">
           </div>
           
           <div class="form-row-2col">
-            <input type="number" placeholder="Amount (PKR)" data-en="Amount (PKR)" data-ur="رقم (PKR)" required class="form-input-field">
-            <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
+            <input type="number" name="Amount (PKR)" placeholder="Amount (PKR)" data-en="Amount (PKR)" data-ur="رقم (PKR)" required class="form-input-field">
+            <select name="Donation Category" class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
                 <option value="" disabled selected data-ur="زمرہ منتخب کریں" data-en="Select Category">Select Category</option>
                 <option value="Sadaqah & General" data-ur="صدقہ و عام" data-en="Sadaqah & General">Sadaqah & General</option>
                 <option value="Sponsor a Student" data-ur="طالب علم کی کفالت" data-en="Sponsor a Student">Sponsor a Student</option>
@@ -6433,18 +6436,18 @@ if (langSwitchBtn) {
           </div>
 
           <div class="form-row-2col">
-            <select class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
+            <select name="Transferred Via" class="form-input-field" required style="cursor: pointer; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px center; background-size: 10px auto; padding-right: 40px;">
                 <option value="" disabled selected data-ur="منتقلی کا ذریعہ" data-en="Transferred Via">Transferred Via</option>
                 <option value="Bank Transfer" data-ur="بینک ٹرانسفر" data-en="Bank Transfer">Bank Transfer</option>
                 <option value="EasyPaisa">EasyPaisa</option>
                 <option value="JazzCash">JazzCash</option>
                 <option value="Cash">Cash</option>
             </select>
-            <input type="date" required class="form-input-field">
+            <input type="date" name="Transfer Date" required class="form-input-field">
           </div>
 
           <div class="form-group form-input-wrapper">
-            <input type="text" placeholder="Transaction ID / Reference Number" data-en="Transaction ID / Reference Number" data-ur="ٹرانزیکشن آئی ڈی / حوالہ نمبر" class="form-input form-input-field" required>
+            <input type="text" name="Transaction ID" placeholder="Transaction ID / Reference Number" data-en="Transaction ID / Reference Number" data-ur="ٹرانزیکشن آئی ڈی / حوالہ نمبر" class="form-input form-input-field" required>
           </div>
 
           <!-- Original Swipe Submit Container from index.html -->
@@ -6514,7 +6517,7 @@ if (langSwitchBtn) {
         <div class="footer-section">
             <h3 data-en="Contact Info" data-ur="رابطہ">Contact Info</h3>
             <ul>
-                <li data-en="Email: info@madrassa.edu" data-ur="ای میل: <span dir='ltr' style='display: inline-block;'>info@madrassa.edu</span>">Email: info@madrassa.edu</li>
+                <li data-en="Email: info@mrqs.pk" data-ur="ای میل: <span dir='ltr' style='display: inline-block;'>info@mrqs.pk</span>">Email: info@mrqs.pk</li>
                 <li data-en="Phone: 051-5401679" data-ur="فون: <span dir='ltr' style='display: inline-block;'>051-5401679</span>"><a href="tel:0515401679" style="color: inherit; text-decoration: none;">Phone: 051-5401679</a></li>
                 <li data-en="Address: Jamia Masjid Quba, Mohammadi Colony, Muslim Town, Rawalpindi" data-ur="پتہ: جامع مسجد قباء، محمدی کالونی، مسلم ٹاؤن، راولپنڈی">Address: Jamia Masjid Quba, Mohammadi Colony, Muslim Town, Rawalpindi</li>
             </ul>
@@ -6689,6 +6692,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function submitForm() {
     container.classList.add('submitting');
     
+    if (form) {
+      const formData = new FormData(form);
+      fetch('https://formsubmit.co/ajax/info@mrqs.pk', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => console.log('Donation intimation sent to info@mrqs.pk:', data))
+      .catch(err => console.error('Error submitting donation intimation:', err));
+    }
+
     setTimeout(() => {
       container.classList.remove('submitting');
       container.classList.add('success');
@@ -6701,12 +6716,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
       handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
       handle.style.color = '#ffffff';
-      
-      // If you have a real backend, you can trigger form.submit() here
-      // if (form) form.submit();
-      
+
+      setTimeout(() => {
+        if (form) form.reset();
+      }, 1000);
     }, 800);
   }
+
 
   handle.addEventListener('mousedown', startDrag);
   document.addEventListener('mousemove', doDrag, {passive: false});
