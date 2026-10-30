@@ -4164,10 +4164,11 @@ document.addEventListener("DOMContentLoaded", () => {
   <h2 class="container-main-heading" data-en="Online Admission Form" data-ur="آن لائن فارمِ داخلہ">Online Admission Form</h2>
   <p class="form-subheading-text" data-en="Please fill in the official admission application details carefully." data-ur="براہ کرم داخلہ فارم کی تفصیلات احتیاط سے پُر کریں۔">Please fill in the official admission application details carefully.</p>
 
-  <form id="madrasaAdmissionForm" action="https://formsubmit.co/info@mrqs.pk" method="POST" enctype="multipart/form-data" class="admission-form-grid" onsubmit="handleFormSubmission(event)">
-  <input type="hidden" name="_subject" value="New Online Admission Application - MRQS">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
+  <form id="madrasaAdmissionForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="admission-form-grid" onsubmit="handleFormSubmission(event)">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New Online Admission Application - MRQS">
+          <input type="hidden" name="from_name" value="MRQS Admissions Portal">
+          <input type="hidden" name="to_email" value="info@mrqs.pk">
 
       <!-- Profile Photo Upload -->
       <div class="photo-upload-container">
@@ -6525,6 +6526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="assets/js/form-submission.js"></script>
 </body>
 
 
@@ -8081,53 +8083,56 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
 function handleFormSubmission(e) {
   if (e && e.preventDefault) e.preventDefault();
   const form = document.getElementById('madrasaAdmissionForm');
-  if (form) {
-    const formData = new FormData(form);
-    fetch('https://formsubmit.co/ajax/info@mrqs.pk', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: formData
-    })
-    .then(res => res.json())
-    .then(data => console.log('Admission application sent to info@mrqs.pk:', data))
-    .catch(err => console.error('Error submitting admission application:', err));
-  }
-  
-  let isUrdu = document.documentElement.lang === 'ur';
-  alert(isUrdu ? "آپ کی آن لائن داخلہ درخواست موصول ہو چکی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔" : "Application submitted successfully. We will contact you soon!");
-  if (form) form.reset();
+  const container = document.getElementById('swipeContainer');
+  const btn = document.getElementById('swipeBtn');
+  const text = document.getElementById('swipeText');
+  const arrow = document.getElementById('swipeArrow');
+  const check = document.getElementById('swipeCheck');
+  let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
 
-    // Reset Swipe Button
-    setTimeout(() => {
-      const container = document.getElementById('swipeContainer');
-      const btn = document.getElementById('swipeBtn');
-      const text = document.getElementById('swipeText');
-      const arrow = document.getElementById('swipeArrow');
-      const check = document.getElementById('swipeCheck');
-      if (container) {
-        container.classList.remove('success');
-        btn.style.transform = 'translateX(0px)';
-        arrow.style.display = 'block';
-        check.style.display = 'none';
+  if (typeof window.submitMrqsForm === 'function' && form) {
+    window.submitMrqsForm(form, 'admission', {
+      onStart: () => {
+        if (container) {
+          container.classList.add('submitting');
+          let maxTravel = container.offsetWidth - btn.offsetWidth - 8;
+          btn.style.transform = `translateX(${isRtl ? -maxTravel : maxTravel}px)`;
+          text.innerText = isRtl ? "ارسال کیا جا رہا ہے..." : "Sending, please wait...";
+          text.style.opacity = 1;
+        }
+      },
+      onSuccess: () => {
+        if (container) {
+          container.classList.remove('submitting');
+          container.classList.add('success');
+          if (arrow) arrow.style.display = 'none';
+          if (check) check.style.display = 'block';
+          text.innerText = isRtl ? "کامیابی سے جمع ہو گیا" : "Submitted Successfully";
+        }
+        const photoBox = document.getElementById('photoUploadBox');
+        if (photoBox) photoBox.style.backgroundImage = 'none';
 
-          
-          document.getElementById('photoUploadBox').style.backgroundImage = 'none';
-          let urduUploadText = document.documentElement.lang === 'ur' ? "تصویر اپلوڈ کریں" : "Upload Photo";
-          document.getElementById('photoUploadBox').innerHTML = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <span class="upload-text" data-en="Upload Photo" data-ur="تصویر اپلوڈ کریں"></span><span style="font-size: 0.65rem; color: #94a3b8; margin-top: 2px; text-align: center; padding: 0 5px;" data-en="(Passport Size 35x45mm)<br>Max 2MB" data-ur="(پاسپورٹ سائز 35x45mm)<br>زیادہ سے زیادہ 2MB"></span>`;
-
-          // update translation manually if needed, but the span has data-ur so global lang toggle will handle it if toggled again.
-
-        let isUrdu = document.documentElement.lang === 'ur';
-        text.innerText = isUrdu ? "سوائپ کریں" : "Swipe to Submit";
+        setTimeout(() => {
+          if (container) {
+            container.classList.remove('success');
+            btn.style.transform = 'translateX(0px)';
+            if (arrow) arrow.style.display = 'block';
+            if (check) check.style.display = 'none';
+            text.innerText = isRtl ? "سوائپ کریں" : "Swipe to Submit";
+          }
+        }, 5000);
+      },
+      onError: () => {
+        if (container) {
+          container.classList.remove('submitting');
+          btn.style.transform = 'translateX(0px)';
+          text.innerText = isRtl ? "سوائپ کریں" : "Swipe to Submit";
+        }
       }
-    }, 2500);
-
+    });
+  }
 }
+
 
 // Photo preview function
 function previewPhoto(event) {
@@ -8201,23 +8206,9 @@ function previewPhoto(event) {
       let isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ur';
       if (Math.abs(currentX) >= maxDrag * 0.85) {
         if (form && typeof form.checkValidity === 'function' && form.checkValidity()) {
-          // Success
-          btn.style.transform = `translateX(${isRtl ? -maxDrag : maxDrag}px)`;
-          container.classList.add('success');
-          arrow.style.display = 'none';
-          check.style.display = 'block';
-          text.style.opacity = 1;
-          
-          let isUrdu = document.documentElement.lang === 'ur';
-          text.innerText = isUrdu ? "کامیابی سے جمع ہو گیا" : "Submitted Successfully";
-          
-          // Submit the form manually
-          setTimeout(() => {
-              if (typeof handleFormSubmission === 'function') {
-                  handleFormSubmission({ preventDefault: () => {}
-            });
-        }
-}, 400); 
+          if (typeof handleFormSubmission === 'function') {
+            handleFormSubmission({ preventDefault: () => {} });
+          }
         } else {
           // Invalid form
           snapBack();

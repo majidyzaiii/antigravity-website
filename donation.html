@@ -6415,10 +6415,11 @@ if (langSwitchBtn) {
           <span class="lang-ur">سرکاری رسید حاصل کرنے کے لیے ہمیں مطلع کریں</span>
         </p>
 
-        <form action="https://formsubmit.co/info@mrqs.pk" method="POST" class="contact-quick-form" id="donationForm" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
-          <input type="hidden" name="_subject" value="New Donation Intimation - MRQS">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-quick-form" id="donationForm" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New Donation Intimation Receipt - MRQS">
+          <input type="hidden" name="from_name" value="MRQS Donation Portal">
+          <input type="hidden" name="to_email" value="info@mrqs.pk">
           <div class="form-row-2col donation-fields-row">
             <input type="text" name="Donor Full Name" placeholder="Donor Full Name" data-en="Donor Full Name" data-ur="عطیہ دہندہ کا پورا نام" required class="form-input-field name-input">
             <input type="tel" name="WhatsApp Number" placeholder="WhatsApp Number" data-en="WhatsApp Number" data-ur="واٹس ایپ نمبر" required class="form-input-field whatsapp-input">
@@ -6690,38 +6691,53 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function submitForm() {
-    container.classList.add('submitting');
-    
-    if (form) {
-      const formData = new FormData(form);
-      fetch('https://formsubmit.co/ajax/info@mrqs.pk', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => console.log('Donation intimation sent to info@mrqs.pk:', data))
-      .catch(err => console.error('Error submitting donation intimation:', err));
+    if (typeof window.submitMrqsForm === 'function' && form) {
+      window.submitMrqsForm(form, 'donation', {
+        onStart: () => {
+          container.classList.add('submitting');
+          text.innerHTML = `
+            <span class="lang-en">Sending, please wait...</span>
+            <span class="lang-ur">ارسال کیا جا رہا ہے...</span>
+          `;
+          text.style.opacity = 1;
+        },
+        onSuccess: () => {
+          container.classList.remove('submitting');
+          container.classList.add('success');
+          text.innerHTML = `
+            <span class="lang-en">Submitted Successfully</span>
+            <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
+          `;
+          text.style.opacity = 1;
+          handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          handle.style.color = '#ffffff';
+
+          setTimeout(() => {
+            container.classList.remove('success');
+            currentX = 0;
+            handle.style.transform = 'translateX(0px)';
+            handle.innerHTML = '<svg class="swipe-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+            handle.style.color = '';
+            text.innerHTML = `
+              <span class="lang-en" data-ur="جمع کرائیں" data-en="Swipe to Submit">Swipe to Submit</span>
+              <span class="lang-ur">سوائپ کر کے بھیجیں</span>
+            `;
+          }, 4500);
+        },
+        onError: () => {
+          container.classList.remove('submitting');
+          currentX = 0;
+          handle.style.transform = 'translateX(0px)';
+          text.innerHTML = `
+            <span class="lang-en" data-ur="جمع کرائیں" data-en="Swipe to Submit">Swipe to Submit</span>
+            <span class="lang-ur">سوائپ کر کے بھیجیں</span>
+          `;
+          text.style.opacity = 1;
+        }
+      });
     }
-
-    setTimeout(() => {
-      container.classList.remove('submitting');
-      container.classList.add('success');
-      
-      text.innerHTML = `
-        <span class="lang-en">Submitted Successfully</span>
-        <span class="lang-ur">کامیابی سے بھیج دیا گیا</span>
-      `;
-      text.style.opacity = 1;
-      
-      handle.innerHTML = '<svg class="swipe-arrow-icon swipe-check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-      handle.style.color = '#ffffff';
-
-      setTimeout(() => {
-        if (form) form.reset();
-      }, 1000);
-    }, 800);
   }
+
 
 
   handle.addEventListener('mousedown', startDrag);
@@ -8204,6 +8220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script src="assets/js/form-submission.js"></script>
 </body>
 
 
