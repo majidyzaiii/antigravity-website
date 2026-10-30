@@ -6547,6 +6547,7 @@ html[lang="ur"], html[dir="rtl"] {
 })();
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="assets/js/form-submission.js"></script>
 </body>
 
@@ -8118,7 +8119,7 @@ function handleFormSubmission(e) {
           container.classList.add('submitting');
           let maxTravel = container.offsetWidth - btn.offsetWidth - 8;
           btn.style.transform = `translateX(${isRtl ? -maxTravel : maxTravel}px)`;
-          text.innerText = isRtl ? "ارسال کیا جا رہا ہے..." : "Sending, please wait...";
+          text.innerText = isRtl ? "فارم کی رسید تیار اور ارسال کی جا رہی ہے..." : "Generating receipt snapshot & submitting...";
           text.style.opacity = 1;
         }
       },

@@ -6687,8 +6687,8 @@ document.addEventListener('DOMContentLoaded', function() {
         onStart: () => {
           container.classList.add('submitting');
           text.innerHTML = `
-            <span class="lang-en">Sending, please wait...</span>
-            <span class="lang-ur">ارسال کیا جا رہا ہے...</span>
+            <span class="lang-en">Generating receipt snapshot & submitting...</span>
+            <span class="lang-ur">فارم کی رسید تیار اور ارسال کی جا رہی ہے...</span>
           `;
           text.style.opacity = 1;
         },
@@ -8241,6 +8241,7 @@ html[lang="ur"], html[dir="rtl"] {
 })();
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="assets/js/form-submission.js"></script>
 </body>
 
