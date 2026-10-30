@@ -572,9 +572,9 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 20px;
-            align-items: stretch;
-            max-width: 950px;
-            /* margin removed */
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0;
             text-align: left !important;
         }
@@ -8225,6 +8225,12 @@ function navigateToMadrasa() {
 /* 2. Fix footer heading size */
 .footer-section h3 {
     font-size: 15px !important;
+}
+
+/* 4. Center footer content like all other pages */
+.footer-content {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
 }
 
 /* 3. Sticky header slide and green background fix for mobile */
