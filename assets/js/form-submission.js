@@ -11,7 +11,7 @@
 // 2. Enter: info@mrqs.pk (or mrqs.pk@gmail.com)
 // 3. Paste the Access Key (UUID) below:
 // ========================================================
-window.MRQS_WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
 
 (function() {
   // Inject Universal Toast Notification Styles
