@@ -1,13 +1,15 @@
 /**
  * Madrassa Riaz ul Quran wal Sunnah (MRQS)
- * Form Submission & Delivery Handler via Web3Forms with Visual Snapshot Receipt (html2canvas)
- * Destination Email: info@mrqs.pk (forwarded to mrqs.pk@gmail.com)
+ * Form Submission & Delivery Handler via Google Apps Script Web App
+ * Destination Email: info@mrqs.pk (routed to mrqs.pk@gmail.com)
+ * Endpoint: https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec
  */
 
 // ========================================================
 // 1. CONFIGURATION
-// Active Verified Web3Forms Access Key:
+// Active Verified Google Apps Script Web App Endpoint:
 // ========================================================
+window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
 window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
 
 (function() {
@@ -184,6 +186,21 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
   };
 
   /**
+   * Converts a Blob or File to Base64 Data URL string
+   * @param {Blob|File} blob 
+   * @returns {Promise<string|null>}
+   */
+  function blobToBase64(blob) {
+    return new Promise((resolve) => {
+      if (!blob) return resolve(null);
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  /**
    * Generates a visual PNG snapshot Blob of a form / container element using html2canvas
    * @param {HTMLElement} element - Target form or container element
    * @returns {Promise<Blob|null>}
@@ -245,7 +262,7 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
   }
 
   /**
-   * Main Form Submission Handler with Visual Snapshot Attachment
+   * Main Form Submission Handler via Google Apps Script Web App
    * @param {HTMLFormElement} form - Form element to submit
    * @param {string} formType - 'contact' | 'donation' | 'admission'
    * @param {object} callbacks - { onStart, onSuccess, onError }
@@ -259,28 +276,11 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
       return;
     }
 
-    // 2. Loading state
+    // 2. Loading state trigger
     if (callbacks.onStart) callbacks.onStart();
 
-    // 3. Resolve Access Key
-    const formKeyInput = form.querySelector('[name="access_key"]');
-    const accessKey = (formKeyInput && formKeyInput.value && formKeyInput.value !== 'YOUR_ACCESS_KEY_HERE')
-      ? formKeyInput.value
-      : (window.MRQS_WEB3FORMS_ACCESS_KEY && window.MRQS_WEB3FORMS_ACCESS_KEY !== 'YOUR_ACCESS_KEY_HERE')
-        ? window.MRQS_WEB3FORMS_ACCESS_KEY
-        : null;
-
-    if (!accessKey) {
-      console.warn('MRQS Warning: Web3Forms access_key is not configured yet.');
-      const warningTitle = isUrdu ? 'رسائی کی (Access Key) درکار ہے' : 'Web3Forms Key Required';
-      const warningMsg = isUrdu
-        ? 'فارم ای میل کی ترسیل کے لیے Web3Forms Access Key درکار ہے۔ آپ براہِ راست واٹس ایپ پر بھی رابطہ کر سکتے ہیں: <strong>+92 345 595 5958</strong>'
-        : 'Form submission requires a Web3Forms Access Key. Configure it in assets/js/form-submission.js or contact us via WhatsApp: +92 345 595 5958';
-
-      window.showMrqsToast(warningTitle, warningMsg, 'warning', 8000);
-      if (callbacks.onError) callbacks.onError({ message: 'Access Key is not configured' });
-      return;
-    }
+    // 3. Resolve Target Endpoint URL
+    const APPS_SCRIPT_URL = window.MRQS_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
 
     // 4. Generate Visual Snapshot (PNG Image Blob)
     let snapshotTarget = form;
@@ -291,117 +291,172 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
     }
 
     let snapshotBlob = null;
+    let base64Snapshot = null;
     try {
       snapshotBlob = await generateVisualSnapshotBlob(snapshotTarget);
+      if (snapshotBlob) {
+        base64Snapshot = await blobToBase64(snapshotBlob);
+      }
     } catch (e) {
       console.warn('MRQS Warning: Error during visual snapshot generation:', e);
     }
 
-    // 5. Build FormData for Multipart Submission with Attachment
+    // 5. Build FormData and Structured JSON Payload for Apps Script
     const formData = new FormData(form);
-    formData.set('access_key', accessKey);
 
-    let fileName = 'Form-Receipt.png';
-    if (formType === 'contact') {
-      const firstName = formData.get('First Name') || '';
-      const lastName = formData.get('Last Name') || '';
-      const fullName = (firstName + ' ' + lastName).trim() || formData.get('name') || 'Website Visitor';
-      formData.set('name', fullName);
-      formData.set('subject', 'New Contact Message - MRQS Portal');
-      formData.set('from_name', 'MRQS Contact Portal');
-      fileName = 'Contact-Message-Receipt.png';
+    // Form Type resolution
+    let form_type = form.dataset.formType;
+    if (!form_type) {
+      if (formType === 'admission') {
+        form_type = 'Online Admission Application';
+      } else if (formType === 'donation') {
+        form_type = 'Donation Intimation Receipt';
+      } else {
+        form_type = 'Contact Message';
+      }
+    }
+
+    // Student / Donor / Sender name resolution
+    let studentName = 'Applicant';
+    if (formType === 'admission') {
+      const fName = (formData.get('studentFirstName') || '').trim();
+      const lName = (formData.get('studentLastName') || '').trim();
+      studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Applicant';
     } else if (formType === 'donation') {
-      const donorName = formData.get('Donor Full Name') || 'MRQS Donor';
-      formData.set('name', donorName);
-      formData.set('subject', 'New Donation Intimation Receipt - MRQS');
-      formData.set('from_name', 'MRQS Donation Portal');
-      fileName = 'Donation-Intimation-Receipt.png';
-    } else if (formType === 'admission') {
-      const firstName = formData.get('studentFirstName') || '';
-      const lastName = formData.get('studentLastName') || '';
-      const fullName = (firstName + ' ' + lastName).trim() || 'Admission Applicant';
-      formData.set('name', fullName);
-      formData.set('subject', 'New Online Admission Application - MRQS');
-      formData.set('from_name', 'MRQS Admissions Portal');
-      fileName = 'Admission-Application-Receipt.png';
+      studentName = (formData.get('Donor Full Name') || formData.get('name') || 'Donor').trim();
+    } else {
+      const fName = (formData.get('First Name') || '').trim();
+      const lName = (formData.get('Last Name') || '').trim();
+      studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Website Visitor';
     }
 
-    // Attach the generated PNG snapshot as 'attachment'
-    if (snapshotBlob) {
-      formData.append('attachment', snapshotBlob, fileName);
+    const payload = {
+      form_type: form_type,
+      studentName: studentName,
+      fields: {}
+    };
+
+    // Dictionary of human-readable labels for email template table
+    const fieldLabels = {
+      studentFirstName: "First Name",
+      studentLastName: "Last Name",
+      programSelection: "Desired Program",
+      studentDob: "Date of Birth",
+      studentBForm: "Candidate B-Form / CNIC",
+      studentNationality: "Nationality",
+      prevEducation: "Previous Education",
+      prevSchool: "Previous School",
+      fatherNameEn: "Father's Name (Capital Letters)",
+      fatherOccupation: "Father's Occupation",
+      guardianName: "Guardian's Name",
+      guardianRelation: "Relation with Candidate",
+      guardianCnic: "Guardian CNIC No",
+      mobile1: "Mobile Number 1",
+      mobile2: "Mobile Number 2",
+      whatsappNo: "WhatsApp Number",
+      tempAddress: "Current / Temporary Address",
+      permAddress: "Permanent Address",
+      undertakingCheck1: "Guardian Undertaking",
+      undertakingCheck2: "Rules & Regulations",
+      'First Name': "First Name",
+      'Last Name': "Last Name",
+      'Email': "Email Address",
+      'Phone Number': "Phone / Mobile",
+      'Message': "Message",
+      'Donor Full Name': "Donor Full Name",
+      'WhatsApp Number': "WhatsApp Number",
+      'Amount (PKR)': "Amount (PKR)",
+      'Donation Category': "Donation Category",
+      'Transferred Via': "Transferred Via",
+      'Transfer Date': "Transfer Date",
+      'Transaction ID': "Transaction ID / Reference Number"
+    };
+
+    // Dynamically append all form fields with readable labels
+    for (let [key, value] of formData.entries()) {
+      if (key === "access_key" || key === "botcheck" || key === "subject" || key === "from_name" || key === "to_email") {
+        continue;
+      }
+      const label = fieldLabels[key] || key;
+      if (value instanceof File) {
+        if (value.name && value.size > 0) {
+          payload.fields[label] = `${value.name} (${Math.round(value.size / 1024)} KB)`;
+        }
+      } else if (typeof value === 'string' && value.trim() !== '') {
+        payload.fields[label] = value.trim();
+      }
     }
 
-    // 6. Send POST Request to Web3Forms API
+    // Attach student photo base64 if present
+    const photoInput = form.querySelector('input[type="file"][name="studentPhoto"]');
+    if (photoInput && photoInput.files && photoInput.files[0]) {
+      try {
+        const photoBase64 = await blobToBase64(photoInput.files[0]);
+        if (photoBase64) {
+          payload.studentPhotoBase64 = photoBase64;
+          payload.fields['Student Photo'] = `${photoInput.files[0].name} (Passport Attached)`;
+        }
+      } catch (photoErr) {
+        console.warn('MRQS Warning: Error converting photo to base64:', photoErr);
+      }
+    }
+
+    // Attach visual receipt snapshot base64 if generated
+    if (base64Snapshot) {
+      payload.receipt_image = base64Snapshot;
+      payload.fields['Receipt Image'] = 'Visual PNG Snapshot Attached';
+    }
+
+    // 6. Send POST Request to Google Apps Script Web App
     try {
-      let response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
         headers: {
-          'Accept': 'application/json'
+          "Content-Type": "text/plain;charset=utf-8"
         },
-        body: formData
+        body: JSON.stringify(payload)
       });
 
-      let json = await response.json();
+      // 7. Successful Delivery Feedback & Toast
+      let successTitle = isUrdu ? 'کامیابی سے ارسال کر دیا گیا' : 'Submitted Successfully';
+      let successMsg = '';
 
-      // Graceful Fallback:
-      // If Web3Forms returns that file attachments require a Pro plan,
-      // seamlessly retry without the attachment so form submission NEVER fails and email is delivered!
-      if (!response.ok || !json.success) {
-        const errorMsg = (json && json.message) ? json.message.toLowerCase() : '';
-        if (errorMsg.includes('pro feature') || errorMsg.includes('upload') || errorMsg.includes('attachment') || errorMsg.includes('file')) {
-          console.warn('Web3Forms returned Pro requirement for attachment. Retrying submission without file attachment to ensure email delivery...');
-          formData.delete('attachment');
-          response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json'
-            },
-            body: formData
-          });
-          json = await response.json();
-        }
-      }
-
-      if (response.ok && json.success) {
-        // Success Toast
-        let successTitle = isUrdu ? 'کامیابی سے ارسال کر دیا گیا' : 'Sent Successfully';
-        let successMsg = '';
-
-        if (formType === 'donation') {
-          successMsg = isUrdu
-            ? 'آپ کے عطیے کی تفصیلات اور تصدیقی رسید موصول ہو چکی ہیں۔ جزاک اللہ خیراً!'
-            : 'Your donation intimation and visual receipt snapshot have been received. JazakAllah Khair!';
-        } else if (formType === 'admission') {
-          successMsg = isUrdu
-            ? 'آپ کی آن لائن داخلہ درخواست مع تصویری رسید کامیابی سے موصول ہو گئی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔'
-            : 'Online admission application and visual receipt snapshot submitted successfully. We will contact you soon!';
-        } else {
-          successMsg = isUrdu
-            ? 'شکریہ! آپ کا پیغام ہمیں موصول ہو گیا ہے، جلد جواب دیا جائے گا۔'
-            : 'Thank you! Your message has been received, we will get back to you shortly.';
-        }
-
-        window.showMrqsToast(successTitle, successMsg, 'success', 7000);
-
-        if (callbacks.onSuccess) callbacks.onSuccess(json);
-        form.reset();
-
+      if (formType === 'donation') {
+        successMsg = isUrdu
+          ? 'آپ کے عطیے کی تفصیلات اور تصدیقی رسید موصول ہو چکی ہیں۔ جزاک اللہ خیراً!'
+          : 'Your donation intimation has been received successfully. JazakAllah Khair!';
+      } else if (formType === 'admission') {
+        successMsg = isUrdu
+          ? 'آپ کی آن لائن داخلہ درخواست مع تصویری رسید کامیابی سے موصول ہو گئی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔'
+          : 'Your online admission application has been submitted successfully. The administration will contact you shortly.';
       } else {
-        console.error('Web3Forms Error Response:', json);
-        const errTitle = isUrdu ? 'ارسال نہیں ہو سکا' : 'Submission Failed';
-        const errMsg = isUrdu
-          ? (json.message || 'درخواست ارسال کرنے میں خرابی پیش آئی ہے۔ براہ کرم دوبارہ کوشش کریں یا واٹس ایپ پر رابطہ کریں۔')
-          : (json.message || 'Failed to submit form. Please try again or reach out directly via WhatsApp: +92 345 595 5958');
-
-        window.showMrqsToast(errTitle, errMsg, 'error', 7000);
-        if (callbacks.onError) callbacks.onError(json);
+        successMsg = isUrdu
+          ? 'شکریہ! آپ کا پیغام کامیابی سے موصول ہو گیا ہے، جلد جواب دیا جائے گا۔'
+          : 'Thank you! Your message has been sent successfully. We will get back to you shortly.';
       }
+
+      window.showMrqsToast(successTitle, successMsg, 'success', 7000);
+
+      if (callbacks.onSuccess) callbacks.onSuccess({ status: 'success' });
+      form.reset();
+
+      // UI cleanup: photo preview box & char counters
+      const photoBox = document.getElementById('photoUploadBox');
+      if (photoBox) {
+        photoBox.style.backgroundImage = 'none';
+      }
+      const charCounter = document.getElementById('char-counter');
+      if (charCounter) {
+        charCounter.innerText = '300/300';
+      }
+
     } catch (networkErr) {
-      console.error('Web3Forms Network Error:', networkErr);
-      const errTitle = isUrdu ? 'کنکشن کی خرابی' : 'Network Error';
+      console.error('MRQS Delivery Error (Google Apps Script):', networkErr);
+      const errTitle = isUrdu ? 'کنکشن کی خرابی' : 'Connection Error';
       const errMsg = isUrdu
-        ? 'انٹرنیٹ کنکشن کی خرابی۔ براہ کرم رابطہ چیک کریں یا واٹس ایپ نمبر پر رابطہ کریں: +92 345 595 5958'
-        : 'Network connection issue. Please check your connection or contact us directly on WhatsApp: +92 345 595 5958';
+        ? 'درخواست ارسال کرنے میں خرابی پیش آئی ہے۔ براہ کرم انٹرنیٹ چیک کریں یا واٹس ایپ پر رابطہ کریں: +92 345 595 5958'
+        : 'Network or transmission issue. Please check your connection or contact us directly on WhatsApp: +92 345 595 5958';
 
       window.showMrqsToast(errTitle, errMsg, 'error', 7000);
       if (callbacks.onError) callbacks.onError(networkErr);
