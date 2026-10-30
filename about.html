@@ -7667,18 +7667,9 @@ if (langSwitchBtn) {
                 }
 
                 // Close mobile menu if open
-                const drawer = document.getElementById('mobileDrawer');
-                const drawerOverlay = document.getElementById('drawerOverlay');
-                if (drawer) drawer.classList.remove('active', 'open');
-                if (drawerOverlay) drawerOverlay.classList.remove('active', 'open');
+                if (window.dismissAllDrawers) { window.dismissAllDrawers(); } else { const overlays = document.querySelectorAll('#capsuleNavOverlay, #mobileNavOverlay, #mobileDrawer, #drawerOverlay, .capsule-nav-overlay, .mobile-nav-overlay, .drawer-overlay'); overlays.forEach(function(el) { el.classList.remove('is-active', 'active', 'open', 'is-closing'); }); document.body.style.overflow = ''; }
                 
-                const navOverlay = document.getElementById('mobileNavOverlay');
-                if (navOverlay) navOverlay.classList.remove('active', 'open');
                 
-                // Force clean scroll restoration
-                if ('scrollRestoration' in history) {
-                    history.scrollRestoration = 'manual';
-                }
 
                 currentLang = currentLang === 'en' ? 'ur' : 'en';
                 sessionStorage.setItem('siteLang', currentLang);
@@ -8924,49 +8915,9 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-<script>
-let touchstartX = 0;
-let touchendX = 0;
 
-document.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
-});
 
-document.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
-  const isRTL = document.documentElement.dir === 'rtl';
-  if (!isRTL && touchendX - touchstartX > 100) {
-    window.history.back() || (window.location.href = 'index.html');
-  } 
-  if (isRTL && touchstartX - touchendX > 100) {
-    window.history.back() || (window.location.href = 'index.html');
-  }
-});
-</script>
 
-<!-- Mobile Navbar Strict Force-Close and Scroll Restoration -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const langButtons = document.querySelectorAll('.lang-toggle-btn, .language-switcher, #lang-switch, a[href*="lang="], .lang-btn, .mobile-lang-btn, #mobileLangBtn, #langSwitch');
-
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Forcefully remove active/open/show classes from menu, drawers, and backdrops
-      const activeElements = document.querySelectorAll('.active, .open, .show, .is-active');
-      activeElements.forEach(el => {
-        el.classList.remove('active', 'open', 'show', 'is-active');
-      });
-
-      // Restore body scrolling
-      document.body.style.overflow = 'auto';
-      document.body.classList.remove('menu-open', 'nav-open');
-
-      // Scroll window to top
-      window.scrollTo(0, 0);
-    });
-  });
-});
-</script>
 
 
 
@@ -11021,51 +10972,81 @@ html[lang="ur"], html[dir="rtl"] {
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const overlay = document.getElementById('capsuleNavOverlay');
-    const closeBtn = document.getElementById('capsuleCloseBtn');
-    const langBtn = document.getElementById('capsuleLangBtn');
-    
-    // Setup universal click listener for any hamburger buttons
-    document.body.addEventListener('click', (e) => {
-        const hamburger = e.target.closest('.mobile-menu-btn') || e.target.closest('.minimal-hamburger-btn');
-        if(hamburger) {
-            e.preventDefault();
-            e.stopPropagation();
-            if(window.innerWidth < 769) {
-                overlay.classList.remove('is-closing');
-                overlay.classList.add('is-active');
-            }
+(function() {
+    function dismissAllDrawers() {
+        const overlays = document.querySelectorAll(
+            '#capsuleNavOverlay, #mobileNavOverlay, #mobileDrawer, #drawerOverlay, .capsule-nav-overlay, .mobile-nav-overlay, .drawer-overlay'
+        );
+        overlays.forEach(function(el) {
+            el.classList.remove('is-active', 'active', 'open', 'is-closing');
+        });
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.classList.remove('menu-open', 'nav-open');
+    }
+    window.dismissAllDrawers = dismissAllDrawers;
+
+    // Dismiss immediately whenever any navigation link inside any menu/drawer is clicked
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('.capsule-item, .capsule-nav-overlay a, .mobile-nav-links a, .drawer-links-list a');
+        if (link && !link.classList.contains('capsule-lang-item') && !link.closest('#capsuleLangBtn') && !link.closest('#mobileLangBtn')) {
+            dismissAllDrawers();
         }
     }, true);
 
-    function closeOverlay() {
-        overlay.classList.add('is-closing');
-        setTimeout(() => {
-            overlay.classList.remove('is-active', 'is-closing');
-        }, 500); // Wait for reverse stagger to finish
-    }
+    // Ensure bfcache (back/forward navigation) restores the page without stuck open drawers
+    window.addEventListener('pageshow', function() {
+        dismissAllDrawers();
+    });
 
-    if(closeBtn) closeBtn.addEventListener('click', closeOverlay);
-    
-    // Clicking backdrop closes menu
-    if(overlay) {
-        overlay.addEventListener('click', (e) => {
-            if(e.target === overlay) {
-                closeOverlay();
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('capsuleNavOverlay');
+        const closeBtn = document.getElementById('capsuleCloseBtn');
+        const langBtn = document.getElementById('capsuleLangBtn');
+        
+        // Setup universal click listener for any hamburger buttons (pure DOM toggle, no history push)
+        document.body.addEventListener('click', function(e) {
+            const hamburger = e.target.closest('.mobile-menu-btn') || e.target.closest('.minimal-hamburger-btn');
+            if (hamburger) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (window.innerWidth < 769 && overlay) {
+                    overlay.classList.remove('is-closing');
+                    overlay.classList.add('is-active');
+                }
             }
-        });
-    }
+        }, true);
 
-    if(langBtn) {
-        langBtn.addEventListener('click', () => {
-            const realLangBtn = document.getElementById('langSwitch');
-            if(realLangBtn) realLangBtn.click();
-            // Close after language switch
-            setTimeout(closeOverlay, 300);
-        });
-    }
-});
+        function closeOverlay() {
+            if (!overlay) return;
+            overlay.classList.add('is-closing');
+            setTimeout(function() {
+                dismissAllDrawers();
+            }, 350);
+        }
+
+        if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+        
+        // Clicking backdrop closes menu
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closeOverlay();
+                }
+            });
+        }
+
+        if (langBtn) {
+            langBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const realLangBtn = document.getElementById('langSwitch');
+                if (realLangBtn) realLangBtn.click();
+                dismissAllDrawers();
+            });
+        }
+    });
+})();
 </script>
 
 </body>
