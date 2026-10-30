@@ -1,7 +1,7 @@
 /**
  * Madrassa Riaz ul Quran wal Sunnah (MRQS)
  * Form Submission & Delivery Handler via Google Apps Script Web App
- * Features exact visual snapshot capture via html2canvas (scale: 2)
+ * Features exact visual snapshot capture via html2canvas (scale: 1.5)
  * Destination Email: info@mrqs.pk (routed to mrqs.pk@gmail.com)
  * Endpoint: https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec
  */
@@ -11,7 +11,6 @@
 // Active Verified Google Apps Script Web App Endpoint:
 // ========================================================
 window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
-window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
 
 (function() {
   // Inject Universal Toast Notification Styles
@@ -202,7 +201,7 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
   }
 
   /**
-   * Captures exact visual snapshot of the filled form / container element using html2canvas (scale: 2)
+   * Captures exact visual snapshot of the filled form / container element using html2canvas (scale: 1.5)
    * Converts live user inputs, selections, checkboxes, and textareas into rendered canvas output.
    * @param {HTMLElement} element - Target form or container element
    * @returns {Promise<string|null>} Base64 PNG Data URL
@@ -245,9 +244,9 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
         ctrl.style.display = 'none';
       });
 
-      // 3. Render 2x high resolution visual canvas via html2canvas
+      // 3. Render 1.5x crisp visual canvas via html2canvas
       const canvas = await html2canvas(element, {
-        scale: 2, // High quality 2x resolution
+        scale: 1.5, // Crisp high quality without bloated payload
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
@@ -304,6 +303,15 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
     // 2. Loading state trigger
     if (callbacks.onStart) callbacks.onStart();
 
+    // Standard submit button loading state if present
+    const submitBtn = form.querySelector('button[type="submit"]');
+    let originalBtnText = '';
+    if (submitBtn) {
+      originalBtnText = submitBtn.innerText;
+      submitBtn.disabled = true;
+      submitBtn.innerText = isUrdu ? "ارسال ہو رہا ہے..." : "Sending...";
+    }
+
     // 3. Resolve Target Endpoint URL
     const APPS_SCRIPT_URL = window.MRQS_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
 
@@ -315,10 +323,10 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
       snapshotTarget = form.closest('.floating-form-card') || form;
     }
 
-    // 5. Capture Exact Visual Snapshot via html2canvas (scale: 2)
-    let imageBase64 = null;
+    // 5. Capture Exact Visual Snapshot via html2canvas (scale: 1.5)
+    let imageBase64 = "";
     try {
-      imageBase64 = await captureExactFormSnapshotBase64(snapshotTarget);
+      imageBase64 = await captureExactFormSnapshotBase64(snapshotTarget) || "";
     } catch (e) {
       console.warn('MRQS Warning: Error during visual snapshot capture:', e);
     }
@@ -330,7 +338,7 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
     let form_type = form.dataset.formType;
     if (!form_type) {
       if (formType === 'admission') {
-        form_type = 'Online Admission Form';
+        form_type = 'Online Admission Application';
       } else if (formType === 'donation') {
         form_type = 'Donation Intimation Receipt';
       } else {
@@ -343,7 +351,7 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
     if (formType === 'admission') {
       const fName = (formData.get('studentFirstName') || form.querySelector('[name="studentFirstName"]')?.value || '').trim();
       const lName = (formData.get('studentLastName') || form.querySelector('[name="studentLastName"]')?.value || '').trim();
-      studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Applicant';
+      studentName = (fName + ' ' + lName).trim() || formData.get('name') || form.querySelector('[name="name"]')?.value || 'Applicant';
     } else if (formType === 'donation') {
       studentName = (formData.get('Donor Full Name') || form.querySelector('[name="Donor Full Name"]')?.value || formData.get('name') || 'Donor').trim();
     } else {
@@ -483,6 +491,31 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
 
       window.showMrqsToast(errTitle, errMsg, 'error', 7000);
       if (callbacks.onError) callbacks.onError(networkErr);
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+      }
     }
   };
+
+  // Direct Auto-Binding on DOM ready for all forms
+  document.addEventListener('DOMContentLoaded', () => {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      // Ensure form action is clean Google Apps Script
+      form.action = window.MRQS_APPS_SCRIPT_URL;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        let fType = 'contact';
+        if (form.id === 'madrasaAdmissionForm' || form.id === 'admission-form') {
+          fType = 'admission';
+        } else if (form.id === 'donationForm') {
+          fType = 'donation';
+        }
+        await window.submitMrqsForm(form, fType);
+      });
+    });
+  });
 })();
