@@ -1,6 +1,7 @@
 /**
  * Madrassa Riaz ul Quran wal Sunnah (MRQS)
  * Form Submission & Delivery Handler via Google Apps Script Web App
+ * Features exact visual snapshot capture via html2canvas (scale: 2)
  * Destination Email: info@mrqs.pk (routed to mrqs.pk@gmail.com)
  * Endpoint: https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec
  */
@@ -201,32 +202,59 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
   }
 
   /**
-   * Generates a visual PNG snapshot Blob of a form / container element using html2canvas
+   * Captures exact visual snapshot of the filled form / container element using html2canvas (scale: 2)
+   * Converts live user inputs, selections, checkboxes, and textareas into rendered canvas output.
    * @param {HTMLElement} element - Target form or container element
-   * @returns {Promise<Blob|null>}
+   * @returns {Promise<string|null>} Base64 PNG Data URL
    */
-  async function generateVisualSnapshotBlob(element) {
+  async function captureExactFormSnapshotBase64(element) {
     if (typeof html2canvas !== 'function' || !element) {
       return null;
     }
     try {
-      // Temporarily hide swipe-to-submit track from the snapshot receipt for an official, clean look
-      const submitControls = element.querySelectorAll('.swipe-submit-track, .swipe-container, #swipeContainer, .submit-btn-row');
+      // 1. Sync live input, textarea, and select values to DOM attributes so html2canvas renders them faithfully
+      const inputs = element.querySelectorAll('input, select, textarea');
+      inputs.forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+          if (input.checked) {
+            input.setAttribute('checked', 'checked');
+          } else {
+            input.removeAttribute('checked');
+          }
+        } else if (input.tagName === 'SELECT') {
+          Array.from(input.options).forEach(opt => {
+            if (opt.selected) {
+              opt.setAttribute('selected', 'selected');
+            } else {
+              opt.removeAttribute('selected');
+            }
+          });
+        } else if (input.tagName === 'TEXTAREA') {
+          input.textContent = input.value;
+          input.setAttribute('value', input.value);
+        } else if (input.type !== 'file' && input.type !== 'hidden') {
+          input.setAttribute('value', input.value);
+        }
+      });
+
+      // 2. Temporarily hide swipe-to-submit track from the snapshot receipt for an official, clean document look
+      const submitControls = element.querySelectorAll('.swipe-submit-container, .swipe-submit-track, .swipe-container, #swipeContainer, .submit-btn-row');
       const hiddenDisplays = [];
       submitControls.forEach((ctrl, i) => {
         hiddenDisplays[i] = ctrl.style.display;
         ctrl.style.display = 'none';
       });
 
+      // 3. Render 2x high resolution visual canvas via html2canvas
       const canvas = await html2canvas(element, {
-        scale: 2, // High resolution crisp image
+        scale: 2, // High quality 2x resolution
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
         scrollX: 0,
         scrollY: 0,
         onclone: (clonedDoc) => {
-          // Explicitly clone current user inputs, selects, and textareas into the cloned DOM
+          // Double guarantee for cloned document input states
           const origInputs = element.querySelectorAll('input, select, textarea');
           const clonedInputs = clonedDoc.querySelectorAll('input, select, textarea');
           origInputs.forEach((orig, idx) => {
@@ -245,16 +273,13 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
         }
       });
 
-      // Restore submit controls
+      // 4. Restore submit controls display
       submitControls.forEach((ctrl, i) => {
         ctrl.style.display = hiddenDisplays[i] || '';
       });
 
-      return new Promise((resolve) => {
-        canvas.toBlob((blob) => {
-          resolve(blob);
-        }, 'image/png', 0.95);
-      });
+      // 5. Generate high quality Base64 PNG Data URL
+      return canvas.toDataURL("image/png");
     } catch (err) {
       console.warn('MRQS Snapshot Error (html2canvas):', err);
       return null;
@@ -270,7 +295,7 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
   window.submitMrqsForm = async function(form, formType, callbacks = {}) {
     const isUrdu = document.documentElement.lang === 'ur' || document.documentElement.dir === 'rtl';
 
-    // 1. Validation check
+    // 1. Form Validation check
     if (form.reportValidity && !form.reportValidity()) {
       if (callbacks.onError) callbacks.onError({ message: 'Validation failed' });
       return;
@@ -282,33 +307,30 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
     // 3. Resolve Target Endpoint URL
     const APPS_SCRIPT_URL = window.MRQS_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
 
-    // 4. Generate Visual Snapshot (PNG Image Blob)
+    // 4. Resolve Target Form Element for Exact Visual Snapshot
     let snapshotTarget = form;
     if (formType === 'admission') {
-      snapshotTarget = form.closest('.online-admission-form-container') || form;
+      snapshotTarget = document.querySelector("#admission-form") || form.closest('.online-admission-form-container') || form;
     } else if (formType === 'donation' || formType === 'contact') {
       snapshotTarget = form.closest('.floating-form-card') || form;
     }
 
-    let snapshotBlob = null;
-    let base64Snapshot = null;
+    // 5. Capture Exact Visual Snapshot via html2canvas (scale: 2)
+    let imageBase64 = null;
     try {
-      snapshotBlob = await generateVisualSnapshotBlob(snapshotTarget);
-      if (snapshotBlob) {
-        base64Snapshot = await blobToBase64(snapshotBlob);
-      }
+      imageBase64 = await captureExactFormSnapshotBase64(snapshotTarget);
     } catch (e) {
-      console.warn('MRQS Warning: Error during visual snapshot generation:', e);
+      console.warn('MRQS Warning: Error during visual snapshot capture:', e);
     }
 
-    // 5. Build FormData and Structured JSON Payload for Apps Script
+    // 6. Build FormData and Structured Payload for Apps Script
     const formData = new FormData(form);
 
     // Form Type resolution
     let form_type = form.dataset.formType;
     if (!form_type) {
       if (formType === 'admission') {
-        form_type = 'Online Admission Application';
+        form_type = 'Online Admission Form';
       } else if (formType === 'donation') {
         form_type = 'Donation Intimation Receipt';
       } else {
@@ -316,27 +338,30 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
       }
     }
 
-    // Student / Donor / Sender name resolution
+    // Student / Applicant / Donor / Sender name resolution
     let studentName = 'Applicant';
     if (formType === 'admission') {
-      const fName = (formData.get('studentFirstName') || '').trim();
-      const lName = (formData.get('studentLastName') || '').trim();
+      const fName = (formData.get('studentFirstName') || form.querySelector('[name="studentFirstName"]')?.value || '').trim();
+      const lName = (formData.get('studentLastName') || form.querySelector('[name="studentLastName"]')?.value || '').trim();
       studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Applicant';
     } else if (formType === 'donation') {
-      studentName = (formData.get('Donor Full Name') || formData.get('name') || 'Donor').trim();
+      studentName = (formData.get('Donor Full Name') || form.querySelector('[name="Donor Full Name"]')?.value || formData.get('name') || 'Donor').trim();
     } else {
-      const fName = (formData.get('First Name') || '').trim();
-      const lName = (formData.get('Last Name') || '').trim();
+      const fName = (formData.get('First Name') || form.querySelector('[name="First Name"]')?.value || '').trim();
+      const lName = (formData.get('Last Name') || form.querySelector('[name="Last Name"]')?.value || '').trim();
       studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Website Visitor';
     }
 
+    // Construct Payload with direct 'image' property for inline email rendering
     const payload = {
       form_type: form_type,
       studentName: studentName,
+      image: imageBase64,           // Primary inline email screenshot
+      receipt_image: imageBase64,   // Aliased for flexible backend compatibility
       fields: {}
     };
 
-    // Dictionary of human-readable labels for email template table
+    // Human-readable labels dictionary for email template table
     const fieldLabels = {
       studentFirstName: "First Name",
       studentLastName: "Last Name",
@@ -401,13 +426,11 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
       }
     }
 
-    // Attach visual receipt snapshot base64 if generated
-    if (base64Snapshot) {
-      payload.receipt_image = base64Snapshot;
-      payload.fields['Receipt Image'] = 'Visual PNG Snapshot Attached';
+    if (imageBase64) {
+      payload.fields['Form Visual Screenshot'] = 'Rendered Inline in Email';
     }
 
-    // 6. Send POST Request to Google Apps Script Web App
+    // 7. Send POST Request to Google Apps Script Web App
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
@@ -418,18 +441,18 @@ window.MRQS_WEB3FORMS_ACCESS_KEY = "058abb09-aa64-4406-bc9d-c236026b80b5";
         body: JSON.stringify(payload)
       });
 
-      // 7. Successful Delivery Feedback & Toast
+      // 8. Successful Delivery Feedback & Toast
       let successTitle = isUrdu ? 'کامیابی سے ارسال کر دیا گیا' : 'Submitted Successfully';
       let successMsg = '';
 
       if (formType === 'donation') {
         successMsg = isUrdu
           ? 'آپ کے عطیے کی تفصیلات اور تصدیقی رسید موصول ہو چکی ہیں۔ جزاک اللہ خیراً!'
-          : 'Your donation intimation has been received successfully. JazakAllah Khair!';
+          : 'Your donation intimation and details have been received successfully. JazakAllah Khair!';
       } else if (formType === 'admission') {
         successMsg = isUrdu
           ? 'آپ کی آن لائن داخلہ درخواست مع تصویری رسید کامیابی سے موصول ہو گئی ہے۔ ادارہ جلد آپ سے رابطہ کرے گا۔'
-          : 'Your online admission application has been submitted successfully. The administration will contact you shortly.';
+          : 'Your online admission application and visual screenshot have been submitted successfully. The administration will contact you shortly.';
       } else {
         successMsg = isUrdu
           ? 'شکریہ! آپ کا پیغام کامیابی سے موصول ہو گیا ہے، جلد جواب دیا جائے گا۔'
