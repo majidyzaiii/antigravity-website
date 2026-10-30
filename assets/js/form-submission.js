@@ -1,7 +1,7 @@
 /**
  * Madrassa Riaz ul Quran wal Sunnah (MRQS)
  * Form Submission & Delivery Handler via Google Apps Script Web App
- * Features exact visual snapshot capture via html2canvas (scale: 1.5)
+ * Features exact visual snapshot capture via html2canvas (scale: 2, locked width)
  * Destination Email: info@mrqs.pk (routed to mrqs.pk@gmail.com)
  * Endpoint: https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec
  */
@@ -201,18 +201,19 @@ window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4r
   }
 
   /**
-   * Captures exact visual snapshot of the filled form / container element using html2canvas (scale: 1.5)
-   * Converts live user inputs, selections, checkboxes, and textareas into rendered canvas output.
-   * @param {HTMLElement} element - Target form or container element
+   * Captures exact visual snapshot of the filled form / container element using html2canvas
+   * Locks container width and windowWidth to guarantee proportional, readable aspect ratio (no narrow stretched stripe).
+   * @param {HTMLElement} targetForm - Target form or container element
+   * @param {string} formType - Form type
    * @returns {Promise<string|null>} Base64 PNG Data URL
    */
-  async function captureExactFormSnapshotBase64(element) {
-    if (typeof html2canvas !== 'function' || !element) {
+  async function captureExactFormSnapshotBase64(targetForm, formType) {
+    if (typeof html2canvas !== 'function' || !targetForm) {
       return null;
     }
     try {
-      // 1. Sync live input, textarea, and select values to DOM attributes so html2canvas renders them faithfully
-      const inputs = element.querySelectorAll('input, select, textarea');
+      // 1. Sync live input, textarea, and select values to DOM attributes
+      const inputs = targetForm.querySelectorAll('input, select, textarea');
       inputs.forEach(input => {
         if (input.type === 'checkbox' || input.type === 'radio') {
           if (input.checked) {
@@ -236,25 +237,44 @@ window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4r
         }
       });
 
-      // 2. Temporarily hide swipe-to-submit track from the snapshot receipt for an official, clean document look
-      const submitControls = element.querySelectorAll('.swipe-submit-container, .swipe-submit-track, .swipe-container, #swipeContainer, .submit-btn-row');
-      const hiddenDisplays = [];
-      submitControls.forEach((ctrl, i) => {
-        hiddenDisplays[i] = ctrl.style.display;
-        ctrl.style.display = 'none';
-      });
+      // 2. Determine optimal proportional width (admission form: at least 850px for proper 2-column layout; cards: ~480px)
+      const isAdmission = (formType === 'admission' || targetForm.id === 'admission-form' || targetForm.classList.contains('online-admission-form-container'));
+      const targetWidth = isAdmission
+        ? Math.max(targetForm.scrollWidth || 0, targetForm.offsetWidth || 0, 850)
+        : Math.max(targetForm.offsetWidth || 0, targetForm.scrollWidth || 0, 480);
 
-      // 3. Render 1.5x crisp visual canvas via html2canvas
-      const canvas = await html2canvas(element, {
-        scale: 1.5, // Crisp high quality without bloated payload
+      // 3. Render high resolution visual canvas with locked width and windowWidth
+      const canvas = await html2canvas(targetForm, {
+        scale: 2, // 2x crisp retina resolution
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
         scrollX: 0,
         scrollY: 0,
+        width: targetWidth,
+        windowWidth: targetWidth,
         onclone: (clonedDoc) => {
-          // Double guarantee for cloned document input states
-          const origInputs = element.querySelectorAll('input, select, textarea');
+          // Lock cloned target element width to ensure horizontal proportion
+          const clonedTarget = clonedDoc.querySelector("#admission-form") 
+                            || clonedDoc.querySelector(".online-admission-form-container")
+                            || clonedDoc.querySelector(".floating-form-card") 
+                            || clonedDoc.querySelector("form");
+          if (clonedTarget) {
+            clonedTarget.style.width = targetWidth + 'px';
+            clonedTarget.style.maxWidth = targetWidth + 'px';
+            clonedTarget.style.boxSizing = 'border-box';
+            clonedTarget.style.margin = '0 auto';
+          }
+
+          // Hide submit buttons and interactive swipe track from final email receipt
+          const clonedSubmit = clonedDoc.querySelector('button[type="submit"]');
+          if (clonedSubmit) clonedSubmit.style.display = 'none';
+
+          const clonedControls = clonedDoc.querySelectorAll('.swipe-submit-container, .swipe-submit-track, .swipe-container, #swipeContainer, .submit-btn-row');
+          clonedControls.forEach(ctrl => ctrl.style.display = 'none');
+
+          // Ensure cloned input values are faithfully preserved
+          const origInputs = targetForm.querySelectorAll('input, select, textarea');
           const clonedInputs = clonedDoc.querySelectorAll('input, select, textarea');
           origInputs.forEach((orig, idx) => {
             const cloned = clonedInputs[idx];
@@ -272,12 +292,7 @@ window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4r
         }
       });
 
-      // 4. Restore submit controls display
-      submitControls.forEach((ctrl, i) => {
-        ctrl.style.display = hiddenDisplays[i] || '';
-      });
-
-      // 5. Generate high quality Base64 PNG Data URL
+      // 4. Generate high quality Base64 PNG Data URL
       return canvas.toDataURL("image/png");
     } catch (err) {
       console.warn('MRQS Snapshot Error (html2canvas):', err);
@@ -316,17 +331,17 @@ window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4r
     const APPS_SCRIPT_URL = window.MRQS_APPS_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec";
 
     // 4. Resolve Target Form Element for Exact Visual Snapshot
-    let snapshotTarget = form;
+    let targetForm = form;
     if (formType === 'admission') {
-      snapshotTarget = document.querySelector("#admission-form") || form.closest('.online-admission-form-container') || form;
+      targetForm = document.querySelector("#admission-form") || form.closest('.online-admission-form-container') || form;
     } else if (formType === 'donation' || formType === 'contact') {
-      snapshotTarget = form.closest('.floating-form-card') || form;
+      targetForm = form.closest('.floating-form-card') || form;
     }
 
-    // 5. Capture Exact Visual Snapshot via html2canvas (scale: 1.5)
+    // 5. Capture Exact Visual Snapshot with locked aspect ratio via html2canvas (scale: 2)
     let imageBase64 = "";
     try {
-      imageBase64 = await captureExactFormSnapshotBase64(snapshotTarget) || "";
+      imageBase64 = await captureExactFormSnapshotBase64(targetForm, formType) || "";
     } catch (e) {
       console.warn('MRQS Warning: Error during visual snapshot capture:', e);
     }
@@ -349,14 +364,14 @@ window.MRQS_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ1Bdt4r
     // Student / Applicant / Donor / Sender name resolution
     let studentName = 'Applicant';
     if (formType === 'admission') {
-      const fName = (formData.get('studentFirstName') || form.querySelector('[name="studentFirstName"]')?.value || '').trim();
-      const lName = (formData.get('studentLastName') || form.querySelector('[name="studentLastName"]')?.value || '').trim();
-      studentName = (fName + ' ' + lName).trim() || formData.get('name') || form.querySelector('[name="name"]')?.value || 'Applicant';
+      const fName = (targetForm.querySelector('[name="studentFirstName"]')?.value || formData.get('studentFirstName') || '').trim();
+      const lName = (targetForm.querySelector('[name="studentLastName"]')?.value || formData.get('studentLastName') || '').trim();
+      studentName = (fName + ' ' + lName).trim() || formData.get('name') || targetForm.querySelector('[name="name"]')?.value || 'Applicant';
     } else if (formType === 'donation') {
-      studentName = (formData.get('Donor Full Name') || form.querySelector('[name="Donor Full Name"]')?.value || formData.get('name') || 'Donor').trim();
+      studentName = (targetForm.querySelector('[name="Donor Full Name"]')?.value || formData.get('Donor Full Name') || formData.get('name') || 'Donor').trim();
     } else {
-      const fName = (formData.get('First Name') || form.querySelector('[name="First Name"]')?.value || '').trim();
-      const lName = (formData.get('Last Name') || form.querySelector('[name="Last Name"]')?.value || '').trim();
+      const fName = (targetForm.querySelector('[name="First Name"]')?.value || formData.get('First Name') || '').trim();
+      const lName = (targetForm.querySelector('[name="Last Name"]')?.value || formData.get('Last Name') || '').trim();
       studentName = (fName + ' ' + lName).trim() || formData.get('name') || 'Website Visitor';
     }
 
