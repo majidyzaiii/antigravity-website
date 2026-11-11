@@ -1,0 +1,19 @@
+{
+  "name": "Madrassa Riaz Ul Quran Wal Sunnah",
+  "short_name": "MRQS",
+  "icons": [
+    {
+      "src": "assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#004D44",
+  "background_color": "#004D44",
+  "display": "standalone"
+}
