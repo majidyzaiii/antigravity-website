@@ -6068,6 +6068,8 @@ html[dir="ltr"] .ur-svg-wrapper { display: none !important; }
 
         <form action="https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec" method="POST" data-form-type="Contact Message" class="contact-quick-form" id="contactQuickForm">
           <input type="hidden" name="to_email" value="info@mrqs.pk">
+          <!-- Web3Forms Honeypot Anti-Spam Field -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off">
           <div class="form-row-2col">
             <input type="text" name="First Name" placeholder="First name" data-en="First name" data-ur="پہلا نام" required class="form-input-field">
             <input type="text" name="Last Name" placeholder="Last name" data-en="Last name" data-ur="دوسرا نام" required class="form-input-field">
@@ -7844,6 +7846,7 @@ body > .mobile-logo-container { display: none !important; }
                                 if (a.href.includes('wa.me') || label.includes('WhatsApp') || title.includes('WhatsApp') || a.classList.contains('floating-whatsapp')) {
                                     a.href = `https://wa.me/${cleanWa}?text=Assalam-o-Alaikum`;
                                     a.target = '_blank';
+                                    a.rel = 'noopener noreferrer';
                                 }
                             });
                         }

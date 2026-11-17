@@ -8060,6 +8060,7 @@ body > .mobile-logo-container { display: none !important; }
                                 if (a.href.includes('wa.me') || label.includes('WhatsApp') || title.includes('WhatsApp') || a.classList.contains('floating-whatsapp')) {
                                     a.href = `https://wa.me/${cleanWa}?text=Assalam-o-Alaikum`;
                                     a.target = '_blank';
+                                    a.rel = 'noopener noreferrer';
                                 }
                             });
                         }

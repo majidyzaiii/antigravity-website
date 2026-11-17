@@ -200,6 +200,52 @@ window.MRQS_FEE_CONFIG = {
     }
   };
 
+  // ========================================================
+  // SECURITY & PROTECTION MODULES
+  // 1. Client-Side 60s Rate Limiting
+  // 2. Strict Input Sanitization (XSS Defense)
+  // 3. Strict Student Photo Firewall (2MB max, MIME & Image check)
+  // ========================================================
+  const RATE_LIMIT_STORAGE_KEY = 'mrqs_last_submission_time';
+  const RATE_LIMIT_COOLDOWN_MS = 60 * 1000; // 60 seconds cooldown
+
+  function getRemainingCooldownSeconds() {
+    try {
+      const lastTime = parseInt(localStorage.getItem(RATE_LIMIT_STORAGE_KEY) || '0', 10);
+      const elapsed = Date.now() - lastTime;
+      if (elapsed < RATE_LIMIT_COOLDOWN_MS) {
+        return Math.ceil((RATE_LIMIT_COOLDOWN_MS - elapsed) / 1000);
+      }
+    } catch (e) {
+      console.warn('Storage access warning:', e);
+    }
+    return 0;
+  }
+
+  function recordSubmissionTimestamp() {
+    try {
+      localStorage.setItem(RATE_LIMIT_STORAGE_KEY, Date.now().toString());
+    } catch (e) {
+      console.warn('Storage write warning:', e);
+    }
+  }
+
+  /**
+   * Strict Input Sanitization (XSS Protection)
+   * Strips out HTML tags, rogue < >, javascript:, vbscript:, data: protocols, and inline handlers
+   */
+  function sanitizeInput(str) {
+    if (typeof str !== 'string') return str;
+    return str
+      .replace(/<[^>]*>?/gm, '')           // Strip all HTML tags
+      .replace(/[<>]/g, '')               // Strip rogue angle brackets
+      .replace(/javascript:/gi, '')       // Disarm javascript: pseudo-protocol
+      .replace(/vbscript:/gi, '')         // Disarm vbscript: pseudo-protocol
+      .replace(/data:\s*text\/html/gi, '')// Disarm data: text/html
+      .replace(/on\w+\s*=/gi, '')         // Disarm inline event handlers
+      .trim();
+  }
+
   /**
    * Helper: Converts File/Blob to Base64 Data URL
    */
@@ -212,6 +258,103 @@ window.MRQS_FEE_CONFIG = {
       reader.readAsDataURL(file);
     });
   }
+
+  /**
+   * Strict Student Photo Firewall:
+   * 1. Max file size: 2MB
+   * 2. MIME whitelist: image/jpeg, image/png, image/webp
+   * 3. Extension whitelist: .jpg, .jpeg, .png, .webp (Blocks .svg, .html, .exe, etc.)
+   * 4. In-memory Image object validation to block corrupt or spoofed files
+   */
+  const MAX_PHOTO_BYTES = 2 * 1024 * 1024; // 2MB
+  const ALLOWED_PHOTO_MIMES = ['image/jpeg', 'image/png', 'image/webp'];
+  const ALLOWED_PHOTO_EXTS = /\.(jpe?g|png|webp)$/i;
+
+  function validateAndReadStudentPhoto(file, isUrdu) {
+    return new Promise((resolve, reject) => {
+      if (!file) return resolve(null);
+
+      // 1. File size check (2MB)
+      if (file.size > MAX_PHOTO_BYTES) {
+        const msg = isUrdu
+          ? 'تصویر کا سائز 2MB سے زیادہ ہے۔ برائے مہربانی 2MB سے کم فائل منتخب کریں۔'
+          : 'Student photo exceeds the 2MB size limit. Please upload an image under 2MB.';
+        return reject(new Error(msg));
+      }
+
+      // 2. MIME & Extension check
+      const fileMime = (file.type || '').toLowerCase();
+      const fileName = (file.name || '').toLowerCase();
+      if (!ALLOWED_PHOTO_MIMES.includes(fileMime) || !ALLOWED_PHOTO_EXTS.test(fileName)) {
+        const msg = isUrdu
+          ? 'تصویر کا فارمیٹ غلط ہے۔ صرف JPG، PNG یا WEBP تصاویر قبول کی جاتی ہیں۔'
+          : 'Invalid file format. Only JPG, PNG, or WEBP images are permitted.';
+        return reject(new Error(msg));
+      }
+
+      // 3. Read as Data URL
+      const reader = new FileReader();
+      reader.onerror = () => {
+        const msg = isUrdu ? 'فائل لوڈ کرنے میں خرابی پیش آئی۔' : 'Failed to read image file.';
+        reject(new Error(msg));
+      };
+      reader.onload = () => {
+        const dataUrl = reader.result;
+        if (typeof dataUrl !== 'string' || !dataUrl.startsWith('data:image/')) {
+          const msg = isUrdu ? 'خراب تصویر ڈیٹا۔' : 'Invalid image data.';
+          return reject(new Error(msg));
+        }
+
+        // 4. Verify in Image() object to block disguised executables or broken image data
+        const img = new Image();
+        img.onload = () => {
+          if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+            const msg = isUrdu ? 'تصویر کا ڈیٹا درست نہیں ہے۔' : 'Corrupted image dimensions.';
+            return reject(new Error(msg));
+          }
+          resolve(dataUrl);
+        };
+        img.onerror = () => {
+          const msg = isUrdu
+            ? 'فائل درست تصویر نہیں ہے یا خراب ہے۔ برائے مہربانی اصلی تصویر اپ لوڈ کریں۔'
+            : 'File is not a valid image or is corrupted. Please upload an authentic image.';
+          reject(new Error(msg));
+        };
+        img.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Global Student Photo Preview with Strict File Upload Firewall Validation
+  window.previewPhoto = async function(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    const isUrdu = document.documentElement.lang === 'ur' || document.documentElement.dir === 'rtl';
+
+    try {
+      const dataUrl = await validateAndReadStudentPhoto(file, isUrdu);
+      if (dataUrl) {
+        const box = document.getElementById('photoUploadBox');
+        if (box) {
+          box.style.backgroundImage = 'url(' + dataUrl + ')';
+          box.style.backgroundSize = 'cover';
+          box.style.backgroundPosition = 'center';
+          box.innerHTML = '';
+        }
+      }
+    } catch (err) {
+      console.warn('Photo selection validation rejected:', err.message);
+      const title = isUrdu ? 'تصویر مسترد' : 'Photo Upload Rejected';
+      window.showMrqsToast(title, err.message, 'error', 6000);
+      event.target.value = '';
+      const box = document.getElementById('photoUploadBox');
+      if (box) {
+        box.style.backgroundImage = 'none';
+      }
+    }
+  };
 
   /**
    * Cached logo base64 loader to prevent canvas tainting in html2pdf
@@ -317,6 +460,29 @@ window.MRQS_FEE_CONFIG = {
 
     const isUrdu = document.documentElement.lang === 'ur' || document.documentElement.dir === 'rtl';
 
+    // 0. Anti-Spam Honeypot Botcheck (Web3Forms Botcheck)
+    const botcheck = form.querySelector('[name="botcheck"]');
+    if (botcheck && botcheck.checked) {
+      console.warn('MRQS Honeypot: Automated bot detected and suppressed.');
+      delete form.dataset.isSubmitting;
+      if (callbacks.onSuccess) callbacks.onSuccess({ status: 'success' });
+      form.reset();
+      return;
+    }
+
+    // 0. Client-Side 60s Rate Limiting Protection
+    const rateLimitWait = getRemainingCooldownSeconds();
+    if (rateLimitWait > 0) {
+      delete form.dataset.isSubmitting;
+      const title = isUrdu ? 'تھوڑا انتظار فرمائیں' : 'Submission Cooldown';
+      const msg = isUrdu
+        ? `براہ کرم دوسری درخواست جمع کروانے کے لیے ${rateLimitWait} سیکنڈ انتظار فرمائیں۔`
+        : `Please wait ${rateLimitWait} seconds before submitting another request.`;
+      window.showMrqsToast(title, msg, 'warning', 6000);
+      if (callbacks.onError) callbacks.onError({ message: 'Rate limit cooldown active', wait: rateLimitWait });
+      return;
+    }
+
     // 1. Validate form fields
     if (form.reportValidity && !form.reportValidity()) {
       delete form.dataset.isSubmitting;
@@ -330,7 +496,7 @@ window.MRQS_FEE_CONFIG = {
     try {
       // 3. Extract Selected Course First for Course-Specific Sequential ID
       const programRadio = form.querySelector('input[name="programSelection"]:checked');
-      const program = programRadio ? programRadio.value : 'Nazra Quran Kareem';
+      const program = sanitizeInput(programRadio ? programRadio.value : 'Nazra Quran Kareem');
 
       // 4. Generate dynamic Application ID per course starting at 001 (e.g. MRQS-HIFZ-001, MRQS-NAZRA-001)
       const appId = generateCourseAppId(program);
@@ -343,36 +509,41 @@ window.MRQS_FEE_CONFIG = {
       const year = now.getFullYear();
       const submissionDate = `${day} ${month} ${year}`;
 
-      const firstName = (form.querySelector('#studentFirstName')?.value || '').trim();
-      const lastName = (form.querySelector('#studentLastName')?.value || '').trim();
-      const studentFullName = `${firstName} ${lastName}`.trim() || 'Applicant';
+      const firstName = sanitizeInput((form.querySelector('#studentFirstName')?.value || '').trim());
+      const lastName = sanitizeInput((form.querySelector('#studentLastName')?.value || '').trim());
+      const studentFullName = sanitizeInput(`${firstName} ${lastName}`.trim() || 'Applicant');
 
-      const studentDob = form.querySelector('#studentDob')?.value || '---';
-      const studentBForm = (form.querySelector('#studentBForm')?.value || '---').trim();
-      const studentNationality = (form.querySelector('#studentNationality')?.value || 'Pakistani').trim();
-      const prevEducation = (form.querySelector('#prevEducation')?.value || '---').trim();
-      const prevSchool = (form.querySelector('#prevSchool')?.value || '---').trim();
+      const studentDob = sanitizeInput(form.querySelector('#studentDob')?.value || '---');
+      const studentBForm = sanitizeInput((form.querySelector('#studentBForm')?.value || '---').trim());
+      const studentNationality = sanitizeInput((form.querySelector('#studentNationality')?.value || 'Pakistani').trim());
+      const prevEducation = sanitizeInput((form.querySelector('#prevEducation')?.value || '---').trim());
+      const prevSchool = sanitizeInput((form.querySelector('#prevSchool')?.value || '---').trim());
 
-      const fatherName = (form.querySelector('#fatherNameEn')?.value || '---').trim().toUpperCase();
-      const fatherOccupation = (form.querySelector('#fatherOccupation')?.value || '---').trim();
-      const guardianName = (form.querySelector('#guardianName')?.value || fatherName).trim();
-      const guardianRelation = (form.querySelector('#guardianRelation')?.value || 'Father').trim();
-      const guardianCnic = (form.querySelector('#guardianCnic')?.value || '---').trim();
+      const fatherName = sanitizeInput((form.querySelector('#fatherNameEn')?.value || '---').trim().toUpperCase());
+      const fatherOccupation = sanitizeInput((form.querySelector('#fatherOccupation')?.value || '---').trim());
+      const guardianName = sanitizeInput((form.querySelector('#guardianName')?.value || fatherName).trim());
+      const guardianRelation = sanitizeInput((form.querySelector('#guardianRelation')?.value || 'Father').trim());
+      const guardianCnic = sanitizeInput((form.querySelector('#guardianCnic')?.value || '---').trim());
 
-      const mobile1 = (form.querySelector('#mobile1')?.value || '---').trim();
-      const mobile2 = (form.querySelector('#mobile2')?.value || '---').trim();
-      const whatsappNo = (form.querySelector('#whatsappNo')?.value || '---').trim();
-      const tempAddress = (form.querySelector('#tempAddress')?.value || '---').trim();
-      const permAddress = (form.querySelector('#permAddress')?.value || '---').trim();
+      const mobile1 = sanitizeInput((form.querySelector('#mobile1')?.value || '---').trim());
+      const mobile2 = sanitizeInput((form.querySelector('#mobile2')?.value || '---').trim());
+      const whatsappNo = sanitizeInput((form.querySelector('#whatsappNo')?.value || '---').trim());
+      const tempAddress = sanitizeInput((form.querySelector('#tempAddress')?.value || '---').trim());
+      const permAddress = sanitizeInput((form.querySelector('#permAddress')?.value || '---').trim());
 
-      // 5. Convert Student Photo to Base64 (if uploaded)
+      // 5. Convert Student Photo to Base64 (Strict File Upload Firewall)
       const photoInput = form.querySelector('#studentPhoto') || form.querySelector('input[type="file"][name="studentPhoto"]');
       let photoBase64 = null;
       if (photoInput && photoInput.files && photoInput.files[0]) {
         try {
-          photoBase64 = await readFileAsDataUrl(photoInput.files[0]);
+          photoBase64 = await validateAndReadStudentPhoto(photoInput.files[0], isUrdu);
         } catch (photoErr) {
-          console.warn('MRQS Warning: Error converting photo:', photoErr);
+          console.error('MRQS Photo Firewall Rejection:', photoErr);
+          delete form.dataset.isSubmitting;
+          const errTitle = isUrdu ? 'تصویر اپ لوڈ کی خرابی' : 'Photo Upload Rejected';
+          window.showMrqsToast(errTitle, photoErr.message, 'error', 7000);
+          if (callbacks.onError) callbacks.onError(photoErr);
+          return;
         }
       }
 
@@ -626,6 +797,9 @@ window.MRQS_FEE_CONFIG = {
         }).catch(() => {});
       }
 
+      // 10. Record submission timestamp for client-side rate limit defense
+      recordSubmissionTimestamp();
+
       // 11. Wire and Display Confirmation Modal
       const modal = document.getElementById('admissionSuccessModal');
       if (modal) {
@@ -730,6 +904,27 @@ window.MRQS_FEE_CONFIG = {
     // Standard donation / contact handling
     const isUrdu = document.documentElement.lang === 'ur' || document.documentElement.dir === 'rtl';
 
+    // 0. Anti-Spam Honeypot Botcheck (Web3Forms Botcheck)
+    const botcheck = form.querySelector('[name="botcheck"]');
+    if (botcheck && botcheck.checked) {
+      console.warn('MRQS Honeypot: Automated bot detected and suppressed.');
+      if (callbacks.onSuccess) callbacks.onSuccess({ status: 'success' });
+      form.reset();
+      return;
+    }
+
+    // 0. Client-Side 60s Rate Limiting Protection
+    const rateLimitWait = getRemainingCooldownSeconds();
+    if (rateLimitWait > 0) {
+      const title = isUrdu ? 'تھوڑا انتظار فرمائیں' : 'Submission Cooldown';
+      const msg = isUrdu
+        ? `براہ کرم اگلا پیغام بھیجنے کے لیے ${rateLimitWait} سیکنڈ انتظار فرمائیں۔`
+        : `Please wait ${rateLimitWait} seconds before submitting another request.`;
+      window.showMrqsToast(title, msg, 'warning', 6000);
+      if (callbacks.onError) callbacks.onError({ message: 'Rate limit cooldown active', wait: rateLimitWait });
+      return;
+    }
+
     if (form.reportValidity && !form.reportValidity()) {
       if (callbacks.onError) callbacks.onError({ message: 'Validation failed' });
       return;
@@ -755,15 +950,15 @@ window.MRQS_FEE_CONFIG = {
 
     let senderName = 'Website Visitor';
     if (formType === 'donation') {
-      senderName = (form.querySelector('[name="Donor Full Name"]')?.value || formData.get('Donor Full Name') || 'Donor').trim();
+      senderName = sanitizeInput((form.querySelector('[name="Donor Full Name"]')?.value || formData.get('Donor Full Name') || 'Donor').trim());
     } else {
-      const fName = (form.querySelector('[name="First Name"]')?.value || formData.get('First Name') || '').trim();
-      const lName = (form.querySelector('[name="Last Name"]')?.value || formData.get('Last Name') || '').trim();
-      senderName = (fName + ' ' + lName).trim() || 'Website Visitor';
+      const fName = sanitizeInput((form.querySelector('[name="First Name"]')?.value || formData.get('First Name') || '').trim());
+      const lName = sanitizeInput((form.querySelector('[name="Last Name"]')?.value || formData.get('Last Name') || '').trim());
+      senderName = sanitizeInput((fName + ' ' + lName).trim() || 'Website Visitor');
     }
 
     const payload = {
-      form_type: form_type,
+      form_type: sanitizeInput(form_type),
       studentName: senderName,
       fields: {}
     };
@@ -773,7 +968,7 @@ window.MRQS_FEE_CONFIG = {
         continue;
       }
       if (typeof value === 'string' && value.trim() !== '') {
-        payload.fields[key] = value.trim();
+        payload.fields[sanitizeInput(key)] = sanitizeInput(value.trim());
       }
     }
 
@@ -784,6 +979,9 @@ window.MRQS_FEE_CONFIG = {
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
+
+      // Record successful dispatch timestamp for rate limiting
+      recordSubmissionTimestamp();
 
       const successTitle = isUrdu ? 'کامیابی سے ارسال کر دیا گیا' : 'Submitted Successfully';
       const successMsg = formType === 'donation'

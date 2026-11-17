@@ -6411,6 +6411,8 @@ if (langSwitchBtn) {
 
         <form action="https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec" method="POST" data-form-type="Donation Intimation Receipt" class="contact-quick-form" id="donationForm" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: 15px;">
           <input type="hidden" name="to_email" value="info@mrqs.pk">
+          <!-- Web3Forms Honeypot Anti-Spam Field -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off">
           <div class="form-row-2col donation-fields-row">
             <input type="text" name="Donor Full Name" placeholder="Donor Full Name" data-en="Donor Full Name" data-ur="عطیہ دہندہ کا پورا نام" required class="form-input-field name-input">
             <input type="tel" name="WhatsApp Number" placeholder="WhatsApp Number" data-en="WhatsApp Number" data-ur="واٹس ایپ نمبر" required class="form-input-field whatsapp-input">
@@ -7393,6 +7395,7 @@ body > .mobile-logo-container { display: none !important; }
                                 if (a.href.includes('wa.me') || label.includes('WhatsApp') || title.includes('WhatsApp') || a.classList.contains('floating-whatsapp')) {
                                     a.href = `https://wa.me/${cleanWa}?text=Assalam-o-Alaikum`;
                                     a.target = '_blank';
+                                    a.rel = 'noopener noreferrer';
                                 }
                             });
                         }

@@ -1,4 +1,12 @@
-# Cloudflare Pages Caching Headers for mrqs.pk
+# Cloudflare Pages Caching & Security Headers for mrqs.pk
+
+# Production Security Headers for all routes
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 # Static assets (images, fonts, styles): 1 year immutable cache
 /assets/*

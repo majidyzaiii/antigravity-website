@@ -4169,6 +4169,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <form id="madrasaAdmissionForm" action="https://script.google.com/macros/s/AKfycbyQ1Bdt4rJZhOkIkT730bVAc1LWkwEMOOce7gEINdLi5R3pRe3FI4lnZLHd0j0BRwBi/exec" method="POST" enctype="multipart/form-data" data-form-type="Online Admission Form" class="admission-form-grid" onsubmit="handleFormSubmission(event)">
           <input type="hidden" name="to_email" value="info@mrqs.pk">
+          <!-- Web3Forms Honeypot Anti-Spam Field -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none !important;" tabindex="-1" autocomplete="off">
 
       <!-- Profile Photo Upload -->
       <div class="photo-upload-container">
@@ -4183,7 +4185,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span style="font-size: 0.65rem; color: #94a3b8; margin-top: 2px; text-align: center; padding: 0 5px;" data-en="(Passport Size 35x45mm)<br>Max 2MB" data-ur="(پاسپورٹ سائز 35x45mm)<br>زیادہ سے زیادہ 2MB">(Passport Size 35x45mm)<br>Max 2MB</span>
           </div>
         </label>
-        <input type="file" id="studentPhoto" name="studentPhoto" accept="image/*" style="display: none;" onchange="previewPhoto(event)">
+        <input type="file" id="studentPhoto" name="studentPhoto" accept="image/jpeg,image/png,image/webp" style="display: none;" onchange="previewPhoto(event)">
       </div>
 
     
@@ -6393,6 +6395,7 @@ body > .mobile-logo-container { display: none !important; }
                                 if (a.href.includes('wa.me') || label.includes('WhatsApp') || title.includes('WhatsApp') || a.classList.contains('floating-whatsapp')) {
                                     a.href = `https://wa.me/${cleanWa}?text=Assalam-o-Alaikum`;
                                     a.target = '_blank';
+                                    a.rel = 'noopener noreferrer';
                                 }
                             });
                         }
