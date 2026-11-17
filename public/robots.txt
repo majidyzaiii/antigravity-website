@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow internal admin dashboard
+Disallow: /admin.html
+
+Sitemap: https://mrqs.pk/sitemap.xml
