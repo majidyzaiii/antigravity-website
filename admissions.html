@@ -4354,11 +4354,19 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- 1. HIDDEN 2-PAGE A4 ADMISSION & INVOICE PRINT TEMPLATE    -->
 <!-- ======================================================== -->
 <style>
+#pdf-template-wrapper {
+  position: fixed !important;
+  left: -9999px !important;
+  top: 0 !important;
+  width: 210mm !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 #pdf-print-template {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -99999;
   width: 210mm;
   background: #ffffff;
   color: #1e293b;
@@ -4366,7 +4374,6 @@ document.addEventListener("DOMContentLoaded", () => {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  pointer-events: none;
 }
 #pdf-print-template * {
   box-sizing: border-box;
@@ -4575,6 +4582,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
 
+<div id="pdf-template-wrapper" style="position: fixed !important; left: -9999px !important; top: 0 !important; width: 210mm !important; opacity: 0 !important; pointer-events: none !important; z-index: -1 !important; overflow: hidden !important;">
 <div id="pdf-print-template" dir="ltr" lang="en">
   <!-- ========================================== -->
   <!-- PAGE 1: OFFICIAL ADMISSION APPLICATION FORM -->
@@ -4844,6 +4852,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- ========================================== -->
@@ -7253,7 +7262,7 @@ html[lang="ur"], html[dir="rtl"] {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>if (typeof html2pdf === 'undefined') { document.write('<script src="assets/js/html2pdf.bundle.min.js"><\/script>'); }</script>
-<script src="assets/js/form-submission.js?v=3.0"></script>
+<script src="assets/js/form-submission.js?v=3.1"></script>
 </body>
 
 

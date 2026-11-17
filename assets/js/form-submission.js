@@ -230,11 +230,91 @@ window.MRQS_FEE_CONFIG = {
   }
 
   /**
+   * Dedicated PDF Generator:
+   * Temporarily clones the populated template into a visible staging container
+   * positioned at left: 0, top: 0 with opacity: 1 so html2canvas renders
+   * the exact crisp 210mm A4 document without any clipping, negative offset,
+   * or blank canvas, and removes the staging container immediately when done.
+   */
+  async function generateAdmissionPdf(templateElement, pdfFileName) {
+    if (typeof html2pdf === 'undefined' || !templateElement) {
+      console.warn('MRQS Warning: html2pdf library not available or template missing.');
+      return;
+    }
+
+    // 1. Deep clone the populated template
+    const clone = templateElement.cloneNode(true);
+    clone.id = 'pdf-render-staging-clone';
+    clone.setAttribute('dir', 'ltr');
+    clone.setAttribute('lang', 'en');
+
+    // 2. Wrap inside an isolated staging container positioned at left: 0, top: 0 with opacity: 1
+    const stagingContainer = document.createElement('div');
+    stagingContainer.id = 'mrqs-pdf-worker-staging';
+    stagingContainer.style.cssText = [
+      'position: fixed !important',
+      'left: 0 !important',
+      'top: 0 !important',
+      'width: 210mm !important',
+      'background: #ffffff !important',
+      'z-index: 999998 !important',
+      'opacity: 1 !important',
+      'pointer-events: none !important',
+      'margin: 0 !important',
+      'padding: 0 !important',
+      'overflow: visible !important'
+    ].join(';');
+
+    clone.style.cssText = [
+      'position: relative !important',
+      'left: 0 !important',
+      'top: 0 !important',
+      'width: 210mm !important',
+      'background: #ffffff !important',
+      'opacity: 1 !important',
+      'display: block !important',
+      'margin: 0 !important',
+      'padding: 0 !important'
+    ].join(';');
+
+    stagingContainer.appendChild(clone);
+    document.body.appendChild(stagingContainer);
+
+    const pdfOpt = {
+      margin: 0,
+      filename: pdfFileName,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        scrollX: 0,
+        scrollY: 0,
+        letterRendering: true,
+        windowWidth: 794
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['css', 'legacy'] }
+    };
+
+    try {
+      await html2pdf().set(pdfOpt).from(clone).save();
+    } catch (err) {
+      console.error('MRQS Admission PDF Worker Error:', err);
+    } finally {
+      // 3. Immediately remove staging container and clone from DOM
+      if (stagingContainer && stagingContainer.parentNode) {
+        stagingContainer.parentNode.removeChild(stagingContainer);
+      }
+    }
+  }
+
+  /**
    * DEDICATED ADMISSION FORM HANDLER:
    * 1. Generates unique Application ID: MRQS-2026-XXXX
    * 2. Reads student photo to Base64 (fallback to clean placeholder)
    * 3. Populates off-screen 2-Page A4 PDF template (#pdf-print-template)
-   * 4. Auto-downloads PDF using html2pdf.js (MRQS-Admission-[StudentFirstName]-[ApplicationID].pdf)
+   * 4. Auto-downloads PDF using html2pdf.js via staging clone (MRQS-Admission-[StudentFirstName]-[ApplicationID].pdf)
    * 5. Sends clean structured text payload to Web3Forms (NO file attachments, NO screenshots)
    * 6. Displays confirmation modal with Application ID, re-download button, and WhatsApp link (+447438622542)
    */
@@ -381,43 +461,13 @@ window.MRQS_FEE_CONFIG = {
       setTxt('pdfTuitionFee', `${currency} ${tuitionFee.toLocaleString()}`);
       setTxt('pdfTotalFee', `${currency} ${totalFee.toLocaleString()}`);
 
-      // 9. Generate and Auto-Download 2-Page A4 PDF using html2pdf.js
+      // 9. Generate and Auto-Download 2-Page A4 PDF using html2pdf.js staging clone
       const cleanFirstName = (firstName || 'Student').replace(/[^a-zA-Z0-9_-]/g, '');
       const pdfFileName = `MRQS-Admission-${cleanFirstName}-${appId}.pdf`;
       const templateElement = document.getElementById('pdf-print-template');
 
-      const pdfOpt = {
-        margin: 0,
-        filename: pdfFileName,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          logging: false,
-          scrollX: 0,
-          scrollY: 0,
-          letterRendering: true,
-          windowWidth: 794
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] }
-      };
-
-      // Store reference globally so user can click "Download Admission & Invoice PDF Again"
-      window.mrqsAdmissionLastPdf = {
-        opt: pdfOpt,
-        element: templateElement
-      };
-
-      try {
-        if (typeof html2pdf !== 'undefined' && templateElement) {
-          await html2pdf().set(pdfOpt).from(templateElement).save();
-        } else {
-          console.warn('MRQS Warning: html2pdf library not available.');
-        }
-      } catch (pdfErr) {
-        console.error('MRQS Admission PDF Generation Error:', pdfErr);
-      }
+      // Execute PDF rendering inside staging container
+      await generateAdmissionPdf(templateElement, pdfFileName);
 
       // 10. Send Clean Data to Web3Forms (Pure text/JSON - NO screenshots, NO file attachments)
       const web3AccessKey = window.MRQS_WEB3FORMS_ACCESS_KEY || "058abb09-aa64-4406-bc9d-c236026b80b5";
@@ -508,9 +558,7 @@ window.MRQS_FEE_CONFIG = {
             const origHtml = downloadAgainBtn.innerHTML;
             downloadAgainBtn.innerHTML = '<span>Downloading...</span>';
             try {
-              if (typeof html2pdf !== 'undefined' && templateElement) {
-                await html2pdf().set(pdfOpt).from(templateElement).save();
-              }
+              await generateAdmissionPdf(templateElement, pdfFileName);
             } catch (reErr) {
               console.error('Re-download error:', reErr);
             } finally {
