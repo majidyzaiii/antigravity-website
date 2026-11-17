@@ -6341,7 +6341,8 @@ if (langSwitchBtn) {
 .floating-whatsapp {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 24px;
+  right: auto;
   background-color: #25D366;
   color: #ffffff;
   width: 60px;
@@ -8251,6 +8252,19 @@ function navigateToMadrasa() {
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="assets/js/form-submission.js?v=3.1"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6afcc17e1ec8dc3ca1513180/1k7ll7los';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 
@@ -8325,5 +8339,19 @@ function navigateToMadrasa() {
 }
 .floating-whatsapp {
   animation: pulseWaIcon 2s infinite !important;
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  right: auto !important;
+  z-index: 9999 !important;
+}
+@media (max-width: 600px) {
+  .floating-whatsapp {
+    bottom: 20px !important;
+    left: 16px !important;
+    right: auto !important;
+    width: 52px !important;
+    height: 52px !important;
+  }
 }
 </style>
