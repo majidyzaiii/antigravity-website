@@ -231,10 +231,8 @@ window.MRQS_FEE_CONFIG = {
 
   /**
    * Dedicated PDF Generator:
-   * Temporarily clones the populated template into a visible staging container
-   * positioned at left: 0, top: 0 with opacity: 1 so html2canvas renders
-   * the exact crisp 210mm A4 document without any clipping, negative offset,
-   * or blank canvas, and removes the staging container immediately when done.
+   * Generates crisp 2-Page A4 PDF directly from the visible live document preview
+   * inside #modalDocumentPreview with margin: 8, scale: 2, and useCORS: true.
    */
   async function generateAdmissionPdf(templateElement, pdfFileName) {
     if (typeof html2pdf === 'undefined' || !templateElement) {
@@ -242,46 +240,8 @@ window.MRQS_FEE_CONFIG = {
       return;
     }
 
-    // 1. Deep clone the populated template
-    const clone = templateElement.cloneNode(true);
-    clone.id = 'pdf-render-staging-clone';
-    clone.setAttribute('dir', 'ltr');
-    clone.setAttribute('lang', 'en');
-
-    // 2. Wrap inside an isolated staging container positioned at left: 0, top: 0 with opacity: 1
-    const stagingContainer = document.createElement('div');
-    stagingContainer.id = 'mrqs-pdf-worker-staging';
-    stagingContainer.style.cssText = [
-      'position: fixed !important',
-      'left: 0 !important',
-      'top: 0 !important',
-      'width: 210mm !important',
-      'background: #ffffff !important',
-      'z-index: 999998 !important',
-      'opacity: 1 !important',
-      'pointer-events: none !important',
-      'margin: 0 !important',
-      'padding: 0 !important',
-      'overflow: visible !important'
-    ].join(';');
-
-    clone.style.cssText = [
-      'position: relative !important',
-      'left: 0 !important',
-      'top: 0 !important',
-      'width: 210mm !important',
-      'background: #ffffff !important',
-      'opacity: 1 !important',
-      'display: block !important',
-      'margin: 0 !important',
-      'padding: 0 !important'
-    ].join(';');
-
-    stagingContainer.appendChild(clone);
-    document.body.appendChild(stagingContainer);
-
     const pdfOpt = {
-      margin: 0,
+      margin: 8,
       filename: pdfFileName,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {
@@ -290,22 +250,16 @@ window.MRQS_FEE_CONFIG = {
         logging: false,
         scrollX: 0,
         scrollY: 0,
-        letterRendering: true,
-        windowWidth: 794
+        letterRendering: true
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] }
     };
 
     try {
-      await html2pdf().set(pdfOpt).from(clone).save();
+      await html2pdf().set(pdfOpt).from(templateElement).save();
     } catch (err) {
       console.error('MRQS Admission PDF Worker Error:', err);
-    } finally {
-      // 3. Immediately remove staging container and clone from DOM
-      if (stagingContainer && stagingContainer.parentNode) {
-        stagingContainer.parentNode.removeChild(stagingContainer);
-      }
     }
   }
 
@@ -461,13 +415,10 @@ window.MRQS_FEE_CONFIG = {
       setTxt('pdfTuitionFee', `${currency} ${tuitionFee.toLocaleString()}`);
       setTxt('pdfTotalFee', `${currency} ${totalFee.toLocaleString()}`);
 
-      // 9. Generate and Auto-Download 2-Page A4 PDF using html2pdf.js staging clone
+      // 9. Prepare PDF metadata & target elements
       const cleanFirstName = (firstName || 'Student').replace(/[^a-zA-Z0-9_-]/g, '');
       const pdfFileName = `MRQS-Admission-${cleanFirstName}-${appId}.pdf`;
       const templateElement = document.getElementById('pdf-print-template');
-
-      // Execute PDF rendering inside staging container
-      await generateAdmissionPdf(templateElement, pdfFileName);
 
       // 10. Send Clean Data to Web3Forms (Pure text/JSON - NO screenshots, NO file attachments)
       const web3AccessKey = window.MRQS_WEB3FORMS_ACCESS_KEY || "058abb09-aa64-4406-bc9d-c236026b80b5";
@@ -585,9 +536,14 @@ window.MRQS_FEE_CONFIG = {
         window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); }, { once: true });
 
         modal.style.display = 'flex';
+
+        // 12. Auto-Download 2-Page A4 PDF directly from the visible live preview inside the modal
+        if (templateElement) {
+          generateAdmissionPdf(templateElement, pdfFileName);
+        }
       }
 
-      // 12. Show Success Toast Notification
+      // 13. Show Success Toast Notification
       const toastTitle = isUrdu ? 'کامیابی سے جمع ہو گیا' : 'Application Submitted Successfully';
       const toastMsg = isUrdu
         ? `آپ کی داخلہ درخواست (نمبر: ${appId}) جمع ہو چکی ہے اور 2 صفحات کا پی ڈی ایف ڈاؤن لوڈ کر دیا گیا ہے۔`

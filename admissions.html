@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -4354,24 +4354,13 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- 1. HIDDEN 2-PAGE A4 ADMISSION & INVOICE PRINT TEMPLATE    -->
 <!-- ======================================================== -->
 <style>
-#pdf-template-wrapper {
-  position: fixed !important;
-  left: -9999px !important;
-  top: 0 !important;
-  width: 210mm !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: -1 !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 #pdf-print-template {
   width: 210mm;
-  background: #ffffff;
+  max-width: 100%;
+  background: transparent;
   color: #1e293b;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
 }
@@ -4380,8 +4369,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 .pdf-page-sheet {
   width: 210mm;
-  height: 296mm;
-  max-height: 296mm;
+  max-width: 100%;
   min-height: 296mm;
   padding: 10mm 14mm;
   background: #ffffff;
@@ -4389,6 +4377,11 @@ document.addEventListener("DOMContentLoaded", () => {
   overflow: hidden;
   page-break-after: always;
   break-after: page;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
 }
 .pdf-page-sheet:last-child {
   page-break-after: avoid;
@@ -4582,7 +4575,281 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
 
-<div id="pdf-template-wrapper" style="position: fixed !important; left: -9999px !important; top: 0 !important; width: 210mm !important; opacity: 0 !important; pointer-events: none !important; z-index: -1 !important; overflow: hidden !important;">
+
+<!-- ========================================== -->
+<!-- 2. ADMISSION SUCCESS CONFIRMATION MODAL    -->
+<!-- ========================================== -->
+<style>
+.admission-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: mrqsFadeIn 0.3s ease-out;
+}
+@keyframes mrqsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mrqsCardScale {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.admission-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4);
+  max-width: 920px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 20px 24px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  animation: mrqsCardScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #1e293b;
+  font-family: inherit;
+  overflow: hidden;
+}
+.admission-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.admission-modal-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+.modal-header-section {
+  flex-shrink: 0;
+}
+.modal-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background: #ecfdf5;
+  border: 2px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0E4D45;
+  margin: 0 0 6px 0;
+}
+.modal-subtitle {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0 auto 12px auto;
+  max-width: 680px;
+}
+.modal-app-id-box {
+  background: #f0fdf4;
+  border: 1.5px dashed #10b981;
+  border-radius: 8px;
+  padding: 6px 16px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.app-id-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #047857;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.app-id-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0E4D45;
+  letter-spacing: 1px;
+  font-family: "Courier New", monospace;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+.btn-modal-action {
+  flex: 1;
+  max-width: 340px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+.btn-pdf-download {
+  background: #0E4D45;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(14, 77, 69, 0.25);
+}
+.btn-pdf-download:hover {
+  background: #09342e;
+  transform: translateY(-1px);
+}
+.btn-whatsapp-confirm {
+  background: #25D366;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+.btn-whatsapp-confirm:hover {
+  background: #20ba5a;
+  transform: translateY(-1px);
+}
+.modal-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+.modal-preview-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0E4D45;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.modal-preview-note {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+.modal-document-preview {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  background: #f1f5f9;
+  padding: 16px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .btn-modal-action {
+    max-width: 100%;
+    width: 100%;
+  }
+  .admission-modal-card {
+    padding: 20px 14px;
+    max-height: 94vh;
+  }
+  .modal-preview-bar {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}
+</style>
+
+<div id="admissionSuccessModal" class="admission-modal-backdrop" style="display: none;">
+  <div class="admission-modal-card">
+    <button type="button" class="admission-modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+    
+    <div class="modal-header-section">
+      <div class="modal-icon-wrapper">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      
+      <h3 class="modal-title" data-en="Admission Application Submitted!" data-ur="داخلہ درخواست کامیابی سے جمع ہو گئی!">Admission Application Submitted!</h3>
+      <p class="modal-subtitle" data-en="Your official admission application has been registered successfully. Inspect your 2-page Admission Form & Fee Challan below, or download the PDF copy." data-ur="آپ کی آن لائن داخلہ درخواست کامیابی سے درج ہو چکی ہے۔ نیچے اپنے داخلہ فارم اور فیس چالان کا معائنہ فرمائیں، یا پی ڈی ایف ڈاؤن لوڈ کریں۔">
+        Your official admission application has been registered successfully. Inspect your 2-page Admission Form & Fee Challan below, or download the PDF copy.
+      </p>
+      
+      <div class="modal-app-id-box">
+        <span class="app-id-label" data-en="Application ID" data-ur="درخواست نمبر">Application ID:</span>
+        <span class="app-id-value" id="modalAppId">MRQS-2026-XXXX</span>
+      </div>
+      
+      <div class="modal-actions">
+        <!-- Re-download Button -->
+        <button type="button" id="downloadPdfAgainBtn" class="btn-modal-action btn-pdf-download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-en="Download Admission & Invoice PDF Again" data-ur="پی ڈی ایف دوبارہ ڈاؤن لوڈ کریں">Download Admission & Invoice PDF Again</span>
+        </button>
+        
+        <!-- WhatsApp Confirmation Button -->
+        <a id="whatsappConfirmBtn" href="https://wa.me/447438622542" target="_blank" rel="noopener noreferrer" class="btn-modal-action btn-whatsapp-confirm">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span data-en="Send Receipt on WhatsApp to Activate" data-ur="واٹس ایپ پر رسید بھیجیں">Send Receipt on WhatsApp to Activate</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Live Document Preview Section -->
+    <div class="modal-preview-bar">
+      <div class="modal-preview-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span data-en="LIVE DOCUMENT PREVIEW (PAGE 1 & 2)" data-ur="دستاویزات کا لائیو معائنہ (صفحہ 1 اور 2)">LIVE DOCUMENT PREVIEW (PAGE 1 & 2)</span>
+      </div>
+      <div class="modal-preview-note" data-en="Review your filled form & fee voucher before download" data-ur="ڈاؤن لوڈ سے پہلے اپنا بھرا ہوا فارم اور فیس واؤچر چیک کریں">Review your filled form & fee voucher before download</div>
+    </div>
+
+    <!-- Scrollable Document Preview Container -->
+    <div id="modalDocumentPreview" class="modal-document-preview">
 <div id="pdf-print-template" dir="ltr" lang="en">
   <!-- ========================================== -->
   <!-- PAGE 1: OFFICIAL ADMISSION APPLICATION FORM -->
@@ -4853,210 +5120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </div>
-</div>
-
-<!-- ========================================== -->
-<!-- 2. ADMISSION SUCCESS CONFIRMATION MODAL    -->
-<!-- ========================================== -->
-<style>
-.admission-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 9999999;
-  background: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  animation: mrqsFadeIn 0.3s ease-out;
-}
-@keyframes mrqsFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes mrqsCardScale {
-  from { transform: scale(0.92); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-.admission-modal-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
-  max-width: 520px;
-  width: 100%;
-  padding: 30px 26px;
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  animation: mrqsCardScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  color: #1e293b;
-  font-family: inherit;
-}
-.admission-modal-close {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  background: #f1f5f9;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
-  color: #64748b;
-  line-height: 1;
-  transition: all 0.2s;
-}
-.admission-modal-close:hover {
-  background: #e2e8f0;
-  color: #0f172a;
-}
-.modal-icon-wrapper {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 14px auto;
-  border-radius: 50%;
-  background: #ecfdf5;
-  border: 2px solid #a7f3d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-title {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #0E4D45;
-  margin: 0 0 8px 0;
-}
-.modal-subtitle {
-  font-size: 0.9rem;
-  color: #475569;
-  line-height: 1.5;
-  margin: 0 0 16px 0;
-}
-.modal-app-id-box {
-  background: #f0fdf4;
-  border: 1.5px dashed #10b981;
-  border-radius: 10px;
-  padding: 8px 16px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  min-width: 210px;
-}
-.app-id-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #047857;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.app-id-value {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #0E4D45;
-  letter-spacing: 1px;
-  font-family: "Courier New", monospace;
-  margin-top: 2px;
-}
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.btn-modal-action {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-sizing: border-box;
-}
-.btn-pdf-download {
-  background: #0E4D45;
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(14, 77, 69, 0.25);
-}
-.btn-pdf-download:hover {
-  background: #09342e;
-  transform: translateY(-1px);
-}
-.btn-whatsapp-confirm {
-  background: #25D366;
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-}
-.btn-whatsapp-confirm:hover {
-  background: #20ba5a;
-  transform: translateY(-1px);
-}
-@media (max-width: 500px) {
-  .admission-modal-card {
-    padding: 22px 16px;
-  }
-  .modal-title {
-    font-size: 1.15rem;
-  }
-  .btn-modal-action {
-    font-size: 0.86rem;
-    padding: 10px 12px;
-  }
-}
-</style>
-
-<div id="admissionSuccessModal" class="admission-modal-backdrop" style="display: none;">
-  <div class="admission-modal-card">
-    <button type="button" class="admission-modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
-    
-    <div class="modal-icon-wrapper">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-      </svg>
-    </div>
-    
-    <h3 class="modal-title" data-en="Admission Application Submitted!" data-ur="داخلہ درخواست کامیابی سے جمع ہو گئی!">Admission Application Submitted!</h3>
-    <p class="modal-subtitle" data-en="Your official admission application has been registered successfully. A 2-page PDF copy of your Admission Form & Fee Challan has been downloaded to your device." data-ur="آپ کی آن لائن داخلہ درخواست کامیابی سے درج ہو چکی ہے۔ داخلہ فارم اور فیس چالان پر مشتمل 2 صفحات کا پی ڈی ایف آپ کے آلے پر خودکار طور پر ڈاؤن لوڈ کر دیا گیا ہے۔">
-      Your official admission application has been registered successfully. A 2-page PDF copy of your Admission Form & Fee Challan has been downloaded to your device.
-    </p>
-    
-    <div class="modal-app-id-box">
-      <span class="app-id-label" data-en="Application ID" data-ur="درخواست نمبر">Application ID</span>
-      <span class="app-id-value" id="modalAppId">MRQS-2026-XXXX</span>
-    </div>
-    
-    <div class="modal-actions">
-      <!-- Re-download Button -->
-      <button type="button" id="downloadPdfAgainBtn" class="btn-modal-action btn-pdf-download">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span data-en="Download Admission & Invoice PDF Again" data-ur="پی ڈی ایف دوبارہ ڈاؤن لوڈ کریں">Download Admission & Invoice PDF Again</span>
-      </button>
-      
-      <!-- WhatsApp Confirmation Button -->
-      <a id="whatsappConfirmBtn" href="https://wa.me/447438622542" target="_blank" rel="noopener noreferrer" class="btn-modal-action btn-whatsapp-confirm">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-        </svg>
-        <span data-en="Send Receipt on WhatsApp to Activate" data-ur="واٹس ایپ پر رسید بھیجیں">Send Receipt on WhatsApp to Activate</span>
-      </a>
     </div>
   </div>
 </div>
