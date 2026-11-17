@@ -341,59 +341,55 @@ window.MRQS_FEE_CONFIG = {
         }
       }
 
-      // 6. Calculate Fee particulars from config
-      const feeCfg = window.MRQS_FEE_CONFIG || {};
-      const currency = feeCfg.currency || 'PKR';
-      const regFee = feeCfg.registrationFee || 2000;
-      const tuitionFee = (feeCfg.tuitionFees && feeCfg.tuitionFees[program]) ? feeCfg.tuitionFees[program] : 2500;
-      const totalFee = regFee + tuitionFee;
-
-      // 7. Ensure logo base64 is loaded for PDF embedding
+      // 6. Ensure logo base64 is loaded for PDF embedding (crisp local base64, never blank)
       const logoDataUrl = await loadLogoAsBase64();
       const logo1 = document.getElementById('pdfAcademyLogo1');
-      const logo2 = document.getElementById('pdfAcademyLogo2');
       if (logo1 && logoDataUrl) logo1.src = logoDataUrl;
-      if (logo2 && logoDataUrl) logo2.src = logoDataUrl;
 
-      // 8. Populate #pdf-print-template
-      // --- Page 1: Application Form ---
-      const pdfAppId1 = document.getElementById('pdfAppId1');
-      if (pdfAppId1) pdfAppId1.innerText = appId;
+      // 7. Dynamic Language Detection & Translations (Navbar Branding Match)
+      const isUrduActive = isUrdu; // true if lang="ur", dir="rtl", or body has class "rtl"
+      const templateElement = document.getElementById('pdf-print-template');
 
-      const pdfSubmitDate1 = document.getElementById('pdfSubmitDate1');
-      if (pdfSubmitDate1) pdfSubmitDate1.innerText = submissionDate;
-
-      const pdfPhotoBox = document.getElementById('pdfPhotoBox');
-      if (pdfPhotoBox) {
-        if (photoBase64) {
-          pdfPhotoBox.innerHTML = `<img src="${photoBase64}" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Student Photo">`;
-        } else {
-          pdfPhotoBox.innerHTML = `
-            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#94a3b8; font-size:10px; font-weight:600;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              <span>PHOTO</span>
-              <span style="font-size:8px; opacity:0.8;">(35x45mm)</span>
-            </div>`;
-        }
+      // Formatted Submission Date
+      let formattedDate = submissionDate;
+      if (isUrduActive) {
+        const urduMonths = ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'];
+        formattedDate = `${day} ${urduMonths[now.getMonth()]} ${year}`;
       }
+
+      // Course translation
+      const courseTranslations = {
+        "Nazra Quran Kareem": "ناظرہ قرآن کریم",
+        "Hifz-ul-Quran": "حفظ القرآن الکریم",
+        "Islamic & Moral Tarbiyat": "اسلامی و اخلاقی تربیت",
+        "Online Classes for International Students": "آن لائن کلاسز برائے انٹرنیشنل طلبہ"
+      };
+      const displayProgram = isUrduActive ? (courseTranslations[program] || program) : program;
 
       const setTxt = (id, val) => {
         const el = document.getElementById(id);
         if (el) el.innerText = val || '---';
       };
+      const setHtml = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = val || '---';
+      };
 
-      setTxt('pdfProgramName', program);
+      // Populate base form data
+      setTxt('pdfAppId1', appId);
+      setTxt('pdfSubmitDate1', formattedDate);
+      setTxt('pdfProgramName', displayProgram);
       setTxt('pdfStudentName', studentFullName.toUpperCase());
       setTxt('pdfDob', studentDob);
       setTxt('pdfBForm', studentBForm);
-      setTxt('pdfNationality', studentNationality);
+      setTxt('pdfNationality', isUrduActive ? (studentNationality === 'Pakistani' ? 'پاکستانی' : studentNationality) : studentNationality);
       setTxt('pdfPrevEducation', prevEducation);
       setTxt('pdfPrevSchool', prevSchool);
 
       setTxt('pdfFatherName', fatherName);
       setTxt('pdfFatherOccupation', fatherOccupation);
       setTxt('pdfGuardianName', guardianName);
-      setTxt('pdfGuardianRelation', guardianRelation);
+      setTxt('pdfGuardianRelation', isUrduActive ? (guardianRelation === 'Father' ? 'والد' : (guardianRelation === 'Mother' ? 'والدہ' : guardianRelation)) : guardianRelation);
       setTxt('pdfGuardianCnic', guardianCnic);
 
       setTxt('pdfMobile1', mobile1);
@@ -402,25 +398,139 @@ window.MRQS_FEE_CONFIG = {
       setTxt('pdfTempAddress', tempAddress);
       setTxt('pdfPermAddress', permAddress);
 
-      // --- Page 2: Invoice / Challan ---
-      setTxt('pdfInvoiceId', appId);
-      setTxt('pdfInvoiceDate', submissionDate);
-      setTxt('pdfInvoiceStudentName', studentFullName);
-      setTxt('pdfInvoiceFatherName', fatherName);
-      setTxt('pdfInvoiceProgram', program);
-      setTxt('pdfInvoiceWhatsapp', whatsappNo);
+      // Student Photo embed
+      const pdfPhotoBox = document.getElementById('pdfPhotoBox');
+      if (pdfPhotoBox) {
+        if (photoBase64) {
+          pdfPhotoBox.innerHTML = `<img src="${photoBase64}" style="width:100%; height:100%; object-fit:cover; display:block;" alt="Student Photo">`;
+        } else {
+          pdfPhotoBox.innerHTML = `
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#94a3b8; font-size:10px; font-weight:600;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>${isUrduActive ? 'تصویر' : 'PHOTO'}</span>
+              <span style="font-size:8px; opacity:0.8;">(35x45mm)</span>
+            </div>`;
+        }
+      }
 
-      setTxt('pdfRegFee', `${currency} ${regFee.toLocaleString()}`);
-      setTxt('pdfTuitionTitle', `First Month Tuition Fee (Course: ${program})`);
-      setTxt('pdfTuitionFee', `${currency} ${tuitionFee.toLocaleString()}`);
-      setTxt('pdfTotalFee', `${currency} ${totalFee.toLocaleString()}`);
+      // 8. Dynamically apply exact Navbar Header branding and section labels
+      if (templateElement) {
+        if (isUrduActive) {
+          templateElement.setAttribute('dir', 'rtl');
+          templateElement.setAttribute('lang', 'ur');
+          templateElement.classList.add('pdf-urdu-mode');
 
-      // 9. Prepare PDF metadata & target elements
+          // Header Branding (Matches Website Navbar Header in Urdu)
+          setTxt('pdfInstTitle', 'مدرسہ ریاض القرآن والسنۃ');
+          setHtml('pdfInstMeta', 'ویب سائٹ: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; ای میل: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; واٹس ایپ: <strong>+44 7438 622542</strong>');
+
+          // Heading Bar & ID Strip
+          setTxt('pdfDocHeadingBar', 'آن لائن داخلہ درخواست فارم');
+          setTxt('pdfAppIdLabel', 'درخواست نمبر:');
+          setTxt('pdfSubmitDateLabel', 'تاریخ جمع کروائی:');
+
+          // Section 1: Program
+          setTxt('pdfSec1Name', '۱۔ مطلوبہ کورس / شعبہ');
+          setTxt('pdfSec1Badge', 'کورس کا انتخاب');
+          setTxt('pdfEnrolledCourseLabel', 'منتخب کردہ کورس:');
+          setTxt('pdfRegBadge', 'درخواست رجسٹرڈ');
+
+          // Section 2: Student Particulars
+          setTxt('pdfSec2Name', '۲۔ طالب علم کے کوائف');
+          setTxt('pdfSec2Badge', 'امیدوار کی معلومات');
+          setTxt('lbl_pdfStudentName', 'مکمل نام:');
+          setTxt('lbl_pdfDob', 'تاریخ پیدائش:');
+          setTxt('lbl_pdfBForm', 'ب فارم / شناختی کارڈ:');
+          setTxt('lbl_pdfNationality', 'قومیت:');
+          setTxt('lbl_pdfPrevEducation', 'سابقہ تعلیم:');
+          setTxt('lbl_pdfPrevSchool', 'سابقہ اسکول / مدرسہ:');
+
+          // Section 3: Father & Guardian Details
+          setTxt('pdfSec3Name', '۳۔ والد اور سرپرست کی تفصیلات');
+          setTxt('pdfSec3Badge', 'سرپرست کی معلومات');
+          setTxt('lbl_pdfFatherName', 'والد کا نام:');
+          setTxt('lbl_pdfFatherOccupation', 'والد کا پیشہ:');
+          setTxt('lbl_pdfGuardianName', 'سرپرست کا نام:');
+          setTxt('lbl_pdfGuardianRelation', 'امیدوار سے رشتہ:');
+          setTxt('lbl_pdfGuardianCnic', 'سرپرست کا شناختی کارڈ:');
+
+          // Section 4: Contact & Address
+          setTxt('pdfSec4Name', '۴۔ رابطہ اور رہائشی پتہ');
+          setTxt('pdfSec4Badge', 'رابطے کی معلومات');
+          setTxt('lbl_pdfMobile1', 'موبائل نمبر 1:');
+          setTxt('lbl_pdfMobile2', 'موبائل نمبر 2:');
+          setTxt('lbl_pdfWhatsapp', 'واٹس ایپ نمبر:');
+          setTxt('lbl_pdfTempAddress', 'عارضی / موجودہ پتہ:');
+          setTxt('lbl_pdfPermAddress', 'مستقل پتہ:');
+
+          // Undertaking & Signatures
+          setTxt('pdfUndertakingTitle', '☑ سرپرست کا اقرار نامہ و قواعد و ضوابط کی منظوری:');
+          setHtml('pdfUndertaking1', '۱۔ <strong>تصدیق:</strong> میں تصدیق کرتا/کرتی ہوں کہ اس داخلہ فارم میں فراہم کردہ تمام معلومات (تاریخ پیدائش، کوائف اور پتہ) بالکل درست اور مستند ہیں۔');
+          setHtml('pdfUndertaking2', '۲۔ <strong>قواعد و ضوابط:</strong> اس درخواست کو جمع کروا کر، میں تصدیق کرتا/کرتی ہوں کہ میں نے مدرسہ ریاض القرآن والسنۃ کے تمام قواعد و ضوابط پڑھ لیے ہیں اور ان کی پاسداری کا اقرار کرتا/کرتی ہوں۔');
+          setTxt('pdfSignGuardian', 'دستخط سرپرست / والد');
+          setTxt('pdfSignPrincipal', 'دستخط و مہر مہتمم / پرنسپل');
+        } else {
+          templateElement.setAttribute('dir', 'ltr');
+          templateElement.setAttribute('lang', 'en');
+          templateElement.classList.remove('pdf-urdu-mode');
+
+          // Header Branding (Matches Website Navbar Header in English)
+          setTxt('pdfInstTitle', 'MADRASSA RIAZ UL QURAN WAL SUNNAH');
+          setHtml('pdfInstMeta', 'Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>');
+
+          // Heading Bar & ID Strip
+          setTxt('pdfDocHeadingBar', 'OFFICIAL ADMISSION APPLICATION FORM');
+          setTxt('pdfAppIdLabel', 'Application ID:');
+          setTxt('pdfSubmitDateLabel', 'Submission Date:');
+
+          // Section 1: Program
+          setTxt('pdfSec1Name', '1. Desired Program / Course');
+          setTxt('pdfSec1Badge', 'Course Selection');
+          setTxt('pdfEnrolledCourseLabel', 'Enrolled Course:');
+          setTxt('pdfRegBadge', 'Application Registered');
+
+          // Section 2: Student Particulars
+          setTxt('pdfSec2Name', '2. Student Particulars');
+          setTxt('pdfSec2Badge', 'Candidate Details');
+          setTxt('lbl_pdfStudentName', 'Full Name:');
+          setTxt('lbl_pdfDob', 'Date of Birth:');
+          setTxt('lbl_pdfBForm', 'B-Form / CNIC:');
+          setTxt('lbl_pdfNationality', 'Nationality:');
+          setTxt('lbl_pdfPrevEducation', 'Previous Education:');
+          setTxt('lbl_pdfPrevSchool', 'Previous School:');
+
+          // Section 3: Father & Guardian Details
+          setTxt('pdfSec3Name', '3. Father & Guardian Details');
+          setTxt('pdfSec3Badge', 'Parent Information');
+          setTxt('lbl_pdfFatherName', "Father's Name:");
+          setTxt('lbl_pdfFatherOccupation', "Father's Occupation:");
+          setTxt('lbl_pdfGuardianName', "Guardian's Name:");
+          setTxt('lbl_pdfGuardianRelation', 'Relation with Candidate:');
+          setTxt('lbl_pdfGuardianCnic', 'Guardian CNIC No:');
+
+          // Section 4: Contact & Address
+          setTxt('pdfSec4Name', '4. Contact & Address Details');
+          setTxt('pdfSec4Badge', 'Communication Particulars');
+          setTxt('lbl_pdfMobile1', 'Mobile Number 1:');
+          setTxt('lbl_pdfMobile2', 'Mobile Number 2:');
+          setTxt('lbl_pdfWhatsapp', 'WhatsApp Number:');
+          setTxt('lbl_pdfTempAddress', 'Current / Temporary Address:');
+          setTxt('lbl_pdfPermAddress', 'Permanent Address:');
+
+          // Undertaking & Signatures
+          setTxt('pdfUndertakingTitle', '☑ Guardian Undertaking & Rules Acceptance:');
+          setHtml('pdfUndertaking1', '1. <strong>Verification:</strong> I verify that all the information provided in this admission form (date of birth, particulars, and address) is authentic and correct.');
+          setHtml('pdfUndertaking2', '2. <strong>Rules & Regulations:</strong> By submitting this application, I confirm that I have read and accepted all rules, policies, and regulations of Madrassa Riaz Ul Quran Wal Sunnah.');
+          setTxt('pdfSignGuardian', 'Guardian / Parent Signature');
+          setTxt('pdfSignPrincipal', 'Principal / Admin Stamp & Sign');
+        }
+      }
+
+      // 9. Prepare PDF metadata (Single-page A4 document)
       const cleanFirstName = (firstName || 'Student').replace(/[^a-zA-Z0-9_-]/g, '');
       const pdfFileName = `MRQS-Admission-${cleanFirstName}-${appId}.pdf`;
-      const templateElement = document.getElementById('pdf-print-template');
 
-      // 10. Send Clean Data to Web3Forms (Pure text/JSON - NO screenshots, NO file attachments)
+      // 10. Send Clean Data to Web3Forms (Pure text/JSON - Single Admission Application, NO fee dues)
       const web3AccessKey = window.MRQS_WEB3FORMS_ACCESS_KEY || "058abb09-aa64-4406-bc9d-c236026b80b5";
       const web3Payload = {
         access_key: web3AccessKey,
@@ -448,9 +558,6 @@ window.MRQS_FEE_CONFIG = {
         "Permanent Address": permAddress,
         "Guardian Undertaking": "Verified & Accepted",
         "Rules & Regulations": "Accepted",
-        "Registration Fee": `${currency} ${regFee.toLocaleString()}`,
-        "Tuition Fee": `${currency} ${tuitionFee.toLocaleString()}`,
-        "Total Payable Amount": `${currency} ${totalFee.toLocaleString()}`,
         "Generated PDF Document": `Auto-Downloaded: ${pdfFileName}`
       };
 
@@ -523,8 +630,8 @@ window.MRQS_FEE_CONFIG = {
         const whatsappConfirmBtn = document.getElementById('whatsappConfirmBtn');
         if (whatsappConfirmBtn) {
           const waText = isUrdu
-            ? `السلام علیکم! میں نے ${studentFullName} کے لیے آن لائن داخلہ فارم جمع کروا دیا ہے (درخواست نمبر: ${appId}، مطلوبہ کورس: ${program})۔ برائے مہربانی میری درخواست کی تصدیق فرمائیں اور فیس جمع کروانے کے بعد کلاسز کے آغاز کی رہنمائی فرمائیں۔`
-            : `Assalam-o-Alaikum, I have submitted the online admission application for ${studentFullName} (Application ID: ${appId}, Course: ${program}). Please verify my admission and share payment/class activation details.`;
+            ? `السلام علیکم! میں نے ${studentFullName} کے لیے آن لائن داخلہ فارم جمع کروا دیا ہے (درخواست نمبر: ${appId}، مطلوبہ کورس: ${displayProgram})۔ برائے مہربانی میری داخلہ درخواست کی تصدیق فرمائیں اور کلاسز کے آغاز کی رہنمائی فرمائیں۔`
+            : `Assalam-o-Alaikum, I have submitted the online admission application for ${studentFullName} (Application ID: ${appId}, Course: ${program}). Please verify my admission and share class activation details.`;
           whatsappConfirmBtn.href = `https://wa.me/447438622542?text=${encodeURIComponent(waText)}`;
         }
 
@@ -546,8 +653,8 @@ window.MRQS_FEE_CONFIG = {
       // 13. Show Success Toast Notification
       const toastTitle = isUrdu ? 'کامیابی سے جمع ہو گیا' : 'Application Submitted Successfully';
       const toastMsg = isUrdu
-        ? `آپ کی داخلہ درخواست (نمبر: ${appId}) جمع ہو چکی ہے اور 2 صفحات کا پی ڈی ایف ڈاؤن لوڈ کر دیا گیا ہے۔`
-        : `Your application (${appId}) has been registered and the 2-page Admission Form & Invoice PDF has been downloaded.`;
+        ? `آپ کی داخلہ درخواست (نمبر: ${appId}) جمع ہو چکی ہے اور داخلہ فارم کا پی ڈی ایف ڈاؤن لوڈ کر دیا گیا ہے۔`
+        : `Your application (${appId}) has been registered and the Admission Form PDF has been downloaded.`;
       window.showMrqsToast(toastTitle, toastMsg, 'success', 8000);
 
       // 13. UI cleanup: Reset form and preview

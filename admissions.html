@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -4359,7 +4359,7 @@ document.addEventListener("DOMContentLoaded", () => {
   max-width: 100%;
   background: transparent;
   color: #1e293b;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
@@ -4370,29 +4370,25 @@ document.addEventListener("DOMContentLoaded", () => {
 .pdf-page-sheet {
   width: 210mm;
   max-width: 100%;
-  min-height: 296mm;
-  padding: 10mm 14mm;
+  min-height: 275mm;
+  padding: 8mm 12mm;
   background: #ffffff;
   position: relative;
   overflow: hidden;
-  page-break-after: always;
-  break-after: page;
+  page-break-after: avoid !important;
+  break-after: avoid !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
   border: 1px solid #cbd5e1;
   border-radius: 6px;
-  margin-bottom: 24px;
+  margin: 0 auto;
   box-sizing: border-box;
-}
-.pdf-page-sheet:last-child {
-  page-break-after: avoid;
-  break-after: avoid;
 }
 .pdf-header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2.5px solid #0E4D45;
-  padding-bottom: 8px;
+  border-bottom: 2px solid #0E4D45;
+  padding-bottom: 6px;
   gap: 12px;
 }
 .pdf-logo-wrap {
@@ -4401,8 +4397,8 @@ document.addEventListener("DOMContentLoaded", () => {
   text-align: center;
 }
 .pdf-logo-img {
-  max-width: 68px;
-  max-height: 68px;
+  max-width: 65px;
+  max-height: 65px;
   object-fit: contain;
   display: block;
 }
@@ -4410,26 +4406,118 @@ document.addEventListener("DOMContentLoaded", () => {
   flex-grow: 1;
   text-align: center;
 }
-.pdf-inst-title-en {
-  font-size: 16.5px;
+.pdf-inst-title {
+  font-size: 18px;
   font-weight: 800;
   color: #0E4D45;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.01em;
   margin: 0;
   text-transform: uppercase;
 }
-.pdf-inst-title-ur {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #334155;
-  margin: 2px 0 0 0;
-  font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", Arial, sans-serif;
-}
 .pdf-inst-meta {
-  font-size: 10px;
+  font-size: 9.5px;
   color: #475569;
   margin-top: 3px;
   font-weight: 500;
+}
+/* Urdu RTL Template Rules */
+#pdf-print-template[dir="rtl"],
+.pdf-urdu-mode {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-header-container,
+.pdf-urdu-mode .pdf-header-container {
+  flex-direction: row-reverse !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-header-details,
+.pdf-urdu-mode .pdf-header-details {
+  text-align: center !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-inst-title,
+.pdf-urdu-mode .pdf-inst-title {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 26px !important;
+  line-height: 1.35 !important;
+  color: #0E4D45 !important;
+  font-weight: 700 !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-inst-meta,
+.pdf-urdu-mode .pdf-inst-meta {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 11px !important;
+  direction: ltr !important;
+  display: inline-block !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-id-strip,
+.pdf-urdu-mode .pdf-id-strip {
+  flex-direction: row-reverse !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12px !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-sec-title,
+.pdf-urdu-mode .pdf-sec-title {
+  flex-direction: row-reverse !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-highlight-box,
+.pdf-urdu-mode .pdf-highlight-box {
+  flex-direction: row-reverse !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+}
+#pdf-print-template[dir="rtl"] .th-lbl,
+.pdf-urdu-mode .th-lbl {
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+#pdf-print-template[dir="rtl"] .td-val,
+.pdf-urdu-mode .td-val {
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12.5px !important;
+}
+#pdf-print-template[dir="rtl"] .full-lbl,
+.pdf-urdu-mode .full-lbl {
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+#pdf-print-template[dir="rtl"] .full-val,
+.pdf-urdu-mode .full-val {
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12px !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-note-box,
+.pdf-urdu-mode .pdf-note-box {
+  text-align: right !important;
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-signatures-container,
+.pdf-urdu-mode .pdf-signatures-container {
+  flex-direction: row-reverse !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-sign-divider,
+.pdf-urdu-mode .pdf-sign-divider {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 12px !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+#pdf-print-template[dir="rtl"] .pdf-doc-heading-bar,
+.pdf-urdu-mode .pdf-doc-heading-bar {
+  font-family: 'Jameel Noori Nastaleeq', serif !important;
+  font-size: 16px !important;
+  letter-spacing: 0 !important;
 }
 .pdf-photo-wrap {
   width: 32mm;
@@ -4809,8 +4897,8 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       
       <h3 class="modal-title" data-en="Admission Application Submitted!" data-ur="داخلہ درخواست کامیابی سے جمع ہو گئی!">Admission Application Submitted!</h3>
-      <p class="modal-subtitle" data-en="Your official admission application has been registered successfully. Inspect your 2-page Admission Form & Fee Challan below, or download the PDF copy." data-ur="آپ کی آن لائن داخلہ درخواست کامیابی سے درج ہو چکی ہے۔ نیچے اپنے داخلہ فارم اور فیس چالان کا معائنہ فرمائیں، یا پی ڈی ایف ڈاؤن لوڈ کریں۔">
-        Your official admission application has been registered successfully. Inspect your 2-page Admission Form & Fee Challan below, or download the PDF copy.
+      <p class="modal-subtitle" data-en="Your official admission application has been registered successfully. Inspect your official Admission Form below, or download the PDF copy." data-ur="آپ کی آن لائن داخلہ درخواست کامیابی سے درج ہو چکی ہے۔ نیچے اپنے داخلہ فارم کا معائنہ فرمائیں، یا پی ڈی ایف ڈاؤن لوڈ کریں۔">
+        Your official admission application has been registered successfully. Inspect your official Admission Form below, or download the PDF copy.
       </p>
       
       <div class="modal-app-id-box">
@@ -4819,14 +4907,14 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       
       <div class="modal-actions">
-        <!-- Re-download Button -->
+        <!-- Download Admission Form PDF Button -->
         <button type="button" id="downloadPdfAgainBtn" class="btn-modal-action btn-pdf-download">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span data-en="Download Admission & Invoice PDF Again" data-ur="پی ڈی ایف دوبارہ ڈاؤن لوڈ کریں">Download Admission & Invoice PDF Again</span>
+          <span data-en="Download Admission Form PDF" data-ur="داخلہ فارم پی ڈی ایف ڈاؤن لوڈ کریں">Download Admission Form PDF</span>
         </button>
         
         <!-- WhatsApp Confirmation Button -->
@@ -4834,7 +4922,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
-          <span data-en="Send Receipt on WhatsApp to Activate" data-ur="واٹس ایپ پر رسید بھیجیں">Send Receipt on WhatsApp to Activate</span>
+          <span data-en="Send Application on WhatsApp" data-ur="واٹس ایپ پر درخواست بھیجیں">Send Application on WhatsApp</span>
         </a>
       </div>
     </div>
@@ -4843,27 +4931,24 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="modal-preview-bar">
       <div class="modal-preview-badge">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        <span data-en="LIVE DOCUMENT PREVIEW (PAGE 1 & 2)" data-ur="دستاویزات کا لائیو معائنہ (صفحہ 1 اور 2)">LIVE DOCUMENT PREVIEW (PAGE 1 & 2)</span>
+        <span data-en="LIVE ADMISSION FORM PREVIEW" data-ur="داخلہ فارم کا لائیو معائنہ">LIVE ADMISSION FORM PREVIEW</span>
       </div>
-      <div class="modal-preview-note" data-en="Review your filled form & fee voucher before download" data-ur="ڈاؤن لوڈ سے پہلے اپنا بھرا ہوا فارم اور فیس واؤچر چیک کریں">Review your filled form & fee voucher before download</div>
+      <div class="modal-preview-note" data-en="Review your official admission form below before printing" data-ur="ڈاؤن لوڈ سے پہلے اپنا بھرا ہوا داخلہ فارم چیک کریں">Review your official admission form below before printing</div>
     </div>
 
     <!-- Scrollable Document Preview Container -->
     <div id="modalDocumentPreview" class="modal-document-preview">
 <div id="pdf-print-template" dir="ltr" lang="en">
-  <!-- ========================================== -->
   <!-- PAGE 1: OFFICIAL ADMISSION APPLICATION FORM -->
-  <!-- ========================================== -->
   <div class="pdf-page-sheet" id="pdfPage1">
-    <!-- Header -->
+    <!-- Header: Navbar Brand Matching (Logo + Dynamic Language Title) -->
     <div class="pdf-header-container">
       <div class="pdf-logo-wrap">
         <img src="assets/logo.png" class="pdf-logo-img" id="pdfAcademyLogo1" alt="MRQS Logo">
       </div>
       <div class="pdf-header-details">
-        <div class="pdf-inst-title-en">Madrassa Riaz Ul Quran Wal Sunnah</div>
-        <div class="pdf-inst-title-ur">مدرسہ ریاض القرآن والسنہ</div>
-        <div class="pdf-inst-meta">
+        <div class="pdf-inst-title" id="pdfInstTitle">MADRASSA RIAZ UL QURAN WAL SUNNAH</div>
+        <div class="pdf-inst-meta" id="pdfInstMeta">
           Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>
         </div>
       </div>
@@ -4871,7 +4956,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="pdf-photo-frame" id="pdfPhotoBox">
           <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#94a3b8; font-size:10px; font-weight:600;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <span>PHOTO</span>
+            <span id="pdfPhotoText">PHOTO</span>
             <span style="font-size:8px; opacity:0.8;">(35x45mm)</span>
           </div>
         </div>
@@ -4879,244 +4964,120 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <!-- Title Banner -->
-    <div class="pdf-doc-heading-bar">OFFICIAL ADMISSION APPLICATION FORM</div>
+    <div class="pdf-doc-heading-bar" id="pdfDocHeadingBar">OFFICIAL ADMISSION APPLICATION FORM</div>
 
     <!-- ID & Date Strip -->
-    <div class="pdf-id-strip">
-      <div>Application ID: <span class="pdf-id-val" id="pdfAppId1">MRQS-2026-XXXX</span></div>
-      <div>Submission Date: <strong id="pdfSubmitDate1">--/--/----</strong></div>
+    <div class="pdf-id-strip" id="pdfIdStrip">
+      <div><span id="pdfAppIdLabel">Application ID:</span> <span class="pdf-id-val" id="pdfAppId1">MRQS-2026-XXXX</span></div>
+      <div><span id="pdfSubmitDateLabel">Submission Date:</span> <strong id="pdfSubmitDate1">--/--/----</strong></div>
     </div>
 
     <!-- Section 1: Selected Program -->
-    <div class="pdf-sec-title">
-      <span>1. Desired Program / Course</span>
-      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Course Selection</span>
+    <div class="pdf-sec-title" id="pdfSec1Title">
+      <span id="pdfSec1Name">1. Desired Program / Course</span>
+      <span id="pdfSec1Badge" style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Course Selection</span>
     </div>
-    <div class="pdf-highlight-box">
+    <div class="pdf-highlight-box" id="pdfHighlightBox">
       <div>
-        <span style="font-size:11px; color:#475569;">Enrolled Course:</span>
+        <span style="font-size:11px; color:#475569;" id="pdfEnrolledCourseLabel">Enrolled Course:</span>
         <strong id="pdfProgramName" style="font-size:12.5px; color:#0E4D45; margin-left:6px;">Nazra Quran Kareem</strong>
       </div>
-      <span style="background:#0E4D45; color:#ffffff; font-size:9px; font-weight:700; padding:2px 8px; border-radius:3px; text-transform:uppercase;">Application Registered</span>
+      <span id="pdfRegBadge" style="background:#0E4D45; color:#ffffff; font-size:9px; font-weight:700; padding:2px 8px; border-radius:3px; text-transform:uppercase;">Application Registered</span>
     </div>
 
     <!-- Section 2: Student Particulars -->
-    <div class="pdf-sec-title">
-      <span>2. Student Particulars</span>
-      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Candidate Details</span>
+    <div class="pdf-sec-title" id="pdfSec2Title">
+      <span id="pdfSec2Name">2. Student Particulars</span>
+      <span id="pdfSec2Badge" style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Candidate Details</span>
     </div>
-    <table class="pdf-data-table">
+    <table class="pdf-data-table" id="pdfSec2Table">
       <tr>
-        <td class="th-lbl">Full Name:</td>
+        <td class="th-lbl" id="lbl_pdfStudentName">Full Name:</td>
         <td class="td-val" style="font-weight:700; color:#0E4D45;"><span id="pdfStudentName">---</span></td>
-        <td class="th-lbl">Date of Birth:</td>
+        <td class="th-lbl" id="lbl_pdfDob">Date of Birth:</td>
         <td class="td-val"><span id="pdfDob">---</span></td>
       </tr>
       <tr>
-        <td class="th-lbl">B-Form / CNIC:</td>
+        <td class="th-lbl" id="lbl_pdfBForm">B-Form / CNIC:</td>
         <td class="td-val"><span id="pdfBForm">---</span></td>
-        <td class="th-lbl">Nationality:</td>
+        <td class="th-lbl" id="lbl_pdfNationality">Nationality:</td>
         <td class="td-val"><span id="pdfNationality">Pakistani</span></td>
       </tr>
       <tr>
-        <td class="th-lbl">Previous Education:</td>
+        <td class="th-lbl" id="lbl_pdfPrevEducation">Previous Education:</td>
         <td class="td-val"><span id="pdfPrevEducation">---</span></td>
-        <td class="th-lbl">Previous School:</td>
+        <td class="th-lbl" id="lbl_pdfPrevSchool">Previous School:</td>
         <td class="td-val"><span id="pdfPrevSchool">---</span></td>
       </tr>
     </table>
 
     <!-- Section 3: Father & Guardian Details -->
-    <div class="pdf-sec-title">
-      <span>3. Father & Guardian Details</span>
-      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Parent Information</span>
+    <div class="pdf-sec-title" id="pdfSec3Title">
+      <span id="pdfSec3Name">3. Father & Guardian Details</span>
+      <span id="pdfSec3Badge" style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Parent Information</span>
     </div>
-    <table class="pdf-data-table">
+    <table class="pdf-data-table" id="pdfSec3Table">
       <tr>
-        <td class="th-lbl">Father's Name:</td>
+        <td class="th-lbl" id="lbl_pdfFatherName">Father's Name:</td>
         <td class="td-val" style="font-weight:700;"><span id="pdfFatherName">---</span></td>
-        <td class="th-lbl">Father's Occupation:</td>
+        <td class="th-lbl" id="lbl_pdfFatherOccupation">Father's Occupation:</td>
         <td class="td-val"><span id="pdfFatherOccupation">---</span></td>
       </tr>
       <tr>
-        <td class="th-lbl">Guardian's Name:</td>
+        <td class="th-lbl" id="lbl_pdfGuardianName">Guardian's Name:</td>
         <td class="td-val"><span id="pdfGuardianName">---</span></td>
-        <td class="th-lbl">Relation with Candidate:</td>
+        <td class="th-lbl" id="lbl_pdfGuardianRelation">Relation with Candidate:</td>
         <td class="td-val"><span id="pdfGuardianRelation">---</span></td>
       </tr>
       <tr>
-        <td class="th-lbl">Guardian CNIC No:</td>
+        <td class="th-lbl" id="lbl_pdfGuardianCnic">Guardian CNIC No:</td>
         <td class="td-val" colspan="3"><span id="pdfGuardianCnic">---</span></td>
       </tr>
     </table>
 
     <!-- Section 4: Contact & Address Details -->
-    <div class="pdf-sec-title">
-      <span>4. Contact & Address Details</span>
-      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Communication Particulars</span>
+    <div class="pdf-sec-title" id="pdfSec4Title">
+      <span id="pdfSec4Name">4. Contact & Address Details</span>
+      <span id="pdfSec4Badge" style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Communication Particulars</span>
     </div>
-    <table class="pdf-data-table">
+    <table class="pdf-data-table" id="pdfSec4Table">
       <tr>
-        <td class="th-lbl">Mobile Number 1:</td>
+        <td class="th-lbl" id="lbl_pdfMobile1">Mobile Number 1:</td>
         <td class="td-val" style="font-weight:700;"><span id="pdfMobile1">---</span></td>
-        <td class="th-lbl">Mobile Number 2:</td>
+        <td class="th-lbl" id="lbl_pdfMobile2">Mobile Number 2:</td>
         <td class="td-val"><span id="pdfMobile2">---</span></td>
       </tr>
       <tr>
-        <td class="th-lbl">WhatsApp Number:</td>
+        <td class="th-lbl" id="lbl_pdfWhatsapp">WhatsApp Number:</td>
         <td class="td-val" colspan="3" style="font-weight:700; color:#0E4D45;"><span id="pdfWhatsapp">---</span></td>
       </tr>
       <tr>
-        <td class="full-lbl">Current / Temporary Address:</td>
+        <td class="full-lbl" id="lbl_pdfTempAddress">Current / Temporary Address:</td>
         <td class="full-val" colspan="3"><span id="pdfTempAddress">---</span></td>
       </tr>
       <tr>
-        <td class="full-lbl">Permanent Address:</td>
+        <td class="full-lbl" id="lbl_pdfPermAddress">Permanent Address:</td>
         <td class="full-val" colspan="3"><span id="pdfPermAddress">---</span></td>
       </tr>
     </table>
 
     <!-- Footer: Undertaking & Signatures -->
-    <div class="pdf-note-box">
-      <div style="font-weight:700; color:#0E4D45; margin-bottom:2px;">☑ Guardian Undertaking & Rules Acceptance:</div>
-      <div>1. <strong>Verification:</strong> I verify that all the information provided in this admission form (date of birth, particulars, and address) is authentic and correct.</div>
-      <div>2. <strong>Rules & Regulations:</strong> By submitting this application, I confirm that I have read and accepted all rules, policies, and regulations of Madrassa Riaz Ul Quran Wal Sunnah.</div>
+    <div class="pdf-note-box" id="pdfUndertakingBox">
+      <div style="font-weight:700; color:#0E4D45; margin-bottom:2px;" id="pdfUndertakingTitle">☑ Guardian Undertaking & Rules Acceptance:</div>
+      <div id="pdfUndertaking1">1. <strong>Verification:</strong> I verify that all the information provided in this admission form (date of birth, particulars, and address) is authentic and correct.</div>
+      <div id="pdfUndertaking2">2. <strong>Rules & Regulations:</strong> By submitting this application, I confirm that I have read and accepted all rules, policies, and regulations of Madrassa Riaz Ul Quran Wal Sunnah.</div>
     </div>
 
     <div class="pdf-signatures-container">
       <div class="pdf-sign-column">
-        <div class="pdf-sign-divider">Guardian / Parent Signature</div>
+        <div class="pdf-sign-divider" id="pdfSignGuardian">Guardian / Parent Signature</div>
       </div>
       <div class="pdf-sign-column">
-        <div class="pdf-sign-divider">Principal / Admin Stamp & Sign</div>
+        <div class="pdf-sign-divider" id="pdfSignPrincipal">Principal / Admin Stamp & Sign</div>
       </div>
     </div>
   </div>
-
-  <!-- ========================================== -->
-  <!-- PAGE 2: ADMISSION & FEE INVOICE / CHALLAN  -->
-  <!-- ========================================== -->
-  <div class="pdf-page-sheet" id="pdfPage2">
-    <!-- Header -->
-    <div class="pdf-header-container">
-      <div class="pdf-logo-wrap">
-        <img src="assets/logo.png" class="pdf-logo-img" id="pdfAcademyLogo2" alt="MRQS Logo">
-      </div>
-      <div class="pdf-header-details">
-        <div class="pdf-inst-title-en">Madrassa Riaz Ul Quran Wal Sunnah</div>
-        <div class="pdf-inst-title-ur">مدرسہ ریاض القرآن والسنہ</div>
-        <div class="pdf-inst-meta">
-          Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>
-        </div>
-      </div>
-      <div class="pdf-photo-wrap" style="display:flex; align-items:center; justify-content:flex-end;">
-        <span class="pdf-status-badge-unpaid">UNPAID — PENDING VERIFICATION</span>
-      </div>
-    </div>
-
-    <!-- Title Banner -->
-    <div class="pdf-doc-heading-bar">ADMISSION & FEE INVOICE / CHALLAN</div>
-
-    <!-- ID & Date Strip -->
-    <div class="pdf-id-strip">
-      <div>Invoice No / App ID: <span class="pdf-id-val" id="pdfInvoiceId">MRQS-2026-XXXX</span></div>
-      <div>Issue Date: <strong id="pdfInvoiceDate">--/--/----</strong></div>
-    </div>
-
-    <!-- Student Summary Strip -->
-    <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:5px; padding:7px 10px; margin-top:8px;">
-      <table style="width:100%; border-collapse:collapse; font-size:10px;">
-        <tr>
-          <td style="padding:2px 0; width:50%;">Student Name: <strong id="pdfInvoiceStudentName" style="color:#0E4D45;">---</strong></td>
-          <td style="padding:2px 0; width:50%;">Father's Name: <strong id="pdfInvoiceFatherName">---</strong></td>
-        </tr>
-        <tr>
-          <td style="padding:2px 0;">Enrolled Program: <strong id="pdfInvoiceProgram" style="color:#0E4D45;">---</strong></td>
-          <td style="padding:2px 0;">Contact / WhatsApp: <strong id="pdfInvoiceWhatsapp">---</strong></td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- Fee Breakdown Table -->
-    <div class="pdf-sec-title" style="margin-top:10px;">
-      <span>Fee Particulars & Breakdown</span>
-      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Payable Dues</span>
-    </div>
-    <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-top:4px;">
-      <thead>
-        <tr style="background:#0E4D45; color:#ffffff;">
-          <th style="padding:5px 8px; border:1px solid #0E4D45; width:45px; text-align:center;">#</th>
-          <th style="padding:5px 8px; border:1px solid #0E4D45; text-align:left;">Particulars / Description</th>
-          <th style="padding:5px 8px; border:1px solid #0E4D45; width:130px; text-align:right;">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="background:#ffffff;">
-          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:center;">1</td>
-          <td style="padding:5px 8px; border:1px solid #cbd5e1;">Registration & Admission Processing Fee</td>
-          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:right; font-weight:600;" id="pdfRegFee">PKR 2,000</td>
-        </tr>
-        <tr style="background:#f8fafc;">
-          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:center;">2</td>
-          <td style="padding:5px 8px; border:1px solid #cbd5e1;" id="pdfTuitionTitle">First Month Tuition Fee (Course: Nazra Quran Kareem)</td>
-          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:right; font-weight:600;" id="pdfTuitionFee">PKR 2,500</td>
-        </tr>
-        <tr style="background:#f0fdf4; font-weight:800; border-top:2px solid #0E4D45;">
-          <td colspan="2" style="padding:6px 8px; border:1px solid #cbd5e1; text-align:right; font-size:11.5px; color:#0E4D45;">TOTAL PAYABLE AMOUNT:</td>
-          <td style="padding:6px 8px; border:1px solid #cbd5e1; text-align:right; font-size:12px; color:#0E4D45;" id="pdfTotalFee">PKR 4,500</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Payment & Verification Instructions Box -->
-    <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:5px; padding:7px 10px; margin-top:9px; font-size:9.5px; color:#78350f; line-height:1.45;">
-      <div style="font-weight:700; margin-bottom:2px;">📌 Important Payment Instructions for Parents / Guardians:</div>
-      <div>Please deposit the payable fee via Bank Transfer / JazzCash / EasyPaisa and send the payment deposit receipt along with this PDF copy on official WhatsApp (<strong>+44 7438 622542</strong>) to verify your admission and activate student classes.</div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- EDITABLE BANK ACCOUNT DETAILS (CONFIGURABLE OFFICIAL DEPOSIT DETAILS) -->
-    <!-- ================================================================= -->
-    <div style="border:1.5px solid #0E4D45; border-radius:5px; overflow:hidden; margin-top:9px;">
-      <div style="background:#0E4D45; color:#ffffff; padding:4px 8px; font-weight:800; font-size:10px; text-transform:uppercase;">
-        Official Madrasa Deposit Accounts
-      </div>
-      <table style="width:100%; border-collapse:collapse; font-size:9.5px; background:#ffffff;">
-        <tr style="border-bottom:1px solid #e2e8f0;">
-          <td style="padding:4px 8px; width:130px; font-weight:600; color:#475569; background:#f8fafc;">Account Title:</td>
-          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">MADRASSA RIAZ UL QURAN WAL SUNNAH</td>
-        </tr>
-        <tr style="border-bottom:1px solid #e2e8f0;">
-          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">Bank Name:</td>
-          <td style="padding:4px 8px; font-weight:600; color:#0f172a;">Meezan Bank Ltd (Islamic Banking)</td>
-        </tr>
-        <tr style="border-bottom:1px solid #e2e8f0;">
-          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">IBAN / Account No:</td>
-          <td style="padding:4px 8px; font-weight:700; color:#0E4D45; font-family:'Courier New', monospace; font-size:11px;">PK00 MEZN 0000 0000 0000 0000</td>
-        </tr>
-        <tr style="border-bottom:1px solid #e2e8f0;">
-          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">JazzCash Account:</td>
-          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">0345-5955958 (Madrassa Administration)</td>
-        </tr>
-        <tr>
-          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">EasyPaisa Account:</td>
-          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">0345-5955958 (Madrassa Administration)</td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- Challan Notes & Signatures -->
-    <div style="font-size:8.5px; color:#64748b; margin-top:6px; font-style:italic;">
-      * Note: This is an official computerized fee challan. Classes will be scheduled immediately upon payment verification on WhatsApp (+44 7438 622542).
-    </div>
-
-    <div class="pdf-signatures-container" style="margin-top:12px;">
-      <div class="pdf-sign-column">
-        <div class="pdf-sign-divider">Depositor / Guardian Signature</div>
-      </div>
-      <div class="pdf-sign-column">
-        <div class="pdf-sign-divider">Accounts Department Authorization & Stamp</div>
-      </div>
+</div>
     </div>
   </div>
 </div>
