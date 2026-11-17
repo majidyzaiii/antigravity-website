@@ -270,8 +270,44 @@ window.MRQS_FEE_CONFIG = {
    * 3. Populates off-screen 2-Page A4 PDF template (#pdf-print-template)
    * 4. Auto-downloads PDF using html2pdf.js via staging clone (MRQS-Admission-[StudentFirstName]-[ApplicationID].pdf)
    * 5. Sends clean structured text payload to Web3Forms (NO file attachments, NO screenshots)
-   * 6. Displays confirmation modal with Application ID, re-download button, and WhatsApp link (+447438622542)
+   * 6. Displays confirmation modal with Application ID, re-download button, and WhatsApp link (+92 345 5955958)
    */
+  /**
+   * Course Code Prefix Resolver:
+   * Maps each course to a clean short code:
+   * - Hifz -> HIFZ
+   * - Nazra -> NAZRA
+   * - Islamic & Moral Tarbiyat -> TARBIYAT
+   * - Online International -> ONLINE
+   */
+  function getCoursePrefix(courseName) {
+    if (!courseName) return 'ADM';
+    const name = courseName.toLowerCase();
+    if (name.includes('hifz')) return 'HIFZ';
+    if (name.includes('nazra') || name.includes('nazira')) return 'NAZRA';
+    if (name.includes('tarbiyat') || name.includes('moral')) return 'TARBIYAT';
+    if (name.includes('online') || name.includes('international')) return 'ONLINE';
+    return 'ADM';
+  }
+
+  /**
+   * Sequential Application ID Generator per Course:
+   * Maintains distinct counters starting from 001:
+   * - MRQS-HIFZ-001, MRQS-HIFZ-002...
+   * - MRQS-NAZRA-001, MRQS-NAZRA-002...
+   * - MRQS-TARBIYAT-001, MRQS-TARBIYAT-002...
+   * - MRQS-ONLINE-001, MRQS-ONLINE-002...
+   */
+  function generateCourseAppId(courseName) {
+    const prefix = getCoursePrefix(courseName);
+    const storageKey = `mrqs_seq_${prefix}`;
+    let currentSeq = parseInt(localStorage.getItem(storageKey) || '0', 10);
+    currentSeq += 1;
+    localStorage.setItem(storageKey, currentSeq);
+    const formattedSeq = String(currentSeq).padStart(3, '0');
+    return `MRQS-${prefix}-${formattedSeq}`;
+  }
+
   async function handleAdmissionSubmission(form, callbacks = {}) {
     // Concurrency guard against duplicate submissions
     if (form.dataset.isSubmitting === 'true') {
@@ -292,9 +328,12 @@ window.MRQS_FEE_CONFIG = {
     if (callbacks.onStart) callbacks.onStart();
 
     try {
-      // 3. Generate dynamic Application ID: MRQS-2026-XXXX (4 random digits)
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const appId = `MRQS-2026-${randomNum}`;
+      // 3. Extract Selected Course First for Course-Specific Sequential ID
+      const programRadio = form.querySelector('input[name="programSelection"]:checked');
+      const program = programRadio ? programRadio.value : 'Nazra Quran Kareem';
+
+      // 4. Generate dynamic Application ID per course starting at 001 (e.g. MRQS-HIFZ-001, MRQS-NAZRA-001)
+      const appId = generateCourseAppId(program);
 
       // Record submission date (e.g. "18 Nov 2026")
       const now = new Date();
@@ -303,10 +342,6 @@ window.MRQS_FEE_CONFIG = {
       const month = months[now.getMonth()];
       const year = now.getFullYear();
       const submissionDate = `${day} ${month} ${year}`;
-
-      // 4. Extract Form Values
-      const programRadio = form.querySelector('input[name="programSelection"]:checked');
-      const program = programRadio ? programRadio.value : 'Nazra Quran Kareem';
 
       const firstName = (form.querySelector('#studentFirstName')?.value || '').trim();
       const lastName = (form.querySelector('#studentLastName')?.value || '').trim();
@@ -422,7 +457,7 @@ window.MRQS_FEE_CONFIG = {
 
           // Header Branding (Matches Website Navbar Header in Urdu)
           setTxt('pdfInstTitle', 'مدرسہ ریاض القرآن والسنۃ');
-          setHtml('pdfInstMeta', 'ویب سائٹ: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; ای میل: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; واٹس ایپ: <strong>+44 7438 622542</strong>');
+          setHtml('pdfInstMeta', 'ویب سائٹ: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; ای میل: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; واٹس ایپ: <strong>+92 345 5955958</strong>');
 
           // Heading Bar & ID Strip
           setTxt('pdfDocHeadingBar', 'آن لائن داخلہ درخواست فارم');
@@ -476,7 +511,7 @@ window.MRQS_FEE_CONFIG = {
 
           // Header Branding (Matches Website Navbar Header in English)
           setTxt('pdfInstTitle', 'MADRASSA RIAZ UL QURAN WAL SUNNAH');
-          setHtml('pdfInstMeta', 'Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>');
+          setHtml('pdfInstMeta', 'Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+92 345 5955958</strong>');
 
           // Heading Bar & ID Strip
           setTxt('pdfDocHeadingBar', 'OFFICIAL ADMISSION APPLICATION FORM');
@@ -626,13 +661,13 @@ window.MRQS_FEE_CONFIG = {
           };
         }
 
-        // Setup WhatsApp confirmation button linking to +447438622542
+        // Setup WhatsApp confirmation button linking to +92 345 5955958
         const whatsappConfirmBtn = document.getElementById('whatsappConfirmBtn');
         if (whatsappConfirmBtn) {
           const waText = isUrdu
             ? `السلام علیکم! میں نے ${studentFullName} کے لیے آن لائن داخلہ فارم جمع کروا دیا ہے (درخواست نمبر: ${appId}، مطلوبہ کورس: ${displayProgram})۔ برائے مہربانی میری داخلہ درخواست کی تصدیق فرمائیں اور کلاسز کے آغاز کی رہنمائی فرمائیں۔`
             : `Assalam-o-Alaikum, I have submitted the online admission application for ${studentFullName} (Application ID: ${appId}, Course: ${program}). Please verify my admission and share class activation details.`;
-          whatsappConfirmBtn.href = `https://wa.me/447438622542?text=${encodeURIComponent(waText)}`;
+          whatsappConfirmBtn.href = `https://wa.me/923455955958?text=${encodeURIComponent(waText)}`;
         }
 
         // Close modal events
@@ -672,8 +707,8 @@ window.MRQS_FEE_CONFIG = {
       console.error('MRQS Admission Submission Error:', err);
       const errTitle = isUrdu ? 'خرابی' : 'Submission Error';
       const errMsg = isUrdu
-        ? 'درخواست پراسیس کرنے میں خرابی پیش آئی ہے۔ براہ کرم انٹرنیٹ چیک کریں یا واٹس ایپ پر رابطہ کریں: +44 7438 622542'
-        : 'An error occurred during submission. Please check your connection or contact us on WhatsApp: +44 7438 622542';
+        ? 'درخواست پراسیس کرنے میں خرابی پیش آئی ہے۔ براہ کرم انٹرنیٹ چیک کریں یا واٹس ایپ پر رابطہ کریں: +92 345 5955958'
+        : 'An error occurred during submission. Please check your connection or contact us on WhatsApp: +92 345 5955958';
       window.showMrqsToast(errTitle, errMsg, 'error', 7000);
       if (callbacks.onError) callbacks.onError(err);
     } finally {
@@ -763,8 +798,8 @@ window.MRQS_FEE_CONFIG = {
       console.error('MRQS Delivery Error:', networkErr);
       const errTitle = isUrdu ? 'کنکشن کی خرابی' : 'Connection Error';
       const errMsg = isUrdu
-        ? 'درخواست ارسال کرنے میں خرابی پیش آئی ہے۔ براہ کرم انٹرنیٹ چیک کریں یا واٹس ایپ پر رابطہ کریں: +44 7438 622542'
-        : 'Network issue. Please check your connection or contact us on WhatsApp: +44 7438 622542';
+        ? 'درخواست ارسال کرنے میں خرابی پیش آئی ہے۔ براہ کرم انٹرنیٹ چیک کریں یا واٹس ایپ پر رابطہ کریں: +92 345 5955958'
+        : 'Network issue. Please check your connection or contact us on WhatsApp: +92 345 5955958';
       window.showMrqsToast(errTitle, errMsg, 'error', 7000);
       if (callbacks.onError) callbacks.onError(networkErr);
     } finally {
