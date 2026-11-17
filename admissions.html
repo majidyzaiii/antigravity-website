@@ -4350,6 +4350,710 @@ document.addEventListener("DOMContentLoaded", () => {
   </form>
 </div>
 
+<!-- ======================================================== -->
+<!-- 1. HIDDEN 2-PAGE A4 ADMISSION & INVOICE PRINT TEMPLATE    -->
+<!-- ======================================================== -->
+<style>
+#pdf-print-template {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -99999;
+  width: 210mm;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+#pdf-print-template * {
+  box-sizing: border-box;
+}
+.pdf-page-sheet {
+  width: 210mm;
+  height: 296mm;
+  max-height: 296mm;
+  min-height: 296mm;
+  padding: 10mm 14mm;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+}
+.pdf-page-sheet:last-child {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+.pdf-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2.5px solid #0E4D45;
+  padding-bottom: 8px;
+  gap: 12px;
+}
+.pdf-logo-wrap {
+  width: 75px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.pdf-logo-img {
+  max-width: 68px;
+  max-height: 68px;
+  object-fit: contain;
+  display: block;
+}
+.pdf-header-details {
+  flex-grow: 1;
+  text-align: center;
+}
+.pdf-inst-title-en {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #0E4D45;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.pdf-inst-title-ur {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #334155;
+  margin: 2px 0 0 0;
+  font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", Arial, sans-serif;
+}
+.pdf-inst-meta {
+  font-size: 10px;
+  color: #475569;
+  margin-top: 3px;
+  font-weight: 500;
+}
+.pdf-photo-wrap {
+  width: 32mm;
+  flex-shrink: 0;
+  text-align: right;
+}
+.pdf-photo-frame {
+  width: 32mm;
+  height: 38mm;
+  border: 1.5px solid #0E4D45;
+  border-radius: 4px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-left: auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.pdf-doc-heading-bar {
+  background: #0E4D45;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  font-size: 12.5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+.pdf-id-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 10.5px;
+  color: #334155;
+  background: #f1f5f9;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+.pdf-id-val {
+  font-weight: 800;
+  color: #0E4D45;
+  font-size: 11.5px;
+  font-family: "Courier New", monospace;
+}
+.pdf-sec-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0E4D45;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1.5px solid #0E4D45;
+  padding-bottom: 2px;
+  margin-top: 9px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.pdf-highlight-box {
+  background: #f0fdf4;
+  border: 1.5px solid #10b981;
+  border-radius: 4px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pdf-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+.pdf-data-table th, .pdf-data-table td {
+  border: 1px solid #cbd5e1;
+  padding: 4px 7px;
+  vertical-align: middle;
+}
+.pdf-data-table .th-lbl {
+  width: 22%;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+.pdf-data-table .td-val {
+  width: 28%;
+  color: #0f172a;
+  font-weight: 600;
+}
+.pdf-data-table .full-lbl {
+  width: 22%;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+.pdf-data-table .full-val {
+  width: 78%;
+  color: #0f172a;
+  font-weight: 600;
+}
+.pdf-note-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 5px 8px;
+  margin-top: 8px;
+  font-size: 9px;
+  color: #334155;
+  line-height: 1.4;
+}
+.pdf-signatures-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 0 10px;
+}
+.pdf-sign-column {
+  width: 44%;
+  text-align: center;
+}
+.pdf-sign-divider {
+  border-top: 1.5px dashed #475569;
+  margin-top: 36px;
+  padding-top: 4px;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+}
+.pdf-status-badge-unpaid {
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 9.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+</style>
+
+<div id="pdf-print-template" dir="ltr" lang="en">
+  <!-- ========================================== -->
+  <!-- PAGE 1: OFFICIAL ADMISSION APPLICATION FORM -->
+  <!-- ========================================== -->
+  <div class="pdf-page-sheet" id="pdfPage1">
+    <!-- Header -->
+    <div class="pdf-header-container">
+      <div class="pdf-logo-wrap">
+        <img src="assets/logo.png" class="pdf-logo-img" id="pdfAcademyLogo1" alt="MRQS Logo">
+      </div>
+      <div class="pdf-header-details">
+        <div class="pdf-inst-title-en">Madrassa Riaz Ul Quran Wal Sunnah</div>
+        <div class="pdf-inst-title-ur">مدرسہ ریاض القرآن والسنہ</div>
+        <div class="pdf-inst-meta">
+          Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>
+        </div>
+      </div>
+      <div class="pdf-photo-wrap">
+        <div class="pdf-photo-frame" id="pdfPhotoBox">
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#94a3b8; font-size:10px; font-weight:600;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>PHOTO</span>
+            <span style="font-size:8px; opacity:0.8;">(35x45mm)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Title Banner -->
+    <div class="pdf-doc-heading-bar">OFFICIAL ADMISSION APPLICATION FORM</div>
+
+    <!-- ID & Date Strip -->
+    <div class="pdf-id-strip">
+      <div>Application ID: <span class="pdf-id-val" id="pdfAppId1">MRQS-2026-XXXX</span></div>
+      <div>Submission Date: <strong id="pdfSubmitDate1">--/--/----</strong></div>
+    </div>
+
+    <!-- Section 1: Selected Program -->
+    <div class="pdf-sec-title">
+      <span>1. Desired Program / Course</span>
+      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Course Selection</span>
+    </div>
+    <div class="pdf-highlight-box">
+      <div>
+        <span style="font-size:11px; color:#475569;">Enrolled Course:</span>
+        <strong id="pdfProgramName" style="font-size:12.5px; color:#0E4D45; margin-left:6px;">Nazra Quran Kareem</strong>
+      </div>
+      <span style="background:#0E4D45; color:#ffffff; font-size:9px; font-weight:700; padding:2px 8px; border-radius:3px; text-transform:uppercase;">Application Registered</span>
+    </div>
+
+    <!-- Section 2: Student Particulars -->
+    <div class="pdf-sec-title">
+      <span>2. Student Particulars</span>
+      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Candidate Details</span>
+    </div>
+    <table class="pdf-data-table">
+      <tr>
+        <td class="th-lbl">Full Name:</td>
+        <td class="td-val" style="font-weight:700; color:#0E4D45;"><span id="pdfStudentName">---</span></td>
+        <td class="th-lbl">Date of Birth:</td>
+        <td class="td-val"><span id="pdfDob">---</span></td>
+      </tr>
+      <tr>
+        <td class="th-lbl">B-Form / CNIC:</td>
+        <td class="td-val"><span id="pdfBForm">---</span></td>
+        <td class="th-lbl">Nationality:</td>
+        <td class="td-val"><span id="pdfNationality">Pakistani</span></td>
+      </tr>
+      <tr>
+        <td class="th-lbl">Previous Education:</td>
+        <td class="td-val"><span id="pdfPrevEducation">---</span></td>
+        <td class="th-lbl">Previous School:</td>
+        <td class="td-val"><span id="pdfPrevSchool">---</span></td>
+      </tr>
+    </table>
+
+    <!-- Section 3: Father & Guardian Details -->
+    <div class="pdf-sec-title">
+      <span>3. Father & Guardian Details</span>
+      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Parent Information</span>
+    </div>
+    <table class="pdf-data-table">
+      <tr>
+        <td class="th-lbl">Father's Name:</td>
+        <td class="td-val" style="font-weight:700;"><span id="pdfFatherName">---</span></td>
+        <td class="th-lbl">Father's Occupation:</td>
+        <td class="td-val"><span id="pdfFatherOccupation">---</span></td>
+      </tr>
+      <tr>
+        <td class="th-lbl">Guardian's Name:</td>
+        <td class="td-val"><span id="pdfGuardianName">---</span></td>
+        <td class="th-lbl">Relation with Candidate:</td>
+        <td class="td-val"><span id="pdfGuardianRelation">---</span></td>
+      </tr>
+      <tr>
+        <td class="th-lbl">Guardian CNIC No:</td>
+        <td class="td-val" colspan="3"><span id="pdfGuardianCnic">---</span></td>
+      </tr>
+    </table>
+
+    <!-- Section 4: Contact & Address Details -->
+    <div class="pdf-sec-title">
+      <span>4. Contact & Address Details</span>
+      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Communication Particulars</span>
+    </div>
+    <table class="pdf-data-table">
+      <tr>
+        <td class="th-lbl">Mobile Number 1:</td>
+        <td class="td-val" style="font-weight:700;"><span id="pdfMobile1">---</span></td>
+        <td class="th-lbl">Mobile Number 2:</td>
+        <td class="td-val"><span id="pdfMobile2">---</span></td>
+      </tr>
+      <tr>
+        <td class="th-lbl">WhatsApp Number:</td>
+        <td class="td-val" colspan="3" style="font-weight:700; color:#0E4D45;"><span id="pdfWhatsapp">---</span></td>
+      </tr>
+      <tr>
+        <td class="full-lbl">Current / Temporary Address:</td>
+        <td class="full-val" colspan="3"><span id="pdfTempAddress">---</span></td>
+      </tr>
+      <tr>
+        <td class="full-lbl">Permanent Address:</td>
+        <td class="full-val" colspan="3"><span id="pdfPermAddress">---</span></td>
+      </tr>
+    </table>
+
+    <!-- Footer: Undertaking & Signatures -->
+    <div class="pdf-note-box">
+      <div style="font-weight:700; color:#0E4D45; margin-bottom:2px;">☑ Guardian Undertaking & Rules Acceptance:</div>
+      <div>1. <strong>Verification:</strong> I verify that all the information provided in this admission form (date of birth, particulars, and address) is authentic and correct.</div>
+      <div>2. <strong>Rules & Regulations:</strong> By submitting this application, I confirm that I have read and accepted all rules, policies, and regulations of Madrassa Riaz Ul Quran Wal Sunnah.</div>
+    </div>
+
+    <div class="pdf-signatures-container">
+      <div class="pdf-sign-column">
+        <div class="pdf-sign-divider">Guardian / Parent Signature</div>
+      </div>
+      <div class="pdf-sign-column">
+        <div class="pdf-sign-divider">Principal / Admin Stamp & Sign</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PAGE 2: ADMISSION & FEE INVOICE / CHALLAN  -->
+  <!-- ========================================== -->
+  <div class="pdf-page-sheet" id="pdfPage2">
+    <!-- Header -->
+    <div class="pdf-header-container">
+      <div class="pdf-logo-wrap">
+        <img src="assets/logo.png" class="pdf-logo-img" id="pdfAcademyLogo2" alt="MRQS Logo">
+      </div>
+      <div class="pdf-header-details">
+        <div class="pdf-inst-title-en">Madrassa Riaz Ul Quran Wal Sunnah</div>
+        <div class="pdf-inst-title-ur">مدرسہ ریاض القرآن والسنہ</div>
+        <div class="pdf-inst-meta">
+          Official Web: <strong>www.mrqs.pk</strong> &nbsp;|&nbsp; Email: <strong>info@mrqs.pk</strong> &nbsp;|&nbsp; WhatsApp: <strong>+44 7438 622542</strong>
+        </div>
+      </div>
+      <div class="pdf-photo-wrap" style="display:flex; align-items:center; justify-content:flex-end;">
+        <span class="pdf-status-badge-unpaid">UNPAID — PENDING VERIFICATION</span>
+      </div>
+    </div>
+
+    <!-- Title Banner -->
+    <div class="pdf-doc-heading-bar">ADMISSION & FEE INVOICE / CHALLAN</div>
+
+    <!-- ID & Date Strip -->
+    <div class="pdf-id-strip">
+      <div>Invoice No / App ID: <span class="pdf-id-val" id="pdfInvoiceId">MRQS-2026-XXXX</span></div>
+      <div>Issue Date: <strong id="pdfInvoiceDate">--/--/----</strong></div>
+    </div>
+
+    <!-- Student Summary Strip -->
+    <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:5px; padding:7px 10px; margin-top:8px;">
+      <table style="width:100%; border-collapse:collapse; font-size:10px;">
+        <tr>
+          <td style="padding:2px 0; width:50%;">Student Name: <strong id="pdfInvoiceStudentName" style="color:#0E4D45;">---</strong></td>
+          <td style="padding:2px 0; width:50%;">Father's Name: <strong id="pdfInvoiceFatherName">---</strong></td>
+        </tr>
+        <tr>
+          <td style="padding:2px 0;">Enrolled Program: <strong id="pdfInvoiceProgram" style="color:#0E4D45;">---</strong></td>
+          <td style="padding:2px 0;">Contact / WhatsApp: <strong id="pdfInvoiceWhatsapp">---</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Fee Breakdown Table -->
+    <div class="pdf-sec-title" style="margin-top:10px;">
+      <span>Fee Particulars & Breakdown</span>
+      <span style="font-size:9.5px; font-weight:600; text-transform:none; color:#0E4D45;">Payable Dues</span>
+    </div>
+    <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-top:4px;">
+      <thead>
+        <tr style="background:#0E4D45; color:#ffffff;">
+          <th style="padding:5px 8px; border:1px solid #0E4D45; width:45px; text-align:center;">#</th>
+          <th style="padding:5px 8px; border:1px solid #0E4D45; text-align:left;">Particulars / Description</th>
+          <th style="padding:5px 8px; border:1px solid #0E4D45; width:130px; text-align:right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#ffffff;">
+          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:center;">1</td>
+          <td style="padding:5px 8px; border:1px solid #cbd5e1;">Registration & Admission Processing Fee</td>
+          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:right; font-weight:600;" id="pdfRegFee">PKR 2,000</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:center;">2</td>
+          <td style="padding:5px 8px; border:1px solid #cbd5e1;" id="pdfTuitionTitle">First Month Tuition Fee (Course: Nazra Quran Kareem)</td>
+          <td style="padding:5px 8px; border:1px solid #cbd5e1; text-align:right; font-weight:600;" id="pdfTuitionFee">PKR 2,500</td>
+        </tr>
+        <tr style="background:#f0fdf4; font-weight:800; border-top:2px solid #0E4D45;">
+          <td colspan="2" style="padding:6px 8px; border:1px solid #cbd5e1; text-align:right; font-size:11.5px; color:#0E4D45;">TOTAL PAYABLE AMOUNT:</td>
+          <td style="padding:6px 8px; border:1px solid #cbd5e1; text-align:right; font-size:12px; color:#0E4D45;" id="pdfTotalFee">PKR 4,500</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Payment & Verification Instructions Box -->
+    <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:5px; padding:7px 10px; margin-top:9px; font-size:9.5px; color:#78350f; line-height:1.45;">
+      <div style="font-weight:700; margin-bottom:2px;">📌 Important Payment Instructions for Parents / Guardians:</div>
+      <div>Please deposit the payable fee via Bank Transfer / JazzCash / EasyPaisa and send the payment deposit receipt along with this PDF copy on official WhatsApp (<strong>+44 7438 622542</strong>) to verify your admission and activate student classes.</div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- EDITABLE BANK ACCOUNT DETAILS (CONFIGURABLE OFFICIAL DEPOSIT DETAILS) -->
+    <!-- ================================================================= -->
+    <div style="border:1.5px solid #0E4D45; border-radius:5px; overflow:hidden; margin-top:9px;">
+      <div style="background:#0E4D45; color:#ffffff; padding:4px 8px; font-weight:800; font-size:10px; text-transform:uppercase;">
+        Official Madrasa Deposit Accounts
+      </div>
+      <table style="width:100%; border-collapse:collapse; font-size:9.5px; background:#ffffff;">
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:4px 8px; width:130px; font-weight:600; color:#475569; background:#f8fafc;">Account Title:</td>
+          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">MADRASSA RIAZ UL QURAN WAL SUNNAH</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">Bank Name:</td>
+          <td style="padding:4px 8px; font-weight:600; color:#0f172a;">Meezan Bank Ltd (Islamic Banking)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">IBAN / Account No:</td>
+          <td style="padding:4px 8px; font-weight:700; color:#0E4D45; font-family:'Courier New', monospace; font-size:11px;">PK00 MEZN 0000 0000 0000 0000</td>
+        </tr>
+        <tr style="border-bottom:1px solid #e2e8f0;">
+          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">JazzCash Account:</td>
+          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">0345-5955958 (Madrassa Administration)</td>
+        </tr>
+        <tr>
+          <td style="padding:4px 8px; font-weight:600; color:#475569; background:#f8fafc;">EasyPaisa Account:</td>
+          <td style="padding:4px 8px; font-weight:700; color:#0f172a;">0345-5955958 (Madrassa Administration)</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Challan Notes & Signatures -->
+    <div style="font-size:8.5px; color:#64748b; margin-top:6px; font-style:italic;">
+      * Note: This is an official computerized fee challan. Classes will be scheduled immediately upon payment verification on WhatsApp (+44 7438 622542).
+    </div>
+
+    <div class="pdf-signatures-container" style="margin-top:12px;">
+      <div class="pdf-sign-column">
+        <div class="pdf-sign-divider">Depositor / Guardian Signature</div>
+      </div>
+      <div class="pdf-sign-column">
+        <div class="pdf-sign-divider">Accounts Department Authorization & Stamp</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 2. ADMISSION SUCCESS CONFIRMATION MODAL    -->
+<!-- ========================================== -->
+<style>
+.admission-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: mrqsFadeIn 0.3s ease-out;
+}
+@keyframes mrqsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mrqsCardScale {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.admission-modal-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  max-width: 520px;
+  width: 100%;
+  padding: 30px 26px;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  animation: mrqsCardScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #1e293b;
+  font-family: inherit;
+}
+.admission-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+  transition: all 0.2s;
+}
+.admission-modal-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+.modal-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px auto;
+  border-radius: 50%;
+  background: #ecfdf5;
+  border: 2px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0E4D45;
+  margin: 0 0 8px 0;
+}
+.modal-subtitle {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+.modal-app-id-box {
+  background: #f0fdf4;
+  border: 1.5px dashed #10b981;
+  border-radius: 10px;
+  padding: 8px 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  min-width: 210px;
+}
+.app-id-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #047857;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.app-id-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0E4D45;
+  letter-spacing: 1px;
+  font-family: "Courier New", monospace;
+  margin-top: 2px;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.btn-modal-action {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+.btn-pdf-download {
+  background: #0E4D45;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(14, 77, 69, 0.25);
+}
+.btn-pdf-download:hover {
+  background: #09342e;
+  transform: translateY(-1px);
+}
+.btn-whatsapp-confirm {
+  background: #25D366;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+.btn-whatsapp-confirm:hover {
+  background: #20ba5a;
+  transform: translateY(-1px);
+}
+@media (max-width: 500px) {
+  .admission-modal-card {
+    padding: 22px 16px;
+  }
+  .modal-title {
+    font-size: 1.15rem;
+  }
+  .btn-modal-action {
+    font-size: 0.86rem;
+    padding: 10px 12px;
+  }
+}
+</style>
+
+<div id="admissionSuccessModal" class="admission-modal-backdrop" style="display: none;">
+  <div class="admission-modal-card">
+    <button type="button" class="admission-modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+    
+    <div class="modal-icon-wrapper">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    </div>
+    
+    <h3 class="modal-title" data-en="Admission Application Submitted!" data-ur="داخلہ درخواست کامیابی سے جمع ہو گئی!">Admission Application Submitted!</h3>
+    <p class="modal-subtitle" data-en="Your official admission application has been registered successfully. A 2-page PDF copy of your Admission Form & Fee Challan has been downloaded to your device." data-ur="آپ کی آن لائن داخلہ درخواست کامیابی سے درج ہو چکی ہے۔ داخلہ فارم اور فیس چالان پر مشتمل 2 صفحات کا پی ڈی ایف آپ کے آلے پر خودکار طور پر ڈاؤن لوڈ کر دیا گیا ہے۔">
+      Your official admission application has been registered successfully. A 2-page PDF copy of your Admission Form & Fee Challan has been downloaded to your device.
+    </p>
+    
+    <div class="modal-app-id-box">
+      <span class="app-id-label" data-en="Application ID" data-ur="درخواست نمبر">Application ID</span>
+      <span class="app-id-value" id="modalAppId">MRQS-2026-XXXX</span>
+    </div>
+    
+    <div class="modal-actions">
+      <!-- Re-download Button -->
+      <button type="button" id="downloadPdfAgainBtn" class="btn-modal-action btn-pdf-download">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span data-en="Download Admission & Invoice PDF Again" data-ur="پی ڈی ایف دوبارہ ڈاؤن لوڈ کریں">Download Admission & Invoice PDF Again</span>
+      </button>
+      
+      <!-- WhatsApp Confirmation Button -->
+      <a id="whatsappConfirmBtn" href="https://wa.me/447438622542" target="_blank" rel="noopener noreferrer" class="btn-modal-action btn-whatsapp-confirm">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span data-en="Send Receipt on WhatsApp to Activate" data-ur="واٹس ایپ پر رسید بھیجیں">Send Receipt on WhatsApp to Activate</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
 
@@ -6547,8 +7251,9 @@ html[lang="ur"], html[dir="rtl"] {
 })();
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="assets/js/form-submission.js?v=2.1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>if (typeof html2pdf === 'undefined') { document.write('<script src="assets/js/html2pdf.bundle.min.js"><\/script>'); }</script>
+<script src="assets/js/form-submission.js?v=3.0"></script>
 </body>
 
 
@@ -8119,7 +8824,7 @@ function handleFormSubmission(e) {
           container.classList.add('submitting');
           let maxTravel = container.offsetWidth - btn.offsetWidth - 8;
           btn.style.transform = `translateX(${isRtl ? -maxTravel : maxTravel}px)`;
-          text.innerText = isRtl ? "فارم کی رسید تیار اور ارسال کی جا رہی ہے..." : "Generating receipt snapshot & submitting...";
+          text.innerText = isRtl ? "درخواست جمع اور پی ڈی ایف تیار کی جا رہی ہے..." : "Submitting application & generating PDF...";
           text.style.opacity = 1;
         }
       },
