@@ -6499,11 +6499,10 @@ function saveAllTeachers() {
         // Cryptographic Salt & Salted Hashes (ZERO plain-text credentials stored)
         const CRYPTO_SALT = "MRQS_2026_NAZIM_SECURE_SALT_#";
         const VALID_USER_HASHES = new Set([
-            "f691b96f18bd665dae82af82217cc51ad2fdd39536918d56ef2639bf45027627", // primary
-            "3d6f4a5d02610252f96edd6a0f4fb25cb3cc60f57576fc487adbd395eea737c0", // secondary
-            "f35dba29ec3e60436b47660268f05457f1a2ce73ce727631e070b174a8cca153"  // fallback
+            "3d6f4a5d02610252f96edd6a0f4fb25cb3cc60f57576fc487adbd395eea737c0", // info@mrqs.pk
+            "f35dba29ec3e60436b47660268f05457f1a2ce73ce727631e070b174a8cca153"  // mrqs.pk@gmail.com
         ]);
-        const VALID_PASS_HASH = "9a7ea55b8c3175e1a5713589580c430b5539577b687e68f9d77750cb0ffc71ac"; // Salted SHA-256 hash
+        const VALID_PASS_HASH = "34552f6f8625bc1be69e245a5ec2443500467383353b5ebcb592d356874d88a2"; // Salted SHA-256 hash
 
         let lockoutTimerInterval = null;
         let inactivityInterval = null;
