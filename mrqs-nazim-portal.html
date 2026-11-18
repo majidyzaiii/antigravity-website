@@ -5328,8 +5328,7 @@ div:has(> .strengths-wrapper),
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <!-- Add the Realtime Database SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<!-- Add the Firebase Auth SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
 
 <script>
 
@@ -5412,7 +5411,6 @@ div:has(> .strengths-wrapper),
       firebase.initializeApp(firebaseConfig);
   }
   const db = firebase.database();
-  const auth = firebase.auth();
 </script>
 
 
@@ -6668,10 +6666,6 @@ function saveAllTeachers() {
         function logoutUser(dueToInactivity = false) {
             sessionStorage.removeItem('admin_auth');
             sessionStorage.removeItem(LAST_ACTIVITY_KEY);
-            
-            if (window.firebase && firebase.auth && firebase.auth().currentUser) {
-                firebase.auth().signOut().catch(() => {});
-            }
 
             if (sessionTimeoutBanner) {
                 sessionTimeoutBanner.style.display = dueToInactivity ? 'block' : 'none';
@@ -6707,33 +6701,15 @@ function saveAllTeachers() {
 
             let authenticated = false;
 
-            // 1. Attempt Firebase Authentication (Email & Password)
-            if (window.firebase && firebase.auth) {
-                try {
-                    let emailToAuth = userInput.toLowerCase();
-                    if (emailToAuth === 'admin') emailToAuth = 'info@mrqs.pk';
-                    if (emailToAuth.includes('@')) {
-                        const userCredential = await firebase.auth().signInWithEmailAndPassword(emailToAuth, passInput);
-                        if (userCredential && userCredential.user) {
-                            authenticated = true;
-                        }
-                    }
-                } catch (fbErr) {
-                    console.log('Firebase auth status:', fbErr.code || fbErr.message);
+            // Strong Web Crypto API Salted SHA-256 Hash Verification (Zero plain-text in bundle)
+            try {
+                const uHash = await computeSaltedHash(userInput.toLowerCase());
+                const pHash = await computeSaltedHash(passInput);
+                if (VALID_USER_HASHES.has(uHash) && pHash === VALID_PASS_HASH) {
+                    authenticated = true;
                 }
-            }
-
-            // 2. Cryptographic Salted SHA-256 Hash Check (Zero plain-text in bundle)
-            if (!authenticated) {
-                try {
-                    const uHash = await computeSaltedHash(userInput.toLowerCase());
-                    const pHash = await computeSaltedHash(passInput);
-                    if (VALID_USER_HASHES.has(uHash) && pHash === VALID_PASS_HASH) {
-                        authenticated = true;
-                    }
-                } catch (hashErr) {
-                    console.error('Hash verification error:', hashErr);
-                }
+            } catch (hashErr) {
+                console.error('Cryptographic verification error:', hashErr);
             }
 
             if (btnLogin) {
