@@ -1,5 +1,15 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/donate", "destination": "/donation", "permanent": true },
+    { "source": "/donate.html", "destination": "/donation", "permanent": true },
+    { "source": "/donations", "destination": "/donation", "permanent": true },
+    { "source": "/donations.html", "destination": "/donation", "permanent": true },
+    { "source": "/admissions", "destination": "/admission", "permanent": true },
+    { "source": "/admissions.html", "destination": "/admission", "permanent": true },
+    { "source": "/admin", "destination": "/", "permanent": true },
+    { "source": "/admin.html", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -2,3 +2,7 @@
 /admin.html / 301
 /admissions /admission 301
 /admissions.html /admission 301
+/donate /donation 301
+/donate.html /donation 301
+/donations /donation 301
+/donations.html /donation 301
