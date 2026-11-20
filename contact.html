@@ -25,6 +25,57 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Critical CSS: Prevent Mobile Header Shift & FOUC -->
+    <style id="critical-fouc-nav">
+      @media (max-width: 768px) {
+        header,
+        .sticky-header header,
+        #ultimateScrollHeader header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          position: relative !important;
+        }
+        header .header-logo,
+        header .desktop-logo,
+        .sticky-header header .header-logo,
+        .sticky-header header .desktop-logo,
+        #ultimateScrollHeader header .header-logo,
+        #ultimateScrollHeader header .desktop-logo {
+          order: 1 !important;
+          margin: 0 !important;
+          display: flex !important;
+        }
+        header .brand-title-container,
+        header .brand-title-block,
+        .sticky-header header .brand-title-container,
+        .sticky-header header .brand-title-block,
+        #ultimateScrollHeader header .brand-title-container,
+        #ultimateScrollHeader header .brand-title-block {
+          order: 2 !important;
+          margin: 0 auto !important;
+        }
+        header .mobile-menu-btn,
+        .sticky-header header .mobile-menu-btn,
+        #ultimateScrollHeader header .mobile-menu-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          order: 3 !important;
+          margin-left: auto !important;
+          margin-right: 0 !important;
+        }
+        html[dir="rtl"] header .mobile-menu-btn,
+        html[lang="ur"] header .mobile-menu-btn,
+        body.ur header .mobile-menu-btn {
+          margin-right: auto !important;
+          margin-left: 0 !important;
+        }
+      }
+    </style>
     <title>Contact Us - Madrassa Riaz ul Quran wal Sunnah</title>
     <meta name="description" content="Visit Madrassa Riaz Ul Quran at Quba Masjid, Sadiqabad Rawalpindi near Shamsabad. Contact via phone or WhatsApp at +92 345 5955958.">
     <meta name="keywords" content="Madrassa Location Rawalpindi, Quba Masjid Sadiqabad, Quba Masjid Muslim Town, Madrassa in Sadiqabad Rawalpindi, Shamsabad Faizabad Rawalpindi, Khurram Colony Dhoke Kala Khan, Mufti Riaz Mahmood, Contact Madrassa Riaz Ul Quran, WhatsApp Islamic Madrassa, مسجد قبا صادق آباد پتہ, مدرسہ ریاض القرآن رابطہ">
@@ -623,9 +674,11 @@
             .mobile-logo-container {
                 display: none !important;
             }
-            .desktop-logo {
+            .desktop-logo,
+            .header-logo {
                 display: flex !important;
-                order: -1;
+                order: 1 !important;
+                margin: 0 !important;
             }
             .header-logo img,
             html[dir="rtl"] header .header-logo img,
@@ -684,13 +737,17 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
-                order: -1; /* Puts it on the left in LTR, right in RTL natively */
+                order: 3 !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
             }
             .header-logo {
-                order: 1; /* Puts it on the right in LTR, left in RTL natively */
+                order: 1 !important;
+                margin: 0 !important;
             }
             .brand-title-container {
-                order: 0;
+                order: 2 !important;
+                margin: 0 auto !important;
             }
             .floating-nav-container {
                 display: none; /* Hidden by default on mobile */

@@ -26,6 +26,57 @@
     <meta charset="UTF-8">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Critical CSS: Prevent Mobile Header Shift & FOUC -->
+    <style id="critical-fouc-nav">
+      @media (max-width: 768px) {
+        header,
+        .sticky-header header,
+        #ultimateScrollHeader header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          position: relative !important;
+        }
+        header .header-logo,
+        header .desktop-logo,
+        .sticky-header header .header-logo,
+        .sticky-header header .desktop-logo,
+        #ultimateScrollHeader header .header-logo,
+        #ultimateScrollHeader header .desktop-logo {
+          order: 1 !important;
+          margin: 0 !important;
+          display: flex !important;
+        }
+        header .brand-title-container,
+        header .brand-title-block,
+        .sticky-header header .brand-title-container,
+        .sticky-header header .brand-title-block,
+        #ultimateScrollHeader header .brand-title-container,
+        #ultimateScrollHeader header .brand-title-block {
+          order: 2 !important;
+          margin: 0 auto !important;
+        }
+        header .mobile-menu-btn,
+        .sticky-header header .mobile-menu-btn,
+        #ultimateScrollHeader header .mobile-menu-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          order: 3 !important;
+          margin-left: auto !important;
+          margin-right: 0 !important;
+        }
+        html[dir="rtl"] header .mobile-menu-btn,
+        html[lang="ur"] header .mobile-menu-btn,
+        body.ur header .mobile-menu-btn {
+          margin-right: auto !important;
+          margin-left: 0 !important;
+        }
+      }
+    </style>
     <title>Madrassa Riaz ul Quran wal Sunnah | Official Website</title>
     <meta name="description" content="Top Madrassa in Sadiqabad &amp; Muslim Town Rawalpindi by Mufti Riaz Mahmood. Hifz, Nazra &amp; Online Quran classes near Shamsabad &amp; Faizabad.">
     <meta name="keywords" content="Madrassa Riaz Ul Quran Wal Sunnah, Mufti Riaz Mahmood, Mufti Riaz Mahmood Rawalpindi, Quba Masjid Sadiqabad, Quba Masjid Muslim Town, Madrassa in Sadiqabad Rawalpindi, Madrassa in Muslim Town Rawalpindi, Hifz Madrassa Sadiqabad Muslim Town, Islamic Academy near Shamsabad Faizabad Rawalpindi, Madrassa near Khurram Colony Dhoke Kala Khan Rawalpindi, Best Madrassa in Rawalpindi Islamabad, Jamia &amp; Madrassa Admission Rawalpindi, Hifz-ul-Quran Admission, Nazra Quran Kareem, Islamic &amp; Moral Tarbiyat, Online Quran Classes, Online Quran Academy for International Students, مدرسہ ریاض القرآن والسنۃ, مفتی ریاض محمود, مسجد قبا صادق آباد, مسجد قبا مسلم ٹاؤن, صادق آباد راولپنڈی مدرسہ, مسلم ٹاؤن راولپنڈی مدرسہ, راولپنڈی اسلام آباد کا بہترین مدرسہ, حفظ القرآن داخلہ">
@@ -588,9 +639,11 @@
             .mobile-logo-container {
                 display: none !important;
             }
-            .desktop-logo {
+            .desktop-logo,
+            .header-logo {
                 display: flex !important;
-                order: -1;
+                order: 1 !important;
+                margin: 0 !important;
             }
             .header-logo img,
             html[dir="rtl"] header .header-logo img,
@@ -649,13 +702,17 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
-                order: -1; /* Puts it on the left in LTR, right in RTL natively */
+                order: 3 !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
             }
             .header-logo {
-                order: 1; /* Puts it on the right in LTR, left in RTL natively */
+                order: 1 !important;
+                margin: 0 !important;
             }
             .brand-title-container {
-                order: 0;
+                order: 2 !important;
+                margin: 0 auto !important;
             }
             .floating-nav-container {
                 display: none; /* Hidden by default on mobile */
@@ -7029,12 +7086,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* Ensure the hamburger icon aligns correctly */
 [dir="rtl"] .mobile-menu-btn {
-  margin-left: auto !important;
-  margin-right: 15px !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
 }
 [dir="ltr"] .mobile-menu-btn {
-  margin-right: auto !important;
-  margin-left: 15px !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
 }
 
 /* =========================================================

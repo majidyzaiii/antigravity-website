@@ -25,19 +25,248 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+      (function() {
+        try {
+          var savedLang = sessionStorage.getItem('siteLang');
+          if (savedLang === 'ur') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ur';
+            document.documentElement.classList.add('ur-mode');
+          } else {
+            document.documentElement.dir = 'ltr';
+            document.documentElement.lang = 'en';
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Critical CSS: Prevent Mobile Header Shift & FOUC -->
+    <style id="critical-fouc-nav">
+      @media (max-width: 768px) {
+        header,
+        .sticky-header header,
+        #ultimateScrollHeader header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          position: relative !important;
+        }
+        header .header-logo,
+        header .desktop-logo,
+        .sticky-header header .header-logo,
+        .sticky-header header .desktop-logo,
+        #ultimateScrollHeader header .header-logo,
+        #ultimateScrollHeader header .desktop-logo {
+          order: 1 !important;
+          margin: 0 !important;
+          display: flex !important;
+        }
+        header .brand-title-container,
+        header .brand-title-block,
+        .sticky-header header .brand-title-container,
+        .sticky-header header .brand-title-block,
+        #ultimateScrollHeader header .brand-title-container,
+        #ultimateScrollHeader header .brand-title-block {
+          order: 2 !important;
+          margin: 0 auto !important;
+        }
+        header .mobile-menu-btn,
+        .sticky-header header .mobile-menu-btn,
+        #ultimateScrollHeader header .mobile-menu-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          order: 3 !important;
+          margin-left: auto !important;
+          margin-right: 0 !important;
+        }
+        html[dir="rtl"] header .mobile-menu-btn,
+        html[lang="ur"] header .mobile-menu-btn,
+        body.ur header .mobile-menu-btn {
+          margin-right: auto !important;
+          margin-left: 0 !important;
+        }
+      }
+    </style>
+
+    <!-- Critical CSS: Prevent Admission Cards FOUC & Text Shift -->
+    <style id="critical-admission-cards">
+      .about-container.admission-instructions-card,
+      .about-container.admission-rules-card,
+      .admission-instructions-card,
+      .admission-rules-card {
+        position: relative !important;
+        background-color: #ffffff !important;
+        border: 1.5px solid rgba(0, 103, 84, 0.35) !important;
+        border-radius: 28px !important;
+        box-shadow: 0 12px 35px rgba(0, 103, 84, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+        padding: 40px 32px !important;
+        max-width: 900px !important;
+        margin: 40px auto 30px auto !important;
+        text-align: left !important;
+        overflow: hidden !important;
+        z-index: 10 !important;
+        box-sizing: border-box !important;
+      }
+      @media (max-width: 768px) {
+        .about-container.admission-instructions-card,
+        .about-container.admission-rules-card,
+        .admission-instructions-card,
+        .admission-rules-card {
+          padding: 30px 16px !important;
+          width: 92% !important;
+          border-radius: 20px !important;
+        }
+      }
+      .admission-instructions-card .container-main-heading,
+      .admission-rules-card .container-main-heading {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+        color: #1e293b !important;
+        font-size: 1.65rem !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+        text-indent: 0 !important;
+        margin-bottom: 24px !important;
+        letter-spacing: -0.5px !important;
+      }
+      .admission-instructions-card .instructions-content-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+      .admission-instructions-card .instruction-box {
+        background-color: transparent !important;
+        padding: 0 !important;
+        margin-bottom: 20px !important;
+      }
+      .admission-instructions-card .inst-head {
+        color: #006754 !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        margin: 0 0 12px 0 !important;
+        text-align: left !important;
+        text-indent: 0 !important;
+      }
+      .admission-instructions-card .inst-subpoints {
+        margin: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 0 !important;
+        list-style-type: none !important;
+      }
+      .admission-instructions-card .inst-subpoints li {
+        position: relative !important;
+        font-size: 0.95rem !important;
+        color: #334155 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 6px !important;
+        padding-left: 5px !important;
+        padding-right: 0 !important;
+        list-style: none !important;
+        text-align: left !important;
+      }
+      .admission-instructions-card .inst-subpoints li::before {
+        content: "\2714\FE0E" !important;
+        position: absolute !important;
+        left: -20px !important;
+        top: -1px !important;
+        color: #006754 !important;
+        font-size: 1.1rem !important;
+        font-family: "Segoe UI", Arial, sans-serif !important;
+      }
+      .admission-rules-card .rules-list-container {
+        background-color: transparent !important;
+        padding: 0 10px !important;
+        margin-bottom: 20px !important;
+      }
+      .admission-rules-card .formal-rules-ordered-list {
+        margin: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 0 !important;
+        list-style-type: none !important;
+      }
+      .admission-rules-card .formal-rules-ordered-list li {
+        position: relative !important;
+        font-size: 0.95rem !important;
+        color: #334155 !important;
+        line-height: 1.7 !important;
+        margin-bottom: 12px !important;
+        padding-left: 0 !important;
+        list-style: none !important;
+        text-align: left !important;
+      }
+      .admission-rules-card .formal-rules-ordered-list li::before {
+        content: "\2714\FE0E" !important;
+        position: absolute !important;
+        left: -20px !important;
+        top: -1px !important;
+        color: #006754 !important;
+        font-weight: 700 !important;
+      }
+      .admission-instructions-card .notice-badge,
+      .admission-rules-card .notice-badge {
+        background-color: transparent !important;
+        padding: 0 !important;
+        font-size: 1.6rem !important;
+        color: #006754 !important;
+        margin-top: 32px !important;
+        margin-bottom: 0 !important;
+        line-height: 1.3 !important;
+        font-family: 'Caveat', cursive, sans-serif !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        text-indent: 0 !important;
+      }
+      /* RTL Mirroring for Admission Cards */
+      html[dir="rtl"] .admission-instructions-card,
+      html[dir="rtl"] .admission-rules-card,
+      body.ur .admission-instructions-card,
+      body.ur .admission-rules-card {
+        text-align: right !important;
+      }
+      html[dir="rtl"] .admission-instructions-card .inst-head,
+      body.ur .admission-instructions-card .inst-head {
+        text-align: right !important;
+      }
+      html[dir="rtl"] .admission-instructions-card .inst-subpoints,
+      html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list,
+      body.ur .admission-instructions-card .inst-subpoints,
+      body.ur .admission-rules-card .formal-rules-ordered-list {
+        padding-right: 20px !important;
+        padding-left: 0 !important;
+      }
+      html[dir="rtl"] .admission-instructions-card .inst-subpoints li,
+      html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list li,
+      body.ur .admission-instructions-card .inst-subpoints li,
+      body.ur .admission-rules-card .formal-rules-ordered-list li {
+        padding-right: 5px !important;
+        padding-left: 0 !important;
+        text-align: right !important;
+      }
+      html[dir="rtl"] .admission-instructions-card .inst-subpoints li::before,
+      html[dir="rtl"] .admission-rules-card .formal-rules-ordered-list li::before,
+      body.ur .admission-instructions-card .inst-subpoints li::before,
+      body.ur .admission-rules-card .formal-rules-ordered-list li::before {
+        right: -20px !important;
+        left: auto !important;
+      }
+    </style>
     <title>Admission - Madrassa Riaz ul Quran wal Sunnah</title>
     <meta name="description" content="Admissions 2026 at Madrassa Riaz Ul Quran, Quba Masjid Sadiqabad Rawalpindi. Hifz, Nazra &amp; Online Quran classes under Mufti Riaz Mahmood.">
     <meta name="keywords" content="Jamia &amp; Madrassa Admission Rawalpindi, Hifz Madrassa Sadiqabad Muslim Town, Madrassa in Sadiqabad Rawalpindi, Mufti Riaz Mahmood, Quba Masjid Sadiqabad, Hifz-ul-Quran Admission, Nazra Quran Kareem, Online Quran Classes, Islamic &amp; Moral Tarbiyat, Best Madrassa in Rawalpindi Islamabad, حفظ القرآن داخلہ راولپنڈی, مدرسہ داخلہ فارم, مفتی ریاض محمود">
     <meta name="author" content="Madrassa Riaz Ul Quran Wal Sunnah">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <link rel="canonical" href="https://mrqs.pk/admissions">
+    <link rel="canonical" href="https://mrqs.pk/admission">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Madrassa Riaz Ul Quran Wal Sunnah">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ur_PK">
-    <meta property="og:url" content="https://mrqs.pk/admissions">
+    <meta property="og:url" content="https://mrqs.pk/admission">
     <meta property="og:title" content="Admission - Madrassa Riaz ul Quran wal Sunnah">
     <meta property="og:description" content="Admissions 2026 at Madrassa Riaz Ul Quran, Quba Masjid Sadiqabad Rawalpindi. Hifz, Nazra &amp; Online Quran classes under Mufti Riaz Mahmood.">
     <meta property="og:image" content="https://mrqs.pk/assets/logo.png">
@@ -523,9 +752,11 @@
             .mobile-logo-container {
                 display: none !important;
             }
-            .desktop-logo {
+            .desktop-logo,
+            .header-logo {
                 display: flex !important;
-                order: -1;
+                order: 1 !important;
+                margin: 0 !important;
             }
             .header-logo img,
             html[dir="rtl"] header .header-logo img,
@@ -584,13 +815,17 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
-                order: -1; /* Puts it on the left in LTR, right in RTL natively */
+                order: 3 !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
             }
             .header-logo {
-                order: 1; /* Puts it on the right in LTR, left in RTL natively */
+                order: 1 !important;
+                margin: 0 !important;
             }
             .brand-title-container {
-                order: 0;
+                order: 2 !important;
+                margin: 0 auto !important;
             }
             .floating-nav-container {
                 display: none; /* Hidden by default on mobile */
@@ -971,7 +1206,7 @@
             align-items: center !important;
             justify-content: center !important;
             text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
         }
 
         .badge-line {
@@ -1527,7 +1762,7 @@
                 flex-direction: column;
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 width: 100%;
             }
 
@@ -1536,7 +1771,7 @@
                 flex-direction: column;
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
             }
 
             .footer-social-links {
@@ -1550,7 +1785,7 @@
                 flex-direction: column;
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 width: 100%;
             }
 
@@ -1573,7 +1808,7 @@
             .rtl .footer-section {
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 justify-content: center !important;
             }
 
@@ -1636,7 +1871,7 @@
                 line-height: 1.25 !important;
                 letter-spacing: 0.2px !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 word-break: keep-all !important;
             }
 
@@ -1653,7 +1888,7 @@
                 align-items: center !important;
                 justify-content: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 line-height: 1.3 !important;
             }
 
@@ -1719,7 +1954,7 @@
                 justify-content: center !important;
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 width: 100% !important;
             }
 
@@ -1764,7 +1999,7 @@
             display: table !important;
             margin: 5px auto 12px auto !important;
             text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
         }
 
         .hero-hadith-img {
@@ -2477,7 +2712,7 @@
             /* Mobile Alignment Fix for Hero and Hadith Section */
             .hero-content {
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
@@ -2486,7 +2721,7 @@
             .hero-text-wrapper {
                 align-items: center !important;
                 text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
             }
             .hero-hadith-img {
                 width: 100% !important;
@@ -3085,7 +3320,7 @@
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -3112,7 +3347,7 @@
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -3132,7 +3367,7 @@
   font-size: 1.65rem !important;
   font-weight: 800 !important;
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   margin-bottom: 24px !important;
   letter-spacing: -0.5px !important;
 }
@@ -3348,7 +3583,7 @@
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -3377,7 +3612,7 @@ html[dir="rtl"] .admission-instructions-card h4.section-title {
 /* Center footer bottom text in RTL mode */
 [dir="rtl"] .footer-bottom p, body.ur .footer-bottom p {
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
 }
 
 
@@ -3872,7 +4107,7 @@ html[lang="ur"] .admission-rules-card .notice-badge span {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -5620,7 +5855,7 @@ function previewPhoto(event) {
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -5647,7 +5882,7 @@ function previewPhoto(event) {
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -5667,7 +5902,7 @@ function previewPhoto(event) {
   font-size: 1.65rem !important;
   font-weight: 800 !important;
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   margin-bottom: 24px !important;
   letter-spacing: -0.5px !important;
 }
@@ -5881,7 +6116,7 @@ function previewPhoto(event) {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -5914,6 +6149,7 @@ obliterateWhiteBar();
         const langSwitchBtn = document.getElementById('langSwitch');
         let currentLang = 'en';
 
+        var _userSwitchedLang = false;
         function applyTranslations(lang) {
             document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
@@ -5930,17 +6166,23 @@ obliterateWhiteBar();
                 brandTitle.textContent = brandTitle.getAttribute(`data-${lang}`);
             }
             
-            // Also translate footer and any other dynamic text elements
-            document.querySelectorAll('[data-en]').forEach(item => {
-                if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
-                    item.placeholder = item.getAttribute(`data-${lang}`);
-                } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
-                    item.innerHTML = item.getAttribute(`data-${lang}`);
-                }
-            });
+            // Only mutate card/content text if language is Urdu or if the user actively switched languages
+            if (lang === 'ur' || _userSwitchedLang) {
+                document.querySelectorAll('[data-en]').forEach(item => {
+                    if (item.tagName === 'INPUT' || item.tagName === 'TEXTAREA') {
+                        item.placeholder = item.getAttribute(`data-${lang}`);
+                    } else if (!item.classList.contains('nav-link') && !item.classList.contains('brand-title')) {
+                        const targetText = item.getAttribute(`data-${lang}`);
+                        if (targetText && item.innerHTML !== targetText) {
+                            item.innerHTML = targetText;
+                        }
+                    }
+                });
+            }
         }
 if (langSwitchBtn) {
             langSwitchBtn.addEventListener('click', (e) => {
+                _userSwitchedLang = true;
                 // Only scroll to top if it was a real user click
                 if(e && e.isTrusted) {
                     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -7484,7 +7726,7 @@ s0.parentNode.insertBefore(s1,s0);
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -7511,7 +7753,7 @@ s0.parentNode.insertBefore(s1,s0);
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     z-index: 100 !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
   }
@@ -7531,7 +7773,7 @@ s0.parentNode.insertBefore(s1,s0);
   font-size: 1.65rem !important;
   font-weight: 800 !important;
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   margin-bottom: 24px !important;
   letter-spacing: -0.5px !important;
 }
@@ -7549,7 +7791,7 @@ s0.parentNode.insertBefore(s1,s0);
   font-family: 'Caveat', cursive, sans-serif !important;
   font-weight: 700 !important;
   text-align: center !important;
-    text-indent: -15px !important; /* Looks more elegant centered as a cursive quote */
+    text-indent: 0 !important; /* Looks more elegant centered as a cursive quote */
 }
 
 .admission-instructions-card .notice-badge strong, .admission-rules-card .notice-badge strong {
@@ -7768,7 +8010,7 @@ s0.parentNode.insertBefore(s1,s0);
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -7930,7 +8172,7 @@ s0.parentNode.insertBefore(s1,s0);
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -8163,7 +8405,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -8322,7 +8564,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -8543,7 +8785,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 
@@ -8614,13 +8856,13 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
   font-size: 1.75rem !important;
   font-weight: 800 !important;
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   margin-bottom: 6px !important;
 }
 
 .online-admission-form-container .form-subheading-text {
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   color: #64748b !important;
   font-size: 0.95rem !important;
   margin-bottom: 28px !important;
@@ -8668,7 +8910,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
   flex-direction: column !important;
   align-items: center !important;
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   transition: all 0.25s ease !important;
 }
 
@@ -8748,7 +8990,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
 /* Submit Button */
 .form-submit-container {
   text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
   margin-top: 15px !important;
 }
 
@@ -8955,7 +9197,7 @@ body.ur .mobile-nav-overlay.active .mobile-menu-card {
     font-size: 0.85rem !important;
     font-weight: 500 !important;
     text-align: center !important;
-    text-indent: -15px !important;
+    text-indent: 0 !important;
     padding: 0 4px !important;
 }
 

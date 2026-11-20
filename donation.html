@@ -25,6 +25,57 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Critical CSS: Prevent Mobile Header Shift & FOUC -->
+    <style id="critical-fouc-nav">
+      @media (max-width: 768px) {
+        header,
+        .sticky-header header,
+        #ultimateScrollHeader header {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          position: relative !important;
+        }
+        header .header-logo,
+        header .desktop-logo,
+        .sticky-header header .header-logo,
+        .sticky-header header .desktop-logo,
+        #ultimateScrollHeader header .header-logo,
+        #ultimateScrollHeader header .desktop-logo {
+          order: 1 !important;
+          margin: 0 !important;
+          display: flex !important;
+        }
+        header .brand-title-container,
+        header .brand-title-block,
+        .sticky-header header .brand-title-container,
+        .sticky-header header .brand-title-block,
+        #ultimateScrollHeader header .brand-title-container,
+        #ultimateScrollHeader header .brand-title-block {
+          order: 2 !important;
+          margin: 0 auto !important;
+        }
+        header .mobile-menu-btn,
+        .sticky-header header .mobile-menu-btn,
+        #ultimateScrollHeader header .mobile-menu-btn {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          order: 3 !important;
+          margin-left: auto !important;
+          margin-right: 0 !important;
+        }
+        html[dir="rtl"] header .mobile-menu-btn,
+        html[lang="ur"] header .mobile-menu-btn,
+        body.ur header .mobile-menu-btn {
+          margin-right: auto !important;
+          margin-left: 0 !important;
+        }
+      }
+    </style>
     <title>Donate &amp; Support - Madrassa Riaz ul Quran wal Sunnah</title>
     <meta name="description" content="Support free Hifz &amp; Nazra Quran education for deserving students at Madrassa Riaz ul Quran wal Sunnah. Donate your Zakat &amp; Sadaqah via Bank Islami, EasyPaisa &amp; JazzCash.">
     <meta name="keywords" content="Donate to Madrassa Rawalpindi, Zakat Eligible Madrassa Sadiqabad, Sponsor a Quran Student Rawalpindi, Mufti Riaz Mahmood Madrassa, Quba Masjid Sadaqah Jariyah, عطیات و زکوٰۃ مدرسہ ریاض القرآن, مستحق طلبہ کفالت صادق آباد">
@@ -533,9 +584,11 @@
             .mobile-logo-container {
                 display: none !important;
             }
-            .desktop-logo {
+            .desktop-logo,
+            .header-logo {
                 display: flex !important;
-                order: -1;
+                order: 1 !important;
+                margin: 0 !important;
             }
             .header-logo img,
             html[dir="rtl"] header .header-logo img,
@@ -594,13 +647,17 @@
                 display: flex !important;
                 align-items: center;
                 justify-content: center;
-                order: -1; /* Puts it on the left in LTR, right in RTL natively */
+                order: 3 !important;
+                margin-left: auto !important;
+                margin-right: 0 !important;
             }
             .header-logo {
-                order: 1; /* Puts it on the right in LTR, left in RTL natively */
+                order: 1 !important;
+                margin: 0 !important;
             }
             .brand-title-container {
-                order: 0;
+                order: 2 !important;
+                margin: 0 auto !important;
             }
             .floating-nav-container {
                 display: none; /* Hidden by default on mobile */
